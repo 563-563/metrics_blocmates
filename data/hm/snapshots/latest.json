@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-26T18:08:21.332Z",
+  "generated_at": "2026-05-26T19:45:50.944Z",
   "as_of": "2026-05-26",
   "mode": "live",
   "latest_data_as_of": "2026-05-26T18:08:15.661Z",
@@ -204,10 +204,10 @@
       "emissions_24mo_usd": 28060200,
       "emissions_24mo_notes": "Staking emissions over 24mo (Category C)",
       "buybacks_24mo_usd": 51060000,
-      "buybacks_24mo_notes": "99.5% × post-LLP revenue (LLP collects liquidation fees first)",
+      "buybacks_24mo_notes": "99.5% × post-LLP revenue. Proxy via DL holdersRevenue ($25.6M/yr, matches stated rate within 0.3%) until Lighter API key unlocks direct trade-level verification.",
       "adj_mcap_usd": 564160200,
-      "annual_buyback_usd": 25530000,
-      "annual_buyback_verification": "governance_stated",
+      "annual_buyback_usd": 25162461.25,
+      "annual_buyback_verification": "proxy",
       "annual_buyback_source": {
         "annual_usd": 25162461.25,
         "window_days": 60,
@@ -232,8 +232,8 @@
         "source": "seed"
       },
       "annual_holder_yield_seed_usd": 0,
-      "real_capture_usd": 25530000,
-      "hm": 22.097931844888368,
+      "real_capture_usd": 25162461.25,
+      "hm": 22.4207081491283,
       "hm_band": "fair value",
       "sources": [
         "DefiLlama",

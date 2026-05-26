@@ -10,6 +10,7 @@ import aaveBuybacksRaw from "../../data/onchain/aave/buybacks.json";
 import aaveTreasuryRaw from "../../data/onchain/aave/treasury.json";
 import skyCatBInflowsRaw from "../../data/onchain/sky/cat-b-inflows.json";
 import skyRewardsFarmBalanceRaw from "../../data/onchain/sky/rewards-farm-balance.json";
+import litBuybacksRaw from "../../data/onchain/lit/buybacks.json";
 
 // ─── Types matching compute outputs ──────────────────────────────────────
 
@@ -115,9 +116,10 @@ export type NpSnapshot = {
 
 export type AfBuyback = {
   date: string;
-  amount_tokens: number;
+  amount_tokens: number | null;
   amount_usd: number;
-  avg_price_usd: number;
+  avg_price_usd?: number;
+  price_usd?: number;
   fill_count?: number | null;
   tx_count?: number;
   unique_senders?: number;
@@ -160,10 +162,13 @@ export function getNpProtocolBySlug(slug: string): NpProtocol | undefined {
 
 // Per-protocol on-chain feed map. Currently HYPE only — when AAVE/SKY/LIT
 // adapters land, add their slug → daily-series mappings here.
+export const litBuybacks: AfBuyback[] = litBuybacksRaw as AfBuyback[];
+
 export const onchainFeeds: Record<
   string,
   { buybacks?: AfBuyback[]; afHistory?: AfTreasuryHist[] }
 > = {
   hyperliquid: { buybacks: hypeBuybacks, afHistory: hypeAfHistory },
-  aave: { buybacks: aaveBuybacks, afHistory: aaveTreasury }
+  aave: { buybacks: aaveBuybacks, afHistory: aaveTreasury },
+  lighter: { buybacks: litBuybacks }
 };

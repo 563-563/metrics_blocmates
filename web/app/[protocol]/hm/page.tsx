@@ -38,7 +38,7 @@ export default async function HmDeepPage({
   const last90 = buybacks.slice(-90).map((r) => ({
     date: r.date,
     usd: r.amount_usd,
-    tokens: r.amount_tokens
+    tokens: r.amount_tokens ?? 0
   }));
 
   // AF balance — weekly downsample for cleanliness.

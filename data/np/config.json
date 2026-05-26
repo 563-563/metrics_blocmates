@@ -170,9 +170,11 @@
           "note": "Pre-cliff (Dec 22 2026) — no team unlocks. Tokenomics module pending."
         },
         "buybacks": {
-          "type": "none",
-          "verification": "n/a",
-          "note": "zkLighter L2 /api/v1/trades requires Lighter API key (acquisition #3 in DATA-SOURCES.md). Until obtained, buyback flow can't be ingested."
+          "type": "daily_series",
+          "path": "data/onchain/lit/buybacks.json",
+          "amount_field": "amount_tokens",
+          "verification": "proxy",
+          "note": "DL holdersRevenue proxy ($ ÷ daily price → estimated LIT bought). Direct zkLighter trade feed pending a Lighter API key — will upgrade to onchain when available."
         },
         "burns": {
           "type": "none",
@@ -199,7 +201,7 @@
         "l1_escrow": "data/onchain/lit/l1-escrow.json",
         "l2_market": "data/onchain/lit/l2-market.json"
       },
-      "daily_price_path": null
+      "daily_price_path": "data/onchain/lit/buybacks.json"
     }
   }
 }

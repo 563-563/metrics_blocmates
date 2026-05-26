@@ -23,6 +23,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const { getDailyPrices } = require('../../lib/cg-prices');
+
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'lit');
 const OUT_PATH = path.join(OUT_DIR, 'buybacks.json');
@@ -51,13 +53,32 @@ async function main() {
   const chart = json.totalDataChart || [];
   console.log(`[lit-buyback-proxy] ${chart.length} daily points`);
 
+  // Daily LIT price so we can express the $-denominated buyback proxy as an
+  // estimated token count too (TP needs token flow, HM uses USD).
+  let priceMap = new Map();
+  try {
+    priceMap = await getDailyPrices('lighter', 365);
+    console.log(`[lit-buyback-proxy] ${priceMap.size} daily LIT prices loaded`);
+  } catch (err) {
+    console.warn(`[lit-buyback-proxy] CG price fetch failed: ${err.message} — tokens column will be null`);
+  }
+  const latestPrice = priceMap.size
+    ? Array.from(priceMap.entries()).sort((a, b) => a[0].localeCompare(b[0])).pop()[1]
+    : null;
+
   const rows = chart
-    .map(([ts, usd]) => ({
-      date: new Date(ts * 1000).toISOString().slice(0, 10),
-      amount_usd: usd,
-      source: 'defillama_daily_holders_revenue',
-      verification: 'proxy'
-    }))
+    .map(([ts, usd]) => {
+      const date = new Date(ts * 1000).toISOString().slice(0, 10);
+      const px = priceMap.get(date) ?? latestPrice;
+      return {
+        date,
+        amount_usd: usd,
+        amount_tokens: px ? usd / px : null,
+        price_usd: px,
+        source: 'defillama_daily_holders_revenue',
+        verification: 'proxy'
+      };
+    })
     .filter((r) => r.amount_usd > 0)
     .sort((a, b) => a.date.localeCompare(b.date));
 

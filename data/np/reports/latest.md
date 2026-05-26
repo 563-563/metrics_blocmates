@@ -1,6 +1,6 @@
 # Net Pressure (TP) — Cohort Snapshot
 
-**Generated:** 2026-05-26T18:08:21.436Z
+**Generated:** 2026-05-26T19:45:51.001Z
 **As-of:** 2026-05-26
 
 Formula:
@@ -164,9 +164,9 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
 | 24h | ⚠ 0/1d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.26 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.26 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.26 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.26 | 0.0000% |
+| 7d | 6/7d | 0 | 331.4K | 🟢 −331.4K LIT | −$414.7K | per-day (100%) | 0.0000% |
+| 30d | 29/30d | 0 | 2.06M | 🟢 −2.06M LIT | −$2.02M | per-day (100%) | 0.0000% |
+| 90d | 87/90d | 0 | 6.74M | 🟢 −6.74M LIT | −$7.04M | per-day (100%) | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -175,11 +175,30 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | Component | Source | Verification | Note |
 |---|---|---|---|
 | unlocks | — | n/a | Pre-cliff (Dec 22 2026) — no team unlocks. Tokenomics module pending. |
-| buybacks | — | n/a | zkLighter L2 /api/v1/trades requires Lighter API key (acquisition #3 in DATA-SOURCES.md). Until obtained, buyback flow can't be ingested. |
+| buybacks | data/onchain/lit/buybacks.json | proxy | DL holdersRevenue proxy ($ ÷ daily price → estimated LIT bought). Direct zkLighter trade feed pending a Lighter API key — will upgrade to onchain when available. |
 | burns | — | n/a | Unknown — verify whether Lighter burns vs holds after API key obtained |
 | treasury_accumulation | — | n/a | L2 protocol accounts not yet discovered |
 | treasury_sells | — | n/a |  |
 | net_staking_lockups | — | n/a | LIT L2 staking contract not yet identified |
+
+### Recent daily series (last 14 days)
+
+| Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
+|---|---|---|---|---|
+| 2026-05-12 | 0 | 59.2K | −59.2K | −$59.1K |
+| 2026-05-13 | 0 | 64.1K | −64.1K | −$59.4K |
+| 2026-05-14 | 0 | 71.0K | −71.0K | −$63.6K |
+| 2026-05-15 | 0 | 124.7K | −124.7K | −$113.8K |
+| 2026-05-16 | 0 | 40.4K | −40.4K | −$34.7K |
+| 2026-05-17 | 0 | 57.4K | −57.4K | −$50.5K |
+| 2026-05-18 | 0 | 91.3K | −91.3K | −$78.4K |
+| 2026-05-19 | 0 | 93.9K | −93.9K | −$89.4K |
+| 2026-05-20 | 0 | 67.4K | −67.4K | −$76.2K |
+| 2026-05-21 | 0 | 56.7K | −56.7K | −$72.6K |
+| 2026-05-22 | 0 | 54.9K | −54.9K | −$78.7K |
+| 2026-05-23 | 0 | 69.2K | −69.2K | −$82.3K |
+| 2026-05-24 | 0 | 43.9K | −43.9K | −$54.0K |
+| 2026-05-25 | 0 | 39.2K | −39.2K | −$50.9K |
 
 
 ---

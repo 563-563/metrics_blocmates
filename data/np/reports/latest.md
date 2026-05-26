@@ -1,6 +1,6 @@
 # Net Pressure (TP) — Cohort Snapshot
 
-**Generated:** 2026-05-26T14:16:17.486Z
+**Generated:** 2026-05-26T14:56:48.877Z
 **As-of:** 2026-05-26
 
 Formula:
@@ -13,16 +13,16 @@ Coverage is per-protocol. Components without an on-chain source contribute zero 
 
 ## Hyperliquid (HYPE)
 
-**Price:** $59.84    **Circulating:** 495.27M HYPE    **AF balance:** 44.55M HYPE    **Total staked:** 431.43M HYPE (87.1% of circ)
+**Price:** $63.73    **Circulating:** 495.27M HYPE    **AF balance:** 44.56M HYPE    **Total staked:** 431.25M HYPE (87.1% of circ)
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | 1/1d | 0 | 7.9K | 🟢 −7.9K HYPE | −$471.9K | today @ $59.84 | -0.0008% |
-| 7d | 7/7d | 0 | 94.5K | 🟢 −117.5K HYPE | −$6.91M | per-day (43%) | -0.0118% |
-| 30d | 30/30d | 17.45M | 753.6K | 🔴 +16.67M HYPE | +$700.95M | per-day (87%) | 1.6671% |
-| 90d | 90/90d | 52.34M | 3.02M | 🔴 +49.30M HYPE | +$1.81B | per-day (96%) | 4.9301% |
+| 24h | 1/1d | 0 | 18.5K | 🟢 −18.5K HYPE | −$1.18M | today @ $63.73 | -0.0019% |
+| 7d | 7/7d | 0 | 101.3K | 🟢 −124.3K HYPE | −$7.64M | per-day (43%) | -0.0124% |
+| 30d | 30/30d | 17.45M | 760.4K | 🔴 +16.66M HYPE | +$700.22M | per-day (87%) | 1.6665% |
+| 90d | 90/90d | 52.34M | 3.03M | 🔴 +49.29M HYPE | +$1.81B | per-day (96%) | 4.9295% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -51,23 +51,23 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-05-20 | 0 | 3.1K | −3.1K | −$146.8K |
 | 2026-05-21 | 0 | 977 | −977 | −$54.1K |
 | 2026-05-22 | 0 | 14.6K | −37.7K | −$2.17M |
-| 2026-05-23 | 0 | 29.3K | −29.3K | −$1.75M |
-| 2026-05-24 | 0 | 21.5K | −21.5K | −$1.29M |
-| 2026-05-25 | 0 | 17.1K | −17.1K | −$1.02M |
-| 2026-05-26 | 0 | 7.9K | −7.9K | −$471.9K |
+| 2026-05-23 | 0 | 25.4K | −25.4K | −$1.62M |
+| 2026-05-24 | 0 | 21.5K | −21.5K | −$1.37M |
+| 2026-05-25 | 0 | 17.1K | −17.1K | −$1.09M |
+| 2026-05-26 | 0 | 18.5K | −18.5K | −$1.18M |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-05-29 | 7.53M | $450.67M |
-| 2026-06-06 | 9.92M | $593.41M |
-| 2026-06-29 | 7.53M | $450.67M |
-| 2026-07-06 | 9.92M | $593.41M |
-| 2026-07-29 | 7.53M | $450.67M |
-| 2026-08-06 | 9.92M | $593.41M |
-| 2026-08-29 | 7.53M | $450.67M |
-| 2026-09-06 | 9.92M | $593.41M |
+| 2026-05-29 | 7.53M | $479.97M |
+| 2026-06-06 | 9.92M | $631.99M |
+| 2026-06-29 | 7.53M | $479.97M |
+| 2026-07-06 | 9.92M | $631.99M |
+| 2026-07-29 | 7.53M | $479.97M |
+| 2026-08-06 | 9.92M | $631.99M |
+| 2026-08-29 | 7.53M | $479.97M |
+| 2026-09-06 | 9.92M | $631.99M |
 
 
 ---

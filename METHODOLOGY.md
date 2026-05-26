@@ -426,11 +426,17 @@ The list of things we genuinely don't know yet — each one a potential HM accur
 
 **Resolution path:** ChainLog query under a key like `MCD_ABC` or similar. If not in ChainLog, governance forum.
 
-### 5.4 LIT protocol buyback account_index
+### 5.4 LIT protocol buyback account_index — RESOLVED: not achievable via API
 
-**Question:** which zkLighter account_index executes the LIT buyback on market 2049?
+**Question:** can we pull the LIT buyback fills directly from zkLighter (market 2049)?
 
-**Resolution path:** once Lighter API key is obtained, query `/api/v1/trades?market_id=2049` for recent buy-side fills, look for an account_index that appears with high frequency and uniform buying behavior (algorithmic pattern). Alternatively: ask Lighter team on Discord.
+**Verdict (2026-05-26, with a funded account + API key):** No. Lighter's trade API is account-scoped and there's no deep public market-history endpoint.
+- Account 726655 funded ($2), API key registered (index 11), `check_client: OK`.
+- `/api/v1/trades?account_index=X` with auth returns `invalid auth: auth string is not from given account` for any X ≠ your own. You can only read YOUR account's trades — not the protocol buyback account's.
+- `/api/v1/recentTrades?market_id=2049` is public but returns only the last ~100 trades (minutes on an active market; no time-range pagination), so it can't reconstruct history and can't reliably isolate the buyback bot (the top recent buyer, acct 690490, is a normal trader with 0 collateral — not a labeled protocol account).
+- `candlesticks` and `marketStats` are 403-gated; `exchangeStats` gives only aggregate `daily_usd_volume`, not buyback-specific flow.
+
+**Decision:** the DefiLlama holdersRevenue proxy (`verification: proxy`) is the canonical LIT buyback source — 226 days of history, 0.3% match to the stated rate. The API key/account are retained but unused; revocable if desired since they're a scoped credential, not the wallet. Re-investigate only if Lighter ships a public market-trade-history endpoint or labels the buyback account.
 
 ### 5.5 LIT vesting contract addresses (L1)
 

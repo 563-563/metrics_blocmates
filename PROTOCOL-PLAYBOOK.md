@@ -95,8 +95,8 @@ Every buyback we've seen fits one of these. Classify first, then copy the templa
 ### Archetype D — Custom L2 / app-chain REST API
 **When:** the protocol is an app-specific rollup with no user-facing EVM contracts; buybacks are trades on its own order book (LIT on zkLighter).
 **Source:** the chain's REST API, filtered to the protocol buyback account on the token's spot market. **Often auth-gated** — may need an API key tied to a funded account.
-**Template:** `scripts/lib/zklighter.js` (client) — buyback adapter pending an API key.
-**Notes:** if auth blocks you, fall through to Archetype E.
+**Template:** `scripts/lib/zklighter.js` (client).
+**Notes — hard-won lesson from LIT:** even *with* a funded account + API key, the trade API may be **account-scoped** — you can only read your OWN account's trades, not the protocol buyback account's (`auth string is not from given account`). Public "recent trades" endpoints are often too shallow (last ~100, no history) to reconstruct a series or even ID the buyback bot. Before funding an account for Archetype D, verify the API actually lets a third party read an arbitrary account's or a market's full trade history. If it doesn't (Lighter did not), **fall through to Archetype E** — the proxy is then not just easier, it's the only option.
 
 ### Archetype E — DefiLlama holdersRevenue proxy (the universal fallback)
 **When:** the protocol routes ~all holder-directed revenue to buybacks, AND you can't get direct on-chain trade data (LIT fallback).

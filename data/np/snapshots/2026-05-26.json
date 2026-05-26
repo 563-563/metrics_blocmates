@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-26T17:38:09.310Z",
+  "generated_at": "2026-05-26T17:42:58.329Z",
   "as_of": "2026-05-26",
-  "latest_data_as_of": "2026-05-26T14:56:46.348Z",
+  "latest_data_as_of": "2026-05-26T17:42:55.366Z",
   "protocols": [
     {
       "slug": "hyperliquid",
       "name": "Hyperliquid",
       "symbol": "HYPE",
-      "price_usd": 63.73,
+      "price_usd": 61.45,
       "static_reference": {
         "circulating_supply": {
           "date": "2026-05-26",
@@ -20,19 +20,19 @@
         },
         "af_balance": {
           "date": "2026-05-26",
-          "amount_tokens": 44558758.104739234,
-          "amount_usd": 2837546274.867899,
-          "price_usd_at_snapshot": 63.681,
+          "amount_tokens": 44565082.74473923,
+          "amount_usd": 2735805864.6167965,
+          "price_usd_at_snapshot": 61.389,
           "source": "hyperliquid_info_api",
           "verification": "onchain"
         },
         "total_staked": {
           "date": "2026-05-26",
-          "total_staked_tokens": 431246480.194779,
+          "total_staked_tokens": 430019653.8663872,
           "validator_count": 31,
           "validators_with_stake_field": 31,
           "validators_missing_stake_field": 0,
-          "delta_tokens": -187062.27905285358,
+          "delta_tokens": -1226826.3283917904,
           "delta_basis_date": "2026-05-26",
           "source": "hyperliquid_info_api",
           "verification": "onchain"
@@ -84,15 +84,15 @@
           "daily_price_complete": false,
           "unlocks_tokens": 0,
           "treasury_sells_tokens": 0,
-          "buybacks_tokens": 18544.11000000003,
+          "buybacks_tokens": 24856.25,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -187062.27905285358,
-          "net_pressure_tokens": -18544.11000000003,
+          "net_staking_lockups_tokens": -1226826.3283917904,
+          "net_pressure_tokens": -24856.25,
           "unlocks_usd": 0,
-          "buybacks_usd": 1181816.130300002,
-          "net_pressure_usd_perday": -1181816.130300002,
-          "net_pressure_usd": -1181816.130300002,
+          "buybacks_usd": 1527416.5625,
+          "net_pressure_usd_perday": -1527416.5625,
+          "net_pressure_usd": -1527416.5625,
           "net_pressure_usd_method": "today_price"
         },
         "7d": {
@@ -105,15 +105,15 @@
           "daily_price_complete": false,
           "unlocks_tokens": 0,
           "treasury_sells_tokens": 0,
-          "buybacks_tokens": 101326.32000000002,
+          "buybacks_tokens": 99581.09,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -166389.04937374592,
-          "net_pressure_tokens": -124343.8144176078,
+          "net_staking_lockups_tokens": -1206153.0987126827,
+          "net_pressure_tokens": -122598.58441760778,
           "unlocks_usd": 0,
-          "buybacks_usd": 6310567.8000500025,
-          "net_pressure_usd_perday": -7637848.598146938,
-          "net_pressure_usd": -7637848.598146938,
+          "buybacks_usd": 6014962.5161500005,
+          "net_pressure_usd_perday": -7342243.314246936,
+          "net_pressure_usd": -7342243.314246936,
           "net_pressure_usd_method": "per_day_price"
         },
         "30d": {
@@ -126,15 +126,15 @@
           "daily_price_complete": true,
           "unlocks_tokens": 17448000,
           "treasury_sells_tokens": 0,
-          "buybacks_tokens": 760441.39,
+          "buybacks_tokens": 758696.16,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -166389.04937374592,
-          "net_pressure_tokens": 16664541.115582395,
+          "net_staking_lockups_tokens": -1206153.0987126827,
+          "net_pressure_tokens": 16666286.345582394,
           "unlocks_usd": 735463507.3333333,
-          "buybacks_usd": 33918616.547599986,
-          "net_pressure_usd_perday": 700217609.9876367,
-          "net_pressure_usd": 700217609.9876367,
+          "buybacks_usd": 33623011.263699986,
+          "net_pressure_usd_perday": 700513215.2715367,
+          "net_pressure_usd": 700513215.2715367,
           "net_pressure_usd_method": "per_day_price"
         },
         "90d": {
@@ -147,15 +147,15 @@
           "daily_price_complete": true,
           "unlocks_tokens": 52344000,
           "treasury_sells_tokens": 0,
-          "buybacks_tokens": 3026449.0499999993,
+          "buybacks_tokens": 3024703.8199999994,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -166389.04937374592,
-          "net_pressure_tokens": 49294533.45558237,
+          "net_staking_lockups_tokens": -1206153.0987126827,
+          "net_pressure_tokens": 49296278.68558237,
           "unlocks_usd": 1931392813.3333333,
-          "buybacks_usd": 117354642.11952005,
-          "net_pressure_usd_perday": 1812710890.4157162,
-          "net_pressure_usd": 1812710890.4157162,
+          "buybacks_usd": 117059036.83562006,
+          "net_pressure_usd_perday": 1813006495.6996162,
+          "net_pressure_usd": 1813006495.6996162,
           "net_pressure_usd_method": "per_day_price"
         }
       },
@@ -170,9 +170,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 317651333.3333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 20243919473.333332
+          "net_pressure_usd": 19519674433.333332
         },
         {
           "date": "2024-12-29",
@@ -184,9 +184,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2025-01-29",
@@ -198,9 +198,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2025-03-01",
@@ -212,9 +212,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2025-03-20",
@@ -6227,14 +6227,14 @@
           "is_future": false,
           "unlocks_tokens": 0,
           "treasury_sells_tokens": 0,
-          "buybacks_tokens": 25439.499999999996,
+          "buybacks_tokens": 17382.129999999997,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
-          "net_pressure_tokens": -25439.499999999996,
-          "price_usd_for_day": 63.73,
+          "net_pressure_tokens": -17382.129999999997,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1621259.3349999997
+          "net_pressure_usd": -1068131.8885
         },
         {
           "date": "2026-05-24",
@@ -6246,9 +6246,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -21548.48999999999,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1373285.2676999993
+          "net_pressure_usd": -1324154.7104999996
         },
         {
           "date": "2026-05-25",
@@ -6260,23 +6260,23 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": -2344.2647385001183,
           "net_pressure_tokens": -17082.33000000002,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1088656.8909000012
+          "net_pressure_usd": -1049709.1785000013
         },
         {
           "date": "2026-05-26",
           "is_future": false,
           "unlocks_tokens": 0,
           "treasury_sells_tokens": 0,
-          "buybacks_tokens": 18544.11000000003,
+          "buybacks_tokens": 24856.25,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -187062.27905285358,
-          "net_pressure_tokens": -18544.11000000003,
-          "price_usd_for_day": 63.73,
+          "net_staking_lockups_tokens": -1226826.3283917904,
+          "net_pressure_tokens": -24856.25,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1181816.130300002
+          "net_pressure_usd": -1527416.5625
         },
         {
           "date": "2026-05-29",
@@ -6288,9 +6288,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2026-06-06",
@@ -6302,9 +6302,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2026-06-29",
@@ -6316,9 +6316,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2026-07-06",
@@ -6330,9 +6330,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2026-07-29",
@@ -6344,9 +6344,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2026-08-06",
@@ -6358,9 +6358,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2026-08-29",
@@ -6372,9 +6372,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2026-09-06",
@@ -6386,9 +6386,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2026-09-29",
@@ -6400,9 +6400,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2026-10-06",
@@ -6414,9 +6414,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2026-10-29",
@@ -6428,9 +6428,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2026-11-06",
@@ -6442,9 +6442,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2026-11-29",
@@ -6456,9 +6456,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2026-12-06",
@@ -6470,9 +6470,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2026-12-29",
@@ -6484,9 +6484,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-01-06",
@@ -6498,9 +6498,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-01-29",
@@ -6512,9 +6512,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-02-06",
@@ -6526,9 +6526,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-03-01",
@@ -6540,9 +6540,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-03-06",
@@ -6554,9 +6554,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-03-29",
@@ -6568,9 +6568,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-04-06",
@@ -6582,9 +6582,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-04-29",
@@ -6596,9 +6596,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-05-06",
@@ -6610,9 +6610,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-05-29",
@@ -6624,9 +6624,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-06-06",
@@ -6638,9 +6638,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-06-29",
@@ -6652,9 +6652,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-07-06",
@@ -6666,9 +6666,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-07-29",
@@ -6680,9 +6680,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-08-06",
@@ -6694,9 +6694,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-08-29",
@@ -6708,9 +6708,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-09-06",
@@ -6722,9 +6722,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-09-29",
@@ -6736,9 +6736,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-10-06",
@@ -6750,9 +6750,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-10-29",
@@ -6764,9 +6764,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-11-06",
@@ -6778,9 +6778,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-11-29",
@@ -6792,9 +6792,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2027-12-06",
@@ -6806,9 +6806,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 9916666.666666666,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 631989166.6666666
+          "net_pressure_usd": 609379166.6666666
         },
         {
           "date": "2027-12-29",
@@ -6820,9 +6820,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-01-29",
@@ -6834,9 +6834,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-02-29",
@@ -6848,9 +6848,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-03-29",
@@ -6862,9 +6862,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-04-29",
@@ -6876,9 +6876,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-05-29",
@@ -6890,9 +6890,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-06-29",
@@ -6904,9 +6904,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-07-29",
@@ -6918,9 +6918,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-08-29",
@@ -6932,9 +6932,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-09-29",
@@ -6946,9 +6946,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-10-29",
@@ -6960,9 +6960,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-11-29",
@@ -6974,9 +6974,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2028-12-29",
@@ -6988,9 +6988,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-01-29",
@@ -7002,9 +7002,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-03-01",
@@ -7016,9 +7016,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-03-29",
@@ -7030,9 +7030,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-04-29",
@@ -7044,9 +7044,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-05-29",
@@ -7058,9 +7058,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-06-29",
@@ -7072,9 +7072,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-07-29",
@@ -7086,9 +7086,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-08-29",
@@ -7100,9 +7100,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-09-29",
@@ -7114,9 +7114,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         },
         {
           "date": "2029-10-29",
@@ -7128,9 +7128,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 7531333.333333333,
-          "price_usd_for_day": 63.73,
+          "price_usd_for_day": 61.45,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": 479971873.3333333
+          "net_pressure_usd": 462800433.3333333
         }
       ]
     },
@@ -7138,7 +7138,7 @@
       "slug": "aave",
       "name": "Aave",
       "symbol": "AAVE",
-      "price_usd": 87.47,
+      "price_usd": 85.81,
       "static_reference": {
         "treasury": {
           "date": "2026-05-26",
@@ -7150,7 +7150,7 @@
           "date": "2026-05-26",
           "total_staked_tokens": 2088590.6566591784,
           "delta_tokens": 0,
-          "delta_basis_date": null,
+          "delta_basis_date": "2026-05-26",
           "source": "alchemy_eth_call_totalSupply",
           "verification": "onchain"
         },
@@ -7277,9 +7277,9 @@
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -96359.70530935247,
           "unlocks_usd": 0,
-          "buybacks_usd": 8428583.423409067,
-          "net_pressure_usd_perday": -8428583.423409067,
-          "net_pressure_usd": -8428583.423409062,
+          "buybacks_usd": 8268626.3125955425,
+          "net_pressure_usd_perday": -8268626.3125955425,
+          "net_pressure_usd": -8268626.312595536,
           "net_pressure_usd_method": "today_price"
         }
       },
@@ -7294,9 +7294,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.01631673053071595,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.427224419521724
+          "net_pressure_usd": -1.4001386468407355
         },
         {
           "date": "2025-05-24",
@@ -7308,9 +7308,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0038003584637551872,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.3324173548246662
+          "net_pressure_usd": -0.3261087597748326
         },
         {
           "date": "2025-05-25",
@@ -7322,9 +7322,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000642503544447051,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.056199785032783556
+          "net_pressure_usd": -0.05513322914900145
         },
         {
           "date": "2025-05-26",
@@ -7336,9 +7336,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.03914864099508662,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.424331627840227
+          "net_pressure_usd": -3.359344883788383
         },
         {
           "date": "2025-05-27",
@@ -7350,9 +7350,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.42392715413805326,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -37.080908172455516
+          "net_pressure_usd": -36.37718909658635
         },
         {
           "date": "2025-05-28",
@@ -7364,9 +7364,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.07551568606517926,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -6.60535706012123
+          "net_pressure_usd": -6.480001021253033
         },
         {
           "date": "2025-05-29",
@@ -7378,9 +7378,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.17205906066524013,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -15.050006036388554
+          "net_pressure_usd": -14.764387995684256
         },
         {
           "date": "2025-05-30",
@@ -7392,9 +7392,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.028504423714766126,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.493281942330593
+          "net_pressure_usd": -2.4459645989640815
         },
         {
           "date": "2025-05-31",
@@ -7406,9 +7406,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.02723965431440076,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.3826525628806343
+          "net_pressure_usd": -2.337434736718729
         },
         {
           "date": "2025-06-02",
@@ -7420,9 +7420,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.017526256638526756,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.5330216681719353
+          "net_pressure_usd": -1.503928082151981
         },
         {
           "date": "2025-06-04",
@@ -7434,9 +7434,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.040212984327422596,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.5174297391196543
+          "net_pressure_usd": -3.450676185136133
         },
         {
           "date": "2025-06-05",
@@ -7448,9 +7448,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.018019781056933692,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.5761902490499902
+          "net_pressure_usd": -1.5462774124954801
         },
         {
           "date": "2025-06-06",
@@ -7462,9 +7462,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.00468334208980335,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.40965193259509897
+          "net_pressure_usd": -0.40187758472602547
         },
         {
           "date": "2025-06-07",
@@ -7476,9 +7476,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0046746048612612105,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.40888768721451807
+          "net_pressure_usd": -0.40112784314482447
         },
         {
           "date": "2025-06-08",
@@ -7490,9 +7490,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.5431737541857258,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -47.51140827862543
+          "net_pressure_usd": -46.60973984667713
         },
         {
           "date": "2025-06-10",
@@ -7504,9 +7504,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.04737667977210245,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.1440381796658015
+          "net_pressure_usd": -4.0653928912441115
         },
         {
           "date": "2025-06-11",
@@ -7518,9 +7518,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.07686457823620885,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -6.723344658321188
+          "net_pressure_usd": -6.595749458449081
         },
         {
           "date": "2025-06-12",
@@ -7532,9 +7532,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.1602206544798134,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -14.014500647349278
+          "net_pressure_usd": -13.748534360912789
         },
         {
           "date": "2025-06-13",
@@ -7546,9 +7546,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.17314285789528333,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -15.144805780100432
+          "net_pressure_usd": -14.857388635994264
         },
         {
           "date": "2025-06-14",
@@ -7560,9 +7560,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.00681175552236258,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.5958242555410549
+          "net_pressure_usd": -0.5845167413739331
         },
         {
           "date": "2025-06-15",
@@ -7574,9 +7574,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.006294834597608921,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.5506091822528523
+          "net_pressure_usd": -0.5401597568208215
         },
         {
           "date": "2025-06-16",
@@ -7588,9 +7588,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.014198906825079587,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.2419783799897115
+          "net_pressure_usd": -1.2184081946600793
         },
         {
           "date": "2025-06-17",
@@ -7602,9 +7602,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.47230226566426575,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -41.31227917765332
+          "net_pressure_usd": -40.528257416650646
         },
         {
           "date": "2025-06-18",
@@ -7616,9 +7616,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.018491310744667717,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.6174349508360852
+          "net_pressure_usd": -1.5867393749999368
         },
         {
           "date": "2025-06-19",
@@ -7630,9 +7630,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.7652969407634387,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -66.94052340857797
+          "net_pressure_usd": -65.67013048691068
         },
         {
           "date": "2025-06-20",
@@ -7644,9 +7644,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.09808001131101994,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -8.579058589374915
+          "net_pressure_usd": -8.416245770598621
         },
         {
           "date": "2025-06-21",
@@ -7658,9 +7658,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.48538369870497844,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -42.456512125724466
+          "net_pressure_usd": -41.6507751858742
         },
         {
           "date": "2025-06-22",
@@ -7672,9 +7672,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.5035864066886294,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -44.04870299305441
+          "net_pressure_usd": -43.21274955795129
         },
         {
           "date": "2025-06-23",
@@ -7686,9 +7686,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.15076876860511906,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -13.187744189889765
+          "net_pressure_usd": -12.937468034005267
         },
         {
           "date": "2025-06-24",
@@ -7700,9 +7700,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.1040885289248163,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -9.104623625053682
+          "net_pressure_usd": -8.931836667038487
         },
         {
           "date": "2025-06-25",
@@ -7714,9 +7714,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.014059152941746991,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.2297541078146093
+          "net_pressure_usd": -1.2064159139313093
         },
         {
           "date": "2025-06-26",
@@ -7728,9 +7728,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.012543307155252184,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.0971630768699085
+          "net_pressure_usd": -1.07634118699219
         },
         {
           "date": "2025-06-29",
@@ -7742,9 +7742,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.029519958527366257,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.5821107723887264
+          "net_pressure_usd": -2.5331076412332987
         },
         {
           "date": "2025-06-30",
@@ -7756,9 +7756,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000716462385233504,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.0626689648363746
+          "net_pressure_usd": -0.06147963727688698
         },
         {
           "date": "2025-07-01",
@@ -7770,9 +7770,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.028547724108274265,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.4970694277507497
+          "net_pressure_usd": -2.4496802057310147
         },
         {
           "date": "2025-07-02",
@@ -7784,9 +7784,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.008623089705424325,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.7542616565334658
+          "net_pressure_usd": -0.7399473276224614
         },
         {
           "date": "2025-07-03",
@@ -7798,9 +7798,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.08853871299391579,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -7.744481225577814
+          "net_pressure_usd": -7.597506962007914
         },
         {
           "date": "2025-07-04",
@@ -7812,9 +7812,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0654041583747256,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -5.720901733037248
+          "net_pressure_usd": -5.612330830135204
         },
         {
           "date": "2025-07-05",
@@ -7826,9 +7826,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000974990239367248,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.08528239623745318
+          "net_pressure_usd": -0.08366391244010356
         },
         {
           "date": "2025-07-06",
@@ -7840,9 +7840,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.002985409192093358,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.261133742032406
+          "net_pressure_usd": -0.25617796277353105
         },
         {
           "date": "2025-07-07",
@@ -7854,9 +7854,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -4.813889361e-9,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.2107090240667003e-7
+          "net_pressure_usd": -4.1307984606741007e-7
         },
         {
           "date": "2025-07-08",
@@ -7868,9 +7868,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.02836750924085276,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.481306033297391
+          "net_pressure_usd": -2.4342159679575754
         },
         {
           "date": "2025-07-09",
@@ -7882,9 +7882,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000339937818720768,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.029734361003505575
+          "net_pressure_usd": -0.029170064224429103
         },
         {
           "date": "2025-07-10",
@@ -7896,9 +7896,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.01653441667469496,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.446265426535568
+          "net_pressure_usd": -1.4188182948555745
         },
         {
           "date": "2025-07-11",
@@ -7910,9 +7910,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.003537113340865693,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.30939130392552217
+          "net_pressure_usd": -0.30351969577968513
         },
         {
           "date": "2025-07-12",
@@ -7924,9 +7924,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000726853851126665,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.06357790635804939
+          "net_pressure_usd": -0.06237132896517912
         },
         {
           "date": "2025-07-13",
@@ -7938,9 +7938,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000259391547240705,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.022688978637144464
+          "net_pressure_usd": -0.022258388668724895
         },
         {
           "date": "2025-07-14",
@@ -7952,9 +7952,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.15801233764483918,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -13.821339173794083
+          "net_pressure_usd": -13.55903869330365
         },
         {
           "date": "2025-07-15",
@@ -7966,9 +7966,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.17405980236577456,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -15.225010912934302
+          "net_pressure_usd": -14.936071641007116
         },
         {
           "date": "2025-07-16",
@@ -7980,9 +7980,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.04149312802537781,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.6294039083797967
+          "net_pressure_usd": -3.56052531585767
         },
         {
           "date": "2025-07-17",
@@ -7994,9 +7994,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.03502774557760565,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.0638769056731663
+          "net_pressure_usd": -3.0057308480143408
         },
         {
           "date": "2025-07-18",
@@ -8008,9 +8008,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.21296447745273048,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -18.628002842790334
+          "net_pressure_usd": -18.274481810218802
         },
         {
           "date": "2025-07-19",
@@ -8022,9 +8022,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0459670373751736,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.020736759206435
+          "net_pressure_usd": -3.944431477163647
         },
         {
           "date": "2025-07-20",
@@ -8036,9 +8036,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.10089978041749999,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -8.825703793118723
+          "net_pressure_usd": -8.658210157625675
         },
         {
           "date": "2025-07-21",
@@ -8050,9 +8050,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.5064939957666482,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -44.30302980970872
+          "net_pressure_usd": -43.46224977673609
         },
         {
           "date": "2025-07-22",
@@ -8064,9 +8064,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.11468116295951979,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -10.031161324069195
+          "net_pressure_usd": -9.840790593556394
         },
         {
           "date": "2025-07-23",
@@ -8078,9 +8078,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.12656288391683865,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -11.070455456205876
+          "net_pressure_usd": -10.860361068903925
         },
         {
           "date": "2025-07-24",
@@ -8092,9 +8092,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.10472048670965009,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -9.159900972493093
+          "net_pressure_usd": -8.986064964555075
         },
         {
           "date": "2025-07-25",
@@ -8106,9 +8106,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.029686943023078394,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.596716906228667
+          "net_pressure_usd": -2.547436580810357
         },
         {
           "date": "2025-07-26",
@@ -8120,9 +8120,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0065047982917897165,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.5689747065828465
+          "net_pressure_usd": -0.5581767414184756
         },
         {
           "date": "2025-07-27",
@@ -8134,9 +8134,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001101877927107088,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.09638126228405698
+          "net_pressure_usd": -0.09455214492505921
         },
         {
           "date": "2025-07-28",
@@ -8148,9 +8148,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0369680896089831,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.233598798097752
+          "net_pressure_usd": -3.17223176934684
         },
         {
           "date": "2025-07-29",
@@ -8162,9 +8162,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.004582018707761649,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.40078917636791145
+          "net_pressure_usd": -0.3931830253130271
         },
         {
           "date": "2025-07-30",
@@ -8176,9 +8176,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.06089824262153103,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -5.326769282105319
+          "net_pressure_usd": -5.225678199353578
         },
         {
           "date": "2025-07-31",
@@ -8190,9 +8190,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.10126149270488034,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -8.857342766895883
+          "net_pressure_usd": -8.689248689005783
         },
         {
           "date": "2025-08-01",
@@ -8204,9 +8204,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.21259254769275548,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -18.595470146685322
+          "net_pressure_usd": -18.24256651751535
         },
         {
           "date": "2025-08-02",
@@ -8218,9 +8218,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.008090345941581024,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.7076625595100922
+          "net_pressure_usd": -0.6942325852470677
         },
         {
           "date": "2025-08-03",
@@ -8232,9 +8232,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001641869902920552,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.14361436040846068
+          "net_pressure_usd": -0.14088885636961257
         },
         {
           "date": "2025-08-04",
@@ -8246,9 +8246,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.021990493751748597,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.9235084884654499
+          "net_pressure_usd": -1.8870042688375472
         },
         {
           "date": "2025-08-05",
@@ -8260,9 +8260,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.12084114712609097,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -10.569975139119176
+          "net_pressure_usd": -10.369378834889867
         },
         {
           "date": "2025-08-06",
@@ -8274,9 +8274,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.7068496023632175,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -61.82813471871063
+          "net_pressure_usd": -60.654764378787696
         },
         {
           "date": "2025-08-07",
@@ -8288,9 +8288,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001187876027133992,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.10390351609341027
+          "net_pressure_usd": -0.10193164188836785
         },
         {
           "date": "2025-08-08",
@@ -8302,9 +8302,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.13999494665851128,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -12.245357984219982
+          "net_pressure_usd": -12.012966372766854
         },
         {
           "date": "2025-08-09",
@@ -8316,9 +8316,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.045847160819373546,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.010251156870604
+          "net_pressure_usd": -3.934144869910444
         },
         {
           "date": "2025-08-10",
@@ -8330,9 +8330,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.007518204160887914,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.6576173179528658
+          "net_pressure_usd": -0.6451370990457919
         },
         {
           "date": "2025-08-11",
@@ -8344,9 +8344,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.03737640286898096,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.2693139589497644
+          "net_pressure_usd": -3.2072691301872562
         },
         {
           "date": "2025-08-12",
@@ -8358,9 +8358,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.08664921903692453,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -7.5792071891597885
+          "net_pressure_usd": -7.435369485558494
         },
         {
           "date": "2025-08-13",
@@ -8372,9 +8372,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0380813709153282,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.3309775139637576
+          "net_pressure_usd": -3.2677624382443127
         },
         {
           "date": "2025-08-14",
@@ -8386,9 +8386,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.06555194625126909,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -5.733828738598507
+          "net_pressure_usd": -5.625012507821401
         },
         {
           "date": "2025-08-15",
@@ -8400,9 +8400,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.05492550698461,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.804334095943837
+          "net_pressure_usd": -4.713157754349384
         },
         {
           "date": "2025-08-16",
@@ -8414,9 +8414,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.006678442565689182,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.5841633712208327
+          "net_pressure_usd": -0.5730771565617887
         },
         {
           "date": "2025-08-17",
@@ -8428,9 +8428,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001884930919178,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.16487490750049966
+          "net_pressure_usd": -0.1617459221746642
         },
         {
           "date": "2025-08-18",
@@ -8442,9 +8442,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.021804511922689708,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.9072406578776688
+          "net_pressure_usd": -1.8710451680860039
         },
         {
           "date": "2025-08-19",
@@ -8456,9 +8456,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0032595292846829935,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.28511102653122145
+          "net_pressure_usd": -0.2797002079186477
         },
         {
           "date": "2025-08-20",
@@ -8470,9 +8470,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.021733979582103366,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.9010711940465814
+          "net_pressure_usd": -1.8649927879402899
         },
         {
           "date": "2025-08-21",
@@ -8484,9 +8484,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.02050500231189078,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.7935725522210864
+          "net_pressure_usd": -1.7595342483833478
         },
         {
           "date": "2025-08-22",
@@ -8498,9 +8498,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.2783073603719984,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -24.3435448117387
+          "net_pressure_usd": -23.88155459352118
         },
         {
           "date": "2025-08-23",
@@ -8512,9 +8512,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.3581782312638652,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -31.32984988865029
+          "net_pressure_usd": -30.735274024752275
         },
         {
           "date": "2025-08-24",
@@ -8526,9 +8526,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.07523708735975244,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -6.580988031357546
+          "net_pressure_usd": -6.456094466340358
         },
         {
           "date": "2025-08-25",
@@ -8540,9 +8540,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.015695386458337363,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.3728754535107692
+          "net_pressure_usd": -1.3468211119899292
         },
         {
           "date": "2025-08-26",
@@ -8554,9 +8554,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.11967001746528558,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -10.467536427688529
+          "net_pressure_usd": -10.268884198696156
         },
         {
           "date": "2025-08-27",
@@ -8568,9 +8568,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.04127678579928029,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.610480453863047
+          "net_pressure_usd": -3.541960989436242
         },
         {
           "date": "2025-08-28",
@@ -8582,9 +8582,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0022878112232330126,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.20011484769619162
+          "net_pressure_usd": -0.19631708106562482
         },
         {
           "date": "2025-08-29",
@@ -8596,9 +8596,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.03042399102821632,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.6611864952380815
+          "net_pressure_usd": -2.6106826701312422
         },
         {
           "date": "2025-09-01",
@@ -8610,9 +8610,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0129073442362957,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.1290054003487848
+          "net_pressure_usd": -1.107579208916534
         },
         {
           "date": "2025-09-05",
@@ -8624,9 +8624,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.004206731533244658,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.3679628072129102
+          "net_pressure_usd": -0.3609796328677241
         },
         {
           "date": "2025-09-07",
@@ -8638,9 +8638,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.005044474801426145,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.44124021088074494
+          "net_pressure_usd": -0.43286638271037753
         },
         {
           "date": "2025-09-10",
@@ -8652,9 +8652,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000199132992844291,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.017418162884090132
+          "net_pressure_usd": -0.01708760211596861
         },
         {
           "date": "2025-09-11",
@@ -8666,9 +8666,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -8.175555599e-9,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -7.1511584824453e-7
+          "net_pressure_usd": -7.0154442595019e-7
         },
         {
           "date": "2025-09-12",
@@ -8680,9 +8680,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0012894861858730221,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.11279135667831325
+          "net_pressure_usd": -0.11065080960976403
         },
         {
           "date": "2025-09-14",
@@ -8694,9 +8694,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000057980200148453,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.005071528106985183
+          "net_pressure_usd": -0.004975280974738752
         },
         {
           "date": "2025-09-15",
@@ -8708,9 +8708,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000011596844885169,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.0010143760221057324
+          "net_pressure_usd": -0.000995125259596352
         },
         {
           "date": "2025-09-16",
@@ -8722,9 +8722,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -5.067645649e-9,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.4326696491802995e-7
+          "net_pressure_usd": -4.3485467314068997e-7
         },
         {
           "date": "2025-09-17",
@@ -8736,9 +8736,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.042413605326201365,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.7099180578828332
+          "net_pressure_usd": -3.639511473041339
         },
         {
           "date": "2025-09-18",
@@ -8750,9 +8750,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.036131195123450886,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.160395637448249
+          "net_pressure_usd": -3.1004178535433207
         },
         {
           "date": "2025-09-19",
@@ -8764,9 +8764,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000001917122486401,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.00016769070388549548
+          "net_pressure_usd": -0.0001645082805580698
         },
         {
           "date": "2025-09-20",
@@ -8778,9 +8778,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000285353138654905,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.02495983903814454
+          "net_pressure_usd": -0.0244861528279774
         },
         {
           "date": "2025-09-22",
@@ -8792,9 +8792,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.006527205831306717,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.5709346940643986
+          "net_pressure_usd": -0.5600995323844294
         },
         {
           "date": "2025-09-23",
@@ -8806,9 +8806,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.013355521101260622,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.1682074307272665
+          "net_pressure_usd": -1.146037265699174
         },
         {
           "date": "2025-09-24",
@@ -8820,9 +8820,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001072608397259874,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.09382105650832118
+          "net_pressure_usd": -0.09204052656886978
         },
         {
           "date": "2025-09-25",
@@ -8834,9 +8834,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000119859246732452,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.010484088311687576
+          "net_pressure_usd": -0.010285121962111706
         },
         {
           "date": "2025-09-26",
@@ -8848,9 +8848,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.07527228812938758,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -6.584067042677531
+          "net_pressure_usd": -6.459115044382748
         },
         {
           "date": "2025-09-27",
@@ -8862,9 +8862,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.008867727305127178,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.7756601073794742
+          "net_pressure_usd": -0.7609396800529631
         },
         {
           "date": "2025-09-28",
@@ -8876,9 +8876,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001765054856620214,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.15438934830857012
+          "net_pressure_usd": -0.15145935724658058
         },
         {
           "date": "2025-09-29",
@@ -8890,9 +8890,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.004265603551424361,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.37311234264308885
+          "net_pressure_usd": -0.3660314407477244
         },
         {
           "date": "2025-09-30",
@@ -8904,9 +8904,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000001845113013427,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.00016139203528445968
+          "net_pressure_usd": -0.00015832914768217088
         },
         {
           "date": "2025-10-01",
@@ -8918,9 +8918,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001988844293638458,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.17396421036455595
+          "net_pressure_usd": -0.1706627288371161
         },
         {
           "date": "2025-10-02",
@@ -8932,9 +8932,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.005196596557589769,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.4545463008923771
+          "net_pressure_usd": -0.4459199506067781
         },
         {
           "date": "2025-10-03",
@@ -8946,9 +8946,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001239416823839333,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.10841178958122646
+          "net_pressure_usd": -0.10635435765365317
         },
         {
           "date": "2025-10-04",
@@ -8960,9 +8960,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001043961470661122,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.09131530983872833
+          "net_pressure_usd": -0.08958233379743089
         },
         {
           "date": "2025-10-06",
@@ -8974,9 +8974,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.00041934596170668,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.036680191270483296
+          "net_pressure_usd": -0.03598407697405021
         },
         {
           "date": "2025-10-07",
@@ -8988,9 +8988,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.010847590655441532,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.9488387546314707
+          "net_pressure_usd": -0.9308317541434379
         },
         {
           "date": "2025-10-08",
@@ -9002,9 +9002,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000016476894949291,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.0014412340012144838
+          "net_pressure_usd": -0.001413882355598661
         },
         {
           "date": "2025-10-09",
@@ -9016,9 +9016,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.013071739449366978,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.1433850496361295
+          "net_pressure_usd": -1.1216859621501805
         },
         {
           "date": "2025-10-10",
@@ -9030,9 +9030,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.008217233230086201,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.71876139063564
+          "net_pressure_usd": -0.7051207834736969
         },
         {
           "date": "2025-10-11",
@@ -9044,9 +9044,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.11070332222909027,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -9.683219595378526
+          "net_pressure_usd": -9.499452080478235
         },
         {
           "date": "2025-10-12",
@@ -9058,9 +9058,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.1487222960921309,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -13.00873923917869
+          "net_pressure_usd": -12.761860227665752
         },
         {
           "date": "2025-10-13",
@@ -9072,9 +9072,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.011243953009620368,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.9835085697514936
+          "net_pressure_usd": -0.9648436077555238
         },
         {
           "date": "2025-10-14",
@@ -9086,9 +9086,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.005854390493769625,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.5120835364900291
+          "net_pressure_usd": -0.5023652482703715
         },
         {
           "date": "2025-10-15",
@@ -9100,9 +9100,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.027112668944397247,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.3715451525664273
+          "net_pressure_usd": -2.326538122118728
         },
         {
           "date": "2025-10-16",
@@ -9114,9 +9114,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.05080991622165565,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.44434337190822
+          "net_pressure_usd": -4.359998910980272
         },
         {
           "date": "2025-10-17",
@@ -9128,9 +9128,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.5765497810851007,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -50.43080935151376
+          "net_pressure_usd": -49.47373671491249
         },
         {
           "date": "2025-10-18",
@@ -9142,9 +9142,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.009589481494721426,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.8387919463432831
+          "net_pressure_usd": -0.8228734070620456
         },
         {
           "date": "2025-10-19",
@@ -9156,9 +9156,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.04720566725743582,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4.1290797150079115
+          "net_pressure_usd": -4.050718307360568
         },
         {
           "date": "2025-10-20",
@@ -9170,9 +9170,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -2.05241073568e-7,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.00001795243670499296
+          "net_pressure_usd": -0.00001761173652287008
         },
         {
           "date": "2025-10-21",
@@ -9184,9 +9184,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.18406578512463664,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -16.100234224851967
+          "net_pressure_usd": -15.794685021545071
         },
         {
           "date": "2025-10-22",
@@ -9198,9 +9198,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.004357624831713231,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.38116144402995633
+          "net_pressure_usd": -0.3739277868093124
         },
         {
           "date": "2025-10-23",
@@ -9212,9 +9212,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001254678149850464,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.10974669776742009
+          "net_pressure_usd": -0.10766393203866832
         },
         {
           "date": "2025-10-24",
@@ -9226,9 +9226,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -117.61674885628605,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -10287.93702245934
+          "net_pressure_usd": -10092.693219357907
         },
         {
           "date": "2025-10-27",
@@ -9240,9 +9240,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001779615693612039,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.15566298472024503
+          "net_pressure_usd": -0.15270882266884905
         },
         {
           "date": "2025-10-28",
@@ -9254,9 +9254,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000217258705249705,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.019003618948191695
+          "net_pressure_usd": -0.018642969497477187
         },
         {
           "date": "2025-10-29",
@@ -9268,9 +9268,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000030011146176328,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.00262507495604341
+          "net_pressure_usd": -0.0025752564533907058
         },
         {
           "date": "2025-10-30",
@@ -9282,9 +9282,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.012551453584142636,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.0978756450049563
+          "net_pressure_usd": -1.0770402320552797
         },
         {
           "date": "2025-10-31",
@@ -9296,9 +9296,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.00011281760235188,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.009868155677718943
+          "net_pressure_usd": -0.009680878457814823
         },
         {
           "date": "2025-11-01",
@@ -9310,9 +9310,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.002967383352801409,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.2595570218695392
+          "net_pressure_usd": -0.2546311655038889
         },
         {
           "date": "2025-11-02",
@@ -9324,9 +9324,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -4.399760782e-9,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.8484707560154e-7
+          "net_pressure_usd": -3.7754347270342e-7
         },
         {
           "date": "2025-11-03",
@@ -9338,9 +9338,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.03857798093653621,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.374415992518822
+          "net_pressure_usd": -3.310376544164172
         },
         {
           "date": "2025-11-04",
@@ -9352,9 +9352,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.26498668745834153,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -23.178385551981133
+          "net_pressure_usd": -22.738507650800287
         },
         {
           "date": "2025-11-05",
@@ -9366,9 +9366,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.045444065408961586,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.97499240132187
+          "net_pressure_usd": -3.899555252742994
         },
         {
           "date": "2025-11-06",
@@ -9380,9 +9380,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.00000297001531625,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.0002597872397123875
+          "net_pressure_usd": -0.0002548570142874125
         },
         {
           "date": "2025-11-07",
@@ -9394,9 +9394,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.16838917182759638,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -14.729000859759855
+          "net_pressure_usd": -14.449474834526047
         },
         {
           "date": "2025-11-10",
@@ -9408,9 +9408,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.0073091788934472515,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.6393338778098311
+          "net_pressure_usd": -0.6272006408467087
         },
         {
           "date": "2025-11-12",
@@ -9422,9 +9422,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.010427899630035382,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.9121283806391949
+          "net_pressure_usd": -0.8948180672533362
         },
         {
           "date": "2025-11-13",
@@ -9436,9 +9436,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.001425871084857463,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.12472094379248229
+          "net_pressure_usd": -0.12235399779161892
         },
         {
           "date": "2025-11-14",
@@ -9450,9 +9450,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.1273622097774702,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -11.140372489235318
+          "net_pressure_usd": -10.928951221004718
         },
         {
           "date": "2025-11-15",
@@ -9464,9 +9464,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.03377029725718358,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -2.9538879010858476
+          "net_pressure_usd": -2.8978292076389227
         },
         {
           "date": "2025-11-16",
@@ -9478,9 +9478,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.03766996193921284,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -3.294991570822947
+          "net_pressure_usd": -3.232459434003854
         },
         {
           "date": "2025-11-17",
@@ -9492,9 +9492,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -913.2011517715346,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -79877.70474545613
+          "net_pressure_usd": -78361.79083351538
         },
         {
           "date": "2025-11-18",
@@ -9506,9 +9506,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000380718038938981,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.033301406865992665
+          "net_pressure_usd": -0.03266941492135396
         },
         {
           "date": "2025-11-19",
@@ -9520,9 +9520,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.000010463614778088,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.0009152523846393573
+          "net_pressure_usd": -0.0008978827841077313
         },
         {
           "date": "2025-11-20",
@@ -9534,9 +9534,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.005532100112214069,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -0.48389279681536457
+          "net_pressure_usd": -0.4747095106290892
         },
         {
           "date": "2025-11-21",
@@ -9548,9 +9548,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.11812346516901252,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -10.332259498333526
+          "net_pressure_usd": -10.136174546152965
         },
         {
           "date": "2025-11-22",
@@ -9562,9 +9562,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -0.012997594865178468,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -1.1368996228571606
+          "net_pressure_usd": -1.1153236153809645
         },
         {
           "date": "2025-11-26",
@@ -9576,9 +9576,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -191.85402509043635,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -16781.471574660467
+          "net_pressure_usd": -16462.993893010345
         },
         {
           "date": "2025-11-27",
@@ -9590,9 +9590,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -772.0939206865946,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -67535.05524245644
+          "net_pressure_usd": -66253.37933411669
         },
         {
           "date": "2025-11-28",
@@ -9604,9 +9604,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -766.9323045861692,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -67083.56868215221
+          "net_pressure_usd": -65810.46105653918
         },
         {
           "date": "2025-11-29",
@@ -9618,9 +9618,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -776.499090964027,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -67920.37548662344
+          "net_pressure_usd": -66631.38699562316
         },
         {
           "date": "2025-11-30",
@@ -9632,9 +9632,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -785.5628642669733,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -68713.18373743215
+          "net_pressure_usd": -67409.14938274898
         },
         {
           "date": "2025-12-01",
@@ -9646,9 +9646,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -914.2686326869384,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -79971.0773011265
+          "net_pressure_usd": -78453.39137086619
         },
         {
           "date": "2025-12-02",
@@ -9660,9 +9660,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -818.1878147611418,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -71566.88815715707
+          "net_pressure_usd": -70208.69638465358
         },
         {
           "date": "2025-12-03",
@@ -9674,9 +9674,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -736.9330220376324,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -64459.53143763171
+          "net_pressure_usd": -63236.222621049244
         },
         {
           "date": "2025-12-04",
@@ -9688,9 +9688,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -735.8828523355343,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -64367.673093789184
+          "net_pressure_usd": -63146.1075589122
         },
         {
           "date": "2025-12-05",
@@ -9702,9 +9702,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -755.3053615828,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -66066.55997764751
+          "net_pressure_usd": -64812.753077420064
         },
         {
           "date": "2025-12-06",
@@ -9716,9 +9716,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -769.4810518021604,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -67306.50760113497
+          "net_pressure_usd": -66029.16905514339
         },
         {
           "date": "2025-12-07",
@@ -9730,9 +9730,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -755.0425178732837,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -66043.56903837612
+          "net_pressure_usd": -64790.19845870648
         },
         {
           "date": "2025-12-08",
@@ -9744,9 +9744,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -736.4225965667116,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -64414.88452169026
+          "net_pressure_usd": -63192.423011389525
         },
         {
           "date": "2025-12-09",
@@ -9758,9 +9758,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -739.9339565911434,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -64722.02318302732
+          "net_pressure_usd": -63493.73281508602
         },
         {
           "date": "2025-12-10",
@@ -9772,9 +9772,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -538.697464901485,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -47119.86725493289
+          "net_pressure_usd": -46225.62946319643
         },
         {
           "date": "2025-12-13",
@@ -9786,9 +9786,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -180.69078712214053,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -15805.023149573632
+          "net_pressure_usd": -15505.07644295088
         },
         {
           "date": "2025-12-14",
@@ -9800,9 +9800,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -736.3459910182917,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -64408.18383436997
+          "net_pressure_usd": -63185.84948927961
         },
         {
           "date": "2025-12-15",
@@ -9814,9 +9814,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -746.4369921053434,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -65290.84369945439
+          "net_pressure_usd": -64051.75829255952
         },
         {
           "date": "2025-12-16",
@@ -9828,9 +9828,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -757.6942185747575,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -66275.51329873405
+          "net_pressure_usd": -65017.740895899944
         },
         {
           "date": "2025-12-17",
@@ -9842,9 +9842,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -777.8806552991875,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -68041.22091901994
+          "net_pressure_usd": -66749.93903122329
         },
         {
           "date": "2025-12-18",
@@ -9856,9 +9856,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -806.4169870448359,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -70537.2938568118
+          "net_pressure_usd": -69198.64165831737
         },
         {
           "date": "2025-12-19",
@@ -9870,9 +9870,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -793.0102078060713,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -69364.60287679706
+          "net_pressure_usd": -68048.20593183898
         },
         {
           "date": "2025-12-20",
@@ -9884,9 +9884,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -589.5429361759961,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -51567.32062731438
+          "net_pressure_usd": -50588.67935326223
         },
         {
           "date": "2025-12-23",
@@ -9898,9 +9898,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -704.6196827143626,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -61633.0836470253
+          "net_pressure_usd": -60463.41497371946
         },
         {
           "date": "2025-12-24",
@@ -9912,9 +9912,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -962.5848256993368,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -84197.29470392098
+          "net_pressure_usd": -82599.4038932601
         },
         {
           "date": "2025-12-25",
@@ -9926,9 +9926,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -942.0439895347665,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -82400.58776460603
+          "net_pressure_usd": -80836.79474197832
         },
         {
           "date": "2025-12-26",
@@ -9940,9 +9940,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -927.1994895910085,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -81102.13935452551
+          "net_pressure_usd": -79562.98820180444
         },
         {
           "date": "2025-12-27",
@@ -9954,9 +9954,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -914.5008545901037,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -79991.38975099637
+          "net_pressure_usd": -78473.3183323768
         },
         {
           "date": "2025-12-28",
@@ -9968,9 +9968,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -920.3547513972476,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -80503.43010471725
+          "net_pressure_usd": -78975.64121739782
         },
         {
           "date": "2025-12-29",
@@ -9982,9 +9982,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -937.560482914824,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -82008.41544055965
+          "net_pressure_usd": -80452.06503892105
         },
         {
           "date": "2025-12-30",
@@ -9996,9 +9996,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -949.4050792554094,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -83044.46228247066
+          "net_pressure_usd": -81468.44985090669
         },
         {
           "date": "2025-12-31",
@@ -10010,9 +10010,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -964.7166741983349,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -84383.76749212835
+          "net_pressure_usd": -82782.33781295911
         },
         {
           "date": "2026-01-01",
@@ -10024,9 +10024,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -976.5891376048111,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -85422.25186629282
+          "net_pressure_usd": -83801.11389786884
         },
         {
           "date": "2026-01-02",
@@ -10038,9 +10038,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -933.9379691360059,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -81691.55416032643
+          "net_pressure_usd": -80141.21713156067
         },
         {
           "date": "2026-01-03",
@@ -10052,9 +10052,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -880.5466592585974,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -77021.4162853495
+          "net_pressure_usd": -75559.70883098025
         },
         {
           "date": "2026-01-04",
@@ -10066,9 +10066,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -872.8282517113154,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -76346.28717718876
+          "net_pressure_usd": -74897.39227934797
         },
         {
           "date": "2026-01-05",
@@ -10080,9 +10080,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -852.1872873877159,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -74540.8220278035
+          "net_pressure_usd": -73126.1911307399
         },
         {
           "date": "2026-01-06",
@@ -10094,9 +10094,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -826.3853232811853,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -72283.92422740528
+          "net_pressure_usd": -70912.12459075851
         },
         {
           "date": "2026-01-07",
@@ -10108,9 +10108,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -837.0825957156492,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -73219.61464724783
+          "net_pressure_usd": -71830.05753835986
         },
         {
           "date": "2026-01-08",
@@ -10122,9 +10122,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -867.7402634238706,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -75901.24084168595
+          "net_pressure_usd": -74460.79200440233
         },
         {
           "date": "2026-01-09",
@@ -10136,9 +10136,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -865.8107930439583,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -75732.47006755503
+          "net_pressure_usd": -74295.22415110205
         },
         {
           "date": "2026-01-10",
@@ -10150,9 +10150,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -864.2332642643739,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -75594.48362520478
+          "net_pressure_usd": -74159.85640652593
         },
         {
           "date": "2026-01-11",
@@ -10164,9 +10164,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -644.3532150103811,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -56361.57571695803
+          "net_pressure_usd": -55291.9493800408
         },
         {
           "date": "2026-01-13",
@@ -10178,9 +10178,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -383.25852678570897,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -33523.623337945966
+          "net_pressure_usd": -32887.414183481684
         },
         {
           "date": "2026-01-14",
@@ -10192,9 +10192,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -744.2262456159028,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -65097.46970402302
+          "net_pressure_usd": -63862.05413630062
         },
         {
           "date": "2026-01-15",
@@ -10206,9 +10206,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -757.8153365692856,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -66286.1074897154
+          "net_pressure_usd": -65028.1340310104
         },
         {
           "date": "2026-01-16",
@@ -10220,9 +10220,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -768.2940241699544,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -67202.67829414591
+          "net_pressure_usd": -65927.31021402379
         },
         {
           "date": "2026-01-17",
@@ -10234,9 +10234,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -754.4115036165504,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -65988.37422133966
+          "net_pressure_usd": -64736.05112533619
         },
         {
           "date": "2026-01-18",
@@ -10248,9 +10248,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -761.1063084729426,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -66573.9688021283
+          "net_pressure_usd": -65310.53233006321
         },
         {
           "date": "2026-01-19",
@@ -10262,9 +10262,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -807.6772266397574,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -70647.52701417958
+          "net_pressure_usd": -69306.78281795757
         },
         {
           "date": "2026-01-20",
@@ -10276,9 +10276,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -406.0947344801681,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -35521.1064249803
+          "net_pressure_usd": -34846.98916574322
         },
         {
           "date": "2026-01-25",
@@ -10290,9 +10290,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -303.30798934602234,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -26530.349828096572
+          "net_pressure_usd": -26026.85856578218
         },
         {
           "date": "2026-01-26",
@@ -10304,9 +10304,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1163.5616512785098,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -101776.73763733124
+          "net_pressure_usd": -99845.22529620893
         },
         {
           "date": "2026-01-27",
@@ -10318,9 +10318,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1146.922396169004,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -100321.30199290278
+          "net_pressure_usd": -98417.41081526224
         },
         {
           "date": "2026-01-28",
@@ -10332,9 +10332,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1110.239270057367,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -97112.6289519179
+          "net_pressure_usd": -95269.63176362267
         },
         {
           "date": "2026-01-29",
@@ -10346,9 +10346,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1154.670404682495,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -100999.02029757784
+          "net_pressure_usd": -99082.2674258049
         },
         {
           "date": "2026-01-30",
@@ -10360,9 +10360,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1252.9813387694417,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -109598.27770216306
+          "net_pressure_usd": -107518.3286798058
         },
         {
           "date": "2026-01-31",
@@ -10374,9 +10374,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1338.0884984986662,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -117042.60096367833
+          "net_pressure_usd": -114821.37405617055
         },
         {
           "date": "2026-02-01",
@@ -10388,9 +10388,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1400.3176750209643,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -122485.78703408374
+          "net_pressure_usd": -120161.25969354896
         },
         {
           "date": "2026-02-02",
@@ -10402,9 +10402,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1398.9013233897379,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -122361.89875690037
+          "net_pressure_usd": -120039.72256007341
         },
         {
           "date": "2026-02-03",
@@ -10416,9 +10416,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1269.7397325019651,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -111064.1344019469
+          "net_pressure_usd": -108956.36644599363
         },
         {
           "date": "2026-02-04",
@@ -10430,9 +10430,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -932.0782108923577,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -81528.88110675452
+          "net_pressure_usd": -79981.63127667322
         },
         {
           "date": "2026-02-05",
@@ -10444,9 +10444,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1000.0578492612922,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -87475.06007488523
+          "net_pressure_usd": -85814.96404511148
         },
         {
           "date": "2026-02-06",
@@ -10458,9 +10458,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1093.5036229427178,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -95648.76189879952
+          "net_pressure_usd": -93833.54588471462
         },
         {
           "date": "2026-02-07",
@@ -10472,9 +10472,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1040.3065144535828,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -90995.61081925489
+          "net_pressure_usd": -89268.70200526195
         },
         {
           "date": "2026-02-08",
@@ -10486,9 +10486,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1035.0933216777057,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -90539.61284714892
+          "net_pressure_usd": -88821.35793316393
         },
         {
           "date": "2026-02-09",
@@ -10500,9 +10500,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1048.8846967070322,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -91745.94442096411
+          "net_pressure_usd": -90004.79582443043
         },
         {
           "date": "2026-02-10",
@@ -10514,9 +10514,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1087.4657005318584,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -95120.62482552165
+          "net_pressure_usd": -93315.43176263876
         },
         {
           "date": "2026-02-11",
@@ -10528,9 +10528,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1153.4591012595224,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -100893.06758717043
+          "net_pressure_usd": -98978.32547907962
         },
         {
           "date": "2026-02-12",
@@ -10542,9 +10542,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1135.9213344244106,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -99359.03912210319
+          "net_pressure_usd": -97473.40970695867
         },
         {
           "date": "2026-02-13",
@@ -10556,9 +10556,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1097.5225222096415,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -96000.29501767734
+          "net_pressure_usd": -94178.40763080934
         },
         {
           "date": "2026-02-14",
@@ -10570,9 +10570,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -995.9861712009063,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -87118.91039494328
+          "net_pressure_usd": -85465.57335074976
         },
         {
           "date": "2026-02-15",
@@ -10584,9 +10584,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -983.2466929242562,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -86004.58823008469
+          "net_pressure_usd": -84372.39871983042
         },
         {
           "date": "2026-02-16",
@@ -10598,9 +10598,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -991.9130485405468,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -86762.63435584163
+          "net_pressure_usd": -85116.05869526432
         },
         {
           "date": "2026-02-17",
@@ -10612,9 +10612,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -984.3035798779324,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -86097.03413192274
+          "net_pressure_usd": -84463.09018932538
         },
         {
           "date": "2026-02-18",
@@ -10626,9 +10626,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -997.4669880723166,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -87248.43744668552
+          "net_pressure_usd": -85592.64224648548
         },
         {
           "date": "2026-02-19",
@@ -10640,9 +10640,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1016.5502212125551,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -88917.6478494622
+          "net_pressure_usd": -87230.17448224936
         },
         {
           "date": "2026-02-20",
@@ -10654,9 +10654,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1037.960212006559,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -90790.37974421371
+          "net_pressure_usd": -89067.36579228283
         },
         {
           "date": "2026-02-21",
@@ -10668,9 +10668,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1039.6346703160057,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -90936.84461254101
+          "net_pressure_usd": -89211.05105981645
         },
         {
           "date": "2026-02-22",
@@ -10682,9 +10682,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1050.6834166256008,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -91903.2784522413
+          "net_pressure_usd": -90159.14398064281
         },
         {
           "date": "2026-02-23",
@@ -10696,9 +10696,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1087.0048335492975,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -95080.31279055704
+          "net_pressure_usd": -93275.88476686522
         },
         {
           "date": "2026-02-24",
@@ -10710,9 +10710,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1099.613011993421,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -96183.15015906453
+          "net_pressure_usd": -94357.79255915545
         },
         {
           "date": "2026-02-25",
@@ -10724,9 +10724,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1049.6032493763485,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -91808.7962229492
+          "net_pressure_usd": -90066.45482898447
         },
         {
           "date": "2026-02-26",
@@ -10738,9 +10738,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1082.5558161898186,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -94691.15724212343
+          "net_pressure_usd": -92894.11458724835
         },
         {
           "date": "2026-02-27",
@@ -10752,9 +10752,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1080.867923547583,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -94543.51727270707
+          "net_pressure_usd": -92749.27651961808
         },
         {
           "date": "2026-02-28",
@@ -10766,9 +10766,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1137.2459449644862,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -99474.90280604361
+          "net_pressure_usd": -97587.07453740256
         },
         {
           "date": "2026-03-01",
@@ -10780,9 +10780,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1083.2249097029853,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -94749.68285172012
+          "net_pressure_usd": -92951.52950161317
         },
         {
           "date": "2026-03-02",
@@ -10794,9 +10794,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1073.774426931413,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -93923.0491236907
+          "net_pressure_usd": -92140.58357498456
         },
         {
           "date": "2026-03-03",
@@ -10808,9 +10808,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -53879.103118444305,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -4712805.149770323
+          "net_pressure_usd": -4623365.838593706
         },
         {
           "date": "2026-03-04",
@@ -10822,9 +10822,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -814.1467911737836,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -71213.41982397085
+          "net_pressure_usd": -69861.93615062238
         },
         {
           "date": "2026-03-05",
@@ -10836,9 +10836,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1070.705848163207,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -93654.64053883572
+          "net_pressure_usd": -91877.2688308848
         },
         {
           "date": "2026-03-06",
@@ -10850,9 +10850,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1086.0383612920036,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -94995.77546221156
+          "net_pressure_usd": -93192.95178246683
         },
         {
           "date": "2026-03-07",
@@ -10864,9 +10864,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1136.1538932787978,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -99379.38104509644
+          "net_pressure_usd": -97493.36558225364
         },
         {
           "date": "2026-03-08",
@@ -10878,9 +10878,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1160.1020197746022,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -101474.12366968446
+          "net_pressure_usd": -99548.35431685862
         },
         {
           "date": "2026-03-09",
@@ -10892,9 +10892,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1168.306187798631,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -102191.74224674626
+          "net_pressure_usd": -100252.35397500053
         },
         {
           "date": "2026-03-10",
@@ -10906,9 +10906,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1131.6989102228933,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -98989.70367719648
+          "net_pressure_usd": -97111.08348622647
         },
         {
           "date": "2026-03-11",
@@ -10920,9 +10920,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1099.4401594429473,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -96168.0307464746
+          "net_pressure_usd": -94342.96008179932
         },
         {
           "date": "2026-03-12",
@@ -10934,9 +10934,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1106.3088377045383,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -96768.83403401596
+          "net_pressure_usd": -94932.36136342643
         },
         {
           "date": "2026-03-13",
@@ -10948,9 +10948,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1053.011922838761,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -92106.95289070642
+          "net_pressure_usd": -90358.95309879408
         },
         {
           "date": "2026-03-14",
@@ -10962,9 +10962,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1091.984824028843,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -95515.91255780289
+          "net_pressure_usd": -93703.21774991501
         },
         {
           "date": "2026-03-15",
@@ -10976,9 +10976,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1078.3817828583765,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -94326.0545466222
+          "net_pressure_usd": -92535.94078707728
         },
         {
           "date": "2026-03-16",
@@ -10990,9 +10990,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1013.8751306805343,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -88683.65768062633
+          "net_pressure_usd": -87000.62496369665
         },
         {
           "date": "2026-03-17",
@@ -11004,9 +11004,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -1002.3408385314532,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -87674.75314634621
+          "net_pressure_usd": -86010.867354384
         },
         {
           "date": "2026-03-18",
@@ -11018,9 +11018,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -252.55224653251616,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -22090.745004199187
+          "net_pressure_usd": -21671.508274955213
         },
         {
           "date": "2026-03-25",
@@ -11032,9 +11032,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -547.0687961219149,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -47852.1075967839
+          "net_pressure_usd": -46943.973395221525
         },
         {
           "date": "2026-03-26",
@@ -11046,9 +11046,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -767.7629505144781,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -67156.2252815014
+          "net_pressure_usd": -65881.73878364736
         },
         {
           "date": "2026-03-27",
@@ -11060,9 +11060,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -804.6593622106374,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -70383.55441256445
+          "net_pressure_usd": -69047.81987129479
         },
         {
           "date": "2026-03-28",
@@ -11074,9 +11074,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -845.8616196221444,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -73987.51586834897
+          "net_pressure_usd": -72583.38557977621
         },
         {
           "date": "2026-03-29",
@@ -11088,9 +11088,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -862.0502010745441,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -75403.53108799037
+          "net_pressure_usd": -73972.52775420663
         },
         {
           "date": "2026-03-30",
@@ -11102,9 +11102,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -844.5770590707007,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -73875.15535691418
+          "net_pressure_usd": -72473.15743885683
         },
         {
           "date": "2026-03-31",
@@ -11116,9 +11116,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -844.0689632610461,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -73830.7122164437
+          "net_pressure_usd": -72429.55773743037
         },
         {
           "date": "2026-04-01",
@@ -11130,9 +11130,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -835.6314008012776,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -73092.67862808774
+          "net_pressure_usd": -71705.53050275763
         },
         {
           "date": "2026-04-02",
@@ -11144,9 +11144,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -875.1612538765214,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -76550.35487657932
+          "net_pressure_usd": -75097.58719514431
         },
         {
           "date": "2026-04-03",
@@ -11158,9 +11158,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -873.7183329074995,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -76424.14257941899
+          "net_pressure_usd": -74973.77014679254
         },
         {
           "date": "2026-04-04",
@@ -11172,9 +11172,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -873.3093278345483,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -76388.36690568794
+          "net_pressure_usd": -74938.67342148258
         },
         {
           "date": "2026-04-05",
@@ -11186,9 +11186,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -895.5765082051817,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -78336.07717270724
+          "net_pressure_usd": -76849.42016908665
         },
         {
           "date": "2026-04-06",
@@ -11200,9 +11200,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -866.4242165539334,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -75786.12622197256
+          "net_pressure_usd": -74347.86202249303
         },
         {
           "date": "2026-04-07",
@@ -11214,9 +11214,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -916.856746399387,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -80197.45960755438
+          "net_pressure_usd": -78675.4774085314
         },
         {
           "date": "2026-04-08",
@@ -11228,9 +11228,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -897.1943025042333,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -78477.58564004529
+          "net_pressure_usd": -76988.24309788826
         },
         {
           "date": "2026-04-09",
@@ -11242,9 +11242,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -929.5595974150098,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -81308.57798589091
+          "net_pressure_usd": -79765.509054182
         },
         {
           "date": "2026-04-10",
@@ -11256,9 +11256,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -934.6717050226828,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -81755.73403833406
+          "net_pressure_usd": -80204.17900799641
         },
         {
           "date": "2026-04-11",
@@ -11270,9 +11270,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -934.7672672222467,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -81764.09286392992
+          "net_pressure_usd": -80212.37920034099
         },
         {
           "date": "2026-04-12",
@@ -11284,9 +11284,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -943.914663051144,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -82564.21557708357
+          "net_pressure_usd": -80997.31723641866
         },
         {
           "date": "2026-04-13",
@@ -11298,9 +11298,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -899.5030408436977,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -78679.53098259824
+          "net_pressure_usd": -77186.3559347977
         },
         {
           "date": "2026-04-14",
@@ -11312,9 +11312,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -909.3145829926264,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -79537.74657436502
+          "net_pressure_usd": -78028.28436659728
         },
         {
           "date": "2026-04-15",
@@ -11326,9 +11326,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -878.9925086251801,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -76885.4747294445
+          "net_pressure_usd": -75426.3471651267
         },
         {
           "date": "2026-04-16",
@@ -11340,9 +11340,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -638.6830726059642,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -55865.60836084369
+          "net_pressure_usd": -54805.39446031779
         },
         {
           "date": "2026-04-17",
@@ -11354,9 +11354,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -600.1422448431355,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -52494.44215642906
+          "net_pressure_usd": -51498.20602998946
         },
         {
           "date": "2026-04-18",
@@ -11368,9 +11368,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -824.7457200498909,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -72140.50813276396
+          "net_pressure_usd": -70771.43023748114
         },
         {
           "date": "2026-04-19",
@@ -11382,9 +11382,9 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": -713.6699716204205,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -62424.71241763818
+          "net_pressure_usd": -61240.02026474828
         },
         {
           "date": "2026-05-26",
@@ -11396,7 +11396,7 @@
           "treasury_accumulation_tokens": 0,
           "net_staking_lockups_tokens": 0,
           "net_pressure_tokens": 0,
-          "price_usd_for_day": 87.47,
+          "price_usd_for_day": 85.81,
           "price_source_for_day": "today_fallback",
           "net_pressure_usd": 0
         }

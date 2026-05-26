@@ -398,13 +398,21 @@ In this mode: on-chain feed overrides are bypassed, and `article_price_usd` + `a
 
 The list of things we genuinely don't know yet — each one a potential HM accuracy risk.
 
-### 5.1 SKY Cat B distribution mechanism — HIGHEST priority
+### 5.1 SKY Cat B distribution mechanism — RESOLVED 2026-05-26
 
-**Question:** does the Sky Staking Engine distribute USDS to stkSKY holders (Cat B, our current assumption, $72M/yr), or does it distribute bought-back SKY (Cat A redistribute)?
+**Verdict:** Cat B mechanism IS USDS distribution to lockstake-SKY holders. **And it has been dormant for 200+ days.**
 
-**Why it matters:** the $72M/yr Cat B line is the **biggest single number on SKY's HM** (full denominator). If it's actually Cat A, the verification flag changes, but more importantly: the mechanism description in the report is wrong, and a downstream LP reading our doc would form an incorrect mental model.
+**Resolution path executed:**
+- ChainLog (`0xdA0Ab1e0...`) resolved `REWARDS_LSSKY_USDS = 0x38E4254bD82ED5Ee97CD1C4278FAae748d998865` — the canonical USDS rewards farm for lockstake-SKY positions.
+- 365d Transfer event inspection: 6,325 USDS inflow events totaling $38.5M; 0 SKY outflows. **Mechanism confirmed = USDS distribution (Cat B), not bought-back SKY (Cat A redistribute).**
+- BUT: inflows stopped 2025-11-03 (204+ days ago). Outflows continue as stakers drain the existing $302K balance. **Current Cat B rate = $0/yr on-chain.**
+- Splitter (`MCD_SPLIT = 0xbf7111f1...`) shows 0 USDS / 0 SKY outflows in 90d. SBE Flapper (`MCD_FLAP = 0x374d9c3d...`) shows 0 burns in 90d. Whole legacy surplus distribution mechanism is dormant.
 
-**Resolution path:** read `Transfer` events out of the Sky Staking Engine address on Etherscan. Whichever asset (USDS or SKY) dominates the outflow IS the answer. ~30 min of inspection.
+**Implications for HM:** SKY's HM at 22.7× (with $72M Cat B) was based on the article's stated rate. **On-chain reality: Real Capture = $0 → HM = ∞× (no real capture).** The current state is either a Phase 1 framework restructure (revenue may be routed through a newer set of contracts we haven't found, or buffered awaiting a future distribution), or a genuine pause.
+
+**Adapter wired:** `scripts/onchain/sky/fetch-rewards-farm.js` writes `data/onchain/sky/cat-b-inflows.json`. Compute layer reads it via `onchain_holder_yield_path` in the seed and surfaces the dormancy in the report. Verification flag = `onchain_dormant`.
+
+**Still open (smaller):** whether a NEWER rewards farm or distribution contract exists post the April 2026 TMF framework update. ChainLog key search for `LOCKSTAKE_ENGINE_V2`, `LSEV2`, etc. returned `REVERT (invalid-key)` as of 2026-05-26 — if a new contract has been deployed and registered, the key name is different.
 
 ### 5.2 SKY Staking Engine contract address
 

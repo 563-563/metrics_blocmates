@@ -48,6 +48,29 @@ jobs:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: node scripts/onchain/aave/fetch-safety-module.js
 
+      - name: SKY on-chain — Category B rewards farm (trailing 30d)
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+        run: node scripts/onchain/sky/fetch-rewards-farm.js --days 30
+
+      - name: SKY on-chain — SBE + Splitter activity (trailing 30d)
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+        run: node scripts/onchain/sky/fetch-sbe.js --days 30
+
+      - name: SKY on-chain — LockStake Engine total locked
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+        run: node scripts/onchain/sky/fetch-lockstake.js
+
+      - name: LIT on-chain — L1 supply + Escrow flow (trailing 30d)
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+        run: node scripts/onchain/lit/fetch-l1.js --days 30
+
+      - name: LIT on-chain — zkLighter L2 market snapshot
+        run: node scripts/onchain/lit/fetch-l2-market.js
+
       - name: Compute HM snapshot
         run: node scripts/hm/compute-hm.js
 

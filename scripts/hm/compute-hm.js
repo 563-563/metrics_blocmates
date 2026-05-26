@@ -165,6 +165,69 @@ function resolveJsonPath(obj, dotted) {
   return cur;
 }
 
+// Read a verified-on-chain holder yield (Category B) rate if the seed
+// points at one. Mirrors the buyback annualization: calendar-day window
+// ending yesterday, dormant days correctly count as $0.
+function readOnchainHolderYieldAnnualized(seedRow) {
+  if (REPRODUCE_ARTICLE) return null;
+  const relPath = seedRow.onchain_holder_yield_path;
+  if (!relPath) return null;
+  const abs = path.join(ROOT, relPath);
+  if (!fs.existsSync(abs)) return null;
+  const rows = loadJson(abs);
+  if (!Array.isArray(rows) || rows.length === 0) return null;
+
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const sorted = rows.slice().sort((a, b) => a.date.localeCompare(b.date));
+  const whole = sorted.filter((r) => r.date < todayIso);
+
+  const window = seedRow.onchain_holder_yield_annualize_days || 60;
+  const minDays = seedRow.onchain_holder_yield_min_days || 14;
+  // If there's not enough history at all, fall back to seed.
+  if (whole.length < 1) return null;
+
+  const yesterday = new Date(todayIso);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+  const windowStart = new Date(yesterday);
+  windowStart.setUTCDate(windowStart.getUTCDate() - window + 1);
+  const windowStartIso = windowStart.toISOString().slice(0, 10);
+  const windowEndIso = yesterday.toISOString().slice(0, 10);
+  const slice = whole.filter((r) => r.date >= windowStartIso && r.date <= windowEndIso);
+  const sumUsd = slice.reduce((s, r) => s + Number(r.amount_usd || 0), 0);
+  const annualUsd = (sumUsd / window) * 365;
+  const activeDays = slice.length;
+
+  // Lifetime
+  const lifetimeSumUsd = whole.reduce((s, r) => s + Number(r.amount_usd || 0), 0);
+  const firstDay = whole[0]?.date;
+  const lastDay = whole[whole.length - 1]?.date;
+  let lifetimeAnnualUsd = null;
+  let lifetimeDays = null;
+  if (firstDay && lastDay) {
+    lifetimeDays = Math.max(1, Math.round((new Date(lastDay) - new Date(firstDay)) / (24 * 60 * 60 * 1000)) + 1);
+    lifetimeAnnualUsd = (lifetimeSumUsd / lifetimeDays) * 365;
+  }
+  const daysSinceLastObs = lastDay
+    ? Math.round((new Date(todayIso) - new Date(lastDay)) / (24 * 60 * 60 * 1000))
+    : null;
+
+  return {
+    annual_usd: annualUsd,
+    window_days: window,
+    active_days_in_window: activeDays,
+    window_start: windowStartIso,
+    window_end: windowEndIso,
+    source: 'onchain_feed',
+    feed_path: relPath,
+    lifetime_annual_usd: lifetimeAnnualUsd,
+    lifetime_days: lifetimeDays,
+    lifetime_cumulative_usd: lifetimeSumUsd,
+    days_since_last_observation: daysSinceLastObs,
+    is_dormant: daysSinceLastObs != null && daysSinceLastObs > 30,
+    rate_vs_lifetime_pct: lifetimeAnnualUsd ? (annualUsd / lifetimeAnnualUsd - 1) * 100 : null
+  };
+}
+
 // Read a verified-on-chain circulating supply if the seed points at one.
 // Useful when CG's circulating differs from the article/HM-methodology
 // definition (e.g. HYPE: ASXN says 298.65M, CG says 238.4M).
@@ -211,8 +274,17 @@ function computeProtocol(seedRow, latest) {
   const annualBuybackVerification = onchainBuyback ? 'onchain' : (seedRow.annual_buyback_verification || 'governance_stated');
   const annualBuybackSource = onchainBuyback ? onchainBuyback : { source: 'seed' };
 
-  const annualHolderYieldUsd = seedRow.annual_holder_yield_usd || 0;
-  const realCaptureUsd       = annualBuybackUsd + annualHolderYieldUsd;
+  // Holder yield (Cat B) — prefer on-chain feed when present, fall back to seed.
+  const onchainHolderYield = readOnchainHolderYieldAnnualized(seedRow);
+  const annualHolderYieldUsd = onchainHolderYield
+    ? onchainHolderYield.annual_usd
+    : (seedRow.annual_holder_yield_usd || 0);
+  const annualHolderYieldVerification = onchainHolderYield
+    ? (onchainHolderYield.is_dormant ? 'onchain_dormant' : 'onchain')
+    : (seedRow.annual_holder_yield_verification || 'governance_stated');
+  const annualHolderYieldSource = onchainHolderYield ? onchainHolderYield : { source: 'seed' };
+
+  const realCaptureUsd = annualBuybackUsd + annualHolderYieldUsd;
 
   const hm = realCaptureUsd > 0 ? adjMcapUsd / realCaptureUsd : Infinity;
 
@@ -242,7 +314,9 @@ function computeProtocol(seedRow, latest) {
     annual_buyback_seed_usd: seedRow.annual_buyback_usd || 0,
     annual_holder_yield_usd: annualHolderYieldUsd,
     annual_holder_yield_notes: seedRow.annual_holder_yield_notes,
-    annual_holder_yield_verification: seedRow.annual_holder_yield_verification,
+    annual_holder_yield_verification: annualHolderYieldVerification,
+    annual_holder_yield_source: annualHolderYieldSource,
+    annual_holder_yield_seed_usd: seedRow.annual_holder_yield_usd || 0,
     real_capture_usd: realCaptureUsd,
     hm,
     hm_band: hmBand(hm),

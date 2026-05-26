@@ -27,13 +27,18 @@
       "emissions_24mo_tokens": 0,
       "emissions_24mo_notes": "Staking yield paid in USDS, not new SKY",
       "annual_buyback_usd": 0,
-      "annual_buyback_notes": "SBE bypassed during Phase 1",
+      "annual_buyback_notes": "SBE bypassed during Phase 1; verified on-chain — MCD_FLAP + MCD_SPLIT have zero activity 90d",
       "annual_buyback_verification": "governance_stated",
       "buyback_24mo_usd": 0,
+      "onchain_buybacks_path": "data/onchain/sky/sbe-burns.json",
+      "onchain_buyback_annualize_days": 60,
+      "onchain_buyback_min_days": 14,
       "annual_holder_yield_usd": 72000000,
-      "annual_holder_yield_notes": "40% × $180.73M net revenue paid in USDS to stkSKY — Category B external cashflow yield to native-token stakers",
+      "annual_holder_yield_notes": "Article: 40% × $180.73M net revenue paid in USDS to stkSKY (Cat B). On-chain (REWARDS_LSSKY_USDS = 0x38E4254b...) confirms USDS distribution mechanism — but inflows stopped 2025-11-03, 200+ days dormant. Either restructured post-Apr-2026 framework or paused.",
       "annual_holder_yield_verification": "governance_stated",
-      "sources": ["DefiLlama", "Skyeco dashboard", "Sky governance forum"]
+      "onchain_holder_yield_path": "data/onchain/sky/cat-b-inflows.json",
+      "onchain_holder_yield_annualize_days": 60,
+      "sources": ["DefiLlama", "Sky ChainLog (REWARDS_LSSKY_USDS resolved on-chain)", "Sky governance forum"]
     },
     "aave": {
       "slug": "aave",

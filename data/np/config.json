@@ -109,6 +109,97 @@
         "ecosystem_reserve": "data/onchain/aave/ecosystem-reserve.json"
       },
       "daily_price_path": null
+    },
+    "sky": {
+      "slug": "sky",
+      "name": "Sky",
+      "symbol": "SKY",
+      "config_symbol": "SKY",
+      "tokenomics_module": null,
+      "sources": {
+        "unlocks": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "98.9% circulating; no remaining schedule"
+        },
+        "buybacks": {
+          "type": "daily_series",
+          "path": "data/onchain/sky/sbe-burns.json",
+          "amount_field": "amount_tokens",
+          "verification": "onchain",
+          "note": "SBE / MCD_FLAP burns to 0x0. Currently zero (Phase 1 bypass). Will become non-zero when ABC fill threshold ($150M) is reached."
+        },
+        "burns": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "For SKY, burns and buybacks are the same thing (SBE IS the burn engine); counted once under buybacks"
+        },
+        "treasury_accumulation": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "ABC fill — contract address still TBD via ChainLog. Will track when discovered."
+        },
+        "treasury_sells": {
+          "type": "none",
+          "verification": "n/a"
+        },
+        "net_staking_lockups": {
+          "type": "daily_delta",
+          "path": "data/onchain/sky/lockstake.json",
+          "amount_field": "delta_tokens",
+          "verification": "onchain",
+          "note": "SKY.balanceOf(LockStakeEngine) daily Δ. ~10B SKY currently locked."
+        }
+      },
+      "static_reference_sources": {
+        "lockstake": "data/onchain/sky/lockstake.json",
+        "rewards_farm_balance": "data/onchain/sky/rewards-farm-balance.json"
+      },
+      "daily_price_path": null
+    },
+    "lighter": {
+      "slug": "lighter",
+      "name": "Lighter",
+      "symbol": "LIT",
+      "config_symbol": "LIT",
+      "tokenomics_module": null,
+      "sources": {
+        "unlocks": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "Pre-cliff (Dec 22 2026) — no team unlocks. Tokenomics module pending."
+        },
+        "buybacks": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "zkLighter L2 /api/v1/trades requires Lighter API key (acquisition #3 in DATA-SOURCES.md). Until obtained, buyback flow can't be ingested."
+        },
+        "burns": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "Unknown — verify whether Lighter burns vs holds after API key obtained"
+        },
+        "treasury_accumulation": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "L2 protocol accounts not yet discovered"
+        },
+        "treasury_sells": {
+          "type": "none",
+          "verification": "n/a"
+        },
+        "net_staking_lockups": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "LIT L2 staking contract not yet identified"
+        }
+      },
+      "static_reference_sources": {
+        "l1_supply": "data/onchain/lit/l1-supply.json",
+        "l1_escrow": "data/onchain/lit/l1-escrow.json",
+        "l2_market": "data/onchain/lit/l2-market.json"
+      },
+      "daily_price_path": null
     }
   }
 }

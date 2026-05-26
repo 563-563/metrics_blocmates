@@ -8,6 +8,8 @@ import hypeBuybacksRaw from "../../data/onchain/hype-af/buybacks.json";
 import hypeAfHistoryRaw from "../../data/onchain/hype-af/treasury-history.json";
 import aaveBuybacksRaw from "../../data/onchain/aave/buybacks.json";
 import aaveTreasuryRaw from "../../data/onchain/aave/treasury.json";
+import skyCatBInflowsRaw from "../../data/onchain/sky/cat-b-inflows.json";
+import skyRewardsFarmBalanceRaw from "../../data/onchain/sky/rewards-farm-balance.json";
 
 // ─── Types matching compute outputs ──────────────────────────────────────
 

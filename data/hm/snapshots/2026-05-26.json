@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-26T14:16:17.408Z",
+  "as_of": "2026-05-26",
+  "mode": "live",
+  "latest_data_as_of": "2026-05-26T08:48:08.546Z",
+  "protocols": [
+    {
+      "slug": "sky",
+      "name": "Sky",
+      "symbol": "SKY",
+      "category": "CDP",
+      "phase": {
+        "active": "phase_1",
+        "notes": "Phase 1 of TMF framework. SBE bypassed during ABC fill (~15 months base case from Apr 2026). 40% of net revenue → ABC, 40% → SKY stakers (as USDS), 20% → Security/Maintenance.",
+        "stable_state": "phase_3"
+      },
+      "price_usd": 0.06982,
+      "price_source": "live",
+      "circulating_supply_tokens": 23244725697.457706,
+      "circulating_supply_source": "live",
+      "float_mcap_usd": 1622946748.196497,
+      "unlocks_24mo_tokens": 0,
+      "unlocks_24mo_usd": 0,
+      "unlocks_24mo_notes": "98.9% circulating; no remaining schedule",
+      "emissions_24mo_tokens": 0,
+      "emissions_24mo_usd": 0,
+      "emissions_24mo_notes": "Staking yield paid in USDS, not new SKY",
+      "buybacks_24mo_usd": 0,
+      "buybacks_24mo_notes": "SBE bypassed during Phase 1",
+      "adj_mcap_usd": 1622946748.196497,
+      "annual_buyback_usd": 0,
+      "annual_buyback_verification": "governance_stated",
+      "annual_buyback_source": {
+        "source": "seed"
+      },
+      "annual_buyback_seed_usd": 0,
+      "annual_holder_yield_usd": 72000000,
+      "annual_holder_yield_notes": "40% × $180.73M net revenue paid in USDS to stkSKY — Category B external cashflow yield to native-token stakers",
+      "annual_holder_yield_verification": "governance_stated",
+      "real_capture_usd": 72000000,
+      "hm": 22.54092705828468,
+      "hm_band": "fair value",
+      "sources": [
+        "DefiLlama",
+        "Skyeco dashboard",
+        "Sky governance forum"
+      ],
+      "live_data_present": true
+    },
+    {
+      "slug": "aave",
+      "name": "Aave",
+      "symbol": "AAVE",
+      "category": "Lending",
+      "phase": {
+        "active": "current",
+        "notes": "ARFC $30M/yr buyback budget (cut from original $50M). AWW Framework commits 100% product revenue to DAO."
+      },
+      "price_usd": 86.45,
+      "price_source": "live",
+      "circulating_supply_tokens": 15179911.874935383,
+      "circulating_supply_source": "live",
+      "float_mcap_usd": 1312303381.5881639,
+      "unlocks_24mo_tokens": 0,
+      "unlocks_24mo_usd": 0,
+      "unlocks_24mo_notes": "No team vesting; 99.9% circulating",
+      "emissions_24mo_tokens": 285000,
+      "emissions_24mo_usd": 24638250,
+      "emissions_24mo_notes": "Safety Module + Service Provider compensation (285K AAVE over 24mo)",
+      "buybacks_24mo_usd": 60000000,
+      "buybacks_24mo_notes": "ARFC $30M/yr budget; matches 2026 actual run-rate",
+      "adj_mcap_usd": 1276941631.5881639,
+      "annual_buyback_usd": 30000000,
+      "annual_buyback_verification": "onchain",
+      "annual_buyback_source": {
+        "source": "seed"
+      },
+      "annual_buyback_seed_usd": 30000000,
+      "annual_holder_yield_usd": 0,
+      "annual_holder_yield_notes": "No Category B yield — Safety Module rewards are stkAAVE emissions (Category C, dilution rebate)",
+      "annual_holder_yield_verification": "governance_stated",
+      "real_capture_usd": 30000000,
+      "hm": 42.56472105293879,
+      "hm_band": "expensive",
+      "sources": [
+        "DefiLlama",
+        "TokenLogic dashboard",
+        "Aave governance forum"
+      ],
+      "live_data_present": true
+    },
+    {
+      "slug": "hyperliquid",
+      "name": "Hyperliquid",
+      "symbol": "HYPE",
+      "category": "Derivatives",
+      "phase": {
+        "active": "current",
+        "notes": "Assistance Fund captures ~99% of revenue for HYPE buybacks. Team vesting cliff active."
+      },
+      "price_usd": 59.84,
+      "price_source": "live",
+      "circulating_supply_tokens": 298649467.55,
+      "circulating_supply_source": "onchain_feed",
+      "float_mcap_usd": 17871184138.192,
+      "unlocks_24mo_tokens": 208300000,
+      "unlocks_24mo_usd": 12464672000,
+      "unlocks_24mo_notes": "Y1 119M + Y2 89.3M team unlocks (Tokenomist scheduled rate)",
+      "emissions_24mo_tokens": 6800000,
+      "emissions_24mo_usd": 406912000,
+      "emissions_24mo_notes": "Staking emissions paid from Future Emissions allocation (Category C — added to dilution side)",
+      "buybacks_24mo_usd": 1240000000,
+      "buybacks_24mo_notes": "30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present)",
+      "adj_mcap_usd": 29502768138.192,
+      "annual_buyback_usd": 436148551.9283284,
+      "annual_buyback_verification": "onchain",
+      "annual_buyback_source": {
+        "annual_usd": 436148551.9283284,
+        "days_used": 60,
+        "window_requested": 60,
+        "source": "onchain_feed",
+        "feed_path": "data/onchain/hype-af/buybacks.json",
+        "lifetime_annual_usd": 761968284.8391167,
+        "lifetime_days": 432,
+        "lifetime_cumulative_usd": 901836435.7547902,
+        "rate_vs_lifetime_pct": -42.760274855741855
+      },
+      "annual_buyback_seed_usd": 619000000,
+      "annual_holder_yield_usd": 0,
+      "annual_holder_yield_notes": "No Category B — staking rewards are HYPE-denominated dilution rebate (Category C)",
+      "annual_holder_yield_verification": "governance_stated",
+      "real_capture_usd": 436148551.9283284,
+      "hm": 67.64385209523783,
+      "hm_band": "speculative",
+      "sources": [
+        "DefiLlama",
+        "Hyperliquid Info API",
+        "Tokenomist",
+        "Hyperliquid docs"
+      ],
+      "live_data_present": true
+    },
+    {
+      "slug": "lighter",
+      "name": "Lighter",
+      "symbol": "LIT",
+      "category": "Derivatives",
+      "phase": {
+        "active": "current",
+        "notes": "TGE float. 99.5% of post-LLP revenue used to algorithmically buy back LIT. Team/investor cliff Dec 22 2026."
+      },
+      "price_usd": 1.28,
+      "price_source": "live",
+      "circulating_supply_tokens": 250000000,
+      "circulating_supply_source": "live",
+      "float_mcap_usd": 320000000,
+      "unlocks_24mo_tokens": 216000000,
+      "unlocks_24mo_usd": 276480000,
+      "unlocks_24mo_notes": "54M Y1 + 162M Y2; cliff Dec 22 2026 unlocks 13.5M/mo across 36mo linear",
+      "emissions_24mo_tokens": 22270000,
+      "emissions_24mo_usd": 28505600,
+      "emissions_24mo_notes": "Staking emissions over 24mo (Category C)",
+      "buybacks_24mo_usd": 51060000,
+      "buybacks_24mo_notes": "99.5% × post-LLP revenue (LLP collects liquidation fees first)",
+      "adj_mcap_usd": 573925600,
+      "annual_buyback_usd": 25530000,
+      "annual_buyback_verification": "governance_stated",
+      "annual_buyback_source": {
+        "source": "seed"
+      },
+      "annual_buyback_seed_usd": 25530000,
+      "annual_holder_yield_usd": 0,
+      "annual_holder_yield_notes": "No Category B — staking yield is LIT-denominated (Category C)",
+      "annual_holder_yield_verification": "governance_stated",
+      "real_capture_usd": 25530000,
+      "hm": 22.480438699569135,
+      "hm_band": "fair value",
+      "sources": [
+        "DefiLlama",
+        "Lighter docs"
+      ],
+      "live_data_present": true
+    }
+  ]
+}

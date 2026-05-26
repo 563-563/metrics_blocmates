@@ -1,0 +1,56 @@
+name: Update HM/TP data
+
+# Refreshes data/ on the default branch — DL+CG snapshot, Hyperliquid Info
+# API on-chain feeds, HM/TP compute, history append.
+#
+# Does NOT run the ASXN backfill (Cloudflare-Turnstile gated, manual JWT).
+# Run that by hand when needed:
+#   ASXN_JWT="eyJ..." node scripts/external/asxn-backfill.js
+#   node scripts/external/asxn-merge.js
+
+on:
+  schedule:
+    - cron: '15 * * * *'  # hourly at :15
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Fetch DL+CG snapshot
+        run: node scripts/fetch-data.js
+
+      - name: HYPE on-chain — Assistance Fund buybacks (incremental)
+        run: node scripts/onchain/hype/fetch-af.js
+
+      - name: HYPE on-chain — circulating supply
+        run: node scripts/onchain/hype/fetch-supply.js
+
+      - name: HYPE on-chain — validator stake snapshot
+        run: node scripts/onchain/hype/fetch-staking.js
+
+      - name: Compute HM snapshot
+        run: node scripts/hm/compute-hm.js
+
+      - name: Compute TP snapshot
+        run: node scripts/np/compute-np.js
+
+      - name: Append daily history
+        run: node scripts/history/append-history.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Update HM/TP data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

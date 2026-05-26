@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "description": "Net Pressure (TP) pipeline config. Per-protocol source paths for the daily flow components. v1 supports HYPE; AAVE/SKY/LIT will be added as their on-chain adapters land.",
+  "notes": [
+    "Net Pressure = (Unlocks + Treasury Sells) − (Buybacks + Burns + Treasury accumulation + Net staking lockups)",
+    "Components without an on-chain source are computed as 0 with verification: 'n/a' — the formula is correct, the gap is documented.",
+    "Treasury accumulation is intentionally 0 for HYPE: the AF is the buyback wallet (already counted as buybacks), not a separate treasury wallet. Counting both would double-count."
+  ],
+  "rollup_windows": [
+    { "key": "24h",  "days": 1   },
+    { "key": "7d",   "days": 7   },
+    { "key": "30d",  "days": 30  },
+    { "key": "90d",  "days": 90  }
+  ],
+  "protocols": {
+    "hyperliquid": {
+      "slug": "hyperliquid",
+      "name": "Hyperliquid",
+      "symbol": "HYPE",
+      "config_symbol": "HYPE",
+      "tokenomics_module": "scripts/onchain/hype/tokenomics.js",
+      "sources": {
+        "unlocks": {
+          "type": "deterministic_schedule",
+          "module": "scripts/onchain/hype/tokenomics.js",
+          "verification": "onchain_equivalent"
+        },
+        "buybacks": {
+          "type": "daily_series",
+          "path": "data/onchain/hype-af/buybacks.json",
+          "amount_field": "amount_tokens",
+          "verification": "onchain"
+        },
+        "burns": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "HYPE does not burn"
+        },
+        "treasury_accumulation": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "AF is buyback_wallet not treasury_wallet — already counted as buybacks"
+        },
+        "treasury_sells": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "AF only buys"
+        },
+        "net_staking_lockups": {
+          "type": "daily_delta",
+          "path": "data/onchain/hype/staking.json",
+          "amount_field": "delta_tokens",
+          "verification": "onchain",
+          "note": "Daily snapshots accumulate over time. Until ≥2 snapshots exist, delta=0 for historical days. Static stock figure surfaced in the report's reference section."
+        }
+      },
+      "static_reference_sources": {
+        "circulating_supply": "data/onchain/hype/supply.json",
+        "af_balance":          "data/onchain/hype-af/treasury.json",
+        "total_staked":        "data/onchain/hype/staking.json"
+      },
+      "daily_price_path": "data/external/asxn/hype-price-daily.json"
+    }
+  }
+}

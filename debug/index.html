@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>HM + TP Debug</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!--
+    Quick local debug view. No build step, no install. Vanilla JS + Chart.js
+    from CDN. Reads dashboard/data/*.json via fetch.
+
+    How to run:
+      cd dashboard
+      python -m http.server 8000     # or:  npx serve .   or:  npx http-server .
+      then open  http://localhost:8000/debug/
+
+    Hard refresh (Ctrl+F5) to bypass CDN cache after data updates.
+  -->
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #111;
+      --border: #1f1f1f;
+      --fg: #f4f4f4;
+      --muted: #888;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --zinc-300: #d4d4d8;
+      --zinc-400: #a1a1aa;
+      --zinc-500: #71717a;
+      --zinc-600: #52525b;
+      --zinc-800: #27272a;
+      --zinc-900: #18181b;
+      --zinc-950: #0a0a0a;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+    header {
+      border-bottom: 1px solid var(--zinc-800);
+      padding-bottom: 18px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    header h1 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+    header .meta { color: var(--zinc-500); font-size: 11px; }
+    h2 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--zinc-500);
+      font-weight: 500;
+      margin: 0 0 14px;
+    }
+    h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--zinc-500);
+      font-weight: 500;
+      margin: 0 0 10px;
+    }
+    section { margin-bottom: 40px; }
+    .panel {
+      background: var(--zinc-950);
+      border: 1px solid var(--zinc-800);
+      border-radius: 6px;
+      padding: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th {
+      color: var(--zinc-500);
+      font-weight: 400;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: left;
+      border-bottom: 1px solid var(--zinc-800);
+      padding: 8px 0;
+    }
+    th.r, td.r { text-align: right; }
+    td {
+      border-bottom: 1px solid var(--zinc-900);
+      padding: 12px 0;
+    }
+    code {
+      background: var(--zinc-900);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      color: var(--zinc-400);
+    }
+    .symbol { color: var(--zinc-500); font-size: 11px; margin-left: 6px; }
+    .band-exceptional { color: var(--emerald); }
+    .band-strong { color: #6ee7b7; }
+    .band-fair { color: var(--fg); }
+    .band-expensive { color: var(--amber); }
+    .band-speculative { color: var(--rose); }
+    .hm-cell { font-size: 16px; font-weight: 600; }
+    .grid { display: grid; gap: 16px; }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .kpi { }
+    .kpi-label {
+      font-size: 10px;
+      color: var(--zinc-500);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .kpi-value { font-size: 18px; color: var(--fg); }
+    .kpi-sub { font-size: 11px; color: var(--zinc-500); margin-top: 2px; }
+    .verif-onchain { color: var(--emerald); }
+    .verif-governance_stated { color: var(--amber); }
+    .verif-proxy, .verif-n\/a { color: var(--zinc-500); }
+    .chart-wrap { height: 280px; position: relative; }
+    .net-pos { color: var(--rose); }
+    .net-neg { color: var(--emerald); }
+    .warn-badge { color: var(--amber); margin-left: 4px; }
+    footer {
+      border-top: 1px solid var(--zinc-800);
+      padding-top: 18px;
+      font-size: 11px;
+      color: var(--zinc-600);
+      line-height: 1.6;
+    }
+    .err {
+      background: #1a0a0a;
+      border: 1px solid #4a1f1f;
+      color: #fca5a5;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    a { color: var(--zinc-400); }
+    a:hover { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>HM + TP — Debug View</h1>
+      <div class="meta" id="meta">loading…</div>
+    </header>
+
+    <div id="err" class="err" style="display:none"></div>
+
+    <section>
+      <h2>Cohort — Holder Multiple</h2>
+      <table id="hm-table">
+        <thead>
+          <tr>
+            <th>Protocol</th>
+            <th>Phase</th>
+            <th class="r">Adj MCap</th>
+            <th class="r">Real Capture</th>
+            <th class="r">HM</th>
+            <th class="r">Band</th>
+            <th class="r">Verification</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="hype-section" style="display:none">
+      <h2>Hyperliquid · drill-down</h2>
+
+      <div class="panel grid grid-4" id="hype-kpis" style="margin-bottom:24px"></div>
+
+      <div class="panel" style="margin-bottom:24px">
+        <h3>Daily AF buybacks (USD) · last 90 days</h3>
+        <div class="chart-wrap"><canvas id="chart-buybacks"></canvas></div>
+      </div>
+
+      <div class="panel" style="margin-bottom:24px">
+        <h3>Assistance Fund HYPE balance · since TGE</h3>
+        <div class="chart-wrap"><canvas id="chart-af-balance"></canvas></div>
+      </div>
+
+      <div class="panel">
+        <h3>Net Pressure roll-ups (HYPE)</h3>
+        <div class="grid grid-4" id="hype-tp-rollups"></div>
+        <p style="font-size:10px;color:var(--zinc-600);margin-top:14px;line-height:1.6">
+          Sign convention: positive = market absorbing supply (net seller).
+          Negative = protocol is net buyer. USD uses per-day historical price.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Sources: DefiLlama, CoinGecko, Hyperliquid Info API, ASXN backfill, and editorial seed under
+        <code>dashboard/data/hm/config.json</code>. Reproduce-article regression
+        (SKY 26.3× / AAVE 46.3× / HYPE 34.5× / LIT 15.4×) via
+        <code>node scripts/hm/compute-hm.js --reproduce-article</code>.
+      </p>
+      <p style="margin-top:8px">
+        This is a quick debug view. Production frontend: <a href="../web/">../web</a>.
+      </p>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  <script>
+    // ─── data layer ─────────────────────────────────────────────────────────
+    const BASE = "../data";
+    async function loadJson(rel) {
+      const res = await fetch(`${BASE}/${rel}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`${rel} → HTTP ${res.status}`);
+      return res.json();
+    }
+
+    // ─── formatters ─────────────────────────────────────────────────────────
+    const fmtUsd = (n) => {
+      if (!Number.isFinite(n) || n === 0) return "$0";
+      const abs = Math.abs(n), sign = n < 0 ? "−" : "";
+      if (abs >= 1e9) return `${sign}$${(abs / 1e9).toFixed(2)}B`;
+      if (abs >= 1e6) return `${sign}$${(abs / 1e6).toFixed(2)}M`;
+      if (abs >= 1e3) return `${sign}$${(abs / 1e3).toFixed(1)}K`;
+      return `${sign}$${abs.toFixed(2)}`;
+    };
+    const fmtUsdSigned = (n) =>
+      n === 0 || !Number.isFinite(n) ? "$0" : (n > 0 ? "+" : "") + fmtUsd(n);
+    const fmtTokens = (n) => {
+      if (!Number.isFinite(n) || n === 0) return "0";
+      const abs = Math.abs(n), sign = n < 0 ? "−" : "";
+      if (abs >= 1e9) return `${sign}${(abs / 1e9).toFixed(2)}B`;
+      if (abs >= 1e6) return `${sign}${(abs / 1e6).toFixed(2)}M`;
+      if (abs >= 1e3) return `${sign}${(abs / 1e3).toFixed(1)}K`;
+      return `${sign}${Math.round(abs).toLocaleString()}`;
+    };
+    const fmtTokensSigned = (n) =>
+      n === 0 || !Number.isFinite(n) ? "0" : (n > 0 ? "+" : "") + fmtTokens(n);
+    const fmtMultiple = (n) => (!Number.isFinite(n) ? "∞×" : `${n.toFixed(1)}×`);
+    const bandClass = (band) =>
+      `band-${(band || "").replace(" ", "_").replace("_value", "")}`;
+
+    // ─── HM table ───────────────────────────────────────────────────────────
+    function renderHm(hm) {
+      const tbody = document.querySelector("#hm-table tbody");
+      tbody.innerHTML = "";
+      for (const p of hm.protocols) {
+        const tr = document.createElement("tr");
+        const cls = bandClass(p.hm_band);
+        const verifCls = `verif-${p.annual_buyback_verification}`;
+        tr.innerHTML = `
+          <td>${p.name}<span class="symbol">$${p.symbol}</span></td>
+          <td><code>${p.phase.active}</code></td>
+          <td class="r" style="color:var(--zinc-300)">${fmtUsd(p.adj_mcap_usd)}</td>
+          <td class="r" style="color:var(--zinc-300)">${fmtUsd(p.real_capture_usd)}/yr</td>
+          <td class="r hm-cell ${cls}">${fmtMultiple(p.hm)}</td>
+          <td class="r ${cls}" style="font-size:11px">${p.hm_band}</td>
+          <td class="r" style="font-size:11px"><span class="${verifCls}">${p.annual_buyback_verification}</span></td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    // ─── HYPE KPI grid ──────────────────────────────────────────────────────
+    function renderHypeKpis(hype) {
+      const bs = hype.annual_buyback_source || {};
+      const trend = bs.rate_vs_lifetime_pct;
+      const trendSub = trend != null
+        ? `${trend > 0 ? "+" : ""}${trend.toFixed(1)}% vs lifetime`
+        : "";
+      const items = [
+        { label: "HM", value: fmtMultiple(hype.hm), sub: hype.hm_band, cls: bandClass(hype.hm_band) },
+        { label: "Adj MCap", value: fmtUsd(hype.adj_mcap_usd) },
+        { label: `Annual buyback (${bs.window_requested || 30}d ann.)`, value: fmtUsd(hype.annual_buyback_usd), sub: trendSub },
+        {
+          label: "Lifetime cumulative",
+          value: fmtUsd(bs.lifetime_cumulative_usd || 0),
+          sub: bs.lifetime_days ? `${bs.lifetime_days}d on-chain` : ""
+        }
+      ];
+      const grid = document.querySelector("#hype-kpis");
+      grid.innerHTML = items.map((k) => `
+        <div class="kpi">
+          <div class="kpi-label">${k.label}</div>
+          <div class="kpi-value ${k.cls || ""}">${k.value}</div>
+          ${k.sub ? `<div class="kpi-sub">${k.sub}</div>` : ""}
+        </div>
+      `).join("");
+    }
+
+    // ─── HYPE TP rollups ────────────────────────────────────────────────────
+    function renderHypeTpRollups(hypeNp) {
+      const grid = document.querySelector("#hype-tp-rollups");
+      const total = hypeNp?.static_reference?.circulating_supply?.total_supply || 0;
+      grid.innerHTML = ["24h", "7d", "30d", "90d"].map((w) => {
+        const r = hypeNp.rollups[w];
+        if (!r) return "";
+        const positive = r.net_pressure_tokens > 0;
+        const colorCls = positive ? "net-pos" : "net-neg";
+        const warn = r.coverage_complete ? "" : `<span class="warn-badge">⚠</span>`;
+        const pctSupply = total > 0 ? r.net_pressure_tokens / total : 0;
+        return `
+          <div class="kpi">
+            <div class="kpi-label">${w}${warn}</div>
+            <div class="kpi-value ${colorCls}">${fmtTokensSigned(r.net_pressure_tokens)} HYPE</div>
+            <div class="kpi-sub">${fmtUsdSigned(r.net_pressure_usd)} · ${(pctSupply * 100).toFixed(3)}%</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // ─── Charts ─────────────────────────────────────────────────────────────
+    function makeBuybackChart(buybacks) {
+      const last90 = buybacks
+        .slice()
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .slice(-90);
+      const ctx = document.getElementById("chart-buybacks").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: last90.map((r) => r.date),
+          datasets: [{
+            label: "Daily AF buyback (USD)",
+            data: last90.map((r) => r.amount_usd),
+            backgroundColor: "#10b981",
+            borderColor: "#10b981"
+          }]
+        },
+        options: chartOpts((v) => v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : `$${(v / 1e3).toFixed(0)}K`,
+                          (ctx) => `$${ctx.parsed.y.toLocaleString(undefined,{maximumFractionDigits:0})}`)
+      });
+    }
+    function makeAfBalanceChart(rows) {
+      const sorted = rows.slice().sort((a, b) => a.date.localeCompare(b.date));
+      // Downsample to weekly for cleanliness.
+      const weekly = sorted.filter((_, i, arr) => i % 7 === 0 || i === arr.length - 1);
+      const ctx = document.getElementById("chart-af-balance").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: weekly.map((r) => r.date),
+          datasets: [{
+            label: "AF balance (HYPE)",
+            data: weekly.map((r) => r.balance_tokens),
+            borderColor: "#10b981",
+            backgroundColor: "rgba(16,185,129,0.12)",
+            fill: true,
+            tension: 0.25,
+            pointRadius: 0,
+            borderWidth: 1.5
+          }]
+        },
+        options: chartOpts((v) => v >= 1e6 ? `${(v / 1e6).toFixed(0)}M` : `${(v / 1e3).toFixed(0)}K`,
+                          (ctx) => `${Math.round(ctx.parsed.y).toLocaleString()} HYPE`)
+      });
+    }
+    function chartOpts(yFmt, tipFmt) {
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#0a0a0a",
+            borderColor: "#1f1f1f",
+            borderWidth: 1,
+            titleColor: "#888",
+            bodyColor: "#f4f4f4",
+            callbacks: { label: tipFmt }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: "#666", font: { size: 10 }, maxRotation: 0, autoSkipPadding: 16 },
+            grid: { color: "#1f1f1f" }
+          },
+          y: {
+            ticks: { color: "#888", font: { size: 10 }, callback: yFmt },
+            grid: { color: "#1f1f1f" }
+          }
+        }
+      };
+    }
+
+    // ─── boot ───────────────────────────────────────────────────────────────
+    async function boot() {
+      const meta = document.getElementById("meta");
+      const err = document.getElementById("err");
+      try {
+        const [hm, np, buybacks, afHist] = await Promise.all([
+          loadJson("hm/snapshots/latest.json"),
+          loadJson("np/snapshots/latest.json").catch(() => null),
+          loadJson("onchain/hype-af/buybacks.json").catch(() => []),
+          loadJson("onchain/hype-af/treasury-history.json").catch(() => [])
+        ]);
+        meta.textContent = `As of ${hm.as_of} · generated ${hm.generated_at.slice(0, 19).replace("T", " ")}Z`;
+        renderHm(hm);
+        const hype = hm.protocols.find((p) => p.symbol === "HYPE");
+        const hypeNp = np?.protocols?.find((p) => p.symbol === "HYPE");
+        if (hype) {
+          document.getElementById("hype-section").style.display = "";
+          renderHypeKpis(hype);
+          if (hypeNp) renderHypeTpRollups(hypeNp);
+          if (buybacks.length) makeBuybackChart(buybacks);
+          if (afHist.length) makeAfBalanceChart(afHist);
+        }
+      } catch (e) {
+        err.style.display = "";
+        err.innerHTML = `<strong>Failed to load data:</strong> ${e.message}<br />` +
+          `<span style="color:#888">Run a static server from <code>dashboard/</code>:<br />` +
+          `&nbsp;&nbsp;<code>python -m http.server 8000</code> &nbsp;or&nbsp; <code>npx serve .</code><br />` +
+          `Then open <code>http://localhost:8000/debug/</code></span>`;
+        meta.textContent = "—";
+      }
+    }
+    boot();
+  </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "description": "Editorial seed for the Holder Multiple pipeline. Per-protocol inputs that DL/CG do not provide cleanly — unlock schedules, buyback rates, Category B yields, phase regimes. Combines with data/latest.json (live DL+CG snapshot) in scripts/hm/compute-hm.js to produce the HM breakdown.",
+  "as_of": "2026-05-22",
+  "notes": [
+    "Token-quantity fields (unlocks_24mo_tokens, emissions_24mo_tokens) are multiplied by live price at compute time.",
+    "Dollar fields (annual_buyback_usd, annual_holder_yield_usd) are taken as-is in v1 (lenient verification).",
+    "buyback_24mo_usd is supplied directly rather than computed as annual_buyback_usd * 2, so phased schedules (e.g. SKY Phase 1 -> Phase 3 mid-window) can be modelled precisely later.",
+    "Each $ figure carries a `verification` field per the Buyback Quality Framework: `onchain` | `governance_stated` | `proxy`. v1 is lenient — most rows are governance_stated."
+  ],
+  "protocols": {
+    "sky": {
+      "slug": "sky",
+      "name": "Sky",
+      "symbol": "SKY",
+      "config_symbol": "SKY",
+      "category": "CDP",
+      "phase": {
+        "active": "phase_1",
+        "notes": "Phase 1 of TMF framework. SBE bypassed during ABC fill (~15 months base case from Apr 2026). 40% of net revenue → ABC, 40% → SKY stakers (as USDS), 20% → Security/Maintenance.",
+        "stable_state": "phase_3"
+      },
+      "article_price_usd": 0.0815,
+      "article_circulating_tokens": 23210000000,
+      "unlocks_24mo_tokens": 0,
+      "unlocks_24mo_notes": "98.9% circulating; no remaining schedule",
+      "emissions_24mo_tokens": 0,
+      "emissions_24mo_notes": "Staking yield paid in USDS, not new SKY",
+      "annual_buyback_usd": 0,
+      "annual_buyback_notes": "SBE bypassed during Phase 1",
+      "annual_buyback_verification": "governance_stated",
+      "buyback_24mo_usd": 0,
+      "annual_holder_yield_usd": 72000000,
+      "annual_holder_yield_notes": "40% × $180.73M net revenue paid in USDS to stkSKY — Category B external cashflow yield to native-token stakers",
+      "annual_holder_yield_verification": "governance_stated",
+      "sources": ["DefiLlama", "Skyeco dashboard", "Sky governance forum"]
+    },
+    "aave": {
+      "slug": "aave",
+      "name": "Aave",
+      "symbol": "AAVE",
+      "config_symbol": "AAVE",
+      "category": "Lending",
+      "phase": {
+        "active": "current",
+        "notes": "ARFC $30M/yr buyback budget (cut from original $50M). AWW Framework commits 100% product revenue to DAO."
+      },
+      "article_price_usd": 93.61,
+      "article_circulating_tokens": 15180000,
+      "unlocks_24mo_tokens": 0,
+      "unlocks_24mo_notes": "No team vesting; 99.9% circulating",
+      "emissions_24mo_tokens": 285000,
+      "emissions_24mo_notes": "Safety Module + Service Provider compensation (285K AAVE over 24mo)",
+      "annual_buyback_usd": 30000000,
+      "annual_buyback_notes": "ARFC $30M/yr budget; matches 2026 actual run-rate",
+      "annual_buyback_verification": "onchain",
+      "buyback_24mo_usd": 60000000,
+      "annual_holder_yield_usd": 0,
+      "annual_holder_yield_notes": "No Category B yield — Safety Module rewards are stkAAVE emissions (Category C, dilution rebate)",
+      "annual_holder_yield_verification": "governance_stated",
+      "sources": ["DefiLlama", "TokenLogic dashboard", "Aave governance forum"]
+    },
+    "hyperliquid": {
+      "slug": "hyperliquid",
+      "name": "Hyperliquid",
+      "symbol": "HYPE",
+      "config_symbol": "HYPE",
+      "category": "Derivatives",
+      "phase": {
+        "active": "current",
+        "notes": "Assistance Fund captures ~99% of revenue for HYPE buybacks. Team vesting cliff active."
+      },
+      "article_price_usd": 44.00,
+      "article_circulating_tokens": 298400000,
+      "unlocks_24mo_tokens": 208300000,
+      "unlocks_24mo_notes": "Y1 119M + Y2 89.3M team unlocks (Tokenomist scheduled rate)",
+      "emissions_24mo_tokens": 6800000,
+      "emissions_24mo_notes": "Staking emissions paid from Future Emissions allocation (Category C — added to dilution side)",
+      "annual_buyback_usd": 619000000,
+      "annual_buyback_notes": "30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present)",
+      "annual_buyback_verification": "onchain",
+      "buyback_24mo_usd": 1240000000,
+      "onchain_buybacks_path": "data/onchain/hype-af/buybacks.json",
+      "onchain_buyback_annualize_days": 60,
+      "onchain_buyback_min_days": 14,
+      "onchain_circulating_path": "data/external/asxn/af-buyback-metrics.json",
+      "onchain_circulating_jsonpath": "current_metrics.circulating_supply",
+      "annual_holder_yield_usd": 0,
+      "annual_holder_yield_notes": "No Category B — staking rewards are HYPE-denominated dilution rebate (Category C)",
+      "annual_holder_yield_verification": "governance_stated",
+      "sources": ["DefiLlama", "Hyperliquid Info API", "Tokenomist", "Hyperliquid docs"]
+    },
+    "lighter": {
+      "slug": "lighter",
+      "name": "Lighter",
+      "symbol": "LIT",
+      "config_symbol": "LIT",
+      "category": "Derivatives",
+      "phase": {
+        "active": "current",
+        "notes": "TGE float. 99.5% of post-LLP revenue used to algorithmically buy back LIT. Team/investor cliff Dec 22 2026."
+      },
+      "article_price_usd": 0.91,
+      "article_circulating_tokens": 250000000,
+      "unlocks_24mo_tokens": 216000000,
+      "unlocks_24mo_notes": "54M Y1 + 162M Y2; cliff Dec 22 2026 unlocks 13.5M/mo across 36mo linear",
+      "emissions_24mo_tokens": 22270000,
+      "emissions_24mo_notes": "Staking emissions over 24mo (Category C)",
+      "annual_buyback_usd": 25530000,
+      "annual_buyback_notes": "99.5% × post-LLP revenue (LLP collects liquidation fees first)",
+      "annual_buyback_verification": "governance_stated",
+      "buyback_24mo_usd": 51060000,
+      "annual_holder_yield_usd": 0,
+      "annual_holder_yield_notes": "No Category B — staking yield is LIT-denominated (Category C)",
+      "annual_holder_yield_verification": "governance_stated",
+      "sources": ["DefiLlama", "Lighter docs"]
+    }
+  }
+}

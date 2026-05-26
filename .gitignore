@@ -1,0 +1,26 @@
+# Secrets
+.env
+.env.local
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+out/
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

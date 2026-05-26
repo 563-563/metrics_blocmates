@@ -1,0 +1,690 @@
+{
+  "tokens": [
+    {
+      "symbol": "MORPHO",
+      "name": "Morpho",
+      "coingecko_id": "morpho",
+      "defillama_slug": "morpho",
+      "category": "Lending",
+      "value_accrual": {
+        "mechanism": "fee-share",
+        "status": "proposed",
+        "execution_type": "discretionary",
+        "accrual_base": "revenue",
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "Fee switch exists but not yet activated. Governance vote needed. Est. ~$20M/yr when live."
+      }
+    },
+    {
+      "symbol": "AAVE",
+      "name": "Aave",
+      "coingecko_id": "aave",
+      "defillama_slug": "aave",
+      "category": "Lending",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "AFC/TokenLogic TWAP buybacks, $30M/yr budget (cut from $50M). AWW Framework commits 100% product rev. $42M executed over 10mo. ~21% of revenue at current budget."
+      }
+    },
+    {
+      "symbol": "SYRUP",
+      "name": "Maple Finance",
+      "coingecko_id": "syrup",
+      "defillama_slug": "maple",
+      "category": "Lending",
+      "value_accrual": {
+        "mechanism": "none",
+        "status": "none",
+        "execution_type": null,
+        "accrual_base": null,
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "No documented mechanism routing institutional lending revenue to SYRUP holders. syrupUSDC is a separate yield product."
+      }
+    },
+    {
+      "symbol": "HYPE",
+      "name": "Hyperliquid",
+      "coingecko_id": "hyperliquid",
+      "defillama_slug": "hyperliquid",
+      "category": "Derivatives",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "97% of all protocol fees to AF address 0xfefe...fefe which buys back HYPE. Tokens accumulate in AF (not burned \u2014 protocol-owned treasury). L1-embedded, daily, automatic. Hyperliquid L1 not on Dune \u2014 using DeFi Llama revenue as proxy."
+      }
+    },
+    {
+      "symbol": "UNI",
+      "name": "Uniswap",
+      "coingecko_id": "uniswap",
+      "defillama_slug": "uniswap",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "buyback-burn",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "17% of LP fees \u2192 TokenJar \u2192 Firepit burn. Active since Dec 2025. DL revenue_1y = protocol's share of fees. 100% of that goes to Firepit."
+      }
+    },
+    {
+      "symbol": "SKY",
+      "name": "Sky",
+      "coingecko_id": "sky",
+      "defillama_slug": "sky-lending",
+      "category": "CDP",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "paused",
+        "execution_type": "discretionary",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "$20.6M executed Q1 2026, then paused in Q2. Margin-dependent. ~30% of revenue when active. Watch for resumption."
+      }
+    },
+    {
+      "symbol": "ENA",
+      "name": "Ethena",
+      "coingecko_id": "ethena",
+      "defillama_slug": "ethena",
+      "category": "Basis Trading",
+      "value_accrual": {
+        "mechanism": "none",
+        "status": "none",
+        "execution_type": null,
+        "accrual_base": "revenue",
+        "accrual_pct": 0.012,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-17",
+        "notes": "99% of gross revenue passes to sUSDe holders by design. ENA captures only ~$2.6M of $212M fees (mint fees only). Core lesson: protocol value \u2260 token value."
+      }
+    },
+    {
+      "symbol": "MET",
+      "name": "Meteora",
+      "coingecko_id": "meteora",
+      "defillama_slug": "meteora",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "fee-share",
+        "status": "proposed",
+        "execution_type": "discretionary",
+        "accrual_base": "revenue",
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "Fee-sharing proposed but not yet live. MET staking with protocol fee-share in development."
+      }
+    },
+    {
+      "symbol": "RAY",
+      "name": "Raydium",
+      "coingecko_id": "raydium",
+      "defillama_slug": "raydium",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "buyback-burn",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "12% of all trading fees \u2192 automatic RAY buyback & burn. 71M RAY burned to date. Note: uses fees_1y as base (not revenue_1y)."
+      }
+    },
+    {
+      "symbol": "JTO",
+      "name": "Jito",
+      "coingecko_id": "jito-governance-token",
+      "defillama_slug": "jito",
+      "category": "Liquid Staking",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "revenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "CSD sub-DAO committed to 100% of network revenue. $3.2M executed via TWAP as of Oct 2025. 4/6 multisig. JIP-24 routes all Block Engine + BAM fees to DAO."
+      }
+    },
+    {
+      "symbol": "AERO",
+      "name": "Aerodrome",
+      "coingecko_id": "aerodrome-finance",
+      "defillama_slug": "aerodrome",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "fee-share-lockers",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "revenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "100% of trading fees \u2192 veAERO lockers. No protocol treasury take. Algorithmic, structural. Revenue exceeded emissions Oct 2025. $295M+ cumulative distributed."
+      }
+    },
+    {
+      "symbol": "CLOUD",
+      "name": "Sanctum",
+      "coingecko_id": "sanctum-2",
+      "defillama_slug": "sanctum",
+      "category": "Liquid Staking",
+      "value_accrual": {
+        "mechanism": "none",
+        "status": "none",
+        "execution_type": null,
+        "accrual_base": null,
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "Zero protocol revenue flows to CLOUD. Protocol earns ~$6M/yr, retained by treasury. ASR was CLOUD emissions, not protocol revenue. Community discussions ongoing."
+      }
+    },
+    {
+      "symbol": "KMNO",
+      "name": "Kamino",
+      "coingecko_id": "kamino",
+      "defillama_slug": "kamino",
+      "category": "Lending",
+      "value_accrual": {
+        "mechanism": "none",
+        "status": "none",
+        "execution_type": null,
+        "accrual_base": null,
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "Protocol captures ~18% of fees (~$10M revenue) to treasury. No buyback, burn, or fee-share for KMNO token."
+      }
+    },
+    {
+      "symbol": "ONDO",
+      "name": "Ondo Finance",
+      "coingecko_id": "ondo-finance",
+      "defillama_slug": "ondo-finance",
+      "category": "RWA",
+      "value_accrual": {
+        "mechanism": "fee-share",
+        "status": "proposed",
+        "execution_type": "discretionary",
+        "accrual_base": "revenue",
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "Governance-only token today. Fee switch scheduled H2 2026. Ondo Chain mainnet may add gas/staking role. Zero confirmed accrual currently."
+      }
+    },
+    {
+      "symbol": "FLUID",
+      "name": "Fluid",
+      "coingecko_id": "instadapp",
+      "defillama_slug": "fluid",
+      "category": "Lending",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "100% of mainnet revenue \u2192 FLUID buybacks. Approved and active since Oct 2025. Fully algorithmic, no discretion."
+      }
+    },
+    {
+      "symbol": "EUL",
+      "name": "Euler",
+      "coingecko_id": "euler",
+      "defillama_slug": "euler",
+      "category": "Lending",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-21",
+        "notes": "FeeFlow automated on-chain buyback mechanism. ~$1.82M annualized. ~1.5% supply repurchased annually."
+      }
+    },
+    {
+      "symbol": "CARDS",
+      "name": "Collector Crypt",
+      "coingecko_id": "collector-crypt",
+      "defillama_slug": "collector-crypt",
+      "category": "Gaming",
+      "value_accrual": {
+        "mechanism": "buyback-burn",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "revenue",
+        "accrual_pct": 0.875,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "85-90% of pack revenue \u2192 CARDS buyback & burn at market. Built into every pack purchase on Solana. Most aggressive mechanism in portfolio."
+      }
+    },
+    {
+      "symbol": "DRIFT",
+      "name": "Drift",
+      "coingecko_id": "drift-protocol",
+      "defillama_slug": "drift",
+      "category": "Derivatives",
+      "value_accrual": {
+        "mechanism": "none",
+        "status": "none",
+        "execution_type": null,
+        "accrual_base": null,
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "$285M exploit April 2026, operations paused. DRIFT staking = fee discounts only, not yield. $1M buyback DIP-4 proposed but not confirmed executing. DIP-9 sends $1.5M/mo to Drift Labs."
+      }
+    },
+    {
+      "symbol": "DOLO",
+      "name": "Dolomite",
+      "coingecko_id": "dolomite",
+      "defillama_slug": "dolomite",
+      "category": "Lending",
+      "value_accrual": {
+        "mechanism": "fee-share",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "revenue",
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-17",
+        "notes": "Fee-share mechanism exists but entirely WLFI-partnership dependent. Flow to DOLO token holders unconfirmed. TVL impaired ($399M\u2192$140M). accrual_pct=0 pending confirmation."
+      }
+    },
+    {
+      "symbol": "PENDLE",
+      "name": "Pendle",
+      "coingecko_id": "pendle",
+      "defillama_slug": "pendle",
+      "category": "Yield Trading",
+      "value_accrual": {
+        "mechanism": "fee-share-lockers",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-17",
+        "notes": "80% of swap fees + all YT yield \u2192 vePENDLE. Smart contract enforced, no governance discretion. sPENDLE provides liquid staking alternative."
+      }
+    },
+    {
+      "symbol": "LDO",
+      "name": "Lido DAO",
+      "coingecko_id": "lido-dao",
+      "defillama_slug": "lido",
+      "category": "Liquid Staking",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "conditional",
+        "execution_type": "conditional",
+        "accrual_base": "revenue",
+        "accrual_pct": 0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-17",
+        "notes": "$20M discretionary buyback approved Apr 13 2026, not executing yet. NEST automated buybacks conditional on ETH >$3K. Zero accrual until first tranche executes."
+      }
+    },
+    {
+      "symbol": "CC",
+      "name": "Canton Network",
+      "coingecko_id": "canton-network",
+      "defillama_slug": null,
+      "category": "Institutional Infra",
+      "manual_data_note": "Not tracked on DefiLlama. Fee/TVL data requires manual sourcing from The Tie (canton.thetie.io) and Cantonscan (cantonscan.com). See notes/CANTON.md for full analysis.",
+      "value_accrual": {
+        "mechanism": "burn-mint",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "fees",
+        "accrual_pct": 1.0,
+        "tracking_source": "manual",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "100% of fees burned. Separate mint for validators/apps. Currently net inflationary (~4x mints vs burns). Burn/mint ratio target = 1.0. Use DL fees as burn proxy."
+      }
+    },
+    {
+      "symbol": "GMX",
+      "name": "GMX",
+      "coingecko_id": "gmx",
+      "defillama_slug": "gmx",
+      "category": "Derivatives",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "paused",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "27% of V2 fees (30% V1) \u2192 algorithmic weekly Deposit-Buy-Withdraw cycle. Buybacks ARE executing on-chain (2M+ GMX repurchased since end-2024, verified in GMX dApp). PAUSED status = distribution suspended until GMX >= $90 (March 2026 DAO vote). Current price $6.20 = 14.5x below gate. Accumulating in Treasury."
+      }
+    },
+    {
+      "symbol": "DYDX",
+      "name": "dYdX",
+      "coingecko_id": "dydx-chain",
+      "defillama_slug": "dydx",
+      "category": "Derivatives",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-20",
+        "notes": "75% of fees \u2192 TWAP buyback by Treasury SubDAO (on-chain, verifiable). 8.46M DYDX repurchased through Jan 2026. Stakers earn 15% of fees in USDC. WARNING: forward fee run rate $3.9M/yr (84% YoY collapse). Bought tokens are staked to validators, not burned. accrual_pct=0.75 but accrual_annual_est will be severely overstated if DeFi Llama reports TTM fees \u2014 use ann_rev_override in DEEP_DIVES."
+      }
+    },
+    {
+      "symbol": "GNS",
+      "name": "Gains Network",
+      "coingecko_id": "gains-network",
+      "defillama_slug": "gains-network",
+      "category": "Derivatives",
+      "value_accrual": {
+        "mechanism": "buyback-burn",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "MODEL CHANGED LATE 2024: SSS (real yield in DAI) discontinued. Now pure BB&B: algorithmic GNS buyback at 1hr TWAP +1% premium, then permanent burn. Stakers earn ZERO cash yield. DeFi Llama confirmed (2026-04-16): fees_1y $5.19M, revenue_1y $3.32M, holdersRevenue_1y $2.37M. Revenue collapsed ~83% from 2024 peak ($24.5M gross \u2192 $5.19M). Verdict PASS: Token FV $18.5M \u2248 Mcap $16.81M (+10% only), Kelly negative. Upgrade trigger: quarterly fees >$3.75M (\u2192 $15M annualized) for 2 consecutive quarters. accrual_pct=0.46 (holders rev $2.37M / gross fees $5.19M)."
+      }
+    },
+    {
+      "symbol": "ETHFI",
+      "name": "ether.fi",
+      "coingecko_id": "ether-fi",
+      "defillama_slug": "ether-fi",
+      "category": "Liquid Staking",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "10% of protocol revenue allocated to ETHFI value accrual: 5% \u2192 buyback+burn (open market), 5% \u2192 sETHFI staker distributions (DAO Proposal #8). Additional $50M treasury buyback approved Nov 2025 (triggers at price < $3 \u2014 ACTIVE at $0.45). $6.5M+ cumulative buybacks verified on-chain, >85% burned. Revenue ~$55-65M/yr at $2,340 ETH (severely ETH-price dependent). TTM DeFi Llama fees ($175M) backward-weighted to ETH ATH."
+      }
+    },
+    {
+      "symbol": "CRV",
+      "name": "Curve Finance",
+      "coingecko_id": "curve-dao-token",
+      "defillama_slug": "curve-dex",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "fee-share-lockers",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "fees",
+        "accrual_pct": 0.123,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "50% of admin fee (not 50% of total trading fees) \u2192 veCRV weekly, swapped to crvUSD. Effective rate: 12.3% of gross user fees (DL holdersRevenue $4.8M / gross fees $39M). Plus crvUSD borrow fees ~$1.35M/yr fwd. Combined veCRV income ~$6M/yr. PASS verdict: Token FV $0.058 vs $0.23 current (-75%). Emissions ~$23-30M/yr >> $6M revenue. Egorov loan overhang largely resolved by early 2025. FDV $546.7M primary (>30% supply not circulating). accrual_pct=0.123 reflects true holdersRevenue/fees ratio \u2014 NOT 50%."
+      }
+    },
+    {
+      "symbol": "ORCA",
+      "name": "Orca",
+      "coingecko_id": "orca",
+      "defillama_slug": "orca",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "40% of Whirlpool protocol fees \u2192 algorithmic xORCA buybacks (increased from 20% in Jan 2026). DL holdersRevenue confirms execution: $77.8K/30d \u2192 $933K/yr. 24-month program approved Aug 2025 with ~55K SOL treasury backstop + 30% ongoing fees. DL ratio ~20% (partial-period average since Jan 2026 increase). Deep dive: PASS. Protocol revenue $4.67M/yr fwd (TTM $23.8M, -80%). Token FV $40.9M vs FDV $68.9M (-41%). Upgrade: 30d revenue \u2265 $1.67M for 2 consecutive months."
+      }
+    },
+    {
+      "symbol": "COW",
+      "name": "CoW Protocol",
+      "coingecko_id": "cow-protocol",
+      "defillama_slug": "cowswap",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "revenue",
+        "accrual_pct": 0.8,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-17",
+        "notes": "Net-negative emissions buyback: CIP mandates buybacks \u2265 1.2\u00d7 weekly token emissions, making supply deflationary. ~80% of DAO revenue estimated to buybacks to maintain the ratio. DL holdersRevenue = $0 (DL does not categorize DAO treasury buybacks as holdersRevenue \u2014 cannot confirm execution via API). Protocol revenue $10.4M/yr fwd (TTM $37.6M, -72%). Deep dive: PASS. Token FV $77.7M vs FDV $190.1M primary (-59%). Upgrade: 30d revenue \u2265 $1.67M; DL holdersRevenue > $0."
+      }
+    },
+    {
+      "symbol": "ZRO",
+      "name": "LayerZero",
+      "coingecko_id": "layerzero",
+      "defillama_slug": "layerzero",
+      "category": "Infrastructure",
+      "value_accrual": {
+        "mechanism": "buyback-burn",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-19",
+        "notes": "Fee switch activated Dec 2025 (97% community vote) \u2014 100% of LZ fees \u2192 ZRO burn (DL confirmed: holdersRevenue = fees = $249K/30d). Stargate V2 50% of bridge fees \u2192 ZRO buybacks (unverified by DL holdersRevenue). Total ZRO-attributable ~$4.05M/yr. FDV $1.937B primary (74.8% supply not yet circulating). Deep dive: PASS. Token FV $31.6M vs FDV -98.4%. Requires ~$270M/yr in fees to justify FDV (6,500\u00d7 current). Sept 2025: 50M ZRO buyback from investors at $150M ($3/ZRO)."
+      }
+    },
+    {
+      "symbol": "SNX",
+      "name": "Synthetix",
+      "coingecko_id": "havven",
+      "defillama_slug": "synthetix",
+      "category": "Derivatives",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "unverified",
+        "execution_type": "algorithmic",
+        "accrual_base": "revenue",
+        "accrual_pct": 0.5,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "Q1 2026 tokenomics reset (SIP-2043): SNX inflation ended, 100% of perps trading fees \u2192 SNX buybacks (50/50 split with sUSD stability until peg restored, then 100%). DL shows $0 fees/revenue all recent periods under all slugs (synthetix, synthetix-v3) \u2014 execution UNVERIFIED. Config claims $4.5M in first 6 weeks ($39M/yr annualized) \u2014 unconfirmed. Mcap \u2248 FDV ($104M, no vesting overhang \u2014 rare). Deep dive: PASS (data gap). If $39M/yr confirmed: Token FV $342.6M (+229%). Must verify on-chain. CoinGecko ID is legacy 'havven'."
+      }
+    },
+    {
+      "symbol": "USUAL",
+      "name": "Usual Money",
+      "coingecko_id": "usual",
+      "defillama_slug": "usual",
+      "category": "Stablecoin",
+      "value_accrual": {
+        "mechanism": "fee-share",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "revenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "dune",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "Fee switch Jan 7 2025 \u2014 up to 100% of protocol revenue to USUALx stakers in USD0. DL holdersRevenue shows near-zero execution: $3.6K/30d (0.16% of $2.22M/30d revenue). TTM distribution rate was 8.4% at peak TVL. TVL collapsed -94% from $1.7B (Jan 2025) to $107.6M. Deep dive: PASS (data gap). Protocol revenue $26.6M/yr is real; if distribution restored to 100%, Token FV $156.9M vs Mcap $23.9M (+556%). Verify USUALx distribution on-chain. Current: near ATL ($0.01049 Oct 2025), current $0.0138."
+      }
+    },
+    {
+      "symbol": "PUMP",
+      "name": "pump.fun",
+      "coingecko_id": "pump-fun",
+      "defillama_slug": "pump.fun",
+      "category": "Launchpad",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "DL confirmed: holdersRevenue $29.1M/30d \u2248 fees $22.1M/30d (near-100% of revenue to PUMP buybacks). Protocol revenue = gross fees (100% retention \u2014 no LP share). $264.8M/yr fwd (TTM $391.7M, -32%). 23.2% annual buyback yield on Mcap $1.14B. FDV $1.933B primary (41% supply unvested). Deep dive: WATCHLIST. Token FV $1.776B: -8.1% vs FDV, +55.8% vs Mcap. Edge 0.097 bits. ATL Apr 2, 2026 (14 days ago)."
+      }
+    },
+    {
+      "symbol": "RLB",
+      "name": "Rollbit",
+      "coingecko_id": "rollbit-coin",
+      "defillama_slug": null,
+      "category": "Gaming",
+      "manual_data_note": "Centralized crypto casino \u2014 no on-chain TVL tracked by DeFi Llama. Revenue/fee data requires manual sourcing from Rollbit analytics or on-chain burn tracking.",
+      "value_accrual": {
+        "mechanism": "buyback-burn",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "fees",
+        "accrual_pct": 0.2,
+        "tracking_source": "manual",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "Hourly buyback-and-burn: ~10% casino + ~20% sportsbook + ~30% trading fees (blended ~20%). 3.296B RLB burned (65.9% of max supply 5B \u2192 current total 1.704B). No DL entry (centralized casino). Config revenue estimate: $18-30M/month GGR \u2192 $43-72M/yr buyback \u2014 UNVERIFIED. Deep dive: PASS (unverified revenue). If $18M+/month confirmed: Token FV $292M vs Mcap $98.35M (+197%). Verify via on-chain burn velocity at RLB token contract."
+      }
+    },
+    {
+      "symbol": "JUP",
+      "name": "Jupiter Exchange",
+      "coingecko_id": "jupiter-exchange-solana",
+      "defillama_slug": "jupiter",
+      "category": "DEX",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "discretionary",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-16",
+        "notes": "DL confirmed executing: 30d holdersRevenue $2.44M \u2192 $29.3M/yr (50% of protocol revenue). New mechanism active from 2025-02-17 (revenue-funded, not treasury-funded). All-time buybacks $90.9M. Original $70M treasury program exhausted 2024; Feb 2025 replaced with permanent 50% revenue allocation. Current protocol revenue $58.6M/yr (30d \u00d7 12). FDV primary ($1.191B, 48% supply unvested per CLAUDE.md). Verify 3-year lock still applies to Feb 2025+ program."
+      }
+    },
+    {
+      "symbol": "MNDE",
+      "name": "Marinade Finance",
+      "coingecko_id": "marinade",
+      "defillama_slug": "marinade",
+      "category": "Liquid Staking",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "revenue",
+        "accrual_pct": 0.5,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-21",
+        "notes": "DL confirmed executing: holdersRevenue $171K/30d \u2192 $2.05M/yr (3\u00d7 TTM $675K \u2014 buyback was paused Dec 2025, has since resumed at higher rate). 50% of protocol revenue to MNDE buybacks. Protocol revenue $4.11M/yr fwd (TTM $7.15M, -43%). TVL $603.3M. Deep dive: WATCHLIST. Token FV $42.1M vs Mcap $10.67M (+295%). Conviction REDUCED to 0.20 (from 0.40) on 2026-04-21 user review: Jito dominance + MNDE supply overhang is too risky — bull case requires recapturing LST share vs entrenched Jito monopoly."
+      }
+    },
+    {
+      "symbol": "HNT",
+      "name": "Helium",
+      "coingecko_id": "helium",
+      "defillama_slug": "helium-network",
+      "category": "DePIN",
+      "value_accrual": {
+        "mechanism": "burn-mint",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-21",
+        "notes": "Burn-and-mint equilibrium with 1%-capped net re-emission (HIP-20). DeFi Llama (helium-network) confirmed tracking: fees $17.58M/yr annualized (= revenue = holders revenue for burn-mint model). Q1 2026 annualized net economic earnings $5.7M (gross DC burns $15.5M minus HNT emissions cost $9.8M). Breakeven crossed Q4 2025. 43.9% of Mobile DC burns = carrier offload (AT&T/Movistar/T-Mobile/Wefi/Google Orion external cash). 100%-subscriber-burn program suspended Jan 2, 2026. Current 7D net inflation: -5% (genuinely deflationary). Deep dive: PASS at $1.05 (edge -0.24 bits). Better entry \u2264$0.70."
+      }
+    },
+    {
+      "symbol": "LIT",
+      "name": "Lighter",
+      "coingecko_id": "lighter",
+      "defillama_slug": "lighter",
+      "category": "Derivatives",
+      "value_accrual": {
+        "mechanism": "buyback",
+        "status": "executing",
+        "execution_type": "algorithmic",
+        "accrual_base": "holdersRevenue",
+        "accrual_pct": 1.0,
+        "tracking_source": "defillama",
+        "dune_query_id": null,
+        "last_verified": "2026-04-20",
+        "notes": "DL confirmed executing: Holders Revenue (LIT buybacks from treasury) $25.53M/yr annualized. Q1 2026 Gross Rev $19.65M \u2192 $5M to LLP (liquidation fees) \u2192 $14.65M earnings \u2192 $14.58M buyback (99.5% of earnings). 58.3% of 250M circulating is staked. 866K cumulative accounts. Cost leadership verified: 1.1 bps vs HYPE 4.9 bps for $100K BTC. Deep dive: WATCHLIST at $0.91 for 6-9mo pre-cliff trade. Edge +0.118 bits at conviction 0.40, upside $3.00, downside $0.50. HARD EXIT Oct-Nov 2026 before Jan 2027 cliff (13.5M LIT/mo team+VC unlocks). Classic DyDX-shape rip-before-cliff setup."
+      }
+    }
+  ]
+}

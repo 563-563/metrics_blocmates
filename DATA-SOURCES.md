@@ -24,8 +24,8 @@ These serve multiple protocols.
 | Provider | Coverage | Auth | Cost (current usage) | Cadence | Status |
 |---|---|---|---|---|---|
 | **Alchemy** | Ethereum mainnet, HyperEVM (chain 999), and dozens of L2s | API key (`ALCHEMY_API_KEY`) | Free tier 300M compute units/month — plenty | hourly | ✓ key in `.env`, not yet hitting it |
-| **Etherscan API** | Ethereum mainnet (and forks) — backup for tx history & contract verification | API key | Free tier 5 req/sec, 100k/day | one-shot | ✗ need key — sign up at etherscan.io/apis |
-| **zkLighter direct RPC** | zkLighter L2 (`https://mainnet.zklighter.elliot.ai`) — Lighter's custom REST | None (rate-limited per IP) | Free, public | hourly | ✗ not yet wired |
+| **Etherscan API** | Ethereum mainnet (and forks) — backup for tx history & contract verification | API key | Free tier 5 req/sec, 100k/day | one-shot | ✓ key in `.env` as `ETHERSCAN_API_KEY`. **Use V2 endpoint** `https://api.etherscan.io/v2/api?chainid=1&...` — V1 is deprecated. Free tier excludes `tokenholderlist` and `tokeninfo` (Pro-only) |
+| **zkLighter REST API** | zkLighter L2 (`https://mainnet.zklighter.elliot.ai`) — Lighter's custom REST | Mixed — `/orderBooks` is unauth ✓, `/trades` requires API key ✗ | Free, public | hourly | ◐ probed 2026-05-26: orderBooks works unauthed, trades needs Lighter API key (must register via their Python SDK) |
 | **Pyth on-chain price oracle** | Cross-chain BTC/ETH/SOL/HYPE-perp/LIT | None for read | Free public read | live | ◐ alternative to CG if we want live price |
 
 ### Price feeds (alternatives / supplements to current DL+CG)
@@ -161,9 +161,13 @@ These serve multiple protocols.
 | Per-day price | CG market_chart | None | daily | ✗ to wire |
 
 **What's needed to go live for SKY**
-1. Alchemy API key — ✓
-2. Editorial research on USDS-to-stkSKY distribution mechanism — needs human time, not API key
+
+Updated 2026-05-26:
+
+1. ✓ Alchemy API key
+2. ⚠ **Distribution mechanism is ambiguous from public-facing sources.** Public docs/blogs describe TWO different stories: (a) Sky Staking Engine receives bought-back SKY as rewards (which would be Cat A + redistribute, not Cat B), and (b) the article we're tracking states "40% × $180.73M net revenue paid in USDS to stkSKY" (Cat B). Could be both, phase-dependent. **Resolve by reading Sky Staking Engine contract events on Etherscan directly** — look at what asset types flow OUT of the Staking Engine to stakers (USDS Transfer? SKY Transfer? Both?). This is on-chain truth + 30 min of inspection. Until resolved, our HM seed's Cat B figure for SKY is the **largest source of HM uncertainty in the cohort**.
 3. ChainLog resolver helper + adapters — ~6 hrs work
+4. Find the actual Sky Staking Engine address — not in ChainLog under a documented key yet; check `forum.sky.money` for the September 2024 executive that deployed it.
 
 ---
 
@@ -196,10 +200,14 @@ These serve multiple protocols.
 | Per-day price | CG market_chart + zkLighter `/api/v1/orderBookDetails` cross-check | None / TBD | daily | ✗ to wire |
 
 **What's needed to go live for LIT**
-1. **Confirm zkLighter API requires/doesn't require an API key** — first test request from the new repo
-2. **Discover protocol buyback account_index** — via Lighter SDK examples or governance docs
-3. **Discover L1 vesting contract addresses** — Etherscan top-holders inspection
-4. Build adapters — ~5 hrs
+
+Updated 2026-05-26 from live probes:
+
+1. ✓ **zkLighter `/orderBooks` accessible unauth** — confirmed. LIT/USDC spot market is `market_id: 2049`. LIT perp is `market_id: 120`.
+2. ✗ **zkLighter `/trades` requires authentication** — `auth query param and Authorization header are empty` on every call. Register an API key via the Lighter Python SDK (`github.com/elliottech/lighter-python/examples/system_setup.py`) and store as `LIGHTER_API_KEY` + `LIGHTER_ACCOUNT_INDEX`. **This is the v1 blocker for the LIT buyback adapter.**
+3. ✗ **Protocol buyback account_index not surfaced in public docs.** `publicPoolsMetadata?filter=protocol` returned an empty array. Three paths once we have an API key: (a) query trades on `market_id=2049`, look for repeated systematic buy-side fills to discover the protocol account; (b) ask Lighter directly on Discord/Twitter; (c) wait for Lighter to announce/document the address.
+4. ✗ **Discover L1 vesting contract addresses** — Etherscan's `tokenholderlist` endpoint is Pro-only (free tier blocked). Alchemy's transfer-log enumeration is the workaround: pull `alchemy_getAssetTransfers` from the LIT contract's deployment block forward, find the largest initial mints to identify vesting/treasury wallets. ~30 min of inspection work.
+5. Build adapters — ~5 hrs once items 2-4 are resolved.
 
 ---
 
@@ -223,15 +231,21 @@ Honest read:
 
 Things to sign up for / verify, in priority order:
 
-1. **Etherscan API key** (free, 5 min) — `https://etherscan.io/apis`. Used as backup tx-history source + contract metadata for AAVE / SKY. We'll need it the moment the AAVE adapter starts. **You sign up; paste into `.env` as `ETHERSCAN_API_KEY`.**
+1. ✓ **Etherscan API key** — done. V2 endpoint is the right one to call.
 
-2. **Verify zkLighter L2 access** (free, 15 min) — test request to `https://mainnet.zklighter.elliot.ai/api/v1/orderBooks` from outside a browser. If unauth works, we're set. If not, check their docs for API key signup. **I can run the probe once you say go.**
+2. ✓ **zkLighter `/orderBooks` unauth access verified** — done. `/trades` still needs auth (see next item).
 
-3. **Lighter SDK + buyback account_index** (free, 30 min) — clone `github.com/elliottech/lighter-python`, run `examples/system_setup.py`, look for protocol-owned account indices in the docs/Discord. **You poke around or ask the Lighter team; I synthesize what comes back.**
+3. ✗ **Lighter API key** (~30 min, free) — sign up via the SDK setup flow at `github.com/elliottech/lighter-python/blob/main/examples/system_setup.py`. Returns `(API_KEY, ACCOUNT_INDEX)` pair tied to an L1 address. Store as `LIGHTER_API_KEY` and `LIGHTER_ACCOUNT_INDEX` in `.env`. **You sign up; paste in.** This unblocks both `/trades` queries and the discovery of the protocol's buyback account_index.
 
-4. **Editorial research on SKY USDS-yield mechanism** (no API, ~1 hr) — confirm exactly which contract distributes USDS to stkSKY holders. ChainLog reads + Sky governance forum will resolve. **I can do this when we start SKY.**
+4. ✗ **Resolve SKY Cat B distribution mechanism** (~30 min, free) — load the Sky Staking Engine contract on Etherscan, inspect the `Transfer` events FROM the staking engine address. If they're predominantly USDS, Cat B is real; if they're predominantly SKY, our seed is mislabeled (it's Cat A redistribute, not Cat B). The Sky governance forum's September 2024 executive thread should also clarify; I can pull this when the SKY adapter starts.
 
-5. **Etherscan top-holders for LIT vesting addresses** (free, 30 min) — inspect `https://etherscan.io/token/0x232ce3bd...#balances` for big balances that look like vesting contracts. **I can do this when we start LIT.**
+5. ✗ **Discover LIT L1 vesting contract addresses** — via `alchemy_getAssetTransfers` from LIT contract's deployment block + Etherscan token-tx feed. ~30 min when we start the LIT adapter.
+
+6. **(Optional) Dune Plus** ($390/mo) — only if we want to skip writing Alchemy ingestion and use pre-indexed queries instead.
+
+7. **(Optional) CoinGecko Pro** ($129/mo) — only for live WebSocket prices on the frontend.
+
+8. **(Optional) Tokenomist API** — alternative to maintaining per-protocol `tokenomics.js` modules by hand.
 
 6. **(Optional) Dune Plus** ($390/mo) — if we want pre-indexed SKY/AAVE buyback queries instead of running our own Alchemy ingestion. Not needed if we just write the adapters.
 
@@ -243,10 +257,12 @@ Things to sign up for / verify, in priority order:
 
 ## What I already have in this repo
 
-- ✓ Alchemy key (in `.env`)
+- ✓ Alchemy key (in `.env` as `ALCHEMY_API_KEY`) — works for mainnet + HyperEVM RPC
+- ✓ Etherscan key (in `.env` as `ETHERSCAN_API_KEY`) — V2 endpoint, free tier
 - ✓ HL Info API (public, free, no key needed)
+- ✓ zkLighter `/orderBooks` unauth read — LIT/USDC spot = `market_id: 2049`
 - ✓ ASXN backfill output for HYPE (one-shot, committed to `data/external/asxn/`)
 - ✓ DefiLlama + CoinGecko free tier wired in `scripts/fetch-data.js`
-- ✓ Hourly cron via GitHub Actions, no secrets needed currently
+- ✓ Hourly cron via GitHub Actions
 
 Total monthly cost so far: **$0**.

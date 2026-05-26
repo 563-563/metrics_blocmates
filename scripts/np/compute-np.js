@@ -113,18 +113,50 @@ function loadDailyMap(seedSource) {
 }
 
 // Generate daily unlock map from a tokenomics module exposing generateUnlockSchedule.
-function loadUnlockMap(seedSource) {
-  if (!seedSource || seedSource.type !== 'deterministic_schedule') return new Map();
+// Default sell-probability by recipient type (truepressure SCHEMA defaults).
+// Net Pressure weights scheduled unlocks by how likely the recipient is to
+// actually sell — otherwise large team/vesting tranches that are mostly
+// re-staked drown out the real signal (the HYPE problem).
+// NOTE: this weighting applies ONLY to TP. HM's Adjusted MCap uses gross
+// unlocks (future supply exists whether sold or not).
+const DEFAULT_SELL_PROB = {
+  team: 0.10,
+  foundation: 0.30,
+  seed: 0.80,
+  series_a: 0.65,
+  series_b: 0.65,
+  public_sale: 0.20,
+  airdrop: 0.20,
+  advisor: 0.65
+};
+const FALLBACK_SELL_PROB = 0.30;
+
+// Returns { gross: Map<date,tokens>, adjusted: Map<date,sell-prob-weighted tokens> }.
+function loadUnlockMaps(seedSource) {
+  const empty = { gross: new Map(), adjusted: new Map() };
+  if (!seedSource || seedSource.type !== 'deterministic_schedule') return empty;
   const abs = path.join(ROOT, seedSource.module);
   const mod = require(abs);
-  if (typeof mod.generateUnlockSchedule !== 'function') return new Map();
+  if (typeof mod.generateUnlockSchedule !== 'function') return empty;
+
   const rows = mod.generateUnlockSchedule(new Date());
-  const m = new Map();
+  const allocations = mod.ALLOCATIONS || mod.HYPE_ALLOCATIONS || {};
+  const recipientByBucket = {};
+  for (const [k, v] of Object.entries(allocations)) recipientByBucket[k] = v.recipient_type;
+
+  // Per-protocol override of sell-probabilities (by recipient type) if present.
+  const sellProb = { ...DEFAULT_SELL_PROB, ...(seedSource.sell_probability_by_recipient || {}) };
+
+  const gross = new Map();
+  const adjusted = new Map();
   for (const r of rows) {
-    const prev = m.get(r.unlock_date) || 0;
-    m.set(r.unlock_date, prev + Number(r.amount_tokens));
+    const amt = Number(r.amount_tokens);
+    gross.set(r.unlock_date, (gross.get(r.unlock_date) || 0) + amt);
+    const rtype = recipientByBucket[r.bucket];
+    const p = rtype != null && sellProb[rtype] != null ? sellProb[rtype] : FALLBACK_SELL_PROB;
+    adjusted.set(r.unlock_date, (adjusted.get(r.unlock_date) || 0) + amt * p);
   }
-  return m;
+  return { gross, adjusted };
 }
 
 function daysAgoIso(n) {
@@ -147,7 +179,7 @@ function todayIso() {
 // feed begins). Each row carries `price_source_for_day` so the report can
 // flag rows that used the fallback.
 function buildDailySeries(seed, priceUsdToday) {
-  const unlocks = loadUnlockMap(seed.sources.unlocks);
+  const { gross: unlocks, adjusted: unlocksAdj } = loadUnlockMaps(seed.sources.unlocks);
   const buybacks = loadDailyMap(seed.sources.buybacks);
   const treasuryAcc = loadDailyMap(seed.sources.treasury_accumulation);
   const treasurySells = loadDailyMap(seed.sources.treasury_sells);
@@ -164,8 +196,14 @@ function buildDailySeries(seed, priceUsdToday) {
   const today = todayIso();
   const sortedDates = Array.from(dateSet).sort();
 
-  return sortedDates.map((date) => {
-    const u  = unlocks.get(date) || 0;
+  for (const m of [unlocksAdj]) {
+    for (const k of m.keys()) dateSet.add(k);
+  }
+  const sortedDates2 = Array.from(dateSet).sort();
+
+  return sortedDates2.map((date) => {
+    const u    = unlocks.get(date) || 0;        // gross scheduled unlock
+    const uAdj = unlocksAdj.get(date) || 0;     // sell-probability weighted
     const b  = buybacks.get(date) || 0;
     const ts = treasurySells.get(date) || 0;
     const bn = burns.get(date) || 0;
@@ -174,7 +212,10 @@ function buildDailySeries(seed, priceUsdToday) {
 
     const sinkTa = Math.max(ta, 0);
     const sinkNs = Math.max(ns, 0);
-    const net = (u + ts) - (b + bn + sinkTa + sinkNs);
+    // Headline net pressure uses sell-probability-weighted unlocks.
+    const net = (uAdj + ts) - (b + bn + sinkTa + sinkNs);
+    // Gross variant (100% sell-through) kept for the deep page.
+    const netGross = (u + ts) - (b + bn + sinkTa + sinkNs);
 
     const dayPrice = dailyPrice.get(date);
     const priceForUsd = dayPrice != null ? dayPrice : priceUsdToday;
@@ -184,15 +225,18 @@ function buildDailySeries(seed, priceUsdToday) {
       date,
       is_future: date > today,
       unlocks_tokens: u,
+      unlocks_tokens_adjusted: uAdj,
       treasury_sells_tokens: ts,
       buybacks_tokens: b,
       burns_tokens: bn,
       treasury_accumulation_tokens: ta,
       net_staking_lockups_tokens: ns,
       net_pressure_tokens: net,
+      net_pressure_tokens_gross: netGross,
       price_usd_for_day: priceForUsd,
       price_source_for_day: priceSource,
-      net_pressure_usd: net * priceForUsd
+      net_pressure_usd: net * priceForUsd,
+      net_pressure_usd_gross: netGross * priceForUsd
     };
   });
 }
@@ -203,29 +247,35 @@ function rollupWindow(series, windowDays, buybackDates) {
   const slice = series.filter((r) => !r.is_future && r.date > cutoff && r.date <= today);
   const sum = {
     unlocks_tokens: 0,
+    unlocks_tokens_adjusted: 0,
     treasury_sells_tokens: 0,
     buybacks_tokens: 0,
     burns_tokens: 0,
     treasury_accumulation_tokens: 0,
     net_staking_lockups_tokens: 0,
     net_pressure_tokens: 0,
+    net_pressure_tokens_gross: 0,
     // Per-day USD components — summed so the rollup reflects time-weighted price.
     unlocks_usd: 0,
     buybacks_usd: 0,
-    net_pressure_usd_perday: 0
+    net_pressure_usd_perday: 0,
+    net_pressure_usd_gross_perday: 0
   };
   let daysWithDailyPrice = 0;
   for (const r of slice) {
     sum.unlocks_tokens += r.unlocks_tokens;
+    sum.unlocks_tokens_adjusted += r.unlocks_tokens_adjusted || 0;
     sum.treasury_sells_tokens += r.treasury_sells_tokens;
     sum.buybacks_tokens += r.buybacks_tokens;
     sum.burns_tokens += r.burns_tokens;
     sum.treasury_accumulation_tokens += r.treasury_accumulation_tokens;
     sum.net_staking_lockups_tokens += r.net_staking_lockups_tokens;
     sum.net_pressure_tokens += r.net_pressure_tokens;
+    sum.net_pressure_tokens_gross += r.net_pressure_tokens_gross || 0;
     sum.unlocks_usd += r.unlocks_tokens * r.price_usd_for_day;
     sum.buybacks_usd += r.buybacks_tokens * r.price_usd_for_day;
     sum.net_pressure_usd_perday += r.net_pressure_usd;
+    sum.net_pressure_usd_gross_perday += (r.net_pressure_usd_gross || 0);
     if (r.price_source_for_day === 'daily_series') daysWithDailyPrice++;
   }
   // Buyback coverage — how many of the windowDays have an on-chain buyback observation.
@@ -286,9 +336,13 @@ function computeProtocol(seedRow, latest) {
     const usdPreferred = r.daily_price_coverage_pct > 0
       ? r.net_pressure_usd_perday
       : r.net_pressure_tokens * price;
+    const usdGrossPreferred = r.daily_price_coverage_pct > 0
+      ? r.net_pressure_usd_gross_perday
+      : r.net_pressure_tokens_gross * price;
     rollups[key] = {
       ...r,
       net_pressure_usd: usdPreferred,
+      net_pressure_usd_gross: usdGrossPreferred,
       net_pressure_usd_method: r.daily_price_coverage_pct > 0 ? 'per_day_price' : 'today_price'
     };
   }
@@ -421,6 +475,8 @@ function renderReport(snapshot) {
   lines.push('```');
   lines.push('');
   lines.push('Coverage is per-protocol. Components without an on-chain source contribute zero and are flagged `verification: n/a` in the component table for that protocol.');
+  lines.push('');
+  lines.push('Unlocks are **sell-probability weighted** (team 0.10, foundation/emissions 0.30-0.40, airdrop 0.20) so scheduled vesting that is mostly re-staked does not overstate market pressure. Gross (100% sell-through) net pressure is carried alongside as `net_pressure_usd_gross`. HM is unaffected — it uses gross 24mo unlocks for Adjusted MCap.');
   lines.push('');
   for (const p of snapshot.protocols) {
     lines.push(renderProtocolReport(p));

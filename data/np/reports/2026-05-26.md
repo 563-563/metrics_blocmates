@@ -1,6 +1,6 @@
 # Net Pressure (TP) — Cohort Snapshot
 
-**Generated:** 2026-05-26T20:27:11.391Z
+**Generated:** 2026-05-26T20:46:23.006Z
 **As-of:** 2026-05-26
 
 Formula:
@@ -10,6 +10,8 @@ Net Pressure = (Unlocks + Treasury Sells) − (Buybacks + Burns + Treasury accum
 ```
 
 Coverage is per-protocol. Components without an on-chain source contribute zero and are flagged `verification: n/a` in the component table for that protocol.
+
+Unlocks are **sell-probability weighted** (team 0.10, foundation/emissions 0.30-0.40, airdrop 0.20) so scheduled vesting that is mostly re-staked does not overstate market pressure. Gross (100% sell-through) net pressure is carried alongside as `net_pressure_usd_gross`. HM is unaffected — it uses gross 24mo unlocks for Adjusted MCap.
 
 ## Hyperliquid (HYPE)
 
@@ -21,8 +23,8 @@ Coverage is per-protocol. Components without an on-chain source contribute zero 
 |---|---|---|---|---|---|---|---|
 | 24h | 1/1d | 0 | 28.2K | 🟢 −137.3K HYPE | −$8.24M | today @ $60.05 | -0.0137% |
 | 7d | 7/7d | 0 | 98.5K | 🟢 −230.6K HYPE | −$13.71M | per-day (43%) | -0.0231% |
-| 30d | 30/30d | 17.45M | 757.6K | 🔴 +16.56M HYPE | +$694.14M | per-day (87%) | 1.6558% |
-| 90d | 90/90d | 52.34M | 3.02M | 🔴 +49.19M HYPE | +$1.81B | per-day (96%) | 4.9188% |
+| 30d | 30/30d | 17.45M | 757.6K | 🔴 +3.11M HYPE | +$122.52M | per-day (87%) | 0.3114% |
+| 90d | 90/90d | 52.34M | 3.02M | 🔴 +8.86M HYPE | +$317.50M | per-day (96%) | 0.8857% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -30,7 +32,7 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Component | Source | Verification | Note |
 |---|---|---|---|
-| unlocks | scripts/onchain/hype/tokenomics.js | onchain_equivalent |  |
+| unlocks | scripts/onchain/hype/tokenomics.js | onchain_equivalent | TP weights scheduled unlocks by sell-probability (team mostly re-stakes). HM uses gross. future_emissions is tagged foundation=0.40 since community rewards sell more than pure foundation treasury. |
 | buybacks | data/onchain/hype-af/buybacks.json | onchain |  |
 | burns | — | n/a | HYPE does not burn |
 | treasury_accumulation | — | n/a | AF is buyback_wallet not treasury_wallet — already counted as buybacks |

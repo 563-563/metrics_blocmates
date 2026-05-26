@@ -73,12 +73,15 @@ export type NpRollup = {
   daily_price_coverage_pct: number;
   daily_price_complete: boolean;
   unlocks_tokens: number;
+  unlocks_tokens_adjusted?: number;
   buybacks_tokens: number;
   burns_tokens: number;
   treasury_accumulation_tokens: number;
   net_staking_lockups_tokens: number;
   net_pressure_tokens: number;
+  net_pressure_tokens_gross?: number;
   net_pressure_usd: number;
+  net_pressure_usd_gross?: number;
   net_pressure_usd_method: "per_day_price" | "today_price";
 };
 

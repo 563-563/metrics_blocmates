@@ -23,7 +23,13 @@
         "unlocks": {
           "type": "deterministic_schedule",
           "module": "scripts/onchain/hype/tokenomics.js",
-          "verification": "onchain_equivalent"
+          "verification": "onchain_equivalent",
+          "sell_probability_by_recipient": {
+            "team": 0.10,
+            "foundation": 0.40,
+            "airdrop": 0.20
+          },
+          "note": "TP weights scheduled unlocks by sell-probability (team mostly re-stakes). HM uses gross. future_emissions is tagged foundation=0.40 since community rewards sell more than pure foundation treasury."
         },
         "buybacks": {
           "type": "daily_series",

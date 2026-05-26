@@ -28,6 +28,12 @@ export function TpRollupGrid({ np }: { np: NpProtocol }) {
             <p className="text-xs text-zinc-500 mt-0.5">
               {fmtUsdSigned(r.net_pressure_usd)} · {fmtPct(pctSupply, 3)}
             </p>
+            {r.net_pressure_usd_gross != null &&
+              Math.abs(r.net_pressure_usd_gross - r.net_pressure_usd) > 1e6 && (
+                <p className="text-[10px] text-zinc-600 mt-0.5">
+                  gross (100% sell): {fmtUsdSigned(r.net_pressure_usd_gross)}
+                </p>
+              )}
             <p className="text-[10px] text-zinc-600 mt-1">
               {r.net_pressure_usd_method === "per_day_price"
                 ? `USD: per-day (${Math.round(r.daily_price_coverage_pct * 100)}%)`

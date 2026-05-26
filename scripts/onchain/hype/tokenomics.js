@@ -110,5 +110,8 @@ module.exports = {
   HYPE_TOTAL_SUPPLY,
   HYPE_TGE_DATE,
   HYPE_ALLOCATIONS,
+  // Generic alias so the TP compute layer can read recipient_type per bucket
+  // without knowing this is the HYPE module.
+  ALLOCATIONS: HYPE_ALLOCATIONS,
   generateUnlockSchedule
 };

@@ -47,7 +47,15 @@ export default async function TpDeepPage({
       {/* Section 1 — Roll-ups */}
       <Section title="Net Pressure — roll-ups">
         {npP ? (
-          <TpRollupGrid np={npP} />
+          <>
+            <TpRollupGrid np={npP} />
+            <p className="text-[10px] text-zinc-600 mt-4 leading-relaxed">
+              Unlocks are <span className="text-zinc-400">sell-probability weighted</span> —
+              team/core-contributor vesting is discounted (×0.10) because it&apos;s mostly
+              re-staked rather than sold, foundation/emissions ×0.30-0.40, airdrop ×0.20.
+              The &quot;gross (100% sell)&quot; line shows the worst-case scheduled supply for comparison.
+            </p>
+          </>
         ) : (
           <Placeholder>
             TP roll-ups require the on-chain adapter. Pending for {hmP.symbol}.

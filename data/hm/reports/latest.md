@@ -1,6 +1,6 @@
 # Holder Multiple — Cohort Snapshot
 
-**Generated:** 2026-05-26T20:27:11.310Z
+**Generated:** 2026-05-26T20:47:05.041Z
 **As-of:** 2026-05-26
 **Mode:** live
 

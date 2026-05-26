@@ -186,7 +186,9 @@ Daily series. Same protocol → input matrix.
 
 **Definition:** Tokens that vested out of contracts/schedules on the given UTC date.
 
-**Aggregation:** sum of all vesting events on that date.
+**Aggregation:** sum of vesting events on that date, **sell-probability weighted** by recipient type — `team 0.10, foundation 0.30 (HYPE future_emissions 0.40), airdrop 0.20, seed 0.80, series_a/b 0.65, advisor 0.65`. Scheduled team/vesting tokens are mostly re-staked rather than sold, so counting them at 100% sell-through overstates market pressure (the HYPE distortion: gross 90d +$1.81B vs weighted +$317M). Weights are configurable per-protocol via `sell_probability_by_recipient` in `data/np/config.json`. The gross (100% sell-through) figure is carried alongside as `net_pressure_*_gross` for comparison.
+
+**Scope:** weighting applies to **TP only**. HM's Adjusted MCap uses GROSS 24mo unlocks — future tradeable supply exists whether the recipient sells or not.
 
 | Protocol | Source | Notes |
 |---|---|---|

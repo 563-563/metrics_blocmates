@@ -117,6 +117,7 @@ export function UnlockScheduleChart({
               fontSize: 12
             }}
             labelStyle={{ color: "#888" }}
+            itemStyle={{ color: "#e4e4e7" }}
             formatter={(value: number, name: string) => [
               `${Math.round(value).toLocaleString()} ${symbol}${
                 totalSupply ? ` (${((value / totalSupply) * 100).toFixed(2)}%)` : ""

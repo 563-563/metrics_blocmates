@@ -50,6 +50,7 @@ export function AfBalanceChart({
               fontSize: 12
             }}
             labelStyle={{ color: "#888" }}
+            itemStyle={{ color: "#e4e4e7" }}
             formatter={(value: number) => [
               `${Math.round(value).toLocaleString()} ${symbol}`,
               "balance"

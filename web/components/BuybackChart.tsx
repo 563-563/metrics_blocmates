@@ -38,6 +38,7 @@ export function BuybackChart({ data }: { data: BuybackPoint[] }) {
               fontSize: 12
             }}
             labelStyle={{ color: "#888" }}
+            itemStyle={{ color: "#e4e4e7" }}
             formatter={(value: number, name: string) =>
               name === "usd"
                 ? [`$${value.toLocaleString(undefined, { maximumFractionDigits: 0 })}`, "USD"]

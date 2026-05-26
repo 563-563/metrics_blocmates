@@ -55,6 +55,7 @@ export function NetPressureChart({
               fontSize: 12
             }}
             labelStyle={{ color: "#888" }}
+            itemStyle={{ color: "#e4e4e7" }}
             formatter={(value: number, _name: string, payload) => {
               const tokens = (payload as { payload: NpPoint }).payload.net_pressure_tokens;
               return [

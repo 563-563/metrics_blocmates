@@ -71,6 +71,9 @@ jobs:
       - name: LIT on-chain — zkLighter L2 market snapshot
         run: node scripts/onchain/lit/fetch-l2-market.js
 
+      - name: LIT buyback proxy (DefiLlama holdersRevenue)
+        run: node scripts/onchain/lit/fetch-buyback-proxy.js
+
       - name: Compute HM snapshot
         run: node scripts/hm/compute-hm.js
 

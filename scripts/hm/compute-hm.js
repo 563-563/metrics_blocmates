@@ -136,6 +136,16 @@ function readOnchainBuybackAnnualized(seedRow) {
     lifetimeAnnualUsd = (lifetimeSumUsd / lifetimeDays) * 365;
   }
 
+  // Feed-level verification: take the dominant `verification` on the rows.
+  // Most feeds are uniform ('onchain'), but the LIT proxy carries 'proxy'
+  // and SKY can carry 'onchain_dormant' semantics. Default 'onchain'.
+  const verifCounts = {};
+  for (const r of whole) {
+    const v = r.verification || 'onchain';
+    verifCounts[v] = (verifCounts[v] || 0) + 1;
+  }
+  const feedVerification = Object.entries(verifCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || 'onchain';
+
   return {
     annual_usd: annualUsd,
     window_days: window,
@@ -145,6 +155,7 @@ function readOnchainBuybackAnnualized(seedRow) {
     days_used: window,
     window_requested: window,
     source: 'onchain_feed',
+    feed_verification: feedVerification,
     feed_path: relPath,
     lifetime_annual_usd: lifetimeAnnualUsd,
     lifetime_days: lifetimeDays,
@@ -271,7 +282,9 @@ function computeProtocol(seedRow, latest) {
   // Annual buyback — prefer on-chain feed when present, fall back to seed.
   const onchainBuyback = readOnchainBuybackAnnualized(seedRow);
   const annualBuybackUsd = onchainBuyback ? onchainBuyback.annual_usd : (seedRow.annual_buyback_usd || 0);
-  const annualBuybackVerification = onchainBuyback ? 'onchain' : (seedRow.annual_buyback_verification || 'governance_stated');
+  const annualBuybackVerification = onchainBuyback
+    ? (onchainBuyback.feed_verification || 'onchain')
+    : (seedRow.annual_buyback_verification || 'governance_stated');
   const annualBuybackSource = onchainBuyback ? onchainBuyback : { source: 'seed' };
 
   // Holder yield (Cat B) — prefer on-chain feed when present, fall back to seed.

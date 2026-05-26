@@ -6,6 +6,8 @@ import hmSnapshotRaw from "../../data/hm/snapshots/latest.json";
 import npSnapshotRaw from "../../data/np/snapshots/latest.json";
 import hypeBuybacksRaw from "../../data/onchain/hype-af/buybacks.json";
 import hypeAfHistoryRaw from "../../data/onchain/hype-af/treasury-history.json";
+import aaveBuybacksRaw from "../../data/onchain/aave/buybacks.json";
+import aaveTreasuryRaw from "../../data/onchain/aave/treasury.json";
 
 // ─── Types matching compute outputs ──────────────────────────────────────
 
@@ -114,7 +116,10 @@ export type AfBuyback = {
   amount_tokens: number;
   amount_usd: number;
   avg_price_usd: number;
-  fill_count: number | null;
+  fill_count?: number | null;
+  tx_count?: number;
+  unique_senders?: number;
+  price_source?: string;
   source: string;
   verification: string;
 };
@@ -132,6 +137,13 @@ export const hm: HmSnapshot = hmSnapshotRaw as HmSnapshot;
 export const np: NpSnapshot = npSnapshotRaw as NpSnapshot;
 export const hypeBuybacks: AfBuyback[] = hypeBuybacksRaw as AfBuyback[];
 export const hypeAfHistory: AfTreasuryHist[] = hypeAfHistoryRaw as AfTreasuryHist[];
+export const aaveBuybacks: AfBuyback[] = aaveBuybacksRaw as AfBuyback[];
+export const aaveTreasury: AfTreasuryHist[] = (aaveTreasuryRaw as Array<{
+  date: string;
+  balance_tokens: number;
+  source: string;
+  verification: string;
+}>).map((r) => ({ ...r }));
 
 // Sluggable list of all protocols in the cohort (used for static params).
 export const PROTOCOL_SLUGS = hm.protocols.map((p) => p.slug);
@@ -150,5 +162,6 @@ export const onchainFeeds: Record<
   string,
   { buybacks?: AfBuyback[]; afHistory?: AfTreasuryHist[] }
 > = {
-  hyperliquid: { buybacks: hypeBuybacks, afHistory: hypeAfHistory }
+  hyperliquid: { buybacks: hypeBuybacks, afHistory: hypeAfHistory },
+  aave: { buybacks: aaveBuybacks, afHistory: aaveTreasury }
 };

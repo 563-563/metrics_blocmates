@@ -1,0 +1,12 @@
+/**
+ * AAVE protocol addresses on Ethereum mainnet.
+ * Source: bgd-labs/aave-address-book (verified 2026-05-22)
+ */
+
+module.exports = {
+  AAVE: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',
+  COLLECTOR_V3: '0x464C71f6c2F760DdA6093dCB91C24c39e5d6e18c',
+  STK_AAVE: '0x4da27a545c0c5B758a6BA100e3a049001de870f5',
+  ECOSYSTEM_RESERVE: '0x25f2226B597E8F9514B3F68F00f494cF4f286491',
+  POOL_V3: '0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2'
+};

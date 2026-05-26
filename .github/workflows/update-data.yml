@@ -38,6 +38,16 @@ jobs:
       - name: HYPE on-chain — validator stake snapshot
         run: node scripts/onchain/hype/fetch-staking.js
 
+      - name: AAVE on-chain — Collector buyback flow (trailing 30d)
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+        run: node scripts/onchain/aave/fetch-collector.js --days 30
+
+      - name: AAVE on-chain — Safety Module + Ecosystem Reserve snapshot
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+        run: node scripts/onchain/aave/fetch-safety-module.js
+
       - name: Compute HM snapshot
         run: node scripts/hm/compute-hm.js
 

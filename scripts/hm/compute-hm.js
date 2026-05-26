@@ -106,15 +106,26 @@ function readOnchainBuybackAnnualized(seedRow) {
   const sorted = rows.slice().sort((a, b) => a.date.localeCompare(b.date));
   const whole = sorted.filter((r) => r.date < todayIso);
 
-  const window = seedRow.onchain_buyback_annualize_days || 7;
-  const minDays = seedRow.onchain_buyback_min_days || 3;
+  const window = seedRow.onchain_buyback_annualize_days || 30;
+  const minDays = seedRow.onchain_buyback_min_days || 7;
   if (whole.length < minDays) return null;
 
-  const slice = whole.slice(-window);
+  // CALENDAR-DAY window ending yesterday (today excluded — partial day).
+  // Days with no buyback activity are absent from the file but count as $0
+  // in the average. Without this, a protocol that pauses buybacks would
+  // misleadingly show its OLD rate as the "recent" annualization.
+  const yesterday = new Date(todayIso);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+  const windowStart = new Date(yesterday);
+  windowStart.setUTCDate(windowStart.getUTCDate() - window + 1);
+  const windowStartIso = windowStart.toISOString().slice(0, 10);
+  const windowEndIso = yesterday.toISOString().slice(0, 10);
+  const slice = whole.filter((r) => r.date >= windowStartIso && r.date <= windowEndIso);
   const sumUsd = slice.reduce((s, r) => s + Number(r.amount_usd || 0), 0);
-  const annualUsd = (sumUsd / slice.length) * 365;
+  const annualUsd = (sumUsd / window) * 365;
+  const activeDays = slice.length;
 
-  // Lifetime annualized — informational lens alongside the 30d primary.
+  // Lifetime annualized — informational lens alongside the recent.
   const lifetimeSumUsd = whole.reduce((s, r) => s + Number(r.amount_usd || 0), 0);
   const firstDay = whole[0]?.date;
   const lastDay  = whole[whole.length - 1]?.date;
@@ -127,7 +138,11 @@ function readOnchainBuybackAnnualized(seedRow) {
 
   return {
     annual_usd: annualUsd,
-    days_used: slice.length,
+    window_days: window,
+    active_days_in_window: activeDays,
+    window_start: windowStartIso,
+    window_end: windowEndIso,
+    days_used: window,
     window_requested: window,
     source: 'onchain_feed',
     feed_path: relPath,

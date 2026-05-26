@@ -1,6 +1,6 @@
 # Holder Multiple — Cohort Snapshot
 
-**Generated:** 2026-05-26T14:56:48.807Z
+**Generated:** 2026-05-26T17:37:21.852Z
 **As-of:** 2026-05-26
 **Mode:** live
 
@@ -9,7 +9,7 @@
 | Protocol | Phase | Adj MCap | Real Capture | HM | Band |
 |---|---|---|---|---|---|
 | Sky (SKY) | `phase_1` | $1.63B | $72.00M/yr | **22.7×** | fair value |
-| Aave (AAVE) | `current` | $1.29B | $30.00M/yr | **43.1×** | expensive |
+| Aave (AAVE) | `current` | $1.29B | $12.15M/yr | **106.4×** | speculative |
 | Hyperliquid (HYPE) | `current` | $31.50B | $434.87M/yr | **72.4×** | speculative |
 | Lighter (LIT) | `current` | $588.57M | $25.53M/yr | **23.1×** | fair value |
 
@@ -36,7 +36,7 @@ Phase: `phase_1` — Phase 1 of TMF framework. SBE bypassed during ABC fill (~15
 
 ---
 
-### Aave (AAVE) — HM 43.1× _(expensive)_
+### Aave (AAVE) — HM 106.4× _(speculative)_
 
 Phase: `current` — ARFC $30M/yr buyback budget (cut from original $50M). AWW Framework commits 100% product revenue to DAO.
 
@@ -46,12 +46,14 @@ Phase: `current` — ARFC $30M/yr buyback budget (cut from original $50M). AWW F
 | 2 | Current float market cap | $1.33B | 15,179,912 AAVE × $87.47 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | No team vesting; 99.9% circulating |
 | 4 | + 24mo emissions | +$24.93M | Safety Module + Service Provider compensation (285K AAVE over 24mo) |
-| 5 | − 24mo buybacks | −$60.00M | ARFC $30M/yr budget; matches 2026 actual run-rate (verification: onchain) |
+| 5 | − 24mo buybacks | −$60.00M | ARFC $30M/yr budget; seed value — overridden by onchain feed when present (verification: onchain) |
 | 6 | **Adjusted MCap** | **$1.29B** | Lines 2 + 3 + 4 − 5 |
-| 7 | Annual buyback (Category A) | $30.00M | verification: onchain |
+| 7 | Annual buyback (Category A) | $12.15M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to AAVE (Category B) | $0 | No Category B yield — Safety Module rewards are stkAAVE emissions (Category C, dilution rebate) (verification: governance_stated) |
-| 9 | **Total Real Capture** | **$30.00M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **43.1×** | Line 6 ÷ Line 9 |
+| 9 | **Total Real Capture** | **$12.15M/yr** | Lines 7 + 8 |
+| 10 | **Holder Multiple (HM)** | **106.4×** | Line 6 ÷ Line 9 |
+
+**Buyback rate lens:** recent 60d annualized = **$12.15M/yr** (HM input). Lifetime annualized (332d, cumulative $22.33M) = **$24.55M/yr**. Recent rate is **-50.5%** below lifetime average.
 
 [Sources: DefiLlama, TokenLogic dashboard, Aave governance forum]
 

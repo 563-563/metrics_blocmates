@@ -60,6 +60,55 @@
         "total_staked":        "data/onchain/hype/staking.json"
       },
       "daily_price_path": "data/external/asxn/hype-price-daily.json"
+    },
+    "aave": {
+      "slug": "aave",
+      "name": "Aave",
+      "symbol": "AAVE",
+      "config_symbol": "AAVE",
+      "tokenomics_module": null,
+      "sources": {
+        "unlocks": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "No team vesting active; 99.9% circulating"
+        },
+        "buybacks": {
+          "type": "daily_series",
+          "path": "data/onchain/aave/buybacks.json",
+          "amount_field": "amount_tokens",
+          "verification": "onchain_aggregate",
+          "note": "ALL AAVE inflows to Collector — dominated by CoW-routed TokenLogic buybacks but may include non-buyback deposits"
+        },
+        "burns": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "AAVE does not burn"
+        },
+        "treasury_accumulation": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "Collector inflows already counted as buybacks; double-counting avoided"
+        },
+        "treasury_sells": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "Collector mostly accumulates; rare outflows uncategorized for now"
+        },
+        "net_staking_lockups": {
+          "type": "daily_delta",
+          "path": "data/onchain/aave/staking.json",
+          "amount_field": "delta_tokens",
+          "verification": "onchain",
+          "note": "stkAAVE.totalSupply() snapshotted daily, diffed day-over-day"
+        }
+      },
+      "static_reference_sources": {
+        "treasury": "data/onchain/aave/treasury.json",
+        "staking": "data/onchain/aave/staking.json",
+        "ecosystem_reserve": "data/onchain/aave/ecosystem-reserve.json"
+      },
+      "daily_price_path": null
     }
   }
 }

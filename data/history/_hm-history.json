@@ -205,12 +205,12 @@
   },
   {
     "date": "2026-05-26",
-    "generated_at": "2026-05-26T18:08:21.332Z",
+    "generated_at": "2026-05-26T20:27:11.310Z",
     "mode": "live",
     "protocols": {
       "SKY": {
-        "price_usd": 0.069364,
-        "adj_mcap_usd": 1612347153.2784562,
+        "price_usd": 0.069422,
+        "adj_mcap_usd": 1613677606.564318,
         "real_capture_usd": 0,
         "annual_buyback_usd": 0,
         "annual_holder_yield_usd": 0,
@@ -220,36 +220,36 @@
         "phase": "phase_1"
       },
       "AAVE": {
-        "price_usd": 86,
-        "adj_mcap_usd": 1269982421.244443,
+        "price_usd": 86.43,
+        "adj_mcap_usd": 1276632333.3506653,
         "real_capture_usd": 12152899.89731133,
         "annual_buyback_usd": 12152899.89731133,
         "annual_holder_yield_usd": 0,
-        "hm": 104.50036057035325,
+        "hm": 105.04754783943407,
         "hm_band": "speculative",
-        "verification": "onchain",
+        "verification": "onchain_aggregate",
         "phase": "current"
       },
       "HYPE": {
-        "price_usd": 61.46,
-        "adj_mcap_usd": 30335042275.623,
-        "real_capture_usd": 431892957.4745125,
-        "annual_buyback_usd": 431892957.4745125,
+        "price_usd": 60.05,
+        "adj_mcap_usd": 29610655526.3775,
+        "real_capture_usd": 430632498.5644,
+        "annual_buyback_usd": 430632498.5644,
         "annual_holder_yield_usd": 0,
-        "hm": 70.2374089473621,
+        "hm": 68.76084741651076,
         "hm_band": "speculative",
         "verification": "onchain",
         "phase": "current"
       },
       "LIT": {
-        "price_usd": 1.26,
-        "adj_mcap_usd": 564160200,
-        "real_capture_usd": 25530000,
-        "annual_buyback_usd": 25530000,
+        "price_usd": 1.21,
+        "adj_mcap_usd": 539746700,
+        "real_capture_usd": 25162461.25,
+        "annual_buyback_usd": 25162461.25,
         "annual_holder_yield_usd": 0,
-        "hm": 22.097931844888368,
+        "hm": 21.450473172611442,
         "hm_band": "fair value",
-        "verification": "governance_stated",
+        "verification": "proxy",
         "phase": "current"
       }
     }

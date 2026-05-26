@@ -84,12 +84,15 @@ In this mode all on-chain feed overrides are bypassed and the seed's `article_pr
 
 ## When to add a new protocol
 
+**Follow `PROTOCOL-PLAYBOOK.md`** — it has the full onboarding checklist, per-input sourcing decision trees, buyback mechanism archetypes (with the template adapter to copy for each), the address-discovery toolkit, the verification flag taxonomy, and the recurring gotchas. Short version:
+
 1. Confirm DL + CG slugs in `data/config.json`.
 2. Add a `protocols.<slug>` entry to `data/hm/config.json` with: phase, article reference values, unlocks_24mo_tokens, emissions_24mo_tokens, buyback_24mo_usd, annual_buyback_usd, annual_holder_yield_usd, verification flags, sources.
-3. Optionally wire on-chain: adapter in `scripts/onchain/<slug>/`, then add `onchain_buybacks_path` and `onchain_circulating_path` to the seed.
-4. Add a `protocols.<slug>` entry to `data/np/config.json` with source paths.
-5. Run compute scripts, verify report.
-6. Frontend: per-protocol pages render automatically from the snapshot if the slug exists in the data.
+3. Classify the buyback mechanism (Playbook §2) → copy the matching adapter template.
+4. Discover addresses (Playbook §3), build the adapter, wire `onchain_buybacks_path` (+ `onchain_holder_yield_path` for Cat B) into the seed.
+5. Add a `protocols.<slug>` entry to `data/np/config.json` with source paths.
+6. Wire feeds into `web/lib/data.ts` → `onchainFeeds`, add cron steps.
+7. Run compute scripts, verify report, confirm `--reproduce-article` still passes.
 
 ---
 

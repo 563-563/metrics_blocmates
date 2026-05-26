@@ -114,7 +114,7 @@ To deploy to Vercel: connect this repo, set **Root Directory** to `web`, deploy.
 | **SKY** | governance_stated | none | Alchemy mainnet via ChainLog discovery; ABC + Staking Engine resolution pending |
 | **LIT** | governance_stated | none | L1 Alchemy + L2 zkLighter REST (`mainnet.zklighter.elliot.ai`) |
 
-See `ONCHAIN-INTEGRATION-PLAN.md` for the per-protocol adapter roadmap.
+See `ONCHAIN-INTEGRATION-PLAN.md` for the per-protocol adapter roadmap, and `PROTOCOL-PLAYBOOK.md` for the reusable onboarding patterns (how to source each input, buyback mechanism archetypes, address-discovery toolkit, recurring gotchas) when adding the next protocol.
 
 ---
 

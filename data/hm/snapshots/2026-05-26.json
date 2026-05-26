@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-26T17:42:58.263Z",
+  "generated_at": "2026-05-26T18:01:46.635Z",
   "as_of": "2026-05-26",
   "mode": "live",
   "latest_data_as_of": "2026-05-26T17:42:55.366Z",
@@ -27,7 +27,7 @@
       "emissions_24mo_usd": 0,
       "emissions_24mo_notes": "Staking yield paid in USDS, not new SKY",
       "buybacks_24mo_usd": 0,
-      "buybacks_24mo_notes": "SBE bypassed during Phase 1",
+      "buybacks_24mo_notes": "SBE bypassed during Phase 1; verified on-chain — MCD_FLAP + MCD_SPLIT have zero activity 90d",
       "adj_mcap_usd": 1610998959.188004,
       "annual_buyback_usd": 0,
       "annual_buyback_verification": "governance_stated",
@@ -35,15 +35,31 @@
         "source": "seed"
       },
       "annual_buyback_seed_usd": 0,
-      "annual_holder_yield_usd": 72000000,
-      "annual_holder_yield_notes": "40% × $180.73M net revenue paid in USDS to stkSKY — Category B external cashflow yield to native-token stakers",
-      "annual_holder_yield_verification": "governance_stated",
-      "real_capture_usd": 72000000,
-      "hm": 22.374985544277834,
-      "hm_band": "fair value",
+      "annual_holder_yield_usd": 0,
+      "annual_holder_yield_notes": "Article: 40% × $180.73M net revenue paid in USDS to stkSKY (Cat B). On-chain (REWARDS_LSSKY_USDS = 0x38E4254b...) confirms USDS distribution mechanism — but inflows stopped 2025-11-03, 200+ days dormant. Either restructured post-Apr-2026 framework or paused.",
+      "annual_holder_yield_verification": "onchain_dormant",
+      "annual_holder_yield_source": {
+        "annual_usd": 0,
+        "window_days": 60,
+        "active_days_in_window": 0,
+        "window_start": "2026-03-27",
+        "window_end": "2026-05-25",
+        "source": "onchain_feed",
+        "feed_path": "data/onchain/sky/cat-b-inflows.json",
+        "lifetime_annual_usd": 90690725.80645162,
+        "lifetime_days": 155,
+        "lifetime_cumulative_usd": 38512500,
+        "days_since_last_observation": 204,
+        "is_dormant": true,
+        "rate_vs_lifetime_pct": -100
+      },
+      "annual_holder_yield_seed_usd": 72000000,
+      "real_capture_usd": 0,
+      "hm": null,
+      "hm_band": "no real capture",
       "sources": [
         "DefiLlama",
-        "Skyeco dashboard",
+        "Sky ChainLog (REWARDS_LSSKY_USDS resolved on-chain)",
         "Sky governance forum"
       ],
       "live_data_present": true
@@ -92,6 +108,10 @@
       "annual_holder_yield_usd": 0,
       "annual_holder_yield_notes": "No Category B yield — Safety Module rewards are stkAAVE emissions (Category C, dilution rebate)",
       "annual_holder_yield_verification": "governance_stated",
+      "annual_holder_yield_source": {
+        "source": "seed"
+      },
+      "annual_holder_yield_seed_usd": 0,
       "real_capture_usd": 12152899.89731133,
       "hm": 104.25858014913149,
       "hm_band": "speculative",
@@ -146,6 +166,10 @@
       "annual_holder_yield_usd": 0,
       "annual_holder_yield_notes": "No Category B — staking rewards are HYPE-denominated dilution rebate (Category C)",
       "annual_holder_yield_verification": "governance_stated",
+      "annual_holder_yield_source": {
+        "source": "seed"
+      },
+      "annual_holder_yield_seed_usd": 0,
       "real_capture_usd": 432159516.74504924,
       "hm": 70.18219802120083,
       "hm_band": "speculative",
@@ -189,6 +213,10 @@
       "annual_holder_yield_usd": 0,
       "annual_holder_yield_notes": "No Category B — staking yield is LIT-denominated (Category C)",
       "annual_holder_yield_verification": "governance_stated",
+      "annual_holder_yield_source": {
+        "source": "seed"
+      },
+      "annual_holder_yield_seed_usd": 0,
       "real_capture_usd": 25530000,
       "hm": 21.715424990207598,
       "hm_band": "fair value",

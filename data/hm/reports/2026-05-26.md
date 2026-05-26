@@ -1,6 +1,6 @@
 # Holder Multiple — Cohort Snapshot
 
-**Generated:** 2026-05-26T17:42:58.263Z
+**Generated:** 2026-05-26T18:01:46.635Z
 **As-of:** 2026-05-26
 **Mode:** live
 
@@ -8,14 +8,14 @@
 
 | Protocol | Phase | Adj MCap | Real Capture | HM | Band |
 |---|---|---|---|---|---|
-| Sky (SKY) | `phase_1` | $1.61B | $72.00M/yr | **22.4×** | fair value |
+| Sky (SKY) | `phase_1` | $1.61B | $0/yr | **∞×** | no real capture |
 | Aave (AAVE) | `current` | $1.27B | $12.15M/yr | **104.3×** | speculative |
 | Hyperliquid (HYPE) | `current` | $30.33B | $432.16M/yr | **70.2×** | speculative |
 | Lighter (LIT) | `current` | $554.39M | $25.53M/yr | **21.7×** | fair value |
 
 ## Per-protocol breakdown
 
-### Sky (SKY) — HM 22.4× _(fair value)_
+### Sky (SKY) — HM ∞× _(no real capture)_
 
 Phase: `phase_1` — Phase 1 of TMF framework. SBE bypassed during ABC fill (~15 months base case from Apr 2026). 40% of net revenue → ABC, 40% → SKY stakers (as USDS), 20% → Security/Maintenance.
 
@@ -25,14 +25,14 @@ Phase: `phase_1` — Phase 1 of TMF framework. SBE bypassed during ABC fill (~15
 | 2 | Current float market cap | $1.61B | 23,244,725,697 SKY × $0.069306 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | 98.9% circulating; no remaining schedule |
 | 4 | + 24mo emissions | $0 | Staking yield paid in USDS, not new SKY |
-| 5 | − 24mo buybacks | $0 | SBE bypassed during Phase 1 (verification: governance_stated) |
+| 5 | − 24mo buybacks | $0 | SBE bypassed during Phase 1; verified on-chain — MCD_FLAP + MCD_SPLIT have zero activity 90d (verification: governance_stated) |
 | 6 | **Adjusted MCap** | **$1.61B** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
-| 8 | Annual external cashflow yield to SKY (Category B) | $72.00M | 40% × $180.73M net revenue paid in USDS to stkSKY — Category B external cashflow yield to native-token stakers (verification: governance_stated) |
-| 9 | **Total Real Capture** | **$72.00M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **22.4×** | Line 6 ÷ Line 9 |
+| 8 | Annual external cashflow yield to SKY (Category B) | $0 | Article: 40% × $180.73M net revenue paid in USDS to stkSKY (Cat B). On-chain (REWARDS_LSSKY_USDS = 0x38E4254b...) confirms USDS distribution mechanism — but inflows stopped 2025-11-03, 200+ days dormant. Either restructured post-Apr-2026 framework or paused. (verification: onchain_dormant) |
+| 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
+| 10 | **Holder Multiple (HM)** | **∞×** | Line 6 ÷ Line 9 |
 
-[Sources: DefiLlama, Skyeco dashboard, Sky governance forum]
+[Sources: DefiLlama, Sky ChainLog (REWARDS_LSSKY_USDS resolved on-chain), Sky governance forum]
 
 ---
 

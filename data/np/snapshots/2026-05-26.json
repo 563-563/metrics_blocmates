@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-26T17:42:58.329Z",
+  "generated_at": "2026-05-26T18:01:46.718Z",
   "as_of": "2026-05-26",
   "latest_data_as_of": "2026-05-26T17:42:55.366Z",
   "protocols": [
@@ -11401,6 +11401,321 @@
           "net_pressure_usd": 0
         }
       ]
+    },
+    {
+      "slug": "sky",
+      "name": "Sky",
+      "symbol": "SKY",
+      "price_usd": 0.069306,
+      "static_reference": {
+        "lockstake": {
+          "date": "2026-05-26",
+          "total_staked_tokens": 10018329214.834265,
+          "delta_tokens": 0,
+          "delta_basis_date": null,
+          "source": "alchemy_eth_call_balanceOf",
+          "verification": "onchain"
+        },
+        "rewards_farm_balance": {
+          "date": "2026-05-26",
+          "balance_tokens": 302609.8235796846,
+          "asset": "USDS",
+          "source": "alchemy_eth_call_balanceOf",
+          "verification": "onchain"
+        }
+      },
+      "components": {
+        "unlocks": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "98.9% circulating; no remaining schedule"
+        },
+        "buybacks": {
+          "type": "daily_series",
+          "path": "data/onchain/sky/sbe-burns.json",
+          "amount_field": "amount_tokens",
+          "verification": "onchain",
+          "note": "SBE / MCD_FLAP burns to 0x0. Currently zero (Phase 1 bypass). Will become non-zero when ABC fill threshold ($150M) is reached."
+        },
+        "burns": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "For SKY, burns and buybacks are the same thing (SBE IS the burn engine); counted once under buybacks"
+        },
+        "treasury_accumulation": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "ABC fill — contract address still TBD via ChainLog. Will track when discovered."
+        },
+        "treasury_sells": {
+          "type": "none",
+          "verification": "n/a"
+        },
+        "net_staking_lockups": {
+          "type": "daily_delta",
+          "path": "data/onchain/sky/lockstake.json",
+          "amount_field": "delta_tokens",
+          "verification": "onchain",
+          "note": "SKY.balanceOf(LockStakeEngine) daily Δ. ~10B SKY currently locked."
+        }
+      },
+      "rollups": {
+        "24h": {
+          "window_days": 1,
+          "days_observed": 1,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        },
+        "7d": {
+          "window_days": 7,
+          "days_observed": 1,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        },
+        "30d": {
+          "window_days": 30,
+          "days_observed": 1,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        },
+        "90d": {
+          "window_days": 90,
+          "days_observed": 1,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        }
+      },
+      "daily": [
+        {
+          "date": "2026-05-26",
+          "is_future": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "price_usd_for_day": 0.069306,
+          "price_source_for_day": "today_fallback",
+          "net_pressure_usd": 0
+        }
+      ]
+    },
+    {
+      "slug": "lighter",
+      "name": "Lighter",
+      "symbol": "LIT",
+      "price_usd": 1.24,
+      "static_reference": {
+        "l1_supply": {
+          "date": "2026-05-26",
+          "total_supply_tokens": 1000000000,
+          "source": "alchemy_eth_call_totalSupply",
+          "verification": "onchain"
+        },
+        "l1_escrow": {
+          "date": "2026-05-26",
+          "balance_tokens": 203549995.2508285,
+          "pct_of_supply": 0.2035499952508285,
+          "source": "alchemy_eth_call_balanceOf",
+          "verification": "onchain"
+        },
+        "l2_market": {
+          "date": "2026-05-26",
+          "market_id": 2049,
+          "symbol": "LIT/USDC",
+          "last_price": null,
+          "daily_volume": null,
+          "open_interest": null,
+          "daily_trades": null,
+          "raw_response_keys": [
+            "code",
+            "order_book_details",
+            "spot_order_book_details"
+          ],
+          "source": "zklighter_orderbookdetails",
+          "verification": "onchain"
+        }
+      },
+      "components": {
+        "unlocks": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "Pre-cliff (Dec 22 2026) — no team unlocks. Tokenomics module pending."
+        },
+        "buybacks": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "zkLighter L2 /api/v1/trades requires Lighter API key (acquisition #3 in DATA-SOURCES.md). Until obtained, buyback flow can't be ingested."
+        },
+        "burns": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "Unknown — verify whether Lighter burns vs holds after API key obtained"
+        },
+        "treasury_accumulation": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "L2 protocol accounts not yet discovered"
+        },
+        "treasury_sells": {
+          "type": "none",
+          "verification": "n/a"
+        },
+        "net_staking_lockups": {
+          "type": "none",
+          "verification": "n/a",
+          "note": "LIT L2 staking contract not yet identified"
+        }
+      },
+      "rollups": {
+        "24h": {
+          "window_days": 1,
+          "days_observed": 0,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        },
+        "7d": {
+          "window_days": 7,
+          "days_observed": 0,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        },
+        "30d": {
+          "window_days": 30,
+          "days_observed": 0,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        },
+        "90d": {
+          "window_days": 90,
+          "days_observed": 0,
+          "buyback_coverage_days": 0,
+          "buyback_coverage_pct": 0,
+          "coverage_complete": false,
+          "daily_price_coverage_pct": 0,
+          "daily_price_complete": false,
+          "unlocks_tokens": 0,
+          "treasury_sells_tokens": 0,
+          "buybacks_tokens": 0,
+          "burns_tokens": 0,
+          "treasury_accumulation_tokens": 0,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": 0,
+          "unlocks_usd": 0,
+          "buybacks_usd": 0,
+          "net_pressure_usd_perday": 0,
+          "net_pressure_usd": 0,
+          "net_pressure_usd_method": "today_price"
+        }
+      },
+      "daily": []
     }
   ]
 }

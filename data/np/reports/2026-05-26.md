@@ -1,6 +1,6 @@
 # Net Pressure (TP) — Cohort Snapshot
 
-**Generated:** 2026-05-26T17:42:58.329Z
+**Generated:** 2026-05-26T18:01:46.718Z
 **As-of:** 2026-05-26
 
 Formula:
@@ -116,6 +116,70 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-04-18 | 0 | 825 | −825 | −$70.8K |
 | 2026-04-19 | 0 | 714 | −714 | −$61.2K |
 | 2026-05-26 | 0 | 0 | 0 | $0 |
+
+
+---
+
+## Sky (SKY)
+
+**Price:** $0.07    **Circulating:** 0 SKY    **AF balance:** 0 SKY    **Total staked:** 0 SKY
+
+### Net Pressure roll-ups
+
+| Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
+|---|---|---|---|---|---|---|---|
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 SKY | $0 | today @ $0.07 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 SKY | $0 | today @ $0.07 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 0 | 0 | · 0 SKY | $0 | today @ $0.07 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 0 | 0 | · 0 SKY | $0 | today @ $0.07 | 0.0000% |
+
+Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
+
+### Component coverage
+
+| Component | Source | Verification | Note |
+|---|---|---|---|
+| unlocks | — | n/a | 98.9% circulating; no remaining schedule |
+| buybacks | data/onchain/sky/sbe-burns.json | onchain | SBE / MCD_FLAP burns to 0x0. Currently zero (Phase 1 bypass). Will become non-zero when ABC fill threshold ($150M) is reached. |
+| burns | — | n/a | For SKY, burns and buybacks are the same thing (SBE IS the burn engine); counted once under buybacks |
+| treasury_accumulation | — | n/a | ABC fill — contract address still TBD via ChainLog. Will track when discovered. |
+| treasury_sells | — | n/a |  |
+| net_staking_lockups | data/onchain/sky/lockstake.json | onchain | SKY.balanceOf(LockStakeEngine) daily Δ. ~10B SKY currently locked. |
+
+### Recent daily series (last 1 days)
+
+| Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
+|---|---|---|---|---|
+| 2026-05-26 | 0 | 0 | 0 | $0 |
+
+
+---
+
+## Lighter (LIT)
+
+**Price:** $1.24    **Circulating:** 0 LIT    **AF balance:** 0 LIT    **Total staked:** 0 LIT
+
+### Net Pressure roll-ups
+
+| Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
+|---|---|---|---|---|---|---|---|
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.24 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.24 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.24 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 0 | 0 | · 0 LIT | $0 | today @ $1.24 | 0.0000% |
+
+Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
+
+### Component coverage
+
+| Component | Source | Verification | Note |
+|---|---|---|---|
+| unlocks | — | n/a | Pre-cliff (Dec 22 2026) — no team unlocks. Tokenomics module pending. |
+| buybacks | — | n/a | zkLighter L2 /api/v1/trades requires Lighter API key (acquisition #3 in DATA-SOURCES.md). Until obtained, buyback flow can't be ingested. |
+| burns | — | n/a | Unknown — verify whether Lighter burns vs holds after API key obtained |
+| treasury_accumulation | — | n/a | L2 protocol accounts not yet discovered |
+| treasury_sells | — | n/a |  |
+| net_staking_lockups | — | n/a | LIT L2 staking contract not yet identified |
 
 
 ---

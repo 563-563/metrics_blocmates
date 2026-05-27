@@ -1,6 +1,6 @@
 # Holder Multiple — Cohort Snapshot
 
-**Generated:** 2026-05-27T20:31:53.100Z
+**Generated:** 2026-05-27T22:53:43.319Z
 **As-of:** 2026-05-27
 **Mode:** live
 
@@ -8,10 +8,10 @@
 
 | Protocol | Phase | Adj MCap | Real Capture | HM | Band |
 |---|---|---|---|---|---|
-| Sky (SKY) | `phase_1` | $1.55B | $0/yr | **∞×** | no real capture |
-| Aave (AAVE) | `current` | $1.25B | $11.64M/yr | **107.8×** | speculative |
-| Hyperliquid (HYPE) | `current` | $29.63B | $426.46M/yr | **69.5×** | speculative |
-| Lighter (LIT) | `current` | $520.22M | $25.17M/yr | **20.7×** | fair value |
+| Sky (SKY) | `phase_1` | $1.54B | $0/yr | **∞×** | no real capture |
+| Aave (AAVE) | `current` | $1.23B | $11.64M/yr | **106.0×** | speculative |
+| Hyperliquid (HYPE) | `current` | $29.01B | $424.98M/yr | **68.3×** | speculative |
+| Lighter (LIT) | `current` | $505.57M | $25.17M/yr | **20.1×** | fair value |
 
 ## Per-protocol breakdown
 
@@ -21,12 +21,12 @@ Phase: `phase_1` — Phase 1 of TMF framework. SBE bypassed during ABC fill (~15
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.0667 | source: live |
-| 2 | Current float market cap | $1.55B | 23,244,211,861 SKY × $0.066679 (circ source: live) |
+| 1 | Token price | $0.0662 | source: live |
+| 2 | Current float market cap | $1.54B | 23,244,211,861 SKY × $0.066212 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | 98.9% circulating; no remaining schedule |
 | 4 | + 24mo emissions | $0 | Staking yield paid in USDS, not new SKY |
 | 5 | − 24mo buybacks | $0 | SBE bypassed during Phase 1; verified on-chain — MCD_FLAP + MCD_SPLIT have zero activity 90d (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$1.55B** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$1.54B** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to SKY (Category B) | $0 | Article: 40% × $180.73M net revenue paid in USDS to stkSKY (Cat B). On-chain (REWARDS_LSSKY_USDS = 0x38E4254b...) confirms USDS distribution mechanism — but inflows stopped 2025-11-03, 200+ days dormant. Either restructured post-Apr-2026 framework or paused. (verification: onchain_dormant) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -36,22 +36,22 @@ Phase: `phase_1` — Phase 1 of TMF framework. SBE bypassed during ABC fill (~15
 
 ---
 
-### Aave (AAVE) — HM 107.8× _(speculative)_
+### Aave (AAVE) — HM 106.0× _(speculative)_
 
 Phase: `current` — ARFC $30M/yr buyback budget (cut from original $50M). AWW Framework commits 100% product revenue to DAO.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $85 | source: live |
-| 2 | Current float market cap | $1.29B | 15,179,912 AAVE × $85 (circ source: live) |
+| 1 | Token price | $83.63 | source: live |
+| 2 | Current float market cap | $1.27B | 15,179,912 AAVE × $83.63 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | No team vesting; 99.9% circulating |
-| 4 | + 24mo emissions | +$24.23M | Safety Module + Service Provider compensation (285K AAVE over 24mo) |
+| 4 | + 24mo emissions | +$23.83M | Safety Module + Service Provider compensation (285K AAVE over 24mo) |
 | 5 | − 24mo buybacks | −$60.00M | ARFC $30M/yr budget; seed value — overridden by onchain feed when present (verification: onchain_aggregate) |
-| 6 | **Adjusted MCap** | **$1.25B** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$1.23B** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $11.64M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to AAVE (Category B) | $0 | No Category B yield — Safety Module rewards are stkAAVE emissions (Category C, dilution rebate) (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$11.64M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **107.8×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **106.0×** | Line 6 ÷ Line 9 |
 
 **Buyback rate lens:** recent 60d annualized = **$11.64M/yr** (HM input). Lifetime annualized (332d, cumulative $22.33M) = **$24.55M/yr**. Recent rate is **-52.6%** below lifetime average.
 
@@ -59,45 +59,45 @@ Phase: `current` — ARFC $30M/yr buyback budget (cut from original $50M). AWW F
 
 ---
 
-### Hyperliquid (HYPE) — HM 69.5× _(speculative)_
+### Hyperliquid (HYPE) — HM 68.3× _(speculative)_
 
 Phase: `current` — Assistance Fund captures ~99% of revenue for HYPE buybacks. Team vesting cliff active.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $60.09 | source: live |
-| 2 | Current float market cap | $17.95B | 298,649,468 HYPE × $60.09 (circ source: onchain_feed) |
-| 3 | + 24mo unlocks | +$12.52B | Y1 119M + Y2 89.3M team unlocks (Tokenomist scheduled rate) |
-| 4 | + 24mo emissions | +$408.61M | Staking emissions paid from Future Emissions allocation (Category C — added to dilution side) |
+| 1 | Token price | $58.89 | source: live |
+| 2 | Current float market cap | $17.59B | 298,649,468 HYPE × $58.89 (circ source: onchain_feed) |
+| 3 | + 24mo unlocks | +$12.27B | Y1 119M + Y2 89.3M team unlocks (Tokenomist scheduled rate) |
+| 4 | + 24mo emissions | +$400.45M | Staking emissions paid from Future Emissions allocation (Category C — added to dilution side) |
 | 5 | − 24mo buybacks | −$1.24B | 30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present) (verification: onchain) |
-| 6 | **Adjusted MCap** | **$29.63B** | Lines 2 + 3 + 4 − 5 |
-| 7 | Annual buyback (Category A) | $426.46M | last 60d annualized — verification: onchain |
+| 6 | **Adjusted MCap** | **$29.01B** | Lines 2 + 3 + 4 − 5 |
+| 7 | Annual buyback (Category A) | $424.98M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to HYPE (Category B) | $0 | No Category B — staking rewards are HYPE-denominated dilution rebate (Category C) (verification: governance_stated) |
-| 9 | **Total Real Capture** | **$426.46M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **69.5×** | Line 6 ÷ Line 9 |
+| 9 | **Total Real Capture** | **$424.98M/yr** | Lines 7 + 8 |
+| 10 | **Holder Multiple (HM)** | **68.3×** | Line 6 ÷ Line 9 |
 
-**Buyback rate lens:** recent 60d annualized = **$426.46M/yr** (HM input). Lifetime annualized (433d, cumulative $901.57M) = **$759.99M/yr**. Recent rate is **-43.9%** below lifetime average.
+**Buyback rate lens:** recent 60d annualized = **$424.98M/yr** (HM input). Lifetime annualized (433d, cumulative $901.33M) = **$759.78M/yr**. Recent rate is **-44.1%** below lifetime average.
 
 [Sources: DefiLlama, Hyperliquid Info API, Tokenomist, Hyperliquid docs]
 
 ---
 
-### Lighter (LIT) — HM 20.7× _(fair value)_
+### Lighter (LIT) — HM 20.1× _(fair value)_
 
 Phase: `current` — TGE float. 99.5% of post-LLP revenue used to algorithmically buy back LIT. Team/investor cliff Dec 22 2026.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $1.17 | source: live |
-| 2 | Current float market cap | $292.50M | 250,000,000 LIT × $1.17 (circ source: live) |
-| 3 | + 24mo unlocks | +$252.72M | 54M Y1 + 162M Y2; cliff Dec 22 2026 unlocks 13.5M/mo across 36mo linear |
-| 4 | + 24mo emissions | +$26.06M | Staking emissions over 24mo (Category C) |
+| 1 | Token price | $1.14 | source: live |
+| 2 | Current float market cap | $285.00M | 250,000,000 LIT × $1.14 (circ source: live) |
+| 3 | + 24mo unlocks | +$246.24M | 54M Y1 + 162M Y2; cliff Dec 22 2026 unlocks 13.5M/mo across 36mo linear |
+| 4 | + 24mo emissions | +$25.39M | Staking emissions over 24mo (Category C) |
 | 5 | − 24mo buybacks | −$51.06M | 99.5% × post-LLP revenue. Proxy via DL holdersRevenue ($25.6M/yr, matches stated rate within 0.3%) until Lighter API key unlocks direct trade-level verification. (verification: proxy) |
-| 6 | **Adjusted MCap** | **$520.22M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$505.57M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $25.17M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to LIT (Category B) | $0 | No Category B — staking yield is LIT-denominated (Category C) (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$25.17M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **20.7×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **20.1×** | Line 6 ÷ Line 9 |
 
 **Buyback rate lens:** recent 60d annualized = **$25.17M/yr** (HM input). Lifetime annualized (142d, cumulative $18.48M) = **$47.51M/yr**. Recent rate is **-47.0%** below lifetime average.
 

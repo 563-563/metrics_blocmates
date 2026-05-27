@@ -50,7 +50,7 @@ export default async function TpDeepPage({
         {npP ? (
           <>
             <TpRollupGrid np={npP} />
-            <p className="text-[10px] text-zinc-600 mt-4 leading-relaxed">
+            <p className="text-[11px] text-zinc-500 mt-4 leading-relaxed">
               Unlocks are <span className="text-zinc-400">sell-probability weighted</span> —
               team/core-contributor vesting is discounted (×0.10) because it&apos;s mostly
               re-staked rather than sold, foundation/emissions ×0.30-0.40, airdrop ×0.20.
@@ -69,7 +69,7 @@ export default async function TpDeepPage({
         {npDaily.length > 0 ? (
           <>
             <NetPressureChart data={npDaily} symbol={hmP.symbol} />
-            <p className="text-[10px] text-zinc-600 mt-3 leading-relaxed">
+            <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
               <span className="text-zinc-400">Daily</span> = per-day flow (red bars = net
               seller, green = net buyer). <span className="text-zinc-400">30d rolling</span> =
               trailing-30-day sum (smooths the monthly unlock spikes — best for trend).
@@ -94,7 +94,7 @@ export default async function TpDeepPage({
               totalSupply={tokenomics.total_supply}
               symbol={hmP.symbol}
             />
-            <p className="text-[10px] text-zinc-600 mt-3 leading-relaxed">
+            <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
               Stacked area shows cumulative tokens unlocked per recipient
               bucket over the full vesting schedule. Forward of today is the
               projected schedule — actual unlocks may diverge if team members

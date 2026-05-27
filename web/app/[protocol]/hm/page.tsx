@@ -106,7 +106,7 @@ export default async function HmDeepPage({
         {hmHistory.filter((d) => d.hm != null).length >= 2 ? (
           <>
             <HmHistoryChart data={hmHistory} />
-            <p className="text-[10px] text-zinc-600 mt-3 leading-relaxed">
+            <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
               HM recomputed as-of each day from that day&apos;s price and trailing-60d
               buyback rate (circulating held constant). Band shading: green = cheap,
               amber = expensive, red = speculative. Dashed lime line = price (right axis)

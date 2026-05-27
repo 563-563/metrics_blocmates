@@ -1,9 +1,25 @@
-import type { TmfWaterfall as TmfWaterfallType } from "@/lib/data";
+import type { TmfWaterfall as TmfWaterfallType, TmfStep } from "@/lib/data";
 import { fmtUsd } from "@/lib/format";
 
-// SKY's Treasury Management Function rendered as a revenue waterfall. Revenue
-// (dynamic, from DefiLlama) cascades through fixed buckets; holder-facing
-// buckets (burn + staking) stay locked until the ABC solvency buffer fills.
+// SKY's Treasury Management Function as a literal revenue waterfall: revenue
+// enters at the top and DIMINISHES as each bucket takes its cut. The
+// holder-facing buckets (burn + staking) run dry in Phase 1 because the ABC
+// gate absorbs everything above it.
+
+const C = {
+  sm: "#64748b", // slate — Security & Maintenance
+  abc: "#f59e0b", // amber — ABC gate
+  burn: "#f43f5e", // rose — burn
+  staking: "#10b981" // emerald — staking
+};
+
+function stepColor(step: TmfStep): string {
+  if (step.is_gate) return C.abc;
+  if (/burn/i.test(step.name)) return C.burn;
+  if (/stak/i.test(step.name)) return C.staking;
+  return C.sm;
+}
+
 export function TmfWaterfall({
   wf,
   annualRevenueUsd
@@ -13,121 +29,153 @@ export function TmfWaterfall({
 }) {
   const rev = annualRevenueUsd && annualRevenueUsd > 0 ? annualRevenueUsd : null;
 
-  const statusChip = (s: string) => {
-    if (s === "active") return { label: "active", cls: "text-emerald-300 border-emerald-800/60", dot: "bg-emerald-400" };
-    if (s === "filling") return { label: "filling", cls: "text-amber-300 border-amber-800/60", dot: "bg-amber-400" };
-    return { label: "locked", cls: "text-zinc-500 border-zinc-700", dot: "bg-zinc-600" };
-  };
+  // Running remainder flowing DOWN the waterfall after each bucket takes its cut.
+  let remaining = rev;
+  const steps = wf.steps.map((s) => {
+    const tookUsd = rev != null ? rev * s.pct : null;
+    const before = remaining;
+    if (remaining != null && tookUsd != null) remaining = Math.max(0, remaining - tookUsd);
+    return { ...s, tookUsd, remainingAfter: remaining, flowIn: before };
+  });
 
   return (
     <div>
-      {/* Revenue inflow header */}
-      <div className="flex items-baseline justify-between mb-1">
-        <span className="text-[10px] uppercase tracking-widest text-zinc-500">
-          Net revenue in (trailing 1y, DefiLlama)
-        </span>
-        <span className="text-lg text-zinc-100">
-          {rev ? `${fmtUsd(rev)}/yr` : "—"}
-        </span>
+      {/* Inflow header */}
+      <div className="flex items-baseline justify-between border-b border-zinc-800 pb-4 mb-5">
+        <div>
+          <p className="text-xs uppercase tracking-widest text-zinc-400">Net revenue in</p>
+          <p className="text-[11px] text-zinc-500 mt-1">
+            trailing 1y · DefiLlama · {wf.framework}
+          </p>
+        </div>
+        <p className="text-3xl font-semibold text-zinc-50">{rev ? `${fmtUsd(rev)}` : "—"}<span className="text-sm text-zinc-500">/yr</span></p>
       </div>
-      <p className="text-[10px] text-zinc-600 mb-5">
-        {wf.framework} · phase <code className="bg-zinc-900 px-1 rounded">{wf.current_phase}</code>
-      </p>
 
-      {/* Waterfall steps */}
-      <div className="space-y-2">
-        {wf.steps.map((step, i) => {
-          const chip = statusChip(step.status);
-          const stepUsd = rev != null ? rev * step.pct : null;
-          const isGate = step.is_gate;
-          const locked = step.status === "locked";
+      {/* Allocation split bar — instant read of where revenue is directed */}
+      <div className="mb-6">
+        <div className="flex h-6 rounded overflow-hidden border border-zinc-800">
+          {steps.filter((s) => s.pct > 0).map((s) => (
+            <div
+              key={s.n}
+              className="flex items-center justify-center text-[11px] font-medium text-black/80"
+              style={{ width: `${s.pct * 100}%`, background: stepColor(s) }}
+              title={`${s.name} · ${(s.pct * 100).toFixed(0)}%`}
+            >
+              {s.pct >= 0.15 ? `${(s.pct * 100).toFixed(0)}%` : ""}
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-between text-[11px] text-zinc-500 mt-1.5">
+          <span><span style={{ color: C.sm }}>■</span> Security &amp; Maintenance</span>
+          <span><span style={{ color: C.abc }}>■</span> ABC buffer (gate)</span>
+          <span className="text-zinc-600">Burn + Staking: 0% — locked</span>
+        </div>
+      </div>
+
+      {/* The cascade */}
+      <div className="relative">
+        {steps.map((s, i) => {
+          const color = stepColor(s);
+          const locked = s.status === "locked";
+          const gate = !!s.is_gate;
+          // Width of this bucket's "stream" = share of the original revenue it receives.
+          const streamPct = s.flowIn != null && rev ? Math.max(6, (s.flowIn / rev) * 100) : 100;
+
           return (
-            <div key={step.n}>
-              {/* connector */}
-              {i > 0 && (
-                <div className="flex justify-center">
-                  <span className="text-zinc-700 text-xs leading-none">↓</span>
-                </div>
-              )}
+            <div key={s.n}>
               <div
-                className={`rounded-md border px-4 py-3 ${
-                  isGate
-                    ? "border-amber-900/50 bg-amber-950/20"
+                className={`rounded-lg border px-4 py-3.5 ${
+                  gate
+                    ? "border-amber-700/60 bg-amber-950/25"
                     : locked
-                      ? "border-zinc-800 bg-zinc-950/40 opacity-70"
-                      : "border-zinc-800 bg-zinc-950"
+                      ? "border-dashed border-zinc-700 bg-transparent"
+                      : "border-zinc-700 bg-zinc-900/60"
                 }`}
+                style={!locked ? { borderLeft: `3px solid ${color}` } : undefined}
               >
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
-                    <p className="text-sm text-zinc-200">
-                      <span className="text-zinc-600 mr-1.5">{step.n}.</span>
-                      {step.name}
-                      {locked && <span className="ml-2 text-zinc-600">🔒</span>}
+                    <p className={`text-base font-medium ${locked ? "text-zinc-500" : "text-zinc-100"}`}>
+                      <span className="text-zinc-600 mr-2">{s.n}</span>
+                      {s.name}
+                      {locked && <span className="ml-2 text-amber-500/80 text-sm">🔒 Phase 3</span>}
                     </p>
-                    <p className="text-[11px] text-zinc-500 mt-0.5">
-                      → {step.dest}
-                      {step.unlocks ? ` · ${step.unlocks}` : ""}
+                    <p className="text-xs text-zinc-400 mt-1">
+                      → {s.dest}
+                      {locked && s.unlocks ? <span className="text-zinc-600"> · {s.unlocks}</span> : ""}
                     </p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-sm text-zinc-300">
-                      {step.pct > 0 ? `${(step.pct * 100).toFixed(0)}%` : "—"}
+                    <p className={`text-lg font-semibold ${locked ? "text-zinc-600" : "text-zinc-100"}`}>
+                      {s.pct > 0 ? `${(s.pct * 100).toFixed(0)}%` : "0%"}
                     </p>
-                    {stepUsd != null && step.pct > 0 && (
-                      <p className="text-[11px] text-zinc-500">
-                        ≈ {fmtUsd(stepUsd)}/yr
-                      </p>
+                    {s.tookUsd != null && s.pct > 0 ? (
+                      <p className="text-xs text-zinc-400">{fmtUsd(s.tookUsd)}/yr</p>
+                    ) : (
+                      <p className="text-xs text-zinc-600">nothing</p>
                     )}
-                    <span
-                      className={`inline-flex items-center gap-1 mt-1 rounded-full border px-1.5 py-0.5 text-[9px] ${chip.cls}`}
-                    >
-                      <span className={`w-1 h-1 rounded-full ${chip.dot}`} />
-                      {chip.label}
-                    </span>
                   </div>
                 </div>
 
-                {/* ABC gate: fill bar toward floor */}
-                {isGate && (
-                  <div className="mt-3 pt-3 border-t border-amber-900/30">
-                    <div className="flex items-baseline justify-between text-[10px] mb-1">
-                      <span className="text-amber-300/80">
-                        Turbo-fill toward Phase 3 trigger
-                      </span>
-                      <span className="text-zinc-400">
-                        floor {fmtUsd(step.target_usd ?? wf.abc_floor_usd)}
-                      </span>
+                {/* ABC gate fill */}
+                {gate && (
+                  <div className="mt-3 pt-3 border-t border-amber-800/30">
+                    <div className="flex items-baseline justify-between text-xs mb-1.5">
+                      <span className="text-amber-300">Turbo-fill toward Phase 3 trigger</span>
+                      <span className="text-zinc-300">floor {fmtUsd(s.target_usd ?? wf.abc_floor_usd)}</span>
                     </div>
-                    {/* Indeterminate fill — exact level not on-chain readable */}
-                    <div className="h-1.5 rounded-full bg-black/40 overflow-hidden">
+                    <div className="h-2 rounded-full bg-black/50 overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-amber-500/50"
+                        className="h-full w-full rounded-full"
                         style={{
-                          width: "100%",
                           backgroundImage:
-                            "repeating-linear-gradient(45deg, rgba(245,158,11,0.55) 0 6px, rgba(245,158,11,0.18) 6px 12px)"
+                            "repeating-linear-gradient(45deg, rgba(245,158,11,0.7) 0 7px, rgba(245,158,11,0.22) 7px 14px)"
                         }}
                       />
                     </div>
-                    <p className="text-[10px] text-zinc-600 mt-1.5 leading-relaxed">
+                    <p className="text-xs text-zinc-500 mt-2 leading-relaxed">
                       {wf.abc_level_note}
                     </p>
                   </div>
                 )}
               </div>
+
+              {/* Flow connector — shows the diminishing stream between buckets */}
+              {i < steps.length - 1 && (
+                <div className="flex items-center gap-2 py-2 pl-4">
+                  <span className="text-zinc-500 text-lg leading-none">↓</span>
+                  {s.remainingAfter != null && rev != null && (
+                    <span className="text-xs text-zinc-400">
+                      {s.remainingAfter > rev * 0.005 ? (
+                        <>
+                          <span className="text-zinc-200">{fmtUsd(s.remainingAfter)}/yr</span> continues down
+                        </>
+                      ) : (
+                        <span className="text-rose-400/80">
+                          ~$0 reaches the buckets below — ABC absorbs the stream in Phase 1
+                        </span>
+                      )}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           );
         })}
       </div>
 
-      <p className="text-[10px] text-zinc-600 mt-5 leading-relaxed">
-        <span className="text-zinc-400">Why SKY&apos;s HM is ∞ today:</span> in Phase 1 the
-        waterfall fills the ABC solvency buffer first — the burn and staking-reward buckets
-        (the only ones that reach SKY holders) are bypassed. SKY earns{" "}
-        {rev ? <span className="text-zinc-300">{fmtUsd(rev)}/yr</span> : "revenue"} but retains
-        nearly all of it, so holder capture is ~0 until Phase 3. Source: {wf.source}
-      </p>
+      {/* Why ∞ */}
+      <div className="mt-6 rounded-md border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <p className="text-sm text-zinc-300 leading-relaxed">
+          <span className="text-zinc-100 font-medium">Why SKY&apos;s HM is ∞ today:</span> in Phase 1
+          the waterfall fills the ABC solvency buffer first, so the burn and staking-reward
+          buckets — the only two that reach SKY holders — run dry. SKY earns{" "}
+          {rev ? <span className="text-zinc-100">{fmtUsd(rev)}/yr</span> : "revenue"} but retains
+          nearly all of it. Holder capture (and a finite HM) resumes at Phase 3, once ABC clears
+          its {fmtUsd(wf.abc_floor_usd)} floor.
+        </p>
+        <p className="text-xs text-zinc-600 mt-2">Source: {wf.source}</p>
+      </div>
     </div>
   );
 }

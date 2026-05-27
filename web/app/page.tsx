@@ -235,7 +235,7 @@ export default function Home() {
       </div>
 
       {/* Legend */}
-      <div className="mt-4 text-[10px] text-zinc-600 leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
+      <div className="mt-4 text-[11px] text-zinc-500 leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
         <span>HM cell: <span className="text-emerald-400">green = cheap</span> → <span className="text-rose-400">red = expensive</span></span>
         <span>NP: <span className="text-rose-400">▲ red = net seller</span> · <span className="text-emerald-400">▼ green = net buyer</span> (unlocks sell-probability weighted)</span>
         <span>Sparkline = 90d daily buyback trend</span>

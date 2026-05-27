@@ -23,6 +23,7 @@ export type HmProtocol = {
   name: string;
   symbol: string;
   category: string;
+  image?: string | null;
   phase: { active: string; notes?: string };
   price_usd: number;
   price_source: string;

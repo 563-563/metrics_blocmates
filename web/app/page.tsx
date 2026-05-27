@@ -132,11 +132,26 @@ export default function Home() {
                 <tr key={p.slug} className="border-zinc-900 group">
                   {/* Protocol */}
                   <td className="py-3 px-2 border-t border-zinc-900">
-                    <Link href={`/${p.slug}`} className="block">
-                      <div className="text-zinc-100 group-hover:text-white font-medium">{p.name}</div>
-                      <div className="text-[11px] text-zinc-500">
-                        ${p.symbol} · <span className="text-zinc-600">{p.phase.active}</span>
-                      </div>
+                    <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
+                      {p.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={p.image}
+                          alt=""
+                          width={28}
+                          height={28}
+                          className="rounded-full bg-zinc-800 shrink-0"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span className="w-7 h-7 rounded-full bg-zinc-800 shrink-0" />
+                      )}
+                      <span>
+                        <span className="block text-zinc-100 group-hover:text-white font-medium">{p.name}</span>
+                        <span className="block text-[11px] text-zinc-500">
+                          ${p.symbol} · <span className="text-zinc-600">{p.phase.active}</span>
+                        </span>
+                      </span>
                     </Link>
                   </td>
 

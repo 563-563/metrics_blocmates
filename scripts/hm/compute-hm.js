@@ -306,6 +306,7 @@ function computeProtocol(seedRow, latest) {
     name: seedRow.name,
     symbol: seedRow.symbol,
     category: seedRow.category,
+    image: live?.image ?? null,
     phase: seedRow.phase,
     price_usd: price,
     price_source: REPRODUCE_ARTICLE ? 'article' : (live?.price != null ? 'live' : 'seed_fallback'),

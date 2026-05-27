@@ -26,7 +26,20 @@ export function ProtocolHeader({
       </nav>
 
       {/* Title row */}
-      <div className="flex items-baseline gap-3 mb-2">
+      <div className="flex items-center gap-3 mb-2">
+        {hmP.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={hmP.image}
+            alt=""
+            width={36}
+            height={36}
+            className="rounded-full bg-zinc-800 shrink-0"
+            loading="lazy"
+          />
+        ) : (
+          <span className="w-9 h-9 rounded-full bg-zinc-800 shrink-0" />
+        )}
         <h1 className="text-3xl font-semibold tracking-tight">{hmP.name}</h1>
         <span className="text-zinc-500 text-sm">${hmP.symbol}</span>
         <span className="text-zinc-600 text-xs ml-2">{hmP.category}</span>

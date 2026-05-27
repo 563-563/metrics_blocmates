@@ -74,11 +74,17 @@ jobs:
       - name: LIT buyback proxy (DefiLlama holdersRevenue)
         run: node scripts/onchain/lit/fetch-buyback-proxy.js
 
+      - name: Daily price history (CoinGecko, for HM-over-time)
+        run: node scripts/external/fetch-cg-price-history.js --days 180
+
       - name: Compute HM snapshot
         run: node scripts/hm/compute-hm.js
 
       - name: Compute TP snapshot
         run: node scripts/np/compute-np.js
+
+      - name: Backfill HM time series
+        run: node scripts/hm/backfill-hm-history.js --days 120
 
       - name: Append daily history
         run: node scripts/history/append-history.js

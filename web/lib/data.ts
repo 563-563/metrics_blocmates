@@ -11,6 +11,10 @@ import aaveTreasuryRaw from "../../data/onchain/aave/treasury.json";
 import skyCatBInflowsRaw from "../../data/onchain/sky/cat-b-inflows.json";
 import skyRewardsFarmBalanceRaw from "../../data/onchain/sky/rewards-farm-balance.json";
 import litBuybacksRaw from "../../data/onchain/lit/buybacks.json";
+import hmHistHypeRaw from "../../data/hm/history/hyperliquid.json";
+import hmHistAaveRaw from "../../data/hm/history/aave.json";
+import hmHistSkyRaw from "../../data/hm/history/sky.json";
+import hmHistLitRaw from "../../data/hm/history/lighter.json";
 
 // ─── Types matching compute outputs ──────────────────────────────────────
 
@@ -166,6 +170,17 @@ export function getNpProtocolBySlug(slug: string): NpProtocol | undefined {
 // Per-protocol on-chain feed map. Currently HYPE only — when AAVE/SKY/LIT
 // adapters land, add their slug → daily-series mappings here.
 export const litBuybacks: AfBuyback[] = litBuybacksRaw as AfBuyback[];
+
+export type HmHistoryPoint = { date: string; hm: number | null; price_usd?: number };
+const hmHistory: Record<string, HmHistoryPoint[]> = {
+  hyperliquid: hmHistHypeRaw as HmHistoryPoint[],
+  aave: hmHistAaveRaw as HmHistoryPoint[],
+  sky: hmHistSkyRaw as HmHistoryPoint[],
+  lighter: hmHistLitRaw as HmHistoryPoint[]
+};
+export function getHmHistory(slug: string): HmHistoryPoint[] {
+  return hmHistory[slug] ?? [];
+}
 
 export const onchainFeeds: Record<
   string,

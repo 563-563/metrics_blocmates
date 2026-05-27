@@ -119,10 +119,10 @@ export default async function ProtocolLanding({
                       : "text-emerald-400"
                 }`}
               >
-                {fmtTokensSigned(np30.net_pressure_tokens)} {hmP.symbol}
+                {fmtUsdSigned(np30.net_pressure_usd)}
               </p>
               <p className="text-xs text-zinc-500 mt-1">
-                {fmtUsdSigned(np30.net_pressure_usd)} ·{" "}
+                {fmtTokensSigned(np30.net_pressure_tokens)} {hmP.symbol} ·{" "}
                 {fmtPct(
                   np30.net_pressure_tokens /
                     (totalSupply || hmP.circulating_supply_tokens),

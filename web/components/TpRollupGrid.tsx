@@ -23,10 +23,10 @@ export function TpRollupGrid({ np }: { np: NpProtocol }) {
               )}
             </p>
             <p className={`text-lg ${colorCls}`}>
-              {fmtTokensSigned(r.net_pressure_tokens)} {np.symbol}
+              {fmtUsdSigned(r.net_pressure_usd)}
             </p>
             <p className="text-xs text-zinc-500 mt-0.5">
-              {fmtUsdSigned(r.net_pressure_usd)} · {fmtPct(pctSupply, 3)}
+              {fmtTokensSigned(r.net_pressure_tokens)} {np.symbol} · {fmtPct(pctSupply, 3)}
             </p>
             {r.net_pressure_usd_gross != null &&
               Math.abs(r.net_pressure_usd_gross - r.net_pressure_usd) > 1e6 && (

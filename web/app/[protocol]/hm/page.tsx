@@ -3,12 +3,14 @@ import {
   PROTOCOL_SLUGS,
   getHmProtocolBySlug,
   getNpProtocolBySlug,
+  getHmHistory,
   onchainFeeds
 } from "@/lib/data";
 import { getTokenomicsBySlug } from "@/lib/tokenomics";
 import { fmtPct, fmtTokens, fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
 import { HmBreakdownTable } from "@/components/HmBreakdownTable";
+import { HmHistoryChart } from "@/components/HmHistoryChart";
 import { BuybackChart } from "@/components/BuybackChart";
 import { AfBalanceChart } from "@/components/AfBalanceChart";
 import { UnlockAllocationTable } from "@/components/UnlockAllocationTable";
@@ -30,6 +32,7 @@ export default async function HmDeepPage({
   const npP = getNpProtocolBySlug(protocol);
   const feeds = onchainFeeds[protocol] ?? {};
   const tokenomics = getTokenomicsBySlug(protocol);
+  const hmHistory = getHmHistory(protocol);
 
   // Last 90 days of buybacks for the chart.
   const buybacks = (feeds.buybacks ?? [])
@@ -84,6 +87,28 @@ export default async function HmDeepPage({
             </span>{" "}
             vs lifetime average.
           </p>
+        )}
+      </Section>
+
+      {/* HM over time */}
+      <Section title="Holder Multiple — over time">
+        {hmHistory.filter((d) => d.hm != null).length >= 2 ? (
+          <>
+            <HmHistoryChart data={hmHistory} />
+            <p className="text-[10px] text-zinc-600 mt-3 leading-relaxed">
+              HM recomputed as-of each day from that day&apos;s price and trailing-60d
+              buyback rate (circulating held constant). Band shading: green = cheap,
+              amber = expensive, red = speculative. Rising = getting pricier per dollar
+              of value returned to holders.
+            </p>
+          </>
+        ) : (
+          <Placeholder>
+            HM time series needs a daily price + buyback feed. Not available for{" "}
+            {hmP.symbol} ({hmP.annual_buyback_verification === "onchain_dormant"
+              ? "buyback mechanism dormant"
+              : "feed pending"}).
+          </Placeholder>
         )}
       </Section>
 

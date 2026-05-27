@@ -11,6 +11,52 @@
       "symbol": "SKY",
       "category": "CDP",
       "image": "https://coin-images.coingecko.com/coins/images/39925/large/sky.jpg?1724827980",
+      "revenue_30d": 14917740,
+      "revenue_1y": 248800492,
+      "holders_revenue_30d": 1111370,
+      "tmf_waterfall": {
+        "framework": "TMF — April 2026 four-step fixed waterfall",
+        "current_phase": "phase_1",
+        "abc_floor_usd": 150000000,
+        "abc_dest": "Keel ALM (managed solvency portfolio)",
+        "abc_level_note": "ABC is a managed Keel ALM portfolio (sUSDS / RWAs / Spark-Grove) — current level is not cleanly readable from a single on-chain balance.",
+        "steps": [
+          {
+            "n": 1,
+            "name": "Security & Maintenance",
+            "dest": "Core Council Buffer",
+            "pct": 0.2,
+            "status": "active",
+            "counts_to_abc": false
+          },
+          {
+            "n": 2,
+            "name": "Aggregate Backstop Capital",
+            "dest": "Keel ALM",
+            "pct": 0.8,
+            "status": "filling",
+            "is_gate": true,
+            "target_usd": 150000000
+          },
+          {
+            "n": 3,
+            "name": "Smart Burn Engine (buyback)",
+            "dest": "SBE → burn",
+            "pct": 0,
+            "status": "locked",
+            "unlocks": "Phase 3 — when ABC ≥ $150M"
+          },
+          {
+            "n": 4,
+            "name": "Staking Rewards (USDS → stkSKY)",
+            "dest": "stkSKY",
+            "pct": 0,
+            "status": "locked",
+            "unlocks": "Phase 3 — when ABC ≥ $150M"
+          }
+        ],
+        "source": "Sky governance TMF executive (Apr/May 2026); percentages are governance framework params, editable here."
+      },
       "phase": {
         "active": "phase_1",
         "notes": "Phase 1 of TMF framework. SBE bypassed during ABC fill (~15 months base case from Apr 2026). 40% of net revenue → ABC, 40% → SKY stakers (as USDS), 20% → Security/Maintenance.",
@@ -71,6 +117,10 @@
       "symbol": "AAVE",
       "category": "Lending",
       "image": "https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354",
+      "revenue_30d": 6992456,
+      "revenue_1y": 125997233,
+      "holders_revenue_30d": 20188,
+      "tmf_waterfall": null,
       "phase": {
         "active": "current",
         "notes": "ARFC $30M/yr buyback budget (cut from original $50M). AWW Framework commits 100% product revenue to DAO."
@@ -131,6 +181,10 @@
       "symbol": "HYPE",
       "category": "Derivatives",
       "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
+      "revenue_30d": 53787619,
+      "revenue_1y": 935376933,
+      "holders_revenue_30d": 53787619,
+      "tmf_waterfall": null,
       "phase": {
         "active": "current",
         "notes": "Assistance Fund captures ~99% of revenue for HYPE buybacks. Team vesting cliff active."
@@ -192,6 +246,10 @@
       "symbol": "LIT",
       "category": "Derivatives",
       "image": "https://coin-images.coingecko.com/coins/images/71121/large/lighter.png?1765888098",
+      "revenue_30d": 2118157,
+      "revenue_1y": 49810367,
+      "holders_revenue_30d": 2104923,
+      "tmf_waterfall": null,
       "phase": {
         "active": "current",
         "notes": "TGE float. 99.5% of post-LLP revenue used to algorithmically buy back LIT. Team/investor cliff Dec 22 2026."

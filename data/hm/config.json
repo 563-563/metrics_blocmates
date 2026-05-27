@@ -38,6 +38,20 @@
       "annual_holder_yield_verification": "governance_stated",
       "onchain_holder_yield_path": "data/onchain/sky/cat-b-inflows.json",
       "onchain_holder_yield_annualize_days": 60,
+      "tmf_waterfall": {
+        "framework": "TMF — April 2026 four-step fixed waterfall",
+        "current_phase": "phase_1",
+        "abc_floor_usd": 150000000,
+        "abc_dest": "Keel ALM (managed solvency portfolio)",
+        "abc_level_note": "ABC is a managed Keel ALM portfolio (sUSDS / RWAs / Spark-Grove) — current level is not cleanly readable from a single on-chain balance.",
+        "steps": [
+          { "n": 1, "name": "Security & Maintenance", "dest": "Core Council Buffer", "pct": 0.20, "status": "active", "counts_to_abc": false },
+          { "n": 2, "name": "Aggregate Backstop Capital", "dest": "Keel ALM", "pct": 0.80, "status": "filling", "is_gate": true, "target_usd": 150000000 },
+          { "n": 3, "name": "Smart Burn Engine (buyback)", "dest": "SBE → burn", "pct": 0, "status": "locked", "unlocks": "Phase 3 — when ABC ≥ $150M" },
+          { "n": 4, "name": "Staking Rewards (USDS → stkSKY)", "dest": "stkSKY", "pct": 0, "status": "locked", "unlocks": "Phase 3 — when ABC ≥ $150M" }
+        ],
+        "source": "Sky governance TMF executive (Apr/May 2026); percentages are governance framework params, editable here."
+      },
       "sources": ["DefiLlama", "Sky ChainLog (REWARDS_LSSKY_USDS resolved on-chain)", "Sky governance forum"]
     },
     "aave": {

@@ -307,6 +307,13 @@ function computeProtocol(seedRow, latest) {
     symbol: seedRow.symbol,
     category: seedRow.category,
     image: live?.image ?? null,
+    // Live revenue (DefiLlama) — dynamic, refreshes hourly. Used by SKY's
+    // TMF waterfall and available generally.
+    revenue_30d: live?.revenue_30d ?? null,
+    revenue_1y: live?.revenue_1y ?? null,
+    holders_revenue_30d: live?.holders_revenue_30d ?? null,
+    // Optional per-protocol revenue-waterfall config (currently SKY only).
+    tmf_waterfall: seedRow.tmf_waterfall ?? null,
     phase: seedRow.phase,
     price_usd: price,
     price_source: REPRODUCE_ARTICLE ? 'article' : (live?.price != null ? 'live' : 'seed_fallback'),

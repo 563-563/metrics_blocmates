@@ -11,6 +11,7 @@ import { fmtPct, fmtTokens, fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
 import { HmBreakdownTable } from "@/components/HmBreakdownTable";
 import { HmHistoryChart } from "@/components/HmHistoryChart";
+import { TmfWaterfall } from "@/components/TmfWaterfall";
 import { BuybackChart } from "@/components/BuybackChart";
 import { AfBalanceChart } from "@/components/AfBalanceChart";
 import { UnlockAllocationTable } from "@/components/UnlockAllocationTable";
@@ -89,6 +90,16 @@ export default async function HmDeepPage({
           </p>
         )}
       </Section>
+
+      {/* TMF revenue waterfall — SKY only (explains the ∞ HM) */}
+      {hmP.tmf_waterfall && (
+        <Section title="Revenue waterfall — where the money goes">
+          <TmfWaterfall
+            wf={hmP.tmf_waterfall}
+            annualRevenueUsd={hmP.revenue_1y ?? null}
+          />
+        </Section>
+      )}
 
       {/* HM over time */}
       <Section title="Holder Multiple — over time">

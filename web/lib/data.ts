@@ -18,12 +18,37 @@ import hmHistLitRaw from "../../data/hm/history/lighter.json";
 
 // ─── Types matching compute outputs ──────────────────────────────────────
 
+export type TmfStep = {
+  n: number;
+  name: string;
+  dest: string;
+  pct: number;
+  status: "active" | "filling" | "locked";
+  counts_to_abc?: boolean;
+  is_gate?: boolean;
+  target_usd?: number;
+  unlocks?: string;
+};
+export type TmfWaterfall = {
+  framework: string;
+  current_phase: string;
+  abc_floor_usd: number;
+  abc_dest: string;
+  abc_level_note: string;
+  steps: TmfStep[];
+  source: string;
+};
+
 export type HmProtocol = {
   slug: string;
   name: string;
   symbol: string;
   category: string;
   image?: string | null;
+  revenue_30d?: number | null;
+  revenue_1y?: number | null;
+  holders_revenue_30d?: number | null;
+  tmf_waterfall?: TmfWaterfall | null;
   phase: { active: string; notes?: string };
   price_usd: number;
   price_source: string;

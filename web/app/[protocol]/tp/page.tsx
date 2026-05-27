@@ -37,7 +37,8 @@ export default async function TpDeepPage({
       .map((r) => ({
         date: r.date,
         net_pressure_usd: r.net_pressure_usd,
-        net_pressure_tokens: r.net_pressure_tokens
+        net_pressure_tokens: r.net_pressure_tokens,
+        price_usd: r.price_usd_for_day
       })) ?? [];
 
   return (
@@ -63,15 +64,18 @@ export default async function TpDeepPage({
         )}
       </Section>
 
-      {/* Section 2 — Daily NP series */}
-      <Section title="Daily Net Pressure · last 90 days">
+      {/* Section 2 — NP time series */}
+      <Section title="Net Pressure — over time · last 90 days">
         {npDaily.length > 0 ? (
           <>
             <NetPressureChart data={npDaily} symbol={hmP.symbol} />
             <p className="text-[10px] text-zinc-600 mt-3 leading-relaxed">
-              Red = supply hitting market faster than the protocol absorbs.
-              Green = protocol is net buyer. USD uses per-day historical price
-              where available. Days without data treated as zero net pressure.
+              <span className="text-zinc-400">Daily</span> = per-day flow (red bars = net
+              seller, green = net buyer). <span className="text-zinc-400">30d rolling</span> =
+              trailing-30-day sum (smooths the monthly unlock spikes — best for trend).
+              <span className="text-zinc-400"> Cumulative</span> = running total since the
+              series start. Dashed lime line = price (right axis). USD uses per-day historical
+              price.
             </p>
           </>
         ) : (

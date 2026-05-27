@@ -98,8 +98,9 @@ export default async function HmDeepPage({
             <p className="text-[10px] text-zinc-600 mt-3 leading-relaxed">
               HM recomputed as-of each day from that day&apos;s price and trailing-60d
               buyback rate (circulating held constant). Band shading: green = cheap,
-              amber = expensive, red = speculative. Rising = getting pricier per dollar
-              of value returned to holders.
+              amber = expensive, red = speculative. Dashed lime line = price (right axis)
+              — watch HM rise when price outruns the buyback. Rising HM = getting pricier
+              per dollar returned to holders.
             </p>
           </>
         ) : (

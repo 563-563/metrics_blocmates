@@ -8,6 +8,7 @@ import { getTokenomicsBySlug } from "@/lib/tokenomics";
 import { fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
 import { NetPressureChart } from "@/components/NetPressureChart";
+import { SourcesSinksFlow } from "@/components/SourcesSinksFlow";
 import { TpRollupGrid } from "@/components/TpRollupGrid";
 import { UnlockScheduleChart } from "@/components/UnlockScheduleChart";
 import { UpcomingUnlocksTable } from "@/components/UpcomingUnlocksTable";
@@ -44,6 +45,13 @@ export default async function TpDeepPage({
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
       <ProtocolHeader hmP={hmP} npP={npP} active="tp" />
+
+      {/* Sources & Sinks — animated flow visual */}
+      {npP && (
+        <Section title="Sources & Sinks — the pressure system">
+          <SourcesSinksFlow np={npP} priceUsd={hmP.price_usd} />
+        </Section>
+      )}
 
       {/* Section 1 — Roll-ups */}
       <Section title="Net Pressure — roll-ups">

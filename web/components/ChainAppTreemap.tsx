@@ -1,6 +1,6 @@
 "use client";
 
-import { ResponsiveContainer, Treemap, Tooltip } from "recharts";
+import { ResponsiveContainer, Treemap } from "recharts";
 import { CHAIN_COLORS } from "@/lib/chain-colors";
 import type { FlatApp } from "@/lib/chain-aggregates";
 
@@ -11,39 +11,26 @@ function fmt(v: number): string {
   return `$${v.toFixed(0)}`;
 }
 
-type TmDatum = { name: string; size: number; chain: string; category: string; color: string; attribution?: string };
-
-function Tip({ active, payload }: any) {
-  if (!active || !payload?.length) return null;
-  const d = payload[0].payload;
-  if (!d || !d.chain) return null;
-  return (
-    <div
-      style={{
-        background: "#0a0a0a",
-        border: "1px solid #1f1f1f",
-        padding: "6px 10px",
-        fontSize: 12,
-        color: "#e4e4e7",
-        maxWidth: 260
-      }}
-    >
-      <div style={{ color: d.color, fontWeight: 600 }}>{d.name}</div>
-      <div style={{ color: "#a1a1aa", marginTop: 2 }}>
-        {d.chain} · {d.category}
-        {d.attribution && <span style={{ color: "#22d3ee" }}> · attribution</span>}
-      </div>
-      <div style={{ marginTop: 4 }}>30d revenue <strong>{fmt(d.size)}</strong></div>
-    </div>
-  );
-}
-
-// Custom content renderer — labels inline when the cell is large enough to
-// hold readable text. Smaller cells rely on the tooltip.
+// Recharts invokes the custom content renderer for every node in the
+// hierarchy — including the root, where name/color/size are undefined.
+// All accessors below defensive-default so the root pass is a no-op
+// rather than a crash.
 function TmContent(props: any) {
-  const { x, y, width, height, name, color, size } = props;
-  const showName = width > 70 && height > 26;
-  const showValue = width > 90 && height > 42;
+  const { x, y, width, height, depth, name, size } = props;
+  if (depth === 0 || width == null || height == null) return null;
+
+  const safeName = typeof name === "string" ? name : "";
+  const safeSize = typeof size === "number" ? size : 0;
+  const fill = props.color || "#71717a";
+  const chain = props.chain || "";
+  const category = props.category || "";
+
+  const showName = width > 70 && height > 26 && safeName.length > 0;
+  const showValue = width > 90 && height > 42 && safeSize > 0;
+  const maxChars = Math.max(4, Math.floor(width / 6));
+  const displayName =
+    safeName.length > maxChars ? `${safeName.slice(0, maxChars - 1)}…` : safeName;
+
   return (
     <g>
       <rect
@@ -51,8 +38,15 @@ function TmContent(props: any) {
         y={y}
         width={width}
         height={height}
-        style={{ fill: color, fillOpacity: 0.85, stroke: "#0a0a0a", strokeWidth: 1 }}
-      />
+        style={{ fill, fillOpacity: 0.85, stroke: "#0a0a0a", strokeWidth: 1 }}
+      >
+        <title>
+          {safeName}
+          {chain ? ` · ${chain}` : ""}
+          {category ? ` · ${category}` : ""}
+          {safeSize > 0 ? ` · ${fmt(safeSize)}` : ""}
+        </title>
+      </rect>
       {showName && (
         <text
           x={x + 6}
@@ -62,7 +56,7 @@ function TmContent(props: any) {
           fontWeight={600}
           style={{ pointerEvents: "none" }}
         >
-          {name.length > Math.floor(width / 6) ? `${name.slice(0, Math.floor(width / 6) - 1)}…` : name}
+          {displayName}
         </text>
       )}
       {showValue && (
@@ -73,7 +67,7 @@ function TmContent(props: any) {
           fontSize={10}
           style={{ pointerEvents: "none" }}
         >
-          {fmt(size)}
+          {fmt(safeSize)}
         </text>
       )}
     </g>
@@ -81,8 +75,7 @@ function TmContent(props: any) {
 }
 
 // Every app on every chain in one frame. Cell area ∝ 30d revenue, color =
-// the chain it's on. Reveals which chain hosts which dominant app and lets
-// you see "Tether on Tron" the size of all of Solana at a glance.
+// the chain it's on. Stablecoin-issuer virtual apps included.
 export function ChainAppTreemap({
   apps,
   topN = 200
@@ -90,40 +83,33 @@ export function ChainAppTreemap({
   apps: FlatApp[];
   topN?: number;
 }) {
-  // Top N to keep the canvas legible (200 fills the area; beyond that, cells
-  // shrink to invisibility on small viewports).
-  const sorted = apps
+  const data = apps
     .filter((a) => a.revenue_30d > 0)
     .sort((a, b) => b.revenue_30d - a.revenue_30d)
     .slice(0, topN)
-    .map<TmDatum>((a) => ({
+    .map((a) => ({
       name: a.name,
       size: a.revenue_30d,
       chain: a.chain,
       category: a.category,
-      color: CHAIN_COLORS[a.chain] || "#71717a",
-      attribution: a.attribution
+      color: CHAIN_COLORS[a.chain] || "#71717a"
     }));
 
-  if (sorted.length === 0) {
+  if (data.length === 0) {
     return <p className="text-xs text-zinc-600 py-6 text-center">No app data.</p>;
   }
 
   return (
-    <div>
-      <div className="h-[480px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <Treemap
-            data={sorted}
-            dataKey="size"
-            stroke="#0a0a0a"
-            content={<TmContent />}
-            isAnimationActive={false}
-          >
-            <Tooltip content={<Tip />} />
-          </Treemap>
-        </ResponsiveContainer>
-      </div>
+    <div className="h-[480px] w-full">
+      <ResponsiveContainer width="100%" height="100%">
+        <Treemap
+          data={data}
+          dataKey="size"
+          stroke="#0a0a0a"
+          content={<TmContent />}
+          isAnimationActive={false}
+        />
+      </ResponsiveContainer>
     </div>
   );
 }

@@ -9,8 +9,10 @@ import {
 import { getTokenomicsBySlug } from "@/lib/tokenomics";
 import { fmtPct, fmtTokens, fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
+import { AdjMcapBalance } from "@/components/AdjMcapBalance";
 import { HmBreakdownTable } from "@/components/HmBreakdownTable";
 import { HmHistoryChart } from "@/components/HmHistoryChart";
+import { HmStacker } from "@/components/HmStacker";
 import { InfoTip } from "@/components/InfoTip";
 import { TmfWaterfall } from "@/components/TmfWaterfall";
 import { BuybackChart } from "@/components/BuybackChart";
@@ -102,6 +104,40 @@ export default async function HmDeepPage({
             vs lifetime average.
           </p>
         )}
+      </Section>
+
+      {/* Years-to-recoup brick stacker — HM made visceral */}
+      <Section
+        title="Years to recoup — the multiple, counted"
+        info={
+          <>
+            Each brick is one year of Real Capture at the current rate. The stack
+            reaches the Adjusted MCap tower at year ={" "}
+            <strong>HM</strong> — that&apos;s exactly what the multiple measures.
+            Hover a brick for cumulative capture &amp; % of MCap recouped.
+            Visual capped at 100 bricks for high HMs. SKY shows a frozen
+            empty stack because no capture is flowing to holders in Phase 1.
+          </>
+        }
+      >
+        <HmStacker p={hmP} />
+      </Section>
+
+      {/* Adjusted MCap balance — supply forces behind the numerator */}
+      <Section
+        title="Adjusted MCap — the supply scale"
+        info={
+          <>
+            Adj MCap = Float + 24mo Unlocks/Emissions − 24mo Buybacks. The beam
+            tilts toward the heavier side: <strong>right</strong> = unlock /
+            emission expansion makes Adj MCap larger than Float;{" "}
+            <strong>left</strong> = buyback compression makes Adj MCap smaller.
+            Pan size also scales with the absolute weight. Float (anchor mass)
+            sits under the fulcrum unchanged.
+          </>
+        }
+      >
+        <AdjMcapBalance p={hmP} />
       </Section>
 
       {/* TMF revenue waterfall — SKY only (explains the ∞ HM) */}

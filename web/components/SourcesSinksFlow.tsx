@@ -200,14 +200,18 @@ export function SourcesSinksFlow({
             );
           })}
 
-          {/* Curves + particles + labels — sinks */}
+          {/* Curves + particles + labels — sinks.
+              Path drawn FROM the market node OUT toward the sink label so
+              animateMotion carries particles outward — sinks pull tokens OUT
+              of the system, not into it. */}
           {sinksAll.map((row, i) => {
             const y = yFor(sinksAll.length, i);
-            const startX = RIGHT_ANCHOR;
-            const endX = CX + NODE_R;
-            const c1x = startX - (startX - endX) * 0.45;
-            const c2x = startX - (startX - endX) * 0.7;
-            const d = `M ${startX} ${y} C ${c1x} ${y}, ${c2x} ${CY}, ${endX} ${CY}`;
+            const labelX = RIGHT_ANCHOR;
+            const marketX = CX + NODE_R;
+            const c1x = marketX + (labelX - marketX) * 0.3;
+            const c2x = marketX + (labelX - marketX) * 0.55;
+            // Start at the market, curve out to the sink label.
+            const d = `M ${marketX} ${CY} C ${c1x} ${CY}, ${c2x} ${y}, ${labelX} ${y}`;
             const pathId = `sink-path-${i}`;
             const cfg = particleConfig(row);
             const idleRow = row.perDayUsd === 0;

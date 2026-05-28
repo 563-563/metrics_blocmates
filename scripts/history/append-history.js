@@ -115,10 +115,15 @@ function appendHmHistory() {
   for (const p of snap.protocols || []) {
     row.protocols[p.symbol] = {
       price_usd: p.price_usd,
+      float_mcap_usd: p.float_mcap_usd,
       adj_mcap_usd: p.adj_mcap_usd,
+      fdv_usd: p.fdv_usd,
       real_capture_usd: p.real_capture_usd,
       annual_buyback_usd: p.annual_buyback_usd,
       annual_holder_yield_usd: p.annual_holder_yield_usd,
+      unlocks_24mo_usd: p.unlocks_24mo_usd,
+      emissions_24mo_usd: p.emissions_24mo_usd,
+      buybacks_24mo_usd: p.buybacks_24mo_usd,
       hm: p.hm,
       hm_band: p.hm_band,
       verification: p.annual_buyback_verification,

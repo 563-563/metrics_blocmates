@@ -50,12 +50,14 @@ export function HmStacker({ p }: { p: HmProtocol }) {
             Adjusted MCap
           </p>
           <div
-            className="w-full bg-gradient-to-t from-zinc-800 to-zinc-700 border border-zinc-600 rounded-t-sm flex flex-col items-center justify-end pb-3"
+            className="w-full bg-gradient-to-t from-zinc-800 to-zinc-700 border border-zinc-600 rounded-t-sm"
             style={{ height: TOWER_H }}
-          >
-            <span className="text-zinc-100 font-semibold text-sm">{fmtUsd(adjMcap)}</span>
-          </div>
+          />
           <div className="w-full h-1 bg-zinc-500" />
+          <p className="text-zinc-100 font-semibold mt-3 text-2xl tabular-nums">
+            {fmtUsd(adjMcap)}
+          </p>
+          <p className="text-[11px] text-zinc-500 mt-1">target</p>
         </div>
 
         {/* Years-of-capture stacker */}

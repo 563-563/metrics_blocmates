@@ -98,8 +98,12 @@ async function main() {
 
   const existing = loadJsonOrDefault(OUT_PATH, []);
   const sortedExisting = existing.slice().sort((a, b) => a.date.localeCompare(b.date));
-  const prevRow = sortedExisting.length > 0 ? sortedExisting[sortedExisting.length - 1] : null;
-  const deltaTokens = prevRow ? (total - prevRow.total_staked_tokens) : 0;
+  // Pick the most recent row from a *prior* date, not just the last write —
+  // hourly cron runs overwrite today's row, and "previous written" would be
+  // today itself, turning the persisted delta into intra-day flux. Compare
+  // against yesterday's final total instead.
+  const prevDateRow = sortedExisting.filter((r) => r.date < todayIso).pop() || null;
+  const deltaTokens = prevDateRow ? (total - prevDateRow.total_staked_tokens) : 0;
 
   const row = {
     date: todayIso,
@@ -108,7 +112,7 @@ async function main() {
     validators_with_stake_field: counted,
     validators_missing_stake_field: missing,
     delta_tokens: deltaTokens,
-    delta_basis_date: prevRow ? prevRow.date : null,
+    delta_basis_date: prevDateRow ? prevDateRow.date : null,
     source: 'hyperliquid_info_api',
     verification: 'onchain'
   };
@@ -118,11 +122,11 @@ async function main() {
 
   console.log(`\n[hype-staking] ${todayIso}`);
   console.log(`  total staked:    ${Math.round(total).toLocaleString()} HYPE (${counted} validators)`);
-  if (prevRow) {
+  if (prevDateRow) {
     const sign = deltaTokens >= 0 ? '+' : '−';
-    console.log(`  delta vs ${prevRow.date}: ${sign}${Math.round(Math.abs(deltaTokens)).toLocaleString()} HYPE`);
+    console.log(`  delta vs ${prevDateRow.date}: ${sign}${Math.round(Math.abs(deltaTokens)).toLocaleString()} HYPE`);
   } else {
-    console.log(`  no prior snapshot — delta=0 (baseline)`);
+    console.log(`  no prior-date snapshot — delta=0 (baseline)`);
   }
   if (missing > 0) {
     console.warn(`  warning: ${missing} validators missing a recognised stake field`);

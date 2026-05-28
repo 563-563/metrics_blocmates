@@ -94,15 +94,40 @@ function loadDailyPriceMap(relPath) {
 }
 
 // Build a date → tokens map from a daily-series JSON file.
+//
+// Modes:
+//   daily_series / daily_delta — pre-computed per-day value from `amount_field`
+//   daily_snapshot_diff        — derive day-over-day delta from a running-total
+//                                snapshot field. ROBUST against intra-day cron
+//                                re-runs that would corrupt a pre-stored delta
+//                                (e.g. fetch-staking writes hourly and would
+//                                otherwise overwrite the day's delta).
 function loadDailyMap(seedSource) {
   if (!seedSource || seedSource.type === 'none') return new Map();
-  if (seedSource.type !== 'daily_series' && seedSource.type !== 'daily_delta') return new Map();
+  if (
+    seedSource.type !== 'daily_series' &&
+    seedSource.type !== 'daily_delta' &&
+    seedSource.type !== 'daily_snapshot_diff'
+  ) return new Map();
   const abs = path.join(ROOT, seedSource.path);
   if (!fs.existsSync(abs)) return new Map();
   const rows = loadJson(abs);
   if (!Array.isArray(rows)) return new Map();
-  const field = seedSource.amount_field || 'amount_tokens';
   const m = new Map();
+
+  if (seedSource.type === 'daily_snapshot_diff') {
+    const totalField = seedSource.total_field || 'total_staked_tokens';
+    const sorted = rows
+      .filter((r) => r.date && Number.isFinite(Number(r[totalField])))
+      .sort((a, b) => a.date.localeCompare(b.date));
+    for (let i = 1; i < sorted.length; i++) {
+      const diff = Number(sorted[i][totalField]) - Number(sorted[i - 1][totalField]);
+      m.set(sorted[i].date, diff);
+    }
+    return m;
+  }
+
+  const field = seedSource.amount_field || 'amount_tokens';
   for (const r of rows) {
     if (!r.date) continue;
     const v = Number(r[field]);

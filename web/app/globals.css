@@ -11,36 +11,3 @@ html, body {
 a { color: #d4d4d8; }
 a:hover { color: #f4f4f4; }
 
-/* Sources/sinks flow animation — marching dashes that "stream" toward a center.
-   Speed (via --speed) is inversely tied to flow magnitude in the component:
-   stronger flow = faster march. Direction is reversed for sinks. */
-.tp-stream {
-  background-image: repeating-linear-gradient(
-    90deg,
-    currentColor 0,
-    currentColor 6px,
-    transparent 6px,
-    transparent 20px
-  );
-  background-size: 20px 100%;
-  animation: tp-flow-right var(--speed, 2s) linear infinite;
-  will-change: background-position;
-}
-.tp-stream.reverse {
-  animation-name: tp-flow-left;
-}
-.tp-stream.idle {
-  animation: none;
-  opacity: 0.25;
-}
-@keyframes tp-flow-right {
-  0%   { background-position-x: 0; }
-  100% { background-position-x: 20px; }
-}
-@keyframes tp-flow-left {
-  0%   { background-position-x: 20px; }
-  100% { background-position-x: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .tp-stream { animation: none; }
-}

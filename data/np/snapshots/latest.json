@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-28T12:48:45.585Z",
+  "generated_at": "2026-05-28T15:06:00.228Z",
   "as_of": "2026-05-28",
   "latest_data_as_of": "2026-05-28T12:47:29.771Z",
   "protocols": [
@@ -72,11 +72,11 @@
           "note": "AF only buys"
         },
         "net_staking_lockups": {
-          "type": "daily_delta",
+          "type": "daily_snapshot_diff",
           "path": "data/onchain/hype/staking.json",
-          "amount_field": "delta_tokens",
+          "total_field": "total_staked_tokens",
           "verification": "onchain",
-          "note": "Daily snapshots accumulate over time. Until ≥2 snapshots exist, delta=0 for historical days. Static stock figure surfaced in the report's reference section."
+          "note": "Net daily lockup = today's total_staked_tokens − yesterday's (delegations minus undelegations). Recomputed at compute time from the snapshot column, since the stored delta_tokens field is corrupted by intra-day cron re-runs (each hourly write overwrites today's row, so its persisted delta becomes intra-day flux instead of day-over-day)."
         }
       },
       "rollups": {
@@ -94,15 +94,15 @@
           "buybacks_tokens": 15743.180000000002,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -78447.5740737915,
-          "net_pressure_tokens": -15743.180000000002,
-          "net_pressure_tokens_gross": -15743.180000000002,
+          "net_staking_lockups_tokens": 395852.5958429575,
+          "net_pressure_tokens": -411595.7758429575,
+          "net_pressure_tokens_gross": -411595.7758429575,
           "unlocks_usd": 0,
           "buybacks_usd": 896259.2374000001,
-          "net_pressure_usd_perday": -896259.2374000001,
-          "net_pressure_usd_gross_perday": -896259.2374000001,
-          "net_pressure_usd": -896259.2374000001,
-          "net_pressure_usd_gross": -896259.2374000001,
+          "net_pressure_usd_perday": -23432147.51873957,
+          "net_pressure_usd_gross_perday": -23432147.51873957,
+          "net_pressure_usd": -23432147.51873957,
+          "net_pressure_usd_gross": -23432147.51873957,
           "net_pressure_usd_method": "today_price"
         },
         "7d": {
@@ -119,15 +119,15 @@
           "buybacks_tokens": 107182.80999999998,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 799975.1402662396,
-          "net_pressure_tokens": -987949.7890785313,
-          "net_pressure_tokens_gross": -987949.7890785313,
+          "net_staking_lockups_tokens": -116053.56598579884,
+          "net_pressure_tokens": -1330936.9718301273,
+          "net_pressure_tokens_gross": -1330936.9718301273,
           "unlocks_usd": 0,
           "buybacks_usd": 6112668.902539999,
-          "net_pressure_usd_perday": -56271627.86238331,
-          "net_pressure_usd_gross_perday": -56271627.86238331,
-          "net_pressure_usd": -56271627.86238331,
-          "net_pressure_usd_gross": -56271627.86238331,
+          "net_pressure_usd_perday": -75780993.33552913,
+          "net_pressure_usd_gross_perday": -75780993.33552913,
+          "net_pressure_usd": -75780993.33552913,
+          "net_pressure_usd_gross": -75780993.33552913,
           "net_pressure_usd_method": "per_day_price"
         },
         "30d": {
@@ -144,15 +144,15 @@
           "buybacks_tokens": 711403.74,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 799975.1402662396,
-          "net_pressure_tokens": 2412029.2809214685,
-          "net_pressure_tokens_gross": 15855829.280921474,
+          "net_staking_lockups_tokens": -116053.56598579884,
+          "net_pressure_tokens": 2069042.0981698728,
+          "net_pressure_tokens_gross": 15512842.098169876,
           "unlocks_usd": 735463507.3333333,
           "buybacks_usd": 31439789.149119984,
-          "net_pressure_usd_perday": 82240004.82437001,
-          "net_pressure_usd_gross_perday": 653864759.2243702,
-          "net_pressure_usd": 82240004.82437001,
-          "net_pressure_usd_gross": 653864759.2243702,
+          "net_pressure_usd_perday": 62730639.351224154,
+          "net_pressure_usd_gross_perday": 634355393.7512245,
+          "net_pressure_usd": 62730639.351224154,
+          "net_pressure_usd_gross": 634355393.7512245,
           "net_pressure_usd_method": "per_day_price"
         },
         "90d": {
@@ -169,15 +169,15 @@
           "buybacks_tokens": 2943743.48,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 799975.1402662396,
-          "net_pressure_tokens": 8188089.540921473,
-          "net_pressure_tokens_gross": 48519489.54092146,
+          "net_staking_lockups_tokens": -116053.56598579884,
+          "net_pressure_tokens": 7845102.358169877,
+          "net_pressure_tokens_gross": 48176502.35816986,
           "unlocks_usd": 1931392813.3333333,
           "buybacks_usd": 114752525.57426004,
-          "net_pressure_usd_perday": 277349240.79923016,
-          "net_pressure_usd_gross_perday": 1766481328.7992296,
-          "net_pressure_usd": 277349240.79923016,
-          "net_pressure_usd_gross": 1766481328.7992296,
+          "net_pressure_usd_perday": 257839875.32608426,
+          "net_pressure_usd_gross_perday": 1746971963.326084,
+          "net_pressure_usd": 257839875.32608426,
+          "net_pressure_usd_gross": 1746971963.326084,
           "net_pressure_usd_method": "per_day_price"
         }
       },
@@ -7535,13 +7535,13 @@
           "buybacks_tokens": 14647.859999999995,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 23017.494417607784,
-          "net_pressure_tokens": -37665.35441760778,
-          "net_pressure_tokens_gross": -37665.35441760778,
+          "net_staking_lockups_tokens": 0,
+          "net_pressure_tokens": -14647.859999999995,
+          "net_pressure_tokens_gross": -14647.859999999995,
           "price_usd_for_day": 57.664,
           "price_source_for_day": "daily_series",
-          "net_pressure_usd": -2171934.997136935,
-          "net_pressure_usd_gross": -2171934.997136935
+          "net_pressure_usd": -844654.1990399997,
+          "net_pressure_usd_gross": -844654.1990399997
         },
         {
           "date": "2026-05-23",
@@ -7552,13 +7552,13 @@
           "buybacks_tokens": 1444.98,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 0,
-          "net_pressure_tokens": -1444.98,
-          "net_pressure_tokens_gross": -1444.98,
+          "net_staking_lockups_tokens": 26596.074291288853,
+          "net_pressure_tokens": -28041.054291288852,
+          "net_pressure_tokens_gross": -28041.054291288852,
           "price_usd_for_day": 56.93,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -82262.7114,
-          "net_pressure_usd_gross": -82262.7114
+          "net_pressure_usd": -1596377.2208030743,
+          "net_pressure_usd_gross": -1596377.2208030743
         },
         {
           "date": "2026-05-24",
@@ -7569,7 +7569,7 @@
           "buybacks_tokens": 6711.910000000003,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 0,
+          "net_staking_lockups_tokens": -397379.5278787613,
           "net_pressure_tokens": -6711.910000000003,
           "net_pressure_tokens_gross": -6711.910000000003,
           "price_usd_for_day": 56.93,
@@ -7586,13 +7586,13 @@
           "buybacks_tokens": 11266.880000000006,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -2344.2647385001183,
-          "net_pressure_tokens": -11266.880000000006,
-          "net_pressure_tokens_gross": -11266.880000000006,
+          "net_staking_lockups_tokens": 256253.88164389133,
+          "net_pressure_tokens": -267520.76164389134,
+          "net_pressure_tokens_gross": -267520.76164389134,
           "price_usd_for_day": 56.93,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -641423.4784000004,
-          "net_pressure_usd_gross": -641423.4784000004
+          "net_pressure_usd": -15229956.960386734,
+          "net_pressure_usd_gross": -15229956.960386734
         },
         {
           "date": "2026-05-26",
@@ -7603,13 +7603,13 @@
           "buybacks_tokens": 31443.889999999992,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 332578.24937456846,
-          "net_pressure_tokens": -364022.1393745685,
-          "net_pressure_tokens_gross": -364022.1393745685,
+          "net_staking_lockups_tokens": -942428.1999371648,
+          "net_pressure_tokens": -31443.889999999992,
+          "net_pressure_tokens_gross": -31443.889999999992,
           "price_usd_for_day": 56.93,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -20723780.394594185,
-          "net_pressure_usd_gross": -20723780.394594185
+          "net_pressure_usd": -1790100.6576999996,
+          "net_pressure_usd_gross": -1790100.6576999996
         },
         {
           "date": "2026-05-27",
@@ -7620,13 +7620,13 @@
           "buybacks_tokens": 25924.109999999975,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": 525171.235286355,
-          "net_pressure_tokens": -551095.345286355,
-          "net_pressure_tokens_gross": -551095.345286355,
+          "net_staking_lockups_tokens": 545051.6100519896,
+          "net_pressure_tokens": -570975.7200519895,
+          "net_pressure_tokens_gross": -570975.7200519895,
           "price_usd_for_day": 56.93,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -31373858.00715219,
-          "net_pressure_usd_gross": -31373858.00715219
+          "net_pressure_usd": -32505647.742559765,
+          "net_pressure_usd_gross": -32505647.742559765
         },
         {
           "date": "2026-05-28",
@@ -7637,13 +7637,13 @@
           "buybacks_tokens": 15743.180000000002,
           "burns_tokens": 0,
           "treasury_accumulation_tokens": 0,
-          "net_staking_lockups_tokens": -78447.5740737915,
-          "net_pressure_tokens": -15743.180000000002,
-          "net_pressure_tokens_gross": -15743.180000000002,
+          "net_staking_lockups_tokens": 395852.5958429575,
+          "net_pressure_tokens": -411595.7758429575,
+          "net_pressure_tokens_gross": -411595.7758429575,
           "price_usd_for_day": 56.93,
           "price_source_for_day": "today_fallback",
-          "net_pressure_usd": -896259.2374000001,
-          "net_pressure_usd_gross": -896259.2374000001
+          "net_pressure_usd": -23432147.51873957,
+          "net_pressure_usd_gross": -23432147.51873957
         },
         {
           "date": "2026-05-29",

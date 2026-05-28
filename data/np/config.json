@@ -53,11 +53,11 @@
           "note": "AF only buys"
         },
         "net_staking_lockups": {
-          "type": "daily_delta",
+          "type": "daily_snapshot_diff",
           "path": "data/onchain/hype/staking.json",
-          "amount_field": "delta_tokens",
+          "total_field": "total_staked_tokens",
           "verification": "onchain",
-          "note": "Daily snapshots accumulate over time. Until ≥2 snapshots exist, delta=0 for historical days. Static stock figure surfaced in the report's reference section."
+          "note": "Net daily lockup = today's total_staked_tokens − yesterday's (delegations minus undelegations). Recomputed at compute time from the snapshot column, since the stored delta_tokens field is corrupted by intra-day cron re-runs (each hourly write overwrites today's row, so its persisted delta becomes intra-day flux instead of day-over-day)."
         }
       },
       "static_reference_sources": {

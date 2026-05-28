@@ -1,28 +1,40 @@
 import type { NpProtocol } from "@/lib/data";
 import { fmtUsd } from "@/lib/format";
 
-// Animated sources-vs-sinks visual. The Net Pressure formula made tactile:
-//   (Unlocks + Treasury Sells) − (Buybacks + Burns + Treasury Accum + Net Staking Lockups)
-// Sources flow rightward into a central "market" node, sinks flow leftward into
-// it. Stream speed is inversely tied to each component's 30d $/day rate so a
-// heavier flow visibly marches faster. Components with $0/day are shown idle
-// (greyed, not animated) so the structure stays visible.
+// Animated Sources & Sinks flow — the Net Pressure formula visualized as
+// curved streams of particles meeting at a central "market" node.
+//
+//   (Unlocks + Treasury Sells)
+//        − (Buybacks + Burns + Treasury accum + Net staking lockups)
+//
+// Each component renders as a cubic-Bezier curve carrying particles from its
+// label to the center; speed and particle density track the component's 30d
+// $/day rate. Negative-sink components (e.g. net UN-staking) flip to the
+// sources side automatically so the formula identity stays exact.
 
 type Row = {
   key: string;
   label: string;
-  sub?: string;
   perDayUsd: number;
+  intended: "source" | "sink";
 };
 
-// Map a $/day rate to an animation duration in seconds. Faster = stronger flow.
-// Clamped so even huge flows don't seizure-strobe and tiny non-zero ones still move.
-function speedFor(perDayUsd: number, maxPerDayUsd: number): string {
-  if (perDayUsd <= 0 || maxPerDayUsd <= 0) return "0s";
-  const ratio = Math.min(1, perDayUsd / maxPerDayUsd);
-  // 4s (slow) at ratio→0, 0.7s (fast) at ratio→1
-  const secs = 4 - 3.3 * ratio;
-  return `${secs.toFixed(2)}s`;
+const SRC_COLOR = "#f43f5e"; // rose
+const SINK_COLOR = "#10b981"; // emerald
+
+function classifyRow(row: Row): "source" | "sink" | "idle" {
+  if (row.perDayUsd === 0) return "idle";
+  if (row.perDayUsd > 0) return row.intended;
+  // Negative magnitude → flip side (a negative sink IS source pressure).
+  return row.intended === "sink" ? "source" : "sink";
+}
+
+function displayLabel(row: Row): string {
+  if (row.perDayUsd >= 0) return row.label;
+  // For negative magnitudes, rename to reflect the reversed direction.
+  if (row.key === "staking") return "Net unstaking";
+  if (row.key === "treasury_accum") return "Treasury distribution";
+  return `Net reversal: ${row.label}`;
 }
 
 export function SourcesSinksFlow({
@@ -35,99 +47,70 @@ export function SourcesSinksFlow({
   const r = np.rollups["30d"];
   if (!r) return null;
   const days = r.window_days || 30;
-
-  // Convert tokens → USD at current price for components without their own USD.
   const tokToUsdPerDay = (t: number) => (t * priceUsd) / days;
 
-  const sources: Row[] = [
-    {
-      key: "unlocks",
-      label: "Unlocks",
-      sub: "sell-prob weighted",
-      perDayUsd: (r.unlocks_usd ?? tokToUsdPerDay(r.unlocks_tokens_adjusted || 0) * days) / days
-    },
-    {
-      key: "treasury_sells",
-      label: "Treasury sells",
-      perDayUsd: tokToUsdPerDay(r.treasury_sells_tokens || 0)
-    }
+  const allRows: Row[] = [
+    { key: "unlocks", label: "Unlocks", perDayUsd: (r.unlocks_usd ?? 0) / days, intended: "source" },
+    { key: "treasury_sells", label: "Treasury sells", perDayUsd: tokToUsdPerDay(r.treasury_sells_tokens || 0), intended: "source" },
+    { key: "buybacks", label: "Buybacks", perDayUsd: (r.buybacks_usd ?? 0) / days, intended: "sink" },
+    { key: "burns", label: "Burns", perDayUsd: tokToUsdPerDay(r.burns_tokens || 0), intended: "sink" },
+    { key: "treasury_accum", label: "Treasury accum", perDayUsd: tokToUsdPerDay(r.treasury_accumulation_tokens || 0), intended: "sink" },
+    { key: "staking", label: "Net staking lockups", perDayUsd: tokToUsdPerDay(r.net_staking_lockups_tokens || 0), intended: "sink" }
   ];
 
-  const sinks: Row[] = [
-    {
-      key: "buybacks",
-      label: "Buybacks",
-      perDayUsd: (r.buybacks_usd ?? tokToUsdPerDay(r.buybacks_tokens || 0) * days) / days
-    },
-    {
-      key: "burns",
-      label: "Burns",
-      perDayUsd: tokToUsdPerDay(r.burns_tokens || 0)
-    },
-    {
-      key: "treasury_accum",
-      label: "Treasury accum",
-      perDayUsd: tokToUsdPerDay(r.treasury_accumulation_tokens || 0)
-    },
-    {
-      key: "staking",
-      label: "Net staking lockups",
-      perDayUsd: tokToUsdPerDay(r.net_staking_lockups_tokens || 0)
-    }
-  ];
+  const sources = allRows.filter((row) => classifyRow(row) === "source");
+  const sinks = allRows.filter((row) => classifyRow(row) === "sink");
+  const idle = allRows.filter((row) => classifyRow(row) === "idle");
 
-  const sourcesTotal = sources.reduce((s, x) => s + x.perDayUsd, 0);
-  const sinksTotal = sinks.reduce((s, x) => s + x.perDayUsd, 0);
+  // Place idle rows back on their intended side (just greyed) so structure stays legible.
+  const sourcesAll = [...sources, ...idle.filter((row) => row.intended === "source")];
+  const sinksAll = [...sinks, ...idle.filter((row) => row.intended === "sink")];
+
+  const sourcesTotal = sourcesAll.reduce((s, x) => s + Math.abs(x.perDayUsd), 0);
+  const sinksTotal = sinksAll.reduce((s, x) => s + Math.abs(x.perDayUsd), 0);
   const netPerDay = sourcesTotal - sinksTotal;
   const netDir: "seller" | "buyer" | "flat" =
-    netPerDay > sourcesTotal * 0.01 ? "seller" : netPerDay < -sinksTotal * 0.01 ? "buyer" : "flat";
-  const maxRate = Math.max(...sources.map((x) => x.perDayUsd), ...sinks.map((x) => x.perDayUsd), 1);
-
-  const SRC_COLOR = "#f43f5e"; // rose — sell pressure
-  const SINK_COLOR = "#10b981"; // emerald — buy pressure
-
-  const Stream = ({ row, side }: { row: Row; side: "source" | "sink" }) => {
-    const idle = row.perDayUsd <= 0;
-    const color = side === "source" ? SRC_COLOR : SINK_COLOR;
-    return (
-      <div className="flex items-center gap-3 py-2">
-        {side === "source" && (
-          <div className="text-right shrink-0 w-36">
-            <p className="text-sm text-zinc-100 leading-tight">{row.label}</p>
-            <p className="text-[11px] text-zinc-500">
-              {idle ? <span className="text-zinc-600">—</span> : `${fmtUsd(row.perDayUsd)}/day`}
-              {row.sub && <span className="text-zinc-600"> · {row.sub}</span>}
-            </p>
-          </div>
-        )}
-        <div className="flex-1 relative h-3 rounded overflow-hidden bg-zinc-900/40">
-          <div
-            className={`tp-stream h-full ${side === "sink" ? "reverse" : ""} ${idle ? "idle" : ""}`}
-            style={{
-              color,
-              ['--speed' as any]: speedFor(row.perDayUsd, maxRate)
-            }}
-          />
-        </div>
-        {side === "sink" && (
-          <div className="shrink-0 w-36">
-            <p className="text-sm text-zinc-100 leading-tight">{row.label}</p>
-            <p className="text-[11px] text-zinc-500">
-              {idle ? <span className="text-zinc-600">—</span> : `${fmtUsd(row.perDayUsd)}/day`}
-            </p>
-          </div>
-        )}
-      </div>
-    );
-  };
-
+    Math.abs(netPerDay) < Math.max(sourcesTotal, sinksTotal) * 0.02
+      ? "flat"
+      : netPerDay > 0
+        ? "seller"
+        : "buyer";
   const netColor = netDir === "seller" ? SRC_COLOR : netDir === "buyer" ? SINK_COLOR : "#71717a";
   const netLabel = netDir === "seller" ? "NET SELLER" : netDir === "buyer" ? "NET BUYER" : "BALANCED";
+  const maxRate = Math.max(
+    1,
+    ...allRows.map((row) => Math.abs(row.perDayUsd))
+  );
+
+  // ---- SVG layout
+  const W = 900;
+  const H = 380;
+  const CX = W / 2;
+  const CY = H / 2;
+  const NODE_R = 38;
+  const LEFT_ANCHOR = 230; // where source curves start (after the label column)
+  const RIGHT_ANCHOR = W - 230;
+
+  const yFor = (count: number, i: number) => {
+    if (count === 1) return CY;
+    const span = H - 80;
+    const top = 40;
+    return top + (span * i) / (count - 1);
+  };
+
+  // Per-row particle config — heavier flow = more & faster particles.
+  function particleConfig(row: Row): { count: number; durSec: number } | null {
+    if (row.perDayUsd === 0) return null;
+    const ratio = Math.min(1, Math.abs(row.perDayUsd) / maxRate);
+    const count = Math.max(2, Math.min(6, Math.round(2 + ratio * 4)));
+    const durSec = 4.5 - ratio * 3.2; // 4.5s slow → 1.3s fast
+    return { count, durSec };
+  }
 
   return (
     <div>
-      {/* Header — totals on each side + the net */}
-      <div className="grid grid-cols-3 gap-4 mb-5 pb-4 border-b border-zinc-800">
+      {/* Header — totals */}
+      <div className="grid grid-cols-3 gap-4 mb-4 pb-4 border-b border-zinc-800">
         <div className="text-left">
           <p className="text-[11px] uppercase tracking-widest text-zinc-500">Sources · 30d</p>
           <p className="text-xl font-semibold mt-1" style={{ color: SRC_COLOR }}>
@@ -138,7 +121,8 @@ export function SourcesSinksFlow({
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-widest text-zinc-500">Net Pressure</p>
           <p className="text-xl font-semibold mt-1" style={{ color: netColor }}>
-            {netPerDay >= 0 ? "+" : "−"}{fmtUsd(Math.abs(netPerDay))}/day
+            {netPerDay >= 0 ? "+" : "−"}
+            {fmtUsd(Math.abs(netPerDay))}/day
           </p>
           <p className="text-[10px] uppercase tracking-widest mt-0.5" style={{ color: netColor }}>
             {netLabel}
@@ -153,51 +137,132 @@ export function SourcesSinksFlow({
         </div>
       </div>
 
-      {/* The flow grid — sources stream rightward, sinks leftward, into the central node */}
-      <div className="grid grid-cols-[1fr_auto_1fr] gap-3 items-stretch">
-        {/* LEFT: sources */}
-        <div className="space-y-1">
-          {sources.map((row) => (
-            <Stream key={row.key} row={row} side="source" />
-          ))}
-          {/* Pad to match heights when sinks has more rows */}
-          {sources.length < sinks.length &&
-            Array.from({ length: sinks.length - sources.length }).map((_, i) => (
-              <div key={`pad-${i}`} className="py-2" style={{ height: 36 }} />
-            ))}
-        </div>
+      {/* The flow */}
+      <div className="w-full">
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          preserveAspectRatio="xMidYMid meet"
+          className="w-full h-auto select-none"
+          style={{ maxHeight: 460 }}
+        >
+          <defs>
+            <radialGradient id="market-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor={netColor} stopOpacity="0.45" />
+              <stop offset="60%" stopColor={netColor} stopOpacity="0.08" />
+              <stop offset="100%" stopColor={netColor} stopOpacity="0" />
+            </radialGradient>
+          </defs>
 
-        {/* CENTER: the market node, indicating net direction */}
-        <div className="flex flex-col items-center justify-center px-3 min-w-[88px]">
-          <div
-            className="w-16 h-16 rounded-full border-2 flex items-center justify-center"
-            style={{
-              borderColor: netColor,
-              background: `radial-gradient(circle, ${netColor}22 0%, transparent 70%)`
-            }}
-          >
-            <span className="text-2xl" style={{ color: netColor }}>
-              {netDir === "seller" ? "↑" : netDir === "buyer" ? "↓" : "•"}
-            </span>
-          </div>
-          <p className="text-[10px] uppercase tracking-widest text-zinc-500 mt-2">
-            market
-          </p>
-        </div>
+          {/* Curves + particles + labels — sources */}
+          {sourcesAll.map((row, i) => {
+            const y = yFor(sourcesAll.length, i);
+            const startX = LEFT_ANCHOR;
+            const endX = CX - NODE_R;
+            // Cubic Bezier control points create the gentle S-curve toward center.
+            const c1x = startX + (endX - startX) * 0.45;
+            const c2x = startX + (endX - startX) * 0.7;
+            const d = `M ${startX} ${y} C ${c1x} ${y}, ${c2x} ${CY}, ${endX} ${CY}`;
+            const pathId = `src-path-${i}`;
+            const cfg = particleConfig(row);
+            const idleRow = row.perDayUsd === 0;
+            const display = displayLabel(row);
 
-        {/* RIGHT: sinks */}
-        <div className="space-y-1">
-          {sinks.map((row) => (
-            <Stream key={row.key} row={row} side="sink" />
-          ))}
-        </div>
+            return (
+              <g key={row.key}>
+                <path
+                  id={pathId}
+                  d={d}
+                  fill="none"
+                  stroke={SRC_COLOR}
+                  strokeWidth={idleRow ? 0.7 : 1.2}
+                  opacity={idleRow ? 0.18 : 0.32}
+                />
+                {cfg &&
+                  Array.from({ length: cfg.count }).map((_, k) => (
+                    <circle key={k} r={3.4} fill={SRC_COLOR} opacity={0.95}>
+                      <animateMotion
+                        dur={`${cfg.durSec.toFixed(2)}s`}
+                        begin={`${((cfg.durSec * k) / cfg.count).toFixed(2)}s`}
+                        repeatCount="indefinite"
+                        rotate="auto"
+                      >
+                        <mpath href={`#${pathId}`} />
+                      </animateMotion>
+                    </circle>
+                  ))}
+                <text x={LEFT_ANCHOR - 14} y={y - 4} textAnchor="end" fontSize="14" fill={idleRow ? "#71717a" : "#e4e4e7"}>
+                  {display}
+                </text>
+                <text x={LEFT_ANCHOR - 14} y={y + 14} textAnchor="end" fontSize="11.5" fill={idleRow ? "#52525b" : "#a1a1aa"}>
+                  {idleRow ? "—" : `${fmtUsd(Math.abs(row.perDayUsd))}/day`}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Curves + particles + labels — sinks */}
+          {sinksAll.map((row, i) => {
+            const y = yFor(sinksAll.length, i);
+            const startX = RIGHT_ANCHOR;
+            const endX = CX + NODE_R;
+            const c1x = startX - (startX - endX) * 0.45;
+            const c2x = startX - (startX - endX) * 0.7;
+            const d = `M ${startX} ${y} C ${c1x} ${y}, ${c2x} ${CY}, ${endX} ${CY}`;
+            const pathId = `sink-path-${i}`;
+            const cfg = particleConfig(row);
+            const idleRow = row.perDayUsd === 0;
+            const display = displayLabel(row);
+
+            return (
+              <g key={row.key}>
+                <path
+                  id={pathId}
+                  d={d}
+                  fill="none"
+                  stroke={SINK_COLOR}
+                  strokeWidth={idleRow ? 0.7 : 1.2}
+                  opacity={idleRow ? 0.18 : 0.32}
+                />
+                {cfg &&
+                  Array.from({ length: cfg.count }).map((_, k) => (
+                    <circle key={k} r={3.4} fill={SINK_COLOR} opacity={0.95}>
+                      <animateMotion
+                        dur={`${cfg.durSec.toFixed(2)}s`}
+                        begin={`${((cfg.durSec * k) / cfg.count).toFixed(2)}s`}
+                        repeatCount="indefinite"
+                        rotate="auto"
+                      >
+                        <mpath href={`#${pathId}`} />
+                      </animateMotion>
+                    </circle>
+                  ))}
+                <text x={RIGHT_ANCHOR + 14} y={y - 4} textAnchor="start" fontSize="14" fill={idleRow ? "#71717a" : "#e4e4e7"}>
+                  {display}
+                </text>
+                <text x={RIGHT_ANCHOR + 14} y={y + 14} textAnchor="start" fontSize="11.5" fill={idleRow ? "#52525b" : "#a1a1aa"}>
+                  {idleRow ? "—" : `${fmtUsd(Math.abs(row.perDayUsd))}/day`}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Central market node */}
+          <circle cx={CX} cy={CY} r={NODE_R + 18} fill="url(#market-glow)" />
+          <circle cx={CX} cy={CY} r={NODE_R} fill="#0a0a0a" stroke={netColor} strokeWidth={2} />
+          <text x={CX} y={CY - 2} textAnchor="middle" fontSize="22" fill={netColor} fontWeight="600">
+            {netDir === "seller" ? "↑" : netDir === "buyer" ? "↓" : "·"}
+          </text>
+          <text x={CX} y={CY + 16} textAnchor="middle" fontSize="9" fill="#71717a" letterSpacing="1.5">
+            MARKET
+          </text>
+        </svg>
       </div>
 
-      <p className="text-[11px] text-zinc-500 mt-5 leading-relaxed">
-        Stream speed = relative magnitude of each component&apos;s 30d $/day flow.
-        Idle (grey) streams = $0 over the window. Unlocks are sell-probability
-        weighted (team ×0.10, foundation ×0.30, emissions ×0.40, airdrop ×0.20).
-        Net direction at the center = whether the sources beat the sinks.
+      <p className="text-xs text-zinc-500 mt-4 leading-relaxed">
+        Particle speed &amp; density track each component&apos;s 30d $/day rate. Idle (faint) curves
+        carry no flow over the window. Unlocks are sell-probability weighted (team ×0.10,
+        foundation ×0.30, emissions ×0.40, airdrop ×0.20). When a sink runs net-reverse (e.g.
+        net <em>un</em>staking), it flips to the sources side so the formula identity holds.
       </p>
     </div>
   );

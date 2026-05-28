@@ -1,6 +1,6 @@
 # Net Pressure (TP) — Cohort Snapshot
 
-**Generated:** 2026-05-28T12:48:45.585Z
+**Generated:** 2026-05-28T15:06:00.228Z
 **As-of:** 2026-05-28
 
 Formula:
@@ -21,10 +21,10 @@ Unlocks are **sell-probability weighted** (team 0.10, foundation/emissions 0.30-
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | 1/1d | 0 | 15.7K | 🟢 −15.7K HYPE | −$896.3K | today @ $56.93 | -0.0016% |
-| 7d | 7/7d | 0 | 107.2K | 🟢 −987.9K HYPE | −$56.27M | per-day (14%) | -0.0988% |
-| 30d | 30/30d | 17.45M | 711.4K | 🔴 +2.41M HYPE | +$82.24M | per-day (80%) | 0.2412% |
-| 90d | 90/90d | 52.34M | 2.94M | 🔴 +8.19M HYPE | +$277.35M | per-day (93%) | 0.8188% |
+| 24h | 1/1d | 0 | 15.7K | 🟢 −411.6K HYPE | −$23.43M | today @ $56.93 | -0.0412% |
+| 7d | 7/7d | 0 | 107.2K | 🟢 −1.33M HYPE | −$75.78M | per-day (14%) | -0.1331% |
+| 30d | 30/30d | 17.45M | 711.4K | 🔴 +2.07M HYPE | +$62.73M | per-day (80%) | 0.2069% |
+| 90d | 90/90d | 52.34M | 2.94M | 🔴 +7.85M HYPE | +$257.84M | per-day (93%) | 0.7845% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -37,7 +37,7 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | burns | — | n/a | HYPE does not burn |
 | treasury_accumulation | — | n/a | AF is buyback_wallet not treasury_wallet — already counted as buybacks |
 | treasury_sells | — | n/a | AF only buys |
-| net_staking_lockups | data/onchain/hype/staking.json | onchain | Daily snapshots accumulate over time. Until ≥2 snapshots exist, delta=0 for historical days. Static stock figure surfaced in the report's reference section. |
+| net_staking_lockups | data/onchain/hype/staking.json | onchain | Net daily lockup = today's total_staked_tokens − yesterday's (delegations minus undelegations). Recomputed at compute time from the snapshot column, since the stored delta_tokens field is corrupted by intra-day cron re-runs (each hourly write overwrites today's row, so its persisted delta becomes intra-day flux instead of day-over-day). |
 
 ### Recent daily series (last 14 days)
 
@@ -50,13 +50,13 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-05-19 | 0 | 2.6K | −2.6K | −$127.3K |
 | 2026-05-20 | 0 | 3.1K | −3.1K | −$146.8K |
 | 2026-05-21 | 0 | 977 | −977 | −$54.1K |
-| 2026-05-22 | 0 | 14.6K | −37.7K | −$2.17M |
-| 2026-05-23 | 0 | 1.4K | −1.4K | −$82.3K |
+| 2026-05-22 | 0 | 14.6K | −14.6K | −$844.7K |
+| 2026-05-23 | 0 | 1.4K | −28.0K | −$1.60M |
 | 2026-05-24 | 0 | 6.7K | −6.7K | −$382.1K |
-| 2026-05-25 | 0 | 11.3K | −11.3K | −$641.4K |
-| 2026-05-26 | 0 | 31.4K | −364.0K | −$20.72M |
-| 2026-05-27 | 0 | 25.9K | −551.1K | −$31.37M |
-| 2026-05-28 | 0 | 15.7K | −15.7K | −$896.3K |
+| 2026-05-25 | 0 | 11.3K | −267.5K | −$15.23M |
+| 2026-05-26 | 0 | 31.4K | −31.4K | −$1.79M |
+| 2026-05-27 | 0 | 25.9K | −571.0K | −$32.51M |
+| 2026-05-28 | 0 | 15.7K | −411.6K | −$23.43M |
 
 ### Next 8 projected unlocks
 

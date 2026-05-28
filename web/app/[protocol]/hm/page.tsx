@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   PROTOCOL_SLUGS,
@@ -10,11 +11,13 @@ import { getTokenomicsBySlug } from "@/lib/tokenomics";
 import { fmtPct, fmtTokens, fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
 import { AdjMcapBalance } from "@/components/AdjMcapBalance";
+import { ChainGdpSummaryCard } from "@/components/ChainGdpSummaryCard";
 import { HmBreakdownTable } from "@/components/HmBreakdownTable";
 import { HmHistoryChart } from "@/components/HmHistoryChart";
 import { HmStacker } from "@/components/HmStacker";
 import { InfoTip } from "@/components/InfoTip";
 import { TmfWaterfall } from "@/components/TmfWaterfall";
+import { getChainBySlug } from "@/lib/chains";
 import { BuybackChart } from "@/components/BuybackChart";
 import { AfBalanceChart } from "@/components/AfBalanceChart";
 import { UnlockAllocationTable } from "@/components/UnlockAllocationTable";
@@ -37,6 +40,9 @@ export default async function HmDeepPage({
   const feeds = onchainFeeds[protocol] ?? {};
   const tokenomics = getTokenomicsBySlug(protocol);
   const hmHistory = getHmHistory(protocol);
+  // For protocols whose native token is also a chain we track (e.g. HYPE →
+  // Hyperliquid L1), surface the chain-side lens alongside the protocol HM.
+  const chain = getChainBySlug(protocol);
 
   // Last 90 days of buybacks for the chart.
   const buybacks = (feeds.buybacks ?? [])
@@ -139,6 +145,25 @@ export default async function HmDeepPage({
       >
         <AdjMcapBalance p={hmP} />
       </Section>
+
+      {/* Chain-side lens — when this protocol token IS also a chain native */}
+      {chain && (
+        <Section
+          title="Chain GDP — the same token, the chain lens"
+          info={
+            <>
+              This token is the native asset of a chain we also track on{" "}
+              <Link href="/chains" className="underline">/chains</Link>. Holder Multiple
+              measures it as a <em>protocol</em> token (cash returned to holders); GDP
+              Multiple measures it as a <em>chain</em> native (mcap vs the productive output of all apps
+              on the chain). Same asset, two lenses — useful as a sanity check on
+              which view the market is pricing.
+            </>
+          }
+        >
+          <ChainGdpSummaryCard chain={chain} />
+        </Section>
+      )}
 
       {/* TMF revenue waterfall — SKY only (explains the ∞ HM) */}
       {hmP.tmf_waterfall && (

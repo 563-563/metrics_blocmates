@@ -86,8 +86,9 @@ export default function Home() {
       <header className="mb-8 border-b border-zinc-800 pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">truepressure-hm</h1>
-          <div className="text-[11px] text-zinc-500 text-right">
-            As of {hm.as_of} · {onchainCount}/{hm.protocols.length} on-chain verified
+          <div className="flex items-center gap-4 text-[11px] text-zinc-500">
+            <Link href="/chains" className="hover:text-zinc-200 transition">chains →</Link>
+            <span>As of {hm.as_of} · {onchainCount}/{hm.protocols.length} on-chain verified</span>
           </div>
         </div>
         <p className="text-xs text-zinc-500 mt-2 leading-relaxed max-w-2xl">

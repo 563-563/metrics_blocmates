@@ -233,14 +233,10 @@ async function fetchNativeTokenMcaps(cgIds) {
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 
-function gdpMultipleBand(mult) {
-  if (mult == null) return null;
-  if (mult < 10) return 'exceptional';
-  if (mult < 50) return 'fair';
-  if (mult < 200) return 'expensive';
-  return 'speculative';
-}
-
+// GDP Multiple is reported as-is, without overvalued / undervalued
+// editorialization. The productivity and tax-burden bands below come from
+// the paper's framework (capital-utilization and value-extraction lenses),
+// not valuation judgments.
 function productivityBand(ratio) {
   if (ratio == null) return null;
   if (ratio > 0.5) return 'high';
@@ -322,7 +318,6 @@ async function main() {
 
   // 4. Compute outputs
   console.log('\nStep 4/4: Computing per-chain outputs...');
-  const asOf = new Date().toISOString().slice(0, 10);
   const snapshot = {
     generated_at: new Date().toISOString(),
     as_of: asOf,
@@ -426,7 +421,6 @@ async function main() {
       gdp_stable_30d_usd: gdpStable30d,
       gdp_annualized_usd: gdpAnnualized,
       gdp_multiple: gdpMultiple,
-      gdp_multiple_band: gdpMultipleBand(gdpMultiple),
       tvl_usd: latestTvl,
       gdp_over_tvl_ann: gdpOverTvlAnn,
       gdp_over_tvl_band: productivityBand(gdpOverTvlAnn),
@@ -440,6 +434,7 @@ async function main() {
       protocol_count: protos.length,
       stable_share_usdc: usdcShare,
       stable_share_usdt: usdtShare,
+      structural_note: c.structural_note ?? null,
       latest_date: latestDate
     });
 

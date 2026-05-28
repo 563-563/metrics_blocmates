@@ -304,5 +304,56 @@
         "phase": "current"
       }
     }
+  },
+  {
+    "date": "2026-05-28",
+    "generated_at": "2026-05-28T00:17:19.270Z",
+    "mode": "live",
+    "protocols": {
+      "SKY": {
+        "price_usd": 0.066039,
+        "adj_mcap_usd": 1534995345.7498837,
+        "real_capture_usd": 0,
+        "annual_buyback_usd": 0,
+        "annual_holder_yield_usd": 0,
+        "hm": null,
+        "hm_band": "no real capture",
+        "verification": "governance_stated",
+        "phase": "phase_1"
+      },
+      "AAVE": {
+        "price_usd": 83.05,
+        "adj_mcap_usd": 1224360931.2133834,
+        "real_capture_usd": 11131208.663016852,
+        "annual_buyback_usd": 11131208.663016852,
+        "annual_holder_yield_usd": 0,
+        "hm": 109.99352974859688,
+        "hm_band": "speculative",
+        "verification": "onchain_aggregate",
+        "phase": "current"
+      },
+      "HYPE": {
+        "price_usd": 57.78,
+        "adj_mcap_usd": 28444444235.039,
+        "real_capture_usd": 430155414.8828217,
+        "annual_buyback_usd": 430155414.8828217,
+        "annual_holder_yield_usd": 0,
+        "hm": 66.12597040720162,
+        "hm_band": "speculative",
+        "verification": "onchain",
+        "phase": "current"
+      },
+      "LIT": {
+        "price_usd": 1.12,
+        "adj_mcap_usd": 495802400,
+        "real_capture_usd": 24871118.25,
+        "annual_buyback_usd": 24871118.25,
+        "annual_holder_yield_usd": 0,
+        "hm": 19.934865614657273,
+        "hm_band": "strong",
+        "verification": "proxy",
+        "phase": "current"
+      }
+    }
   }
 ]

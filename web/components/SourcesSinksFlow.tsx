@@ -258,12 +258,6 @@ export function SourcesSinksFlow({
         </svg>
       </div>
 
-      <p className="text-xs text-zinc-500 mt-4 leading-relaxed">
-        Particle speed &amp; density track each component&apos;s 30d $/day rate. Idle (faint) curves
-        carry no flow over the window. Unlocks are sell-probability weighted (team ×0.10,
-        foundation ×0.30, emissions ×0.40, airdrop ×0.20). When a sink runs net-reverse (e.g.
-        net <em>un</em>staking), it flips to the sources side so the formula identity holds.
-      </p>
     </div>
   );
 }

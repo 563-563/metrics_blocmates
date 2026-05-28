@@ -7,6 +7,7 @@ import {
 import { getTokenomicsBySlug } from "@/lib/tokenomics";
 import { fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
+import { InfoTip } from "@/components/InfoTip";
 import { NetPressureChart } from "@/components/NetPressureChart";
 import { SourcesSinksFlow } from "@/components/SourcesSinksFlow";
 import { TpRollupGrid } from "@/components/TpRollupGrid";
@@ -48,23 +49,41 @@ export default async function TpDeepPage({
 
       {/* Sources & Sinks — animated flow visual */}
       {npP && (
-        <Section title="Sources & Sinks — the pressure system">
+        <Section
+          title="Sources & Sinks — the pressure system"
+          info={
+            <>
+              Particle speed and density track each component&apos;s 30d $/day rate.
+              Idle (faint) curves carry no flow over the window. Unlocks are
+              sell-probability weighted: team ×0.10, foundation ×0.30,
+              emissions ×0.40, airdrop ×0.20. When a sink runs net-reverse
+              (e.g. net <em>un</em>staking), it flips to the sources side so
+              the formula identity{" "}
+              <code>(Unlocks + Sells) − (Buybacks + Burns + Accum + Lockups)</code>{" "}
+              holds.
+            </>
+          }
+        >
           <SourcesSinksFlow np={npP} priceUsd={hmP.price_usd} />
         </Section>
       )}
 
       {/* Section 1 — Roll-ups */}
-      <Section title="Net Pressure — roll-ups">
-        {npP ? (
+      <Section
+        title="Net Pressure — roll-ups"
+        info={
           <>
-            <TpRollupGrid np={npP} />
-            <p className="text-[11px] text-zinc-500 mt-4 leading-relaxed">
-              Unlocks are <span className="text-zinc-400">sell-probability weighted</span> —
-              team/core-contributor vesting is discounted (×0.10) because it&apos;s mostly
-              re-staked rather than sold, foundation/emissions ×0.30-0.40, airdrop ×0.20.
-              The &quot;gross (100% sell)&quot; line shows the worst-case scheduled supply for comparison.
-            </p>
+            Unlocks are <strong>sell-probability weighted</strong> — team /
+            core-contributor vesting is discounted (×0.10) because it&apos;s
+            mostly re-staked rather than sold; foundation / emissions
+            ×0.30–0.40, airdrop ×0.20. The &quot;gross (100% sell)&quot; line
+            shows the worst-case scheduled supply for comparison. ⚠ next to a
+            window = incomplete buyback coverage for that range.
           </>
+        }
+      >
+        {npP ? (
+          <TpRollupGrid np={npP} />
         ) : (
           <Placeholder>
             TP roll-ups require the on-chain adapter. Pending for {hmP.symbol}.
@@ -73,19 +92,21 @@ export default async function TpDeepPage({
       </Section>
 
       {/* Section 2 — NP time series */}
-      <Section title="Net Pressure — over time · last 90 days">
-        {npDaily.length > 0 ? (
+      <Section
+        title="Net Pressure — over time · last 90 days"
+        info={
           <>
-            <NetPressureChart data={npDaily} symbol={hmP.symbol} />
-            <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
-              <span className="text-zinc-400">Daily</span> = per-day flow (red bars = net
-              seller, green = net buyer). <span className="text-zinc-400">30d rolling</span> =
-              trailing-30-day sum (smooths the monthly unlock spikes — best for trend).
-              <span className="text-zinc-400"> Cumulative</span> = running total since the
-              series start. Dashed lime line = price (right axis). USD uses per-day historical
-              price.
-            </p>
+            <strong>Daily</strong> = per-day flow (red bars = net seller, green
+            = net buyer). <strong>30d rolling</strong> = trailing-30-day sum
+            (smooths the monthly unlock spikes — best for trend).{" "}
+            <strong>Cumulative</strong> = running total since the series start.
+            Dashed lime line = price (right axis). USD values use per-day
+            historical price.
           </>
+        }
+      >
+        {npDaily.length > 0 ? (
+          <NetPressureChart data={npDaily} symbol={hmP.symbol} />
         ) : (
           <Placeholder>
             On-chain flow adapter pending for {hmP.symbol}.
@@ -94,21 +115,23 @@ export default async function TpDeepPage({
       </Section>
 
       {/* Section 3 — Unlock schedule chart */}
-      <Section title="Unlock schedule — cumulative by recipient">
-        {tokenomics ? (
+      <Section
+        title="Unlock schedule — cumulative by recipient"
+        info={
           <>
-            <UnlockScheduleChart
-              schedule={tokenomics.schedule}
-              totalSupply={tokenomics.total_supply}
-              symbol={hmP.symbol}
-            />
-            <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
-              Stacked area shows cumulative tokens unlocked per recipient
-              bucket over the full vesting schedule. Forward of today is the
-              projected schedule — actual unlocks may diverge if team members
-              elect to re-vest or governance amends the schedule.
-            </p>
+            Stacked area shows cumulative tokens unlocked per recipient bucket
+            over the full vesting schedule. Forward of today is the projected
+            schedule — actual unlocks may diverge if team members elect to
+            re-vest or governance amends the schedule.
           </>
+        }
+      >
+        {tokenomics ? (
+          <UnlockScheduleChart
+            schedule={tokenomics.schedule}
+            totalSupply={tokenomics.total_supply}
+            symbol={hmP.symbol}
+          />
         ) : (
           <Placeholder>
             Tokenomics module not yet defined for {hmP.symbol}.
@@ -153,15 +176,18 @@ export default async function TpDeepPage({
 
 function Section({
   title,
+  info,
   children
 }: {
   title: string;
+  info?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <section className="mb-10 border border-zinc-800 rounded-md p-6 bg-zinc-950">
       <h2 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
         {title}
+        {info && <InfoTip>{info}</InfoTip>}
       </h2>
       {children}
     </section>

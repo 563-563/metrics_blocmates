@@ -11,6 +11,7 @@ import { fmtPct, fmtTokens, fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
 import { HmBreakdownTable } from "@/components/HmBreakdownTable";
 import { HmHistoryChart } from "@/components/HmHistoryChart";
+import { InfoTip } from "@/components/InfoTip";
 import { TmfWaterfall } from "@/components/TmfWaterfall";
 import { BuybackChart } from "@/components/BuybackChart";
 import { AfBalanceChart } from "@/components/AfBalanceChart";
@@ -63,7 +64,19 @@ export default async function HmDeepPage({
       <ProtocolHeader hmP={hmP} npP={npP} active="hm" />
 
       {/* HM breakdown */}
-      <Section title="Holder Multiple — breakdown">
+      <Section
+        title="Holder Multiple — breakdown"
+        info={
+          <>
+            <strong>HM = Adjusted MCap / Annual Real Capture.</strong>{" "}
+            Adjusted MCap = Float + 24mo scheduled unlocks/emissions − 24mo
+            projected buybacks. Real Capture = Cat A (buyback / burn / supply
+            compression) + Cat B (external cashflow yield to native holders).
+            Cat C (token-denominated emissions to stakers) is excluded — it&apos;s
+            a dilution rebate, not real value capture.
+          </>
+        }
+      >
         <HmBreakdownTable p={hmP} />
         {bs?.lifetime_annual_usd != null && (
           <p className="text-xs text-zinc-500 mt-4 leading-relaxed">
@@ -93,7 +106,19 @@ export default async function HmDeepPage({
 
       {/* TMF revenue waterfall — SKY only (explains the ∞ HM) */}
       {hmP.tmf_waterfall && (
-        <Section title="Revenue waterfall — where the money goes">
+        <Section
+          title="Revenue waterfall — where the money goes"
+          info={
+            <>
+              TMF (Treasury Management Function) is Sky&apos;s fixed-waterfall
+              allocation framework. Net revenue cascades through buckets in
+              order; the holder-facing buckets (Smart Burn, Staking Rewards)
+              stay locked until the ABC solvency buffer clears its Phase 1
+              floor. Percentages are governance framework params, editable in
+              <code className="text-zinc-400"> data/hm/config.json</code>.
+            </>
+          }
+        >
           <TmfWaterfall
             wf={hmP.tmf_waterfall}
             annualRevenueUsd={hmP.revenue_1y ?? null}
@@ -102,18 +127,21 @@ export default async function HmDeepPage({
       )}
 
       {/* HM over time */}
-      <Section title="Holder Multiple — over time">
-        {hmHistory.filter((d) => d.hm != null).length >= 2 ? (
+      <Section
+        title="Holder Multiple — over time"
+        info={
           <>
-            <HmHistoryChart data={hmHistory} />
-            <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
-              HM recomputed as-of each day from that day&apos;s price and trailing-60d
-              buyback rate (circulating held constant). Band shading: green = cheap,
-              amber = expensive, red = speculative. Dashed lime line = price (right axis)
-              — watch HM rise when price outruns the buyback. Rising HM = getting pricier
-              per dollar returned to holders.
-            </p>
+            HM is recomputed as-of each day from that day&apos;s price and a
+            trailing-60d buyback rate (circulating held constant). Band
+            shading: green = cheap, amber = expensive, red = speculative.
+            Dashed lime line = price on the right axis — watch HM rise when
+            price outruns the buyback. Rising HM = getting pricier per dollar
+            returned to holders.
           </>
+        }
+      >
+        {hmHistory.filter((d) => d.hm != null).length >= 2 ? (
+          <HmHistoryChart data={hmHistory} />
         ) : (
           <Placeholder>
             HM time series needs a daily price + buyback feed. Not available for{" "}
@@ -211,15 +239,18 @@ export default async function HmDeepPage({
 
 function Section({
   title,
+  info,
   children
 }: {
   title: string;
+  info?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <section className="mb-10 border border-zinc-800 rounded-md p-6 bg-zinc-950">
       <h2 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
         {title}
+        {info && <InfoTip>{info}</InfoTip>}
       </h2>
       {children}
     </section>

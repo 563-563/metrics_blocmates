@@ -341,7 +341,8 @@ async function main() {
     const tvlMap = new Map(d.tvl);
     const revMap = new Map(d.rev);
 
-    // Build daily series with attribution
+    // Build daily series with attribution (split USDC vs USDT so we can
+    // later surface each issuer as its own virtual "protocol").
     const dailySeries = d.dailyAgg.map(([day, gdpApp]) => {
       const circleAttr = (circleByDay.get(day) || 0) * usdcShare;
       const tetherAttr = (tetherByDay.get(day) || 0) * usdtShare;
@@ -352,6 +353,8 @@ async function main() {
         gdp,
         gdp_app: gdpApp,
         gdp_stable: gdpStable,
+        gdp_stable_usdc: circleAttr,
+        gdp_stable_usdt: tetherAttr,
         tvl: tvlMap.get(day) ?? null,
         rev: revMap.get(day) ?? null
       };
@@ -373,8 +376,33 @@ async function main() {
     const gdp30d = sum(last30, 'gdp');
     const gdpApp30d = sum(last30, 'gdp_app');
     const gdpStable30d = sum(last30, 'gdp_stable');
+    const gdpStableUsdc30d = sum(last30, 'gdp_stable_usdc');
+    const gdpStableUsdt30d = sum(last30, 'gdp_stable_usdt');
     const rev7d = sum(last7, 'rev');
     const rev30d = sum(last30, 'rev');
+
+    // Inject stablecoin issuers as virtual "protocols" so they compete
+    // fairly as the chain's top app. On Tron, USDT issuer attribution is
+    // 99% of GDP — without this it looks like TRONSAVE is the top app
+    // when reality is the Tether reserve-yield flow.
+    const allProtos = d.protocols30d.slice();
+    if (gdpStableUsdc30d > 0) {
+      allProtos.push({
+        name: 'Circle (USDC issuer)',
+        category: 'Stablecoin Issuer',
+        revenue_30d: gdpStableUsdc30d,
+        attribution: 'off-chain'
+      });
+    }
+    if (gdpStableUsdt30d > 0) {
+      allProtos.push({
+        name: 'Tether (USDT issuer)',
+        category: 'Stablecoin Issuer',
+        revenue_30d: gdpStableUsdt30d,
+        attribution: 'off-chain'
+      });
+    }
+    allProtos.sort((a, b) => b.revenue_30d - a.revenue_30d);
 
     // Latest TVL (find most recent non-null from the day series)
     let latestTvl = null;
@@ -395,11 +423,12 @@ async function main() {
     const gdpOverTvlAnn = latestTvl && latestTvl > 0 ? gdpAnnualized / latestTvl : null;
     const revOverGdp7d = gdp7d > 0 && rev7d > 0 ? rev7d / gdp7d : null;
 
-    // Top protocol and category
-    const protos = d.protocols30d.slice().sort((a, b) => b.revenue_30d - a.revenue_30d);
-    const topProtocol = protos[0]?.name || null;
+    // Top protocol and category — uses allProtos (on-chain apps + virtual
+    // stablecoin issuer entries) so chains dominated by issuer yield are
+    // honest about it.
+    const topProtocol = allProtos[0]?.name || null;
     const catSums = {};
-    for (const p of protos) catSums[p.category] = (catSums[p.category] || 0) + p.revenue_30d;
+    for (const p of allProtos) catSums[p.category] = (catSums[p.category] || 0) + p.revenue_30d;
     const topCategory =
       Object.entries(catSums).sort((a, b) => b[1] - a[1])[0]?.[0] || null;
 
@@ -431,7 +460,7 @@ async function main() {
       rev_over_gdp_band: taxBurdenBand(revOverGdp7d),
       top_protocol: topProtocol,
       top_category: topCategory,
-      protocol_count: protos.length,
+      protocol_count: allProtos.length,
       stable_share_usdc: usdcShare,
       stable_share_usdt: usdtShare,
       structural_note: c.structural_note ?? null,
@@ -444,9 +473,10 @@ async function main() {
       JSON.stringify(dailySeries, null, 2)
     );
 
-    // Top-25 protocols
-    const chainTotal = protos.reduce((s, p) => s + p.revenue_30d, 0);
-    const top25 = protos.slice(0, 25).map((p) => ({
+    // Top-25 "apps" — on-chain protocols + virtual stablecoin-issuer
+    // entries, unified and ranked by 30d revenue.
+    const chainTotal = allProtos.reduce((s, p) => s + p.revenue_30d, 0);
+    const top25 = allProtos.slice(0, 25).map((p) => ({
       ...p,
       pct_of_chain: chainTotal > 0 ? (100 * p.revenue_30d) / chainTotal : 0
     }));
@@ -455,7 +485,7 @@ async function main() {
       JSON.stringify(top25, null, 2)
     );
 
-    // Category breakdown
+    // Category breakdown (Stablecoin Issuer naturally appears via allProtos)
     const catEntries = Object.entries(catSums)
       .map(([cat, rev]) => ({
         category: cat,
@@ -463,14 +493,6 @@ async function main() {
         pct: chainTotal > 0 ? (100 * rev) / chainTotal : 0
       }))
       .sort((a, b) => b.revenue_30d - a.revenue_30d);
-    if (gdpStable30d > 0) {
-      const stableTotal = chainTotal + gdpStable30d;
-      catEntries.push({
-        category: 'Stablecoin Issuer',
-        revenue_30d: gdpStable30d,
-        pct: stableTotal > 0 ? (100 * gdpStable30d) / stableTotal : 0
-      });
-    }
     fs.writeFileSync(
       path.join(OUT_DIR, 'categories', `${slug}.json`),
       JSON.stringify(catEntries, null, 2)

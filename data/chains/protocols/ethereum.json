@@ -1,152 +1,154 @@
 [
   {
+    "name": "Tether (USDT issuer)",
+    "category": "Stablecoin Issuer",
+    "revenue_30d": 207397216.2725657,
+    "attribution": "off-chain",
+    "pct_of_chain": 53.35154222344669
+  },
+  {
+    "name": "Circle (USDC issuer)",
+    "category": "Stablecoin Issuer",
+    "revenue_30d": 122546194.91861118,
+    "attribution": "off-chain",
+    "pct_of_chain": 31.524186341684555
+  },
+  {
     "name": "Sky Lending",
     "category": "CDP",
     "revenue_30d": 14880753,
-    "pct_of_chain": 25.31015403391889
+    "pct_of_chain": 3.827973857435033
   },
   {
     "name": "Aave V3",
     "category": "Lending",
     "revenue_30d": 5056551,
-    "pct_of_chain": 8.600511324283563
+    "pct_of_chain": 1.3007638146259783
   },
   {
     "name": "Titan Builder",
     "category": "Block Builders",
     "revenue_30d": 4608929,
-    "pct_of_chain": 7.839166668608487
+    "pct_of_chain": 1.1856160587286266
   },
   {
     "name": "Chainlink Staking",
     "category": "Services",
     "revenue_30d": 4604598,
-    "pct_of_chain": 7.83180022168736
+    "pct_of_chain": 1.1845019380402078
   },
   {
     "name": "Lido",
     "category": "Liquid Staking",
     "revenue_30d": 4282777,
-    "pct_of_chain": 7.284426101483241
+    "pct_of_chain": 1.1017156452515566
   },
   {
     "name": "ether.fi Liquid",
     "category": "Onchain Capital Allocator",
     "revenue_30d": 2450325,
-    "pct_of_chain": 4.167672374050044
+    "pct_of_chain": 0.6303296642461236
   },
   {
     "name": "Binance staked ETH",
     "category": "Liquid Staking",
     "revenue_30d": 1788428,
-    "pct_of_chain": 3.0418748405120017
+    "pct_of_chain": 0.4600611024122785
   },
   {
     "name": "MetaMask Wallet",
     "category": "Wallets",
     "revenue_30d": 1236141,
-    "pct_of_chain": 2.102509134963972
+    "pct_of_chain": 0.3179889775808791
   },
   {
     "name": "Pendle",
     "category": "Yield",
     "revenue_30d": 927086,
-    "pct_of_chain": 1.576848259136465
+    "pct_of_chain": 0.2384866526306844
   },
   {
     "name": "Uniswap V3",
     "category": "Dexs",
     "revenue_30d": 871920,
-    "pct_of_chain": 1.483018332825937
+    "pct_of_chain": 0.22429556930181918
   },
   {
     "name": "Ethena USDe",
     "category": "Basis Trading",
     "revenue_30d": 846380,
-    "pct_of_chain": 1.4395782371515924
+    "pct_of_chain": 0.21772557567858716
   },
   {
     "name": "Maple",
     "category": "Lending",
     "revenue_30d": 828447,
-    "pct_of_chain": 1.409076622596854
+    "pct_of_chain": 0.213112431761382
   },
   {
     "name": "Lombard Vaults",
     "category": "Onchain Capital Allocator",
     "revenue_30d": 801289,
-    "pct_of_chain": 1.362884527126069
+    "pct_of_chain": 0.20612621849514334
   },
   {
     "name": "CoWSwap",
     "category": "DEX Aggregator",
     "revenue_30d": 771190,
-    "pct_of_chain": 1.3116901872786888
+    "pct_of_chain": 0.19838345271340252
   },
   {
     "name": "Convex Finance",
     "category": "Yield",
     "revenue_30d": 723730,
-    "pct_of_chain": 1.2309671277366219
+    "pct_of_chain": 0.18617468617626112
   },
   {
     "name": "Binance Alpha",
     "category": "Launchpad",
     "revenue_30d": 686711,
-    "pct_of_chain": 1.1680028011207817
+    "pct_of_chain": 0.17665179682863286
   },
   {
     "name": "Maestro",
     "category": "Telegram Bot",
     "revenue_30d": 490168,
-    "pct_of_chain": 0.8337096639194236
+    "pct_of_chain": 0.12609242890808114
   },
   {
     "name": "BlackRock BUIDL",
     "category": "RWA",
     "revenue_30d": 365238,
-    "pct_of_chain": 0.6212205819853651
+    "pct_of_chain": 0.09395502470485576
   },
   {
     "name": "THORSwap",
     "category": "DEX Aggregator",
     "revenue_30d": 360892,
-    "pct_of_chain": 0.6138286220871387
+    "pct_of_chain": 0.09283704536708887
   },
   {
     "name": "Curve DEX",
     "category": "Dexs",
     "revenue_30d": 359348,
-    "pct_of_chain": 0.6112024863110547
+    "pct_of_chain": 0.09243986172753248
   },
   {
     "name": "Tokenlon AMM",
     "category": "Dexs",
     "revenue_30d": 354475,
-    "pct_of_chain": 0.6029141704840743
+    "pct_of_chain": 0.09118631517600509
   },
   {
     "name": "Opensea Seaport",
     "category": "NFT Marketplace",
     "revenue_30d": 308304,
-    "pct_of_chain": 0.5243835261074039
+    "pct_of_chain": 0.0793091352395037
   },
   {
     "name": "Centrifuge Protocol",
     "category": "RWA",
     "revenue_30d": 291226,
-    "pct_of_chain": 0.4953361512473235
-  },
-  {
-    "name": "SideShift",
-    "category": "Cross Chain Bridge",
-    "revenue_30d": 285722,
-    "pct_of_chain": 0.4859745895170341
-  },
-  {
-    "name": "Railgun",
-    "category": "Privacy",
-    "revenue_30d": 285553,
-    "pct_of_chain": 0.48568714330838236
+    "pct_of_chain": 0.07491593433513578
   }
 ]

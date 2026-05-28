@@ -21,26 +21,41 @@ function readJsonSafe<T>(p: string, fallback: T): T {
   }
 }
 
-// One row per date with a key per chain holding that day's GDP. Last 90d.
+// One row per date with a key per chain holding that day's GDP. Optionally
+// smoothed by a trailing N-day rolling mean — buries one-off spikes from
+// DL refund/correction days so the cohort dynamics are legible.
 export type StackedDay = { date: string; [chainSlug: string]: string | number };
-export function getStackedGdpSeries(days = 90): StackedDay[] {
+export function getStackedGdpSeries(days = 180, smoothing = 7): StackedDay[] {
   const perChain = new Map<string, ChainHistoryPoint[]>();
   const allDates = new Set<string>();
   for (const slug of CHAIN_SLUGS) {
     const hist = readJsonSafe<ChainHistoryPoint[]>(
       path.join(DATA_ROOT, "history", `${slug}.json`),
       []
-    ).slice(-days);
-    perChain.set(slug, hist);
-    for (const d of hist) allDates.add(d.date);
+    );
+    // Take a window large enough to compute the rolling mean for the first
+    // visible day too (need `days + smoothing` source days).
+    const window = hist.slice(-(days + smoothing));
+    perChain.set(slug, window);
+    for (const d of window.slice(-days)) allDates.add(d.date);
   }
   const sortedDates = [...allDates].sort().slice(-days);
+  // For each chain, build a date → smoothed-gdp map.
+  const smoothedByChain = new Map<string, Map<string, number>>();
+  for (const [slug, hist] of perChain) {
+    const m = new Map<string, number>();
+    for (let i = 0; i < hist.length; i++) {
+      const start = Math.max(0, i - smoothing + 1);
+      const slice = hist.slice(start, i + 1);
+      const avg = slice.reduce((s, r) => s + Math.max(0, r.gdp), 0) / slice.length;
+      m.set(hist[i].date, avg);
+    }
+    smoothedByChain.set(slug, m);
+  }
   return sortedDates.map((date) => {
     const row: StackedDay = { date };
     for (const slug of CHAIN_SLUGS) {
-      const hist = perChain.get(slug) || [];
-      const match = hist.find((h) => h.date === date);
-      row[slug] = match && match.gdp > 0 ? match.gdp : 0;
+      row[slug] = smoothedByChain.get(slug)?.get(date) ?? 0;
     }
     return row;
   });

@@ -1,21 +1,11 @@
 import Link from "next/link";
-import { chains } from "@/lib/chains";
-import {
-  getStackedGdpSeries,
-  getAllApps,
-  getCategoryMatrix
-} from "@/lib/chain-aggregates";
+import { chains, getChainHistory } from "@/lib/chains";
 import { CHAIN_COLORS } from "@/lib/chain-colors";
 import { fmtUsd } from "@/lib/format";
 import { ChainScaleBar } from "@/components/ChainScaleBar";
 import { ChainTrendSparkline } from "@/components/ChainTrendSparkline";
-import { ChainLeaderboard } from "@/components/ChainLeaderboard";
-import { ChainQuadrant } from "@/components/ChainQuadrant";
-import { ChainStackedArea } from "@/components/ChainStackedArea";
-import { ChainCategoryHeatmap } from "@/components/ChainCategoryHeatmap";
-import { ChainAppTreemap } from "@/components/ChainAppTreemap";
+import { ChartTeasers } from "@/components/ChartTeasers";
 import { InfoTip } from "@/components/InfoTip";
-import { getChainHistory } from "@/lib/chains";
 
 export const revalidate = 300;
 
@@ -54,124 +44,64 @@ export default function ChainsIndex() {
   const maxMcap = Math.max(...chains.chains.map((c) => c.mcap_usd || 0));
   const maxTvl = Math.max(...chains.chains.map((c) => c.tvl_usd || 0));
 
-  // Per-chain 30d daily-GDP sparkline values
   const sparklineData = new Map<string, number[]>();
   for (const c of chains.chains) {
     const hist = getChainHistory(c.slug).slice(-30);
     sparklineData.set(c.slug, hist.map((d) => d.gdp));
   }
 
-  // Aggregates for visualizations
-  const stackedSeries = getStackedGdpSeries(90);
-  const allApps = getAllApps();
-  const matrix = getCategoryMatrix(10);
-  const chainOrder = chains.chains.map((c) => c.slug); // big-first (snapshot is already sorted by gdp_30d)
-
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
-      <header className="mb-8 border-b border-zinc-800 pb-6">
+      <header className="mb-6 border-b border-zinc-800 pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">chains · GDP</h1>
           <div className="flex items-center gap-4 text-[11px] text-zinc-500">
             <Link href="/" className="hover:text-zinc-200 transition">← protocols</Link>
+            <Link href="/chains/charts" className="hover:text-zinc-200 transition">charts →</Link>
             <span>As of {chains.as_of}</span>
           </div>
         </div>
         <p className="text-xs text-zinc-500 mt-2 leading-relaxed max-w-2xl">
           <span className="text-zinc-300">Chain-GDP</span> = sum of <code>dailyRevenue</code> across
-          apps on each chain, excluding the infrastructure layer (REV).
-          Stablecoin issuer revenue (USDC/USDT) included; ETF and off-chain &quot;other&quot; are not.
+          apps on each chain, excluding the infrastructure layer (REV). Stablecoin issuer
+          revenue (USDC/USDT) included; ETF and off-chain &quot;other&quot; are not.
         </p>
       </header>
 
       {/* KPI strip */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8 text-sm">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-6 text-sm">
         <Kpi label="Tracked" value={`${trackedChains}`} sub="chains" />
         <Kpi label="Σ GDP · 30d" value={fmtUsd(totalGdp30d)} />
         <Kpi label="Σ TVL" value={fmtUsd(totalTvl)} />
         <Kpi label="Σ native mcap" value={fmtUsd(totalMcap)} sub="ex no-native-token chains" />
       </div>
 
-      {/* MARQUEE — Strategic positioning quadrant */}
-      <Section
-        title="Strategic positioning — productivity × tax burden"
-        info={
-          <>
-            X-axis is capital productivity (annualized GDP / TVL). Y-axis is
-            infrastructure tax burden (REV / GDP, 7d). Bubble area is mcap (or
-            TVL when no native token). Top-right = productive at scale but heavily extracted;
-            bottom-right = productive and app-friendly; top-left = idle TVL with extractive REV;
-            bottom-left = idle and untaxed.
-          </>
-        }
-      >
-        <ChainQuadrant chains={chains.chains} />
-      </Section>
-
-      {/* Leaderboard + Stacked area side by side on wide screens */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-        <Section
-          title="Top 14 by GDP-30d"
-          info={
-            <>
-              Vivid bars = chain&apos;s 30d GDP. Faint bars in the background = native-token
-              market cap. Same color = same chain. When the faint bar exceeds the vivid one,
-              the market is paying more for the chain than its annualized application output.
-            </>
-          }
-          padding="p-5"
-        >
-          <ChainLeaderboard chains={chains.chains} topN={14} />
-        </Section>
-
-        <Section
-          title="Daily GDP · last 90 days, stacked by chain"
-          info={
-            <>
-              Total Chain-GDP across the cohort, stacked bottom-up in size order. Useful for
-              watching market-share shifts: when one chain&apos;s band widens at another&apos;s
-              expense, you can see who&apos;s gaining application traffic.
-            </>
-          }
-          padding="p-5"
-        >
-          <ChainStackedArea series={stackedSeries} chainOrder={chainOrder} />
-        </Section>
+      {/* Chart teaser strip — clicks land on /chains/charts */}
+      <div className="mb-8">
+        <div className="flex items-baseline justify-between mb-2.5">
+          <p className="text-[10px] uppercase tracking-widest text-zinc-500">
+            Visual gallery — click for full charts
+          </p>
+          <Link href="/chains/charts" className="text-[11px] text-zinc-500 hover:text-zinc-200 transition">
+            open gallery →
+          </Link>
+        </div>
+        <ChartTeasers />
       </div>
 
-      {/* Category composition heatmap */}
-      <Section
-        title="Category composition · 30d"
-        info={
-          <>
-            Each cell shows that chain&apos;s 30d revenue in a category. Color intensity
-            = share of the chain&apos;s GDP that category represents. Tells you at a glance{" "}
-            <em>what kind of economy</em> each chain is — Polygon is a prediction-market
-            economy, Tron is a stablecoin-issuer economy, Hyperliquid is a derivatives economy.
-          </>
-        }
-      >
-        <ChainCategoryHeatmap matrix={matrix} chains={chains.chains} />
-      </Section>
-
-      {/* App treemap */}
-      <Section
-        title="Every app, every chain — 30d revenue"
-        info={
-          <>
-            Cell area ∝ that app&apos;s 30d revenue; cell color = the chain it&apos;s on.
-            Hover for the app name, chain, category, and exact revenue. Stablecoin issuers
-            (Circle / Tether) appear as virtual apps on whichever chain they&apos;re attributed
-            to — Tether on Tron, USDC + Tether on Ethereum.
-          </>
-        }
-      >
-        <ChainAppTreemap apps={allApps} topN={200} />
-      </Section>
-
-      {/* Detail heat table */}
-      <Section title="All chains — detailed" padding="p-0">
-        <div className="overflow-x-auto -mx-2 px-2 pt-1">
+      {/* Main detail table */}
+      <section className="mb-10 border border-zinc-800 rounded-md bg-zinc-950 p-0">
+        <div className="px-5 pt-4 pb-3">
+          <h2 className="text-xs uppercase tracking-widest text-zinc-500">
+            All chains — detailed
+            <InfoTip>
+              Ranked by 30d GDP. Bars under GDP / Mcap / TVL are relative to the cohort max
+              (chain-colored). 30d trend = daily GDP sparkline with a terminal dot colored
+              by net direction.
+            </InfoTip>
+          </h2>
+        </div>
+        <div className="overflow-x-auto px-2 pb-2">
           <table className="w-full text-sm border-separate border-spacing-0 min-w-[1040px]">
             <thead>
               <tr className="text-zinc-500 text-[10px] uppercase tracking-widest">
@@ -267,15 +197,14 @@ export default function ChainsIndex() {
           </table>
         </div>
 
-        {/* Legend */}
-        <div className="mt-4 text-[11px] text-zinc-500 leading-relaxed flex flex-wrap gap-x-6 gap-y-1 px-1">
+        <div className="px-5 py-3 border-t border-zinc-900 text-[11px] text-zinc-500 leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
           <span><span className="text-zinc-400">GDP Multiple</span> = mcap ÷ annualized GDP</span>
           <span><span className="text-zinc-400">GDP / TVL</span> = capital productivity (annualized)</span>
           <span><span className="text-zinc-400">REV / GDP</span> = infrastructure tax burden (7d)</span>
           <span><span className="text-cyan-300">cyan top app</span> = stablecoin-issuer attribution</span>
           <span><span className="text-amber-400/80">⚠</span> = structural note (hover the chain)</span>
         </div>
-      </Section>
+      </section>
 
       <footer className="mt-6 pt-6 border-t border-zinc-800 text-xs text-zinc-600 leading-relaxed">
         <p>
@@ -294,27 +223,5 @@ function Kpi({ label, value, sub }: { label: string; value: string; sub?: string
       <p className="text-zinc-100 font-medium">{value}</p>
       {sub && <p className="text-[11px] text-zinc-500 mt-0.5">{sub}</p>}
     </div>
-  );
-}
-
-function Section({
-  title,
-  info,
-  children,
-  padding = "p-6"
-}: {
-  title: string;
-  info?: React.ReactNode;
-  children: React.ReactNode;
-  padding?: string;
-}) {
-  return (
-    <section className={`mb-10 border border-zinc-800 rounded-md ${padding} bg-zinc-950`}>
-      <h2 className="text-xs uppercase tracking-widest text-zinc-500 mb-4 px-1">
-        {title}
-        {info && <InfoTip>{info}</InfoTip>}
-      </h2>
-      {children}
-    </section>
   );
 }

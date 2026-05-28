@@ -1,23 +1,24 @@
 import type { HmProtocol } from "@/lib/data";
 import { fmtUsd } from "@/lib/format";
 
-// Adj MCap = Float + 24mo Unlocks/Emissions − 24mo Buybacks.
+// Adj MCap = Float + 24mo Unlocks/Emissions − 24mo Buybacks
 //
-// Visualized as a real balance scale on top of the Float base. The pans hang
-// from the beam endpoints by gravity (chains stay vertical) and the HEAVIER
-// SIDE GOES DOWN — like a physical scale. Pan radius scales with absolute
-// weight; everything else uses fixed, consistent type so the visual reads as
-// a precise instrument rather than a vibe-coded sketch.
+// A real balance scale. Pans hang vertically from the beam endpoints, so they
+// translate but never rotate — labels stay axis-aligned. The HEAVIER side
+// goes DOWN (correct physics). Only the pan circle scales with weight;
+// every text element is locked to a fixed size at a fixed offset, so the
+// composition reads as a precision instrument rather than free-floating
+// elements at varied sizes.
 
 const W = 720;
-const H = 460;
+const H = 500;
 const CX = W / 2;
-const FY = 220; // fulcrum y
-const BEAM_L = 200; // half-length
-const CHAIN_L = 16; // chain hangs vertically by gravity
-const MAX_TILT_DEG = 18;
-const MIN_PAN_R = 32;
-const MAX_PAN_R = 56;
+const FY = 200; // fulcrum y
+const BEAM_L = 168; // half-length — kept inward of the viewBox edges
+const CHAIN_L = 36; // gap between beam end and pan top (room for top label)
+const MAX_TILT_DEG = 16;
+const MIN_PAN_R = 30;
+const MAX_PAN_R = 52;
 
 export function AdjMcapBalance({ p }: { p: HmProtocol }) {
   const float = p.float_mcap_usd ?? 0;
@@ -27,15 +28,13 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
   const adjMcap = p.adj_mcap_usd ?? 0;
   const netChange = unlocksTotal - buybacks;
 
-  // Positive tilt = unlocks heavier = clockwise rotation in SVG = right pan
-  // DOWN (the heavier side falls). The math below leaves chains vertical, so
-  // the pans translate but never rotate, matching a real scale.
+  // Tilt: positive when unlocks heavier. SVG rotate-positive = clockwise =
+  // right end down (heavier side falls). Chains stay vertical (gravity).
   const sum = unlocksTotal + buybacks;
   const ratio = sum > 0 ? (unlocksTotal - buybacks) / sum : 0;
   const tiltDeg = ratio * MAX_TILT_DEG;
   const tiltRad = (tiltDeg * Math.PI) / 180;
 
-  // Beam endpoints after rotating around the fulcrum.
   const leftBeam = {
     x: CX - BEAM_L * Math.cos(tiltRad),
     y: FY - BEAM_L * Math.sin(tiltRad)
@@ -44,12 +43,12 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
     x: CX + BEAM_L * Math.cos(tiltRad),
     y: FY + BEAM_L * Math.sin(tiltRad)
   };
-  // Pans hang by gravity → chain is vertical → pan is directly below the
-  // beam endpoint by CHAIN_L + pan radius.
 
   const maxSide = Math.max(unlocksTotal, buybacks, 1);
   const panR = (v: number) =>
-    v <= 0 ? MIN_PAN_R : MIN_PAN_R + (MAX_PAN_R - MIN_PAN_R) * Math.min(1, v / maxSide);
+    v <= 0
+      ? MIN_PAN_R
+      : MIN_PAN_R + (MAX_PAN_R - MIN_PAN_R) * Math.min(1, v / maxSide);
   const lR = panR(buybacks);
   const rR = panR(unlocksTotal);
   const leftPan = { x: leftBeam.x, y: leftBeam.y + CHAIN_L + lR };
@@ -70,9 +69,9 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid meet"
         className="w-full h-auto"
-        style={{ maxHeight: 480 }}
+        style={{ maxHeight: 520 }}
       >
-        {/* Result header */}
+        {/* Header — Adj MCap result */}
         <text x={CX} y={28} textAnchor="middle" fontSize="11" fill="#a1a1aa" letterSpacing="1.5">
           ADJUSTED MCAP
         </text>
@@ -99,24 +98,10 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
         </g>
 
         {/* Chains — vertical (gravity) */}
-        <line
-          x1={leftBeam.x}
-          y1={leftBeam.y}
-          x2={leftPan.x}
-          y2={leftPan.y - lR}
-          stroke="#52525b"
-          strokeWidth={1.2}
-        />
-        <line
-          x1={rightBeam.x}
-          y1={rightBeam.y}
-          x2={rightPan.x}
-          y2={rightPan.y - rR}
-          stroke="#52525b"
-          strokeWidth={1.2}
-        />
+        <line x1={leftBeam.x} y1={leftBeam.y} x2={leftPan.x} y2={leftPan.y - lR} stroke="#52525b" strokeWidth={1.2} />
+        <line x1={rightBeam.x} y1={rightBeam.y} x2={rightPan.x} y2={rightPan.y - rR} stroke="#52525b" strokeWidth={1.2} />
 
-        {/* LEFT pan — buybacks (compression) */}
+        {/* LEFT pan — buybacks (compression). Single-line top label. */}
         <g>
           <text
             x={leftPan.x}
@@ -126,7 +111,7 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
             fill="#a1a1aa"
             letterSpacing="0.5"
           >
-            BUYBACKS · 24mo
+            BUYBACKS
           </text>
           <circle
             cx={leftPan.x}
@@ -159,17 +144,11 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
           </text>
         </g>
 
-        {/* RIGHT pan — unlocks + emissions (expansion) */}
+        {/* RIGHT pan — unlocks + emissions. Two-line top label to keep narrow. */}
         <g>
-          <text
-            x={rightPan.x}
-            y={rightPan.y - rR - 14}
-            textAnchor="middle"
-            fontSize="11"
-            fill="#a1a1aa"
-            letterSpacing="0.5"
-          >
-            UNLOCKS + EMISSIONS · 24mo
+          <text textAnchor="middle" fontSize="11" fill="#a1a1aa" letterSpacing="0.5">
+            <tspan x={rightPan.x} y={rightPan.y - rR - 26}>UNLOCKS</tspan>
+            <tspan x={rightPan.x} y={rightPan.y - rR - 14}>+ EMISSIONS</tspan>
           </text>
           <circle
             cx={rightPan.x}
@@ -209,33 +188,11 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
         />
 
         {/* Float base */}
-        <rect
-          x={CX - 130}
-          y={380}
-          width={260}
-          height={56}
-          fill="#18181b"
-          stroke="#3f3f46"
-          rx={4}
-        />
-        <text
-          x={CX}
-          y={402}
-          textAnchor="middle"
-          fontSize="11"
-          fill="#a1a1aa"
-          letterSpacing="1.5"
-        >
+        <rect x={CX - 130} y={440} width={260} height={56} fill="#18181b" stroke="#3f3f46" rx={4} />
+        <text x={CX} y={462} textAnchor="middle" fontSize="11" fill="#a1a1aa" letterSpacing="1.5">
           FLOAT MCAP
         </text>
-        <text
-          x={CX}
-          y={424}
-          textAnchor="middle"
-          fontSize="16"
-          fill="#e4e4e7"
-          fontWeight="600"
-        >
+        <text x={CX} y={484} textAnchor="middle" fontSize="16" fill="#e4e4e7" fontWeight="600">
           {fmtUsd(float)}
         </text>
       </svg>

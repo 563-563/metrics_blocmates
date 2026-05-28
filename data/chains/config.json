@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "description": "Chain-GDP registry. 25 chains tracked. Each entry maps our slug to: DL fees endpoint name (dl_chain), DL summary/fees slug for REV (dl_rev_slug), DL stablecoin chainCirculating key (dl_stable_key), and CoinGecko native-token id (cg_id). Chains without a native token (Base/edgeX/Ink/zkLighter/Plasma/MegaETH/Katana) carry cg_id=null and drop out of GDP Multiple. CG ids for newer chains (Monad, Plasma) may need verification on first run.",
+  "methodology_notes": [
+    "GDP = sum dailyRevenue across protocols on chain, excluding category=Chain (those are infrastructure / REV, not app-layer)",
+    "Stablecoin attribution INCLUDED in primary GDP per paper base case: (USDC chain share × Circle daily revenue) + (USDT chain share × Tether daily revenue)",
+    "ETF attribution EXCLUDED from primary GDP per paper §3.2.2 (the Python tracker silently includes it; we follow the paper instead)",
+    "Off-chain 'other' attribution EXCLUDED — heuristic with weak justification (paper doesn't endorse it as base case)",
+    "REV = dailyFees from /summary/fees/{slug} — captures base + priority fees",
+    "GDP Multiple = mcap / (gdp_30d × 365/30). Bands: <10× exceptional, 10–50× fair, 50–200× expensive, >200× speculative"
+  ],
+  "chains": {
+    "ethereum":     { "name": "Ethereum",    "symbol": "ETH",   "dl_chain": "Ethereum",       "dl_rev_slug": "ethereum",   "dl_stable_key": "Ethereum",       "cg_id": "ethereum" },
+    "tron":         { "name": "Tron",        "symbol": "TRX",   "dl_chain": "Tron",           "dl_rev_slug": "tron",       "dl_stable_key": "Tron",           "cg_id": "tron" },
+    "solana":       { "name": "Solana",      "symbol": "SOL",   "dl_chain": "Solana",         "dl_rev_slug": "solana",     "dl_stable_key": "Solana",         "cg_id": "solana" },
+    "hyperliquid":  { "name": "Hyperliquid", "symbol": "HYPE",  "dl_chain": "Hyperliquid L1", "dl_rev_slug": "hyperliquid","dl_stable_key": "Hyperliquid L1", "cg_id": "hyperliquid" },
+    "bsc":          { "name": "BSC",         "symbol": "BNB",   "dl_chain": "BSC",            "dl_rev_slug": "bsc",        "dl_stable_key": "BSC",            "cg_id": "binancecoin" },
+    "base":         { "name": "Base",        "symbol": null,    "dl_chain": "Base",           "dl_rev_slug": "base",       "dl_stable_key": "Base",           "cg_id": null },
+    "polygon":      { "name": "Polygon",     "symbol": "POL",   "dl_chain": "Polygon",        "dl_rev_slug": "polygon",    "dl_stable_key": "Polygon",        "cg_id": "polygon-ecosystem-token" },
+    "arbitrum":     { "name": "Arbitrum",    "symbol": "ARB",   "dl_chain": "Arbitrum",       "dl_rev_slug": "arbitrum",   "dl_stable_key": "Arbitrum",       "cg_id": "arbitrum" },
+    "edgex":        { "name": "edgeX",       "symbol": null,    "dl_chain": "edgeX",          "dl_rev_slug": null,         "dl_stable_key": null,             "cg_id": null },
+    "ton":          { "name": "TON",         "symbol": "TON",   "dl_chain": "TON",            "dl_rev_slug": "ton",        "dl_stable_key": "TON",            "cg_id": "the-open-network" },
+    "avalanche":    { "name": "Avalanche",   "symbol": "AVAX",  "dl_chain": "Avalanche",      "dl_rev_slug": "avalanche",  "dl_stable_key": "Avalanche",      "cg_id": "avalanche-2" },
+    "zklighter":    { "name": "zkLighter",   "symbol": "LIT",   "dl_chain": "zkLighter",      "dl_rev_slug": null,         "dl_stable_key": null,             "cg_id": "lighter" },
+    "sui":          { "name": "Sui",         "symbol": "SUI",   "dl_chain": "Sui",            "dl_rev_slug": "sui",        "dl_stable_key": "Sui",            "cg_id": "sui" },
+    "mantle":       { "name": "Mantle",      "symbol": "MNT",   "dl_chain": "Mantle",         "dl_rev_slug": "mantle",     "dl_stable_key": "Mantle",         "cg_id": "mantle" },
+    "optimism":     { "name": "Optimism",    "symbol": "OP",    "dl_chain": "OP Mainnet",     "dl_rev_slug": "op-mainnet", "dl_stable_key": "OP Mainnet",     "cg_id": "optimism" },
+    "ink":          { "name": "Ink",         "symbol": null,    "dl_chain": "Ink",            "dl_rev_slug": null,         "dl_stable_key": null,             "cg_id": null },
+    "scroll":       { "name": "Scroll",      "symbol": "SCR",   "dl_chain": "Scroll",         "dl_rev_slug": "scroll",     "dl_stable_key": "Scroll",         "cg_id": "scroll" },
+    "plasma":       { "name": "Plasma",      "symbol": "XPL",   "dl_chain": "Plasma",         "dl_rev_slug": null,         "dl_stable_key": null,             "cg_id": "plasma" },
+    "starknet":     { "name": "Starknet",    "symbol": "STRK",  "dl_chain": "Starknet",       "dl_rev_slug": "starknet",   "dl_stable_key": "StarkNet",       "cg_id": "starknet" },
+    "near":         { "name": "Near",        "symbol": "NEAR",  "dl_chain": "Near",           "dl_rev_slug": "near",       "dl_stable_key": "Near",           "cg_id": "near" },
+    "monad":        { "name": "Monad",       "symbol": "MON",   "dl_chain": "Monad",          "dl_rev_slug": null,         "dl_stable_key": null,             "cg_id": "monad" },
+    "berachain":    { "name": "Berachain",   "symbol": "BERA",  "dl_chain": "Berachain",      "dl_rev_slug": "berachain",  "dl_stable_key": "Berachain",      "cg_id": "berachain-bera" },
+    "megaeth":      { "name": "MegaETH",     "symbol": null,    "dl_chain": "MegaETH",        "dl_rev_slug": null,         "dl_stable_key": null,             "cg_id": null },
+    "katana":       { "name": "Katana",      "symbol": null,    "dl_chain": "Katana",         "dl_rev_slug": null,         "dl_stable_key": null,             "cg_id": null },
+    "bitcoin":      { "name": "Bitcoin",     "symbol": "BTC",   "dl_chain": null,             "dl_rev_slug": "bitcoin",    "dl_stable_key": "Bitcoin",        "cg_id": "bitcoin" }
+  }
+}

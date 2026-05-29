@@ -121,7 +121,7 @@ export function ChartTeasers() {
           href={`/chains/charts#${t.anchor}`}
           className="block border border-line rounded-md bg-canvas hover:border-fg-muted transition group overflow-hidden"
         >
-          <div className="h-24 border-b border-line-faint bg-black/30">
+          <div className="h-24 border-b border-line-faint">
             {t.preview}
           </div>
           <div className="px-3 py-2">

@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SiteShell } from "@/components/SiteShell";
 
-const sans = Inter({
+// Matches blocmates/onchainmarkets — Geist Sans for body, Geist Mono for
+// data values and "system labels" (uppercase tracking-widest captions).
+const sans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap"
 });
-const mono = JetBrains_Mono({
+const mono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap"

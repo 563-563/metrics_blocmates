@@ -3,57 +3,87 @@
 @tailwind utilities;
 
 /* ─── Theme tokens ─────────────────────────────────────────────────────
-   Warm palette inspired by onchain.markets. RGB triplets so Tailwind's
-   <alpha-value> color modifier works (e.g. text-fg/60).
+   Values lifted directly from blocmates/onchainmarkets `.premium-theme`
+   so we match the "paper & gold" aesthetic of the reference dashboard.
+   RGB triplets so Tailwind's <alpha-value> modifier works
+   (e.g. text-fg/60). Semantic names retained from our codebase; mapping
+   to upstream variable names noted in comments.
 */
 
 :root,
 :root[data-theme="dark"] {
-  --canvas:        28  22  18;   /* page bg — dark warm brown */
-  --surface:       35  28  22;   /* card / panel bg */
-  --surface-elev:  44  36  28;   /* hover / active panel */
-  --fg:            235 224 200;  /* primary text — cream */
-  --fg-muted:      160 144 122;
-  --fg-faint:      110  99  84;
-  --line:          58  47  37;   /* primary border */
-  --line-faint:    42  33  24;
-  --accent:        212 160  86;  /* amber accent — for select numbers */
-  --accent-soft:    96  72  42;  /* used as faint badge bg */
-  --positive:      141 184  74;
-  --negative:      217 109  74;
+  /* page bg            = onchainmarkets --bg            #1A1917 */
+  --canvas:         26  25  23;
+  /* card surface       = onchainmarkets --bg-card       #211F1D */
+  --surface:        33  31  29;
+  /* hover / active     = onchainmarkets --bg-surface    #2A2723 */
+  --surface-elev:   42  39  35;
+  /* primary text       = onchainmarkets --text-primary  #ECE6DD */
+  --fg:            236 230 221;
+  /* secondary text     = onchainmarkets --text-secondary #B3ACA1 */
+  --fg-muted:      179 172 161;
+  /* muted text         = onchainmarkets --text-muted    #7F796F */
+  --fg-faint:      127 121 111;
+  /* border             = onchainmarkets --border        #322F2B */
+  --line:           50  47  43;
+  /* border-light       = onchainmarkets --border-light  #292723 */
+  --line-faint:     41  39  35;
+  /* gold accent        = onchainmarkets --accent        #CDA24A */
+  --accent:        205 162  74;
+  --accent-soft:    74  60  30;
+  /* positive           = onchainmarkets --positive      #84A76C */
+  --positive:      132 167 108;
+  /* negative           = onchainmarkets --negative      #B25B57 */
+  --negative:      178  91  87;
 }
 
 :root[data-theme="light"] {
-  --canvas:        240 233 220;  /* cream */
-  --surface:       246 240 228;
-  --surface-elev:  234 224 204;
-  --fg:             31  24  20;  /* dark warm brown */
-  --fg-muted:      107  93  79;
-  --fg-faint:      160 144 128;
-  --line:          218 204 178;
-  --line-faint:    230 220 204;
-  --accent:        141  90  23;
-  --accent-soft:   232 214 182;
-  --positive:       76 125  47;
-  --negative:      168  61  35;
+  /* page bg            = onchainmarkets --bg            #F3EFE8 */
+  --canvas:        243 239 232;
+  /* card surface       = onchainmarkets --bg-card       #FAF8F3 */
+  --surface:       250 248 243;
+  /* hover / active     = onchainmarkets --bg-surface    #EBE4D8 */
+  --surface-elev:  235 228 216;
+  /* primary text       = onchainmarkets --text-primary  #2A2620 */
+  --fg:             42  38  32;
+  /* secondary text     = onchainmarkets --text-secondary #5C554B */
+  --fg-muted:       92  85  75;
+  /* muted text         = onchainmarkets --text-muted    #948D80 */
+  --fg-faint:      148 141 128;
+  /* border             = onchainmarkets --border        #DDD5C7 */
+  --line:          221 213 199;
+  /* border-light       = onchainmarkets --border-light  #E6DED2 */
+  --line-faint:    230 222 210;
+  /* gold accent        = onchainmarkets --accent        #A9781F */
+  --accent:        169 120  31;
+  --accent-soft:   240 224 192;
+  /* positive           = onchainmarkets --positive      #4D7A3C */
+  --positive:       77 122  60;
+  /* negative           = onchainmarkets --negative      #9B3F3C */
+  --negative:      155  63  60;
 }
 
 html, body {
   background: rgb(var(--canvas));
   color: rgb(var(--fg));
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a { color: rgb(var(--fg)); text-decoration: none; }
 a:hover { color: rgb(var(--accent)); }
 
-/* Code / data values stay monospace */
-code, .mono, [class*="tabular-nums"] {
-  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+code, .mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
-/* Sources/sinks flow particle animation lives here (existing component). */
+::selection {
+  background: rgb(var(--fg));
+  color: rgb(var(--canvas));
+}
+
+/* Sources/sinks flow animation (existing component) */
 @keyframes tp-flow-right {
   0%   { background-position-x: 0; }
   100% { background-position-x: 20px; }
@@ -61,9 +91,4 @@ code, .mono, [class*="tabular-nums"] {
 @keyframes tp-flow-left {
   0%   { background-position-x: 20px; }
   100% { background-position-x: 0; }
-}
-
-@keyframes hm-brick-fade {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 0.9; transform: translateY(0); }
 }

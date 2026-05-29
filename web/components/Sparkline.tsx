@@ -6,7 +6,7 @@
  */
 export function Sparkline({
   data,
-  color = "#10b981",
+  color = "currentColor",
   width = 96,
   height = 26,
   fill = true
@@ -19,7 +19,7 @@ export function Sparkline({
 }) {
   const clean = (data || []).filter((v) => Number.isFinite(v));
   if (clean.length < 2) {
-    return <span className="text-zinc-700 text-xs">—</span>;
+    return <span className="text-fg-faint text-xs">—</span>;
   }
   const min = Math.min(...clean);
   const max = Math.max(...clean);

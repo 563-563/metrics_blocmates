@@ -5,14 +5,16 @@ import { Sparkline } from "@/components/Sparkline";
 
 export const revalidate = 300;
 
-// HM → heat color (cheap = green, expensive = red). Returns cell tint + text.
-function hmHeat(hm: number): { bg: string; text: string; barColor: string } {
-  if (!Number.isFinite(hm)) return { bg: "rgba(120,20,35,0.55)", text: "#fda4af", barColor: "#9f1239" };
-  if (hm < 10) return { bg: "rgba(16,185,129,0.22)", text: "#6ee7b7", barColor: "#10b981" };
-  if (hm < 20) return { bg: "rgba(16,185,129,0.14)", text: "#86efac", barColor: "#22c55e" };
-  if (hm < 35) return { bg: "rgba(148,163,184,0.12)", text: "#e2e8f0", barColor: "#94a3b8" };
-  if (hm < 50) return { bg: "rgba(245,158,11,0.18)", text: "#fcd34d", barColor: "#f59e0b" };
-  return { bg: "rgba(244,63,94,0.20)", text: "#fda4af", barColor: "#f43f5e" };
+// HM → palette-aware tone. Returns semantic Tailwind classes for text +
+// bar fill + a one-word band label. No more rgba tints — palette tokens
+// handle theming automatically.
+function hmHeat(hm: number): { textClass: string; barClass: string; label: string } {
+  if (!Number.isFinite(hm)) return { textClass: "text-fg-muted", barClass: "bg-fg-faint", label: "no capture" };
+  if (hm < 10) return { textClass: "text-positive", barClass: "bg-positive", label: "exceptional" };
+  if (hm < 20) return { textClass: "text-positive", barClass: "bg-positive", label: "strong" };
+  if (hm < 35) return { textClass: "text-fg", barClass: "bg-fg-muted", label: "fair" };
+  if (hm < 50) return { textClass: "text-accent", barClass: "bg-accent", label: "expensive" };
+  return { textClass: "text-negative", barClass: "bg-negative", label: "speculative" };
 }
 
 // HM magnitude bar fill — cap display at 120× so ∞ and >100 read as "full/off the chart".
@@ -24,17 +26,17 @@ function hmBarPct(hm: number): number {
 function verifPill(v: string): { label: string; cls: string; dot: string } {
   switch (v) {
     case "onchain":
-      return { label: "on-chain", cls: "text-positive border-emerald-800/60 bg-emerald-950/40", dot: "bg-emerald-400" };
+      return { label: "on-chain", cls: "text-positive border-positive/40 bg-positive/10", dot: "bg-positive" };
     case "onchain_aggregate":
-      return { label: "on-chain~", cls: "text-positive border-emerald-800/60 bg-emerald-950/30", dot: "bg-emerald-400/70" };
+      return { label: "on-chain~", cls: "text-positive border-positive/40 bg-positive/10", dot: "bg-positive/70" };
     case "onchain_dormant":
-      return { label: "dormant", cls: "text-fg-muted border-line bg-surface", dot: "bg-zinc-500" };
+      return { label: "dormant", cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
     case "proxy":
-      return { label: "proxy", cls: "text-sky-300 border-sky-900/60 bg-sky-950/40", dot: "bg-sky-400" };
+      return { label: "proxy", cls: "text-accent border-accent/40 bg-accent/10", dot: "bg-accent" };
     case "governance_stated":
-      return { label: "stated", cls: "text-accent border-amber-900/60 bg-amber-950/40", dot: "bg-amber-400" };
+      return { label: "stated", cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
     default:
-      return { label: v, cls: "text-fg-muted border-line bg-surface", dot: "bg-zinc-600" };
+      return { label: v, cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
   }
 }
 
@@ -126,7 +128,8 @@ export default function Home() {
           </thead>
           <tbody>
             {rows.map(({ p, heat, barPct, npUsd, npTokens, npDir, pctSupply, spark, verif }) => {
-              const npColor = npDir === "seller" ? "#f43f5e" : npDir === "buyer" ? "#10b981" : "#71717a";
+              const npClass = npDir === "seller" ? "text-negative" : npDir === "buyer" ? "text-positive" : "text-fg-faint";
+              const npBarClass = npDir === "seller" ? "bg-negative" : npDir === "buyer" ? "bg-positive" : "bg-fg-faint";
               const npArrow = npDir === "seller" ? "▲" : npDir === "buyer" ? "▼" : "·";
               const npBarPct = npUsd != null ? (Math.abs(npUsd) / maxNpUsd) * 100 : 0;
               return (
@@ -156,27 +159,19 @@ export default function Home() {
                     </Link>
                   </td>
 
-                  {/* HM — heat cell + bar + band */}
+                  {/* HM — number + band label + subtle magnitude bar */}
                   <td className="py-3 px-2 border-t border-line-faint">
-                    <Link href={`/${p.slug}/hm`} className="block">
-                      <div
-                        className="rounded px-2 py-1.5"
-                        style={{ background: heat.bg }}
-                      >
-                        <div className="flex items-baseline justify-between">
-                          <span className="text-lg font-semibold" style={{ color: heat.text }}>
-                            {fmtMultiple(p.hm)}
-                          </span>
-                          <span className="text-[10px]" style={{ color: heat.text }}>
-                            {p.hm_band}
-                          </span>
-                        </div>
-                        <div className="mt-1 h-1 rounded-full bg-black/40 overflow-hidden">
-                          <div
-                            className="h-full rounded-full"
-                            style={{ width: `${barPct}%`, background: heat.barColor }}
-                          />
-                        </div>
+                    <Link href={`/${p.slug}/hm`} className="block px-1">
+                      <div className="flex items-baseline justify-between">
+                        <span className={`text-lg font-mono font-semibold tabular-nums ${heat.textClass}`}>
+                          {fmtMultiple(p.hm)}
+                        </span>
+                        <span className={`text-[10px] uppercase tracking-widest ${heat.textClass}`}>
+                          {heat.label}
+                        </span>
+                      </div>
+                      <div className="mt-1.5 h-[3px] rounded-full bg-line-faint overflow-hidden">
+                        <div className={`h-full rounded-full ${heat.barClass}`} style={{ width: `${barPct}%` }} />
                       </div>
                     </Link>
                   </td>
@@ -186,21 +181,18 @@ export default function Home() {
                     <Link href={`/${p.slug}/tp`} className="block">
                       {npUsd != null && npTokens != null ? (
                         <>
-                          <div className="flex items-baseline gap-1.5">
-                            <span style={{ color: npColor }} className="text-xs">{npArrow}</span>
-                            <span className="text-sm font-medium" style={{ color: npColor }}>
+                          <div className={`flex items-baseline gap-1.5 ${npClass}`}>
+                            <span className="text-xs">{npArrow}</span>
+                            <span className="text-sm font-mono font-medium tabular-nums">
                               {fmtUsdSigned(npUsd)}
                             </span>
                           </div>
-                          <div className="text-[10px] text-fg-muted">
+                          <div className="text-[10px] text-fg-muted font-mono tabular-nums">
                             {fmtTokensSigned(npTokens)} {p.symbol}
                             {pctSupply != null ? ` · ${fmtPct(pctSupply, 2)}` : ""}
                           </div>
-                          <div className="mt-1 h-1 rounded-full bg-black/40 overflow-hidden">
-                            <div
-                              className="h-full rounded-full"
-                              style={{ width: `${npBarPct}%`, background: npColor }}
-                            />
+                          <div className="mt-1 h-[3px] rounded-full bg-line-faint overflow-hidden">
+                            <div className={`h-full rounded-full ${npBarClass}`} style={{ width: `${npBarPct}%` }} />
                           </div>
                         </>
                       ) : (
@@ -209,9 +201,9 @@ export default function Home() {
                     </Link>
                   </td>
 
-                  {/* Buyback 90d sparkline */}
-                  <td className="py-3 px-2 border-t border-line-faint">
-                    <Sparkline data={spark} color="#10b981" />
+                  {/* Buyback 90d sparkline — palette-aware via parent text color */}
+                  <td className="py-3 px-2 border-t border-line-faint text-positive">
+                    <Sparkline data={spark} color="currentColor" />
                   </td>
 
                   {/* Real Capture */}

@@ -128,6 +128,51 @@ export function getCohortMonthlyDelta(): CohortDeltas {
   };
 }
 
+// Per-chain month-over-month deltas — same shape as the cohort version,
+// but for a single chain's history. Powers the headline KPI cards on
+// /chains/[slug]. TVL is a stock (latest non-null vs ~30d-ago non-null);
+// GDP and REV are flows (sum over the 30d window).
+export type ChainDeltas = { gdp: CohortDelta; tvl: CohortDelta; rev: CohortDelta };
+
+export function getChainMonthlyDelta(slug: string): ChainDeltas {
+  const hist = readJsonSafe<ChainHistoryPoint[]>(
+    path.join(DATA_ROOT, "history", `${slug}.json`),
+    []
+  );
+  const current30 = hist.slice(-30);
+  const prior30 = hist.slice(-60, -30);
+
+  const sumPos = (rows: ChainHistoryPoint[], k: "gdp" | "rev") =>
+    rows.reduce((s, r) => s + Math.max(0, Number((r as any)[k]) || 0), 0);
+  const latestNonNull = (rows: ChainHistoryPoint[], k: "tvl"): number | null => {
+    for (let i = rows.length - 1; i >= 0; i--) {
+      const v = (rows[i] as any)[k];
+      if (v != null) return Number(v);
+    }
+    return null;
+  };
+
+  const gdpCur = sumPos(current30, "gdp");
+  const gdpPri = sumPos(prior30, "gdp");
+  const revCur = sumPos(current30, "rev");
+  const revPri = sumPos(prior30, "rev");
+  const tvlCur = latestNonNull(current30, "tvl");
+  const tvlPri = latestNonNull(prior30, "tvl");
+
+  const pct = (cur: number, pri: number): number | null =>
+    pri > 0 ? (cur - pri) / pri : null;
+
+  return {
+    gdp: { current: gdpCur, prior: gdpPri, deltaPct: pct(gdpCur, gdpPri) },
+    tvl: {
+      current: tvlCur ?? 0,
+      prior: tvlPri ?? 0,
+      deltaPct: tvlCur != null && tvlPri != null ? pct(tvlCur, tvlPri) : null
+    },
+    rev: { current: revCur, prior: revPri, deltaPct: pct(revCur, revPri) }
+  };
+}
+
 // Heatmap matrix: rows = chains, columns = top-N categories overall.
 // Each cell = chain's 30d revenue in that category.
 export type CategoryMatrix = {

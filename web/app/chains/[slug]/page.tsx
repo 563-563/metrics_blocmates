@@ -12,6 +12,8 @@ import { ChainGdpHistoryChart } from "@/components/ChainGdpHistoryChart";
 import { ChainCategoryMix } from "@/components/ChainCategoryMix";
 import { ChainProtocolsTable } from "@/components/ChainProtocolsTable";
 import { InfoTip } from "@/components/InfoTip";
+import { KpiBig } from "@/components/KpiBig";
+import { getChainMonthlyDelta } from "@/lib/chain-aggregates";
 
 export const revalidate = 300;
 
@@ -50,6 +52,7 @@ export default async function ChainPage({
   const history = getChainHistory(slug);
   const protocols = getChainProtocols(slug);
   const categories = getChainCategories(slug);
+  const delta = getChainMonthlyDelta(slug);
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
@@ -88,69 +91,71 @@ export default async function ChainPage({
         )}
       </header>
 
-      {/* Headline metrics */}
-      <Section title="Headline metrics">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-5 text-sm">
-          <Stat
-            label="GDP · 30d"
-            value={fmtUsd(c.gdp_30d_usd)}
-            sub={`annualized ${fmtUsd(c.gdp_annualized_usd)}`}
-          />
-          <Stat
-            label="Mcap"
-            value={c.mcap_usd != null ? fmtUsd(c.mcap_usd) : "—"}
-            sub={
-              c.cg_id === null
-                ? "no native token"
-                : c.fdv_usd != null
-                  ? `FDV ${fmtUsd(c.fdv_usd)}`
-                  : undefined
-            }
-          />
-          <Stat
-            label="GDP Multiple"
-            value={c.gdp_multiple != null ? `${c.gdp_multiple.toFixed(1)}×` : "—"}
-            sub="mcap ÷ annualized GDP"
-          />
-          <Stat
-            label="TVL"
-            value={c.tvl_usd != null ? fmtUsd(c.tvl_usd) : "—"}
-          />
-          <Stat
-            label="GDP · 7d"
-            value={fmtUsd(c.gdp_7d_usd)}
-            sub={`24h ${fmtUsd(c.gdp_24h_usd)}`}
-          />
-          <Stat
-            label="REV · 30d"
-            value={c.rev_30d_usd > 0 ? fmtUsd(c.rev_30d_usd) : "—"}
-            sub="base + priority fees"
-          />
-          <Stat
-            label="GDP / TVL (ann.)"
-            value={c.gdp_over_tvl_ann != null ? `${(c.gdp_over_tvl_ann * 100).toFixed(1)}%` : "—"}
-            valueClass={gdpTvlClass(c.gdp_over_tvl_band)}
-            sub="capital productivity"
-          />
-          <Stat
-            label="REV / GDP · 7d"
-            value={
-              c.rev_over_gdp_7d != null ? `${(c.rev_over_gdp_7d * 100).toFixed(1)}%` : "—"
-            }
-            valueClass={revGdpClass(c.rev_over_gdp_band)}
-            sub="tax burden"
-          />
-        </div>
-        {c.gdp_stable_30d_usd > 0 && (
-          <p className="mt-5 pt-4 border-t border-zinc-800 text-xs text-zinc-500 leading-relaxed">
-            <span className="text-zinc-400">Stablecoin attribution included:</span>{" "}
-            {fmtUsd(c.gdp_stable_30d_usd)} over 30d
-            {" "}({((c.gdp_stable_30d_usd / c.gdp_30d_usd) * 100).toFixed(0)}% of GDP)
-            {" "}— from USDC ({(c.stable_share_usdc * 100).toFixed(2)}% chain share) +
-            USDT ({(c.stable_share_usdt * 100).toFixed(2)}% chain share).
-          </p>
-        )}
-      </Section>
+      {/* Headline metrics — four big KPIs, deltas where data is a flow */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <KpiBig
+          label="Monthly GDP"
+          value={fmtUsd(c.gdp_30d_usd)}
+          delta={delta.gdp.deltaPct}
+          sub={`annualized ${fmtUsd(c.gdp_annualized_usd)}`}
+        />
+        <KpiBig
+          label="Mcap"
+          value={c.mcap_usd != null ? fmtUsd(c.mcap_usd) : "—"}
+          sub={
+            c.cg_id === null
+              ? "no native token"
+              : c.gdp_multiple != null
+                ? <>GDP Multiple <span className="text-zinc-300">{c.gdp_multiple.toFixed(1)}×</span></>
+                : "—"
+          }
+        />
+        <KpiBig
+          label="TVL"
+          value={c.tvl_usd != null ? fmtUsd(c.tvl_usd) : "—"}
+          delta={delta.tvl.deltaPct}
+          sub={
+            c.gdp_over_tvl_ann != null ? (
+              <>
+                GDP/TVL{" "}
+                <span className={gdpTvlClass(c.gdp_over_tvl_band)}>
+                  {(c.gdp_over_tvl_ann * 100).toFixed(1)}%
+                </span>
+              </>
+            ) : (
+              "capital productivity n/a"
+            )
+          }
+        />
+        <KpiBig
+          label="Monthly REV"
+          value={c.rev_30d_usd > 0 ? fmtUsd(c.rev_30d_usd) : "—"}
+          delta={delta.rev.deltaPct}
+          sub={
+            c.rev_over_gdp_7d != null ? (
+              <>
+                REV/GDP{" "}
+                <span className={revGdpClass(c.rev_over_gdp_band)}>
+                  {(c.rev_over_gdp_7d * 100).toFixed(1)}%
+                </span>
+              </>
+            ) : (
+              "base + priority fees"
+            )
+          }
+        />
+      </div>
+
+      {/* Stablecoin attribution disclosure when material */}
+      {c.gdp_stable_30d_usd > 0 && (
+        <p className="mb-8 px-1 text-xs text-zinc-500 leading-relaxed">
+          <span className="text-zinc-400">Stablecoin attribution included:</span>{" "}
+          {fmtUsd(c.gdp_stable_30d_usd)} over 30d{" "}
+          ({((c.gdp_stable_30d_usd / c.gdp_30d_usd) * 100).toFixed(0)}% of GDP) —
+          from USDC ({(c.stable_share_usdc * 100).toFixed(2)}% chain share) +
+          USDT ({(c.stable_share_usdt * 100).toFixed(2)}% chain share).
+        </p>
+      )}
 
       {/* GDP over time */}
       <Section
@@ -219,22 +224,3 @@ function Section({
   );
 }
 
-function Stat({
-  label,
-  value,
-  sub,
-  valueClass
-}: {
-  label: string;
-  value: string;
-  sub?: string;
-  valueClass?: string;
-}) {
-  return (
-    <div>
-      <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">{label}</p>
-      <p className={`text-base ${valueClass || "text-zinc-100"} tabular-nums`}>{value}</p>
-      {sub && <p className="text-[11px] text-zinc-500 mt-0.5">{sub}</p>}
-    </div>
-  );
-}

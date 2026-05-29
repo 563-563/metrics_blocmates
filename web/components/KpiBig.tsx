@@ -1,19 +1,21 @@
-// Shared headline-KPI card. Used on /chains for cohort totals and on
-// /chains/[slug] for per-chain headlines. Bordered, monospace, large value
-// with optional month-over-month delta and a small descriptive sub-line.
+// Shared headline-KPI card. Primary tier = large hero numbers; secondary
+// tier = same card shape but smaller value text so a row of secondaries
+// reads as a derived/contextual layer underneath the primaries.
 
 export function KpiBig({
   label,
   value,
   sub,
   delta,
-  valueClass
+  valueClass,
+  tier = "primary"
 }: {
   label: string;
   value: string;
   sub?: React.ReactNode;
   delta?: number | null;
   valueClass?: string;
+  tier?: "primary" | "secondary";
 }) {
   const dPct = delta == null ? null : delta * 100;
   const dColor =
@@ -26,11 +28,15 @@ export function KpiBig({
           : "text-zinc-400";
   const dArrow = dPct == null ? "" : dPct > 0 ? "↑" : dPct < 0 ? "↓" : "·";
 
+  const valueSize =
+    tier === "primary" ? "text-3xl md:text-4xl" : "text-2xl";
+  const padding = tier === "primary" ? "px-5 py-5" : "px-4 py-4";
+
   return (
-    <div className="border border-zinc-800 rounded-md bg-zinc-950 px-5 py-5">
+    <div className={`border border-zinc-800 rounded-md bg-zinc-950 ${padding}`}>
       <p className="text-[11px] uppercase tracking-widest text-zinc-400">{label}</p>
       <p
-        className={`text-3xl md:text-4xl font-semibold tabular-nums mt-1.5 leading-none ${
+        className={`${valueSize} font-semibold tabular-nums mt-1.5 leading-none ${
           valueClass || "text-zinc-50"
         }`}
       >

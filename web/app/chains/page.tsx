@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { chains, getChainHistory } from "@/lib/chains";
-import { getCohortMonthlyDelta } from "@/lib/chain-aggregates";
+import {
+  chainSummaryWithoutStablecoins,
+  getCohortMonthlyDelta
+} from "@/lib/chain-aggregates";
 import { CHAIN_COLORS } from "@/lib/chain-colors";
 import { fmtUsd } from "@/lib/format";
 import { ChainScaleBar } from "@/components/ChainScaleBar";
@@ -8,8 +11,11 @@ import { ChainTrendSparkline } from "@/components/ChainTrendSparkline";
 import { ChartTeasers } from "@/components/ChartTeasers";
 import { InfoTip } from "@/components/InfoTip";
 import { KpiBig } from "@/components/KpiBig";
+import { StablecoinToggle } from "@/components/StablecoinToggle";
 
-export const revalidate = 300;
+// Page is dynamic so the stablecoin toggle re-renders. The data is bundled
+// at build time so the search-param render is still fast (no fetches).
+export const dynamic = "force-dynamic";
 
 // Fallback chain logo when CoinGecko has no native-token icon (Base, edgeX,
 // Ink, Plasma, MegaETH, Katana). DeFiLlama's chain-icon CDN keys on slug.
@@ -42,26 +48,44 @@ function fmtMultOrDash(v: number | null): string {
   return v == null ? "—" : `${v.toFixed(1)}×`;
 }
 
-export default function ChainsIndex() {
-  const trackedChains = chains.chains.length;
-  const deltas = getCohortMonthlyDelta();
+export default async function ChainsIndex({
+  searchParams
+}: {
+  searchParams: Promise<{ include_stablecoins?: string }>;
+}) {
+  const params = await searchParams;
+  const includeStablecoins = params.include_stablecoins !== "false";
+  const baseChains = includeStablecoins
+    ? chains.chains
+    : chains.chains.map(chainSummaryWithoutStablecoins);
+  // Re-sort by adjusted GDP when stablecoins are excluded.
+  const sortedChains = [...baseChains].sort((a, b) => (b.gdp_30d_usd || 0) - (a.gdp_30d_usd || 0));
 
-  const maxGdp = Math.max(...chains.chains.map((c) => c.gdp_30d_usd || 0));
-  const maxMcap = Math.max(...chains.chains.map((c) => c.mcap_usd || 0));
-  const maxTvl = Math.max(...chains.chains.map((c) => c.tvl_usd || 0));
+  const trackedChains = sortedChains.length;
+  const deltas = getCohortMonthlyDelta(includeStablecoins);
 
+  const maxGdp = Math.max(...sortedChains.map((c) => c.gdp_30d_usd || 0));
+  const maxMcap = Math.max(...sortedChains.map((c) => c.mcap_usd || 0));
+  const maxTvl = Math.max(...sortedChains.map((c) => c.tvl_usd || 0));
+
+  // Sparklines: use gdp_app when stablecoins excluded so the line tracks
+  // app-only flows.
   const sparklineData = new Map<string, number[]>();
-  for (const c of chains.chains) {
+  for (const c of sortedChains) {
     const hist = getChainHistory(c.slug).slice(-30);
-    sparklineData.set(c.slug, hist.map((d) => d.gdp));
+    sparklineData.set(
+      c.slug,
+      hist.map((d) => (includeStablecoins ? d.gdp : d.gdp_app))
+    );
   }
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
       <header className="mb-6 border-b border-zinc-800 pb-6">
-        <div className="flex items-baseline justify-between flex-wrap gap-2">
+        <div className="flex items-baseline justify-between flex-wrap gap-3">
           <h1 className="text-2xl font-semibold tracking-tight">chains · GDP</h1>
-          <div className="flex items-center gap-4 text-[11px] text-zinc-500">
+          <div className="flex items-center gap-4 text-[11px] text-zinc-500 flex-wrap">
+            <StablecoinToggle />
             <Link href="/" className="hover:text-zinc-200 transition">← protocols</Link>
             <Link href="/chains/charts" className="hover:text-zinc-200 transition">charts →</Link>
             <span>As of {chains.as_of}</span>
@@ -133,7 +157,7 @@ export default function ChainsIndex() {
               </tr>
             </thead>
             <tbody>
-              {chains.chains.map((c) => {
+              {sortedChains.map((c) => {
                 const hasStruct = !!c.structural_note;
                 const color = CHAIN_COLORS[c.slug] || "#71717a";
                 const spark = sparklineData.get(c.slug) || [];

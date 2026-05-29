@@ -13,9 +13,13 @@ import { ChainCategoryMix } from "@/components/ChainCategoryMix";
 import { ChainProtocolsTable } from "@/components/ChainProtocolsTable";
 import { InfoTip } from "@/components/InfoTip";
 import { KpiBig } from "@/components/KpiBig";
-import { getChainMonthlyDelta } from "@/lib/chain-aggregates";
+import { StablecoinToggle } from "@/components/StablecoinToggle";
+import {
+  chainSummaryWithoutStablecoins,
+  getChainMonthlyDelta
+} from "@/lib/chain-aggregates";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return CHAIN_SLUGS.map((slug) => ({ slug }));
@@ -41,18 +45,33 @@ function revGdpClass(band: string | null): string {
 }
 
 export default async function ChainPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ include_stablecoins?: string }>;
 }) {
   const { slug } = await params;
-  const c = getChainBySlug(slug);
-  if (!c) notFound();
+  const sp = await searchParams;
+  const includeStablecoins = sp.include_stablecoins !== "false";
 
-  const history = getChainHistory(slug);
-  const protocols = getChainProtocols(slug);
-  const categories = getChainCategories(slug);
-  const delta = getChainMonthlyDelta(slug);
+  const rawChain = getChainBySlug(slug);
+  if (!rawChain) notFound();
+  const c = includeStablecoins ? rawChain : chainSummaryWithoutStablecoins(rawChain);
+
+  // History: when stablecoins excluded, swap `gdp` for `gdp_app` so the
+  // chart and tooltip read as app-only.
+  const history = getChainHistory(slug).map((d) =>
+    includeStablecoins ? d : { ...d, gdp: d.gdp_app }
+  );
+  // Drop Stablecoin Issuer rows from protocols & categories when toggle off.
+  const protocols = getChainProtocols(slug).filter(
+    (p) => includeStablecoins || p.category !== "Stablecoin Issuer"
+  );
+  const categories = getChainCategories(slug).filter(
+    (cat) => includeStablecoins || cat.category !== "Stablecoin Issuer"
+  );
+  const delta = getChainMonthlyDelta(slug, includeStablecoins);
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
@@ -71,7 +90,7 @@ export default async function ChainPage({
           <h1 className="text-3xl font-semibold tracking-tight">{c.name}</h1>
           {c.symbol && <span className="text-zinc-500 text-sm">${c.symbol}</span>}
         </div>
-        <div className="flex items-center justify-between flex-wrap gap-2 mt-3">
+        <div className="flex items-center justify-between flex-wrap gap-3 mt-3">
           <p className="text-xs text-zinc-500">
             Chain-GDP · {c.protocol_count} apps tracked · top app{" "}
             <span className="text-zinc-300">{c.top_protocol ?? "—"}</span>
@@ -79,9 +98,12 @@ export default async function ChainPage({
               <span className="text-zinc-600"> ({c.top_category})</span>
             )}
           </p>
-          <Link href="/chains" className="text-[11px] text-zinc-500 hover:text-zinc-200 transition">
-            ← all chains
-          </Link>
+          <div className="flex items-center gap-4 text-[11px] text-zinc-500 flex-wrap">
+            <StablecoinToggle />
+            <Link href="/chains" className="hover:text-zinc-200 transition">
+              ← all chains
+            </Link>
+          </div>
         </div>
         {c.structural_note && (
           <div className="mt-4 rounded-md border border-amber-900/40 bg-amber-950/20 px-3 py-2.5 text-xs text-amber-200/90 leading-relaxed">
@@ -91,58 +113,58 @@ export default async function ChainPage({
         )}
       </header>
 
-      {/* Headline metrics — four big KPIs, deltas where data is a flow */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      {/* Primary headline KPIs — flows and stocks */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
         <KpiBig
           label="Monthly GDP"
           value={fmtUsd(c.gdp_30d_usd)}
           delta={delta.gdp.deltaPct}
-          sub={`annualized ${fmtUsd(c.gdp_annualized_usd)}`}
         />
         <KpiBig
           label="Mcap"
           value={c.mcap_usd != null ? fmtUsd(c.mcap_usd) : "—"}
-          sub={
-            c.cg_id === null
-              ? "no native token"
-              : c.gdp_multiple != null
-                ? <>GDP Multiple <span className="text-zinc-300">{c.gdp_multiple.toFixed(1)}×</span></>
-                : "—"
-          }
+          sub={c.cg_id === null ? "no native token" : undefined}
         />
         <KpiBig
           label="TVL"
           value={c.tvl_usd != null ? fmtUsd(c.tvl_usd) : "—"}
           delta={delta.tvl.deltaPct}
-          sub={
-            c.gdp_over_tvl_ann != null ? (
-              <>
-                GDP/TVL{" "}
-                <span className={gdpTvlClass(c.gdp_over_tvl_band)}>
-                  {(c.gdp_over_tvl_ann * 100).toFixed(1)}%
-                </span>
-              </>
-            ) : (
-              "capital productivity n/a"
-            )
-          }
         />
         <KpiBig
           label="Monthly REV"
           value={c.rev_30d_usd > 0 ? fmtUsd(c.rev_30d_usd) : "—"}
           delta={delta.rev.deltaPct}
-          sub={
-            c.rev_over_gdp_7d != null ? (
-              <>
-                REV/GDP{" "}
-                <span className={revGdpClass(c.rev_over_gdp_band)}>
-                  {(c.rev_over_gdp_7d * 100).toFixed(1)}%
-                </span>
-              </>
-            ) : (
-              "base + priority fees"
-            )
-          }
+          sub="base + priority fees"
+        />
+      </div>
+
+      {/* Secondary KPIs — derived ratios + annualized */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <KpiBig
+          tier="secondary"
+          label="Annualized GDP"
+          value={fmtUsd(c.gdp_annualized_usd)}
+          sub="monthly × 365/30"
+        />
+        <KpiBig
+          tier="secondary"
+          label="GDP Multiple"
+          value={c.gdp_multiple != null ? `${c.gdp_multiple.toFixed(1)}×` : "—"}
+          sub="mcap ÷ annualized"
+        />
+        <KpiBig
+          tier="secondary"
+          label="GDP / TVL"
+          value={c.gdp_over_tvl_ann != null ? `${(c.gdp_over_tvl_ann * 100).toFixed(1)}%` : "—"}
+          valueClass={gdpTvlClass(c.gdp_over_tvl_band)}
+          sub="capital productivity (ann.)"
+        />
+        <KpiBig
+          tier="secondary"
+          label="REV / GDP"
+          value={c.rev_over_gdp_7d != null ? `${(c.rev_over_gdp_7d * 100).toFixed(1)}%` : "—"}
+          valueClass={revGdpClass(c.rev_over_gdp_band)}
+          sub="tax burden"
         />
       </div>
 

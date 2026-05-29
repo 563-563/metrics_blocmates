@@ -35,6 +35,8 @@ export type ChainSummary = {
   rev_over_gdp_band: "app-friendly" | "modest" | "heavy" | "extractive" | null;
   top_protocol: string | null;
   top_category: string | null;
+  top_protocol_excl_stable?: string | null;
+  top_category_excl_stable?: string | null;
   protocol_count: number;
   stable_share_usdc: number;
   stable_share_usdt: number;

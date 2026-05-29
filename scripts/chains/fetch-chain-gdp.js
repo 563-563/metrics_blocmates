@@ -432,6 +432,15 @@ async function main() {
     const topCategory =
       Object.entries(catSums).sort((a, b) => b[1] - a[1])[0]?.[0] || null;
 
+    // Same again, but with Stablecoin Issuer excluded — surfaces the top
+    // genuine app + category when the user toggles stablecoins off.
+    const appOnlyProtos = allProtos.filter((p) => p.category !== 'Stablecoin Issuer');
+    const topProtocolExclStable = appOnlyProtos[0]?.name || null;
+    const appCatSums = {};
+    for (const p of appOnlyProtos) appCatSums[p.category] = (appCatSums[p.category] || 0) + p.revenue_30d;
+    const topCategoryExclStable =
+      Object.entries(appCatSums).sort((a, b) => b[1] - a[1])[0]?.[0] || null;
+
     snapshot.chains.push({
       slug,
       name: c.name,
@@ -462,6 +471,8 @@ async function main() {
       rev_over_gdp_band: taxBurdenBand(revOverGdp7d),
       top_protocol: topProtocol,
       top_category: topCategory,
+      top_protocol_excl_stable: topProtocolExclStable,
+      top_category_excl_stable: topCategoryExclStable,
       protocol_count: allProtos.length,
       stable_share_usdc: usdcShare,
       stable_share_usdt: usdtShare,

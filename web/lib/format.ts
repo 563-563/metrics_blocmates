@@ -1,12 +1,22 @@
+// Format dollars with ~3 significant figures across magnitudes. Strips
+// trailing zeros after the decimal point so $378M / $4.6B / $41.7B all
+// read cleanly, instead of $377.97M / $4.60B / $41.71B.
+function fmt3sf(v: number): string {
+  let s = v.toPrecision(3);
+  if (s.includes(".")) s = s.replace(/0+$/, "").replace(/\.$/, "");
+  return s;
+}
+
 export function fmtUsd(n: number): string {
   if (!Number.isFinite(n)) return "—";
   if (n === 0) return "$0";
   const abs = Math.abs(n);
   const sign = n < 0 ? "−" : "";
-  if (abs >= 1e9) return `${sign}$${(abs / 1e9).toFixed(2)}B`;
-  if (abs >= 1e6) return `${sign}$${(abs / 1e6).toFixed(2)}M`;
-  if (abs >= 1e3) return `${sign}$${(abs / 1e3).toFixed(2)}K`;
-  return `${sign}$${abs.toFixed(2)}`;
+  if (abs >= 1e12) return `${sign}$${fmt3sf(abs / 1e12)}T`;
+  if (abs >= 1e9) return `${sign}$${fmt3sf(abs / 1e9)}B`;
+  if (abs >= 1e6) return `${sign}$${fmt3sf(abs / 1e6)}M`;
+  if (abs >= 1e3) return `${sign}$${fmt3sf(abs / 1e3)}K`;
+  return `${sign}$${fmt3sf(abs)}`;
 }
 
 export function fmtUsdSigned(n: number): string {

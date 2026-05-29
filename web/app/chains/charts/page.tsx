@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { chains } from "@/lib/chains";
 import {
+  chainSummaryWithoutStablecoins,
   getStackedGdpSeries,
   getAllApps,
   getCategoryMatrix
@@ -10,21 +11,32 @@ import { ChainStackedArea } from "@/components/ChainStackedArea";
 import { ChainCategoryHeatmap } from "@/components/ChainCategoryHeatmap";
 import { ChainAppTreemap } from "@/components/ChainAppTreemap";
 import { InfoTip } from "@/components/InfoTip";
+import { StablecoinToggle } from "@/components/StablecoinToggle";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
-export default function ChainCharts() {
-  const stackedSeries = getStackedGdpSeries(180, 7);
-  const allApps = getAllApps();
-  const matrix = getCategoryMatrix(10);
-  const chainOrder = chains.chains.map((c) => c.slug);
+export default async function ChainCharts({
+  searchParams
+}: {
+  searchParams: Promise<{ include_stablecoins?: string }>;
+}) {
+  const params = await searchParams;
+  const includeStablecoins = params.include_stablecoins !== "false";
+  const cohort = includeStablecoins
+    ? chains.chains
+    : chains.chains.map(chainSummaryWithoutStablecoins);
+  const stackedSeries = getStackedGdpSeries(180, 7, includeStablecoins);
+  const allApps = getAllApps(includeStablecoins);
+  const matrix = getCategoryMatrix(10, includeStablecoins);
+  const chainOrder = cohort.map((c) => c.slug);
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-10">
       <header className="mb-8 border-b border-zinc-800 pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">chains · charts</h1>
-          <div className="flex items-center gap-4 text-[11px] text-zinc-500">
+          <div className="flex items-center gap-4 text-[11px] text-zinc-500 flex-wrap">
+            <StablecoinToggle />
             <Link href="/chains" className="hover:text-zinc-200 transition">← chains table</Link>
             <span>As of {chains.as_of}</span>
           </div>
@@ -47,7 +59,7 @@ export default function ChainCharts() {
           </>
         }
       >
-        <ChainQuadrant chains={chains.chains} />
+        <ChainQuadrant chains={cohort} />
       </Section>
 
       <Section
@@ -64,7 +76,7 @@ export default function ChainCharts() {
         <ChainStackedArea
           series={stackedSeries}
           chainOrder={chainOrder}
-          chainNames={Object.fromEntries(chains.chains.map((c) => [c.slug, c.name]))}
+          chainNames={Object.fromEntries(cohort.map((c) => [c.slug, c.name]))}
         />
       </Section>
 
@@ -79,7 +91,7 @@ export default function ChainCharts() {
           </>
         }
       >
-        <ChainCategoryHeatmap matrix={matrix} chains={chains.chains} />
+        <ChainCategoryHeatmap matrix={matrix} chains={cohort} />
       </Section>
 
       <Section
@@ -94,7 +106,7 @@ export default function ChainCharts() {
           </>
         }
       >
-        <ChainAppTreemap apps={allApps} topN={200} chainLookup={chains.chains.map((c) => ({ slug: c.slug, name: c.name }))} />
+        <ChainAppTreemap apps={allApps} topN={200} chainLookup={cohort.map((c) => ({ slug: c.slug, name: c.name }))} />
       </Section>
 
       <footer className="pt-6 border-t border-zinc-800 text-xs text-zinc-600 leading-relaxed">

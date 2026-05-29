@@ -388,7 +388,7 @@ async function main() {
     const allProtos = d.protocols30d.slice();
     if (gdpStableUsdc30d > 0) {
       allProtos.push({
-        name: 'Circle (USDC issuer)',
+        name: 'Circle',
         category: 'Stablecoin Issuer',
         revenue_30d: gdpStableUsdc30d,
         attribution: 'off-chain'
@@ -396,7 +396,7 @@ async function main() {
     }
     if (gdpStableUsdt30d > 0) {
       allProtos.push({
-        name: 'Tether (USDT issuer)',
+        name: 'Tether',
         category: 'Stablecoin Issuer',
         revenue_30d: gdpStableUsdt30d,
         attribution: 'off-chain'

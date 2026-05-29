@@ -97,21 +97,23 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
               type="number"
               dataKey="x"
               domain={[0, xMax]}
-              tick={{ fontSize: 10, fill: "#888" }}
+              allowDataOverflow
+              tick={{ fontSize: 12, fill: "#a1a1aa" }}
               stroke="#666"
               tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
               label={{
                 value: "GDP / TVL (annualized) — capital productivity →",
                 position: "insideBottom",
                 offset: -16,
-                style: { textAnchor: "middle", fill: "#a1a1aa", fontSize: 11 }
+                style: { textAnchor: "middle", fill: "#d4d4d8", fontSize: 13 }
               }}
             />
             <YAxis
               type="number"
               dataKey="y"
               domain={[0, Y_CAP]}
-              tick={{ fontSize: 10, fill: "#888" }}
+              allowDataOverflow
+              tick={{ fontSize: 12, fill: "#a1a1aa" }}
               stroke="#666"
               tickFormatter={(v) => (v >= Y_CAP - 0.001 ? `≥${Math.round(Y_CAP * 100)}%` : `${(v * 100).toFixed(0)}%`)}
               label={{
@@ -119,7 +121,7 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
                 angle: -90,
                 position: "insideLeft",
                 offset: 8,
-                style: { textAnchor: "middle", fill: "#a1a1aa", fontSize: 11 }
+                style: { textAnchor: "middle", fill: "#d4d4d8", fontSize: 13 }
               }}
             />
             <ZAxis type="number" dataKey="z" range={[80, 1800]} domain={[0, zMax]} />
@@ -131,20 +133,22 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
               <LabelList
                 dataKey="name"
                 position="top"
-                style={{ fill: "#d4d4d8", fontSize: 10, pointerEvents: "none" }}
+                offset={10}
+                style={{ fill: "#f4f4f5", fontSize: 13, fontWeight: 500, pointerEvents: "none" }}
               />
             </Scatter>
           </ScatterChart>
         </ResponsiveContainer>
       </div>
-      <div className="mt-2 text-[11px] text-zinc-500 leading-relaxed">
-        Bubble area ∝ mcap. Quadrant tints: <span className="text-amber-400">amber</span> = productive but heavily taxed,
-        <span className="text-emerald-400"> green</span> = productive &amp; app-friendly,
-        <span className="text-rose-400"> rose</span> = idle TVL extractive,
-        <span className="text-zinc-400"> grey</span> = idle &amp; untaxed.
+      <div className="mt-3 text-xs text-zinc-400 leading-relaxed">
+        Bubble area ∝ mcap. Quadrant tints:{" "}
+        <span className="text-amber-300 font-medium">amber</span> = productive but heavily taxed ·{" "}
+        <span className="text-emerald-300 font-medium">green</span> = productive &amp; app-friendly ·{" "}
+        <span className="text-rose-300 font-medium">rose</span> = idle TVL extractive ·{" "}
+        <span className="text-zinc-300 font-medium">grey</span> = idle &amp; untaxed.
         {offscaleNames.length > 0 && (
-          <span className="block mt-1">
-            <span className="text-amber-400">↑ off-scale (Y clamped at {Math.round(Y_CAP * 100)}%):</span>{" "}
+          <span className="block mt-1.5">
+            <span className="text-amber-300 font-medium">↑ off-scale (Y clamped at {Math.round(Y_CAP * 100)}%):</span>{" "}
             {offscaleNames.join(", ")}
           </span>
         )}

@@ -61,7 +61,11 @@ export default function ChainCharts() {
           </>
         }
       >
-        <ChainStackedArea series={stackedSeries} chainOrder={chainOrder} />
+        <ChainStackedArea
+          series={stackedSeries}
+          chainOrder={chainOrder}
+          chainNames={Object.fromEntries(chains.chains.map((c) => [c.slug, c.name]))}
+        />
       </Section>
 
       <Section

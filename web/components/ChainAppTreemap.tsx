@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ResponsiveContainer, Treemap } from "recharts";
 import { CHAIN_COLORS } from "@/lib/chain-colors";
 import type { FlatApp } from "@/lib/chain-aggregates";
@@ -13,7 +13,7 @@ function fmt(v: number): string {
 }
 
 const TEXT_FILL = "#f4f4f5";
-const TEXT_STROKE = "rgba(0,0,0,0.55)";
+const TEXT_STROKE = "rgba(0,0,0,0.6)";
 
 type Hovered = {
   name: string;
@@ -25,8 +25,6 @@ type Hovered = {
   y: number;
 };
 
-// Make `setHover` available to the SVG content renderer via a module-level
-// callback closure — Recharts doesn't pass arbitrary props through `content`.
 let activeSetHover: ((h: Hovered | null) => void) | null = null;
 
 function TmContent(props: any) {
@@ -39,27 +37,28 @@ function TmContent(props: any) {
   const chain = props.chain || "";
   const category = props.category || "";
 
-  const showName = width > 60 && height > 22 && safeName.length > 0;
-  const showValue = width > 90 && height > 42 && safeSize > 0;
-  const maxChars = Math.max(4, Math.floor(width / 7));
+  // Looser thresholds + bigger fonts than before.
+  const showName = width > 56 && height > 24 && safeName.length > 0;
+  const showValue = width > 80 && height > 44 && safeSize > 0;
+  const maxChars = Math.max(4, Math.floor(width / 8));
   const displayName =
     safeName.length > maxChars ? `${safeName.slice(0, maxChars - 1)}…` : safeName;
 
   const onEnter = (e: React.MouseEvent) => {
     if (!activeSetHover) return;
     const target = (e.currentTarget as SVGElement).getBoundingClientRect();
-    const containerRect = (
+    const container = (
       (e.currentTarget as SVGElement).ownerSVGElement?.parentElement as HTMLElement
     )?.getBoundingClientRect();
-    if (!containerRect) return;
+    if (!container) return;
     activeSetHover({
       name: safeName,
       chain,
       category,
       size: safeSize,
       color: fill,
-      x: target.left - containerRect.left + target.width / 2,
-      y: target.top - containerRect.top
+      x: target.left - container.left + target.width / 2,
+      y: target.top - container.top
     });
   };
   const onLeave = () => activeSetHover?.(null);
@@ -71,13 +70,13 @@ function TmContent(props: any) {
         y={y}
         width={width}
         height={height}
-        style={{ fill, fillOpacity: 0.88, stroke: "#0a0a0a", strokeWidth: 1 }}
+        style={{ fill, fillOpacity: 0.9, stroke: "#0a0a0a", strokeWidth: 1 }}
       />
       {showName && (
         <text
-          x={x + 6}
-          y={y + 15}
-          fontSize={11}
+          x={x + 7}
+          y={y + 18}
+          fontSize={13}
           fontWeight={600}
           style={{
             fill: TEXT_FILL,
@@ -92,15 +91,15 @@ function TmContent(props: any) {
       )}
       {showValue && (
         <text
-          x={x + 6}
-          y={y + 31}
-          fontSize={10}
+          x={x + 7}
+          y={y + 36}
+          fontSize={12}
           style={{
             fill: TEXT_FILL,
             stroke: TEXT_STROKE,
             strokeWidth: 3,
             paintOrder: "stroke",
-            fillOpacity: 0.9,
+            fillOpacity: 0.95,
             pointerEvents: "none"
           }}
         >
@@ -121,82 +120,127 @@ export function ChainAppTreemap({
   chainLookup: Array<{ slug: string; name: string }>;
 }) {
   const [hover, setHover] = useState<Hovered | null>(null);
-  activeSetHover = setHover; // refresh closure binding on every render
+  activeSetHover = setHover;
 
-  const data = apps
-    .filter((a) => a.revenue_30d > 0)
-    .sort((a, b) => b.revenue_30d - a.revenue_30d)
-    .slice(0, topN)
-    .map((a) => ({
-      name: a.name,
-      size: a.revenue_30d,
-      chain: a.chain,
-      category: a.category,
-      color: CHAIN_COLORS[a.chain] || "#71717a"
-    }));
-
-  if (data.length === 0) {
-    return <p className="text-xs text-zinc-600 py-6 text-center">No app data.</p>;
+  // Filter state: which chains are currently visible. Default all on.
+  const [hiddenChains, setHiddenChains] = useState<Set<string>>(new Set());
+  function toggleChain(slug: string) {
+    setHiddenChains((prev) => {
+      const next = new Set(prev);
+      if (next.has(slug)) next.delete(slug);
+      else next.add(slug);
+      return next;
+    });
+  }
+  function showAll() {
+    setHiddenChains(new Set());
   }
 
-  // Legend — chains in the data, biggest contribution first.
-  const chainTotals = new Map<string, number>();
-  for (const d of data) chainTotals.set(d.chain, (chainTotals.get(d.chain) || 0) + d.size);
-  const legendChains = [...chainTotals.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .map(([slug]) => {
-      const meta = chainLookup.find((c) => c.slug === slug);
-      return { slug, name: meta?.name || slug, color: CHAIN_COLORS[slug] || "#71717a" };
-    });
+  // Build the filtered data set.
+  const data = useMemo(() => {
+    return apps
+      .filter((a) => a.revenue_30d > 0 && !hiddenChains.has(a.chain))
+      .sort((a, b) => b.revenue_30d - a.revenue_30d)
+      .slice(0, topN)
+      .map((a) => ({
+        name: a.name,
+        size: a.revenue_30d,
+        chain: a.chain,
+        category: a.category,
+        color: CHAIN_COLORS[a.chain] || "#71717a"
+      }));
+  }, [apps, hiddenChains, topN]);
+
+  // Always show ALL chains in the filter, sorted by their total share.
+  const allChainTotals = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const a of apps) m.set(a.chain, (m.get(a.chain) || 0) + a.revenue_30d);
+    return [...m.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([slug]) => {
+        const meta = chainLookup.find((c) => c.slug === slug);
+        return { slug, name: meta?.name || slug, color: CHAIN_COLORS[slug] || "#71717a" };
+      });
+  }, [apps, chainLookup]);
 
   return (
     <div>
       <div className="relative h-[520px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <Treemap
-            data={data}
-            dataKey="size"
-            stroke="#0a0a0a"
-            content={<TmContent />}
-            isAnimationActive={false}
-          />
-        </ResponsiveContainer>
+        {data.length > 0 ? (
+          <ResponsiveContainer width="100%" height="100%">
+            <Treemap
+              data={data}
+              dataKey="size"
+              stroke="#0a0a0a"
+              content={<TmContent />}
+              isAnimationActive={false}
+            />
+          </ResponsiveContainer>
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-sm text-zinc-500">
+            All chains hidden — click one below to show again.
+          </div>
+        )}
         {hover && (
           <div
-            className="pointer-events-none absolute z-20 rounded-md border border-zinc-700 bg-zinc-950/95 px-3 py-2 text-xs shadow-2xl"
+            className="pointer-events-none absolute z-20 rounded-md border border-zinc-700 bg-zinc-950/95 px-3 py-2 text-sm shadow-2xl"
             style={{
-              left: Math.max(8, Math.min(hover.x - 130, 1100)),
-              top: Math.max(8, hover.y - 78),
-              width: 260
+              left: Math.max(8, Math.min(hover.x - 140, 1100)),
+              top: Math.max(8, hover.y - 86),
+              width: 280
             }}
           >
-            <div style={{ color: hover.color }} className="font-semibold leading-snug">
+            <div style={{ color: hover.color }} className="font-semibold leading-snug text-[13px]">
               {hover.name}
             </div>
-            <div className="text-zinc-400 mt-0.5">
+            <div className="text-zinc-400 mt-0.5 text-xs">
               {hover.chain} · {hover.category}
             </div>
-            <div className="text-zinc-100 mt-1">
-              <span className="text-zinc-500">30d revenue </span>
-              <strong>{fmt(hover.size)}</strong>
+            <div className="text-zinc-100 mt-1.5">
+              <span className="text-zinc-500 text-xs">30d revenue </span>
+              <strong className="text-base">{fmt(hover.size)}</strong>
             </div>
           </div>
         )}
       </div>
 
-      {/* Chain color legend */}
+      {/* Interactive chain filter — click a chain to hide / show */}
       <div className="mt-4 pt-4 border-t border-zinc-800">
-        <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2">Chain color key</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-1.5 text-[11px]">
-          {legendChains.map((c) => (
-            <span key={c.slug} className="flex items-center gap-2 min-w-0">
-              <span
-                className="w-2.5 h-2.5 rounded-sm shrink-0"
-                style={{ background: c.color }}
-              />
-              <span className="text-zinc-300 truncate">{c.name}</span>
-            </span>
-          ))}
+        <div className="flex items-baseline justify-between mb-2">
+          <p className="text-[10px] uppercase tracking-widest text-zinc-500">
+            Chains — click to toggle ({allChainTotals.length - hiddenChains.size} of {allChainTotals.length} shown)
+          </p>
+          {hiddenChains.size > 0 && (
+            <button
+              onClick={showAll}
+              className="text-[11px] text-zinc-400 hover:text-zinc-200 border border-zinc-700 hover:border-zinc-500 rounded px-2 py-0.5 transition"
+            >
+              show all
+            </button>
+          )}
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-3 gap-y-1.5">
+          {allChainTotals.map((c) => {
+            const hidden = hiddenChains.has(c.slug);
+            return (
+              <button
+                key={c.slug}
+                onClick={() => toggleChain(c.slug)}
+                className={`flex items-center gap-2 text-xs px-1.5 py-1 rounded transition text-left ${
+                  hidden ? "opacity-40 hover:opacity-70" : "hover:bg-zinc-900"
+                }`}
+                title={hidden ? "Show" : "Hide"}
+              >
+                <span
+                  className="w-3 h-3 rounded-sm shrink-0"
+                  style={{ background: c.color }}
+                />
+                <span className={`truncate ${hidden ? "text-zinc-500 line-through" : "text-zinc-200"}`}>
+                  {c.name}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

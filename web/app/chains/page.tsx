@@ -6,8 +6,7 @@ import {
 } from "@/lib/chain-aggregates";
 import { CHAIN_COLORS } from "@/lib/chain-colors";
 import { fmtUsd } from "@/lib/format";
-import { ChainScaleBar } from "@/components/ChainScaleBar";
-import { ChainTrendSparkline } from "@/components/ChainTrendSparkline";
+import { ChainsTable } from "@/components/ChainsTable";
 import { ChartTeasers } from "@/components/ChartTeasers";
 import { InfoTip } from "@/components/InfoTip";
 import { KpiBig } from "@/components/KpiBig";
@@ -136,101 +135,10 @@ export default async function ChainsIndex({
             </InfoTip>
           </h2>
         </div>
-        <div className="overflow-x-auto px-2 pb-2">
-          <table className="w-full text-sm border-separate border-spacing-0 min-w-[1040px]">
-            <thead>
-              <tr className="text-fg text-[10px] uppercase tracking-widest">
-                <th className="text-left font-normal py-2 px-2">Chain</th>
-                <th className="text-right font-normal py-2 px-2 w-[130px]">Monthly GDP</th>
-                <th className="text-right font-normal py-2 px-2 w-[110px]">Annualized</th>
-                <th className="text-left font-normal py-2 px-2 w-[90px]">30d trend</th>
-                <th className="text-right font-normal py-2 px-2 w-[130px]">Mcap</th>
-                <th className="text-right font-normal py-2 px-2 w-[80px]">GDP Mult.</th>
-                <th className="text-right font-normal py-2 px-2 w-[130px]">TVL</th>
-                <th className="text-right font-normal py-2 px-2 w-[80px]">GDP / TVL</th>
-                <th className="text-right font-normal py-2 px-2 w-[80px]">REV / GDP</th>
-                <th className="text-left font-normal py-2 px-2">Top app</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedChains.map((c) => {
-                const hasStruct = !!c.structural_note;
-                const color = CHAIN_COLORS[c.slug] || "#71717a";
-                const spark = sparklineData.get(c.slug) || [];
-                const isStableTop = c.top_category === "Stablecoin Issuer";
-                return (
-                  <tr key={c.slug} className="border-line-faint group hover:bg-canvas/60 transition">
-                    <td className="py-2.5 px-2 border-t border-line-faint">
-                      <Link href={`/chains/${c.slug}`} className="flex items-center gap-2.5">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={chainImage(c.slug, c.image)}
-                          alt=""
-                          width={24}
-                          height={24}
-                          className="rounded-full bg-surface-elev shrink-0"
-                          loading="lazy"
-                        />
-                        <span>
-                          <span className="block text-fg group-hover:text-accent font-medium leading-tight">
-                            {c.name}
-                            {hasStruct && (
-                              <span className="ml-1 text-accent/80" title={c.structural_note ?? ""}>
-                                ⚠
-                              </span>
-                            )}
-                          </span>
-                          <span className="block text-[11px] text-fg-muted">
-                            {c.symbol ? `$${c.symbol}` : <span className="text-fg-faint">no native</span>}
-                          </span>
-                        </span>
-                      </Link>
-                    </td>
-                    <td className="py-2.5 px-2 border-t border-line-faint text-right tabular-nums text-fg">
-                      {fmtUsd(c.gdp_30d_usd)}
-                      <ChainScaleBar value={c.gdp_30d_usd} max={maxGdp} color={color} />
-                    </td>
-                    <td className="py-2.5 px-2 border-t border-line-faint text-right tabular-nums text-fg-muted">
-                      {fmtUsd(c.gdp_annualized_usd)}
-                    </td>
-                    <td className="py-2.5 px-2 border-t border-line-faint">
-                      <ChainTrendSparkline values={spark} color={color} />
-                    </td>
-                    <td className="py-2.5 px-2 border-t border-line-faint text-right tabular-nums text-fg-muted">
-                      {c.mcap_usd != null ? fmtUsd(c.mcap_usd) : <span className="text-fg-faint">—</span>}
-                      <ChainScaleBar value={c.mcap_usd} max={maxMcap} color={color} />
-                    </td>
-                    <td className="py-2.5 px-2 border-t border-line-faint text-right tabular-nums text-fg">
-                      {fmtMultOrDash(c.gdp_multiple)}
-                    </td>
-                    <td className="py-2.5 px-2 border-t border-line-faint text-right tabular-nums text-fg-muted">
-                      {c.tvl_usd != null ? fmtUsd(c.tvl_usd) : <span className="text-fg-faint">—</span>}
-                      <ChainScaleBar value={c.tvl_usd} max={maxTvl} color={color} />
-                    </td>
-                    <td className={`py-2.5 px-2 border-t border-line-faint text-right tabular-nums ${gdpTvlClass(c.gdp_over_tvl_band)}`}>
-                      {fmtPctOrDash(c.gdp_over_tvl_ann)}
-                    </td>
-                    <td className={`py-2.5 px-2 border-t border-line-faint text-right tabular-nums ${revGdpClass(c.rev_over_gdp_band)}`}>
-                      {fmtPctOrDash(c.rev_over_gdp_7d)}
-                    </td>
-                    <td className="py-2.5 px-2 border-t border-line-faint text-fg-muted">
-                      {c.top_protocol ? (
-                        <span>
-                          <span className={`${isStableTop ? "text-accent" : "text-fg"}`}>{c.top_protocol}</span>
-                          {c.top_category && (
-                            <span className="block text-[11px] text-fg-muted">{c.top_category}</span>
-                          )}
-                        </span>
-                      ) : (
-                        <span className="text-fg-faint">—</span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        <ChainsTable
+          chains={sortedChains}
+          sparklineData={Object.fromEntries(sparklineData)}
+        />
 
         <div className="px-5 py-3 border-t border-line-faint text-[11px] text-fg-muted leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
           <span><span className="text-fg-muted">GDP Multiple</span> = mcap ÷ annualized GDP</span>

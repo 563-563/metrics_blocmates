@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { hm, onchainFeeds, getHmHistory } from "@/lib/data";
-import { fmtMultiple, fmtUsd } from "@/lib/format";
-import { Sparkline } from "@/components/Sparkline";
+import { fmtUsd } from "@/lib/format";
 import { KpiBig } from "@/components/KpiBig";
 import { PageHeader } from "@/components/PageHeader";
+import { HolderMultipleTable } from "@/components/HolderMultipleTable";
 
 export const revalidate = 300;
 
@@ -117,15 +116,15 @@ export default function Home() {
 
       {/* Cohort headline KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <KpiBig label="Tracked protocols" value={`${hm.protocols.length}`} sub="active in cohort" />
+        <KpiBig label="Total tracked protocols" value={`${hm.protocols.length}`} sub="active in cohort" />
         <KpiBig
-          label="Σ Adjusted MCap"
+          label="Total adjusted mcap"
           value={fmtUsd(deltas.adj.current)}
           delta={deltas.adj.deltaPct}
           sub="across cohort"
         />
         <KpiBig
-          label="Σ Real Capture"
+          label="Total real capture"
           value={`${fmtUsd(deltas.rc.current)}/yr`}
           delta={deltas.rc.deltaPct}
           sub="across cohort"
@@ -138,93 +137,12 @@ export default function Home() {
               : "—"
           }
           delta={cohortMultDelta}
-          sub="Σ mcap ÷ Σ capture"
+          sub="total mcap ÷ total capture"
         />
       </div>
 
-      {/* Heat-graded power table */}
-      <div className="overflow-x-auto -mx-2">
-        <table className="w-full text-sm border-separate border-spacing-0 min-w-[760px]">
-          <thead>
-            <tr className="text-fg text-[10px] uppercase tracking-widest">
-              <th className="text-left font-normal py-2 px-2">Protocol</th>
-              <th className="text-left font-normal py-2 px-2 w-[200px]">Holder Multiple</th>
-              <th className="text-left font-normal py-2 px-2 w-[120px]">Buyback 90d</th>
-              <th className="text-right font-normal py-2 px-2">Real Capture</th>
-              <th className="text-right font-normal py-2 px-2">Data</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map(({ p, heat, barPct, spark, verif }) => {
-              return (
-                <tr key={p.slug} className="border-line-faint group">
-                  {/* Protocol */}
-                  <td className="py-3 px-2 border-t border-line-faint">
-                    <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
-                      {p.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={p.image}
-                          alt=""
-                          width={28}
-                          height={28}
-                          className="rounded-full bg-surface-elev shrink-0"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <span className="w-7 h-7 rounded-full bg-surface-elev shrink-0" />
-                      )}
-                      <span>
-                        <span className="block text-fg group-hover:text-accent font-medium">{p.name}</span>
-                        <span className="block text-[11px] text-fg-muted">
-                          ${p.symbol} · <span className="text-fg-faint">{p.phase.active}</span>
-                        </span>
-                      </span>
-                    </Link>
-                  </td>
-
-                  {/* HM — number + band label + subtle magnitude bar */}
-                  <td className="py-3 px-2 border-t border-line-faint">
-                    <Link href={`/${p.slug}/hm`} className="block px-1">
-                      <div className="flex items-baseline justify-between">
-                        <span className={`text-lg font-mono font-semibold tabular-nums ${heat.textClass}`}>
-                          {fmtMultiple(p.hm)}
-                        </span>
-                        <span className={`text-[10px] uppercase tracking-widest ${heat.textClass}`}>
-                          {heat.label}
-                        </span>
-                      </div>
-                      <div className="mt-1.5 h-[3px] rounded-full bg-line-faint overflow-hidden">
-                        <div className={`h-full rounded-full ${heat.barClass}`} style={{ width: `${barPct}%` }} />
-                      </div>
-                    </Link>
-                  </td>
-
-                  {/* Buyback 90d sparkline — palette-aware via parent text color */}
-                  <td className="py-3 px-2 border-t border-line-faint text-positive">
-                    <Sparkline data={spark} color="currentColor" />
-                  </td>
-
-                  {/* Real Capture */}
-                  <td className="py-3 px-2 border-t border-line-faint text-right text-fg-muted">
-                    {p.real_capture_usd > 0 ? `${fmtUsd(p.real_capture_usd)}/yr` : "—"}
-                  </td>
-
-                  {/* Verification pill */}
-                  <td className="py-3 px-2 border-t border-line-faint text-right">
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] ${verif.cls}`}
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full ${verif.dot}`} />
-                      {verif.label}
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      {/* Heat-graded power table — sortable client component */}
+      <HolderMultipleTable rows={rows} />
 
       {/* Legend */}
       <div className="mt-4 text-[11px] text-fg-muted leading-relaxed flex flex-wrap gap-x-6 gap-y-1">

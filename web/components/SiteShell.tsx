@@ -18,10 +18,7 @@ const NAV: NavSection[] = [
   },
   {
     title: "Explore",
-    items: [
-      { label: "Visual gallery", href: "/chains/charts" },
-      { label: "Watchlist", href: "/watchlist", soon: true }
-    ]
+    items: [{ label: "Watchlist", href: "/watchlist", soon: true }]
   }
 ];
 

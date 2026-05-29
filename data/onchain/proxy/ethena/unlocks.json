@@ -1,0 +1,49 @@
+{
+  "_doc": "ENA unlock schedule from defillama.com/unlocks/ethena. 60.37% unlocked / 39.63% × 15b max = 5.94b ENA locked. Schedule continues through 2028. Mix of Team (29.9%), Investors (24.92%), Ecosystem Development (16.64%), Foundation (15.04%), and three Airdrop seasons. DL event panel shows daily-rate Ecosystem Development releases and one-month airdrop bursts. Major historical event: Jun 5 2025 $39.5m airdrop S3 burst.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/ethena"],
+  "static": {
+    "total_supply": 15000000000,
+    "circulating_supply": 9027000000,
+    "locked_pct": 0.3963,
+    "mcap_usd": 787260000
+  },
+  "events": [
+    {
+      "type": "linear",
+      "start_date": "2025-04-02",
+      "end_date": "2028-04-02",
+      "total_amount_tokens": 4485000000,
+      "recipient_type": "team",
+      "bucket": "team",
+      "note": "Team 29.9% × 15b = 4.485b ENA, linear 3y from initial 1y cliff Apr 2025 (per Ethena tokenomics)."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-04-02",
+      "end_date": "2028-04-02",
+      "total_amount_tokens": 3738000000,
+      "recipient_type": "seed",
+      "bucket": "investors",
+      "note": "Investors 24.92% × 15b = 3.738b ENA, same 3y linear post-cliff."
+    },
+    {
+      "type": "linear",
+      "start_date": "2024-04-02",
+      "end_date": "2028-04-02",
+      "total_amount_tokens": 2496000000,
+      "recipient_type": "foundation",
+      "bucket": "ecosystem_development",
+      "note": "Ecosystem Development 16.64% × 15b = 2.496b ENA, 4y from TGE."
+    },
+    {
+      "type": "linear",
+      "start_date": "2024-04-02",
+      "end_date": "2028-04-02",
+      "total_amount_tokens": 2256000000,
+      "recipient_type": "foundation",
+      "bucket": "foundation",
+      "note": "Foundation 15.04% × 15b = 2.256b ENA."
+    }
+  ]
+}

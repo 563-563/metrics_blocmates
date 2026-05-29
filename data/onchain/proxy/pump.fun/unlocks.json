@@ -1,0 +1,41 @@
+{
+  "_doc": "PUMP unlock schedule transcribed from defillama.com/unlocks/pump-fun (screenshot dated 2026-05-29). Monthly Community & Ecosystem releases are the only documented forward unlock events as of today. The chart shows a step-up around July 2026 that's likely Team (20%) and Existing Investors (13%) starting to vest, but specific dates/cliff sizes aren't visible from the DL events panel — those buckets are encoded conservatively as estimated linear releases from Jul 2026 forward.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/pump-fun"],
+  "static": {
+    "total_supply": 1000000000000,
+    "circulating_supply": 352295000000,
+    "locked_pct": 0.35,
+    "mcap_usd": 612770000
+  },
+  "events": [
+    {
+      "type": "monthly",
+      "start_date": "2026-04-12",
+      "end_date": "2028-04-12",
+      "amount_tokens_per_event": 10000000000,
+      "day_of_month": 12,
+      "recipient_type": "foundation",
+      "bucket": "community_ecosystem",
+      "note": "Visible Apr/May/Jun 2026 monthly releases ($17.39m each, 10b PUMP). 24mo extrapolation against 240b total Community & Ecosystem allocation (24% of max)."
+    },
+    {
+      "type": "linear",
+      "start_date": "2026-07-01",
+      "end_date": "2029-07-01",
+      "total_amount_tokens": 200000000000,
+      "recipient_type": "team",
+      "bucket": "team",
+      "note": "Team 20% × 1t = 200b PUMP. Chart shows step-up at ~Jul 2026 then linear release through ~2029. Specific cliff size not visible in DL events panel — encoded as 3y linear from Jul 2026."
+    },
+    {
+      "type": "linear",
+      "start_date": "2026-07-01",
+      "end_date": "2028-07-01",
+      "total_amount_tokens": 130000000000,
+      "recipient_type": "seed",
+      "bucket": "existing_investors",
+      "note": "Existing Investors 13% × 1t = 130b PUMP. Standard 2y vesting from cliff inferred from chart shape."
+    }
+  ]
+}

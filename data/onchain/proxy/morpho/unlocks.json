@@ -1,0 +1,48 @@
+{
+  "_doc": "MORPHO unlock schedule from defillama.com/unlocks/morpho. 59.20% unlocked / 40.80% locked × 1b = 408m MORPHO still locked. DL shows linear vest through Nov 2031 across Founders, Strategic Partners, Users & Distributors, Contributors, Market Makers. Only one explicit event visible: Nov 20 2026 cliff $2.04m / 1m MORPHO to Market Makers.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/morpho"],
+  "static": {
+    "total_supply": 1000000000,
+    "circulating_supply": 636340000,
+    "locked_pct": 0.408,
+    "mcap_usd": 1295000000
+  },
+  "events": [
+    {
+      "type": "cliff",
+      "date": "2026-11-20",
+      "amount_tokens": 1000000,
+      "recipient_type": "public_sale",
+      "bucket": "market_makers",
+      "note": "Single explicit DL event card. Market Makers low-sell-prob bucket so material impact modest."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-01-01",
+      "end_date": "2031-11-01",
+      "total_amount_tokens": 152000000,
+      "recipient_type": "team",
+      "bucket": "founders",
+      "note": "Founders 15.20% × 1b = 152m MORPHO over ~7y linear per chart end date 2031."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-01-01",
+      "end_date": "2031-11-01",
+      "total_amount_tokens": 274900000,
+      "recipient_type": "seed",
+      "bucket": "strategic_partners",
+      "note": "Strategic Partners 27.49% × 1b = 274.9m over ~7y linear."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-01-01",
+      "end_date": "2031-11-01",
+      "total_amount_tokens": 79000000,
+      "recipient_type": "team",
+      "bucket": "contributors",
+      "note": "Contributors 7.90% × 1b. Treated as team-like sell-prob."
+    }
+  ]
+}

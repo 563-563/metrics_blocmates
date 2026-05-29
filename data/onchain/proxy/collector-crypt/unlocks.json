@@ -1,0 +1,74 @@
+{
+  "_doc": "CARDS unlock schedule transcribed from the Collector Crypt tokenomics portal (NOT DL — CARDS not on DL). 'Detailed Schedule' table provides full per-bucket monthly breakdown. CRITICAL: Team cliff Sep 2026 starts 32.5M CARDS/month for 12 months = 390M CARDS total. Foundation (multisig) is fully unlocked but 'managed', so not on-market. Heaviest near-term unlock cohort in the cohort.",
+  "as_of": "2026-05-29",
+  "source_refs": ["collector-crypt.io tokenomics portal", "notes/CARDS.md"],
+  "static": {
+    "total_supply": 2000000000,
+    "circulating_supply_excl_foundation": 340400000,
+    "circulating_pct_excl_foundation": 0.17,
+    "vesting_period_month": 9,
+    "vesting_start": "2025-09-01"
+  },
+  "events": [
+    {
+      "type": "monthly",
+      "start_date": "2025-09-01",
+      "end_date": "2026-08-01",
+      "amount_tokens_per_event": 12983333,
+      "day_of_month": 1,
+      "recipient_type": "seed",
+      "bucket": "pre_seed_monthly_y1",
+      "note": "Pre-seed: 12.98M CARDS/month Sep'25-Aug'26 (164M total, 8.2M TGE + 12 monthly). 76.3% already unlocked per current portal state."
+    },
+    {
+      "type": "monthly",
+      "start_date": "2025-09-01",
+      "end_date": "2026-08-01",
+      "amount_tokens_per_event": 1190625,
+      "day_of_month": 1,
+      "recipient_type": "seed",
+      "bucket": "seed_monthly_y1",
+      "note": "Seed phase 1: 1.19M CARDS/month Y1."
+    },
+    {
+      "type": "monthly",
+      "start_date": "2026-09-01",
+      "end_date": "2027-08-01",
+      "amount_tokens_per_event": 5163194,
+      "day_of_month": 1,
+      "recipient_type": "seed",
+      "bucket": "seed_monthly_y2",
+      "note": "Seed phase 2: 5.16M CARDS/month Y2 (accelerated). Total Seed allocation 73.48M."
+    },
+    {
+      "type": "monthly",
+      "start_date": "2025-09-01",
+      "end_date": "2026-08-01",
+      "amount_tokens_per_event": 80000,
+      "day_of_month": 1,
+      "recipient_type": "advisor",
+      "bucket": "advisors_y1",
+      "note": "Advisors trickle Y1: 80K/month."
+    },
+    {
+      "type": "monthly",
+      "start_date": "2026-09-01",
+      "end_date": "2027-08-01",
+      "amount_tokens_per_event": 7009722,
+      "day_of_month": 1,
+      "recipient_type": "advisor",
+      "bucket": "advisors_y2",
+      "note": "Advisors Y2 acceleration: 7.01M/month. Heavy ramp."
+    },
+    {
+      "type": "monthly",
+      "start_date": "2026-09-01",
+      "end_date": "2027-08-01",
+      "amount_tokens_per_event": 32500000,
+      "day_of_month": 1,
+      "recipient_type": "team",
+      "bucket": "team_cliff_y2",
+      "note": "TEAM CLIFF: starts Sep 1 2026 at 32.5M CARDS/MONTH for 12 months = 390M total. THIS IS THE BIGGEST SUPPLY EVENT IN THE COHORT — 19.5% of max supply hitting the market over 12 months starting in 3 months."
+    }
+  ]
+}

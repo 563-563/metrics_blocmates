@@ -1,0 +1,49 @@
+{
+  "_doc": "DYDX unlock schedule from defillama.com/unlocks/dydx. 99.26% unlocked / 0.74% × 1b = ~7.4m DYDX still locked — vesting tail nearly complete. DL event panel shows daily-rate ongoing releases for Investors, Employees, Future Employees, User Trading Rewards. Community Treasury shows NEGATIVE delta (treasury accumulation, not unlock) which our compute should treat as not-an-unlock. The ongoing daily rate totals ~140K DYDX/day across release categories — schedule ends ~mid-2026.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/dydx"],
+  "static": {
+    "total_supply": 1000000000,
+    "circulating_supply": 839620000,
+    "locked_pct": 0.0074,
+    "mcap_usd": 147320000
+  },
+  "events": [
+    {
+      "type": "linear",
+      "start_date": "2026-04-30",
+      "end_date": "2026-08-30",
+      "total_amount_tokens": 9243480,
+      "recipient_type": "seed",
+      "bucket": "investors_ongoing",
+      "note": "Investors ongoing 77,029 DYDX/day × ~120 days remaining."
+    },
+    {
+      "type": "linear",
+      "start_date": "2026-04-30",
+      "end_date": "2026-08-30",
+      "total_amount_tokens": 5089680,
+      "recipient_type": "team",
+      "bucket": "employees_consultants",
+      "note": "Employees & Consultants 42,414 DYDX/day."
+    },
+    {
+      "type": "linear",
+      "start_date": "2026-04-30",
+      "end_date": "2026-08-30",
+      "total_amount_tokens": 2333160,
+      "recipient_type": "team",
+      "bucket": "future_employees",
+      "note": "Future Employees & Consultants 19,443 DYDX/day."
+    },
+    {
+      "type": "linear",
+      "start_date": "2026-04-30",
+      "end_date": "2026-08-30",
+      "total_amount_tokens": 6627480,
+      "recipient_type": "airdrop",
+      "bucket": "user_trading_rewards",
+      "note": "User Trading Rewards 55,229 DYDX/day. Airdrop sell-prob bucket."
+    }
+  ]
+}

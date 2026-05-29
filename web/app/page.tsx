@@ -6,39 +6,45 @@ import { HolderMultipleTable } from "@/components/HolderMultipleTable";
 
 export const revalidate = 300;
 
-// Cohort-level month-over-month deltas. Reads each protocol's HM history
-// file, sums today's Adj MCap / Real Capture across the cohort and again
-// 30 days back, returns the delta %. Falls back to nulls when history
-// doesn't go back far enough.
+// Cohort-level month-over-month deltas.
+//
+// Current totals come from the live snapshot (all protocols counted, including
+// synthesized ones without a per-protocol history file yet).
+//
+// For the 30d prior basis, we use the history file when available; for any
+// protocol without ≥31d of history we count its CURRENT value as the prior,
+// neutralizing its delta contribution. The headline number is correct for the
+// full cohort, and the delta % accurately reflects growth among the protocols
+// we can actually measure over time. As history accumulates for synthesized
+// rows, they'll naturally start contributing real deltas.
 function cohortDelta() {
   let currAdj = 0, priorAdj = 0;
   let currRC = 0, priorRC = 0;
-  let priorAvailable = true;
   for (const p of hm.protocols) {
+    const curAdjP = Number(p.adj_mcap_usd) || 0;
+    const curRcP  = Number(p.real_capture_usd) || 0;
+    currAdj += curAdjP;
+    currRC  += curRcP;
     const hist = getHmHistory(p.slug) as unknown as Array<{
       adj_mcap_usd?: number;
       real_capture_usd?: number;
     }>;
-    if (!hist.length) continue;
-    const today = hist[hist.length - 1];
     const prior = hist.length >= 31 ? hist[hist.length - 31] : null;
-    currAdj += Number(today.adj_mcap_usd) || 0;
-    currRC += Number(today.real_capture_usd) || 0;
     if (prior) {
       priorAdj += Number(prior.adj_mcap_usd) || 0;
-      priorRC += Number(prior.real_capture_usd) || 0;
+      priorRC  += Number(prior.real_capture_usd) || 0;
     } else {
-      priorAvailable = false;
+      priorAdj += curAdjP;
+      priorRC  += curRcP;
     }
   }
   const pct = (cur: number, pri: number): number | null =>
-    priorAvailable && pri > 0 ? (cur - pri) / pri : null;
+    pri > 0 ? (cur - pri) / pri : null;
   return {
     adj: { current: currAdj, deltaPct: pct(currAdj, priorAdj) },
     rc: { current: currRC, deltaPct: pct(currRC, priorRC) },
     cohortMult: currRC > 0 ? currAdj / currRC : null,
-    priorCohortMult:
-      priorAvailable && priorRC > 0 ? priorAdj / priorRC : null
+    priorCohortMult: priorRC > 0 ? priorAdj / priorRC : null
   };
 }
 

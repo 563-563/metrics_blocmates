@@ -39,11 +39,17 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..', '..');
 const LATEST_PATH    = path.join(ROOT, 'data', 'latest.json');
 const SEED_PATH      = path.join(ROOT, 'data', 'hm', 'config.json');
+const CONFIG_PATH    = path.join(ROOT, 'data', 'config.json');
 const SNAPSHOTS_DIR  = path.join(ROOT, 'data', 'hm', 'snapshots');
 const REPORTS_DIR    = path.join(ROOT, 'data', 'hm', 'reports');
 
 const args = new Set(process.argv.slice(2));
 const REPRODUCE_ARTICLE = args.has('--reproduce-article');
+
+// Tokens excluded from cohort iteration. CC: no DefiLlama coverage (manual data
+// only). HNT: deferred per user (Apr 2026) — separate burn-and-mint analysis,
+// requires its own income-statement treatment.
+const SKIP_SYMBOLS = new Set(['CC', 'HNT']);
 
 function loadJson(p) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
@@ -255,6 +261,107 @@ function readOnchainCirculating(seedRow) {
   return { value: v, source: relPath, jsonpath: jp };
 }
 
+// Map a value-accrual mechanism string from data/config.json onto the
+// Category A/B taxonomy in CLAUDE.md.
+//   Cat A = supply-side (buyback, burn, burn-mint) — goes into annual_buyback_usd
+//   Cat B = external cashflow yield to native holders (fee-share variants) —
+//           goes into annual_holder_yield_usd
+// Anything else (mechanism = "none") contributes nothing to Real Capture.
+function classifyMechanism(mechanism) {
+  if (!mechanism) return 'none';
+  if (/(^|-)buyback|burn/.test(mechanism)) return 'A';
+  if (/share/.test(mechanism)) return 'B';
+  if (mechanism === 'none') return 'none';
+  return 'A';  // unknown mechanisms default to Cat A
+}
+
+// Verification pill class derived from value_accrual.status. The status
+// field in data/config.json is the canonical signal — execution-level
+// truth (e.g. "is on-chain holders_revenue actually populating?") is layered
+// on top via per-protocol overrides in data/hm/config.json.synthesized_overrides.
+function verificationFromStatus(status) {
+  switch (status) {
+    case 'executing':    return 'proxy';            // DL/external feed agrees
+    case 'paused':       return 'onchain_dormant';
+    case 'conditional':  return 'governance_stated';
+    case 'proposed':     return 'governance_stated';
+    case 'unverified':   return 'governance_stated';
+    case 'none':         return 'governance_stated';
+    default:             return 'governance_stated';
+  }
+}
+
+// Build a synthetic editorial seed for a token that has no entry in
+// data/hm/config.json. Inputs:
+//   configEntry  — the row from data/config.json (carries va_mechanism etc.)
+//   liveToken    — the row from data/latest.json (price, supply, accrual_annual_est)
+//   override     — optional row from data/hm/config.json.synthesized_overrides
+// The synthetic seed is the same shape the existing computeProtocol() consumes,
+// so we can flow it through that codepath without branching the math.
+function synthesizeSeedFromConfig(configEntry, liveToken, override) {
+  const va = configEntry.value_accrual || {};
+  const status = override?.va_status_override ?? va.status ?? 'none';
+  const mechanism = va.mechanism || 'none';
+
+  // Real-capture sourcing:
+  //   1) explicit override > 2) live accrual_annual_est > 3) zero
+  // Then statuses that mean "money isn't flowing right now" force it to zero.
+  let rawAccrual;
+  if (override?.accrual_annual_est_override != null) {
+    rawAccrual = override.accrual_annual_est_override;
+  } else if (Number.isFinite(liveToken?.accrual_annual_est)) {
+    rawAccrual = liveToken.accrual_annual_est;
+  } else {
+    rawAccrual = 0;
+  }
+  const zeroByStatus = ['paused', 'proposed', 'conditional', 'unverified', 'none'].includes(status);
+  const realCapture = (zeroByStatus && override?.accrual_annual_est_override == null) ? 0 : rawAccrual;
+
+  const cat = classifyMechanism(mechanism);
+  const annualBuybackUsd     = cat === 'A' ? realCapture : 0;
+  const annualHolderYieldUsd = cat === 'B' ? realCapture : 0;
+
+  const verif = override?.verification_override ?? verificationFromStatus(status);
+  const noteSnippet = va.notes ? va.notes.slice(0, 240) + (va.notes.length > 240 ? '…' : '') : '';
+
+  return {
+    // Prefer defillama_slug as the canonical slug for cross-system lookups
+    // (NP config, on-chain feeds, web routing). coingecko_id is fallback for
+    // tokens DL doesn't cover (CC, RLB — manual-data protocols).
+    slug: configEntry.defillama_slug || configEntry.coingecko_id || configEntry.symbol.toLowerCase(),
+    name: configEntry.name,
+    symbol: configEntry.symbol,
+    config_symbol: configEntry.symbol,
+    category: configEntry.category,
+    phase: { active: status, notes: noteSnippet },
+    // article_* are unused outside reproduce-article mode; we still populate them
+    // so any downstream consumer that reads the field doesn't get undefined.
+    article_price_usd: liveToken?.price ?? 0,
+    article_circulating_tokens: liveToken?.circulating_supply ?? 0,
+    unlocks_24mo_tokens: 0,
+    unlocks_24mo_notes: 'no editorial schedule — Adj MCap reflects float only',
+    emissions_24mo_tokens: 0,
+    emissions_24mo_notes: '',
+    annual_buyback_usd: annualBuybackUsd,
+    annual_buyback_notes: cat === 'A' ? `${mechanism} (${status}): ${noteSnippet}` : '',
+    annual_buyback_verification: verif,
+    // Phase A synthesized rows: hold the 24mo reflexive math symmetric at zero.
+    // Without an editorial unlock schedule, including the buyback subtraction
+    // alone produces an asymmetric Adj MCap that goes negative on aggressive-
+    // buyback names (e.g. CARDS, PUMP) where annual buyback is large vs float.
+    // Phase B fills in unlocks_24mo_tokens per protocol, at which point
+    // buyback_24mo_usd should be restored to annualBuybackUsd × 2 so the
+    // reflexive supply-compression effect is credited (per CLAUDE.md).
+    buyback_24mo_usd: 0,
+    annual_holder_yield_usd: annualHolderYieldUsd,
+    annual_holder_yield_notes: cat === 'B' ? `${mechanism} (${status}): ${noteSnippet}` : '',
+    annual_holder_yield_verification: verif,
+    sources: ['DefiLlama (revenue/holders revenue)', 'CoinGecko (price/supply)', 'data/config.json (mechanism/status)'],
+    _synthesized: true,
+    _override_applied: override ? Object.keys(override).filter((k) => k !== 'comment') : []
+  };
+}
+
 function computeProtocol(seedRow, latest) {
   const live = findLiveToken(latest, seedRow.config_symbol);
 
@@ -342,7 +449,9 @@ function computeProtocol(seedRow, latest) {
     hm,
     hm_band: hmBand(hm),
     sources: seedRow.sources,
-    live_data_present: live !== null
+    live_data_present: live !== null,
+    synthesized: Boolean(seedRow._synthesized),
+    override_fields: seedRow._override_applied || []
   };
 }
 
@@ -431,12 +540,43 @@ function renderReport(snapshot) {
 
 function main() {
   const seed = loadJson(SEED_PATH);
+  const config = loadJson(CONFIG_PATH);
   const latest = fs.existsSync(LATEST_PATH) ? loadJson(LATEST_PATH) : { tokens: [] };
 
   const generatedAt = new Date().toISOString();
   const asOf = generatedAt.slice(0, 10);
 
-  const protocols = Object.values(seed.protocols).map((row) => computeProtocol(row, latest));
+  // Index editorial seeds by config_symbol so we can match config.json entries.
+  const seedBySymbol = new Map();
+  for (const row of Object.values(seed.protocols)) {
+    seedBySymbol.set(row.config_symbol, row);
+  }
+  const overrides = seed.synthesized_overrides || {};
+
+  let protocols;
+  if (REPRODUCE_ARTICLE) {
+    // Reproduce-article mode only runs the editorial-seeded tokens — synthesized
+    // rows have no article_* anchor so they'd produce noise.
+    protocols = Object.values(seed.protocols).map((row) => computeProtocol(row, latest));
+  } else {
+    // Live mode iterates the full cohort from data/config.json. Tokens with an
+    // editorial seed use that; tokens without get a synthesized seed derived
+    // from data/latest.json (forward run-rate primary) + data/config.json
+    // (mechanism / status / notes) + any per-symbol override.
+    protocols = [];
+    for (const cfg of config.tokens) {
+      if (SKIP_SYMBOLS.has(cfg.symbol)) continue;
+      const editorial = seedBySymbol.get(cfg.symbol);
+      if (editorial) {
+        protocols.push(computeProtocol(editorial, latest));
+      } else {
+        const live = findLiveToken(latest, cfg.symbol);
+        if (!live) continue;  // no live data yet — fetch-data hasn't seen it
+        const synthSeed = synthesizeSeedFromConfig(cfg, live, overrides[cfg.symbol]);
+        protocols.push(computeProtocol(synthSeed, latest));
+      }
+    }
+  }
 
   const snapshot = {
     schema_version: 1,

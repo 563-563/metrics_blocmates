@@ -1,0 +1,57 @@
+{
+  "_doc": "MET unlock schedule from defillama.com/unlocks/meteora. 52.41% unlocked. Chart extends to 2032 (very long linear schedule). DL event panel shows Team ongoing at 83,300 MET/day Linear over 5y 11mo. Past Oct 22 2025 was a massive single-day release (~458m MET ≈ 91.72% of float-at-time). Forward: continued linear vesting across many small buckets.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/meteora"],
+  "static": {
+    "total_supply_estimate": 700000000,
+    "locked_pct": 0.4759,
+    "vesting_end": "2032-11-22"
+  },
+  "events": [
+    {
+      "type": "linear",
+      "start_date": "2025-11-22",
+      "end_date": "2031-11-22",
+      "total_amount_tokens": 182520000,
+      "recipient_type": "team",
+      "bucket": "team",
+      "note": "Team 18% (34.4% of float) at 83,300 MET/day × 2191 days (5y 11mo)."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-10-22",
+      "end_date": "2030-10-22",
+      "total_amount_tokens": 150000000,
+      "recipient_type": "seed",
+      "bucket": "mercurial_stakeholders",
+      "note": "Mercurial Stakeholders 21.79% remaining vest. 5y rough estimate from chart shape."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-10-22",
+      "end_date": "2030-10-22",
+      "total_amount_tokens": 150000000,
+      "recipient_type": "foundation",
+      "bucket": "lp_stimulus_plan",
+      "note": "LP Stimulus Plan 21.79%."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-10-22",
+      "end_date": "2030-10-22",
+      "total_amount_tokens": 50000000,
+      "recipient_type": "foundation",
+      "bucket": "mercurial_reserve",
+      "note": "Mercurial Reserve 7.26%."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-10-22",
+      "end_date": "2030-10-22",
+      "total_amount_tokens": 30000000,
+      "recipient_type": "airdrop",
+      "bucket": "jupiter_stakers",
+      "note": "Jupiter Stakers 4.36%."
+    }
+  ]
+}

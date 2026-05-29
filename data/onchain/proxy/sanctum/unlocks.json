@@ -1,0 +1,39 @@
+{
+  "_doc": "CLOUD unlock schedule from defillama.com/unlocks/sanctum. 58.18% unlocked / 41.82% × 1b = 418.2m CLOUD locked. DL event panel shows ongoing Team + Investors at daily linear rates starting Jul 17 2025 (2y term ending Jul 17 2027). Plus past cliffs Jul 18 2025 (large), Oct 17 2025, Jan 16 2025.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/sanctum"],
+  "static": {
+    "total_supply": 1000000000,
+    "circulating_supply": 577900000,
+    "locked_pct": 0.4182,
+    "mcap_usd": 10680000
+  },
+  "events": [
+    {
+      "type": "linear",
+      "start_date": "2025-07-17",
+      "end_date": "2027-07-17",
+      "total_amount_tokens": 167274390,
+      "recipient_type": "team",
+      "bucket": "team_ongoing",
+      "note": "Team Ongoing 229,143 CLOUD/day × 730 days = 167.3m CLOUD. Aligns with Team 34.44% × 1b allocation minus already-vested portion."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-07-17",
+      "end_date": "2027-07-17",
+      "total_amount_tokens": 86984610,
+      "recipient_type": "seed",
+      "bucket": "investors_ongoing",
+      "note": "Investors Ongoing 119,157 CLOUD/day × 730 days = 87m CLOUD. Aligns with Investors 17.91% × 1b."
+    },
+    {
+      "type": "cliff",
+      "date": "2026-10-17",
+      "amount_tokens": 15000000,
+      "recipient_type": "foundation",
+      "bucket": "community_reserve_followup",
+      "note": "Community Reserve follow-up estimated 15m based on prior Oct 17 2025 event pattern ($277K = 15m CLOUD)."
+    }
+  ]
+}

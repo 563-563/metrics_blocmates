@@ -1,0 +1,41 @@
+{
+  "_doc": "JUP unlock schedule from defillama.com/unlocks/jupiter. 49.39% unlocked / 50.61% × 10b max = 5.06b JUP locked. DL event panel shows monthly Team + Mercurial Stakeholders cliffs. Pattern: Team 38.89m JUP/month + Mercurial 14.58m JUP/month, with periodic larger Mercurial releases (~78m every ~7 months). Chart shows linear cumulative growth through early 2027 then flatter.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/jupiter"],
+  "static": {
+    "total_supply": 10000000000,
+    "circulating_supply": 3320000000,
+    "locked_pct": 0.5061,
+    "mcap_usd": 580710000
+  },
+  "events": [
+    {
+      "type": "monthly",
+      "start_date": "2025-11-27",
+      "end_date": "2027-12-27",
+      "amount_tokens_per_event": 38890000,
+      "day_of_month": 27,
+      "recipient_type": "team",
+      "bucket": "team",
+      "note": "Team 28.12% × 10b = 2.81b total. Monthly 38.89m × 25mo ≈ 970m, balance plus chart shape suggests ongoing through ~mid-2028."
+    },
+    {
+      "type": "monthly",
+      "start_date": "2025-11-27",
+      "end_date": "2027-12-27",
+      "amount_tokens_per_event": 14580000,
+      "day_of_month": 27,
+      "recipient_type": "seed",
+      "bucket": "mercurial_stakeholders",
+      "note": "Mercurial Stakeholders 7.74% × 10b = 774m total. Monthly + periodic larger releases. Encoded as monthly base."
+    },
+    {
+      "type": "cliff",
+      "date": "2026-02-24",
+      "amount_tokens": 77970000,
+      "recipient_type": "seed",
+      "bucket": "mercurial_stakeholders_periodic",
+      "note": "Feb 2026 larger Mercurial release ($13.64m / 1.11% of float). Pattern repeats roughly every 7 months — would need more events for full forecast."
+    }
+  ]
+}

@@ -140,5 +140,39 @@
       "annual_holder_yield_verification": "governance_stated",
       "sources": ["DefiLlama", "Lighter docs"]
     }
+  },
+  "synthesized_overrides": {
+    "_doc": "Per-symbol overrides applied to synthesized seeds (tokens iterated from data/config.json but without a full editorial row in `protocols` above). Each entry replaces specific fields without forcing a full seed; the rest derive from data/latest.json + data/config.json.va_*. Use sparingly — only when the live DL feed materially diverges from verified on-chain reality.",
+    "JTO": {
+      "comment": "JIP-31 (passed late 2025, extended via JIP-37) temporarily redirects 100% of Block Engine + BAM fees to validator subsidies through Q1-Q3 2026 to bootstrap BAM adoption. The CSD buyback program ($30M+ cumulative since Aug 2025, fully verifiable on Solscan/Dune) is paused, not removed. Mechanism resumes post-Q3 2026 per governance. Without this override, Phase A would source JTO real-capture from DL revenue × 100% accrual_pct = ~$20M/yr, which is the rate when buybacks are active — wrong for current dormant phase.",
+      "va_status_override": "paused",
+      "accrual_annual_est_override": 0,
+      "verification_override": "onchain_dormant"
+    },
+    "COW": {
+      "comment": "CIP-38 buybacks execute at DAO treasury level; DL holdersRevenue is null because DL doesn't categorize treasury-owned buybacks. Deep dive (Apr 2026) estimates ~80% of $10.4M/yr forward revenue → buybacks = $8.3M/yr to keep weekly buyback ≥ 1.2× weekly emissions (net-negative emissions invariant). Treasury growth ≈ revenue rate when active — proxy works.",
+      "accrual_annual_est_override": 8300000,
+      "verification_override": "governance_stated"
+    },
+    "GMX": {
+      "comment": "Status=paused: 27% of V2 fees → algorithmic buybacks ARE executing on-chain (verified, 2M+ GMX repurchased since end-2024), but distribution to stakers is paused until GMX ≥ $90 per Mar 2026 DAO vote. Current price ~$6 = 14.5× below gate. From a holder-flow perspective the buyback creates supply compression (Cat A) but no immediate cashflow — treat as onchain_dormant. accrual_annual_est=$6.4M reflects the on-chain buyback rate; we keep it as Cat A but flag dormant.",
+      "verification_override": "onchain_dormant"
+    },
+    "SNX": {
+      "comment": "Q1 2026 SIP-2043 routes 100% of perps trading fees to SNX buybacks (50/50 split with sUSD stability until peg restored). Config claims $4.5M in first 6 weeks ($39M/yr annualized) but DL shows $0 fees/revenue under all synthetix slugs — execution UNVERIFIED. Until on-chain Dune or block-explorer trace confirms, leave at $0 with governance_stated verification.",
+      "verification_override": "governance_stated"
+    },
+    "LDO": {
+      "comment": "$20M discretionary buyback approved Apr 13 2026 but not executing yet; NEST automated buybacks conditional on ETH ≥ $3K (currently below). Real_capture stays $0 until first tranche traces on-chain. Status=conditional + accrual_pct=0 → already $0 in latest.json (no override needed for amount).",
+      "verification_override": "governance_stated"
+    },
+    "DYDX": {
+      "comment": "config note flags: 'TTM fees overstated — use ann_rev_override'. Our compute already uses forward run-rate (holders_revenue_30d × 12) via accrual_annual_est = $3.19M. No override needed — flagging here for visibility."
+    },
+    "ETHFI": {
+      "comment": "DL splits ether.fi across 3 sub-protocols (ether.fi-liquid, etherfi-cash-liquid, etherfi-borrowing-market) — no parent fees endpoint. data/config.json has accrual_pct=1.0 which is WRONG: per DAO Proposal #8, only 10% of protocol revenue routes to ETHFI value accrual (5% buyback+burn, 5% sETHFI staker distributions). Our scripts/onchain/proxy/fetch-etherfi-buybacks.js aggregates the 3 sub-protocols and applies 10%, producing ~$4.25M/yr last-30d annualized. NOTE: This excludes the $50M discretionary treasury buyback approved Nov 2025 (triggers at price < $3 — ACTIVE) since DL doesn't surface it. Long-term fix: update data/config.json ETHFI accrual_pct to 0.1.",
+      "accrual_annual_est_override": 4250000,
+      "verification_override": "proxy"
+    }
   }
 }

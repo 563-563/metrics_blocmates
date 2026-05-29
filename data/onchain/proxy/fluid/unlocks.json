@@ -1,0 +1,32 @@
+{
+  "_doc": "FLUID unlock schedule from defillama.com/unlocks/fluid. 77.95% unlocked / 22.05% × 100m = ~22m FLUID still locked. The 'Unlock Events' panel shows DAO Treasury Incentives outflows (mostly negative — releases to the market) totaling small monthly amounts. Future Team & Ecosystem (10.07%) and Team residual (30.53% allocation, partially vested) drive most of the remaining schedule. Chart shows mostly flat from 2025 forward.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/fluid", "INST→FLUID rebrand 2024"],
+  "static": {
+    "total_supply": 100000000,
+    "circulating_supply": 77950000,
+    "locked_pct": 0.2205,
+    "mcap_usd": 106700000
+  },
+  "events": [
+    {
+      "type": "linear",
+      "start_date": "2025-01-01",
+      "end_date": "2027-12-31",
+      "total_amount_tokens": 10000000,
+      "recipient_type": "foundation",
+      "bucket": "future_team_ecosystem",
+      "note": "Future Team & Ecosystem 10.07% × 100m, 3y linear through 2027 per chart shape."
+    },
+    {
+      "type": "monthly",
+      "start_date": "2026-01-05",
+      "end_date": "2027-12-05",
+      "amount_tokens_per_event": 500000,
+      "day_of_month": 5,
+      "recipient_type": "foundation",
+      "bucket": "dao_treasury_incentives",
+      "note": "DAO Treasury Incentives ~500K FLUID/month based on event values $685k-$1.37m at current price ~$1.37."
+    }
+  ]
+}

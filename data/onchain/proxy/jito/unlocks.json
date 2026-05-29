@@ -1,0 +1,49 @@
+{
+  "_doc": "JTO unlock schedule from defillama.com/unlocks/jito. 85.72% unlocked / 14.28% × 1b = ~143m JTO remaining locked. Three concurrent linear schedules visible: Core Contributors + Investors (2y from Dec 6 2024, ending Dec 6 2026); Ecosystem Development (3y from Dec 6 2023, ending Dec 6 2026); Airdrop tail extension (small ongoing rate). Daily rates per DL event panel: Core Contributors 223,571 JTO/day, Investors 147,857/day, Ecosystem Development 228,143/day, Airdrop 27,386/day.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/jito"],
+  "static": {
+    "total_supply": 1000000000,
+    "circulating_supply": 476809751,
+    "locked_pct": 0.143,
+    "mcap_usd": 245967330
+  },
+  "events": [
+    {
+      "type": "linear",
+      "start_date": "2024-12-06",
+      "end_date": "2026-12-06",
+      "total_amount_tokens": 163206830,
+      "recipient_type": "team",
+      "bucket": "core_contributors",
+      "note": "223,571 JTO/day × 730 days = 163.2m JTO. Team allocation continues per chart through 2027 — extend if visible."
+    },
+    {
+      "type": "linear",
+      "start_date": "2024-12-06",
+      "end_date": "2026-12-06",
+      "total_amount_tokens": 107935810,
+      "recipient_type": "seed",
+      "bucket": "investors",
+      "note": "147,857 JTO/day × 730 days = 108m JTO."
+    },
+    {
+      "type": "linear",
+      "start_date": "2023-12-06",
+      "end_date": "2026-12-06",
+      "total_amount_tokens": 250044728,
+      "recipient_type": "foundation",
+      "bucket": "ecosystem_development",
+      "note": "228,143 JTO/day × 1096 days = 250m JTO. Note from DL: ~6 year linear schedule estimated for Community Growth and Ecosystem Development."
+    },
+    {
+      "type": "linear",
+      "start_date": "2024-12-06",
+      "end_date": "2026-12-06",
+      "total_amount_tokens": 19991728,
+      "recipient_type": "airdrop",
+      "bucket": "airdrop_tail",
+      "note": "27,386 JTO/day. Airdrop S2/tail extension."
+    }
+  ]
+}

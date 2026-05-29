@@ -156,32 +156,111 @@ const DEFAULT_SELL_PROB = {
 };
 const FALLBACK_SELL_PROB = 0.30;
 
+// Expand a generic schedule_file event list into a flat array of per-day
+// unlock entries with recipient_type carried through for sell-probability
+// weighting.
+//
+// Event types:
+//   cliff   — single-day release: { date, amount_tokens }
+//   linear  — straight-line release over a window: { start_date, end_date,
+//             total_amount_tokens } → amount/days per day, inclusive of both
+//             endpoints
+//   monthly — repeating release on day_of_month: { start_date, end_date,
+//             amount_tokens_per_event, day_of_month }
+function expandScheduleEvents(events) {
+  const out = [];
+  for (const ev of events || []) {
+    const rtype = ev.recipient_type;
+    if (ev.type === 'cliff') {
+      out.push({ date: ev.date, amount_tokens: Number(ev.amount_tokens) || 0, recipient_type: rtype });
+    } else if (ev.type === 'linear') {
+      const start = new Date(ev.start_date + 'T00:00:00Z');
+      const end   = new Date(ev.end_date   + 'T00:00:00Z');
+      const days  = Math.round((end - start) / 86400000) + 1;
+      if (days <= 0) continue;
+      const perDay = (Number(ev.total_amount_tokens) || 0) / days;
+      for (let i = 0; i < days; i++) {
+        const d = new Date(start);
+        d.setUTCDate(d.getUTCDate() + i);
+        out.push({ date: d.toISOString().slice(0, 10), amount_tokens: perDay, recipient_type: rtype });
+      }
+    } else if (ev.type === 'monthly') {
+      const start = new Date(ev.start_date + 'T00:00:00Z');
+      const end   = new Date(ev.end_date   + 'T00:00:00Z');
+      const dom   = ev.day_of_month || start.getUTCDate();
+      const cur   = new Date(start);
+      cur.setUTCDate(dom);
+      if (cur < start) cur.setUTCMonth(cur.getUTCMonth() + 1);
+      while (cur <= end) {
+        out.push({
+          date: cur.toISOString().slice(0, 10),
+          amount_tokens: Number(ev.amount_tokens_per_event) || 0,
+          recipient_type: rtype
+        });
+        cur.setUTCMonth(cur.getUTCMonth() + 1);
+        cur.setUTCDate(dom);
+      }
+    }
+  }
+  return out;
+}
+
 // Returns { gross: Map<date,tokens>, adjusted: Map<date,sell-prob-weighted tokens> }.
 function loadUnlockMaps(seedSource) {
   const empty = { gross: new Map(), adjusted: new Map() };
-  if (!seedSource || seedSource.type !== 'deterministic_schedule') return empty;
-  const abs = path.join(ROOT, seedSource.module);
-  const mod = require(abs);
-  if (typeof mod.generateUnlockSchedule !== 'function') return empty;
-
-  const rows = mod.generateUnlockSchedule(new Date());
-  const allocations = mod.ALLOCATIONS || mod.HYPE_ALLOCATIONS || {};
-  const recipientByBucket = {};
-  for (const [k, v] of Object.entries(allocations)) recipientByBucket[k] = v.recipient_type;
+  if (!seedSource) return empty;
 
   // Per-protocol override of sell-probabilities (by recipient type) if present.
   const sellProb = { ...DEFAULT_SELL_PROB, ...(seedSource.sell_probability_by_recipient || {}) };
 
-  const gross = new Map();
-  const adjusted = new Map();
-  for (const r of rows) {
-    const amt = Number(r.amount_tokens);
-    gross.set(r.unlock_date, (gross.get(r.unlock_date) || 0) + amt);
-    const rtype = recipientByBucket[r.bucket];
-    const p = rtype != null && sellProb[rtype] != null ? sellProb[rtype] : FALLBACK_SELL_PROB;
-    adjusted.set(r.unlock_date, (adjusted.get(r.unlock_date) || 0) + amt * p);
+  // Path 1: deterministic_schedule — protocol-specific JS module with
+  // generateUnlockSchedule(asOf) function. Used by HYPE.
+  if (seedSource.type === 'deterministic_schedule') {
+    const abs = path.join(ROOT, seedSource.module);
+    const mod = require(abs);
+    if (typeof mod.generateUnlockSchedule !== 'function') return empty;
+    const rows = mod.generateUnlockSchedule(new Date());
+    const allocations = mod.ALLOCATIONS || mod.HYPE_ALLOCATIONS || {};
+    const recipientByBucket = {};
+    for (const [k, v] of Object.entries(allocations)) recipientByBucket[k] = v.recipient_type;
+
+    const gross = new Map();
+    const adjusted = new Map();
+    for (const r of rows) {
+      const amt = Number(r.amount_tokens);
+      gross.set(r.unlock_date, (gross.get(r.unlock_date) || 0) + amt);
+      const rtype = recipientByBucket[r.bucket];
+      const p = rtype != null && sellProb[rtype] != null ? sellProb[rtype] : FALLBACK_SELL_PROB;
+      adjusted.set(r.unlock_date, (adjusted.get(r.unlock_date) || 0) + amt * p);
+    }
+    return { gross, adjusted };
   }
-  return { gross, adjusted };
+
+  // Path 2: schedule_file — JSON-driven generic schedule for protocols we
+  // don't have a tokenomics module for. Format:
+  //   { events: [{ type, date|start_date+end_date, amount_tokens|total_amount_tokens|amount_tokens_per_event, recipient_type, bucket, note }, ...] }
+  // Recipient types map to DEFAULT_SELL_PROB. Unknown types fall back to
+  // FALLBACK_SELL_PROB.
+  if (seedSource.type === 'schedule_file') {
+    const abs = path.join(ROOT, seedSource.path);
+    if (!fs.existsSync(abs)) return empty;
+    const schedule = loadJson(abs);
+    const expanded = expandScheduleEvents(schedule.events);
+    const gross = new Map();
+    const adjusted = new Map();
+    for (const ev of expanded) {
+      const amt = Number(ev.amount_tokens) || 0;
+      if (amt <= 0) continue;
+      gross.set(ev.date, (gross.get(ev.date) || 0) + amt);
+      const p = ev.recipient_type != null && sellProb[ev.recipient_type] != null
+        ? sellProb[ev.recipient_type]
+        : FALLBACK_SELL_PROB;
+      adjusted.set(ev.date, (adjusted.get(ev.date) || 0) + amt * p);
+    }
+    return { gross, adjusted };
+  }
+
+  return empty;
 }
 
 function daysAgoIso(n) {

@@ -208,6 +208,270 @@
         "l2_market": "data/onchain/lit/l2-market.json"
       },
       "daily_price_path": "data/onchain/lit/buybacks.json"
+    },
+    "morpho": {
+      "slug": "morpho", "name": "Morpho", "symbol": "MORPHO", "config_symbol": "MORPHO", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/morpho/unlocks.json", "verification": "proxy", "note": "Editorial schedule transcribed from defillama.com/unlocks/morpho (2026-05-29)" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "Fee switch proposed but not activated — Cat A buyback mechanism dormant" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "pendle": {
+      "slug": "pendle", "name": "Pendle", "symbol": "PENDLE", "config_symbol": "PENDLE", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/pendle/unlocks.json", "verification": "proxy", "note": "Fully unlocked per DL (100%) — events: []" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "fee-share-lockers (Cat B yield to vePENDLE) — no supply-side compression" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "jito": {
+      "slug": "jito", "name": "Jito", "symbol": "JTO", "config_symbol": "JTO", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/jito/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/jito (2026-05-29)" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "JIP-31 paused buybacks Q1-Q3 2026 — BAM validator subsidies redirect. Will resume." },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "jupiter": {
+      "slug": "jupiter", "name": "Jupiter", "symbol": "JUP", "config_symbol": "JUP", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/jupiter/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/jupiter (2026-05-29)" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/jupiter/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (50% revenue → JUP buybacks since Feb 2025)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/jupiter/buybacks.json"
+    },
+    "fluid": {
+      "slug": "fluid", "name": "Fluid", "symbol": "FLUID", "config_symbol": "FLUID", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/fluid/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/fluid (2026-05-29)" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/fluid/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (100% mainnet rev → FLUID buybacks since Oct 2025)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/fluid/buybacks.json"
+    },
+    "collector-crypt": {
+      "slug": "collector-crypt", "name": "Collector Crypt", "symbol": "CARDS", "config_symbol": "CARDS", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/collector-crypt/unlocks.json", "verification": "proxy", "note": "Editorial schedule from collector-crypt portal — TEAM CLIFF Sep 1 2026 (32.5M CARDS/month × 12mo)" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/collector-crypt/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily revenue × 0.875 accrual_pct (DL doesn't classify burn as holdersRevenue)" },
+        "burns": { "type": "none", "verification": "n/a", "note": "Counted under buybacks (buyback-burn mechanism)" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/collector-crypt/buybacks.json"
+    },
+    "pump.fun": {
+      "slug": "pump.fun", "name": "pump.fun", "symbol": "PUMP", "config_symbol": "PUMP", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/pump.fun/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/pump-fun" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/pump.fun/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (~100% fees → PUMP buyback)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/pump.fun/buybacks.json"
+    },
+    "layerzero": {
+      "slug": "layerzero", "name": "LayerZero", "symbol": "ZRO", "config_symbol": "ZRO", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/layerzero/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/layerzero" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/layerzero/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (Dec 2025 fee-switch activation — 100% LZ fees → ZRO burn)" },
+        "burns": { "type": "none", "verification": "n/a", "note": "Burns counted under buybacks (Firepit destination)" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/layerzero/buybacks.json"
+    },
+    "ethena": {
+      "slug": "ethena", "name": "Ethena", "symbol": "ENA", "config_symbol": "ENA", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/ethena/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/ethena" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "Mechanism=none — only mint fees (~$2.6M/yr) to ENA; sUSDe yield doesn't accrue to ENA holders" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "aerodrome": {
+      "slug": "aerodrome", "name": "Aerodrome", "symbol": "AERO", "config_symbol": "AERO", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/aerodrome/unlocks.json", "verification": "proxy", "note": "100% unlocked — events: []; emissions handled at runtime if/when on-chain feed wired" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "fee-share-lockers (Cat B) — 100% fees to veAERO, no supply compression" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "dydx": {
+      "slug": "dydx", "name": "dYdX", "symbol": "DYDX", "config_symbol": "DYDX", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/dydx/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/dydx — 99.26% already unlocked, vesting tail completes ~Q3 2026" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/dydx/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (75% fees → TWAP buyback by Treasury SubDAO; forward run-rate is fwd-correct)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a", "note": "Bought tokens are staked to validators, not burned — accumulation = buybacks, no double-count" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/dydx/buybacks.json"
+    },
+    "meteora": {
+      "slug": "meteora", "name": "Meteora", "symbol": "MET", "config_symbol": "MET", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/meteora/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/meteora" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "Fee-share proposed but not live — no buyback mechanism" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "sanctum": {
+      "slug": "sanctum", "name": "Sanctum", "symbol": "CLOUD", "config_symbol": "CLOUD", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/sanctum/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/sanctum" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "Mechanism=none — protocol earns ~$6M/yr retained by treasury, no holder accrual" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "drift": {
+      "slug": "drift", "name": "Drift", "symbol": "DRIFT", "config_symbol": "DRIFT", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "schedule_file", "path": "data/onchain/proxy/drift/unlocks.json", "verification": "proxy", "note": "Editorial schedule from defillama.com/unlocks/drift" },
+        "buybacks": { "type": "none", "verification": "n/a", "note": "Mechanism=none — $1M DIP-4 buyback proposed but not confirmed executing; DIP-9 sends $1.5M/mo to Drift Labs (extractive)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": null
+    },
+    "uniswap": {
+      "slug": "uniswap", "name": "Uniswap", "symbol": "UNI", "config_symbol": "UNI", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/uniswap/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (17% LP fees → TokenJar → Firepit burn since Dec 2025)" },
+        "burns": { "type": "none", "verification": "n/a", "note": "Burns counted under buybacks (Firepit destination)" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/uniswap/buybacks.json"
+    },
+    "raydium": {
+      "slug": "raydium", "name": "Raydium", "symbol": "RAY", "config_symbol": "RAY", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet — RAY largely vested" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/raydium/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (12% trading fees → automatic RAY buyback & burn)" },
+        "burns": { "type": "none", "verification": "n/a", "note": "Burns counted under buybacks" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/raydium/buybacks.json"
+    },
+    "euler": {
+      "slug": "euler", "name": "Euler", "symbol": "EUL", "config_symbol": "EUL", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/euler/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (FeeFlow automated buyback)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/euler/buybacks.json"
+    },
+    "gains-network": {
+      "slug": "gains-network", "name": "Gains Network", "symbol": "GNS", "config_symbol": "GNS", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet — GNS mostly vested" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/gains-network/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (algorithmic GNS buyback at TWAP +1% then burn)" },
+        "burns": { "type": "none", "verification": "n/a", "note": "Burns counted under buybacks" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/gains-network/buybacks.json"
+    },
+    "orca": {
+      "slug": "orca", "name": "Orca", "symbol": "ORCA", "config_symbol": "ORCA", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/orca/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (40% Whirlpool fees → xORCA buyback)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/orca/buybacks.json"
+    },
+    "marinade": {
+      "slug": "marinade", "name": "Marinade Finance", "symbol": "MNDE", "config_symbol": "MNDE", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/marinade/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily holdersRevenue (50% protocol rev → MNDE buyback)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/marinade/buybacks.json"
+    },
+    "ether-fi": {
+      "slug": "ether-fi", "name": "ether.fi", "symbol": "ETHFI", "config_symbol": "ETHFI", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet — ETHFI mostly vested per CGS" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/ether-fi/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "Aggregated dailyRevenue across 3 DL sub-protocols × 10% accrual (DAO Proposal #8: 5% buyback+burn + 5% sETHFI distributions). Excludes $50M discretionary treasury buyback (Nov 2025)." },
+        "burns": { "type": "none", "verification": "n/a", "note": ">85% of bought ETHFI is burned per notes" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/ether-fi/buybacks.json"
+    },
+    "cowswap": {
+      "slug": "cowswap", "name": "CoW Protocol", "symbol": "COW", "config_symbol": "COW", "tokenomics_module": null,
+      "sources": {
+        "unlocks": { "type": "none", "verification": "n/a", "note": "No editorial unlock schedule yet" },
+        "buybacks": { "type": "daily_series", "path": "data/onchain/proxy/cowswap/buybacks.json", "amount_field": "amount_tokens", "verification": "proxy", "note": "DL daily revenue × 0.8 (CIP-38 treasury-level buybacks; DL holdersRevenue null — fees fallback)" },
+        "burns": { "type": "none", "verification": "n/a" },
+        "treasury_accumulation": { "type": "none", "verification": "n/a" },
+        "treasury_sells": { "type": "none", "verification": "n/a" },
+        "net_staking_lockups": { "type": "none", "verification": "n/a" }
+      },
+      "daily_price_path": "data/onchain/proxy/cowswap/buybacks.json"
     }
   }
 }

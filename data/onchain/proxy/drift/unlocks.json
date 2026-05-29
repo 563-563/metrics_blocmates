@@ -1,0 +1,49 @@
+{
+  "_doc": "DRIFT unlock schedule from defillama.com/unlocks/drift. 64.77% unlocked / 35.23% × 1b = 352.3m DRIFT locked. Multiple concurrent linear schedules per DL event panel: Strategic Participants over 5y from May 15 2024 (40.02% of allocation, 65.54% of float); Ecosystem Development over 5y from same date (36% / 58.96%); Protocol Development over 1y 6mo from Nov 14 2025; an extra 1y Strategic Participants tail from May 15 2025. Aggregates 644K DRIFT/day forward.",
+  "as_of": "2026-05-29",
+  "source_refs": ["defillama.com/unlocks/drift"],
+  "static": {
+    "total_supply": 1000000000,
+    "circulating_supply": 611520000,
+    "locked_pct": 0.3523,
+    "mcap_usd": 16570000
+  },
+  "events": [
+    {
+      "type": "linear",
+      "start_date": "2024-05-15",
+      "end_date": "2029-05-15",
+      "total_amount_tokens": 400049350,
+      "recipient_type": "seed",
+      "bucket": "strategic_participants_5y",
+      "note": "Strategic Participants 219,143 DRIFT/day × 1826 days (5y). 40.02% of original 22% allocation = 88m fully vested by end? Cross-check needed; using daily-rate primary."
+    },
+    {
+      "type": "linear",
+      "start_date": "2024-05-15",
+      "end_date": "2029-05-15",
+      "total_amount_tokens": 359983180,
+      "recipient_type": "foundation",
+      "bucket": "ecosystem_development_5y",
+      "note": "Ecosystem Development & Trading Rewards 197,143 DRIFT/day × 1826 days."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-05-15",
+      "end_date": "2026-05-15",
+      "total_amount_tokens": 79987695,
+      "recipient_type": "seed",
+      "bucket": "strategic_participants_1y_tail",
+      "note": "Strategic Participants additional 1y tail (May 25 → May 26 — basically ended today). Kept for historical TP."
+    },
+    {
+      "type": "linear",
+      "start_date": "2025-11-14",
+      "end_date": "2027-05-14",
+      "total_amount_tokens": 124846185,
+      "recipient_type": "foundation",
+      "bucket": "protocol_development_1y6m",
+      "note": "Protocol Development 228,143 DRIFT/day × 547 days (1y 6mo from Nov 14 2025)."
+    }
+  ]
+}

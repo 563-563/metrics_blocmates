@@ -10,42 +10,49 @@ import {
   XAxis,
   YAxis
 } from "recharts";
+import { useTheme } from "./ThemeProvider";
 
 export type HmHistoryPoint = { date: string; hm: number | null; price_usd?: number };
 
-const HM_COLOR = "rgb(var(--fg))";
-const PRICE_COLOR = "#84cc16";
-
-const BANDS = [
-  { y1: 0, y2: 10, fill: "#10b981" },
-  { y1: 10, y2: 20, fill: "#22c55e" },
-  { y1: 20, y2: 35, fill: "#94a3b8" },
-  { y1: 35, y2: 50, fill: "#f59e0b" },
-  { y1: 50, y2: 9999, fill: "#f43f5e" }
+const BANDS_BASE = [
+  { y1: 0, y2: 10, fill: "#5C8C3B" },   // cheap (green)
+  { y1: 10, y2: 20, fill: "#7DAE53" },
+  { y1: 20, y2: 35, fill: "#94837A" },  // fair (warm grey)
+  { y1: 35, y2: 50, fill: "#C68C3B" },  // expensive (amber)
+  { y1: 50, y2: 9999, fill: "#B25450" } // speculative (warm red)
 ];
 
-function Tip({ active, payload, label }: any) {
-  if (!active || !payload?.length) return null;
-  const hm = payload.find((p: any) => p.dataKey === "hm");
-  const price = payload.find((p: any) => p.dataKey === "price_usd");
-  return (
-    <div style={{ background: "rgb(var(--surface))", border: "1px solid rgb(var(--line))", padding: "6px 9px", fontSize: 12 }}>
-      <div style={{ color: "rgb(var(--fg-muted))", marginBottom: 3 }}>{label}</div>
-      {hm && (
-        <div style={{ color: HM_COLOR }}>
-          HM <strong>{Number(hm.value).toFixed(1)}×</strong>
-        </div>
-      )}
-      {price && (
-        <div style={{ color: PRICE_COLOR }}>
-          Price ${Number(price.value).toLocaleString(undefined, { maximumFractionDigits: 2 })}
-        </div>
-      )}
-    </div>
-  );
+function makeTip(hmColor: string, priceColor: string) {
+  return function Tip({ active, payload, label }: any) {
+    if (!active || !payload?.length) return null;
+    const hm = payload.find((p: any) => p.dataKey === "hm");
+    const price = payload.find((p: any) => p.dataKey === "price_usd");
+    return (
+      <div style={{ background: "rgb(var(--surface))", border: "1px solid rgb(var(--line))", padding: "6px 9px", fontSize: 12 }}>
+        <div style={{ color: "rgb(var(--fg-muted))", marginBottom: 3 }}>{label}</div>
+        {hm && (
+          <div style={{ color: hmColor }}>
+            HM <strong>{Number(hm.value).toFixed(1)}×</strong>
+          </div>
+        )}
+        {price && (
+          <div style={{ color: priceColor }}>
+            Price ${Number(price.value).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+          </div>
+        )}
+      </div>
+    );
+  };
 }
 
 export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
+  const { theme } = useTheme();
+  const HM_COLOR = theme === "light" ? "#2A2620" : "#ECE6DD";
+  const PRICE_COLOR = theme === "light" ? "#4D7A3C" : "#84A76C";
+  const Tip = makeTip(HM_COLOR, PRICE_COLOR);
+  // Heavier band tints in light mode so they don't disappear on cream.
+  const BAND_OPACITY = theme === "light" ? 0.12 : 0.08;
+
   const pts = (data || []).filter((d) => d.hm != null);
   if (pts.length < 2) {
     return <p className="text-xs text-fg-faint py-8 text-center">Not enough history yet.</p>;
@@ -58,14 +65,14 @@ export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
     <div className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={pts} margin={{ top: 8, right: 16, left: 16, bottom: 8 }}>
-          {BANDS.map((b, i) => (
+          {BANDS_BASE.map((b, i) => (
             <ReferenceArea
               key={i}
               yAxisId="hm"
               y1={b.y1}
               y2={Math.min(b.y2, yMax)}
               fill={b.fill}
-              fillOpacity={0.06}
+              fillOpacity={BAND_OPACITY}
               stroke="none"
               ifOverflow="hidden"
             />
@@ -84,7 +91,7 @@ export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
             <YAxis
               yAxisId="price"
               orientation="right"
-              stroke="#3f6212"
+              stroke="rgb(var(--fg-faint))"
               tick={{ fontSize: 10, fill: PRICE_COLOR }}
               tickFormatter={(v: number) => `$${v >= 1000 ? (v / 1000).toFixed(0) + "k" : v.toFixed(v < 1 ? 3 : 2)}`}
               label={{ value: "Price (USD)", angle: 90, position: "insideRight", offset: 4, style: { textAnchor: "middle", fill: PRICE_COLOR, fontSize: 11 } }}

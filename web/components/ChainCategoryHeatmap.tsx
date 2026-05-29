@@ -42,7 +42,7 @@ export function ChainCategoryHeatmap({
   chains: ChainSummary[];
 }) {
   if (!matrix || matrix.chains.length === 0 || matrix.categories.length === 0) {
-    return <p className="text-xs text-zinc-600 py-4">No category data.</p>;
+    return <p className="text-xs text-fg-faint py-4">No category data.</p>;
   }
   // Sort chains by row total (biggest economy first), keep matrix order aligned
   const chainBySlug = new Map(chains.map((c) => [c.slug, c]));
@@ -59,13 +59,13 @@ export function ChainCategoryHeatmap({
       <table className="text-[11px] border-separate border-spacing-0">
         <thead>
           <tr>
-            <th className="text-left font-normal text-zinc-100 uppercase tracking-widest py-1.5 px-2 sticky left-0 bg-zinc-950">
+            <th className="text-left font-normal text-fg uppercase tracking-widest py-1.5 px-2 sticky left-0 bg-canvas">
               Chain
             </th>
             {matrix.categories.map((cat) => (
               <th
                 key={cat}
-                className="text-left font-normal text-zinc-100 uppercase tracking-widest py-1.5 px-2"
+                className="text-left font-normal text-fg uppercase tracking-widest py-1.5 px-2"
                 style={{ minWidth: 88 }}
               >
                 <span className="flex items-center gap-1.5">
@@ -77,7 +77,7 @@ export function ChainCategoryHeatmap({
                 </span>
               </th>
             ))}
-            <th className="text-right font-normal text-zinc-100 uppercase tracking-widest py-1.5 px-2">
+            <th className="text-right font-normal text-fg uppercase tracking-widest py-1.5 px-2">
               Total
             </th>
           </tr>
@@ -88,13 +88,13 @@ export function ChainCategoryHeatmap({
             const chainColor = CHAIN_COLORS[r.slug] || FALLBACK_COLOR;
             return (
               <tr key={r.slug}>
-                <td className="py-1.5 px-2 border-t border-zinc-900 sticky left-0 bg-zinc-950">
+                <td className="py-1.5 px-2 border-t border-line-faint sticky left-0 bg-canvas">
                   <span className="flex items-center gap-2">
                     <span
                       className="w-2 h-2 rounded-sm shrink-0"
                       style={{ background: chainColor }}
                     />
-                    <span className="text-zinc-200">{c?.name ?? r.slug}</span>
+                    <span className="text-fg">{c?.name ?? r.slug}</span>
                   </span>
                 </td>
                 {r.cells.map((v, j) => {
@@ -106,15 +106,15 @@ export function ChainCategoryHeatmap({
                   return (
                     <td
                       key={cat}
-                      className="border-t border-zinc-900 px-2 py-1.5 tabular-nums text-zinc-300"
+                      className="border-t border-line-faint px-2 py-1.5 tabular-nums text-fg-muted"
                       style={{ background: pct > 0 ? color : "transparent", backgroundColor: pct > 0 ? `${color}${Math.round(opacity * 255).toString(16).padStart(2, "0")}` : "transparent" }}
                       title={`${cat}: ${fmt(v)} (${(pct * 100).toFixed(1)}% of chain GDP)`}
                     >
-                      {v > 0 ? fmt(v) : <span className="text-zinc-700">—</span>}
+                      {v > 0 ? fmt(v) : <span className="text-fg-faint">—</span>}
                     </td>
                   );
                 })}
-                <td className="border-t border-zinc-900 px-2 py-1.5 text-right tabular-nums text-zinc-100">
+                <td className="border-t border-line-faint px-2 py-1.5 text-right tabular-nums text-fg">
                   {fmt(r.total)}
                 </td>
               </tr>

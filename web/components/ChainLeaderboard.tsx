@@ -28,11 +28,11 @@ export function ChainLeaderboard({
 
   return (
     <div className="space-y-2.5">
-      <div className="grid grid-cols-[110px_1fr_110px] text-[10px] uppercase tracking-widest text-zinc-500 pb-1.5 border-b border-zinc-800">
+      <div className="grid grid-cols-[110px_1fr_110px] text-[10px] uppercase tracking-widest text-fg-muted pb-1.5 border-b border-line">
         <span>Chain</span>
         <span className="text-center">
           <span className="inline-block w-2 h-2 align-middle mr-1.5" style={{ background: "currentColor" }} />
-          GDP 30d (chain color) · <span className="text-zinc-600">Mcap (faint)</span>
+          GDP 30d (chain color) · <span className="text-fg-faint">Mcap (faint)</span>
         </span>
         <span className="text-right">GDP / Mcap</span>
       </div>
@@ -42,7 +42,7 @@ export function ChainLeaderboard({
         const mcapPct = c.mcap_usd ? (c.mcap_usd / maxOverall) * 100 : 0;
         return (
           <div key={c.slug} className="grid grid-cols-[110px_1fr_110px] items-center gap-3">
-            <span className="text-zinc-200 text-xs truncate">{c.name}</span>
+            <span className="text-fg text-xs truncate">{c.name}</span>
             <div className="relative h-5">
               {/* Mcap bar (faint, full width) */}
               {mcapPct > 0 && (
@@ -57,9 +57,9 @@ export function ChainLeaderboard({
                 style={{ width: `${gdpPct}%`, background: color, opacity: 0.95 }}
               />
             </div>
-            <span className="text-right tabular-nums text-zinc-300 text-xs">
-              <span className="text-zinc-100">{fmt(c.gdp_30d_usd)}</span>
-              <span className="text-zinc-600"> / {fmt(c.mcap_usd)}</span>
+            <span className="text-right tabular-nums text-fg-muted text-xs">
+              <span className="text-fg">{fmt(c.gdp_30d_usd)}</span>
+              <span className="text-fg-faint"> / {fmt(c.mcap_usd)}</span>
             </span>
           </div>
         );

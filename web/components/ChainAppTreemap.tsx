@@ -177,13 +177,13 @@ export function ChainAppTreemap({
             />
           </ResponsiveContainer>
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-sm text-zinc-500">
+          <div className="absolute inset-0 flex items-center justify-center text-sm text-fg-muted">
             All chains hidden — click one below to show again.
           </div>
         )}
         {hover && (
           <div
-            className="pointer-events-none absolute z-20 rounded-md border border-zinc-700 bg-zinc-950/95 px-3 py-2 text-sm shadow-2xl"
+            className="pointer-events-none absolute z-20 rounded-md border border-line bg-canvas/95 px-3 py-2 text-sm shadow-2xl"
             style={{
               left: Math.max(8, Math.min(hover.x - 140, 1100)),
               top: Math.max(8, hover.y - 86),
@@ -193,11 +193,11 @@ export function ChainAppTreemap({
             <div style={{ color: hover.color }} className="font-semibold leading-snug text-[13px]">
               {hover.name}
             </div>
-            <div className="text-zinc-400 mt-0.5 text-xs">
+            <div className="text-fg-muted mt-0.5 text-xs">
               {hover.chain} · {hover.category}
             </div>
-            <div className="text-zinc-100 mt-1.5">
-              <span className="text-zinc-500 text-xs">30d revenue </span>
+            <div className="text-fg mt-1.5">
+              <span className="text-fg-muted text-xs">30d revenue </span>
               <strong className="text-base">{fmt(hover.size)}</strong>
             </div>
           </div>
@@ -205,15 +205,15 @@ export function ChainAppTreemap({
       </div>
 
       {/* Interactive chain filter — click a chain to hide / show */}
-      <div className="mt-4 pt-4 border-t border-zinc-800">
+      <div className="mt-4 pt-4 border-t border-line">
         <div className="flex items-baseline justify-between mb-2">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-500">
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted">
             Chains — click to toggle ({allChainTotals.length - hiddenChains.size} of {allChainTotals.length} shown)
           </p>
           {hiddenChains.size > 0 && (
             <button
               onClick={showAll}
-              className="text-[11px] text-zinc-400 hover:text-zinc-200 border border-zinc-700 hover:border-zinc-500 rounded px-2 py-0.5 transition"
+              className="text-[11px] text-fg-muted hover:text-fg border border-line hover:border-zinc-500 rounded px-2 py-0.5 transition"
             >
               show all
             </button>
@@ -227,7 +227,7 @@ export function ChainAppTreemap({
                 key={c.slug}
                 onClick={() => toggleChain(c.slug)}
                 className={`flex items-center gap-2 text-xs px-1.5 py-1 rounded transition text-left ${
-                  hidden ? "opacity-40 hover:opacity-70" : "hover:bg-zinc-900"
+                  hidden ? "opacity-40 hover:opacity-70" : "hover:bg-surface"
                 }`}
                 title={hidden ? "Show" : "Hide"}
               >
@@ -235,7 +235,7 @@ export function ChainAppTreemap({
                   className="w-3 h-3 rounded-sm shrink-0"
                   style={{ background: c.color }}
                 />
-                <span className={`truncate ${hidden ? "text-zinc-500 line-through" : "text-zinc-200"}`}>
+                <span className={`truncate ${hidden ? "text-fg-muted line-through" : "text-fg"}`}>
                   {c.name}
                 </span>
               </button>

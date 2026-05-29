@@ -56,19 +56,15 @@ export default async function ChainPage({
       {/* Header */}
       <header className="mb-8 border-b border-zinc-800 pb-6">
         <div className="flex items-center gap-3 mb-2">
-          {c.image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={c.image}
-              alt=""
-              width={36}
-              height={36}
-              className="rounded-full bg-zinc-800 shrink-0"
-              loading="lazy"
-            />
-          ) : (
-            <span className="w-9 h-9 rounded-full bg-zinc-800 shrink-0" />
-          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={c.image || `https://icons.llamao.fi/icons/chains/rsz_${c.slug}.jpg`}
+            alt=""
+            width={36}
+            height={36}
+            className="rounded-full bg-zinc-800 shrink-0"
+            loading="lazy"
+          />
           <h1 className="text-3xl font-semibold tracking-tight">{c.name}</h1>
           {c.symbol && <span className="text-zinc-500 text-sm">${c.symbol}</span>}
         </div>

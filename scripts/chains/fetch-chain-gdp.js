@@ -438,7 +438,9 @@ async function main() {
       symbol: c.symbol,
       dl_chain: c.dl_chain,
       cg_id: c.cg_id,
-      image: cg?.image ?? null,
+      // Prefer CG token icon for chains with a native token; fall back to
+      // DeFiLlama's chain-icon CDN (keyed on slug) for the others.
+      image: cg?.image ?? `https://icons.llamao.fi/icons/chains/rsz_${slug}.jpg`,
       mcap_usd: mcap,
       fdv_usd: cg?.fdv ?? null,
       price_usd: cg?.price ?? null,

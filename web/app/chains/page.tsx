@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { chains, getChainHistory } from "@/lib/chains";
+import { getCohortMonthlyDelta } from "@/lib/chain-aggregates";
 import { CHAIN_COLORS } from "@/lib/chain-colors";
 import { fmtUsd } from "@/lib/format";
 import { ChainScaleBar } from "@/components/ChainScaleBar";
@@ -8,6 +9,12 @@ import { ChartTeasers } from "@/components/ChartTeasers";
 import { InfoTip } from "@/components/InfoTip";
 
 export const revalidate = 300;
+
+// Fallback chain logo when CoinGecko has no native-token icon (Base, edgeX,
+// Ink, Plasma, MegaETH, Katana). DeFiLlama's chain-icon CDN keys on slug.
+function chainImage(slug: string, cgImage: string | null): string {
+  return cgImage || `https://icons.llamao.fi/icons/chains/rsz_${slug}.jpg`;
+}
 
 function gdpTvlClass(band: string | null): string {
   switch (band) {
@@ -35,10 +42,8 @@ function fmtMultOrDash(v: number | null): string {
 }
 
 export default function ChainsIndex() {
-  const totalGdp30d = chains.chains.reduce((s, c) => s + (c.gdp_30d_usd || 0), 0);
-  const totalTvl = chains.chains.reduce((s, c) => s + (c.tvl_usd || 0), 0);
-  const totalMcap = chains.chains.reduce((s, c) => s + (c.mcap_usd || 0), 0);
   const trackedChains = chains.chains.length;
+  const deltas = getCohortMonthlyDelta();
 
   const maxGdp = Math.max(...chains.chains.map((c) => c.gdp_30d_usd || 0));
   const maxMcap = Math.max(...chains.chains.map((c) => c.mcap_usd || 0));
@@ -68,12 +73,21 @@ export default function ChainsIndex() {
         </p>
       </header>
 
-      {/* KPI strip */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-6 text-sm">
-        <Kpi label="Tracked" value={`${trackedChains}`} sub="chains" />
-        <Kpi label="Σ GDP · 30d" value={fmtUsd(totalGdp30d)} />
-        <Kpi label="Σ TVL" value={fmtUsd(totalTvl)} />
-        <Kpi label="Σ native mcap" value={fmtUsd(totalMcap)} sub="ex no-native-token chains" />
+      {/* Headline KPI strip */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <KpiBig label="Total tracked chains" value={`${trackedChains}`} sub="active in cohort" />
+        <KpiBig
+          label="Total monthly GDP"
+          value={fmtUsd(deltas.gdp.current)}
+          delta={deltas.gdp.deltaPct}
+          sub="trailing 30d, all chains"
+        />
+        <KpiBig
+          label="Total TVL"
+          value={fmtUsd(deltas.tvl.current)}
+          delta={deltas.tvl.deltaPct}
+          sub="latest snapshot, all chains"
+        />
       </div>
 
       {/* Chart teaser strip — clicks land on /chains/charts */}
@@ -106,11 +120,12 @@ export default function ChainsIndex() {
             <thead>
               <tr className="text-zinc-100 text-[10px] uppercase tracking-widest">
                 <th className="text-left font-normal py-2 px-2">Chain</th>
-                <th className="text-right font-normal py-2 px-2 w-[140px]">GDP · 30d</th>
-                <th className="text-left font-normal py-2 px-2 w-[100px]">30d trend</th>
-                <th className="text-right font-normal py-2 px-2 w-[140px]">Mcap</th>
+                <th className="text-right font-normal py-2 px-2 w-[130px]">Monthly GDP</th>
+                <th className="text-right font-normal py-2 px-2 w-[110px]">Annualized</th>
+                <th className="text-left font-normal py-2 px-2 w-[90px]">30d trend</th>
+                <th className="text-right font-normal py-2 px-2 w-[130px]">Mcap</th>
                 <th className="text-right font-normal py-2 px-2 w-[80px]">GDP Mult.</th>
-                <th className="text-right font-normal py-2 px-2 w-[140px]">TVL</th>
+                <th className="text-right font-normal py-2 px-2 w-[130px]">TVL</th>
                 <th className="text-right font-normal py-2 px-2 w-[80px]">GDP / TVL</th>
                 <th className="text-right font-normal py-2 px-2 w-[80px]">REV / GDP</th>
                 <th className="text-left font-normal py-2 px-2">Top app</th>
@@ -126,19 +141,15 @@ export default function ChainsIndex() {
                   <tr key={c.slug} className="border-zinc-900 group hover:bg-zinc-950/60 transition">
                     <td className="py-2.5 px-2 border-t border-zinc-900">
                       <Link href={`/chains/${c.slug}`} className="flex items-center gap-2.5">
-                        {c.image ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={c.image}
-                            alt=""
-                            width={24}
-                            height={24}
-                            className="rounded-full bg-zinc-800 shrink-0"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <span className="w-[24px] h-[24px] rounded-full bg-zinc-800 shrink-0" />
-                        )}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={chainImage(c.slug, c.image)}
+                          alt=""
+                          width={24}
+                          height={24}
+                          className="rounded-full bg-zinc-800 shrink-0"
+                          loading="lazy"
+                        />
                         <span>
                           <span className="block text-zinc-100 group-hover:text-white font-medium leading-tight">
                             {c.name}
@@ -157,6 +168,9 @@ export default function ChainsIndex() {
                     <td className="py-2.5 px-2 border-t border-zinc-900 text-right tabular-nums text-zinc-100">
                       {fmtUsd(c.gdp_30d_usd)}
                       <ChainScaleBar value={c.gdp_30d_usd} max={maxGdp} color={color} />
+                    </td>
+                    <td className="py-2.5 px-2 border-t border-zinc-900 text-right tabular-nums text-zinc-300">
+                      {fmtUsd(c.gdp_annualized_usd)}
                     </td>
                     <td className="py-2.5 px-2 border-t border-zinc-900">
                       <ChainTrendSparkline values={spark} color={color} />
@@ -216,12 +230,36 @@ export default function ChainsIndex() {
   );
 }
 
-function Kpi({ label, value, sub }: { label: string; value: string; sub?: string }) {
+function KpiBig({
+  label,
+  value,
+  sub,
+  delta
+}: {
+  label: string;
+  value: string;
+  sub?: string;
+  delta?: number | null;
+}) {
+  const dPct = delta == null ? null : delta * 100;
+  const dColor =
+    dPct == null ? "text-zinc-500" : dPct > 0 ? "text-emerald-300" : dPct < 0 ? "text-rose-300" : "text-zinc-400";
+  const dArrow = dPct == null ? "" : dPct > 0 ? "↑" : dPct < 0 ? "↓" : "·";
   return (
-    <div>
-      <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">{label}</p>
-      <p className="text-zinc-100 font-medium">{value}</p>
-      {sub && <p className="text-[11px] text-zinc-500 mt-0.5">{sub}</p>}
+    <div className="border border-zinc-800 rounded-md bg-zinc-950 px-5 py-5">
+      <p className="text-[11px] uppercase tracking-widest text-zinc-400">{label}</p>
+      <p className="text-3xl md:text-4xl font-semibold text-zinc-50 tabular-nums mt-1.5 leading-none">
+        {value}
+      </p>
+      <div className="flex items-baseline gap-3 mt-2">
+        {dPct != null && (
+          <span className={`text-sm tabular-nums ${dColor}`}>
+            {dArrow} {Math.abs(dPct).toFixed(1)}%
+            <span className="text-zinc-600 text-xs ml-1">mo/mo</span>
+          </span>
+        )}
+        {sub && <span className="text-[11px] text-zinc-500">{sub}</span>}
+      </div>
     </div>
   );
 }

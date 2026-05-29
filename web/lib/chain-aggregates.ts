@@ -90,6 +90,44 @@ export function getAllApps(): FlatApp[] {
   return out;
 }
 
+// Cohort month-over-month deltas — sum each chain's current 30d window
+// against the prior 30d window. For TVL (a stock), compare the most recent
+// non-null per chain vs the most recent non-null ~30d ago.
+export type CohortDelta = {
+  current: number;
+  prior: number;
+  deltaPct: number | null;
+};
+export type CohortDeltas = { gdp: CohortDelta; tvl: CohortDelta };
+
+export function getCohortMonthlyDelta(): CohortDeltas {
+  let gdpCurrent = 0;
+  let gdpPrior = 0;
+  let tvlCurrent = 0;
+  let tvlPrior = 0;
+  for (const slug of CHAIN_SLUGS) {
+    const hist = readJsonSafe<ChainHistoryPoint[]>(
+      path.join(DATA_ROOT, "history", `${slug}.json`),
+      []
+    );
+    const current30 = hist.slice(-30);
+    const prior30 = hist.slice(-60, -30);
+    for (const r of current30) gdpCurrent += Math.max(0, Number(r.gdp) || 0);
+    for (const r of prior30) gdpPrior += Math.max(0, Number(r.gdp) || 0);
+
+    const latestTvl = [...current30].reverse().find((r) => r.tvl != null)?.tvl ?? null;
+    const priorTvl = [...prior30].reverse().find((r) => r.tvl != null)?.tvl ?? null;
+    if (latestTvl != null) tvlCurrent += latestTvl;
+    if (priorTvl != null) tvlPrior += priorTvl;
+  }
+  const pct = (cur: number, pri: number): number | null =>
+    pri > 0 ? (cur - pri) / pri : null;
+  return {
+    gdp: { current: gdpCurrent, prior: gdpPrior, deltaPct: pct(gdpCurrent, gdpPrior) },
+    tvl: { current: tvlCurrent, prior: tvlPrior, deltaPct: pct(tvlCurrent, tvlPrior) }
+  };
+}
+
 // Heatmap matrix: rows = chains, columns = top-N categories overall.
 // Each cell = chain's 30d revenue in that category.
 export type CategoryMatrix = {

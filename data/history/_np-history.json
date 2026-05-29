@@ -1048,10 +1048,10 @@
   },
   {
     "date": "2026-05-29",
-    "generated_at": "2026-05-29T12:29:49.158Z",
+    "generated_at": "2026-05-29T16:55:49.279Z",
     "protocols": {
       "HYPE": {
-        "price_usd": 61.92,
+        "price_usd": 67.04,
         "static_reference": {
           "circulating_supply": {
             "date": "2026-05-29",
@@ -1063,19 +1063,19 @@
           },
           "af_balance": {
             "date": "2026-05-29",
-            "amount_tokens": 44639251.12473923,
-            "amount_usd": 2755670250.432402,
-            "price_usd_at_snapshot": 61.732,
+            "amount_tokens": 44643927.784739226,
+            "amount_usd": 2995295046.861509,
+            "price_usd_at_snapshot": 67.093,
             "source": "hyperliquid_info_api",
             "verification": "onchain"
           },
           "total_staked": {
             "date": "2026-05-29",
-            "total_staked_tokens": 431687941.3372214,
+            "total_staked_tokens": 431213401.87216973,
             "validator_count": 31,
             "validators_with_stake_field": 31,
             "validators_missing_stake_field": 0,
-            "delta_tokens": 50140.48306632042,
+            "delta_tokens": -424398.9819853306,
             "delta_basis_date": "2026-05-28",
             "source": "hyperliquid_info_api",
             "verification": "onchain"
@@ -1083,41 +1083,41 @@
         },
         "rollups": {
           "24h": {
-            "net_pressure_tokens": 2954269.770267013,
-            "net_pressure_usd": 182928384.17493346,
+            "net_pressure_tokens": 2999733.5933333333,
+            "net_pressure_usd": 201102140.09706667,
             "unlocks_tokens": 7531333.333333333,
-            "buybacks_tokens": 8123.080000000001,
+            "buybacks_tokens": 12799.740000000013,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           },
           "7d": {
-            "net_pressure_tokens": 1401580.7281422792,
-            "net_pressure_usd": 86785878.68656993,
+            "net_pressure_tokens": 1449777.9512085994,
+            "net_pressure_usd": 97193113.8490245,
             "unlocks_tokens": 7531333.333333333,
-            "buybacks_tokens": 101450.43999999999,
+            "buybacks_tokens": 103393.70000000001,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           },
           "30d": {
-            "net_pressure_tokens": 1813653.6448089457,
-            "net_pressure_usd": 105632535.99780327,
+            "net_pressure_tokens": 1861850.867875266,
+            "net_pressure_usd": 116039771.16025785,
             "unlocks_tokens": 17448000,
-            "buybacks_tokens": 681044.1899999998,
+            "buybacks_tokens": 682987.4499999998,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           },
           "90d": {
-            "net_pressure_tokens": 10627282.868142283,
-            "net_pressure_usd": 421320797.0416335,
+            "net_pressure_tokens": 10675480.091208603,
+            "net_pressure_usd": 431728032.204088,
             "unlocks_tokens": 59875333.333333336,
-            "buybacks_tokens": 2888348.3000000003,
+            "buybacks_tokens": 2890291.56,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           }
         }
       },
       "AAVE": {
-        "price_usd": 81.52,
+        "price_usd": 83.1,
         "static_reference": {
           "treasury": {
             "date": "2026-05-29",
@@ -1127,47 +1127,47 @@
           },
           "staking": {
             "date": "2026-05-29",
-            "total_staked_tokens": 2100772.6939979997,
-            "delta_tokens": 3621.6211734835524,
+            "total_staked_tokens": 2101104.321341348,
+            "delta_tokens": 331.62734334822744,
             "delta_basis_date": "2026-05-29",
             "source": "alchemy_eth_call_totalSupply",
             "verification": "onchain"
           },
           "ecosystem_reserve": {
             "date": "2026-05-29",
-            "balance_tokens": 597188.7880775256,
+            "balance_tokens": 595784.7874351343,
             "source": "alchemy_eth_call_balanceOf",
             "verification": "onchain"
           }
         },
         "rollups": {
           "24h": {
-            "net_pressure_tokens": -3621.6211734835524,
-            "net_pressure_usd": -295234.5580623792,
+            "net_pressure_tokens": -331.62734334822744,
+            "net_pressure_usd": -27558.232232237697,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
             "coverage_complete": false
           },
           "7d": {
-            "net_pressure_tokens": -7521.962402345147,
-            "net_pressure_usd": -613190.3750391763,
+            "net_pressure_tokens": -4231.968572209822,
+            "net_pressure_usd": -351676.5883506362,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
             "coverage_complete": false
           },
           "30d": {
-            "net_pressure_tokens": -7521.962402345147,
-            "net_pressure_usd": -613190.3750391763,
+            "net_pressure_tokens": -4231.968572209822,
+            "net_pressure_usd": -351676.5883506362,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
             "coverage_complete": false
           },
           "90d": {
-            "net_pressure_tokens": -100580.99802699572,
-            "net_pressure_usd": -8199362.95916069,
+            "net_pressure_tokens": -97291.00419686039,
+            "net_pressure_usd": -8084882.448759098,
             "unlocks_tokens": 0,
             "buybacks_tokens": 93059.03562465057,
             "buyback_coverage_pct": 0.4888888888888889,
@@ -1176,12 +1176,12 @@
         }
       },
       "SKY": {
-        "price_usd": 0.065873,
+        "price_usd": 0.065245,
         "static_reference": {
           "lockstake": {
             "date": "2026-05-29",
-            "total_staked_tokens": 9960156956.146044,
-            "delta_tokens": 0,
+            "total_staked_tokens": 9960187960.958279,
+            "delta_tokens": 31004.81223487854,
             "delta_basis_date": "2026-05-29",
             "source": "alchemy_eth_call_balanceOf",
             "verification": "onchain"
@@ -1196,32 +1196,32 @@
         },
         "rollups": {
           "24h": {
-            "net_pressure_tokens": 0,
-            "net_pressure_usd": 0,
+            "net_pressure_tokens": -31004.81223487854,
+            "net_pressure_usd": -2022.9089742646502,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
             "coverage_complete": false
           },
           "7d": {
-            "net_pressure_tokens": -384.7293891906738,
-            "net_pressure_usd": -25.343279054157257,
+            "net_pressure_tokens": -31389.541624069214,
+            "net_pressure_usd": -2048.0106432623957,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
             "coverage_complete": false
           },
           "30d": {
-            "net_pressure_tokens": -384.7293891906738,
-            "net_pressure_usd": -25.343279054157257,
+            "net_pressure_tokens": -31389.541624069214,
+            "net_pressure_usd": -2048.0106432623957,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
             "coverage_complete": false
           },
           "90d": {
-            "net_pressure_tokens": -384.7293891906738,
-            "net_pressure_usd": -25.343279054157257,
+            "net_pressure_tokens": -31389.541624069214,
+            "net_pressure_usd": -2048.0106432623957,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -1230,7 +1230,7 @@
         }
       },
       "LIT": {
-        "price_usd": 1.16,
+        "price_usd": 1.31,
         "static_reference": {
           "l1_supply": {
             "date": "2026-05-29",
@@ -1240,8 +1240,8 @@
           },
           "l1_escrow": {
             "date": "2026-05-29",
-            "balance_tokens": 203185573.66074476,
-            "pct_of_supply": 0.20318557366074474,
+            "balance_tokens": 203219703.40621224,
+            "pct_of_supply": 0.20321970340621223,
             "source": "alchemy_eth_call_balanceOf",
             "verification": "onchain"
           },

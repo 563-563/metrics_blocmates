@@ -3,7 +3,7 @@
 export function ChainScaleBar({
   value,
   max,
-  color = "#a1a1aa"
+  color = "currentColor"
 }: {
   value: number | null;
   max: number;

@@ -85,16 +85,16 @@ export function UnlockScheduleChart({
     <div className="h-80 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={points} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" />
           <XAxis
             dataKey="date"
-            stroke="#666"
-            tick={{ fontSize: 10, fill: "#888" }}
+            stroke="rgb(var(--fg-faint))"
+            tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
             minTickGap={48}
           />
           <YAxis
-            stroke="#666"
-            tick={{ fontSize: 10, fill: "#888" }}
+            stroke="rgb(var(--fg-faint))"
+            tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
             tickFormatter={(v: number) => {
               if (v >= 1e9) return `${(v / 1e9).toFixed(1)}B`;
               if (v >= 1e6) return `${(v / 1e6).toFixed(0)}M`;
@@ -105,19 +105,19 @@ export function UnlockScheduleChart({
           {firstProjectedDate && firstProjectedDate >= todayIso && (
             <ReferenceLine
               x={todayIso}
-              stroke="#52525b"
+              stroke="rgb(var(--fg-faint))"
               strokeDasharray="2 4"
               label={{ value: "today", position: "insideTop", fill: "#71717a", fontSize: 10 }}
             />
           )}
           <Tooltip
             contentStyle={{
-              background: "#0a0a0a",
-              border: "1px solid #1f1f1f",
+              background: "rgb(var(--surface))",
+              border: "1px solid rgb(var(--line))",
               fontSize: 12
             }}
-            labelStyle={{ color: "#888" }}
-            itemStyle={{ color: "#e4e4e7" }}
+            labelStyle={{ color: "rgb(var(--fg-muted))" }}
+            itemStyle={{ color: "rgb(var(--fg))" }}
             formatter={(value: number, name: string) => [
               `${Math.round(value).toLocaleString()} ${symbol}${
                 totalSupply ? ` (${((value / totalSupply) * 100).toFixed(2)}%)` : ""
@@ -130,9 +130,9 @@ export function UnlockScheduleChart({
           />
           <Legend
             verticalAlign="bottom"
-            wrapperStyle={{ fontSize: 10, color: "#888", paddingTop: 8 }}
+            wrapperStyle={{ fontSize: 10, color: "rgb(var(--fg-muted))", paddingTop: 8 }}
             formatter={(value) => (
-              <span style={{ color: "#a1a1aa" }}>{labelize(value)}</span>
+              <span style={{ color: "rgb(var(--fg-muted))" }}>{labelize(value)}</span>
             )}
           />
           {buckets.map((b) => (
@@ -141,8 +141,8 @@ export function UnlockScheduleChart({
               type="monotone"
               dataKey={b}
               stackId="1"
-              stroke={BUCKET_COLORS[b] ?? "#52525b"}
-              fill={BUCKET_COLORS[b] ?? "#52525b"}
+              stroke={BUCKET_COLORS[b] ?? "rgb(var(--fg-faint))"}
+              fill={BUCKET_COLORS[b] ?? "rgb(var(--fg-faint))"}
               fillOpacity={0.45}
               strokeWidth={1}
             />

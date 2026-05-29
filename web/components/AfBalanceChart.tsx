@@ -29,28 +29,28 @@ export function AfBalanceChart({
               <stop offset="100%" stopColor="#10b981" stopOpacity={0.02} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" />
           <XAxis
             dataKey="date"
-            stroke="#666"
-            tick={{ fontSize: 10, fill: "#888" }}
+            stroke="rgb(var(--fg-faint))"
+            tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
             minTickGap={48}
           />
           <YAxis
-            stroke="#666"
-            tick={{ fontSize: 10, fill: "#888" }}
+            stroke="rgb(var(--fg-faint))"
+            tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
             tickFormatter={(v: number) =>
               v >= 1e6 ? `${(v / 1e6).toFixed(0)}M` : `${(v / 1e3).toFixed(0)}K`
             }
           />
           <Tooltip
             contentStyle={{
-              background: "#0a0a0a",
-              border: "1px solid #1f1f1f",
+              background: "rgb(var(--surface))",
+              border: "1px solid rgb(var(--line))",
               fontSize: 12
             }}
-            labelStyle={{ color: "#888" }}
-            itemStyle={{ color: "#e4e4e7" }}
+            labelStyle={{ color: "rgb(var(--fg-muted))" }}
+            itemStyle={{ color: "rgb(var(--fg))" }}
             formatter={(value: number) => [
               `${Math.round(value).toLocaleString()} ${symbol}`,
               "balance"

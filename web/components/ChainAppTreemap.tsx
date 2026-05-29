@@ -12,7 +12,7 @@ function fmt(v: number): string {
   return `$${v.toFixed(0)}`;
 }
 
-const TEXT_FILL = "#f4f4f5";
+const TEXT_FILL = "rgb(var(--fg))";
 const TEXT_STROKE = "rgba(0,0,0,0.6)";
 
 type Hovered = {
@@ -70,7 +70,7 @@ function TmContent(props: any) {
         y={y}
         width={width}
         height={height}
-        style={{ fill, fillOpacity: 0.9, stroke: "#0a0a0a", strokeWidth: 1 }}
+        style={{ fill, fillOpacity: 0.9, stroke: "rgb(var(--surface))", strokeWidth: 1 }}
       />
       {showName && (
         <text
@@ -171,7 +171,7 @@ export function ChainAppTreemap({
             <Treemap
               data={data}
               dataKey="size"
-              stroke="#0a0a0a"
+              stroke="rgb(var(--surface))"
               content={<TmContent />}
               isAnimationActive={false}
             />

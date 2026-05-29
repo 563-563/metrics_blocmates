@@ -13,7 +13,7 @@ import {
 
 export type HmHistoryPoint = { date: string; hm: number | null; price_usd?: number };
 
-const HM_COLOR = "#e4e4e7";
+const HM_COLOR = "rgb(var(--fg))";
 const PRICE_COLOR = "#84cc16";
 
 const BANDS = [
@@ -29,8 +29,8 @@ function Tip({ active, payload, label }: any) {
   const hm = payload.find((p: any) => p.dataKey === "hm");
   const price = payload.find((p: any) => p.dataKey === "price_usd");
   return (
-    <div style={{ background: "#0a0a0a", border: "1px solid #1f1f1f", padding: "6px 9px", fontSize: 12 }}>
-      <div style={{ color: "#888", marginBottom: 3 }}>{label}</div>
+    <div style={{ background: "rgb(var(--surface))", border: "1px solid rgb(var(--line))", padding: "6px 9px", fontSize: 12 }}>
+      <div style={{ color: "rgb(var(--fg-muted))", marginBottom: 3 }}>{label}</div>
       {hm && (
         <div style={{ color: HM_COLOR }}>
           HM <strong>{Number(hm.value).toFixed(1)}×</strong>
@@ -70,13 +70,13 @@ export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
               ifOverflow="hidden"
             />
           ))}
-          <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" vertical={false} />
-          <XAxis dataKey="date" stroke="#666" tick={{ fontSize: 10, fill: "#888" }} minTickGap={48} />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" vertical={false} />
+          <XAxis dataKey="date" stroke="rgb(var(--fg-faint))" tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }} minTickGap={48} />
           <YAxis
             yAxisId="hm"
-            stroke="#666"
+            stroke="rgb(var(--fg-faint))"
             domain={[0, yMax]}
-            tick={{ fontSize: 10, fill: "#888" }}
+            tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
             tickFormatter={(v: number) => `${v}×`}
             label={{ value: "Holder Multiple (×)", angle: -90, position: "insideLeft", offset: 4, style: { textAnchor: "middle", fill: HM_COLOR, fontSize: 11 } }}
           />

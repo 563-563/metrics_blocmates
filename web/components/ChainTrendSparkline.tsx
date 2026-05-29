@@ -2,7 +2,7 @@
 // just a path string. Last 30 points by default.
 export function ChainTrendSparkline({
   values,
-  color = "#a1a1aa",
+  color = "currentColor",
   width = 80,
   height = 22
 }: {

@@ -32,20 +32,20 @@ function Tip({ active, payload }: any) {
   return (
     <div
       style={{
-        background: "#0a0a0a",
-        border: "1px solid #1f1f1f",
+        background: "rgb(var(--surface))",
+        border: "1px solid rgb(var(--line))",
         padding: "6px 10px",
         fontSize: 12,
-        color: "#e4e4e7"
+        color: "rgb(var(--fg))"
       }}
     >
       <div style={{ color: d.color, fontWeight: 600, marginBottom: 4 }}>
         {d.name}
-        {d.offscale && <span style={{ color: "#fbbf24" }}> ↑ off-scale</span>}
+        {d.offscale && <span style={{ color: "rgb(var(--negative))" }}> ↑ off-scale</span>}
       </div>
-      <div>GDP/TVL <strong>{(d.x * 100).toFixed(1)}%</strong> <span style={{ color: "#888" }}>· productivity</span></div>
-      <div>REV/GDP <strong>{(d.yTrue * 100).toFixed(1)}%</strong> <span style={{ color: "#888" }}>· tax burden</span></div>
-      <div style={{ color: "#a1a1aa", marginTop: 4 }}>mcap {fmt(d.z)} · TVL {fmt(d.tvl)} · GDP {fmt(d.gdp)}</div>
+      <div>GDP/TVL <strong>{(d.x * 100).toFixed(1)}%</strong> <span style={{ color: "rgb(var(--fg-muted))" }}>· productivity</span></div>
+      <div>REV/GDP <strong>{(d.yTrue * 100).toFixed(1)}%</strong> <span style={{ color: "rgb(var(--fg-muted))" }}>· tax burden</span></div>
+      <div style={{ color: "rgb(var(--fg-muted))", marginTop: 4 }}>mcap {fmt(d.z)} · TVL {fmt(d.tvl)} · GDP {fmt(d.gdp)}</div>
     </div>
   );
 }
@@ -89,23 +89,23 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
             {/* Quadrant tints — orient the viewer at a glance */}
             <ReferenceArea x1={0} x2={0.3} y1={0.3} y2={Y_CAP} fill="#f43f5e" fillOpacity={0.05} />
             <ReferenceArea x1={0.3} x2={xMax} y1={0.3} y2={Y_CAP} fill="#f59e0b" fillOpacity={0.05} />
-            <ReferenceArea x1={0} x2={0.3} y1={0} y2={0.3} fill="#52525b" fillOpacity={0.04} />
+            <ReferenceArea x1={0} x2={0.3} y1={0} y2={0.3} fill="rgb(var(--fg-faint))" fillOpacity={0.04} />
             <ReferenceArea x1={0.3} x2={xMax} y1={0} y2={0.3} fill="#10b981" fillOpacity={0.05} />
 
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" />
             <XAxis
               type="number"
               dataKey="x"
               domain={[0, xMax]}
               allowDataOverflow
-              tick={{ fontSize: 12, fill: "#a1a1aa" }}
-              stroke="#666"
+              tick={{ fontSize: 12, fill: "rgb(var(--fg-muted))" }}
+              stroke="rgb(var(--fg-faint))"
               tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
               label={{
                 value: "GDP / TVL (annualized) — capital productivity →",
                 position: "insideBottom",
                 offset: -16,
-                style: { textAnchor: "middle", fill: "#d4d4d8", fontSize: 13 }
+                style: { textAnchor: "middle", fill: "rgb(var(--fg))", fontSize: 13 }
               }}
             />
             <YAxis
@@ -113,19 +113,19 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
               dataKey="y"
               domain={[0, Y_CAP]}
               allowDataOverflow
-              tick={{ fontSize: 12, fill: "#a1a1aa" }}
-              stroke="#666"
+              tick={{ fontSize: 12, fill: "rgb(var(--fg-muted))" }}
+              stroke="rgb(var(--fg-faint))"
               tickFormatter={(v) => (v >= Y_CAP - 0.001 ? `≥${Math.round(Y_CAP * 100)}%` : `${(v * 100).toFixed(0)}%`)}
               label={{
                 value: "REV / GDP — tax burden ↑",
                 angle: -90,
                 position: "insideLeft",
                 offset: 8,
-                style: { textAnchor: "middle", fill: "#d4d4d8", fontSize: 13 }
+                style: { textAnchor: "middle", fill: "rgb(var(--fg))", fontSize: 13 }
               }}
             />
             <ZAxis type="number" dataKey="z" range={[80, 1800]} domain={[0, zMax]} />
-            <Tooltip content={<Tip />} cursor={{ strokeDasharray: "3 3", stroke: "#333" }} />
+            <Tooltip content={<Tip />} cursor={{ strokeDasharray: "3 3", stroke: "rgb(var(--line))" }} />
             <Scatter data={data}>
               {data.map((d) => (
                 <Cell key={d.slug} fill={d.color} fillOpacity={0.65} stroke={d.color} strokeWidth={1.4} />
@@ -134,7 +134,7 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
                 dataKey="name"
                 position="top"
                 offset={10}
-                style={{ fill: "#f4f4f5", fontSize: 13, fontWeight: 500, pointerEvents: "none" }}
+                style={{ fill: "rgb(var(--fg))", fontSize: 13, fontWeight: 500, pointerEvents: "none" }}
               />
             </Scatter>
           </ScatterChart>
@@ -148,7 +148,7 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
         <span className="text-zinc-300 font-medium">grey</span> = idle &amp; untaxed.
         {offscaleNames.length > 0 && (
           <span className="block mt-1.5">
-            <span className="text-amber-300 font-medium">↑ off-scale (Y clamped at {Math.round(Y_CAP * 100)}%):</span>{" "}
+            <span className="text-negative font-medium">↑ off-scale (Y clamped at {Math.round(Y_CAP * 100)}%):</span>{" "}
             {offscaleNames.join(", ")}
           </span>
         )}

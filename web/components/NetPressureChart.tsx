@@ -50,10 +50,10 @@ function makeTip(view: View, symbol: string) {
     const np = payload.find((p: any) => p.dataKey === npKey);
     const price = payload.find((p: any) => p.dataKey === "price_usd");
     const npVal = np != null ? Number(np.value) : null;
-    const npColor = npVal == null ? "#e4e4e7" : npVal > 0 ? SELLER : BUYER;
+    const npColor = npVal == null ? "rgb(var(--fg))" : npVal > 0 ? SELLER : BUYER;
     return (
-      <div style={{ background: "#0a0a0a", border: "1px solid #1f1f1f", padding: "6px 9px", fontSize: 12 }}>
-        <div style={{ color: "#888", marginBottom: 3 }}>{label}</div>
+      <div style={{ background: "rgb(var(--surface))", border: "1px solid rgb(var(--line))", padding: "6px 9px", fontSize: 12 }}>
+        <div style={{ color: "rgb(var(--fg-muted))", marginBottom: 3 }}>{label}</div>
         {npVal != null && (
           <div style={{ color: npColor }}>
             {VIEW_LABEL[view]} <strong>{npVal >= 0 ? "+" : ""}{fmtMoney(npVal)}</strong>
@@ -111,12 +111,12 @@ export function NetPressureChart({ data, symbol }: { data: NpPoint[]; symbol: st
       <div className="h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={enriched} margin={{ top: 8, right: 16, left: 16, bottom: 8 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" />
-            <XAxis dataKey="date" stroke="#666" tick={{ fontSize: 10, fill: "#888" }} minTickGap={32} />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" />
+            <XAxis dataKey="date" stroke="rgb(var(--fg-faint))" tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }} minTickGap={32} />
             <YAxis
               yAxisId="np"
-              stroke="#666"
-              tick={{ fontSize: 10, fill: "#888" }}
+              stroke="rgb(var(--fg-faint))"
+              tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
               tickFormatter={fmtMoney}
               label={{ value: "Net Pressure (USD)", angle: -90, position: "insideLeft", offset: 4, style: { textAnchor: "middle", fill: LINE_COLOR, fontSize: 11 } }}
             />
@@ -130,7 +130,7 @@ export function NetPressureChart({ data, symbol }: { data: NpPoint[]; symbol: st
                 label={{ value: "Price (USD)", angle: 90, position: "insideRight", offset: 4, style: { textAnchor: "middle", fill: PRICE_COLOR, fontSize: 11 } }}
               />
             )}
-            <ReferenceLine yAxisId="np" y={0} stroke="#3f3f46" />
+            <ReferenceLine yAxisId="np" y={0} stroke="rgb(var(--line))" />
             <Tooltip content={<Tip />} />
 
             {view === "daily" ? (

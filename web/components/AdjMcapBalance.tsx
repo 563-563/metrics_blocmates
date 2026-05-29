@@ -72,10 +72,10 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
         style={{ maxHeight: 520 }}
       >
         {/* Header — Adj MCap result */}
-        <text x={CX} y={28} textAnchor="middle" fontSize="11" fill="#a1a1aa" letterSpacing="1.5">
+        <text x={CX} y={28} textAnchor="middle" fontSize="11" fill={"rgb(var(--fg-muted))"} letterSpacing="1.5">
           ADJUSTED MCAP
         </text>
-        <text x={CX} y={58} textAnchor="middle" fontSize="22" fill="#e4e4e7" fontWeight="600">
+        <text x={CX} y={58} textAnchor="middle" fontSize="22" fill={"rgb(var(--fg))"} fontWeight="600">
           {fmtUsd(adjMcap)}
         </text>
         {sum > 0 && (
@@ -92,14 +92,14 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
             y={FY - 3}
             width={BEAM_L * 2}
             height={6}
-            fill="#52525b"
+            fill={"rgb(var(--fg-faint))"}
             rx={3}
           />
         </g>
 
         {/* Chains — vertical (gravity) */}
-        <line x1={leftBeam.x} y1={leftBeam.y} x2={leftPan.x} y2={leftPan.y - lR} stroke="#52525b" strokeWidth={1.2} />
-        <line x1={rightBeam.x} y1={rightBeam.y} x2={rightPan.x} y2={rightPan.y - rR} stroke="#52525b" strokeWidth={1.2} />
+        <line x1={leftBeam.x} y1={leftBeam.y} x2={leftPan.x} y2={leftPan.y - lR} stroke={"rgb(var(--fg-faint))"} strokeWidth={1.2} />
+        <line x1={rightBeam.x} y1={rightBeam.y} x2={rightPan.x} y2={rightPan.y - rR} stroke={"rgb(var(--fg-faint))"} strokeWidth={1.2} />
 
         {/* LEFT pan — buybacks (compression). Single-line top label. */}
         <g>
@@ -108,7 +108,7 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
             y={leftPan.y - lR - 14}
             textAnchor="middle"
             fontSize="11"
-            fill="#a1a1aa"
+            fill={"rgb(var(--fg-muted))"}
             letterSpacing="0.5"
           >
             BUYBACKS
@@ -138,7 +138,7 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
             y={leftPan.y + lR + 16}
             textAnchor="middle"
             fontSize="10"
-            fill="#71717a"
+            fill={"rgb(var(--fg-faint))"}
           >
             compression
           </text>
@@ -146,7 +146,7 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
 
         {/* RIGHT pan — unlocks + emissions. Two-line top label to keep narrow. */}
         <g>
-          <text textAnchor="middle" fontSize="11" fill="#a1a1aa" letterSpacing="0.5">
+          <text textAnchor="middle" fontSize="11" fill={"rgb(var(--fg-muted))"} letterSpacing="0.5">
             <tspan x={rightPan.x} y={rightPan.y - rR - 26}>UNLOCKS</tspan>
             <tspan x={rightPan.x} y={rightPan.y - rR - 14}>+ EMISSIONS</tspan>
           </text>
@@ -175,7 +175,7 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
             y={rightPan.y + rR + 16}
             textAnchor="middle"
             fontSize="10"
-            fill="#71717a"
+            fill={"rgb(var(--fg-faint))"}
           >
             expansion
           </text>
@@ -184,15 +184,15 @@ export function AdjMcapBalance({ p }: { p: HmProtocol }) {
         {/* Fulcrum */}
         <polygon
           points={`${CX - 16},${FY + 24} ${CX + 16},${FY + 24} ${CX},${FY - 2}`}
-          fill="#71717a"
+          fill={"rgb(var(--fg-faint))"}
         />
 
         {/* Float base */}
-        <rect x={CX - 130} y={440} width={260} height={56} fill="#18181b" stroke="#3f3f46" rx={4} />
-        <text x={CX} y={462} textAnchor="middle" fontSize="11" fill="#a1a1aa" letterSpacing="1.5">
+        <rect x={CX - 130} y={440} width={260} height={56} fill={"rgb(var(--surface-elev))"} stroke={"rgb(var(--line))"} rx={4} />
+        <text x={CX} y={462} textAnchor="middle" fontSize="11" fill={"rgb(var(--fg-muted))"} letterSpacing="1.5">
           FLOAT MCAP
         </text>
-        <text x={CX} y={484} textAnchor="middle" fontSize="16" fill="#e4e4e7" fontWeight="600">
+        <text x={CX} y={484} textAnchor="middle" fontSize="16" fill={"rgb(var(--fg))"} fontWeight="600">
           {fmtUsd(float)}
         </text>
       </svg>

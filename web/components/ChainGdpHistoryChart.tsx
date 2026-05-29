@@ -31,13 +31,13 @@ function Tip({ active, payload, label }: any) {
   return (
     <div
       style={{
-        background: "#0a0a0a",
-        border: "1px solid #1f1f1f",
+        background: "rgb(var(--surface))",
+        border: "1px solid rgb(var(--line))",
         padding: "6px 9px",
         fontSize: 12
       }}
     >
-      <div style={{ color: "#888", marginBottom: 3 }}>{label}</div>
+      <div style={{ color: "rgb(var(--fg-muted))", marginBottom: 3 }}>{label}</div>
       {g && (
         <div style={{ color: GDP_COLOR }}>
           GDP <strong>{fmtMoney(Number(g.value))}</strong>
@@ -72,16 +72,16 @@ export function ChainGdpHistoryChart({ data }: { data: ChainHistoryPoint[] }) {
               <stop offset="100%" stopColor={GDP_COLOR} stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1f1f1f" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" vertical={false} />
           <XAxis
             dataKey="date"
-            stroke="#666"
-            tick={{ fontSize: 10, fill: "#888" }}
+            stroke="rgb(var(--fg-faint))"
+            tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
             minTickGap={48}
           />
           <YAxis
-            stroke="#666"
-            tick={{ fontSize: 10, fill: "#888" }}
+            stroke="rgb(var(--fg-faint))"
+            tick={{ fontSize: 10, fill: "rgb(var(--fg-muted))" }}
             tickFormatter={fmtMoney}
             label={{
               value: "Daily $ (USD)",

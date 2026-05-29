@@ -170,9 +170,7 @@
       "comment": "config note flags: 'TTM fees overstated — use ann_rev_override'. Our compute already uses forward run-rate (holders_revenue_30d × 12) via accrual_annual_est = $3.19M. No override needed — flagging here for visibility."
     },
     "ETHFI": {
-      "comment": "DL splits ether.fi across 3 sub-protocols (ether.fi-liquid, etherfi-cash-liquid, etherfi-borrowing-market) — no parent fees endpoint. data/config.json has accrual_pct=1.0 which is WRONG: per DAO Proposal #8, only 10% of protocol revenue routes to ETHFI value accrual (5% buyback+burn, 5% sETHFI staker distributions). Our scripts/onchain/proxy/fetch-etherfi-buybacks.js aggregates the 3 sub-protocols and applies 10%, producing ~$4.25M/yr last-30d annualized. NOTE: This excludes the $50M discretionary treasury buyback approved Nov 2025 (triggers at price < $3 — ACTIVE) since DL doesn't surface it. Long-term fix: update data/config.json ETHFI accrual_pct to 0.1.",
-      "accrual_annual_est_override": 4250000,
-      "verification_override": "proxy"
+      "comment": "data/config.json accrual_pct fixed to 0.10 on 2026-05-29 (was 1.0 — wrong per DAO Proposal #8). No override needed anymore; latest.json will derive ~$4-5M/yr from holders_revenue_30d × 12. The $50M discretionary treasury buyback approved Nov 2025 is NOT in DL's view — separate editorial layer if/when needed."
     }
   }
 }

@@ -74,6 +74,12 @@ jobs:
       - name: LIT buyback proxy (DefiLlama holdersRevenue)
         run: node scripts/onchain/lit/fetch-buyback-proxy.js
 
+      - name: Generic DL proxy buyback feeds (22 protocols — UNI, RAY, FLUID, EUL, CARDS, DYDX, GNS, ORCA, COW, ZRO, PUMP, JUP, MNDE, …)
+        run: node scripts/onchain/proxy/fetch-dl-buybacks.js
+
+      - name: ETHFI buyback proxy (aggregates 3 DL sub-protocols × 10% accrual)
+        run: node scripts/onchain/proxy/fetch-etherfi-buybacks.js
+
       - name: Daily price history (CoinGecko, for HM-over-time)
         run: node scripts/external/fetch-cg-price-history.js --days 180
 

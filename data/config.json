@@ -461,12 +461,12 @@
         "mechanism": "buyback",
         "status": "executing",
         "execution_type": "discretionary",
-        "accrual_base": "holdersRevenue",
-        "accrual_pct": 1.0,
+        "accrual_base": "revenue",
+        "accrual_pct": 0.10,
         "tracking_source": "dune",
         "dune_query_id": null,
-        "last_verified": "2026-04-19",
-        "notes": "10% of protocol revenue allocated to ETHFI value accrual: 5% \u2192 buyback+burn (open market), 5% \u2192 sETHFI staker distributions (DAO Proposal #8). Additional $50M treasury buyback approved Nov 2025 (triggers at price < $3 \u2014 ACTIVE at $0.45). $6.5M+ cumulative buybacks verified on-chain, >85% burned. Revenue ~$55-65M/yr at $2,340 ETH (severely ETH-price dependent). TTM DeFi Llama fees ($175M) backward-weighted to ETH ATH."
+        "last_verified": "2026-05-29",
+        "notes": "10% of protocol revenue allocated to ETHFI value accrual: 5% \u2192 buyback+burn (open market), 5% \u2192 sETHFI staker distributions (DAO Proposal #8). Additional $50M treasury buyback approved Nov 2025 (triggers at price < $3 \u2014 ACTIVE at $0.45). $6.5M+ cumulative buybacks verified on-chain, >85% burned. Revenue ~$55-65M/yr at $2,340 ETH (severely ETH-price dependent). NOTE: DL splits ether.fi across 3 sub-protocols (no parent fees endpoint) \u2014 our TP buyback proxy aggregates them via scripts/onchain/proxy/fetch-etherfi-buybacks.js. accrual_pct corrected from 1.0 to 0.10 on 2026-05-29."
       }
     },
     {

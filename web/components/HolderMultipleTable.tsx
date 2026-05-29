@@ -7,6 +7,12 @@ import { fmtMultiple, fmtUsd } from "@/lib/format";
 import { Sparkline } from "./Sparkline";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
 
+// Only these slugs have a per-protocol detail page (/[slug] + /[slug]/hm).
+// Synthesized rows from data/config.json render as plain text instead of
+// clickable links to avoid 404-on-click. When detail pages exist for more
+// protocols, add them here.
+const PROTOCOLS_WITH_DETAIL_PAGE = new Set(["sky", "aave", "hyperliquid", "lighter"]);
+
 export type HmRow = {
   p: HmProtocol;
   // Bar magnitude only — no band label text, no colored cell — reader judges.
@@ -150,40 +156,60 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
           </tr>
         </thead>
         <tbody>
-          {sorted.map(({ p, barPct, hmMoMPct, spark, verif }) => (
+          {sorted.map(({ p, barPct, hmMoMPct, spark, verif }) => {
+            const hasDetailPage = PROTOCOLS_WITH_DETAIL_PAGE.has(p.slug);
+            const protocolInner = (
+              <>
+                {p.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={p.image}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="rounded-full bg-surface-elev shrink-0"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className="w-7 h-7 rounded-full bg-surface-elev shrink-0" />
+                )}
+                <span>
+                  <span className={`block font-medium ${hasDetailPage ? "text-fg group-hover:text-accent" : "text-fg"}`}>{p.name}</span>
+                  <span className="block text-[11px] text-fg-muted">
+                    ${p.symbol} · <span className="text-fg-faint">{p.phase.active}</span>
+                  </span>
+                </span>
+              </>
+            );
+            const hmInner = (
+              <>
+                <span className="text-lg font-mono font-semibold tabular-nums text-fg">
+                  {fmtMultiple(p.hm)}
+                </span>
+                <div className="mt-1.5 h-[3px] rounded-full bg-line-faint overflow-hidden">
+                  <div className="h-full rounded-full bg-fg-muted" style={{ width: `${barPct}%` }} />
+                </div>
+              </>
+            );
+            return (
             <tr key={p.slug} className="border-line-faint group">
               <td className="py-3 px-2 border-t border-line-faint">
-                <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
-                  {p.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={p.image}
-                      alt=""
-                      width={28}
-                      height={28}
-                      className="rounded-full bg-surface-elev shrink-0"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span className="w-7 h-7 rounded-full bg-surface-elev shrink-0" />
-                  )}
-                  <span>
-                    <span className="block text-fg group-hover:text-accent font-medium">{p.name}</span>
-                    <span className="block text-[11px] text-fg-muted">
-                      ${p.symbol} · <span className="text-fg-faint">{p.phase.active}</span>
-                    </span>
-                  </span>
-                </Link>
+                {hasDetailPage ? (
+                  <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
+                    {protocolInner}
+                  </Link>
+                ) : (
+                  <div className="flex items-center gap-2.5">{protocolInner}</div>
+                )}
               </td>
               <td className="py-3 px-2 border-t border-line-faint">
-                <Link href={`/${p.slug}/hm`} className="block px-1">
-                  <span className="text-lg font-mono font-semibold tabular-nums text-fg">
-                    {fmtMultiple(p.hm)}
-                  </span>
-                  <div className="mt-1.5 h-[3px] rounded-full bg-line-faint overflow-hidden">
-                    <div className="h-full rounded-full bg-fg-muted" style={{ width: `${barPct}%` }} />
-                  </div>
-                </Link>
+                {hasDetailPage ? (
+                  <Link href={`/${p.slug}/hm`} className="block px-1">
+                    {hmInner}
+                  </Link>
+                ) : (
+                  <div className="block px-1">{hmInner}</div>
+                )}
               </td>
               <td className="py-3 px-2 border-t border-line-faint text-right tabular-nums">
                 {hmMoMPct == null ? (
@@ -210,7 +236,8 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
                 </span>
               </td>
             </tr>
-          ))}
+            );
+          })}
         </tbody>
       </table>
     </div>

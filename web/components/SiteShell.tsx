@@ -9,10 +9,11 @@ type NavSection = { title: string; items: NavItem[] };
 
 const NAV: NavSection[] = [
   {
-    title: "Leaderboards",
+    title: "Metrics",
     items: [
-      { label: "Protocols", href: "/" },
-      { label: "Chains", href: "/chains" }
+      { label: "True Pressure", href: "/true-pressure" },
+      { label: "Holder Multiple", href: "/holder-multiple" },
+      { label: "Chain GDP", href: "/chain-gdp" }
     ]
   },
   {
@@ -68,7 +69,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="px-5 py-5 border-b border-line">
           <Link href="/" className="flex items-baseline gap-1">
             <span className="text-base font-semibold tracking-tight text-fg">
-              truepressure<span className="text-accent">.</span>
+              metrics<span className="text-accent">.</span>
             </span>
           </Link>
           <p className="text-[10px] uppercase tracking-widest text-fg-faint mt-1">
@@ -99,7 +100,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <header className="flex items-center justify-between px-6 py-3 border-b border-line bg-canvas sticky top-0 z-10">
           {/* Brand mark for mobile (left rail is hidden) */}
           <Link href="/" className="md:hidden text-sm font-semibold">
-            truepressure<span className="text-accent">.</span>
+            metrics<span className="text-accent">.</span>
           </Link>
           <div className="hidden md:block" />
           <div className="flex items-center gap-3">

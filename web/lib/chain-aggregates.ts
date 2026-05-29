@@ -1,11 +1,15 @@
-// Server-side aggregate readers for chain-cohort visualizations. Each is
-// called once at build time (Server Component) and the result is baked into
-// the static HTML.
+// Server-side aggregate readers for chain-cohort visualizations.
+//
+// Data comes from the per-chain maps in ./chains, which are populated at
+// module init via webpack's context-module pattern — so this works in both
+// SSG and runtime (force-dynamic) contexts without needing fs at request
+// time.
 
-import fs from "fs";
-import path from "path";
 import {
+  CATEGORIES_MAP,
   CHAIN_SLUGS,
+  HISTORY_MAP,
+  PROTOCOLS_MAP,
   type ChainCategory,
   type ChainHistoryPoint,
   type ChainProtocol,
@@ -52,15 +56,6 @@ export function chainSummaryWithoutStablecoins(c: ChainSummary): ChainSummary {
   };
 }
 
-const DATA_ROOT = path.join(process.cwd(), "..", "data", "chains");
-
-function readJsonSafe<T>(p: string, fallback: T): T {
-  try {
-    return JSON.parse(fs.readFileSync(p, "utf8")) as T;
-  } catch {
-    return fallback;
-  }
-}
 
 // One row per date with a key per chain holding that day's GDP. Optionally
 // smoothed by a trailing N-day rolling mean — buries one-off spikes from
@@ -71,10 +66,7 @@ export function getStackedGdpSeries(days = 180, smoothing = 7, includeStablecoin
   const perChain = new Map<string, ChainHistoryPoint[]>();
   const allDates = new Set<string>();
   for (const slug of CHAIN_SLUGS) {
-    const hist = readJsonSafe<ChainHistoryPoint[]>(
-      path.join(DATA_ROOT, "history", `${slug}.json`),
-      []
-    );
+    const hist = (HISTORY_MAP[slug] || []);
     // Take a window large enough to compute the rolling mean for the first
     // visible day too (need `days + smoothing` source days).
     const window = hist.slice(-(days + smoothing));
@@ -119,10 +111,7 @@ export type FlatApp = {
 export function getAllApps(includeStablecoins = true): FlatApp[] {
   const out: FlatApp[] = [];
   for (const slug of CHAIN_SLUGS) {
-    const protos = readJsonSafe<ChainProtocol[]>(
-      path.join(DATA_ROOT, "protocols", `${slug}.json`),
-      []
-    );
+    const protos = PROTOCOLS_MAP[slug] || [];
     for (const p of protos) {
       if (!includeStablecoins && p.category === "Stablecoin Issuer") continue;
       out.push({
@@ -154,10 +143,7 @@ export function getCohortMonthlyDelta(includeStablecoins = true): CohortDeltas {
   let tvlPrior = 0;
   const gdpKey = includeStablecoins ? "gdp" : "gdp_app";
   for (const slug of CHAIN_SLUGS) {
-    const hist = readJsonSafe<ChainHistoryPoint[]>(
-      path.join(DATA_ROOT, "history", `${slug}.json`),
-      []
-    );
+    const hist = (HISTORY_MAP[slug] || []);
     const current30 = hist.slice(-30);
     const prior30 = hist.slice(-60, -30);
     for (const r of current30) gdpCurrent += Math.max(0, Number((r as any)[gdpKey]) || 0);
@@ -183,10 +169,7 @@ export function getCohortMonthlyDelta(includeStablecoins = true): CohortDeltas {
 export type ChainDeltas = { gdp: CohortDelta; tvl: CohortDelta; rev: CohortDelta };
 
 export function getChainMonthlyDelta(slug: string, includeStablecoins = true): ChainDeltas {
-  const hist = readJsonSafe<ChainHistoryPoint[]>(
-    path.join(DATA_ROOT, "history", `${slug}.json`),
-    []
-  );
+  const hist = HISTORY_MAP[slug] || [];
   const current30 = hist.slice(-30);
   const prior30 = hist.slice(-60, -30);
   const gdpKey = includeStablecoins ? "gdp" : "gdp_app";
@@ -234,10 +217,7 @@ export function getCategoryMatrix(topNCategories = 10, includeStablecoins = true
   const perChain = new Map<string, ChainCategory[]>();
   const catTotals = new Map<string, number>();
   for (const slug of CHAIN_SLUGS) {
-    const raw = readJsonSafe<ChainCategory[]>(
-      path.join(DATA_ROOT, "categories", `${slug}.json`),
-      []
-    );
+    const raw = CATEGORIES_MAP[slug] || [];
     const cats = includeStablecoins
       ? raw
       : raw.filter((c) => c.category !== "Stablecoin Issuer");

@@ -1,10 +1,14 @@
-// Chain-GDP data layer. The snapshot lives in
-// data/chains/snapshots/latest.json (24 chains, full summary). Per-chain
-// history / protocols / categories are read at build time by Server
-// Components.
+// Chain-GDP data layer.
+//
+// The snapshot is statically imported (one file).
+//
+// Per-chain history / protocols / categories are STATICALLY BUNDLED via a
+// Webpack context-module pattern: `require(\`../../data/chains/{kind}/${slug}.json\`)`
+// inlines every matching file at build time so the data ships with the
+// function bundle. We rely on this rather than runtime `fs.readFileSync`
+// because Vercel's serverless functions don't include the repo's data
+// folder unless it's reachable via the module graph.
 
-import fs from "fs";
-import path from "path";
 import chainsSnapshotRaw from "../../data/chains/snapshots/latest.json";
 
 export type ChainSummary = {
@@ -80,33 +84,44 @@ export function getChainBySlug(slug: string): ChainSummary | undefined {
   return chains.chains.find((c) => c.slug === slug);
 }
 
-// Server-side reads — bundled at build time when called from a Server
-// Component via generateStaticParams.
-const DATA_ROOT = path.join(process.cwd(), "..", "data", "chains");
+// ─── Bundled per-chain data ──────────────────────────────────────────────
+// Filled at module init using dynamic require with a template literal —
+// Webpack ContextModuleFactory bundles every JSON file in the matched
+// directories. Works in SSG and serverless (force-dynamic) alike.
+
+export const HISTORY_MAP: Record<string, ChainHistoryPoint[]> = {};
+export const PROTOCOLS_MAP: Record<string, ChainProtocol[]> = {};
+export const CATEGORIES_MAP: Record<string, ChainCategory[]> = {};
+
+for (const slug of CHAIN_SLUGS) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    HISTORY_MAP[slug] = require(`../../data/chains/history/${slug}.json`) as ChainHistoryPoint[];
+  } catch {
+    /* file missing — silent */
+  }
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    PROTOCOLS_MAP[slug] = require(`../../data/chains/protocols/${slug}.json`) as ChainProtocol[];
+  } catch {
+    /* */
+  }
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    CATEGORIES_MAP[slug] = require(`../../data/chains/categories/${slug}.json`) as ChainCategory[];
+  } catch {
+    /* */
+  }
+}
 
 export function getChainHistory(slug: string): ChainHistoryPoint[] {
-  const f = path.join(DATA_ROOT, "history", `${slug}.json`);
-  try {
-    return JSON.parse(fs.readFileSync(f, "utf8")) as ChainHistoryPoint[];
-  } catch {
-    return [];
-  }
+  return HISTORY_MAP[slug] || [];
 }
 
 export function getChainProtocols(slug: string): ChainProtocol[] {
-  const f = path.join(DATA_ROOT, "protocols", `${slug}.json`);
-  try {
-    return JSON.parse(fs.readFileSync(f, "utf8")) as ChainProtocol[];
-  } catch {
-    return [];
-  }
+  return PROTOCOLS_MAP[slug] || [];
 }
 
 export function getChainCategories(slug: string): ChainCategory[] {
-  const f = path.join(DATA_ROOT, "categories", `${slug}.json`);
-  try {
-    return JSON.parse(fs.readFileSync(f, "utf8")) as ChainCategory[];
-  } catch {
-    return [];
-  }
+  return CATEGORIES_MAP[slug] || [];
 }

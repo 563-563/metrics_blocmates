@@ -42,18 +42,6 @@ function cohortDelta() {
   };
 }
 
-// HM → palette-aware tone. Returns semantic Tailwind classes for text +
-// bar fill + a one-word band label. No more rgba tints — palette tokens
-// handle theming automatically.
-function hmHeat(hm: number): { textClass: string; barClass: string; label: string } {
-  if (!Number.isFinite(hm)) return { textClass: "text-fg-muted", barClass: "bg-fg-faint", label: "no capture" };
-  if (hm < 10) return { textClass: "text-positive", barClass: "bg-positive", label: "exceptional" };
-  if (hm < 20) return { textClass: "text-positive", barClass: "bg-positive", label: "strong" };
-  if (hm < 35) return { textClass: "text-fg", barClass: "bg-fg-muted", label: "fair" };
-  if (hm < 50) return { textClass: "text-accent", barClass: "bg-accent", label: "expensive" };
-  return { textClass: "text-negative", barClass: "bg-negative", label: "speculative" };
-}
-
 // HM magnitude bar fill — cap display at 120× so ∞ and >100 read as "full/off the chart".
 function hmBarPct(hm: number): number {
   if (!Number.isFinite(hm)) return 100;
@@ -88,10 +76,27 @@ export default function Home() {
       .slice(-90)
       .map((r) => Number(r.amount_usd) || 0);
 
+    // HM 30d change — % vs 30 days ago.
+    const hist = getHmHistory(p.slug);
+    let hmMoMPct: number | null = null;
+    if (hist.length >= 31) {
+      const today = hist[hist.length - 1]?.hm;
+      const prior = hist[hist.length - 31]?.hm;
+      if (
+        today != null &&
+        prior != null &&
+        Number.isFinite(today) &&
+        Number.isFinite(prior) &&
+        prior > 0
+      ) {
+        hmMoMPct = ((today - prior) / prior) * 100;
+      }
+    }
+
     return {
       p,
-      heat: hmHeat(p.hm),
       barPct: hmBarPct(p.hm),
+      hmMoMPct,
       spark,
       verif: verifPill(p.annual_buyback_verification)
     };
@@ -146,7 +151,7 @@ export default function Home() {
 
       {/* Legend */}
       <div className="mt-4 text-[11px] text-fg-muted leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
-        <span>HM cell: <span className="text-positive">green = cheap</span> → <span className="text-negative">red = expensive</span></span>
+        <span><span className="text-positive">30d Δ ↓</span> = HM falling (cheaper); <span className="text-negative">↑</span> = HM rising (more expensive)</span>
         <span>Sparkline = 90d daily buyback trend</span>
         <span>Pill = data quality (on-chain / proxy / stated / dormant)</span>
       </div>

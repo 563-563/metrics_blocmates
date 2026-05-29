@@ -9,13 +9,14 @@ import { compareNum, compareStr, useSort } from "@/lib/use-sort";
 
 export type HmRow = {
   p: HmProtocol;
-  heat: { textClass: string; barClass: string; label: string };
+  // Bar magnitude only — no band label text, no colored cell — reader judges.
   barPct: number;
+  hmMoMPct: number | null;
   spark: number[];
   verif: { label: string; cls: string; dot: string };
 };
 
-type SortKey = "name" | "hm" | "buyback90" | "real_capture" | "verif";
+type SortKey = "name" | "hm" | "hm_mom" | "buyback90" | "real_capture" | "verif";
 
 const VERIF_RANK: Record<string, number> = {
   onchain: 5,
@@ -74,6 +75,8 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
           return compareStr(a.p.name, b.p.name, sortDir);
         case "hm":
           return compareNum(a.p.hm, b.p.hm, sortDir);
+        case "hm_mom":
+          return compareNum(a.hmMoMPct, b.hmMoMPct, sortDir);
         case "buyback90":
           return compareNum(
             a.spark.reduce((s, v) => s + v, 0),
@@ -112,6 +115,15 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
               Holder Multiple
             </SortHeader>
             <SortHeader
+              active={sortKey === "hm_mom"}
+              dir={sortDir}
+              onClick={() => toggle("hm_mom")}
+              align="right"
+              width="100px"
+            >
+              30d Δ
+            </SortHeader>
+            <SortHeader
               active={sortKey === "buyback90"}
               dir={sortDir}
               onClick={() => toggle("buyback90")}
@@ -138,7 +150,7 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
           </tr>
         </thead>
         <tbody>
-          {sorted.map(({ p, heat, barPct, spark, verif }) => (
+          {sorted.map(({ p, barPct, hmMoMPct, spark, verif }) => (
             <tr key={p.slug} className="border-line-faint group">
               <td className="py-3 px-2 border-t border-line-faint">
                 <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
@@ -165,18 +177,23 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
               </td>
               <td className="py-3 px-2 border-t border-line-faint">
                 <Link href={`/${p.slug}/hm`} className="block px-1">
-                  <div className="flex items-baseline justify-between">
-                    <span className={`text-lg font-mono font-semibold tabular-nums ${heat.textClass}`}>
-                      {fmtMultiple(p.hm)}
-                    </span>
-                    <span className={`text-[10px] uppercase tracking-widest ${heat.textClass}`}>
-                      {heat.label}
-                    </span>
-                  </div>
+                  <span className="text-lg font-mono font-semibold tabular-nums text-fg">
+                    {fmtMultiple(p.hm)}
+                  </span>
                   <div className="mt-1.5 h-[3px] rounded-full bg-line-faint overflow-hidden">
-                    <div className={`h-full rounded-full ${heat.barClass}`} style={{ width: `${barPct}%` }} />
+                    <div className="h-full rounded-full bg-fg-muted" style={{ width: `${barPct}%` }} />
                   </div>
                 </Link>
+              </td>
+              <td className="py-3 px-2 border-t border-line-faint text-right tabular-nums">
+                {hmMoMPct == null ? (
+                  <span className="text-fg-faint">—</span>
+                ) : (
+                  <span className={hmMoMPct > 0 ? "text-negative" : hmMoMPct < 0 ? "text-positive" : "text-fg-muted"}>
+                    {hmMoMPct > 0 ? "↑" : hmMoMPct < 0 ? "↓" : "·"}{" "}
+                    {Math.abs(hmMoMPct).toFixed(1)}%
+                  </span>
+                )}
               </td>
               <td className="py-3 px-2 border-t border-line-faint text-positive">
                 <Sparkline data={spark} color="currentColor" />

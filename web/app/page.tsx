@@ -24,17 +24,17 @@ function hmBarPct(hm: number): number {
 function verifPill(v: string): { label: string; cls: string; dot: string } {
   switch (v) {
     case "onchain":
-      return { label: "on-chain", cls: "text-emerald-300 border-emerald-800/60 bg-emerald-950/40", dot: "bg-emerald-400" };
+      return { label: "on-chain", cls: "text-positive border-emerald-800/60 bg-emerald-950/40", dot: "bg-emerald-400" };
     case "onchain_aggregate":
-      return { label: "on-chain~", cls: "text-emerald-300 border-emerald-800/60 bg-emerald-950/30", dot: "bg-emerald-400/70" };
+      return { label: "on-chain~", cls: "text-positive border-emerald-800/60 bg-emerald-950/30", dot: "bg-emerald-400/70" };
     case "onchain_dormant":
-      return { label: "dormant", cls: "text-zinc-400 border-zinc-700 bg-zinc-900", dot: "bg-zinc-500" };
+      return { label: "dormant", cls: "text-fg-muted border-line bg-surface", dot: "bg-zinc-500" };
     case "proxy":
       return { label: "proxy", cls: "text-sky-300 border-sky-900/60 bg-sky-950/40", dot: "bg-sky-400" };
     case "governance_stated":
-      return { label: "stated", cls: "text-amber-300 border-amber-900/60 bg-amber-950/40", dot: "bg-amber-400" };
+      return { label: "stated", cls: "text-accent border-amber-900/60 bg-amber-950/40", dot: "bg-amber-400" };
     default:
-      return { label: v, cls: "text-zinc-500 border-zinc-800 bg-zinc-900", dot: "bg-zinc-600" };
+      return { label: v, cls: "text-fg-muted border-line bg-surface", dot: "bg-zinc-600" };
   }
 }
 
@@ -82,19 +82,19 @@ export default function Home() {
   ).length;
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
-      <header className="mb-8 border-b border-zinc-800 pb-6">
+    <div className="max-w-6xl mx-auto px-6 py-10">
+      <header className="mb-8 border-b border-line pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">truepressure-hm</h1>
-          <div className="flex items-center gap-4 text-[11px] text-zinc-500">
-            <Link href="/chains" className="hover:text-zinc-200 transition">chains →</Link>
+          <div className="flex items-center gap-4 text-[11px] text-fg-muted">
+            <Link href="/chains" className="hover:text-fg transition">chains →</Link>
             <span>As of {hm.as_of} · {onchainCount}/{hm.protocols.length} on-chain verified</span>
           </div>
         </div>
-        <p className="text-xs text-zinc-500 mt-2 leading-relaxed max-w-2xl">
-          Two lenses per protocol. <span className="text-emerald-300">Holder Multiple</span> — how
+        <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
+          Two lenses per protocol. <span className="text-positive">Holder Multiple</span> — how
           cheap the token is per dollar of value returned to holders (lower = cheaper).
-          <span className="text-rose-300"> Net Pressure</span> — is the protocol a net buyer
+          <span className="text-negative"> Net Pressure</span> — is the protocol a net buyer
           (🟢) or seller (🔴) of its own token right now.
         </p>
       </header>
@@ -115,7 +115,7 @@ export default function Home() {
       <div className="overflow-x-auto -mx-2">
         <table className="w-full text-sm border-separate border-spacing-0 min-w-[760px]">
           <thead>
-            <tr className="text-zinc-100 text-[10px] uppercase tracking-widest">
+            <tr className="text-fg text-[10px] uppercase tracking-widest">
               <th className="text-left font-normal py-2 px-2">Protocol</th>
               <th className="text-left font-normal py-2 px-2 w-[180px]">Holder Multiple</th>
               <th className="text-left font-normal py-2 px-2 w-[180px]">Net Pressure · 30d</th>
@@ -130,9 +130,9 @@ export default function Home() {
               const npArrow = npDir === "seller" ? "▲" : npDir === "buyer" ? "▼" : "·";
               const npBarPct = npUsd != null ? (Math.abs(npUsd) / maxNpUsd) * 100 : 0;
               return (
-                <tr key={p.slug} className="border-zinc-900 group">
+                <tr key={p.slug} className="border-line-faint group">
                   {/* Protocol */}
-                  <td className="py-3 px-2 border-t border-zinc-900">
+                  <td className="py-3 px-2 border-t border-line-faint">
                     <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
                       {p.image ? (
                         // eslint-disable-next-line @next/next/no-img-element
@@ -141,23 +141,23 @@ export default function Home() {
                           alt=""
                           width={28}
                           height={28}
-                          className="rounded-full bg-zinc-800 shrink-0"
+                          className="rounded-full bg-surface-elev shrink-0"
                           loading="lazy"
                         />
                       ) : (
-                        <span className="w-7 h-7 rounded-full bg-zinc-800 shrink-0" />
+                        <span className="w-7 h-7 rounded-full bg-surface-elev shrink-0" />
                       )}
                       <span>
-                        <span className="block text-zinc-100 group-hover:text-white font-medium">{p.name}</span>
-                        <span className="block text-[11px] text-zinc-500">
-                          ${p.symbol} · <span className="text-zinc-600">{p.phase.active}</span>
+                        <span className="block text-fg group-hover:text-white font-medium">{p.name}</span>
+                        <span className="block text-[11px] text-fg-muted">
+                          ${p.symbol} · <span className="text-fg-faint">{p.phase.active}</span>
                         </span>
                       </span>
                     </Link>
                   </td>
 
                   {/* HM — heat cell + bar + band */}
-                  <td className="py-3 px-2 border-t border-zinc-900">
+                  <td className="py-3 px-2 border-t border-line-faint">
                     <Link href={`/${p.slug}/hm`} className="block">
                       <div
                         className="rounded px-2 py-1.5"
@@ -182,7 +182,7 @@ export default function Home() {
                   </td>
 
                   {/* NP 30d — value + arrow + bar */}
-                  <td className="py-3 px-2 border-t border-zinc-900">
+                  <td className="py-3 px-2 border-t border-line-faint">
                     <Link href={`/${p.slug}/tp`} className="block">
                       {npUsd != null && npTokens != null ? (
                         <>
@@ -192,7 +192,7 @@ export default function Home() {
                               {fmtUsdSigned(npUsd)}
                             </span>
                           </div>
-                          <div className="text-[10px] text-zinc-500">
+                          <div className="text-[10px] text-fg-muted">
                             {fmtTokensSigned(npTokens)} {p.symbol}
                             {pctSupply != null ? ` · ${fmtPct(pctSupply, 2)}` : ""}
                           </div>
@@ -204,23 +204,23 @@ export default function Home() {
                           </div>
                         </>
                       ) : (
-                        <span className="text-xs text-zinc-600">no flow data</span>
+                        <span className="text-xs text-fg-faint">no flow data</span>
                       )}
                     </Link>
                   </td>
 
                   {/* Buyback 90d sparkline */}
-                  <td className="py-3 px-2 border-t border-zinc-900">
+                  <td className="py-3 px-2 border-t border-line-faint">
                     <Sparkline data={spark} color="#10b981" />
                   </td>
 
                   {/* Real Capture */}
-                  <td className="py-3 px-2 border-t border-zinc-900 text-right text-zinc-300">
+                  <td className="py-3 px-2 border-t border-line-faint text-right text-fg-muted">
                     {p.real_capture_usd > 0 ? `${fmtUsd(p.real_capture_usd)}/yr` : "—"}
                   </td>
 
                   {/* Verification pill */}
-                  <td className="py-3 px-2 border-t border-zinc-900 text-right">
+                  <td className="py-3 px-2 border-t border-line-faint text-right">
                     <span
                       className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] ${verif.cls}`}
                     >
@@ -236,34 +236,34 @@ export default function Home() {
       </div>
 
       {/* Legend */}
-      <div className="mt-4 text-[11px] text-zinc-500 leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
-        <span>HM cell: <span className="text-emerald-400">green = cheap</span> → <span className="text-rose-400">red = expensive</span></span>
-        <span>NP: <span className="text-rose-400">▲ red = net seller</span> · <span className="text-emerald-400">▼ green = net buyer</span> (unlocks sell-probability weighted)</span>
+      <div className="mt-4 text-[11px] text-fg-muted leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
+        <span>HM cell: <span className="text-positive">green = cheap</span> → <span className="text-negative">red = expensive</span></span>
+        <span>NP: <span className="text-negative">▲ red = net seller</span> · <span className="text-positive">▼ green = net buyer</span> (unlocks sell-probability weighted)</span>
         <span>Sparkline = 90d daily buyback trend</span>
         <span>Pill = data quality (on-chain / proxy / stated / dormant)</span>
       </div>
 
-      <footer className="pt-8 border-t border-zinc-800 text-xs text-zinc-600 leading-relaxed mt-10">
+      <footer className="pt-8 border-t border-line text-xs text-fg-faint leading-relaxed mt-10">
         <p className="mb-2">
           Sources: DefiLlama, CoinGecko, Hyperliquid Info API, Alchemy (mainnet),
           Sky ChainLog, ASXN (HYPE backfill). Editorial seed at{" "}
-          <code className="text-zinc-500">data/hm/config.json</code>. Click any cell to drill in.
+          <code className="text-fg-muted">data/hm/config.json</code>. Click any cell to drill in.
         </p>
         <p>
-          Regression: <code className="text-zinc-500">node scripts/hm/compute-hm.js --reproduce-article</code>{" "}
+          Regression: <code className="text-fg-muted">node scripts/hm/compute-hm.js --reproduce-article</code>{" "}
           → SKY 26.3× / AAVE 46.3× / HYPE 34.5× / LIT 15.4×.
         </p>
       </footer>
-    </main>
+    </div>
   );
 }
 
 function Kpi({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">{label}</p>
-      <p className="text-lg text-zinc-100">{value}</p>
-      {sub && <p className="text-[10px] text-zinc-500 mt-0.5">{sub}</p>}
+      <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-1">{label}</p>
+      <p className="text-lg text-fg">{value}</p>
+      {sub && <p className="text-[10px] text-fg-muted mt-0.5">{sub}</p>}
     </div>
   );
 }

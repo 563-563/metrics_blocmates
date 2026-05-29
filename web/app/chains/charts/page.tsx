@@ -31,17 +31,17 @@ export default async function ChainCharts({
   const chainOrder = cohort.map((c) => c.slug);
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
-      <header className="mb-8 border-b border-zinc-800 pb-6">
+    <div className="max-w-6xl mx-auto px-6 py-10">
+      <header className="mb-8 border-b border-line pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">chains · charts</h1>
-          <div className="flex items-center gap-4 text-[11px] text-zinc-500 flex-wrap">
+          <div className="flex items-center gap-4 text-[11px] text-fg-muted flex-wrap">
             <StablecoinToggle />
-            <Link href="/chains" className="hover:text-zinc-200 transition">← chains table</Link>
+            <Link href="/chains" className="hover:text-fg transition">← chains table</Link>
             <span>As of {chains.as_of}</span>
           </div>
         </div>
-        <p className="text-xs text-zinc-500 mt-2 leading-relaxed max-w-2xl">
+        <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
           Visual gallery for the 24-chain cohort. Methodology and methodology controls match the
           chains table — stablecoin issuer attribution included; ETF and off-chain other excluded.
         </p>
@@ -109,10 +109,10 @@ export default async function ChainCharts({
         <ChainAppTreemap apps={allApps} topN={200} chainLookup={cohort.map((c) => ({ slug: c.slug, name: c.name }))} />
       </Section>
 
-      <footer className="pt-6 border-t border-zinc-800 text-xs text-zinc-600 leading-relaxed">
-        <p>Visual gallery. The numerical reference table lives at <Link href="/chains" className="text-zinc-400 hover:text-zinc-200">/chains</Link>.</p>
+      <footer className="pt-6 border-t border-line text-xs text-fg-faint leading-relaxed">
+        <p>Visual gallery. The numerical reference table lives at <Link href="/chains" className="text-fg-muted hover:text-fg">/chains</Link>.</p>
       </footer>
-    </main>
+    </div>
   );
 }
 
@@ -128,8 +128,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="mb-10 border border-zinc-800 rounded-md p-6 bg-zinc-950 scroll-mt-6">
-      <h2 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
+    <section id={id} className="mb-10 border border-line rounded-md p-6 bg-canvas scroll-mt-6">
+      <h2 className="text-xs uppercase tracking-widest text-fg-muted mb-4">
         {title}
         {info && <InfoTip>{info}</InfoTip>}
       </h2>

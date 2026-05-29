@@ -2,12 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  background: #0a0a0a;
-  color: #f4f4f4;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+/* ─── Theme tokens ─────────────────────────────────────────────────────
+   Warm palette inspired by onchain.markets. RGB triplets so Tailwind's
+   <alpha-value> color modifier works (e.g. text-fg/60).
+*/
+
+:root,
+:root[data-theme="dark"] {
+  --canvas:        28  22  18;   /* page bg — dark warm brown */
+  --surface:       35  28  22;   /* card / panel bg */
+  --surface-elev:  44  36  28;   /* hover / active panel */
+  --fg:            235 224 200;  /* primary text — cream */
+  --fg-muted:      160 144 122;
+  --fg-faint:      110  99  84;
+  --line:          58  47  37;   /* primary border */
+  --line-faint:    42  33  24;
+  --accent:        212 160  86;  /* amber accent — for select numbers */
+  --accent-soft:    96  72  42;  /* used as faint badge bg */
+  --positive:      141 184  74;
+  --negative:      217 109  74;
 }
 
-a { color: #d4d4d8; }
-a:hover { color: #f4f4f4; }
+:root[data-theme="light"] {
+  --canvas:        240 233 220;  /* cream */
+  --surface:       246 240 228;
+  --surface-elev:  234 224 204;
+  --fg:             31  24  20;  /* dark warm brown */
+  --fg-muted:      107  93  79;
+  --fg-faint:      160 144 128;
+  --line:          218 204 178;
+  --line-faint:    230 220 204;
+  --accent:        141  90  23;
+  --accent-soft:   232 214 182;
+  --positive:       76 125  47;
+  --negative:      168  61  35;
+}
 
+html, body {
+  background: rgb(var(--canvas));
+  color: rgb(var(--fg));
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: rgb(var(--fg)); text-decoration: none; }
+a:hover { color: rgb(var(--accent)); }
+
+/* Code / data values stay monospace */
+code, .mono, [class*="tabular-nums"] {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Sources/sinks flow particle animation lives here (existing component). */
+@keyframes tp-flow-right {
+  0%   { background-position-x: 0; }
+  100% { background-position-x: 20px; }
+}
+@keyframes tp-flow-left {
+  0%   { background-position-x: 20px; }
+  100% { background-position-x: 0; }
+}
+
+@keyframes hm-brick-fade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 0.9; transform: translateY(0); }
+}

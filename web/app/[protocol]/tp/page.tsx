@@ -44,7 +44,7 @@ export default async function TpDeepPage({
       })) ?? [];
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10">
       <ProtocolHeader hmP={hmP} npP={npP} active="tp" />
 
       {/* Sources & Sinks — animated flow visual */}
@@ -170,7 +170,7 @@ export default async function TpDeepPage({
           </code>
         </p>
       </footer>
-    </main>
+    </div>
   );
 }
 

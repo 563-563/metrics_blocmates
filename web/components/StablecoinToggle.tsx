@@ -21,15 +21,15 @@ export function StablecoinToggle() {
 
   return (
     <span className="inline-flex items-center gap-1.5">
-      <span className="text-[10px] uppercase tracking-widest text-zinc-500">Stablecoins</span>
-      <span className="inline-flex border border-zinc-800 rounded overflow-hidden">
+      <span className="text-[10px] uppercase tracking-widest text-fg-muted">Stablecoins</span>
+      <span className="inline-flex border border-line rounded overflow-hidden">
         <button
           type="button"
           onClick={() => setIncluded(true)}
           className={`px-2 py-0.5 text-[11px] transition ${
             excluded
-              ? "text-zinc-500 hover:text-zinc-200"
-              : "bg-zinc-800 text-zinc-100"
+              ? "text-fg-muted hover:text-fg"
+              : "bg-surface-elev text-fg"
           }`}
         >
           included
@@ -37,10 +37,10 @@ export function StablecoinToggle() {
         <button
           type="button"
           onClick={() => setIncluded(false)}
-          className={`px-2 py-0.5 text-[11px] transition border-l border-zinc-800 ${
+          className={`px-2 py-0.5 text-[11px] transition border-l border-line ${
             excluded
-              ? "bg-zinc-800 text-zinc-100"
-              : "text-zinc-500 hover:text-zinc-200"
+              ? "bg-surface-elev text-fg"
+              : "text-fg-muted hover:text-fg"
           }`}
         >
           excluded

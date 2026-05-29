@@ -119,16 +119,16 @@ export function ChartTeasers() {
         <Link
           key={t.anchor}
           href={`/chains/charts#${t.anchor}`}
-          className="block border border-zinc-800 rounded-md bg-zinc-950 hover:border-zinc-600 transition group overflow-hidden"
+          className="block border border-line rounded-md bg-canvas hover:border-fg-muted transition group overflow-hidden"
         >
-          <div className="h-24 border-b border-zinc-900 bg-black/30">
+          <div className="h-24 border-b border-line-faint bg-black/30">
             {t.preview}
           </div>
           <div className="px-3 py-2">
-            <p className="text-xs text-zinc-100 font-medium leading-tight group-hover:text-white">
+            <p className="text-xs text-fg font-medium leading-tight group-hover:text-white">
               {t.title}
             </p>
-            <p className="text-[10px] text-zinc-500 mt-0.5">{t.subtitle}</p>
+            <p className="text-[10px] text-fg-muted mt-0.5">{t.subtitle}</p>
           </div>
         </Link>
       ))}

@@ -68,7 +68,7 @@ export default async function HmDeepPage({
   const bs = hmP.annual_buyback_source;
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10">
       <ProtocolHeader hmP={hmP} npP={npP} active="hm" />
 
       {/* HM breakdown */}
@@ -294,7 +294,7 @@ export default async function HmDeepPage({
           <code className="text-zinc-500">data/hm/config.json</code>.
         </p>
       </footer>
-    </main>
+    </div>
   );
 }
 

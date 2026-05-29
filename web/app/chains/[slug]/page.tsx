@@ -27,20 +27,20 @@ export function generateStaticParams() {
 
 function gdpTvlClass(band: string | null): string {
   switch (band) {
-    case "high":      return "text-emerald-300";
-    case "med-high":  return "text-lime-300";
-    case "med-low":   return "text-amber-300";
-    case "low":       return "text-rose-300";
-    default:          return "text-zinc-500";
+    case "high":      return "text-positive";
+    case "med-high":  return "text-positive";
+    case "med-low":   return "text-accent";
+    case "low":       return "text-negative";
+    default:          return "text-fg-muted";
   }
 }
 function revGdpClass(band: string | null): string {
   switch (band) {
-    case "app-friendly": return "text-emerald-300";
-    case "modest":       return "text-lime-300";
-    case "heavy":        return "text-amber-300";
-    case "extractive":   return "text-rose-300";
-    default:             return "text-zinc-500";
+    case "app-friendly": return "text-positive";
+    case "modest":       return "text-positive";
+    case "heavy":        return "text-accent";
+    case "extractive":   return "text-negative";
+    default:             return "text-fg-muted";
   }
 }
 
@@ -74,9 +74,9 @@ export default async function ChainPage({
   const delta = getChainMonthlyDelta(slug, includeStablecoins);
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10">
       {/* Header */}
-      <header className="mb-8 border-b border-zinc-800 pb-6">
+      <header className="mb-8 border-b border-line pb-6">
         <div className="flex items-center gap-3 mb-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -84,23 +84,23 @@ export default async function ChainPage({
             alt=""
             width={36}
             height={36}
-            className="rounded-full bg-zinc-800 shrink-0"
+            className="rounded-full bg-surface-elev shrink-0"
             loading="lazy"
           />
           <h1 className="text-3xl font-semibold tracking-tight">{c.name}</h1>
-          {c.symbol && <span className="text-zinc-500 text-sm">${c.symbol}</span>}
+          {c.symbol && <span className="text-fg-muted text-sm">${c.symbol}</span>}
         </div>
         <div className="flex items-center justify-between flex-wrap gap-3 mt-3">
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-fg-muted">
             Chain-GDP · {c.protocol_count} apps tracked · top app{" "}
-            <span className="text-zinc-300">{c.top_protocol ?? "—"}</span>
+            <span className="text-fg-muted">{c.top_protocol ?? "—"}</span>
             {c.top_category && (
-              <span className="text-zinc-600"> ({c.top_category})</span>
+              <span className="text-fg-faint"> ({c.top_category})</span>
             )}
           </p>
-          <div className="flex items-center gap-4 text-[11px] text-zinc-500 flex-wrap">
+          <div className="flex items-center gap-4 text-[11px] text-fg-muted flex-wrap">
             <StablecoinToggle />
-            <Link href="/chains" className="hover:text-zinc-200 transition">
+            <Link href="/chains" className="hover:text-fg transition">
               ← all chains
             </Link>
           </div>
@@ -170,8 +170,8 @@ export default async function ChainPage({
 
       {/* Stablecoin attribution disclosure when material */}
       {c.gdp_stable_30d_usd > 0 && (
-        <p className="mb-8 px-1 text-xs text-zinc-500 leading-relaxed">
-          <span className="text-zinc-400">Stablecoin attribution included:</span>{" "}
+        <p className="mb-8 px-1 text-xs text-fg-muted leading-relaxed">
+          <span className="text-fg-muted">Stablecoin attribution included:</span>{" "}
           {fmtUsd(c.gdp_stable_30d_usd)} over 30d{" "}
           ({((c.gdp_stable_30d_usd / c.gdp_30d_usd) * 100).toFixed(0)}% of GDP) —
           from USDC ({(c.stable_share_usdc * 100).toFixed(2)}% chain share) +
@@ -213,16 +213,16 @@ export default async function ChainPage({
         <ChainProtocolsTable protocols={protocols} limit={15} />
       </Section>
 
-      <footer className="pt-6 border-t border-zinc-800 text-xs text-zinc-600 leading-relaxed">
+      <footer className="pt-6 border-t border-line text-xs text-fg-faint leading-relaxed">
         <p>
-          Source: DeFiLlama (<code className="text-zinc-500">/overview/fees</code>,{" "}
-          <code className="text-zinc-500">/v2/historicalChainTvl</code>,{" "}
-          <code className="text-zinc-500">/summary/fees</code>,{" "}
-          <code className="text-zinc-500">/stablecoins</code>) + CoinGecko (native-token mcap).
-          {" "}Updated daily by the cron at <code className="text-zinc-500">scripts/chains/fetch-chain-gdp.js</code>.
+          Source: DeFiLlama (<code className="text-fg-muted">/overview/fees</code>,{" "}
+          <code className="text-fg-muted">/v2/historicalChainTvl</code>,{" "}
+          <code className="text-fg-muted">/summary/fees</code>,{" "}
+          <code className="text-fg-muted">/stablecoins</code>) + CoinGecko (native-token mcap).
+          {" "}Updated daily by the cron at <code className="text-fg-muted">scripts/chains/fetch-chain-gdp.js</code>.
         </p>
       </footer>
-    </main>
+    </div>
   );
 }
 
@@ -236,8 +236,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-10 border border-zinc-800 rounded-md p-6 bg-zinc-950">
-      <h2 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
+    <section className="mb-10 border border-line rounded-md p-6 bg-canvas">
+      <h2 className="text-xs uppercase tracking-widest text-fg-muted mb-4">
         {title}
         {info && <InfoTip>{info}</InfoTip>}
       </h2>

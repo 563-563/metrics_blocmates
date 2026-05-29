@@ -19,18 +19,18 @@ function colorForCategory(cat: string, idx: number): string {
 
 export function ChainCategoryMix({ categories }: { categories: ChainCategory[] }) {
   if (!categories || categories.length === 0) {
-    return <p className="text-xs text-zinc-600 py-4">No category data.</p>;
+    return <p className="text-xs text-fg-faint py-4">No category data.</p>;
   }
   const rows = categories.filter((c) => c.revenue_30d > 0);
   const total = rows.reduce((s, c) => s + c.revenue_30d, 0);
   if (total <= 0) {
-    return <p className="text-xs text-zinc-600 py-4">No positive revenue this period.</p>;
+    return <p className="text-xs text-fg-faint py-4">No positive revenue this period.</p>;
   }
 
   return (
     <div>
       {/* Stacked horizontal bar */}
-      <div className="flex h-7 rounded overflow-hidden border border-zinc-800">
+      <div className="flex h-7 rounded overflow-hidden border border-line">
         {rows.map((c, i) => {
           const pct = (c.revenue_30d / total) * 100;
           if (pct < 0.5) return null;
@@ -56,11 +56,11 @@ export function ChainCategoryMix({ categories }: { categories: ChainCategory[] }
                 className="w-2.5 h-2.5 rounded-sm shrink-0"
                 style={{ background: colorForCategory(c.category, i) }}
               />
-              <span className="text-zinc-300 truncate">{c.category}</span>
+              <span className="text-fg-muted truncate">{c.category}</span>
             </span>
-            <span className="text-zinc-500 tabular-nums shrink-0">
+            <span className="text-fg-muted tabular-nums shrink-0">
               {fmtUsd(c.revenue_30d)}{" "}
-              <span className="text-zinc-600">{((c.revenue_30d / total) * 100).toFixed(0)}%</span>
+              <span className="text-fg-faint">{((c.revenue_30d / total) * 100).toFixed(0)}%</span>
             </span>
           </div>
         ))}

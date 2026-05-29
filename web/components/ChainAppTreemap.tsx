@@ -12,10 +12,8 @@ function fmt(v: number): string {
   return `$${v.toFixed(0)}`;
 }
 
-// Plain black text on every cell, no stroke. Some chain colors (the lighter
-// hues) read fine; the darker chain colors trade some contrast for visual
-// calm — preferred over the previous neon-outline effect.
-const CELL_TEXT_FILL = "#111111";
+// Plain black text on every cell, no stroke. Pure black both modes.
+const CELL_TEXT_FILL = "#000000";
 
 type Hovered = {
   name: string;
@@ -80,7 +78,9 @@ function TmContent(props: any) {
           y={y + 18}
           fontSize={13}
           fontWeight={600}
-          style={{ fill: CELL_TEXT_FILL, pointerEvents: "none" }}
+          fill={CELL_TEXT_FILL}
+          stroke="none"
+          style={{ pointerEvents: "none" }}
         >
           {displayName}
         </text>
@@ -90,7 +90,9 @@ function TmContent(props: any) {
           x={x + 7}
           y={y + 36}
           fontSize={12}
-          style={{ fill: CELL_TEXT_FILL, fillOpacity: 0.78, pointerEvents: "none" }}
+          fill={CELL_TEXT_FILL}
+          stroke="none"
+          style={{ pointerEvents: "none" }}
         >
           {fmt(safeSize)}
         </text>

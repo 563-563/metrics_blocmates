@@ -41,19 +41,19 @@ export function TmfWaterfall({
   return (
     <div>
       {/* Inflow header */}
-      <div className="flex items-baseline justify-between border-b border-zinc-800 pb-4 mb-5">
+      <div className="flex items-baseline justify-between border-b border-line pb-4 mb-5">
         <div>
-          <p className="text-xs uppercase tracking-widest text-zinc-400">Net revenue in</p>
-          <p className="text-[11px] text-zinc-500 mt-1">
+          <p className="text-xs uppercase tracking-widest text-fg-muted">Net revenue in</p>
+          <p className="text-[11px] text-fg-muted mt-1">
             trailing 1y · DefiLlama · {wf.framework}
           </p>
         </div>
-        <p className="text-3xl font-semibold text-zinc-50">{rev ? `${fmtUsd(rev)}` : "—"}<span className="text-sm text-zinc-500">/yr</span></p>
+        <p className="text-3xl font-semibold text-fg">{rev ? `${fmtUsd(rev)}` : "—"}<span className="text-sm text-fg-muted">/yr</span></p>
       </div>
 
       {/* Allocation split bar — instant read of where revenue is directed */}
       <div className="mb-6">
-        <div className="flex h-6 rounded overflow-hidden border border-zinc-800">
+        <div className="flex h-6 rounded overflow-hidden border border-line">
           {steps.filter((s) => s.pct > 0).map((s) => (
             <div
               key={s.n}
@@ -65,10 +65,10 @@ export function TmfWaterfall({
             </div>
           ))}
         </div>
-        <div className="flex justify-between text-[11px] text-zinc-500 mt-1.5">
+        <div className="flex justify-between text-[11px] text-fg-muted mt-1.5">
           <span><span style={{ color: C.sm }}>■</span> Security &amp; Maintenance</span>
           <span><span style={{ color: C.abc }}>■</span> ABC buffer (gate)</span>
-          <span className="text-zinc-600">Burn + Staking: 0% — locked</span>
+          <span className="text-fg-faint">Burn + Staking: 0% — locked</span>
         </div>
       </div>
 
@@ -86,43 +86,43 @@ export function TmfWaterfall({
               <div
                 className={`rounded-lg border px-4 py-3.5 ${
                   gate
-                    ? "border-amber-700/60 bg-amber-950/25"
+                    ? "border-accent/40 bg-accent-soft/40"
                     : locked
-                      ? "border-dashed border-zinc-700 bg-transparent"
-                      : "border-zinc-700 bg-zinc-900/60"
+                      ? "border-dashed border-line bg-transparent"
+                      : "border-line bg-surface/60"
                 }`}
                 style={!locked ? { borderLeft: `3px solid ${color}` } : undefined}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
-                    <p className={`text-base font-medium ${locked ? "text-zinc-500" : "text-zinc-100"}`}>
-                      <span className="text-zinc-600 mr-2">{s.n}</span>
+                    <p className={`text-base font-medium ${locked ? "text-fg-muted" : "text-fg"}`}>
+                      <span className="text-fg-faint mr-2">{s.n}</span>
                       {s.name}
-                      {locked && <span className="ml-2 text-amber-500/80 text-sm">🔒 Phase 3</span>}
+                      {locked && <span className="ml-2 text-accent text-sm">🔒 Phase 3</span>}
                     </p>
-                    <p className="text-xs text-zinc-400 mt-1">
+                    <p className="text-xs text-fg-muted mt-1">
                       → {s.dest}
-                      {locked && s.unlocks ? <span className="text-zinc-600"> · {s.unlocks}</span> : ""}
+                      {locked && s.unlocks ? <span className="text-fg-faint"> · {s.unlocks}</span> : ""}
                     </p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className={`text-lg font-semibold ${locked ? "text-zinc-600" : "text-zinc-100"}`}>
+                    <p className={`text-lg font-semibold ${locked ? "text-fg-faint" : "text-fg"}`}>
                       {s.pct > 0 ? `${(s.pct * 100).toFixed(0)}%` : "0%"}
                     </p>
                     {s.tookUsd != null && s.pct > 0 ? (
-                      <p className="text-xs text-zinc-400">{fmtUsd(s.tookUsd)}/yr</p>
+                      <p className="text-xs text-fg-muted">{fmtUsd(s.tookUsd)}/yr</p>
                     ) : (
-                      <p className="text-xs text-zinc-600">nothing</p>
+                      <p className="text-xs text-fg-faint">nothing</p>
                     )}
                   </div>
                 </div>
 
                 {/* ABC gate fill */}
                 {gate && (
-                  <div className="mt-3 pt-3 border-t border-amber-800/30">
+                  <div className="mt-3 pt-3 border-t border-accent/40">
                     <div className="flex items-baseline justify-between text-xs mb-1.5">
-                      <span className="text-amber-300">Turbo-fill toward Phase 3 trigger</span>
-                      <span className="text-zinc-300">floor {fmtUsd(s.target_usd ?? wf.abc_floor_usd)}</span>
+                      <span className="text-accent">Turbo-fill toward Phase 3 trigger</span>
+                      <span className="text-fg-muted">floor {fmtUsd(s.target_usd ?? wf.abc_floor_usd)}</span>
                     </div>
                     <div className="h-2 rounded-full bg-black/50 overflow-hidden">
                       <div
@@ -133,7 +133,7 @@ export function TmfWaterfall({
                         }}
                       />
                     </div>
-                    <p className="text-xs text-zinc-500 mt-2 leading-relaxed">
+                    <p className="text-xs text-fg-muted mt-2 leading-relaxed">
                       {wf.abc_level_note}
                     </p>
                   </div>
@@ -143,15 +143,15 @@ export function TmfWaterfall({
               {/* Flow connector — shows the diminishing stream between buckets */}
               {i < steps.length - 1 && (
                 <div className="flex items-center gap-2 py-2 pl-4">
-                  <span className="text-zinc-500 text-lg leading-none">↓</span>
+                  <span className="text-fg-muted text-lg leading-none">↓</span>
                   {s.remainingAfter != null && rev != null && (
-                    <span className="text-xs text-zinc-400">
+                    <span className="text-xs text-fg-muted">
                       {s.remainingAfter > rev * 0.005 ? (
                         <>
-                          <span className="text-zinc-200">{fmtUsd(s.remainingAfter)}/yr</span> continues down
+                          <span className="text-fg">{fmtUsd(s.remainingAfter)}/yr</span> continues down
                         </>
                       ) : (
-                        <span className="text-rose-400/80">
+                        <span className="text-negative/80">
                           ~$0 reaches the buckets below — ABC absorbs the stream in Phase 1
                         </span>
                       )}
@@ -165,16 +165,16 @@ export function TmfWaterfall({
       </div>
 
       {/* Why ∞ */}
-      <div className="mt-6 rounded-md border border-zinc-800 bg-zinc-900/40 px-4 py-3">
-        <p className="text-sm text-zinc-300 leading-relaxed">
-          <span className="text-zinc-100 font-medium">Why SKY&apos;s HM is ∞ today:</span> in Phase 1
+      <div className="mt-6 rounded-md border border-line bg-surface/40 px-4 py-3">
+        <p className="text-sm text-fg-muted leading-relaxed">
+          <span className="text-fg font-medium">Why SKY&apos;s HM is ∞ today:</span> in Phase 1
           the waterfall fills the ABC solvency buffer first, so the burn and staking-reward
           buckets — the only two that reach SKY holders — run dry. SKY earns{" "}
-          {rev ? <span className="text-zinc-100">{fmtUsd(rev)}/yr</span> : "revenue"} but retains
+          {rev ? <span className="text-fg">{fmtUsd(rev)}/yr</span> : "revenue"} but retains
           nearly all of it. Holder capture (and a finite HM) resumes at Phase 3, once ABC clears
           its {fmtUsd(wf.abc_floor_usd)} floor.
         </p>
-        <p className="text-xs text-zinc-600 mt-2">Source: {wf.source}</p>
+        <p className="text-xs text-fg-faint mt-2">Source: {wf.source}</p>
       </div>
     </div>
   );

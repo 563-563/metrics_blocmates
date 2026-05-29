@@ -100,7 +100,7 @@ export function NetPressureChart({ data, symbol }: { data: NpPoint[]; symbol: st
             key={v}
             onClick={() => setView(v)}
             className={`px-2.5 py-1 rounded border transition ${
-              view === v ? "text-zinc-100 border-zinc-600 bg-zinc-800" : "text-zinc-500 border-zinc-800 hover:text-zinc-300"
+              view === v ? "text-fg border-fg-muted bg-surface-elev" : "text-fg-muted border-line hover:text-fg-muted"
             }`}
           >
             {l}

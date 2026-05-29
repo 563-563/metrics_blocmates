@@ -48,7 +48,7 @@ function Tip({ active, payload, label }: any) {
 export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
   const pts = (data || []).filter((d) => d.hm != null);
   if (pts.length < 2) {
-    return <p className="text-xs text-zinc-600 py-8 text-center">Not enough history yet.</p>;
+    return <p className="text-xs text-fg-faint py-8 text-center">Not enough history yet.</p>;
   }
   const maxHm = Math.max(...pts.map((d) => d.hm as number));
   const yMax = Math.min(Math.ceil((maxHm * 1.1) / 10) * 10, 150);

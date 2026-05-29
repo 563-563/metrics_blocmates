@@ -20,7 +20,7 @@ export function ProtocolHeader({
     <>
       {/* Breadcrumb */}
       <nav className="mb-6 text-xs">
-        <Link href="/" className="text-zinc-500 hover:text-zinc-300">
+        <Link href="/" className="text-fg-muted hover:text-fg-muted">
           ← all projects
         </Link>
       </nav>
@@ -34,19 +34,19 @@ export function ProtocolHeader({
             alt=""
             width={36}
             height={36}
-            className="rounded-full bg-zinc-800 shrink-0"
+            className="rounded-full bg-surface-elev shrink-0"
             loading="lazy"
           />
         ) : (
-          <span className="w-9 h-9 rounded-full bg-zinc-800 shrink-0" />
+          <span className="w-9 h-9 rounded-full bg-surface-elev shrink-0" />
         )}
         <h1 className="text-3xl font-semibold tracking-tight">{hmP.name}</h1>
-        <span className="text-zinc-500 text-sm">${hmP.symbol}</span>
-        <span className="text-zinc-600 text-xs ml-2">{hmP.category}</span>
+        <span className="text-fg-muted text-sm">${hmP.symbol}</span>
+        <span className="text-fg-faint text-xs ml-2">{hmP.category}</span>
       </div>
 
       {/* KPI strip */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-6 pb-6 border-b border-zinc-800">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-6 pb-6 border-b border-line">
         <Stat
           label="Price"
           value={`$${hmP.price_usd.toLocaleString(undefined, { maximumFractionDigits: 4 })}`}
@@ -80,7 +80,7 @@ export function ProtocolHeader({
       </div>
 
       {/* View tabs */}
-      <div className="flex gap-1 mt-6 mb-8 border-b border-zinc-800">
+      <div className="flex gap-1 mt-6 mb-8 border-b border-line">
         <TabLink
           href={`/${hmP.slug}`}
           active={active === "overview"}
@@ -114,11 +114,11 @@ function Stat({
 }) {
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">
+      <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-1">
         {label}
       </p>
-      <p className={`text-lg ${valueClass ?? "text-zinc-100"}`}>{value}</p>
-      {sub && <p className="text-xs text-zinc-500 mt-0.5">{sub}</p>}
+      <p className={`text-lg ${valueClass ?? "text-fg"}`}>{value}</p>
+      {sub && <p className="text-xs text-fg-muted mt-0.5">{sub}</p>}
     </div>
   );
 }
@@ -137,8 +137,8 @@ function TabLink({
       href={href}
       className={`px-4 py-2 text-xs uppercase tracking-widest border-b-2 -mb-px transition ${
         active
-          ? "text-zinc-100 border-zinc-100"
-          : "text-zinc-500 border-transparent hover:text-zinc-300"
+          ? "text-fg border-fg"
+          : "text-fg-muted border-transparent hover:text-fg-muted"
       }`}
     >
       {label}

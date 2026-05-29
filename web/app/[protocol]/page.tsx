@@ -48,19 +48,19 @@ export default async function ProtocolLanding({
         {/* HM card */}
         <Link
           href={`/${hmP.slug}/hm`}
-          className="block border border-zinc-800 rounded-md p-6 bg-zinc-950 hover:bg-zinc-900/60 transition"
+          className="block border border-line rounded-md p-6 bg-surface hover:bg-surface/60 transition"
         >
           <div className="flex items-baseline justify-between mb-3">
-            <h2 className="text-xs uppercase tracking-widest text-zinc-500">
+            <h2 className="text-xs uppercase tracking-widest text-fg-muted">
               Holder Multiple
             </h2>
-            <span className="text-zinc-500 text-xs">deep view →</span>
+            <span className="text-fg-muted text-xs">deep view →</span>
           </div>
           <p className={`text-4xl font-semibold ${bandColor(hmP.hm_band)}`}>
             {fmtMultiple(hmP.hm)}
           </p>
           <p className={`text-xs mt-1 ${bandColor(hmP.hm_band)}`}>{hmP.hm_band}</p>
-          <div className="grid grid-cols-2 gap-4 mt-6 pt-5 border-t border-zinc-800">
+          <div className="grid grid-cols-2 gap-4 mt-6 pt-5 border-t border-line">
             <Mini label="Adj MCap" value={fmtUsd(hmP.adj_mcap_usd)} />
             <Mini
               label="Real Capture"
@@ -82,11 +82,11 @@ export default async function ProtocolLanding({
             />
           </div>
           {bs?.rate_vs_lifetime_pct != null && (
-            <p className="text-[11px] text-zinc-500 mt-5">
+            <p className="text-[11px] text-fg-muted mt-5">
               Recent rate{" "}
               <span
                 className={
-                  bs.rate_vs_lifetime_pct < 0 ? "text-amber-400" : "text-emerald-400"
+                  bs.rate_vs_lifetime_pct < 0 ? "text-accent" : "text-positive"
                 }
               >
                 {bs.rate_vs_lifetime_pct > 0 ? "+" : ""}
@@ -100,28 +100,28 @@ export default async function ProtocolLanding({
         {/* TP card */}
         <Link
           href={`/${hmP.slug}/tp`}
-          className="block border border-zinc-800 rounded-md p-6 bg-zinc-950 hover:bg-zinc-900/60 transition"
+          className="block border border-line rounded-md p-6 bg-surface hover:bg-surface/60 transition"
         >
           <div className="flex items-baseline justify-between mb-3">
-            <h2 className="text-xs uppercase tracking-widest text-zinc-500">
+            <h2 className="text-xs uppercase tracking-widest text-fg-muted">
               Net Pressure — last 30d
             </h2>
-            <span className="text-zinc-500 text-xs">deep view →</span>
+            <span className="text-fg-muted text-xs">deep view →</span>
           </div>
           {np30 ? (
             <>
               <p
                 className={`text-4xl font-semibold ${
                   np30.net_pressure_tokens === 0
-                    ? "text-zinc-200"
+                    ? "text-fg"
                     : np30.net_pressure_tokens > 0
-                      ? "text-rose-400"
-                      : "text-emerald-400"
+                      ? "text-negative"
+                      : "text-positive"
                 }`}
               >
                 {fmtUsdSigned(np30.net_pressure_usd)}
               </p>
-              <p className="text-xs text-zinc-500 mt-1">
+              <p className="text-xs text-fg-muted mt-1">
                 {fmtTokensSigned(np30.net_pressure_tokens)} {hmP.symbol} ·{" "}
                 {fmtPct(
                   np30.net_pressure_tokens /
@@ -130,7 +130,7 @@ export default async function ProtocolLanding({
                 )}{" "}
                 of supply
               </p>
-              <div className="grid grid-cols-2 gap-4 mt-6 pt-5 border-t border-zinc-800">
+              <div className="grid grid-cols-2 gap-4 mt-6 pt-5 border-t border-line">
                 <Mini
                   label="Unlocks (source)"
                   value={`${fmtTokens(np30.unlocks_tokens)} ${hmP.symbol}`}
@@ -158,14 +158,14 @@ export default async function ProtocolLanding({
                   }
                 />
               </div>
-              <p className="text-[11px] text-zinc-500 mt-5">
+              <p className="text-[11px] text-fg-muted mt-5">
                 {np30.net_pressure_tokens > 0
                   ? "Market absorbed more supply than the protocol could sink."
                   : "Protocol absorbed more supply than the market emitted."}
               </p>
             </>
           ) : (
-            <p className="text-sm text-zinc-500 py-10 text-center">
+            <p className="text-sm text-fg-muted py-10 text-center">
               On-chain flow adapter pending for {hmP.symbol}.
               <br />
               <span className="text-xs">
@@ -177,13 +177,13 @@ export default async function ProtocolLanding({
       </div>
 
       {/* Status footer */}
-      <p className="text-[11px] text-zinc-600 mt-8 leading-relaxed">
+      <p className="text-[11px] text-fg-faint mt-8 leading-relaxed">
         On-chain verification:{" "}
         <span
           className={
             hmP.annual_buyback_verification === "onchain"
-              ? "text-emerald-400"
-              : "text-amber-400"
+              ? "text-positive"
+              : "text-accent"
           }
         >
           {hmP.annual_buyback_verification}
@@ -211,11 +211,11 @@ function Mini({
 }) {
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">
+      <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-1">
         {label}
       </p>
-      <p className="text-sm text-zinc-200">{value}</p>
-      {sub && <p className="text-[10px] text-zinc-500 mt-0.5">{sub}</p>}
+      <p className="text-sm text-fg">{value}</p>
+      {sub && <p className="text-[10px] text-fg-muted mt-0.5">{sub}</p>}
     </div>
   );
 }

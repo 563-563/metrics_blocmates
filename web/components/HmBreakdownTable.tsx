@@ -17,14 +17,14 @@ export function HmBreakdownTable({ p }: { p: HmProtocol }) {
   return (
     <table className="w-full text-sm border-collapse">
       <thead>
-        <tr className="text-zinc-100 text-xs uppercase tracking-wider border-b border-zinc-800">
+        <tr className="text-fg text-xs uppercase tracking-wider border-b border-line">
           <th className="text-left py-2 font-normal w-12">#</th>
           <th className="text-left py-2 font-normal">Metric</th>
           <th className="text-right py-2 font-normal">Value</th>
           <th className="text-left py-2 font-normal pl-6">Notes</th>
         </tr>
       </thead>
-      <tbody className="text-zinc-300">
+      <tbody className="text-fg-muted">
         <Row n={1} label="Token price" value={`$${p.price_usd.toLocaleString(undefined, { maximumFractionDigits: 4 })}`} note={`source: ${p.price_source}`} />
         <Row
           n={2}
@@ -58,7 +58,7 @@ export function HmBreakdownTable({ p }: { p: HmProtocol }) {
           note={
             <>
               {p.annual_holder_yield_notes ? (
-                <span className="block text-zinc-500">{p.annual_holder_yield_notes}</span>
+                <span className="block text-fg-muted">{p.annual_holder_yield_notes}</span>
               ) : null}
               <span className={verificationColor(p.annual_holder_yield_verification)}>
                 verification: {p.annual_holder_yield_verification}
@@ -99,11 +99,11 @@ function Row({
   note?: React.ReactNode;
 }) {
   return (
-    <tr className="border-b border-zinc-900">
-      <td className="py-2 text-zinc-500 text-xs">{n}</td>
+    <tr className="border-b border-line-faint">
+      <td className="py-2 text-fg-muted text-xs">{n}</td>
       <td className="py-2 pr-4">{label}</td>
       <td className="py-2 text-right">{value}</td>
-      <td className="py-2 pl-6 text-xs text-zinc-500 leading-relaxed">{note}</td>
+      <td className="py-2 pl-6 text-xs text-fg-muted leading-relaxed">{note}</td>
     </tr>
   );
 }

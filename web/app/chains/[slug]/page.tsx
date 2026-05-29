@@ -106,7 +106,7 @@ export default async function ChainPage({
           </div>
         </div>
         {c.structural_note && (
-          <div className="mt-4 rounded-md border border-amber-900/40 bg-amber-950/20 px-3 py-2.5 text-xs text-amber-200/90 leading-relaxed">
+          <div className="mt-4 rounded-md border border-accent/40 bg-accent-soft/40 px-3 py-2.5 text-xs text-accent leading-relaxed">
             <span className="font-medium">⚠ Structural note · </span>
             {c.structural_note}
           </div>

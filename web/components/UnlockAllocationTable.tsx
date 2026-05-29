@@ -24,7 +24,7 @@ export function UnlockAllocationTable({
   return (
     <table className="w-full text-sm border-collapse">
       <thead>
-        <tr className="text-zinc-100 text-xs uppercase tracking-wider border-b border-zinc-800">
+        <tr className="text-fg text-xs uppercase tracking-wider border-b border-line">
           <th className="text-left py-2 font-normal w-2/5">Bucket</th>
           <th className="text-left py-2 font-normal">Recipient</th>
           <th className="text-right py-2 font-normal">Tokens</th>
@@ -33,21 +33,21 @@ export function UnlockAllocationTable({
       </thead>
       <tbody>
         {buckets.map((b) => (
-          <tr key={b.key} className="border-b border-zinc-900">
-            <td className="py-2 text-zinc-300">
+          <tr key={b.key} className="border-b border-line-faint">
+            <td className="py-2 text-fg-muted">
               <span
                 className="inline-block w-2 h-2 mr-3 rounded-sm align-middle"
                 style={{ background: BUCKET_COLORS[b.key] ?? "#52525b" }}
               />
               {b.label || label(b.key)}
             </td>
-            <td className="py-2 text-zinc-400 text-xs">
+            <td className="py-2 text-fg-muted text-xs">
               {b.recipient_type ?? "—"}
             </td>
-            <td className="py-2 text-right text-zinc-400">
+            <td className="py-2 text-right text-fg-muted">
               {fmtTokens(b.tokens)} {symbol}
             </td>
-            <td className="py-2 text-right text-zinc-400">
+            <td className="py-2 text-right text-fg-muted">
               {fmtPct(b.pct, 2)}
             </td>
           </tr>

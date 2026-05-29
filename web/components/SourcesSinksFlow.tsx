@@ -19,8 +19,11 @@ type Row = {
   intended: "source" | "sink";
 };
 
-const SRC_COLOR = "#f43f5e"; // rose
-const SINK_COLOR = "#10b981"; // emerald
+// Muted theme-neutral hues that read in BOTH light cream and dark warm
+// backgrounds. Brighter rose/emerald clashed on cream.
+const SRC_COLOR = "#B65854"; // sources / sell pressure
+const SINK_COLOR = "#6B9A4F"; // sinks / buy pressure
+const NEUTRAL_COLOR = "#948D80"; // flat / idle (matches fg-muted in light)
 
 function classifyRow(row: Row): "source" | "sink" | "idle" {
   if (row.perDayUsd === 0) return "idle";
@@ -75,8 +78,10 @@ export function SourcesSinksFlow({
       : netPerDay > 0
         ? "seller"
         : "buyer";
-  const netColor = netDir === "seller" ? SRC_COLOR : netDir === "buyer" ? SINK_COLOR : "#71717a";
+  const netColor = netDir === "seller" ? SRC_COLOR : netDir === "buyer" ? SINK_COLOR : NEUTRAL_COLOR;
   const netLabel = netDir === "seller" ? "NET SELLER" : netDir === "buyer" ? "NET BUYER" : "BALANCED";
+  // Shape redundancy alongside color for colorblind accessibility.
+  const netGlyph = netDir === "seller" ? "▲" : netDir === "buyer" ? "▼" : "·";
   const maxRate = Math.max(
     1,
     ...allRows.map((row) => Math.abs(row.perDayUsd))
@@ -109,18 +114,21 @@ export function SourcesSinksFlow({
 
   return (
     <div>
-      {/* Header — totals */}
-      <div className="grid grid-cols-3 gap-4 mb-4 pb-4 border-b border-zinc-800">
+      {/* Header — totals. ▲/▼ glyphs alongside colors so the
+          direction is readable without relying on red vs green alone. */}
+      <div className="grid grid-cols-3 gap-4 mb-4 pb-4 border-b border-line">
         <div className="text-left">
-          <p className="text-[11px] uppercase tracking-widest text-zinc-500">Sources · 30d</p>
-          <p className="text-xl font-semibold mt-1" style={{ color: SRC_COLOR }}>
+          <p className="text-[11px] uppercase tracking-widest text-fg-muted">Sources · 30d</p>
+          <p className="text-xl font-semibold mt-1 font-mono tabular-nums" style={{ color: SRC_COLOR }}>
+            <span aria-hidden="true" className="mr-1">▲</span>
             +{fmtUsd(sourcesTotal)}/day
           </p>
-          <p className="text-[11px] text-zinc-500 mt-0.5">sell pressure</p>
+          <p className="text-[11px] text-fg-muted mt-0.5">sell pressure</p>
         </div>
         <div className="text-center">
-          <p className="text-[11px] uppercase tracking-widest text-zinc-500">Net Pressure</p>
-          <p className="text-xl font-semibold mt-1" style={{ color: netColor }}>
+          <p className="text-[11px] uppercase tracking-widest text-fg-muted">Net Pressure</p>
+          <p className="text-xl font-semibold mt-1 font-mono tabular-nums" style={{ color: netColor }}>
+            <span aria-hidden="true" className="mr-1">{netGlyph}</span>
             {netPerDay >= 0 ? "+" : "−"}
             {fmtUsd(Math.abs(netPerDay))}/day
           </p>
@@ -129,11 +137,12 @@ export function SourcesSinksFlow({
           </p>
         </div>
         <div className="text-right">
-          <p className="text-[11px] uppercase tracking-widest text-zinc-500">Sinks · 30d</p>
-          <p className="text-xl font-semibold mt-1" style={{ color: SINK_COLOR }}>
+          <p className="text-[11px] uppercase tracking-widest text-fg-muted">Sinks · 30d</p>
+          <p className="text-xl font-semibold mt-1 font-mono tabular-nums" style={{ color: SINK_COLOR }}>
+            <span aria-hidden="true" className="mr-1">▼</span>
             −{fmtUsd(sinksTotal)}/day
           </p>
-          <p className="text-[11px] text-zinc-500 mt-0.5">buy pressure</p>
+          <p className="text-[11px] text-fg-muted mt-0.5">buy pressure</p>
         </div>
       </div>
 
@@ -190,10 +199,10 @@ export function SourcesSinksFlow({
                       </animateMotion>
                     </circle>
                   ))}
-                <text x={LEFT_ANCHOR - 14} y={y - 4} textAnchor="end" fontSize="14" fill={idleRow ? "#71717a" : "#e4e4e7"}>
+                <text x={LEFT_ANCHOR - 14} y={y - 4} textAnchor="end" fontSize="14" style={{ fill: idleRow ? "rgb(var(--fg-faint))" : "rgb(var(--fg))" }}>
                   {display}
                 </text>
-                <text x={LEFT_ANCHOR - 14} y={y + 14} textAnchor="end" fontSize="11.5" fill={idleRow ? "#52525b" : "#a1a1aa"}>
+                <text x={LEFT_ANCHOR - 14} y={y + 14} textAnchor="end" fontSize="11.5" style={{ fill: idleRow ? "rgb(var(--fg-faint))" : "rgb(var(--fg-muted))" }}>
                   {idleRow ? "—" : `${fmtUsd(Math.abs(row.perDayUsd))}/day`}
                 </text>
               </g>
@@ -240,10 +249,10 @@ export function SourcesSinksFlow({
                       </animateMotion>
                     </circle>
                   ))}
-                <text x={RIGHT_ANCHOR + 14} y={y - 4} textAnchor="start" fontSize="14" fill={idleRow ? "#71717a" : "#e4e4e7"}>
+                <text x={RIGHT_ANCHOR + 14} y={y - 4} textAnchor="start" fontSize="14" style={{ fill: idleRow ? "rgb(var(--fg-faint))" : "rgb(var(--fg))" }}>
                   {display}
                 </text>
-                <text x={RIGHT_ANCHOR + 14} y={y + 14} textAnchor="start" fontSize="11.5" fill={idleRow ? "#52525b" : "#a1a1aa"}>
+                <text x={RIGHT_ANCHOR + 14} y={y + 14} textAnchor="start" fontSize="11.5" style={{ fill: idleRow ? "rgb(var(--fg-faint))" : "rgb(var(--fg-muted))" }}>
                   {idleRow ? "—" : `${fmtUsd(Math.abs(row.perDayUsd))}/day`}
                 </text>
               </g>
@@ -252,11 +261,17 @@ export function SourcesSinksFlow({
 
           {/* Central market node */}
           <circle cx={CX} cy={CY} r={NODE_R + 18} fill="url(#market-glow)" />
-          <circle cx={CX} cy={CY} r={NODE_R} fill="#0a0a0a" stroke={netColor} strokeWidth={2} />
+          <circle
+            cx={CX}
+            cy={CY}
+            r={NODE_R}
+            style={{ fill: "rgb(var(--canvas))", stroke: netColor }}
+            strokeWidth={2}
+          />
           <text x={CX} y={CY - 2} textAnchor="middle" fontSize="22" fill={netColor} fontWeight="600">
             {netDir === "seller" ? "↑" : netDir === "buyer" ? "↓" : "·"}
           </text>
-          <text x={CX} y={CY + 16} textAnchor="middle" fontSize="9" fill="#71717a" letterSpacing="1.5">
+          <text x={CX} y={CY + 16} textAnchor="middle" fontSize="9" style={{ fill: "rgb(var(--fg-muted))" }} letterSpacing="1.5">
             MARKET
           </text>
         </svg>

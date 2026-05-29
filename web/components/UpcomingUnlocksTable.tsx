@@ -33,7 +33,7 @@ export function UpcomingUnlocksTable({
 
   if (upcoming.length === 0) {
     return (
-      <p className="text-xs text-zinc-500 py-6 text-center">
+      <p className="text-xs text-fg-muted py-6 text-center">
         No upcoming unlocks (fully circulating or beyond projected schedule).
       </p>
     );
@@ -42,7 +42,7 @@ export function UpcomingUnlocksTable({
   return (
     <table className="w-full text-sm border-collapse">
       <thead>
-        <tr className="text-zinc-100 text-xs uppercase tracking-wider border-b border-zinc-800">
+        <tr className="text-fg text-xs uppercase tracking-wider border-b border-line">
           <th className="text-left py-2 font-normal">Date</th>
           <th className="text-left py-2 font-normal">Bucket</th>
           <th className="text-right py-2 font-normal">Tokens</th>
@@ -51,19 +51,19 @@ export function UpcomingUnlocksTable({
       </thead>
       <tbody>
         {upcoming.map((u, i) => (
-          <tr key={`${u.unlock_date}-${u.bucket}-${i}`} className="border-b border-zinc-900">
-            <td className="py-2 text-zinc-300">{u.unlock_date}</td>
-            <td className="py-2 text-zinc-400">
+          <tr key={`${u.unlock_date}-${u.bucket}-${i}`} className="border-b border-line-faint">
+            <td className="py-2 text-fg-muted">{u.unlock_date}</td>
+            <td className="py-2 text-fg-muted">
               <span
                 className="inline-block w-2 h-2 mr-2 rounded-sm align-middle"
                 style={{ background: BUCKET_COLORS[u.bucket] ?? "#52525b" }}
               />
               {label(u.bucket)}
             </td>
-            <td className="py-2 text-right text-zinc-400">
+            <td className="py-2 text-right text-fg-muted">
               {fmtTokens(u.amount_tokens)} {symbol}
             </td>
-            <td className="py-2 text-right text-zinc-400">
+            <td className="py-2 text-right text-fg-muted">
               {fmtUsd(u.amount_tokens * priceUsd)}
             </td>
           </tr>

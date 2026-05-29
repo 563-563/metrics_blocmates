@@ -46,33 +46,33 @@ export function HmStacker({ p }: { p: HmProtocol }) {
       <div className="grid grid-cols-2 gap-10 items-end max-w-md mx-auto">
         {/* MCap tower */}
         <div className="flex flex-col items-center">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2">
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-2">
             Adjusted MCap
           </p>
           <div
-            className="w-full bg-gradient-to-t from-zinc-800 to-zinc-700 border border-zinc-600 rounded-t-sm"
+            className="w-full bg-gradient-to-t from-zinc-800 to-zinc-700 border border-fg-muted rounded-t-sm"
             style={{ height: TOWER_H }}
           />
           <div className="w-full h-1 bg-zinc-500" />
-          <p className="text-zinc-100 font-semibold mt-3 text-2xl tabular-nums">
+          <p className="text-fg font-semibold mt-3 text-2xl tabular-nums">
             {fmtUsd(adjMcap)}
           </p>
-          <p className="text-[11px] text-zinc-500 mt-1">target</p>
+          <p className="text-[11px] text-fg-muted mt-1">target</p>
         </div>
 
         {/* Years-of-capture stacker */}
         <div className="flex flex-col items-center">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-2">
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-2">
             Years of Real Capture
           </p>
           <div
-            className="w-full border border-zinc-700 rounded-t-sm relative bg-zinc-950 overflow-hidden"
+            className="w-full border border-line rounded-t-sm relative bg-surface overflow-hidden"
             style={{ height: TOWER_H }}
           >
             {noCapture ? (
               <div className="absolute inset-0 flex flex-col items-center justify-center px-3 text-center">
-                <p className="text-zinc-500 text-sm">0 / yr</p>
-                <p className="text-[10px] text-zinc-600 leading-relaxed mt-2 max-w-[140px]">
+                <p className="text-fg-muted text-sm">0 / yr</p>
+                <p className="text-[10px] text-fg-faint leading-relaxed mt-2 max-w-[140px]">
                   stack frozen — no Real Capture flowing to holders in Phase 1
                 </p>
               </div>
@@ -121,30 +121,30 @@ export function HmStacker({ p }: { p: HmProtocol }) {
             )}
           </div>
           <div className="w-full h-1 bg-zinc-500" />
-          <p className="text-zinc-100 font-semibold mt-3 text-2xl tabular-nums">
+          <p className="text-fg font-semibold mt-3 text-2xl tabular-nums">
             {noCapture ? "∞" : count.toFixed(0)}
             {overflowed && "+"}{" "}
-            <span className="text-xs text-zinc-500 font-normal">yrs</span>
+            <span className="text-xs text-fg-muted font-normal">yrs</span>
           </p>
-          <p className="text-[11px] text-zinc-500 mt-1">
+          <p className="text-[11px] text-fg-muted mt-1">
             {noCapture ? "never reaches MCap" : `${fmtUsd(realCapture)}/yr`}
           </p>
         </div>
       </div>
 
-      <div className="mt-6 pt-5 border-t border-zinc-800 text-sm text-zinc-300 leading-relaxed">
+      <div className="mt-6 pt-5 border-t border-line text-sm text-fg-muted leading-relaxed">
         {noCapture ? (
           <p>
-            At <span className="text-zinc-100">{fmtUsd(realCapture)}/yr</span> of Real Capture, no
+            At <span className="text-fg">{fmtUsd(realCapture)}/yr</span> of Real Capture, no
             length of time recoups today&apos;s{" "}
-            <span className="text-zinc-100">{fmtUsd(adjMcap)}</span> Adjusted MCap — Holder
+            <span className="text-fg">{fmtUsd(adjMcap)}</span> Adjusted MCap — Holder
             Multiple is undefined.
           </p>
         ) : (
           <p>
             At today&apos;s capture rate of{" "}
-            <span className="text-zinc-100">{fmtUsd(realCapture)}/yr</span>, it takes{" "}
-            <span className="text-zinc-100 font-semibold">
+            <span className="text-fg">{fmtUsd(realCapture)}/yr</span>, it takes{" "}
+            <span className="text-fg font-semibold">
               {(hm as number).toFixed(1)} years
             </span>{" "}
             of holder cash to equal the {fmtUsd(adjMcap)} Adjusted MCap — that&apos;s the{" "}
@@ -153,7 +153,7 @@ export function HmStacker({ p }: { p: HmProtocol }) {
               <>
                 {" "}
                 (Visual capped at 100 bricks; actual multiple is{" "}
-                <span className="text-zinc-100">{(hm as number).toFixed(0)}×</span>.)
+                <span className="text-fg">{(hm as number).toFixed(0)}×</span>.)
               </>
             )}
           </p>

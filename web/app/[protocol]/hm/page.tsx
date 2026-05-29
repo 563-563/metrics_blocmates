@@ -87,21 +87,21 @@ export default async function HmDeepPage({
       >
         <HmBreakdownTable p={hmP} />
         {bs?.lifetime_annual_usd != null && (
-          <p className="text-xs text-zinc-500 mt-4 leading-relaxed">
-            <span className="text-zinc-400">Buyback rate lens.</span> Recent{" "}
+          <p className="text-xs text-fg-muted mt-4 leading-relaxed">
+            <span className="text-fg-muted">Buyback rate lens.</span> Recent{" "}
             {bs.days_used}d annualized:{" "}
-            <span className="text-zinc-300">{fmtUsd(bs.annual_usd ?? 0)}/yr</span>.
+            <span className="text-fg-muted">{fmtUsd(bs.annual_usd ?? 0)}/yr</span>.
             Lifetime ({bs.lifetime_days}d, cumulative{" "}
             {fmtUsd(bs.lifetime_cumulative_usd ?? 0)}):{" "}
-            <span className="text-zinc-300">
+            <span className="text-fg-muted">
               {fmtUsd(bs.lifetime_annual_usd)}/yr
             </span>
             . Recent rate is{" "}
             <span
               className={
                 (bs.rate_vs_lifetime_pct ?? 0) < 0
-                  ? "text-amber-400"
-                  : "text-emerald-400"
+                  ? "text-accent"
+                  : "text-positive"
               }
             >
               {(bs.rate_vs_lifetime_pct ?? 0) > 0 ? "+" : ""}
@@ -176,7 +176,7 @@ export default async function HmDeepPage({
               order; the holder-facing buckets (Smart Burn, Staking Rewards)
               stay locked until the ABC solvency buffer clears its Phase 1
               floor. Percentages are governance framework params, editable in
-              <code className="text-zinc-400"> data/hm/config.json</code>.
+              <code className="text-fg-muted"> data/hm/config.json</code>.
             </>
           }
         >
@@ -217,19 +217,19 @@ export default async function HmDeepPage({
       <Section title="Buyback flow + treasury accumulation">
         {last90.length > 0 ? (
           <>
-            <h3 className="text-xs uppercase tracking-widest text-zinc-500 mb-2">
+            <h3 className="text-xs uppercase tracking-widest text-fg-muted mb-2">
               Daily buybacks (USD) · last 90 days
             </h3>
             <BuybackChart data={last90} />
             {afWeekly.length > 0 && (
               <>
-                <h3 className="text-xs uppercase tracking-widest text-zinc-500 mt-8 mb-2">
+                <h3 className="text-xs uppercase tracking-widest text-fg-muted mt-8 mb-2">
                   Treasury / fund balance · since TGE
                 </h3>
                 <AfBalanceChart data={afWeekly} symbol={hmP.symbol} />
               </>
             )}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6 pt-6 border-t border-zinc-800">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6 pt-6 border-t border-line">
               <Stat
                 label="Lifetime buyback"
                 value={fmtUsd(bs?.lifetime_cumulative_usd ?? 0)}
@@ -262,7 +262,7 @@ export default async function HmDeepPage({
             HM input uses governance-stated rate of{" "}
             {fmtUsd(hmP.annual_buyback_usd)}/yr.
             <br />
-            See <code className="text-zinc-500">ONCHAIN-INTEGRATION-PLAN.md</code>{" "}
+            See <code className="text-fg-muted">ONCHAIN-INTEGRATION-PLAN.md</code>{" "}
             for adapter status.
           </Placeholder>
         )}
@@ -282,16 +282,16 @@ export default async function HmDeepPage({
             HM seed flags 24mo unlocks at{" "}
             {Math.round(hmP.unlocks_24mo_tokens).toLocaleString()} {hmP.symbol} (
             {fmtUsd(hmP.unlocks_24mo_usd)}) — see{" "}
-            <code className="text-zinc-500">data/hm/config.json</code>.
+            <code className="text-fg-muted">data/hm/config.json</code>.
           </Placeholder>
         )}
       </Section>
 
-      <footer className="pt-6 border-t border-zinc-800 text-xs text-zinc-600 leading-relaxed">
+      <footer className="pt-6 border-t border-line text-xs text-fg-faint leading-relaxed">
         <p>
           Sources: {(hmP.sources || []).join(" · ")}
           {hmP.sources && hmP.sources.length > 0 ? " · " : ""}editorial seed at{" "}
-          <code className="text-zinc-500">data/hm/config.json</code>.
+          <code className="text-fg-muted">data/hm/config.json</code>.
         </p>
       </footer>
     </div>
@@ -308,8 +308,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-10 border border-zinc-800 rounded-md p-6 bg-zinc-950">
-      <h2 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
+    <section className="mb-10 border border-line rounded-md p-6 bg-surface">
+      <h2 className="text-xs uppercase tracking-widest text-fg-muted mb-4">
         {title}
         {info && <InfoTip>{info}</InfoTip>}
       </h2>
@@ -320,7 +320,7 @@ function Section({
 
 function Placeholder({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-sm text-zinc-500 leading-relaxed py-8 text-center bg-zinc-900/50 rounded">
+    <div className="text-sm text-fg-muted leading-relaxed py-8 text-center bg-surface/50 rounded">
       {children}
     </div>
   );
@@ -337,11 +337,11 @@ function Stat({
 }) {
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">
+      <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-1">
         {label}
       </p>
-      <p className="text-sm text-zinc-100">{value}</p>
-      {sub && <p className="text-xs text-zinc-500 mt-0.5">{sub}</p>}
+      <p className="text-sm text-fg">{value}</p>
+      {sub && <p className="text-xs text-fg-muted mt-0.5">{sub}</p>}
     </div>
   );
 }

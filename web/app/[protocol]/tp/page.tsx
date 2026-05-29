@@ -136,7 +136,7 @@ export default async function TpDeepPage({
           <Placeholder>
             Tokenomics module not yet defined for {hmP.symbol}.
             <br />
-            See <code className="text-zinc-500">scripts/onchain/&lt;slug&gt;/tokenomics.js</code>
+            See <code className="text-fg-muted">scripts/onchain/&lt;slug&gt;/tokenomics.js</code>
             {" "}for the HYPE reference implementation.
           </Placeholder>
         )}
@@ -156,15 +156,15 @@ export default async function TpDeepPage({
             HM seed flags 24mo unlocks at{" "}
             {Math.round(hmP.unlocks_24mo_tokens).toLocaleString()} {hmP.symbol}
             {" "}({fmtUsd(hmP.unlocks_24mo_usd)} at today&apos;s price). See{" "}
-            <code className="text-zinc-500">data/hm/config.json</code>.
+            <code className="text-fg-muted">data/hm/config.json</code>.
           </Placeholder>
         )}
       </Section>
 
-      <footer className="pt-6 border-t border-zinc-800 text-xs text-zinc-600 leading-relaxed">
+      <footer className="pt-6 border-t border-line text-xs text-fg-faint leading-relaxed">
         <p>
           Net Pressure formula:{" "}
-          <code className="text-zinc-500">
+          <code className="text-fg-muted">
             (Unlocks + Treasury Sells) − (Buybacks + Burns + Treasury
             Accumulation + Net Staking Lockups)
           </code>
@@ -184,8 +184,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-10 border border-zinc-800 rounded-md p-6 bg-zinc-950">
-      <h2 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
+    <section className="mb-10 border border-line rounded-md p-6 bg-surface">
+      <h2 className="text-xs uppercase tracking-widest text-fg-muted mb-4">
         {title}
         {info && <InfoTip>{info}</InfoTip>}
       </h2>
@@ -196,7 +196,7 @@ function Section({
 
 function Placeholder({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-sm text-zinc-500 leading-relaxed py-8 text-center bg-zinc-900/50 rounded">
+    <div className="text-sm text-fg-muted leading-relaxed py-8 text-center bg-surface/50 rounded">
       {children}
     </div>
   );

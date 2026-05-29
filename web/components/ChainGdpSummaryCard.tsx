@@ -32,21 +32,21 @@ export function ChainGdpSummaryCard({ chain }: { chain: ChainSummary }) {
       </div>
 
       {chain.structural_note && (
-        <div className="mt-5 rounded-md border border-amber-900/40 bg-amber-950/20 px-3 py-2.5 text-xs text-amber-200/90 leading-relaxed">
+        <div className="mt-5 rounded-md border border-accent/40 bg-accent-soft/40 px-3 py-2.5 text-xs text-accent leading-relaxed">
           <span className="font-medium">⚠ Structural note · </span>
           {chain.structural_note}
         </div>
       )}
 
-      <div className="mt-5 pt-4 border-t border-zinc-800 flex items-baseline justify-between gap-3">
-        <p className="text-xs text-zinc-500 leading-relaxed">
+      <div className="mt-5 pt-4 border-t border-line flex items-baseline justify-between gap-3">
+        <p className="text-xs text-fg-muted leading-relaxed">
           The same token tracked here as a protocol (Holder Multiple) is also
           the native asset of a chain (Chain GDP / GDP Multiple). Two valuation lenses,
           same asset.
         </p>
         <Link
           href={`/chains/${chain.slug}`}
-          className="shrink-0 text-xs text-zinc-300 hover:text-white transition border border-zinc-700 hover:border-zinc-500 rounded px-2.5 py-1"
+          className="shrink-0 text-xs text-fg-muted hover:text-white transition border border-line hover:border-fg-muted rounded px-2.5 py-1"
         >
           Full chain view →
         </Link>
@@ -66,9 +66,9 @@ function Stat({
 }) {
   return (
     <div>
-      <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">{label}</p>
-      <p className="text-base text-zinc-100 tabular-nums">{value}</p>
-      {sub && <p className="text-[11px] text-zinc-500 mt-0.5">{sub}</p>}
+      <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-1">{label}</p>
+      <p className="text-base text-fg tabular-nums">{value}</p>
+      {sub && <p className="text-[11px] text-fg-muted mt-0.5">{sub}</p>}
     </div>
   );
 }

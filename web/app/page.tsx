@@ -3,6 +3,7 @@ import { hm, onchainFeeds, getHmHistory } from "@/lib/data";
 import { fmtMultiple, fmtUsd } from "@/lib/format";
 import { Sparkline } from "@/components/Sparkline";
 import { KpiBig } from "@/components/KpiBig";
+import { PageHeader } from "@/components/PageHeader";
 
 export const revalidate = 300;
 
@@ -108,18 +109,11 @@ export default function Home() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
-      <header className="mb-8 border-b border-line pb-6">
-        <div className="flex items-baseline justify-between flex-wrap gap-2">
-          <h1 className="text-2xl font-semibold tracking-tight">Holder Multiple</h1>
-          <div className="flex items-center gap-4 text-[11px] text-fg-muted">
-            <span>As of {hm.as_of} · {onchainCount}/{hm.protocols.length} on-chain verified</span>
-          </div>
-        </div>
-        <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
-          Holder Multiple — how cheap a protocol&apos;s token is per dollar of value returned
-          to holders. Lower is cheaper. HM = Adjusted MCap ÷ Annual Real Capture.
-        </p>
-      </header>
+      <PageHeader
+        title="Holder Multiple"
+        description="How cheap a protocol's token is per dollar of value returned to holders. Lower is cheaper. HM = Adjusted MCap ÷ Annual Real Capture."
+        meta={`As of ${hm.as_of} · ${onchainCount}/${hm.protocols.length} on-chain verified`}
+      />
 
       {/* Cohort headline KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">

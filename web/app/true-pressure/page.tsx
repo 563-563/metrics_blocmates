@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { hm, np } from "@/lib/data";
 import { fmtUsd, fmtUsdSigned, fmtTokensSigned, fmtPct } from "@/lib/format";
+import { PageHeader } from "@/components/PageHeader";
+import { KpiBig } from "@/components/KpiBig";
 
 export const revalidate = 300;
 
@@ -54,24 +56,28 @@ export default function TruePressurePage() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
-      <header className="mb-8 border-b border-line pb-6">
-        <div className="flex items-baseline justify-between flex-wrap gap-2">
-          <h1 className="text-2xl font-semibold tracking-tight">True Pressure</h1>
-          <div className="text-[11px] text-fg-muted">As of {np.as_of}</div>
-        </div>
-        <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
-          <span className="text-fg">True Pressure</span> = (Unlocks + Treasury Sells) − (Buybacks +
-          Burns + Treasury Accumulation + Net Staking Lockups). Whether the protocol is currently a
-          net buyer or seller of its own token. Unlocks are sell-probability weighted.
-        </p>
-      </header>
+      <PageHeader
+        title="True Pressure"
+        description="Net Pressure = (Unlocks + Treasury Sells) − (Buybacks + Burns + Treasury Accumulation + Net Staking Lockups). Whether a protocol is currently a net buyer or seller of its own token. Unlocks are sell-probability weighted."
+        meta={`As of ${np.as_of} · ${rows.length} protocols`}
+      />
 
       {/* Cohort KPI strip */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <Kpi label="Protocols" value={`${rows.length}`} sub="in cohort" />
-        <Kpi label="Net sellers" value={`${netSellers}`} sub="30d window" />
-        <Kpi label="Net buyers" value={`${netBuyers}`} sub="30d window" />
-        <Kpi
+        <KpiBig label="Tracked protocols" value={`${rows.length}`} sub="in cohort" />
+        <KpiBig
+          label="Net sellers"
+          value={`${netSellers}`}
+          sub="30d window"
+          valueClass={netSellers > 0 ? "text-negative" : "text-fg"}
+        />
+        <KpiBig
+          label="Net buyers"
+          value={`${netBuyers}`}
+          sub="30d window"
+          valueClass={netBuyers > 0 ? "text-positive" : "text-fg"}
+        />
+        <KpiBig
           label="Cohort Σ NP"
           value={fmtUsdSigned(rows.reduce((s, r) => s + (r.npUsd ?? 0), 0))}
           sub="aggregate 30d"
@@ -178,14 +184,3 @@ export default function TruePressurePage() {
   );
 }
 
-function Kpi({ label, value, sub }: { label: string; value: string; sub?: string }) {
-  return (
-    <div className="border border-line rounded-lg bg-canvas px-5 py-4">
-      <p className="text-[10px] uppercase tracking-widest text-fg-muted">{label}</p>
-      <p className="text-2xl font-mono font-semibold text-fg tabular-nums mt-1.5 leading-none">
-        {value}
-      </p>
-      {sub && <p className="text-[11px] text-fg-muted mt-1.5">{sub}</p>}
-    </div>
-  );
-}

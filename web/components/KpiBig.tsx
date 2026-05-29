@@ -1,6 +1,5 @@
-// Shared headline-KPI card. Borders-only, no fill — matches the
-// onchain.markets style. Primary tier = large hero numbers; secondary tier
-// = same card but smaller value.
+// Shared headline-KPI card. Sized + spaced to match the onchain.markets
+// reference — large mono numbers, uppercase letter-spaced label + sub.
 
 export function KpiBig({
   label,
@@ -28,27 +27,33 @@ export function KpiBig({
           : "text-fg-muted";
   const dArrow = dPct == null ? "" : dPct > 0 ? "↑" : dPct < 0 ? "↓" : "·";
 
-  const valueSize = tier === "primary" ? "text-3xl md:text-4xl" : "text-xl md:text-2xl";
-  const padding = tier === "primary" ? "px-5 py-4" : "px-4 py-3.5";
+  const valueSize = tier === "primary" ? "text-4xl md:text-5xl" : "text-2xl";
+  const padding = tier === "primary" ? "px-6 py-5" : "px-5 py-4";
 
   return (
     <div className={`border border-line rounded-lg bg-canvas ${padding}`}>
-      <p className="text-[10px] uppercase tracking-widest text-fg-muted">{label}</p>
+      <p className="text-[10px] uppercase tracking-[0.14em] text-fg-muted">
+        {label}
+      </p>
       <p
-        className={`font-mono font-semibold tabular-nums mt-2 leading-none ${valueSize} ${
+        className={`font-mono font-semibold tabular-nums mt-3 leading-none ${valueSize} ${
           valueClass || "text-fg"
         }`}
       >
         {value}
       </p>
-      <div className="flex items-baseline gap-3 mt-2 flex-wrap">
+      <div className="mt-3 flex items-baseline gap-3 flex-wrap">
         {dPct != null && (
-          <span className={`text-xs font-mono tabular-nums ${dColor}`}>
+          <span className={`text-sm tabular-nums ${dColor}`}>
             {dArrow} {Math.abs(dPct).toFixed(1)}%
-            <span className="text-fg-faint ml-1">mo/mo</span>
+            <span className="text-fg-faint text-xs ml-1">mo/mo</span>
           </span>
         )}
-        {sub && <span className="text-[11px] text-fg-muted">{sub}</span>}
+        {sub && (
+          <span className="text-[10px] uppercase tracking-[0.14em] text-fg-muted">
+            {sub}
+          </span>
+        )}
       </div>
     </div>
   );

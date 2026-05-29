@@ -11,6 +11,7 @@ import { ChainTrendSparkline } from "@/components/ChainTrendSparkline";
 import { ChartTeasers } from "@/components/ChartTeasers";
 import { InfoTip } from "@/components/InfoTip";
 import { KpiBig } from "@/components/KpiBig";
+import { PageHeader } from "@/components/PageHeader";
 import { StablecoinToggle } from "@/components/StablecoinToggle";
 
 // Page is dynamic so the stablecoin toggle re-renders. The data is bundled
@@ -81,20 +82,17 @@ export default async function ChainsIndex({
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
-      <header className="mb-6 border-b border-line pb-6">
-        <div className="flex items-baseline justify-between flex-wrap gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">Chain GDP</h1>
-          <div className="flex items-center gap-4 text-[11px] text-fg-muted flex-wrap">
+      <PageHeader
+        title="Chain GDP"
+        description="Chain GDP is the sum of application revenue on each chain."
+        meta={`As of ${chains.as_of} · ${chains.chains.length} chains tracked`}
+        right={
+          <>
             <StablecoinToggle />
-            <Link href="/" className="hover:text-fg transition">← protocols</Link>
             <Link href="/chains/charts" className="hover:text-fg transition">charts →</Link>
-            <span>As of {chains.as_of}</span>
-          </div>
-        </div>
-        <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
-          Chain GDP is the sum of application revenue on each chain.
-        </p>
-      </header>
+          </>
+        }
+      />
 
       {/* Headline KPI strip */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">

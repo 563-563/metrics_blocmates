@@ -12,8 +12,10 @@ function fmt(v: number): string {
   return `$${v.toFixed(0)}`;
 }
 
-const TEXT_FILL = "rgb(var(--fg))";
-const TEXT_STROKE = "rgba(0,0,0,0.6)";
+// Plain black text on every cell, no stroke. Some chain colors (the lighter
+// hues) read fine; the darker chain colors trade some contrast for visual
+// calm — preferred over the previous neon-outline effect.
+const CELL_TEXT_FILL = "#111111";
 
 type Hovered = {
   name: string;
@@ -78,13 +80,7 @@ function TmContent(props: any) {
           y={y + 18}
           fontSize={13}
           fontWeight={600}
-          style={{
-            fill: TEXT_FILL,
-            stroke: TEXT_STROKE,
-            strokeWidth: 3,
-            paintOrder: "stroke",
-            pointerEvents: "none"
-          }}
+          style={{ fill: CELL_TEXT_FILL, pointerEvents: "none" }}
         >
           {displayName}
         </text>
@@ -94,14 +90,7 @@ function TmContent(props: any) {
           x={x + 7}
           y={y + 36}
           fontSize={12}
-          style={{
-            fill: TEXT_FILL,
-            stroke: TEXT_STROKE,
-            strokeWidth: 3,
-            paintOrder: "stroke",
-            fillOpacity: 0.95,
-            pointerEvents: "none"
-          }}
+          style={{ fill: CELL_TEXT_FILL, fillOpacity: 0.78, pointerEvents: "none" }}
         >
           {fmt(safeSize)}
         </text>
@@ -134,6 +123,9 @@ export function ChainAppTreemap({
   }
   function showAll() {
     setHiddenChains(new Set());
+  }
+  function hideAll() {
+    setHiddenChains(new Set(apps.map((a) => a.chain)));
   }
 
   // Build the filtered data set.
@@ -210,14 +202,22 @@ export function ChainAppTreemap({
           <p className="text-[10px] uppercase tracking-widest text-fg-muted">
             Chains — click to toggle ({allChainTotals.length - hiddenChains.size} of {allChainTotals.length} shown)
           </p>
-          {hiddenChains.size > 0 && (
+          <div className="flex items-center gap-1.5">
             <button
               onClick={showAll}
-              className="text-[11px] text-fg-muted hover:text-fg border border-line hover:border-zinc-500 rounded px-2 py-0.5 transition"
+              disabled={hiddenChains.size === 0}
+              className="text-[11px] text-fg-muted hover:text-fg border border-line hover:border-fg-muted rounded px-2 py-0.5 transition disabled:opacity-40 disabled:hover:text-fg-muted disabled:hover:border-line"
             >
               show all
             </button>
-          )}
+            <button
+              onClick={hideAll}
+              disabled={hiddenChains.size >= allChainTotals.length}
+              className="text-[11px] text-fg-muted hover:text-fg border border-line hover:border-fg-muted rounded px-2 py-0.5 transition disabled:opacity-40 disabled:hover:text-fg-muted disabled:hover:border-line"
+            >
+              hide all
+            </button>
+          </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-3 gap-y-1.5">
           {allChainTotals.map((c) => {

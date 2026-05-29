@@ -50,8 +50,9 @@ export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
   const HM_COLOR = theme === "light" ? "#2A2620" : "#ECE6DD";
   const PRICE_COLOR = theme === "light" ? "#4D7A3C" : "#84A76C";
   const Tip = makeTip(HM_COLOR, PRICE_COLOR);
-  // Heavier band tints in light mode so they don't disappear on cream.
-  const BAND_OPACITY = theme === "light" ? 0.12 : 0.08;
+  // Band tints — strong enough to actually demarcate the bands on cream
+  // (the previous 0.12 was still washing out). Dark mode keeps a subtler 0.10.
+  const BAND_OPACITY = theme === "light" ? 0.28 : 0.1;
 
   const pts = (data || []).filter((d) => d.hm != null);
   if (pts.length < 2) {

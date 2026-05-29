@@ -4,10 +4,19 @@ import { PageHeader } from "@/components/PageHeader";
 import { KpiBig } from "@/components/KpiBig";
 import { TruePressureTable, type TpRow } from "@/components/TruePressureTable";
 
-export const revalidate = 300;
+// Page is dynamic so the direction-filter searchParam (?dir=sellers|buyers)
+// updates server-rendered output on each click.
+export const dynamic = "force-dynamic";
 
-export default function TruePressurePage() {
-  const rows: TpRow[] = hm.protocols.map((p) => {
+export default async function TruePressurePage({
+  searchParams
+}: {
+  searchParams: Promise<{ dir?: string }>;
+}) {
+  const params = await searchParams;
+  const filter = params.dir === "sellers" || params.dir === "buyers" ? params.dir : null;
+
+  const allRows: TpRow[] = hm.protocols.map((p) => {
     const npP = np.protocols.find((n) => n.slug === p.slug);
     const r30 = npP?.rollups?.["30d"];
     const r7 = npP?.rollups?.["7d"];
@@ -21,35 +30,48 @@ export default function TruePressurePage() {
     return { p, r7, npTokens, npUsd, npDir, pctSupply };
   });
 
-  const netSellers = rows.filter((r) => r.npDir === "seller").length;
-  const netBuyers = rows.filter((r) => r.npDir === "buyer").length;
+  // Cohort-wide counts come from the unfiltered set; the table renders the
+  // filtered subset. This keeps the KPI numbers meaningful while the user
+  // drills into a direction.
+  const netSellers = allRows.filter((r) => r.npDir === "seller").length;
+  const netBuyers = allRows.filter((r) => r.npDir === "buyer").length;
+  const rows =
+    filter === "sellers"
+      ? allRows.filter((r) => r.npDir === "seller")
+      : filter === "buyers"
+        ? allRows.filter((r) => r.npDir === "buyer")
+        : allRows;
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <PageHeader
         title="True Pressure"
         description="Whether a protocol is currently a net buyer or seller of its own token. Net Pressure = (Unlocks + Treasury Sells) − (Buybacks + Burns + Treasury Accumulation + Net Staking Lockups). Unlocks are sell-probability weighted."
-        meta={`As of ${np.as_of} · ${rows.length} protocols`}
+        meta={`As of ${np.as_of} · ${allRows.length} protocols${filter ? ` · filtered: ${filter}` : ""}`}
       />
 
-      {/* Cohort KPI strip */}
+      {/* Cohort KPI strip — Net sellers / Net buyers cards are clickable filters */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <KpiBig label="Tracked protocols" value={`${rows.length}`} sub="in cohort" />
+        <KpiBig label="Tracked protocols" value={`${allRows.length}`} sub="in cohort" />
         <KpiBig
           label="Net sellers"
           value={`${netSellers}`}
-          sub="30d window"
+          sub="click to filter"
           valueClass={netSellers > 0 ? "text-negative" : "text-fg"}
+          href={filter === "sellers" ? "/true-pressure" : "/true-pressure?dir=sellers"}
+          active={filter === "sellers"}
         />
         <KpiBig
           label="Net buyers"
           value={`${netBuyers}`}
-          sub="30d window"
+          sub="click to filter"
           valueClass={netBuyers > 0 ? "text-positive" : "text-fg"}
+          href={filter === "buyers" ? "/true-pressure" : "/true-pressure?dir=buyers"}
+          active={filter === "buyers"}
         />
         <KpiBig
           label="Total cohort NP"
-          value={fmtUsdSigned(rows.reduce((s, r) => s + (r.npUsd ?? 0), 0))}
+          value={fmtUsdSigned(allRows.reduce((s, r) => s + (r.npUsd ?? 0), 0))}
           sub="aggregate 30d"
         />
       </div>

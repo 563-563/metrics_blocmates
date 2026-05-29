@@ -108,13 +108,13 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
               Protocol
             </SortHeader>
             <SortHeader active={sortKey === "np_30d"} dir={sortDir} onClick={() => toggle("np_30d")} width="220px">
-              Net Pressure · 30d
+              Net Pressure · 30d (USD)
             </SortHeader>
-            <SortHeader active={sortKey === "np_7d"} dir={sortDir} onClick={() => toggle("np_7d")} align="right" width="140px">
-              7d
+            <SortHeader active={sortKey === "np_7d"} dir={sortDir} onClick={() => toggle("np_7d")} align="right" width="160px">
+              Net Pressure · 7d (USD)
             </SortHeader>
-            <SortHeader active={sortKey === "tokens"} dir={sortDir} onClick={() => toggle("tokens")} align="right" width="120px">
-              Tokens · 30d
+            <SortHeader active={sortKey === "tokens"} dir={sortDir} onClick={() => toggle("tokens")} align="right" width="160px">
+              Net Pressure · 30d (tokens)
             </SortHeader>
             <SortHeader active={sortKey === "pct_supply"} dir={sortDir} onClick={() => toggle("pct_supply")} align="right" width="100px">
               % supply

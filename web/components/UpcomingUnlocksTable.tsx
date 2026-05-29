@@ -42,7 +42,7 @@ export function UpcomingUnlocksTable({
   return (
     <table className="w-full text-sm border-collapse">
       <thead>
-        <tr className="text-zinc-500 text-xs uppercase tracking-wider border-b border-zinc-800">
+        <tr className="text-zinc-100 text-xs uppercase tracking-wider border-b border-zinc-800">
           <th className="text-left py-2 font-normal">Date</th>
           <th className="text-left py-2 font-normal">Bucket</th>
           <th className="text-right py-2 font-normal">Tokens</th>

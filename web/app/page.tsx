@@ -115,7 +115,7 @@ export default function Home() {
       <div className="overflow-x-auto -mx-2">
         <table className="w-full text-sm border-separate border-spacing-0 min-w-[760px]">
           <thead>
-            <tr className="text-zinc-500 text-[10px] uppercase tracking-widest">
+            <tr className="text-zinc-100 text-[10px] uppercase tracking-widest">
               <th className="text-left font-normal py-2 px-2">Protocol</th>
               <th className="text-left font-normal py-2 px-2 w-[180px]">Holder Multiple</th>
               <th className="text-left font-normal py-2 px-2 w-[180px]">Net Pressure · 30d</th>

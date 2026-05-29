@@ -59,13 +59,13 @@ export function ChainCategoryHeatmap({
       <table className="text-[11px] border-separate border-spacing-0">
         <thead>
           <tr>
-            <th className="text-left font-normal text-zinc-500 uppercase tracking-widest py-1.5 px-2 sticky left-0 bg-zinc-950">
+            <th className="text-left font-normal text-zinc-100 uppercase tracking-widest py-1.5 px-2 sticky left-0 bg-zinc-950">
               Chain
             </th>
             {matrix.categories.map((cat) => (
               <th
                 key={cat}
-                className="text-left font-normal text-zinc-500 uppercase tracking-widest py-1.5 px-2"
+                className="text-left font-normal text-zinc-100 uppercase tracking-widest py-1.5 px-2"
                 style={{ minWidth: 88 }}
               >
                 <span className="flex items-center gap-1.5">
@@ -77,7 +77,7 @@ export function ChainCategoryHeatmap({
                 </span>
               </th>
             ))}
-            <th className="text-right font-normal text-zinc-500 uppercase tracking-widest py-1.5 px-2">
+            <th className="text-right font-normal text-zinc-100 uppercase tracking-widest py-1.5 px-2">
               Total
             </th>
           </tr>

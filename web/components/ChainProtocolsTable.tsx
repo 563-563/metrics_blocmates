@@ -15,7 +15,7 @@ export function ChainProtocolsTable({
   return (
     <table className="w-full text-sm border-separate border-spacing-0">
       <thead>
-        <tr className="text-zinc-500 text-[10px] uppercase tracking-widest">
+        <tr className="text-zinc-100 text-[10px] uppercase tracking-widest">
           <th className="text-left font-normal py-2 px-2 w-[24px]">#</th>
           <th className="text-left font-normal py-2 px-2">Protocol</th>
           <th className="text-left font-normal py-2 px-2">Category</th>

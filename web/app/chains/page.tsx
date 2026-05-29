@@ -104,7 +104,7 @@ export default function ChainsIndex() {
         <div className="overflow-x-auto px-2 pb-2">
           <table className="w-full text-sm border-separate border-spacing-0 min-w-[1040px]">
             <thead>
-              <tr className="text-zinc-500 text-[10px] uppercase tracking-widest">
+              <tr className="text-zinc-100 text-[10px] uppercase tracking-widest">
                 <th className="text-left font-normal py-2 px-2">Chain</th>
                 <th className="text-right font-normal py-2 px-2 w-[140px]">GDP · 30d</th>
                 <th className="text-left font-normal py-2 px-2 w-[100px]">30d trend</th>

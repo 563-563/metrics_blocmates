@@ -24,7 +24,7 @@ export function UnlockAllocationTable({
   return (
     <table className="w-full text-sm border-collapse">
       <thead>
-        <tr className="text-zinc-500 text-xs uppercase tracking-wider border-b border-zinc-800">
+        <tr className="text-zinc-100 text-xs uppercase tracking-wider border-b border-zinc-800">
           <th className="text-left py-2 font-normal w-2/5">Bucket</th>
           <th className="text-left py-2 font-normal">Recipient</th>
           <th className="text-right py-2 font-normal">Tokens</th>

@@ -1,9 +1,46 @@
 import Link from "next/link";
-import { hm, np, onchainFeeds } from "@/lib/data";
-import { fmtMultiple, fmtUsd, fmtUsdSigned, fmtTokensSigned, fmtPct } from "@/lib/format";
+import { hm, onchainFeeds, getHmHistory } from "@/lib/data";
+import { fmtMultiple, fmtUsd } from "@/lib/format";
 import { Sparkline } from "@/components/Sparkline";
+import { KpiBig } from "@/components/KpiBig";
 
 export const revalidate = 300;
+
+// Cohort-level month-over-month deltas. Reads each protocol's HM history
+// file, sums today's Adj MCap / Real Capture across the cohort and again
+// 30 days back, returns the delta %. Falls back to nulls when history
+// doesn't go back far enough.
+function cohortDelta() {
+  let currAdj = 0, priorAdj = 0;
+  let currRC = 0, priorRC = 0;
+  let priorAvailable = true;
+  for (const p of hm.protocols) {
+    const hist = getHmHistory(p.slug) as unknown as Array<{
+      adj_mcap_usd?: number;
+      real_capture_usd?: number;
+    }>;
+    if (!hist.length) continue;
+    const today = hist[hist.length - 1];
+    const prior = hist.length >= 31 ? hist[hist.length - 31] : null;
+    currAdj += Number(today.adj_mcap_usd) || 0;
+    currRC += Number(today.real_capture_usd) || 0;
+    if (prior) {
+      priorAdj += Number(prior.adj_mcap_usd) || 0;
+      priorRC += Number(prior.real_capture_usd) || 0;
+    } else {
+      priorAvailable = false;
+    }
+  }
+  const pct = (cur: number, pri: number): number | null =>
+    priorAvailable && pri > 0 ? (cur - pri) / pri : null;
+  return {
+    adj: { current: currAdj, deltaPct: pct(currAdj, priorAdj) },
+    rc: { current: currRC, deltaPct: pct(currRC, priorRC) },
+    cohortMult: currRC > 0 ? currAdj / currRC : null,
+    priorCohortMult:
+      priorAvailable && priorRC > 0 ? priorAdj / priorRC : null
+  };
+}
 
 // HM → palette-aware tone. Returns semantic Tailwind classes for text +
 // bar fill + a one-word band label. No more rgba tints — palette tokens
@@ -43,11 +80,6 @@ function verifPill(v: string): { label: string; cls: string; dot: string } {
 export default function Home() {
   // Build per-protocol rows with everything precomputed.
   const rows = hm.protocols.map((p) => {
-    const npP = np.protocols.find((n) => n.slug === p.slug);
-    const np30 = npP?.rollups?.["30d"];
-    const totalSupply =
-      npP?.static_reference?.circulating_supply?.total_supply ?? p.circulating_supply_tokens;
-
     // 90d buyback sparkline (daily USD).
     const feed = onchainFeeds[p.slug]?.buybacks ?? [];
     const spark = feed
@@ -56,59 +88,62 @@ export default function Home() {
       .slice(-90)
       .map((r) => Number(r.amount_usd) || 0);
 
-    const npTokens = np30?.net_pressure_tokens ?? null;
-    const npUsd = np30?.net_pressure_usd ?? null;
-    const npDir = npTokens == null ? "none" : npTokens > 0 ? "seller" : npTokens < 0 ? "buyer" : "flat";
-
     return {
       p,
       heat: hmHeat(p.hm),
       barPct: hmBarPct(p.hm),
-      np30,
-      npTokens,
-      npUsd,
-      npDir,
-      pctSupply: npTokens != null && totalSupply ? npTokens / totalSupply : null,
       spark,
       verif: verifPill(p.annual_buyback_verification)
     };
   });
 
-  // Cohort-max |NP usd| for the magnitude bars.
-  const maxNpUsd = Math.max(1, ...rows.map((r) => Math.abs(r.npUsd ?? 0)));
-
-  const totalRealCapture = hm.protocols.reduce((s, p) => s + p.real_capture_usd, 0);
-  const totalAdjMcap = hm.protocols.reduce((s, p) => s + p.adj_mcap_usd, 0);
   const onchainCount = hm.protocols.filter((p) =>
     p.annual_buyback_verification.startsWith("onchain")
   ).length;
+  const deltas = cohortDelta();
+  const cohortMultDelta =
+    deltas.cohortMult != null && deltas.priorCohortMult && deltas.priorCohortMult > 0
+      ? (deltas.cohortMult - deltas.priorCohortMult) / deltas.priorCohortMult
+      : null;
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <header className="mb-8 border-b border-line pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
-          <h1 className="text-2xl font-semibold tracking-tight">truepressure-hm</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Holder Multiple</h1>
           <div className="flex items-center gap-4 text-[11px] text-fg-muted">
-            <Link href="/chains" className="hover:text-fg transition">chains →</Link>
             <span>As of {hm.as_of} · {onchainCount}/{hm.protocols.length} on-chain verified</span>
           </div>
         </div>
         <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
-          Two lenses per protocol. <span className="text-positive">Holder Multiple</span> — how
-          cheap the token is per dollar of value returned to holders (lower = cheaper).
-          <span className="text-negative"> Net Pressure</span> — is the protocol a net buyer
-          (🟢) or seller (🔴) of its own token right now.
+          Holder Multiple — how cheap a protocol&apos;s token is per dollar of value returned
+          to holders. Lower is cheaper. HM = Adjusted MCap ÷ Annual Real Capture.
         </p>
       </header>
 
-      {/* Cohort KPI strip */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8 text-sm">
-        <Kpi label="Protocols" value={`${hm.protocols.length}`} />
-        <Kpi label="Σ Adj MCap" value={fmtUsd(totalAdjMcap)} />
-        <Kpi label="Σ Real Capture" value={`${fmtUsd(totalRealCapture)}/yr`} />
-        <Kpi
+      {/* Cohort headline KPIs */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <KpiBig label="Tracked protocols" value={`${hm.protocols.length}`} sub="active in cohort" />
+        <KpiBig
+          label="Σ Adjusted MCap"
+          value={fmtUsd(deltas.adj.current)}
+          delta={deltas.adj.deltaPct}
+          sub="across cohort"
+        />
+        <KpiBig
+          label="Σ Real Capture"
+          value={`${fmtUsd(deltas.rc.current)}/yr`}
+          delta={deltas.rc.deltaPct}
+          sub="across cohort"
+        />
+        <KpiBig
           label="Cohort multiple"
-          value={`${(totalAdjMcap / totalRealCapture).toFixed(1)}×`}
+          value={
+            deltas.cohortMult != null && Number.isFinite(deltas.cohortMult)
+              ? `${deltas.cohortMult.toFixed(1)}×`
+              : "—"
+          }
+          delta={cohortMultDelta}
           sub="Σ mcap ÷ Σ capture"
         />
       </div>
@@ -119,19 +154,14 @@ export default function Home() {
           <thead>
             <tr className="text-fg text-[10px] uppercase tracking-widest">
               <th className="text-left font-normal py-2 px-2">Protocol</th>
-              <th className="text-left font-normal py-2 px-2 w-[180px]">Holder Multiple</th>
-              <th className="text-left font-normal py-2 px-2 w-[180px]">Net Pressure · 30d</th>
-              <th className="text-left font-normal py-2 px-2 w-[110px]">Buyback 90d</th>
+              <th className="text-left font-normal py-2 px-2 w-[200px]">Holder Multiple</th>
+              <th className="text-left font-normal py-2 px-2 w-[120px]">Buyback 90d</th>
               <th className="text-right font-normal py-2 px-2">Real Capture</th>
               <th className="text-right font-normal py-2 px-2">Data</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map(({ p, heat, barPct, npUsd, npTokens, npDir, pctSupply, spark, verif }) => {
-              const npClass = npDir === "seller" ? "text-negative" : npDir === "buyer" ? "text-positive" : "text-fg-faint";
-              const npBarClass = npDir === "seller" ? "bg-negative" : npDir === "buyer" ? "bg-positive" : "bg-fg-faint";
-              const npArrow = npDir === "seller" ? "▲" : npDir === "buyer" ? "▼" : "·";
-              const npBarPct = npUsd != null ? (Math.abs(npUsd) / maxNpUsd) * 100 : 0;
+            {rows.map(({ p, heat, barPct, spark, verif }) => {
               return (
                 <tr key={p.slug} className="border-line-faint group">
                   {/* Protocol */}
@@ -176,31 +206,6 @@ export default function Home() {
                     </Link>
                   </td>
 
-                  {/* NP 30d — value + arrow + bar */}
-                  <td className="py-3 px-2 border-t border-line-faint">
-                    <Link href={`/${p.slug}/tp`} className="block">
-                      {npUsd != null && npTokens != null ? (
-                        <>
-                          <div className={`flex items-baseline gap-1.5 ${npClass}`}>
-                            <span className="text-xs">{npArrow}</span>
-                            <span className="text-sm font-mono font-medium tabular-nums">
-                              {fmtUsdSigned(npUsd)}
-                            </span>
-                          </div>
-                          <div className="text-[10px] text-fg-muted font-mono tabular-nums">
-                            {fmtTokensSigned(npTokens)} {p.symbol}
-                            {pctSupply != null ? ` · ${fmtPct(pctSupply, 2)}` : ""}
-                          </div>
-                          <div className="mt-1 h-[3px] rounded-full bg-line-faint overflow-hidden">
-                            <div className={`h-full rounded-full ${npBarClass}`} style={{ width: `${npBarPct}%` }} />
-                          </div>
-                        </>
-                      ) : (
-                        <span className="text-xs text-fg-faint">no flow data</span>
-                      )}
-                    </Link>
-                  </td>
-
                   {/* Buyback 90d sparkline — palette-aware via parent text color */}
                   <td className="py-3 px-2 border-t border-line-faint text-positive">
                     <Sparkline data={spark} color="currentColor" />
@@ -230,7 +235,6 @@ export default function Home() {
       {/* Legend */}
       <div className="mt-4 text-[11px] text-fg-muted leading-relaxed flex flex-wrap gap-x-6 gap-y-1">
         <span>HM cell: <span className="text-positive">green = cheap</span> → <span className="text-negative">red = expensive</span></span>
-        <span>NP: <span className="text-negative">▲ red = net seller</span> · <span className="text-positive">▼ green = net buyer</span> (unlocks sell-probability weighted)</span>
         <span>Sparkline = 90d daily buyback trend</span>
         <span>Pill = data quality (on-chain / proxy / stated / dormant)</span>
       </div>
@@ -250,12 +254,3 @@ export default function Home() {
   );
 }
 
-function Kpi({ label, value, sub }: { label: string; value: string; sub?: string }) {
-  return (
-    <div>
-      <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-1">{label}</p>
-      <p className="text-lg text-fg">{value}</p>
-      {sub && <p className="text-[10px] text-fg-muted mt-0.5">{sub}</p>}
-    </div>
-  );
-}

@@ -83,7 +83,7 @@ export default async function ChainsIndex({
     <div className="max-w-6xl mx-auto px-6 py-10">
       <header className="mb-6 border-b border-line pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">chains · GDP</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Chain GDP</h1>
           <div className="flex items-center gap-4 text-[11px] text-fg-muted flex-wrap">
             <StablecoinToggle />
             <Link href="/" className="hover:text-fg transition">← protocols</Link>
@@ -92,9 +92,7 @@ export default async function ChainsIndex({
           </div>
         </div>
         <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
-          <span className="text-fg-muted">Chain-GDP</span> = sum of <code>dailyRevenue</code> across
-          apps on each chain, excluding the infrastructure layer (REV). Stablecoin issuer
-          revenue (USDC/USDT) included; ETF and off-chain &quot;other&quot; are not.
+          Chain GDP is the sum of application revenue on each chain.
         </p>
       </header>
 

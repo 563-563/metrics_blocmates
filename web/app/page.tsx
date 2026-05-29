@@ -151,7 +151,7 @@ export default function Home() {
                         <span className="w-7 h-7 rounded-full bg-surface-elev shrink-0" />
                       )}
                       <span>
-                        <span className="block text-fg group-hover:text-white font-medium">{p.name}</span>
+                        <span className="block text-fg group-hover:text-accent font-medium">{p.name}</span>
                         <span className="block text-[11px] text-fg-muted">
                           ${p.symbol} · <span className="text-fg-faint">{p.phase.active}</span>
                         </span>

@@ -125,7 +125,7 @@ export function ChartTeasers() {
             {t.preview}
           </div>
           <div className="px-3 py-2">
-            <p className="text-xs text-fg font-medium leading-tight group-hover:text-white">
+            <p className="text-xs text-fg font-medium leading-tight group-hover:text-accent">
               {t.title}
             </p>
             <p className="text-[10px] text-fg-muted mt-0.5">{t.subtitle}</p>

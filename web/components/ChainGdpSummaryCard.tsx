@@ -46,7 +46,7 @@ export function ChainGdpSummaryCard({ chain }: { chain: ChainSummary }) {
         </p>
         <Link
           href={`/chains/${chain.slug}`}
-          className="shrink-0 text-xs text-fg-muted hover:text-white transition border border-line hover:border-fg-muted rounded px-2.5 py-1"
+          className="shrink-0 text-xs text-fg-muted hover:text-accent transition border border-line hover:border-fg-muted rounded px-2.5 py-1"
         >
           Full chain view →
         </Link>

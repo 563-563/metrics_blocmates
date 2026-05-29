@@ -176,7 +176,7 @@ export default async function ChainsIndex({
                           loading="lazy"
                         />
                         <span>
-                          <span className="block text-fg group-hover:text-white font-medium leading-tight">
+                          <span className="block text-fg group-hover:text-accent font-medium leading-tight">
                             {c.name}
                             {hasStruct && (
                               <span className="ml-1 text-accent/80" title={c.structural_note ?? ""}>

@@ -134,6 +134,7 @@ export function ChainQuadrant({ chains }: { chains: ChainSummary[] }) {
                 dataKey="name"
                 position="top"
                 offset={10}
+                stroke="none"
                 style={{ fill: "rgb(var(--fg))", fontSize: 13, fontWeight: 500, pointerEvents: "none" }}
               />
             </Scatter>

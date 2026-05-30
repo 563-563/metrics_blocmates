@@ -10,7 +10,11 @@ name: Update HM/TP data
 
 on:
   schedule:
-    - cron: '15 * * * *'  # hourly at :15
+    # Every 4 hours at :15. Dropped from hourly on 2026-05-30 to fit within
+    # GitHub Actions monthly minute quota. DL refreshes daily anyway and the
+    # CG daily endpoint we use is also daily — hourly was overkill. Can bump
+    # back to hourly if usage allows. Use workflow_dispatch for ad-hoc refresh.
+    - cron: '15 */4 * * *'
   workflow_dispatch:
 
 permissions:

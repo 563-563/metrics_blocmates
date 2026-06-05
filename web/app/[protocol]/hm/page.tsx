@@ -68,7 +68,7 @@ export default async function HmDeepPage({
   const bs = hmP.annual_buyback_source;
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       <ProtocolHeader hmP={hmP} npP={npP} active="hm" />
 
       {/* HM breakdown */}

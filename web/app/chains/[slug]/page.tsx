@@ -74,7 +74,7 @@ export default async function ChainPage({
   const delta = getChainMonthlyDelta(slug, includeStablecoins);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       {/* Header */}
       <header className="mb-8 border-b border-line pb-6">
         <div className="flex items-center gap-3 mb-2">

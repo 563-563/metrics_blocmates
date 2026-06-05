@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import {
   Line,
   ComposedChart,
@@ -11,6 +12,7 @@ import {
   YAxis
 } from "recharts";
 import { useTheme } from "./ThemeProvider";
+import { copyChartPng } from "@/lib/copy-chart-png";
 
 export type HmHistoryPoint = { date: string; hm: number | null; price_usd?: number };
 
@@ -45,7 +47,17 @@ function makeTip(hmColor: string, priceColor: string) {
   };
 }
 
-export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
+export function HmHistoryChart({
+  data,
+  copyTitle,
+  copySubtitle
+}: {
+  data: HmHistoryPoint[];
+  /** Optional title rendered onto the Copy-PNG output band. */
+  copyTitle?: string;
+  /** Optional subtitle rendered onto the Copy-PNG output band. */
+  copySubtitle?: string;
+}) {
   const { theme } = useTheme();
   const HM_COLOR = theme === "light" ? "#2A2620" : "#ECE6DD";
   const PRICE_COLOR = theme === "light" ? "#4D7A3C" : "#84A76C";
@@ -53,6 +65,9 @@ export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
   // Band tints — strong enough to actually demarcate the bands on cream
   // (the previous 0.12 was still washing out). Dark mode keeps a subtler 0.10.
   const BAND_OPACITY = theme === "light" ? 0.28 : 0.1;
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [copyLabel, setCopyLabel] = useState("Copy PNG");
 
   const pts = (data || []).filter((d) => d.hm != null);
   if (pts.length < 2) {
@@ -62,8 +77,39 @@ export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
   const yMax = Math.min(Math.ceil((maxHm * 1.1) / 10) * 10, 150);
   const hasPrice = pts.some((d) => d.price_usd != null);
 
+  const handleCopy = async () => {
+    const svg = containerRef.current?.querySelector("svg");
+    if (!svg) return;
+    setCopyLabel("…");
+    const result = await copyChartPng(
+      svg as SVGSVGElement,
+      copyTitle ?? "Holder Multiple over time",
+      copySubtitle ?? `${pts.length} day history`,
+      {
+        width: svg.clientWidth || 800,
+        height: svg.clientHeight || 288,
+        background: theme === "light" ? "#FAF7F2" : "#1C1B18",
+        titleColor: theme === "light" ? "#1A1A1A" : "#ECE6DD",
+        subtitleColor: theme === "light" ? "#8A8F98" : "#9A958C",
+        watermarkColor: theme === "light" ? "#9A958C" : "#7A736A",
+        filenameSlug: (copyTitle ?? "hm-history").replace(/\s+/g, "-").toLowerCase()
+      }
+    );
+    setCopyLabel(result === "copied" ? "Copied!" : result === "saved" ? "Saved" : "Failed");
+    setTimeout(() => setCopyLabel("Copy PNG"), 1600);
+  };
+
   return (
-    <div className="h-72 w-full">
+    <div className="relative">
+      <button
+        type="button"
+        onClick={handleCopy}
+        className="absolute top-0 right-0 z-10 text-[10px] uppercase tracking-widest text-fg-muted hover:text-fg border border-line hover:border-accent rounded px-2 py-1 transition"
+        aria-label="Copy chart as PNG"
+      >
+        {copyLabel}
+      </button>
+      <div ref={containerRef} className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={pts} margin={{ top: 8, right: 16, left: 16, bottom: 8 }}>
           {BANDS_BASE.map((b, i) => (
@@ -114,6 +160,7 @@ export function HmHistoryChart({ data }: { data: HmHistoryPoint[] }) {
           )}
         </ComposedChart>
       </ResponsiveContainer>
+      </div>
     </div>
   );
 }

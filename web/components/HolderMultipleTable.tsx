@@ -6,6 +6,7 @@ import type { HmProtocol } from "@/lib/data";
 import { fmtMultiple, fmtUsd } from "@/lib/format";
 import { Sparkline } from "./Sparkline";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
+import { ScrollableTable } from "./ScrollableTable";
 
 // Only these slugs have a per-protocol detail page (/[slug] + /[slug]/hm).
 // Synthesized rows from data/config.json render as plain text instead of
@@ -52,7 +53,7 @@ function SortHeader({
   return (
     <th
       onClick={onClick}
-      className={`${alignCls} font-normal py-2 px-2 cursor-pointer select-none hover:text-accent transition ${
+      className={`${alignCls} font-normal py-3 px-2 cursor-pointer select-none hover:text-accent transition ${
         active ? "text-fg" : "text-fg"
       }`}
       style={width ? { width } : undefined}
@@ -105,7 +106,7 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
   }, [rows, sortKey, sortDir]);
 
   return (
-    <div className="overflow-x-auto -mx-2">
+    <ScrollableTable>
       <table className="w-full text-sm border-separate border-spacing-0 min-w-[760px]">
         <thead>
           <tr className="text-[10px] uppercase tracking-widest">
@@ -240,6 +241,6 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
           })}
         </tbody>
       </table>
-    </div>
+    </ScrollableTable>
   );
 }

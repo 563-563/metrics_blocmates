@@ -8,6 +8,7 @@ import { fmtUsd } from "@/lib/format";
 import { ChainScaleBar } from "./ChainScaleBar";
 import { ChainTrendSparkline } from "./ChainTrendSparkline";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
+import { ScrollableTable } from "./ScrollableTable";
 
 type SortKey =
   | "name"
@@ -70,7 +71,7 @@ function SortHeader({
   return (
     <th
       onClick={onClick}
-      className={`${alignCls} font-normal py-2 px-2 cursor-pointer select-none hover:text-accent transition text-fg`}
+      className={`${alignCls} font-normal py-3 px-2 cursor-pointer select-none hover:text-accent transition text-fg`}
       style={width ? { width } : undefined}
     >
       <span
@@ -140,7 +141,7 @@ export function ChainsTable({
   const maxTvl = Math.max(...chains.map((c) => c.tvl_usd || 0));
 
   return (
-    <div className="overflow-x-auto px-2 pb-2">
+    <ScrollableTable>
       <table className="w-full text-sm border-separate border-spacing-0 min-w-[1040px]">
         <thead>
           <tr className="text-[10px] uppercase tracking-widest">
@@ -254,6 +255,6 @@ export function ChainsTable({
           })}
         </tbody>
       </table>
-    </div>
+    </ScrollableTable>
   );
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -21,6 +21,15 @@ export const metadata: Metadata = {
   title: "truepressure",
   description:
     "Holder Multiple, Net Pressure, and Chain-GDP across protocols and chains."
+};
+
+// Explicit mobile-first viewport. Next.js's default also sets these, but being
+// explicit makes the intent reviewable. maximum-scale stays >1 so accessibility
+// zoom continues to work.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

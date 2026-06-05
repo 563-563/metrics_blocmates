@@ -41,7 +41,7 @@ export default async function ProtocolLanding({
   const hasOnchain = (feeds.buybacks?.length ?? 0) > 0;
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       <ProtocolHeader hmP={hmP} npP={npP} active="overview" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

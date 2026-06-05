@@ -43,7 +43,7 @@ export default async function TruePressurePage({
         : allRows;
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       <PageHeader
         title="True Pressure"
         description="Whether a protocol is currently a net buyer or seller of its own token. Net Pressure = (Unlocks + Treasury Sells) − (Buybacks + Burns + Treasury Accumulation + Net Staking Lockups). Unlocks are sell-probability weighted."

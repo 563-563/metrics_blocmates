@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { HmProtocol, NpRollup } from "@/lib/data";
 import { fmtUsdSigned, fmtTokensSigned, fmtPct } from "@/lib/format";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
+import { ScrollableTable } from "./ScrollableTable";
 
 export type TpRow = {
   p: HmProtocol;
@@ -54,7 +55,7 @@ function SortHeader({
   return (
     <th
       onClick={onClick}
-      className={`${alignCls} font-normal py-2 px-2 cursor-pointer select-none hover:text-accent transition text-fg`}
+      className={`${alignCls} font-normal py-3 px-2 cursor-pointer select-none hover:text-accent transition text-fg`}
       style={width ? { width } : undefined}
     >
       <span className={`inline-flex items-baseline gap-1 ${align === "right" ? "justify-end" : ""}`}>
@@ -100,7 +101,7 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
   const maxAbs = Math.max(1, ...rows.map((r) => Math.abs(r.npUsd ?? 0)));
 
   return (
-    <div className="overflow-x-auto -mx-2">
+    <ScrollableTable>
       <table className="w-full text-sm border-separate border-spacing-0 min-w-[760px]">
         <thead>
           <tr className="text-[10px] uppercase tracking-widest">
@@ -184,6 +185,6 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
           })}
         </tbody>
       </table>
-    </div>
+    </ScrollableTable>
   );
 }

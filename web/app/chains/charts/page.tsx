@@ -31,7 +31,7 @@ export default async function ChainCharts({
   const chainOrder = cohort.map((c) => c.slug);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       <header className="mb-8 border-b border-line pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">chains · charts</h1>

@@ -71,3 +71,26 @@ export function verificationColor(v: string): string {
   if (v === "governance_stated") return "text-amber-400";
   return "text-zinc-500";
 }
+
+// Verification-flag pill spec (label + Tailwind classes). Shared by the HM
+// and TP tables so data-quality reads identically everywhere.
+export type VerifPill = { label: string; cls: string; dot: string };
+
+export function verifPill(v: string): VerifPill {
+  switch (v) {
+    case "onchain":
+      return { label: "on-chain", cls: "text-positive border-positive/40 bg-positive/10", dot: "bg-positive" };
+    case "onchain_aggregate":
+      return { label: "on-chain~", cls: "text-positive border-positive/40 bg-positive/10", dot: "bg-positive/70" };
+    case "onchain_dormant":
+      return { label: "dormant", cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
+    case "proxy":
+      return { label: "proxy", cls: "text-accent border-accent/40 bg-accent/10", dot: "bg-accent" };
+    case "governance_stated":
+      return { label: "stated", cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
+    case "pending":
+      return { label: "no adapter", cls: "text-accent border-accent/40 bg-accent/10", dot: "bg-accent/60" };
+    default:
+      return { label: v, cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
+  }
+}

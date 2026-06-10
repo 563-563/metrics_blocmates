@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import {
   Bar,
   BarChart,
@@ -9,12 +10,21 @@ import {
   XAxis,
   YAxis
 } from "recharts";
+import { CopyPngButton } from "./CopyPngButton";
 
 export type BuybackPoint = { date: string; usd: number; tokens: number };
 
-export function BuybackChart({ data }: { data: BuybackPoint[] }) {
+export function BuybackChart({ data, title = "Daily buybacks" }: { data: BuybackPoint[]; title?: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
   return (
-    <div className="h-72 w-full">
+    <div className="relative">
+      <CopyPngButton
+        containerRef={containerRef}
+        title={title}
+        subtitle={`${data.length} day history`}
+        className="absolute top-0 right-0 z-10"
+      />
+      <div ref={containerRef} className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" />
@@ -48,6 +58,7 @@ export function BuybackChart({ data }: { data: BuybackPoint[] }) {
           <Bar dataKey="usd" fill="#10b981" />
         </BarChart>
       </ResponsiveContainer>
+      </div>
     </div>
   );
 }

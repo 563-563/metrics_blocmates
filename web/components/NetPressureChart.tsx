@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { CopyPngButton } from "./CopyPngButton";
 import {
   Bar,
   Line,
@@ -72,6 +73,7 @@ function makeTip(view: View, symbol: string) {
 
 export function NetPressureChart({ data, symbol }: { data: NpPoint[]; symbol: string }) {
   const [view, setView] = useState<View>("rolling30");
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const enriched = data.map((d, i) => {
     let rolling = 0;
@@ -90,7 +92,7 @@ export function NetPressureChart({ data, symbol }: { data: NpPoint[]; symbol: st
 
   return (
     <div>
-      <div className="flex gap-1 mb-3 text-[10px] uppercase tracking-widest">
+      <div className="flex gap-1 mb-3 text-[10px] uppercase tracking-widest items-center">
         {([
           ["daily", "Daily"],
           ["rolling30", "30d rolling"],
@@ -106,9 +108,15 @@ export function NetPressureChart({ data, symbol }: { data: NpPoint[]; symbol: st
             {l}
           </button>
         ))}
+        <CopyPngButton
+          containerRef={containerRef}
+          title={`${symbol} Net Pressure`}
+          subtitle={VIEW_LABEL[view]}
+          className="ml-auto"
+        />
       </div>
 
-      <div className="h-72 w-full">
+      <div ref={containerRef} className="h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={enriched} margin={{ top: 8, right: 16, left: 16, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--line))" />

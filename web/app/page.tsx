@@ -1,8 +1,9 @@
 import { hm, onchainFeeds, getHmHistory } from "@/lib/data";
-import { fmtUsd } from "@/lib/format";
+import { fmtUsd, verifPill } from "@/lib/format";
 import { KpiBig } from "@/components/KpiBig";
 import { PageHeader } from "@/components/PageHeader";
 import { HolderMultipleTable } from "@/components/HolderMultipleTable";
+import { HowToRead, BandChip } from "@/components/HowToRead";
 
 export const revalidate = 300;
 
@@ -52,23 +53,6 @@ function cohortDelta() {
 function hmBarPct(hm: number): number {
   if (!Number.isFinite(hm)) return 100;
   return Math.min(hm / 120, 1) * 100;
-}
-
-function verifPill(v: string): { label: string; cls: string; dot: string } {
-  switch (v) {
-    case "onchain":
-      return { label: "on-chain", cls: "text-positive border-positive/40 bg-positive/10", dot: "bg-positive" };
-    case "onchain_aggregate":
-      return { label: "on-chain~", cls: "text-positive border-positive/40 bg-positive/10", dot: "bg-positive/70" };
-    case "onchain_dormant":
-      return { label: "dormant", cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
-    case "proxy":
-      return { label: "proxy", cls: "text-accent border-accent/40 bg-accent/10", dot: "bg-accent" };
-    case "governance_stated":
-      return { label: "stated", cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
-    default:
-      return { label: v, cls: "text-fg-muted border-line bg-surface", dot: "bg-fg-faint" };
-  }
 }
 
 export default function Home() {
@@ -124,6 +108,34 @@ export default function Home() {
         description="How cheap a protocol's token is per dollar of value returned to holders. Lower is cheaper. HM = Adjusted MCap ÷ Annual Real Capture."
         meta={`As of ${hm.as_of} · ${onchainCount}/${hm.protocols.length} on-chain verified`}
       />
+
+      <HowToRead>
+        <p className="mb-3">
+          <strong className="text-fg">HM = Adjusted MCap ÷ Annual Real Capture</strong> — how many dollars of
+          (unlock-adjusted) market cap you pay per dollar the protocol actually returns to token
+          holders each year, via buybacks/burns (Category A) or stable-denominated yield to native
+          stakers (Category B). Like a P/E: <strong className="text-fg">lower is cheaper</strong>.
+        </p>
+        <div className="flex flex-wrap gap-2 mb-3">
+          <BandChip range="<10×" label="exceptional" cls="text-positive border-positive/40 bg-positive/10" />
+          <BandChip range="10–20×" label="strong" cls="text-positive border-positive/30 bg-positive/5" />
+          <BandChip range="20–35×" label="fair value" cls="text-fg-muted border-line bg-surface" />
+          <BandChip range="35–50×" label="expensive" cls="text-accent border-accent/40 bg-accent/10" />
+          <BandChip range=">50×" label="speculative" cls="text-negative border-negative/40 bg-negative/10" />
+        </div>
+        <p className="mb-1">
+          The <strong className="text-fg">Data pill</strong> is each row&apos;s confidence level:{" "}
+          <span className="text-positive">on-chain</span> = verified from chain reads (~ = aggregate
+          inflow, may include non-buyback flow) · <span className="text-accent">proxy</span> =
+          inferred from DefiLlama holders-revenue · <span className="text-fg">stated</span> =
+          governance docs, unverified · <span className="text-fg">dormant</span> = mechanism
+          verified on-chain but currently inactive (counts as $0 — that&apos;s the honest read, not a bug).
+        </p>
+        <p>
+          A protocol with no active value return shows <span className="font-mono">∞×</span> /
+          &ldquo;no real capture&rdquo;. Sorting and 30d Δ: falling HM = getting cheaper.
+        </p>
+      </HowToRead>
 
       {/* Cohort headline KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">

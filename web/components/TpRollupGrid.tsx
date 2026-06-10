@@ -1,4 +1,5 @@
 import type { NpProtocol } from "@/lib/data";
+import { npHeadlineTokens, npHeadlineUsd } from "@/lib/data";
 import { fmtPct, fmtTokensSigned, fmtUsdSigned } from "@/lib/format";
 
 const WINDOWS: Array<keyof NpProtocol["rollups"]> = ["24h", "7d", "30d", "90d"];
@@ -11,9 +12,13 @@ export function TpRollupGrid({ np }: { np: NpProtocol }) {
       {WINDOWS.map((w) => {
         const r = np.rollups[w];
         if (!r) return null;
-        const positive = r.net_pressure_tokens > 0;
+        const usd = npHeadlineUsd(r);
+        const tokens = npHeadlineTokens(r) ?? 0;
+        const positive = tokens > 0;
         const colorCls = positive ? "text-negative" : "text-positive";
-        const pctSupply = totalSupply > 0 ? r.net_pressure_tokens / totalSupply : 0;
+        const pctSupply = totalSupply > 0 ? tokens / totalSupply : 0;
+        const weightedDiverges =
+          usd != null && Math.abs(usd - r.net_pressure_usd) > 1e6;
         return (
           <div key={w}>
             <p className="text-[10px] uppercase tracking-widest text-fg-muted mb-1">
@@ -23,17 +28,16 @@ export function TpRollupGrid({ np }: { np: NpProtocol }) {
               )}
             </p>
             <p className={`text-lg ${colorCls}`}>
-              {fmtUsdSigned(r.net_pressure_usd)}
+              {fmtUsdSigned(usd ?? 0)}
             </p>
             <p className="text-xs text-fg-muted mt-0.5">
-              {fmtTokensSigned(r.net_pressure_tokens)} {np.symbol} · {fmtPct(pctSupply, 3)}
+              {fmtTokensSigned(tokens)} {np.symbol} · {fmtPct(pctSupply, 3)}
             </p>
-            {r.net_pressure_usd_gross != null &&
-              Math.abs(r.net_pressure_usd_gross - r.net_pressure_usd) > 1e6 && (
-                <p className="text-[11px] text-fg-muted mt-0.5">
-                  gross (100% sell): {fmtUsdSigned(r.net_pressure_usd_gross)}
-                </p>
-              )}
+            {weightedDiverges && (
+              <p className="text-[11px] text-fg-muted mt-0.5">
+                sell-weighted: {fmtUsdSigned(r.net_pressure_usd)}
+              </p>
+            )}
             <p className="text-[11px] text-fg-muted mt-1">
               {r.net_pressure_usd_method === "per_day_price"
                 ? `USD: per-day (${Math.round(r.daily_price_coverage_pct * 100)}%)`

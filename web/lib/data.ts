@@ -11,10 +11,6 @@ import aaveTreasuryRaw from "../../data/onchain/aave/treasury.json";
 import skyCatBInflowsRaw from "../../data/onchain/sky/cat-b-inflows.json";
 import skyRewardsFarmBalanceRaw from "../../data/onchain/sky/rewards-farm-balance.json";
 import litBuybacksRaw from "../../data/onchain/lit/buybacks.json";
-import hmHistHypeRaw from "../../data/hm/history/hyperliquid.json";
-import hmHistAaveRaw from "../../data/hm/history/aave.json";
-import hmHistSkyRaw from "../../data/hm/history/sky.json";
-import hmHistLitRaw from "../../data/hm/history/lighter.json";
 
 // ─── Types matching compute outputs ──────────────────────────────────────
 
@@ -110,12 +106,18 @@ export type NpRollup = {
   treasury_accumulation_tokens: number;
   net_staking_lockups_tokens: number;
   unlocks_usd?: number;
+  unlocks_usd_adjusted?: number;
+  treasury_sells_usd?: number;
   buybacks_usd?: number;
+  burns_usd?: number;
+  treasury_accumulation_usd?: number;
+  net_staking_lockups_usd?: number;
   net_pressure_tokens: number;
   net_pressure_tokens_gross?: number;
   net_pressure_usd: number;
   net_pressure_usd_gross?: number;
   net_pressure_usd_method: "per_day_price" | "today_price";
+  unlocks_by_recipient?: Record<string, { tokens: number; usd: number }>;
 };
 
 export type NpDaily = {
@@ -124,7 +126,9 @@ export type NpDaily = {
   unlocks_tokens: number;
   buybacks_tokens: number;
   net_pressure_tokens: number;
+  net_pressure_tokens_gross?: number;
   net_pressure_usd: number;
+  net_pressure_usd_gross?: number;
   price_usd_for_day: number;
   price_source_for_day: "daily_series" | "today_fallback";
 };
@@ -139,9 +143,24 @@ export type NpProtocol = {
     af_balance?: { amount_tokens: number };
     total_staked?: { total_staked_tokens: number };
   };
+  unlock_weighting?: { sell_probability: Record<string, number>; fallback: number };
   rollups: { "24h": NpRollup; "7d": NpRollup; "30d": NpRollup; "90d": NpRollup };
   daily: NpDaily[];
 };
+
+// Published Net Pressure basis: GROSS scheduled unlocks (100% sell-through —
+// the actual emissions hitting circulation), not the editorial sell-probability
+// weighting. The weighted figure is still computed and shown as a secondary
+// reference; readers apply their own weights via the protocol-page sliders.
+// Older snapshots without the gross column fall back to the weighted net.
+export function npHeadlineUsd(r: NpRollup | undefined | null): number | null {
+  if (!r) return null;
+  return r.net_pressure_usd_gross ?? r.net_pressure_usd ?? null;
+}
+export function npHeadlineTokens(r: NpRollup | undefined | null): number | null {
+  if (!r) return null;
+  return r.net_pressure_tokens_gross ?? r.net_pressure_tokens ?? null;
+}
 
 export type NpSnapshot = {
   schema_version: number;
@@ -174,7 +193,7 @@ export type AfTreasuryHist = {
 // ─── Loaders ─────────────────────────────────────────────────────────────
 
 export const hm: HmSnapshot = hmSnapshotRaw as HmSnapshot;
-export const np: NpSnapshot = npSnapshotRaw as NpSnapshot;
+export const np: NpSnapshot = npSnapshotRaw as unknown as NpSnapshot;
 export const hypeBuybacks: AfBuyback[] = hypeBuybacksRaw as AfBuyback[];
 export const hypeAfHistory: AfTreasuryHist[] = hypeAfHistoryRaw as AfTreasuryHist[];
 export const aaveBuybacks: AfBuyback[] = aaveBuybacksRaw as AfBuyback[];
@@ -200,13 +219,20 @@ export function getNpProtocolBySlug(slug: string): NpProtocol | undefined {
 // adapters land, add their slug → daily-series mappings here.
 export const litBuybacks: AfBuyback[] = litBuybacksRaw as AfBuyback[];
 
+// HM-over-time series, loaded for every cohort slug that has a history file
+// (backfill-hm-history.js writes them for core seeds AND proxy-tier tokens
+// with a DL feed). Webpack context-module pattern, same as lib/chains.ts —
+// the require resolves per-slug at build time; missing files just no-op.
 export type HmHistoryPoint = { date: string; hm: number | null; price_usd?: number };
-const hmHistory: Record<string, HmHistoryPoint[]> = {
-  hyperliquid: hmHistHypeRaw as HmHistoryPoint[],
-  aave: hmHistAaveRaw as HmHistoryPoint[],
-  sky: hmHistSkyRaw as HmHistoryPoint[],
-  lighter: hmHistLitRaw as HmHistoryPoint[]
-};
+const hmHistory: Record<string, HmHistoryPoint[]> = {};
+for (const slug of PROTOCOL_SLUGS) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    hmHistory[slug] = require(`../../data/hm/history/${slug}.json`) as HmHistoryPoint[];
+  } catch {
+    /* no series for this slug yet */
+  }
+}
 export function getHmHistory(slug: string): HmHistoryPoint[] {
   return hmHistory[slug] ?? [];
 }
@@ -219,3 +245,17 @@ export const onchainFeeds: Record<
   aave: { buybacks: aaveBuybacks, afHistory: aaveTreasury },
   lighter: { buybacks: litBuybacks }
 };
+
+// Proxy-tier buyback feeds (DL holdersRevenue/fees → data/onchain/proxy/).
+// Loaded for every cohort slug not already wired above, so sparklines and
+// buyback charts light up for the proxy tier too.
+for (const slug of PROTOCOL_SLUGS) {
+  if (onchainFeeds[slug]) continue;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const buybacks = require(`../../data/onchain/proxy/${slug}/buybacks.json`) as AfBuyback[];
+    if (Array.isArray(buybacks) && buybacks.length > 0) onchainFeeds[slug] = { buybacks };
+  } catch {
+    /* no proxy feed for this slug */
+  }
+}

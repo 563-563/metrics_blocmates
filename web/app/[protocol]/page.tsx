@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EmptyState } from "@/components/EmptyState";
 import {
   PROTOCOL_SLUGS,
   getHmProtocolBySlug,
   getNpProtocolBySlug,
+  npHeadlineTokens,
+  npHeadlineUsd,
   onchainFeeds
 } from "@/lib/data";
 import {
@@ -36,6 +39,8 @@ export default async function ProtocolLanding({
 
   const bs = hmP.annual_buyback_source;
   const np30 = npP?.rollups?.["30d"];
+  const np30Usd = npHeadlineUsd(np30);
+  const np30Tokens = npHeadlineTokens(np30);
   const totalSupply = npP?.static_reference?.circulating_supply?.total_supply;
 
   const hasOnchain = (feeds.buybacks?.length ?? 0) > 0;
@@ -108,23 +113,23 @@ export default async function ProtocolLanding({
             </h2>
             <span className="text-fg-muted text-xs">deep view →</span>
           </div>
-          {np30 ? (
+          {np30 && np30Usd != null && np30Tokens != null ? (
             <>
               <p
                 className={`text-4xl font-semibold ${
-                  np30.net_pressure_tokens === 0
+                  np30Tokens === 0
                     ? "text-fg"
-                    : np30.net_pressure_tokens > 0
+                    : np30Tokens > 0
                       ? "text-negative"
                       : "text-positive"
                 }`}
               >
-                {fmtUsdSigned(np30.net_pressure_usd)}
+                {fmtUsdSigned(np30Usd)}
               </p>
               <p className="text-xs text-fg-muted mt-1">
-                {fmtTokensSigned(np30.net_pressure_tokens)} {hmP.symbol} ·{" "}
+                {fmtTokensSigned(np30Tokens)} {hmP.symbol} ·{" "}
                 {fmtPct(
-                  np30.net_pressure_tokens /
+                  np30Tokens /
                     (totalSupply || hmP.circulating_supply_tokens),
                   3
                 )}{" "}
@@ -159,19 +164,16 @@ export default async function ProtocolLanding({
                 />
               </div>
               <p className="text-[11px] text-fg-muted mt-5">
-                {np30.net_pressure_tokens > 0
-                  ? "Market absorbed more supply than the protocol could sink."
-                  : "Protocol absorbed more supply than the market emitted."}
+                {np30Tokens > 0
+                  ? "Scheduled emissions outran the protocol's sinks."
+                  : "Protocol absorbed more supply than the schedule emitted."}
               </p>
             </>
           ) : (
-            <p className="text-sm text-fg-muted py-10 text-center">
-              On-chain flow adapter pending for {hmP.symbol}.
-              <br />
-              <span className="text-xs">
-                See ONCHAIN-INTEGRATION-PLAN.md for status.
-              </span>
-            </p>
+            <EmptyState>
+              Daily flow series not wired for {hmP.symbol} yet — Net Pressure needs the on-chain
+              adapter. The gap is shown rather than estimated.
+            </EmptyState>
           )}
         </Link>
       </div>

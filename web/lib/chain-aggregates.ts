@@ -62,6 +62,8 @@ export function chainSummaryWithoutStablecoins(c: ChainSummary): ChainSummary {
 // DL refund/correction days so the cohort dynamics are legible.
 export type StackedDay = { date: string; [chainSlug: string]: string | number };
 // When includeStablecoins is false, sum `gdp_app` per day instead of `gdp`.
+// `days = Infinity` returns the full stored history (Ethereum back to 2018);
+// Array.prototype.slice clamps -Infinity to 0 so the windows below hold.
 export function getStackedGdpSeries(days = 180, smoothing = 7, includeStablecoins = true): StackedDay[] {
   const perChain = new Map<string, ChainHistoryPoint[]>();
   const allDates = new Set<string>();
@@ -86,7 +88,9 @@ export function getStackedGdpSeries(days = 180, smoothing = 7, includeStablecoin
           (s, r) => s + Math.max(0, includeStablecoins ? r.gdp : r.gdp_app),
           0
         ) / slice.length;
-      m.set(hist[i].date, avg);
+      // Whole dollars — sub-dollar precision is invisible at chart scale and
+      // bloats the RSC payload badly on multi-year windows.
+      m.set(hist[i].date, Math.round(avg));
     }
     smoothedByChain.set(slug, m);
   }
@@ -97,6 +101,99 @@ export function getStackedGdpSeries(days = 180, smoothing = 7, includeStablecoin
     }
     return row;
   });
+}
+
+// ── Quadrant time machine ───────────────────────────────────────────────
+// Weekly-sampled history of the strategic-positioning metrics so the client
+// can scrub a slider and watch chains move. Per chain per sample date:
+//   x = trailing-30d GDP annualized / TVL (capital productivity)
+//   y = trailing-7d REV / trailing-7d GDP (tax burden)
+// A chain appears in a frame only once it has a full 30d GDP window, a TVL
+// reading within the last 14 days, and non-zero 7d REV — same exclusions as
+// the live quadrant, applied historically.
+export type QuadrantPoint = { slug: string; x: number; y: number; gdp30: number; tvl: number };
+export type QuadrantFrame = { date: string; points: QuadrantPoint[] };
+
+export function getQuadrantFrames(includeStablecoins = true, stepDays = 7): QuadrantFrame[] {
+  type Prepped = {
+    slug: string;
+    dates: string[];
+    dateIdx: Map<string, number>;
+    gdpPrefix: number[]; // gdpPrefix[i] = sum of gdp[0..i-1]
+    revPrefix: number[];
+    tvl: (number | null)[];
+  };
+  const prepped: Prepped[] = [];
+  let latest = "";
+  for (const slug of CHAIN_SLUGS) {
+    const hist = HISTORY_MAP[slug] || [];
+    if (hist.length === 0) continue;
+    const dates = hist.map((r) => r.date);
+    const dateIdx = new Map(dates.map((d, i) => [d, i]));
+    const gdpPrefix = [0];
+    const revPrefix = [0];
+    for (const r of hist) {
+      const g = Math.max(0, includeStablecoins ? r.gdp : r.gdp_app);
+      gdpPrefix.push(gdpPrefix[gdpPrefix.length - 1] + g);
+      revPrefix.push(revPrefix[revPrefix.length - 1] + Math.max(0, r.rev ?? 0));
+    }
+    prepped.push({ slug, dates, dateIdx, gdpPrefix, revPrefix, tvl: hist.map((r) => r.tvl) });
+    const last = dates[dates.length - 1];
+    if (last > latest) latest = last;
+  }
+  if (!latest) return [];
+
+  // Index of the last history row on or before `day` (chains lag the global
+  // latest date by a day or two; a 3-day grace keeps them in the last frame).
+  function idxOnOrBefore(c: Prepped, day: string): number | null {
+    for (let back = 0; back < 3; back++) {
+      const d = new Date(day + "T00:00:00Z");
+      d.setUTCDate(d.getUTCDate() - back);
+      const i = c.dateIdx.get(d.toISOString().slice(0, 10));
+      if (i != null) return i;
+    }
+    return null;
+  }
+
+  // Sample dates: step backward weekly from the global latest so the final
+  // frame is always "today".
+  const sampleDates: string[] = [];
+  const earliest = prepped.reduce((m, c) => (c.dates[0] < m ? c.dates[0] : m), latest);
+  const cursor = new Date(latest + "T00:00:00Z");
+  while (cursor.toISOString().slice(0, 10) >= earliest) {
+    sampleDates.unshift(cursor.toISOString().slice(0, 10));
+    cursor.setUTCDate(cursor.getUTCDate() - stepDays);
+  }
+
+  const frames: QuadrantFrame[] = [];
+  for (const day of sampleDates) {
+    const points: QuadrantPoint[] = [];
+    for (const c of prepped) {
+      const i = idxOnOrBefore(c, day);
+      if (i == null || i < 29) continue; // need a full 30d GDP window
+      const gdp30 = c.gdpPrefix[i + 1] - c.gdpPrefix[i - 29];
+      if (gdp30 <= 0) continue;
+      // Most recent TVL reading within 14 days.
+      let tvl: number | null = null;
+      for (let j = i; j >= Math.max(0, i - 14); j--) {
+        if (c.tvl[j] != null && c.tvl[j]! > 0) { tvl = c.tvl[j]; break; }
+      }
+      if (tvl == null) continue;
+      const gdp7 = c.gdpPrefix[i + 1] - c.gdpPrefix[i - 6];
+      const rev7 = c.revPrefix[i + 1] - c.revPrefix[i - 6];
+      if (gdp7 <= 0 || rev7 <= 0) continue;
+      const gdpAnn = (gdp30 * 365) / 30;
+      points.push({
+        slug: c.slug,
+        x: Number((gdpAnn / tvl).toFixed(4)),
+        y: Number((rev7 / gdp7).toFixed(4)),
+        gdp30: Math.round(gdp30),
+        tvl: Math.round(tvl)
+      });
+    }
+    if (points.length >= 3) frames.push({ date: day, points });
+  }
+  return frames;
 }
 
 // One entry per (chain, app). Used by the treemap. Stablecoin issuers

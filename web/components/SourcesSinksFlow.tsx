@@ -50,15 +50,28 @@ export function SourcesSinksFlow({
   const r = np.rollups["30d"];
   if (!r) return null;
   const days = r.window_days || 30;
+  // Fallback only — used when a per-day-priced USD column is absent from an
+  // older snapshot. Today's price on a 30d window disagrees with the headline
+  // when price moved; the compute layer now ships per-day USD per component.
   const tokToUsdPerDay = (t: number) => (t * priceUsd) / days;
 
   const allRows: Row[] = [
-    { key: "unlocks", label: "Unlocks", perDayUsd: (r.unlocks_usd ?? 0) / days, intended: "source" },
-    { key: "treasury_sells", label: "Treasury sells", perDayUsd: tokToUsdPerDay(r.treasury_sells_tokens || 0), intended: "source" },
+    {
+      key: "unlocks",
+      label: "Unlocks (full schedule)",
+      // Gross scheduled unlocks — the SAME basis as the headline Net Pressure
+      // number (100% sell-through). The sell-weighted figure lives in the
+      // "Unlock assumptions" slider tool, not here: the stream and the
+      // headline must net to the same number or the visual reads as a
+      // contradiction.
+      perDayUsd: (r.unlocks_usd ?? r.unlocks_usd_adjusted ?? 0) / days,
+      intended: "source"
+    },
+    { key: "treasury_sells", label: "Treasury sells", perDayUsd: r.treasury_sells_usd != null ? r.treasury_sells_usd / days : tokToUsdPerDay(r.treasury_sells_tokens || 0), intended: "source" },
     { key: "buybacks", label: "Buybacks", perDayUsd: (r.buybacks_usd ?? 0) / days, intended: "sink" },
-    { key: "burns", label: "Burns", perDayUsd: tokToUsdPerDay(r.burns_tokens || 0), intended: "sink" },
-    { key: "treasury_accum", label: "Treasury accum", perDayUsd: tokToUsdPerDay(r.treasury_accumulation_tokens || 0), intended: "sink" },
-    { key: "staking", label: "Net staking lockups", perDayUsd: tokToUsdPerDay(r.net_staking_lockups_tokens || 0), intended: "sink" }
+    { key: "burns", label: "Burns", perDayUsd: r.burns_usd != null ? r.burns_usd / days : tokToUsdPerDay(r.burns_tokens || 0), intended: "sink" },
+    { key: "treasury_accum", label: "Treasury accum", perDayUsd: r.treasury_accumulation_usd != null ? r.treasury_accumulation_usd / days : tokToUsdPerDay(r.treasury_accumulation_tokens || 0), intended: "sink" },
+    { key: "staking", label: "Net staking lockups", perDayUsd: r.net_staking_lockups_usd != null ? r.net_staking_lockups_usd / days : tokToUsdPerDay(r.net_staking_lockups_tokens || 0), intended: "sink" }
   ];
 
   const sources = allRows.filter((row) => classifyRow(row) === "source");
@@ -71,7 +84,12 @@ export function SourcesSinksFlow({
 
   const sourcesTotal = sourcesAll.reduce((s, x) => s + Math.abs(x.perDayUsd), 0);
   const sinksTotal = sinksAll.reduce((s, x) => s + Math.abs(x.perDayUsd), 0);
-  const netPerDay = sourcesTotal - sinksTotal;
+  // Anchor the center number to the canonical rollup net (same gross field
+  // the headline and the cohort table use) so every surface agrees. The
+  // column totals are component visuals and can differ slightly when a
+  // negative sink flips sides; the net never recomputes from them.
+  const netUsd = r.net_pressure_usd_gross ?? r.net_pressure_usd;
+  const netPerDay = netUsd != null ? netUsd / days : sourcesTotal - sinksTotal;
   const netDir: "seller" | "buyer" | "flat" =
     Math.abs(netPerDay) < Math.max(sourcesTotal, sinksTotal) * 0.02
       ? "flat"

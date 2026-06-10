@@ -8,12 +8,6 @@ import { Sparkline } from "./Sparkline";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
 import { ScrollableTable } from "./ScrollableTable";
 
-// Only these slugs have a per-protocol detail page (/[slug] + /[slug]/hm).
-// Synthesized rows from data/config.json render as plain text instead of
-// clickable links to avoid 404-on-click. When detail pages exist for more
-// protocols, add them here.
-const PROTOCOLS_WITH_DETAIL_PAGE = new Set(["sky", "aave", "hyperliquid", "lighter"]);
-
 export type HmRow = {
   p: HmProtocol;
   // Bar magnitude only — no band label text, no colored cell — reader judges.
@@ -158,7 +152,6 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
         </thead>
         <tbody>
           {sorted.map(({ p, barPct, hmMoMPct, spark, verif }) => {
-            const hasDetailPage = PROTOCOLS_WITH_DETAIL_PAGE.has(p.slug);
             const protocolInner = (
               <>
                 {p.image ? (
@@ -175,7 +168,7 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
                   <span className="w-7 h-7 rounded-full bg-surface-elev shrink-0" />
                 )}
                 <span>
-                  <span className={`block font-medium ${hasDetailPage ? "text-fg group-hover:text-accent" : "text-fg"}`}>{p.name}</span>
+                  <span className="block font-medium text-fg group-hover:text-accent">{p.name}</span>
                   <span className="block text-[11px] text-fg-muted">
                     ${p.symbol} · <span className="text-fg-faint">{p.phase.active}</span>
                   </span>
@@ -195,22 +188,14 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
             return (
             <tr key={p.slug} className="border-line-faint group">
               <td className="py-3 px-2 border-t border-line-faint">
-                {hasDetailPage ? (
-                  <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
-                    {protocolInner}
-                  </Link>
-                ) : (
-                  <div className="flex items-center gap-2.5">{protocolInner}</div>
-                )}
+                <Link href={`/${p.slug}`} className="flex items-center gap-2.5">
+                  {protocolInner}
+                </Link>
               </td>
               <td className="py-3 px-2 border-t border-line-faint">
-                {hasDetailPage ? (
-                  <Link href={`/${p.slug}/hm`} className="block px-1">
-                    {hmInner}
-                  </Link>
-                ) : (
-                  <div className="block px-1">{hmInner}</div>
-                )}
+                <Link href={`/${p.slug}/hm`} className="block px-1">
+                  {hmInner}
+                </Link>
               </td>
               <td className="py-3 px-2 border-t border-line-faint text-right tabular-nums">
                 {hmMoMPct == null ? (
@@ -224,6 +209,11 @@ export function HolderMultipleTable({ rows }: { rows: HmRow[] }) {
               </td>
               <td className="py-3 px-2 border-t border-line-faint text-positive">
                 <Sparkline data={spark} color="currentColor" />
+                {spark.length >= 2 && (
+                  <span className="block text-[10px] text-fg-muted tabular-nums mt-0.5">
+                    {fmtUsd(spark.reduce((s, v) => s + v, 0))} <span className="text-fg-faint">· 90d USD</span>
+                  </span>
+                )}
               </td>
               <td className="py-3 px-2 border-t border-line-faint text-right tabular-nums text-fg-muted">
                 {p.real_capture_usd > 0 ? `${fmtUsd(p.real_capture_usd)}/yr` : "—"}

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ResponsiveContainer, Treemap } from "recharts";
-import { CHAIN_COLORS } from "@/lib/chain-colors";
+import { CHAIN_COLORS, MULTI_CHAIN_COLOR } from "@/lib/chain-colors";
 import type { FlatApp } from "@/lib/chain-aggregates";
 
 function fmt(v: number): string {
@@ -15,12 +15,15 @@ function fmt(v: number): string {
 // Plain black text on every cell, no stroke. Pure black both modes.
 const CELL_TEXT_FILL = "#000000";
 
+type Breakdown = Array<{ slug: string; chain: string; value: number }>;
+
 type Hovered = {
   name: string;
   chain: string;
   category: string;
   size: number;
   color: string;
+  breakdown: Breakdown | null;
   x: number;
   y: number;
 };
@@ -36,6 +39,7 @@ function TmContent(props: any) {
   const fill = props.color || "#71717a";
   const chain = props.chain || "";
   const category = props.category || "";
+  const breakdown: Breakdown | null = props.breakdown || null;
 
   // Looser thresholds + bigger fonts than before.
   const showName = width > 56 && height > 24 && safeName.length > 0;
@@ -57,6 +61,7 @@ function TmContent(props: any) {
       category,
       size: safeSize,
       color: fill,
+      breakdown,
       x: target.left - container.left + target.width / 2,
       y: target.top - container.top
     });
@@ -113,6 +118,9 @@ export function ChainAppTreemap({
   const [hover, setHover] = useState<Hovered | null>(null);
   activeSetHover = setHover;
 
+  // Cross-chain merge: one cell per app NAME, summed across visible chains.
+  const [merged, setMerged] = useState(false);
+
   // Filter state: which chains are currently visible. Default all on.
   const [hiddenChains, setHiddenChains] = useState<Set<string>>(new Set());
   function toggleChain(slug: string) {
@@ -130,20 +138,65 @@ export function ChainAppTreemap({
     setHiddenChains(new Set(apps.map((a) => a.chain)));
   }
 
-  // Build the filtered data set.
+  const chainName = useMemo(() => {
+    const m = new Map(chainLookup.map((c) => [c.slug, c.name]));
+    return (slug: string) => m.get(slug) || slug;
+  }, [chainLookup]);
+
+  // Build the data set: filter hidden chains, optionally merge same-named
+  // apps across chains, THEN rank and cut to topN (merging changes ranking).
   const data = useMemo(() => {
-    return apps
-      .filter((a) => a.revenue_30d > 0 && !hiddenChains.has(a.chain))
-      .sort((a, b) => b.revenue_30d - a.revenue_30d)
-      .slice(0, topN)
-      .map((a) => ({
+    const visible = apps.filter((a) => a.revenue_30d > 0 && !hiddenChains.has(a.chain));
+    let cells: Array<{
+      name: string;
+      size: number;
+      chain: string;
+      category: string;
+      color: string;
+      breakdown: Breakdown | null;
+    }>;
+    if (!merged) {
+      cells = visible.map((a) => ({
         name: a.name,
         size: a.revenue_30d,
-        chain: a.chain,
+        chain: chainName(a.chain),
         category: a.category,
-        color: CHAIN_COLORS[a.chain] || "#71717a"
+        color: CHAIN_COLORS[a.chain] || "#71717a",
+        breakdown: null
       }));
-  }, [apps, hiddenChains, topN]);
+    } else {
+      const groups = new Map<string, FlatApp[]>();
+      for (const a of visible) {
+        const g = groups.get(a.name);
+        if (g) g.push(a);
+        else groups.set(a.name, [a]);
+      }
+      cells = [...groups.values()].map((g) => {
+        g.sort((a, b) => b.revenue_30d - a.revenue_30d);
+        const size = g.reduce((s, a) => s + a.revenue_30d, 0);
+        if (g.length === 1) {
+          const a = g[0];
+          return {
+            name: a.name,
+            size,
+            chain: chainName(a.chain),
+            category: a.category,
+            color: CHAIN_COLORS[a.chain] || "#71717a",
+            breakdown: null
+          };
+        }
+        return {
+          name: g[0].name,
+          size,
+          chain: `${g.length} chains`,
+          category: g[0].category, // largest deployment's category
+          color: MULTI_CHAIN_COLOR,
+          breakdown: g.map((a) => ({ slug: a.chain, chain: chainName(a.chain), value: a.revenue_30d }))
+        };
+      });
+    }
+    return cells.sort((a, b) => b.size - a.size).slice(0, topN);
+  }, [apps, hiddenChains, topN, merged, chainName]);
 
   // Always show ALL chains in the filter, sorted by their total share.
   const allChainTotals = useMemo(() => {
@@ -159,6 +212,48 @@ export function ChainAppTreemap({
 
   return (
     <div>
+      {/* Cross-chain merge toggle */}
+      <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+        <span className="text-[11px] text-fg-muted">
+          {merged ? (
+            <>
+              <span
+                className="inline-block w-3 h-3 rounded-sm align-[-2px] mr-1.5"
+                style={{ background: MULTI_CHAIN_COLOR }}
+              />
+              grey cell = one app summed across its chains — hover for the per-chain split
+            </>
+          ) : (
+            "Cell color = the chain each deployment lives on"
+          )}
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="text-[10px] uppercase tracking-widest text-fg-muted">
+            Cross-chain apps
+          </span>
+          <span className="inline-flex border border-line rounded overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setMerged(false)}
+              className={`px-2 py-0.5 text-[11px] transition ${
+                merged ? "text-fg-muted hover:text-fg" : "bg-surface-elev text-fg"
+              }`}
+            >
+              per-chain
+            </button>
+            <button
+              type="button"
+              onClick={() => setMerged(true)}
+              className={`px-2 py-0.5 text-[11px] transition border-l border-line ${
+                merged ? "bg-surface-elev text-fg" : "text-fg-muted hover:text-fg"
+              }`}
+            >
+              merged
+            </button>
+          </span>
+        </span>
+      </div>
+
       <div className="relative h-[520px] w-full">
         {data.length > 0 ? (
           <ResponsiveContainer width="100%" height="100%">
@@ -194,6 +289,28 @@ export function ChainAppTreemap({
               <span className="text-fg-muted text-xs">30d revenue </span>
               <strong className="text-base">{fmt(hover.size)}</strong>
             </div>
+            {hover.breakdown && (
+              <div className="mt-1.5 pt-1.5 border-t border-line text-xs">
+                {hover.breakdown.slice(0, 6).map((b) => (
+                  <div key={b.slug} className="flex justify-between gap-3 leading-relaxed">
+                    <span style={{ color: CHAIN_COLORS[b.slug] || "rgb(var(--fg-muted))" }}>
+                      {b.chain}
+                    </span>
+                    <span className="text-fg tabular-nums">
+                      {fmt(b.value)}{" "}
+                      <span className="text-fg-muted">
+                        {((b.value / hover.size) * 100).toFixed(0)}%
+                      </span>
+                    </span>
+                  </div>
+                ))}
+                {hover.breakdown.length > 6 && (
+                  <div className="text-fg-muted mt-0.5">
+                    +{hover.breakdown.length - 6} more chains
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -203,6 +320,7 @@ export function ChainAppTreemap({
         <div className="flex items-baseline justify-between mb-2">
           <p className="text-[10px] uppercase tracking-widest text-fg-muted">
             Chains — click to toggle ({allChainTotals.length - hiddenChains.size} of {allChainTotals.length} shown)
+            {merged && <span className="normal-case tracking-normal"> · hidden chains drop out of merged totals</span>}
           </p>
           <div className="flex items-center gap-1.5">
             <button

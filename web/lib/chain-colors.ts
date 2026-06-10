@@ -32,6 +32,10 @@ export const CHAIN_COLORS: Record<string, string> = {
 
 const FALLBACK = "#71717a";
 
+// Cells that aggregate MULTIPLE chains (e.g. the treemap's merged multi-chain
+// apps). Deliberately desaturated so it can't be mistaken for any one chain.
+export const MULTI_CHAIN_COLOR = "#a8a29e";
+
 export function chainColor(slug: string): string {
   return CHAIN_COLORS[slug] ?? FALLBACK;
 }

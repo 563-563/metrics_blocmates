@@ -8,6 +8,7 @@ import {
   getChainProtocols
 } from "@/lib/chains";
 import { fmtUsd } from "@/lib/format";
+import { PROTOCOL_SLUGS, getHmProtocolBySlug } from "@/lib/data";
 import { ChainGdpHistoryChart } from "@/components/ChainGdpHistoryChart";
 import { ChainCategoryMix } from "@/components/ChainCategoryMix";
 import { ChainProtocolsTable } from "@/components/ChainProtocolsTable";
@@ -73,6 +74,11 @@ export default async function ChainPage({
   );
   const delta = getChainMonthlyDelta(slug, includeStablecoins);
 
+  // Dual-lens cross-link: when this chain's native token is in the HM core
+  // cohort (e.g. Hyperliquid), close the loop back to the protocol lens —
+  // the protocol pages already link here via ChainGdpSummaryCard.
+  const hmProtocol = PROTOCOL_SLUGS.includes(slug) ? getHmProtocolBySlug(slug) : null;
+
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       {/* Header */}
@@ -99,6 +105,11 @@ export default async function ChainPage({
             )}
           </p>
           <div className="flex items-center gap-4 text-[11px] text-fg-muted flex-wrap">
+            {hmProtocol && (
+              <Link href={`/${slug}/hm`} className="text-accent hover:text-fg transition">
+                ${hmProtocol.symbol} Holder Multiple →
+              </Link>
+            )}
             <StablecoinToggle />
             <Link href="/chains" className="hover:text-fg transition">
               ← all chains

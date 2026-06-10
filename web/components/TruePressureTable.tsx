@@ -2,18 +2,19 @@
 
 import { useMemo } from "react";
 import Link from "next/link";
-import type { HmProtocol, NpRollup } from "@/lib/data";
-import { fmtUsdSigned, fmtTokensSigned, fmtPct } from "@/lib/format";
+import type { HmProtocol } from "@/lib/data";
+import { fmtUsdSigned, fmtTokensSigned, fmtPct, type VerifPill } from "@/lib/format";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
 import { ScrollableTable } from "./ScrollableTable";
 
 export type TpRow = {
   p: HmProtocol;
-  r7?: NpRollup;
+  np7Usd: number | null;
   npTokens: number | null;
   npUsd: number | null;
   npDir: "seller" | "buyer" | "flat" | "none";
   pctSupply: number | null;
+  verif: VerifPill;
 };
 
 type SortKey = "name" | "np_30d" | "np_7d" | "tokens" | "pct_supply" | "direction";
@@ -84,7 +85,7 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
           // sort by absolute magnitude so loudest movers float regardless of sign
           return compareNum(Math.abs(a.npUsd ?? 0), Math.abs(b.npUsd ?? 0), sortDir);
         case "np_7d":
-          return compareNum(Math.abs(a.r7?.net_pressure_usd ?? 0), Math.abs(b.r7?.net_pressure_usd ?? 0), sortDir);
+          return compareNum(Math.abs(a.np7Usd ?? 0), Math.abs(b.np7Usd ?? 0), sortDir);
         case "tokens":
           return compareNum(Math.abs(a.npTokens ?? 0), Math.abs(b.npTokens ?? 0), sortDir);
         case "pct_supply":
@@ -102,7 +103,7 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
 
   return (
     <ScrollableTable>
-      <table className="w-full text-sm border-separate border-spacing-0 min-w-[760px]">
+      <table className="w-full text-sm border-separate border-spacing-0 min-w-[860px]">
         <thead>
           <tr className="text-[10px] uppercase tracking-widest">
             <SortHeader active={sortKey === "name"} dir={sortDir} onClick={() => toggle("name", "asc")}>
@@ -123,10 +124,13 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
             <SortHeader active={sortKey === "direction"} dir={sortDir} onClick={() => toggle("direction")} align="right" width="120px">
               Direction
             </SortHeader>
+            <th className="text-right font-normal py-3 px-2 text-fg" style={{ width: "110px" }}>
+              Data
+            </th>
           </tr>
         </thead>
         <tbody>
-          {sorted.map(({ p, r7, npUsd, npTokens, npDir, pctSupply }) => {
+          {sorted.map(({ p, np7Usd, npUsd, npTokens, npDir, pctSupply, verif }) => {
             const cls = dirClass(npDir);
             const barCls = dirBarClass(npDir);
             const arrow = dirArrow(npDir);
@@ -167,7 +171,7 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
                   </Link>
                 </td>
                 <td className={`py-3 px-2 border-t border-line-faint text-right font-mono tabular-nums ${cls}`}>
-                  {r7?.net_pressure_usd != null ? fmtUsdSigned(r7.net_pressure_usd) : <span className="text-fg-faint">—</span>}
+                  {np7Usd != null ? fmtUsdSigned(np7Usd) : <span className="text-fg-faint">—</span>}
                 </td>
                 <td className="py-3 px-2 border-t border-line-faint text-right font-mono tabular-nums text-fg-muted">
                   {npTokens != null ? `${fmtTokensSigned(npTokens)} ${p.symbol}` : <span className="text-fg-faint">—</span>}
@@ -178,6 +182,14 @@ export function TruePressureTable({ rows }: { rows: TpRow[] }) {
                 <td className={`py-3 px-2 border-t border-line-faint text-right ${cls}`}>
                   <span className="text-xs uppercase tracking-widest">
                     {npDir === "seller" ? "net seller" : npDir === "buyer" ? "net buyer" : "—"}
+                  </span>
+                </td>
+                <td className="py-3 px-2 border-t border-line-faint text-right">
+                  <span
+                    className={`inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest border rounded-full px-2 py-0.5 ${verif.cls}`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${verif.dot}`} />
+                    {verif.label}
                   </span>
                 </td>
               </tr>

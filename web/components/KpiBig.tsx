@@ -38,7 +38,10 @@ export function KpiBig({
           : "text-fg-muted";
   const dArrow = dPct == null ? "" : dPct > 0 ? "↑" : dPct < 0 ? "↓" : "·";
 
-  const valueSize = tier === "primary" ? "text-4xl md:text-5xl" : "text-2xl";
+  // Primary tier scales with the viewport (the 4-up grid squeezes cards hard
+  // at mid widths — fixed text-5xl overflowed the card) and never clips.
+  const valueSize =
+    tier === "primary" ? "text-[clamp(1.625rem,3vw,3rem)]" : "text-2xl";
   const padding = tier === "primary" ? "px-6 py-5" : "px-5 py-4";
 
   const borderCls = active
@@ -56,11 +59,13 @@ export function KpiBig({
         {href && (
           <span
             aria-hidden="true"
-            className={`text-[10px] uppercase tracking-[0.14em] ${
-              active ? "text-accent" : "text-fg-faint"
+            className={`text-[10px] uppercase tracking-[0.14em] border rounded-full px-2 py-0.5 transition ${
+              active
+                ? "text-accent border-accent/50 bg-accent/10"
+                : "text-fg-muted border-line"
             }`}
           >
-            {active ? "× clear" : "filter"}
+            {active ? "× clear" : "filter ▾"}
           </span>
         )}
       </div>

@@ -8,9 +8,11 @@ import { getTokenomicsBySlug } from "@/lib/tokenomics";
 import { fmtUsd } from "@/lib/format";
 import { ProtocolHeader } from "@/components/ProtocolHeader";
 import { InfoTip } from "@/components/InfoTip";
+import { EmptyState } from "@/components/EmptyState";
 import { NetPressureChart } from "@/components/NetPressureChart";
 import { SourcesSinksFlow } from "@/components/SourcesSinksFlow";
 import { TpRollupGrid } from "@/components/TpRollupGrid";
+import { UnlockAssumptions } from "@/components/UnlockAssumptions";
 import { UnlockScheduleChart } from "@/components/UnlockScheduleChart";
 import { UpcomingUnlocksTable } from "@/components/UpcomingUnlocksTable";
 
@@ -38,8 +40,10 @@ export default async function TpDeepPage({
       .slice(-90)
       .map((r) => ({
         date: r.date,
-        net_pressure_usd: r.net_pressure_usd,
-        net_pressure_tokens: r.net_pressure_tokens,
+        // Gross = actual scheduled emissions (100% sell-through), the
+        // published basis. Falls back to the weighted net on old snapshots.
+        net_pressure_usd: r.net_pressure_usd_gross ?? r.net_pressure_usd,
+        net_pressure_tokens: r.net_pressure_tokens_gross ?? r.net_pressure_tokens,
         price_usd: r.price_usd_for_day
       })) ?? [];
 
@@ -55,10 +59,10 @@ export default async function TpDeepPage({
             <>
               Particle speed and density track each component&apos;s 30d $/day rate.
               Idle (faint) curves carry no flow over the window. Unlocks are
-              sell-probability weighted: team ×0.10, foundation ×0.30,
-              emissions ×0.40, airdrop ×0.20. When a sink runs net-reverse
-              (e.g. net <em>un</em>staking), it flips to the sources side so
-              the formula identity{" "}
+              counted at the full scheduled emission (100% sell-through) — use
+              the sliders below to apply your own sell-through assumption.
+              When a sink runs net-reverse (e.g. net <em>un</em>staking), it
+              flips to the sources side so the formula identity{" "}
               <code>(Unlocks + Sells) − (Buybacks + Burns + Accum + Lockups)</code>{" "}
               holds.
             </>
@@ -68,17 +72,53 @@ export default async function TpDeepPage({
         </Section>
       )}
 
+      {/* What-if: user-adjustable unlock sell-through weights */}
+      {(() => {
+        const r30 = npP?.rollups?.["30d"];
+        const byRec = r30?.unlocks_by_recipient;
+        if (!npP || !r30 || !byRec || Object.keys(byRec).length === 0) return null;
+        const sinksUsd =
+          (r30.buybacks_usd ?? 0) +
+          (r30.burns_usd ?? 0) +
+          (r30.treasury_accumulation_usd ?? 0) +
+          (r30.net_staking_lockups_usd ?? 0);
+        return (
+          <Section
+            title="Unlock assumptions — dial in your own"
+            info={
+              <>
+                The published Net Pressure counts every unlock tranche in full — the
+                worst case, where 100% of the scheduled emission is sold. If you think a
+                vested team token is not automatically a sold token, these sliders
+                re-derive the {r30.window_days}d net with YOUR sell-through assumptions.
+                At 100% this reproduces the published figure exactly.
+              </>
+            }
+          >
+            <UnlockAssumptions
+              symbol={hmP.symbol}
+              windowDays={r30.window_days || 30}
+              byRecipient={byRec}
+              editorialWeights={npP.unlock_weighting?.sell_probability ?? {}}
+              treasurySellsUsd={r30.treasury_sells_usd ?? 0}
+              sinksUsd={sinksUsd}
+              officialNetUsd={r30.net_pressure_usd_gross ?? r30.net_pressure_usd}
+            />
+          </Section>
+        );
+      })()}
+
       {/* Section 1 — Roll-ups */}
       <Section
         title="Net Pressure — roll-ups"
         info={
           <>
-            Unlocks are <strong>sell-probability weighted</strong> — team /
-            core-contributor vesting is discounted (×0.10) because it&apos;s
-            mostly re-staked rather than sold; foundation / emissions
-            ×0.30–0.40, airdrop ×0.20. The &quot;gross (100% sell)&quot; line
-            shows the worst-case scheduled supply for comparison. ⚠ next to a
-            window = incomplete buyback coverage for that range.
+            Unlocks are counted at <strong>100% of the scheduled emission</strong>{" "}
+            — the actual supply hitting circulation, no sell-probability
+            discount. The &quot;sell-weighted&quot; line shows the editorial
+            scenario (team ×0.10, foundation ×0.30, emissions ×0.40, airdrop
+            ×0.20) for comparison. ⚠ next to a window = incomplete buyback
+            coverage for that range.
           </>
         }
       >
@@ -195,9 +235,5 @@ function Section({
 }
 
 function Placeholder({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-sm text-fg-muted leading-relaxed py-8 text-center bg-surface/50 rounded">
-      {children}
-    </div>
-  );
+  return <EmptyState>{children}</EmptyState>;
 }

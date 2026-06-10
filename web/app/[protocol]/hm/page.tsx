@@ -16,6 +16,7 @@ import { HmBreakdownTable } from "@/components/HmBreakdownTable";
 import { HmHistoryChart } from "@/components/HmHistoryChart";
 import { HmStacker } from "@/components/HmStacker";
 import { InfoTip } from "@/components/InfoTip";
+import { EmptyState } from "@/components/EmptyState";
 import { TmfWaterfall } from "@/components/TmfWaterfall";
 import { getChainBySlug } from "@/lib/chains";
 import { BuybackChart } from "@/components/BuybackChart";
@@ -319,11 +320,7 @@ function Section({
 }
 
 function Placeholder({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-sm text-fg-muted leading-relaxed py-8 text-center bg-surface/50 rounded">
-      {children}
-    </div>
-  );
+  return <EmptyState>{children}</EmptyState>;
 }
 
 function Stat({

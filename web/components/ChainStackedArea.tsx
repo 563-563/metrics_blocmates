@@ -12,10 +12,14 @@ import {
 import { CHAIN_COLORS } from "@/lib/chain-colors";
 import type { StackedDay } from "@/lib/chain-aggregates";
 
+// "$60M" not "$60.0M" — trailing zeros widen the ticks into the axis label.
+function trimZeros(s: string): string {
+  return s.replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
+}
 function fmt(v: number): string {
   const abs = Math.abs(v);
-  if (abs >= 1e9) return `$${(abs / 1e9).toFixed(2)}B`;
-  if (abs >= 1e6) return `$${(abs / 1e6).toFixed(1)}M`;
+  if (abs >= 1e9) return `$${trimZeros((abs / 1e9).toFixed(2))}B`;
+  if (abs >= 1e6) return `$${trimZeros((abs / 1e6).toFixed(1))}M`;
   if (abs >= 1e3) return `$${(abs / 1e3).toFixed(0)}K`;
   return `$${abs.toFixed(0)}`;
 }
@@ -100,11 +104,12 @@ export function ChainStackedArea({
             stroke="rgb(var(--fg-faint))"
             tick={{ fontSize: 12, fill: "rgb(var(--fg-muted))" }}
             tickFormatter={fmt}
+            width={72}
             label={{
               value: "Daily GDP (USD)",
               angle: -90,
               position: "insideLeft",
-              offset: 6,
+              offset: 0,
               style: { textAnchor: "middle", fill: "rgb(var(--fg))", fontSize: 13 }
             }}
           />

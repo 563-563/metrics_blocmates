@@ -16,26 +16,11 @@ const fs = require('fs');
 const path = require('path');
 
 const { HYPE_TOTAL_SUPPLY, generateUnlockSchedule } = require('./tokenomics');
+const { ensureDir, loadJsonOrDefault, mergeDaily } = require('../../lib/evm-adapter-utils');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'hype');
 const OUT_PATH = path.join(OUT_DIR, 'supply.json');
-
-function ensureDir(p) {
-  fs.mkdirSync(p, { recursive: true });
-}
-
-function loadJsonOrDefault(p, fallback) {
-  if (!fs.existsSync(p)) return fallback;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fallback; }
-}
-
-function mergeDaily(existing, incoming) {
-  const byDate = new Map();
-  for (const r of existing) byDate.set(r.date, r);
-  for (const r of incoming) byDate.set(r.date, r);
-  return Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
 
 function main() {
   ensureDir(OUT_DIR);

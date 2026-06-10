@@ -27,10 +27,15 @@
  *   --reproduce-article    use article_price_usd + article_circulating_tokens
  *                          from the seed instead of live values. Used to
  *                          verify the formula reproduces 26× / 46× / 34× / 15×.
+ *   --check                regression mode: implies --reproduce-article, writes
+ *                          NO files, and exits non-zero unless every HM matches
+ *                          the published article values (ARTICLE_EXPECTED_HM).
+ *                          Run by CI on every push.
  *
  * Run:
  *   node scripts/hm/compute-hm.js                  # live mode
  *   node scripts/hm/compute-hm.js --reproduce-article
+ *   node scripts/hm/compute-hm.js --check          # CI regression
  */
 
 const fs = require('fs');
@@ -44,7 +49,14 @@ const SNAPSHOTS_DIR  = path.join(ROOT, 'data', 'hm', 'snapshots');
 const REPORTS_DIR    = path.join(ROOT, 'data', 'hm', 'reports');
 
 const args = new Set(process.argv.slice(2));
-const REPRODUCE_ARTICLE = args.has('--reproduce-article');
+const CHECK = args.has('--check');
+const REPRODUCE_ARTICLE = args.has('--reproduce-article') || CHECK;
+
+// Published-article regression anchors (CLAUDE.md § Reproduce-article mode).
+// --check fails if reproduce-article output deviates at 0.1× precision. If the
+// article is ever republished with new numbers, update these alongside the
+// seed's article_* fields in the same commit.
+const ARTICLE_EXPECTED_HM = { SKY: 26.3, AAVE: 46.3, HYPE: 34.5, LIT: 15.4 };
 
 // Tokens excluded from cohort iteration. CC: no DefiLlama coverage (manual data
 // only). HNT: deferred per user (Apr 2026) — separate burn-and-mint analysis,
@@ -587,23 +599,26 @@ function main() {
     protocols
   };
 
-  ensureDir(SNAPSHOTS_DIR);
-  ensureDir(REPORTS_DIR);
+  let snapPath, reportPath, snapLatest, reportLatest;
+  if (!CHECK) {
+    ensureDir(SNAPSHOTS_DIR);
+    ensureDir(REPORTS_DIR);
 
-  const snapPath   = path.join(SNAPSHOTS_DIR, `${asOf}.json`);
-  const snapLatest = path.join(SNAPSHOTS_DIR, 'latest.json');
-  const reportPath   = path.join(REPORTS_DIR, `${asOf}.md`);
-  const reportLatest = path.join(REPORTS_DIR, 'latest.md');
+    snapPath   = path.join(SNAPSHOTS_DIR, `${asOf}.json`);
+    snapLatest = path.join(SNAPSHOTS_DIR, 'latest.json');
+    reportPath   = path.join(REPORTS_DIR, `${asOf}.md`);
+    reportLatest = path.join(REPORTS_DIR, 'latest.md');
 
-  fs.writeFileSync(snapPath, JSON.stringify(snapshot, null, 2));
-  fs.writeFileSync(snapLatest, JSON.stringify(snapshot, null, 2));
+    fs.writeFileSync(snapPath, JSON.stringify(snapshot, null, 2));
+    fs.writeFileSync(snapLatest, JSON.stringify(snapshot, null, 2));
 
-  const report = renderReport(snapshot);
-  fs.writeFileSync(reportPath, report);
-  fs.writeFileSync(reportLatest, report);
+    const report = renderReport(snapshot);
+    fs.writeFileSync(reportPath, report);
+    fs.writeFileSync(reportLatest, report);
+  }
 
   // Console summary
-  console.log(`\nHM snapshot — mode: ${snapshot.mode}`);
+  console.log(`\nHM snapshot — mode: ${snapshot.mode}${CHECK ? ' (check — nothing written)' : ''}`);
   console.log(`Generated: ${generatedAt}`);
   if (snapshot.latest_data_as_of) {
     console.log(`Live data (data/latest.json) as of: ${snapshot.latest_data_as_of}`);
@@ -628,6 +643,27 @@ function main() {
     );
   }
   console.log('');
+
+  if (CHECK) {
+    let failed = false;
+    for (const [symbol, expected] of Object.entries(ARTICLE_EXPECTED_HM)) {
+      const p = snapshot.protocols.find((x) => x.symbol === symbol);
+      const actual = p && isFinite(p.hm) ? Number(p.hm.toFixed(1)) : null;
+      const ok = actual === expected;
+      if (!ok) failed = true;
+      console.log(`${ok ? 'PASS' : 'FAIL'}  ${symbol}: expected ${expected}× — got ${p ? fmtMultiple(p.hm) : 'missing from snapshot'}`);
+    }
+    if (failed) {
+      console.error('\n--check FAILED: reproduce-article output deviates from the published article.');
+      console.error('Either a compute-layer change broke the HM formula, or the seed\'s article_*');
+      console.error('reference values changed without updating ARTICLE_EXPECTED_HM.');
+      process.exitCode = 1;
+    } else {
+      console.log('\n--check passed: article HM values reproduced exactly.');
+    }
+    return;
+  }
+
   console.log(`Wrote: ${path.relative(ROOT, snapPath)}`);
   console.log(`Wrote: ${path.relative(ROOT, reportPath)}`);
   console.log(`Wrote: ${path.relative(ROOT, snapLatest)} (copy)`);

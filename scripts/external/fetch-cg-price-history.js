@@ -8,6 +8,13 @@
  * Reads coingecko_id per protocol from data/config.json (matched by symbol
  * to the HM seed). Writes data/external/cg/<slug>-price-daily.json.
  *
+ * Fetched rows are MERGED into the existing file by date, so the file
+ * accumulates history regardless of --days. That makes a small daily window
+ * (--days 14 in the cron) sufficient: it refreshes the recent edge and the
+ * long tail persists from previous runs. It also means --days can never
+ * truncate history (the old overwrite behavior shrank a 365-row file to
+ * whatever window was passed).
+ *
  * Run: node scripts/external/fetch-cg-price-history.js [--days 365]
  */
 
@@ -42,12 +49,14 @@ async function main() {
     if (!cgId) { console.log(`[cg-price] ${row.symbol}: no coingecko_id, skip`); continue; }
     try {
       const m = await getDailyPrices(cgId, DAYS);
-      const rows = Array.from(m.entries())
-        .map(([date, price_usd]) => ({ date, price_usd }))
-        .sort((a, b) => a.date.localeCompare(b.date));
       const out = path.join(OUT_DIR, `${row.slug}-price-daily.json`);
+      let existing = [];
+      try { existing = JSON.parse(fs.readFileSync(out, 'utf8')); } catch { /* first run */ }
+      const byDate = new Map(existing.map((r) => [r.date, r]));
+      for (const [date, price_usd] of m.entries()) byDate.set(date, { date, price_usd });
+      const rows = Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
       fs.writeFileSync(out, JSON.stringify(rows, null, 2));
-      console.log(`[cg-price] ${row.symbol}: ${rows.length} days → ${path.relative(ROOT, out)}`);
+      console.log(`[cg-price] ${row.symbol}: fetched ${m.size} days, file now ${rows.length} days → ${path.relative(ROOT, out)}`);
     } catch (err) {
       console.warn(`[cg-price] ${row.symbol}: ${err.message}`);
     }

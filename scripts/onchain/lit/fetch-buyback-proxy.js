@@ -24,24 +24,13 @@ const fs = require('fs');
 const path = require('path');
 
 const { getDailyPrices } = require('../../lib/cg-prices');
+const { ensureDir, loadJsonOrDefault, mergeDaily } = require('../../lib/evm-adapter-utils');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'lit');
 const OUT_PATH = path.join(OUT_DIR, 'buybacks.json');
 
 const DL_URL = 'https://api.llama.fi/summary/fees/lighter?dataType=dailyHoldersRevenue';
-
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-function loadJsonOrDefault(p, fb) {
-  if (!fs.existsSync(p)) return fb;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; }
-}
-function mergeDaily(existing, incoming) {
-  const m = new Map();
-  for (const r of existing) m.set(r.date, r);
-  for (const r of incoming) m.set(r.date, r);
-  return Array.from(m.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
 
 async function main() {
   ensureDir(OUT_DIR);

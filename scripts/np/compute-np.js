@@ -205,13 +205,26 @@ function expandScheduleEvents(events) {
   return out;
 }
 
-// Returns { gross: Map<date,tokens>, adjusted: Map<date,sell-prob-weighted tokens> }.
+// Returns { gross: Map<date,tokens>, adjusted: Map<date,sell-prob-weighted tokens>,
+//           byRecipient: Map<date, Record<recipientType, tokens>>, sellProb }.
+// byRecipient carries UNWEIGHTED tokens split by recipient type so the
+// frontend can re-weight with user-chosen sell probabilities (the unlock-
+// assumption sliders) and still reconcile to the headline when using the
+// defaults. Unknown recipient types bucket under 'other' (FALLBACK_SELL_PROB).
 function loadUnlockMaps(seedSource) {
-  const empty = { gross: new Map(), adjusted: new Map() };
+  const empty = { gross: new Map(), adjusted: new Map(), byRecipient: new Map(), sellProb: { ...DEFAULT_SELL_PROB } };
   if (!seedSource) return empty;
 
   // Per-protocol override of sell-probabilities (by recipient type) if present.
   const sellProb = { ...DEFAULT_SELL_PROB, ...(seedSource.sell_probability_by_recipient || {}) };
+
+  const byRecipient = new Map();
+  const addRecipient = (date, rtype, amt) => {
+    const key = rtype != null && sellProb[rtype] != null ? rtype : 'other';
+    const rec = byRecipient.get(date) || {};
+    rec[key] = (rec[key] || 0) + amt;
+    byRecipient.set(date, rec);
+  };
 
   // Path 1: deterministic_schedule — protocol-specific JS module with
   // generateUnlockSchedule(asOf) function. Used by HYPE.
@@ -232,8 +245,9 @@ function loadUnlockMaps(seedSource) {
       const rtype = recipientByBucket[r.bucket];
       const p = rtype != null && sellProb[rtype] != null ? sellProb[rtype] : FALLBACK_SELL_PROB;
       adjusted.set(r.unlock_date, (adjusted.get(r.unlock_date) || 0) + amt * p);
+      addRecipient(r.unlock_date, rtype, amt);
     }
-    return { gross, adjusted };
+    return { gross, adjusted, byRecipient, sellProb };
   }
 
   // Path 2: schedule_file — JSON-driven generic schedule for protocols we
@@ -256,8 +270,9 @@ function loadUnlockMaps(seedSource) {
         ? sellProb[ev.recipient_type]
         : FALLBACK_SELL_PROB;
       adjusted.set(ev.date, (adjusted.get(ev.date) || 0) + amt * p);
+      addRecipient(ev.date, ev.recipient_type, amt);
     }
-    return { gross, adjusted };
+    return { gross, adjusted, byRecipient, sellProb };
   }
 
   return empty;
@@ -283,7 +298,7 @@ function todayIso() {
 // feed begins). Each row carries `price_source_for_day` so the report can
 // flag rows that used the fallback.
 function buildDailySeries(seed, priceUsdToday) {
-  const { gross: unlocks, adjusted: unlocksAdj } = loadUnlockMaps(seed.sources.unlocks);
+  const { gross: unlocks, adjusted: unlocksAdj, byRecipient: unlocksByRecipient, sellProb } = loadUnlockMaps(seed.sources.unlocks);
   const buybacks = loadDailyMap(seed.sources.buybacks);
   const treasuryAcc = loadDailyMap(seed.sources.treasury_accumulation);
   const treasurySells = loadDailyMap(seed.sources.treasury_sells);
@@ -305,7 +320,7 @@ function buildDailySeries(seed, priceUsdToday) {
   }
   const sortedDates2 = Array.from(dateSet).sort();
 
-  return sortedDates2.map((date) => {
+  const series = sortedDates2.map((date) => {
     const u    = unlocks.get(date) || 0;        // gross scheduled unlock
     const uAdj = unlocksAdj.get(date) || 0;     // sell-probability weighted
     const b  = buybacks.get(date) || 0;
@@ -343,12 +358,19 @@ function buildDailySeries(seed, priceUsdToday) {
       net_pressure_usd_gross: netGross * priceForUsd
     };
   });
+
+  return { series, unlocksByRecipient, sellProb };
 }
 
-function rollupWindow(series, windowDays, buybackDates) {
+function rollupWindow(series, windowDays, buybackDates, unlocksByRecipient) {
   const today = todayIso();
   const cutoff = daysAgoIso(windowDays);
   const slice = series.filter((r) => !r.is_future && r.date > cutoff && r.date <= today);
+  // Per-recipient-type unlock sums (UNWEIGHTED tokens + per-day-priced USD)
+  // for the window — the raw material for the frontend's unlock-assumption
+  // sliders. Σ usd[rtype] × default_sell_prob[rtype] reconciles with
+  // unlocks_usd_adjusted.
+  const byRecipient = {};
   const sum = {
     unlocks_tokens: 0,
     unlocks_tokens_adjusted: 0,
@@ -360,8 +382,17 @@ function rollupWindow(series, windowDays, buybackDates) {
     net_pressure_tokens: 0,
     net_pressure_tokens_gross: 0,
     // Per-day USD components — summed so the rollup reflects time-weighted price.
+    // ALL components get a per-day-priced USD column so the frontend never has
+    // to convert tokens at today's price (which silently disagrees with the
+    // headline net when price moved — the SourcesSinksFlow visual once showed
+    // +$12.9M/day against a −$3.7M/day headline this way).
     unlocks_usd: 0,
+    unlocks_usd_adjusted: 0,
+    treasury_sells_usd: 0,
     buybacks_usd: 0,
+    burns_usd: 0,
+    treasury_accumulation_usd: 0,
+    net_staking_lockups_usd: 0,
     net_pressure_usd_perday: 0,
     net_pressure_usd_gross_perday: 0
   };
@@ -377,10 +408,29 @@ function rollupWindow(series, windowDays, buybackDates) {
     sum.net_pressure_tokens += r.net_pressure_tokens;
     sum.net_pressure_tokens_gross += r.net_pressure_tokens_gross || 0;
     sum.unlocks_usd += r.unlocks_tokens * r.price_usd_for_day;
+    sum.unlocks_usd_adjusted += (r.unlocks_tokens_adjusted || 0) * r.price_usd_for_day;
+    sum.treasury_sells_usd += (r.treasury_sells_tokens || 0) * r.price_usd_for_day;
     sum.buybacks_usd += r.buybacks_tokens * r.price_usd_for_day;
+    sum.burns_usd += (r.burns_tokens || 0) * r.price_usd_for_day;
+    // Sink USD columns mirror the net formula's PER-DAY clamping (sinkTa/sinkNs
+    // in buildDailySeries): a day of net unstaking contributes 0 to the sink,
+    // not a negative. Without this the components can't reconcile to
+    // net_pressure_usd. Identity: net_usd = unlocks_usd_adjusted +
+    // treasury_sells_usd − (buybacks_usd + burns_usd + treasury_accumulation_usd
+    // + net_staking_lockups_usd).
+    sum.treasury_accumulation_usd += Math.max(r.treasury_accumulation_tokens || 0, 0) * r.price_usd_for_day;
+    sum.net_staking_lockups_usd += Math.max(r.net_staking_lockups_tokens || 0, 0) * r.price_usd_for_day;
     sum.net_pressure_usd_perday += r.net_pressure_usd;
     sum.net_pressure_usd_gross_perday += (r.net_pressure_usd_gross || 0);
     if (r.price_source_for_day === 'daily_series') daysWithDailyPrice++;
+    const rec = unlocksByRecipient?.get(r.date);
+    if (rec) {
+      for (const [rtype, tokens] of Object.entries(rec)) {
+        const acc = byRecipient[rtype] || (byRecipient[rtype] = { tokens: 0, usd: 0 });
+        acc.tokens += tokens;
+        acc.usd += tokens * r.price_usd_for_day;
+      }
+    }
   }
   // Buyback coverage — how many of the windowDays have an on-chain buyback observation.
   let buybackCoverageDays = 0;
@@ -398,6 +448,7 @@ function rollupWindow(series, windowDays, buybackDates) {
     coverage_complete: coveragePct >= 0.8,
     daily_price_coverage_pct: pricePct,
     daily_price_complete: pricePct >= 0.8,
+    unlocks_by_recipient: byRecipient,
     ...sum
   };
 }
@@ -424,7 +475,7 @@ function computeProtocol(seedRow, latest) {
   const live = findLiveToken(latest, seedRow.config_symbol);
   const price = live?.price ?? 0;
 
-  const series = buildDailySeries(seedRow, price);
+  const { series, unlocksByRecipient, sellProb } = buildDailySeries(seedRow, price);
   const buybackDates = loadDailyMap(seedRow.sources.buybacks);
   const windowDefs = [
     { key: '24h', days: 1 },
@@ -434,7 +485,7 @@ function computeProtocol(seedRow, latest) {
   ];
   const rollups = {};
   for (const { key, days } of windowDefs) {
-    const r = rollupWindow(series, days, buybackDates);
+    const r = rollupWindow(series, days, buybackDates, unlocksByRecipient);
     // Prefer the time-weighted per-day USD sum; fall back to tokens × today
     // when no daily price was available for any day in the window.
     const usdPreferred = r.daily_price_coverage_pct > 0
@@ -458,6 +509,10 @@ function computeProtocol(seedRow, latest) {
     price_usd: price,
     static_reference: staticReference(seedRow),
     components: seedRow.sources,  // pass-through for the report
+    // Default sell-probability weights actually applied to this protocol's
+    // unlocks (incl. per-protocol overrides). The frontend's assumption
+    // sliders initialize from these.
+    unlock_weighting: { sell_probability: sellProb, fallback: FALLBACK_SELL_PROB },
     rollups,
     daily: series
   };

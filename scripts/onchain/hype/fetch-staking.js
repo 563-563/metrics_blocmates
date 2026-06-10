@@ -17,26 +17,11 @@ const fs = require('fs');
 const path = require('path');
 
 const { info } = require('./hl-api');
+const { ensureDir, loadJsonOrDefault, mergeDaily, priorDateRow } = require('../../lib/evm-adapter-utils');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'hype');
 const OUT_PATH = path.join(OUT_DIR, 'staking.json');
-
-function ensureDir(p) {
-  fs.mkdirSync(p, { recursive: true });
-}
-
-function loadJsonOrDefault(p, fallback) {
-  if (!fs.existsSync(p)) return fallback;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fallback; }
-}
-
-function mergeDaily(existing, incoming) {
-  const byDate = new Map();
-  for (const r of existing) byDate.set(r.date, r);
-  for (const r of incoming) byDate.set(r.date, r);
-  return Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
 
 // HYPE on HyperCore uses 8 decimals (wei equivalent = 1e8 per HYPE).
 const HYPE_DECIMALS = 8;
@@ -97,12 +82,11 @@ async function main() {
   const todayIso = new Date().toISOString().slice(0, 10);
 
   const existing = loadJsonOrDefault(OUT_PATH, []);
-  const sortedExisting = existing.slice().sort((a, b) => a.date.localeCompare(b.date));
   // Pick the most recent row from a *prior* date, not just the last write —
   // hourly cron runs overwrite today's row, and "previous written" would be
   // today itself, turning the persisted delta into intra-day flux. Compare
   // against yesterday's final total instead.
-  const prevDateRow = sortedExisting.filter((r) => r.date < todayIso).pop() || null;
+  const prevDateRow = priorDateRow(existing, todayIso);
   const deltaTokens = prevDateRow ? (total - prevDateRow.total_staked_tokens) : 0;
 
   const row = {

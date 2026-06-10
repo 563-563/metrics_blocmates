@@ -24,6 +24,8 @@ const fs = require('fs');
 const path = require('path');
 
 const { mainnet } = require('../../lib/alchemy');
+const { resolveFromBlock, writeCheckpoint } = require('../../lib/scan-checkpoint');
+const { ensureDir, loadJsonOrDefault, mergeDaily, getArgInt, hexToTokens, balanceOfData } = require('../../lib/evm-adapter-utils');
 const ADDR = require('./addresses');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
@@ -31,38 +33,11 @@ const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'lit');
 const SUPPLY_PATH = path.join(OUT_DIR, 'l1-supply.json');
 const ESCROW_PATH = path.join(OUT_DIR, 'l1-escrow.json');
 const ESCROW_FLOW_PATH = path.join(OUT_DIR, 'l1-escrow-flow.json');
+const CHECKPOINTS_PATH = path.join(OUT_DIR, 'checkpoints.json');
 
 const BLOCKS_PER_DAY = 7200;
 
-function getArgInt(name, dflt) {
-  const i = process.argv.indexOf(name);
-  if (i < 0) return dflt;
-  const v = parseInt(process.argv[i + 1], 10);
-  return Number.isFinite(v) ? v : dflt;
-}
 const LOOKBACK_DAYS = getArgInt('--days', 90);
-
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-function loadJsonOrDefault(p, fb) {
-  if (!fs.existsSync(p)) return fb;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; }
-}
-function mergeDaily(existing, incoming) {
-  const m = new Map();
-  for (const r of existing) m.set(r.date, r);
-  for (const r of incoming) m.set(r.date, r);
-  return Array.from(m.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
-function hexToTokens(hex, decimals = 18) {
-  if (!hex || hex === '0x') return 0;
-  const wei = BigInt(hex);
-  const whole = Number(wei / 10n ** BigInt(decimals));
-  const frac = Number(wei % 10n ** BigInt(decimals)) / Number(10n ** BigInt(decimals));
-  return whole + frac;
-}
-function balanceOfData(addr) {
-  return '0x70a08231' + addr.slice(2).padStart(64, '0').toLowerCase();
-}
 
 async function main() {
   ensureDir(OUT_DIR);
@@ -95,13 +70,17 @@ async function main() {
 
   // 3. LIT flow through Escrow (last N days)
   const currentBlock = parseInt(await mainnet.getBlockNumber(), 16);
-  const fromBlock = currentBlock - LOOKBACK_DAYS * BLOCKS_PER_DAY;
-  console.log(`[lit-l1] Escrow LIT flow last ${LOOKBACK_DAYS}d`);
+  const { fromBlock, resumed } = resolveFromBlock({
+    checkpointPath: CHECKPOINTS_PATH,
+    key: 'l1_escrow_flow',
+    windowFromBlock: currentBlock - LOOKBACK_DAYS * BLOCKS_PER_DAY
+  });
+  console.log(`[lit-l1] Escrow LIT flow ${resumed ? 'since checkpoint' : `last ${LOOKBACK_DAYS}d`}`);
 
   const aggregate = async (direction) => {
     const opts = {
       fromBlock: '0x' + fromBlock.toString(16),
-      toBlock: 'latest',
+      toBlock: '0x' + currentBlock.toString(16),
       category: ['erc20'],
       contractAddresses: [ADDR.L1.LIT],
       order: 'asc',
@@ -144,6 +123,7 @@ async function main() {
   });
 
   fs.writeFileSync(ESCROW_FLOW_PATH, JSON.stringify(mergeDaily(loadJsonOrDefault(ESCROW_FLOW_PATH, []), flowRows), null, 2));
+  writeCheckpoint({ checkpointPath: CHECKPOINTS_PATH, key: 'l1_escrow_flow', block: currentBlock });
 
   // Summary
   console.log('');

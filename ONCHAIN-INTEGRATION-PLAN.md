@@ -2,7 +2,20 @@
 
 **Goal:** wire verified on-chain data into both pipelines for HYPE / LIT / AAVE / SKY so every `verification` flag flips from `governance_stated` / `proxy` to `onchain`. This is the v2 of the Buyback Quality Framework — what unlocks the full Value Capture score on the Token Quality Rubric.
 
-**Status:** v1 (lenient) pipelines for HM ship to `data/hm/`. NP pipeline deferred until this doc is reviewed. Roadmap below sequences the protocols by effort and reuse.
+**Status (2026-06-09):** this plan has been substantially executed; the per-protocol sections below are kept as the original research notes (addresses, mechanism analysis), not as a live roadmap. Current state:
+
+| Protocol | Adapters live | Notes |
+|---|---|---|
+| HYPE | AF buybacks, supply, staking (HL Info API, every cron) | Reference implementation; ASXN historical backfill is manual (Turnstile-gated JWT) |
+| AAVE | Collector inflow scan, Safety Module + Ecosystem Reserve snapshots (daily) | Inflow counts all AAVE → Collector (`onchain_aggregate`); pre-window history not backfilled |
+| SKY | SBE burns + Splitter scan, Cat B rewards-farm scan, LockStake snapshot (daily) | SBE and Cat B inflows can be genuinely dormant — the dashboard shows that as-is rather than substituting seeded estimates |
+| LIT | L1 supply/escrow + flow scan, zkLighter L2 market snapshot, DL buyback proxy (daily) | Direct L2 buyback fills still blocked on a Lighter API key; proxy is the accepted path |
+
+All scan adapters checkpoint via `scripts/lib/scan-checkpoint.js`. Per-row verification flags live in the snapshots — consult the dashboard or `data/hm/snapshots/latest.json` for what's `onchain` vs `proxy` vs `governance_stated` today; this doc doesn't track that anymore.
+
+Everything below this line is the original planning document (May 2026), preserved for the address books and mechanism research.
+
+---
 
 ---
 

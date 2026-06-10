@@ -18,6 +18,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { mainnet } = require('../../lib/alchemy');
+const { ensureDir, loadJsonOrDefault, mergeDaily, hexToTokens, balanceOfData, TOTAL_SUPPLY_SELECTOR, priorDateRow } = require('../../lib/evm-adapter-utils');
 const { AAVE, STK_AAVE, ECOSYSTEM_RESERVE } = require('./addresses');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
@@ -29,29 +30,6 @@ const AAVE_DECIMALS = 18;
 // stkAAVE has 18 decimals too — same ratio as the underlying.
 const STK_AAVE_DECIMALS = 18;
 
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-function loadJsonOrDefault(p, fb) {
-  if (!fs.existsSync(p)) return fb;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; }
-}
-function mergeDaily(existing, incoming) {
-  const m = new Map();
-  for (const r of existing) m.set(r.date, r);
-  for (const r of incoming) m.set(r.date, r);
-  return Array.from(m.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
-function hexToTokens(hex, decimals) {
-  if (!hex || hex === '0x') return 0;
-  const wei = BigInt(hex);
-  const whole = Number(wei / 10n ** BigInt(decimals));
-  const frac = Number(wei % 10n ** BigInt(decimals)) / Number(10n ** BigInt(decimals));
-  return whole + frac;
-}
-function balanceOfData(addr) {
-  return '0x70a08231' + addr.slice(2).padStart(64, '0').toLowerCase();
-}
-const TOTAL_SUPPLY_SELECTOR = '0x18160ddd'; // totalSupply()
-
 async function main() {
   ensureDir(OUT_DIR);
   const todayIso = new Date().toISOString().slice(0, 10);
@@ -62,8 +40,7 @@ async function main() {
   const totalStaked = hexToTokens(totalSupplyHex, STK_AAVE_DECIMALS);
 
   const stakingExisting = loadJsonOrDefault(STAKING_PATH, []);
-  const stakingSorted = stakingExisting.slice().sort((a, b) => a.date.localeCompare(b.date));
-  const prev = stakingSorted.length ? stakingSorted[stakingSorted.length - 1] : null;
+  const prev = priorDateRow(stakingExisting, todayIso);
   const delta = prev ? totalStaked - prev.total_staked_tokens : 0;
 
   const stakingRow = {

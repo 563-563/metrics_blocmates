@@ -33,6 +33,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { getDailyPrices } = require('../../lib/cg-prices');
+const { ensureDir, loadJsonOrDefault, mergeDaily } = require('../../lib/evm-adapter-utils');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const CONFIG_PATH = path.join(ROOT, 'data', 'config.json');
@@ -50,18 +51,7 @@ const CAT_A_MECHANISMS = new Set(['buyback', 'buyback-burn', 'burn-mint']);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
 function loadJson(p) { return JSON.parse(fs.readFileSync(p, 'utf8')); }
-function loadJsonOrDefault(p, fb) {
-  if (!fs.existsSync(p)) return fb;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; }
-}
-function mergeDaily(existing, incoming) {
-  const m = new Map();
-  for (const r of existing) m.set(r.date, r);
-  for (const r of incoming) m.set(r.date, r);
-  return Array.from(m.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
 
 async function fetchDailySeries(slug, dataType) {
   const url = `https://api.llama.fi/summary/fees/${slug}?dataType=${dataType}`;

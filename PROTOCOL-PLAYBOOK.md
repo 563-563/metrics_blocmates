@@ -159,12 +159,17 @@ The compute layer reads the dominant `verification` across a feed's rows and sur
 
 ## 6. Template map
 
-When building protocol N, copy from the closest existing example:
+When building protocol N, copy the **structure** of the closest existing example — but import the helpers, don't copy them. `scripts/lib/evm-adapter-utils.js` owns `ensureDir` / `loadJsonOrDefault` / `mergeDaily` / `getArgInt` / `hexToTokens` / `balanceOfData` / `priorDateRow`; a bug fixed there is fixed everywhere. Two more shared pieces every new adapter should wire in:
+
+- **`scripts/lib/scan-checkpoint.js`** — any `getAssetTransfers`/`eth_getLogs` trailing-window scan must checkpoint its last-scanned block (see any existing scan adapter for the `resolveFromBlock` → scan → write → `writeCheckpoint` shape). Full-window rescans on every cron run are how we burned ~10× our Alchemy budget.
+- **`getDailyPricesCached` from `scripts/lib/cg-prices.js`** — if the protocol has a price file at `data/external/cg/<slug>-price-daily.json` (add it to the HM seed so `fetch-cg-price-history.js` covers it), read prices from there instead of calling CoinGecko per-adapter.
 
 | You need | Copy from |
 |---|---|
+| Shared adapter helpers (merge/parse/io) | `scripts/lib/evm-adapter-utils.js` (import, never copy) |
+| Block-scan checkpointing | `scripts/lib/scan-checkpoint.js` (import, never copy) |
 | Shared EVM RPC client | `scripts/lib/alchemy.js` (already generic — just use it) |
-| Daily CG price history | `scripts/lib/cg-prices.js` (generic) |
+| Daily CG price history | `scripts/lib/cg-prices.js` (generic; prefer `getDailyPricesCached`) |
 | Archetype A (native API fills) | `scripts/onchain/hype/fetch-af.js` |
 | Archetype B (collector transfers) | `scripts/onchain/aave/fetch-collector.js` |
 | Archetype C (burn engine) | `scripts/onchain/sky/fetch-sbe.js` |
@@ -177,3 +182,8 @@ When building protocol N, copy from the closest existing example:
 | Address book module | `scripts/onchain/aave/addresses.js` |
 
 All adapters follow the same shape: read → aggregate by UTC day → idempotent merge into a JSON series → snapshot. Keep that shape and the compute layer + frontend pick it up for free.
+
+Two shape rules that aren't obvious from reading one adapter:
+
+- **Daily-snapshot deltas must use `priorDateRow`.** Comparing against "the last written row" corrupts the persisted delta whenever the cron runs more than once a day (the second run diffs against today's own earlier snapshot). `compute-np`'s `daily_snapshot_diff` source type recomputes deltas from the total column at read time regardless, so the snapshot column is the source of truth — but persist the delta correctly anyway.
+- **Scans must write full-day aggregates.** `mergeDaily` replaces rows by date wholesale, which is why checkpoint resumes re-cover the last ~2 days (see scan-checkpoint.js header).

@@ -4,6 +4,8 @@ This document defines exactly what numbers we need to compute Holder Multiple (H
 
 If a number isn't in this doc, it doesn't belong in the pipeline.
 
+**This doc is authoritative for definitions and methods, never for values.** Dollar figures quoted in the per-protocol tables below are May 2026 snapshots used to illustrate the sourcing decision and are not maintained — several have since been superseded by live on-chain reads (which may legitimately read zero where a mechanism went dormant). Per CLAUDE.md, current values live on the dashboard / in `data/*/snapshots/latest.json`.
+
 ---
 
 ## Section 0 — Definitions

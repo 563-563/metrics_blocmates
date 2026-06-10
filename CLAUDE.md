@@ -1,8 +1,15 @@
 # truepressure-hm — Claude Instructions
 
-This is a **standalone product**, not a slice of a larger workspace. Scope: the live HM + TP data pipeline and dashboard for HYPE / AAVE / SKY / LIT. Nothing else.
+This is a **standalone product**, not a slice of a larger workspace. Scope: the live HM + TP data pipeline and dashboard.
+
+Two coverage tiers:
+
+- **Core cohort — HYPE / AAVE / SKY / LIT.** Editorial seeds in `data/hm/config.json`, on-chain adapters, TP coverage, deep pages. Adding a core protocol is a deliberate decision that follows `PROTOCOL-PLAYBOOK.md` end-to-end.
+- **Proxy tier — the rest of `data/config.json` (~30 tokens).** HM only, synthesized from DL holders-revenue/fees proxies; no editorial seed, no TP. Cheap to add/remove; always flagged `proxy` in the data.
 
 When working here, the rules in this file are authoritative. There is no parent CLAUDE.md to inherit from.
+
+**Docs carry no current-value numbers.** The dashboard (and `data/*/snapshots/latest.json`) is the source of truth for any metric; numbers written into docs rot silently. The only exception is the `--check` regression anchors, which are constants tied to the published article, not current-value claims.
 
 ---
 
@@ -80,6 +87,15 @@ A naive `total_tokens × today_price` on a 90-day rollup is misleading when pric
 
 In this mode all on-chain feed overrides are bypassed and the seed's `article_price_usd` and `article_circulating_tokens` are used directly. Any compute-layer change must keep this passing.
 
+`--check` is the CI form: implies `--reproduce-article`, writes **no files**, asserts the four anchors (`ARTICLE_EXPECTED_HM` in compute-hm.js), exits non-zero on deviation. `.github/workflows/test.yml` runs it on every push touching the compute layer. Plain `--reproduce-article` overwrites `snapshots/latest.json` with article-mode values — never run it in the data cron.
+
+## Pipeline invariants
+
+- **Validation gate.** `scripts/lib/validate-pipeline.js` runs before the data cron's commit; if core outputs are stale/malformed the run fails and nothing ships. Fetch steps are `continue-on-error` — the gate, not step failure, is what protects correctness.
+- **Checkpointed scans.** Every Alchemy trailing-window scan resumes from `data/onchain/<protocol>/checkpoints.json` via `scripts/lib/scan-checkpoint.js` (~2-day overlap to recompute partial-day aggregates). New scan adapters must do the same.
+- **Shared helpers.** Adapter utilities live in `scripts/lib/evm-adapter-utils.js` — import them, never copy them into a new adapter. Daily-snapshot deltas must use `priorDateRow` (last-written-row deltas corrupt under intra-day re-runs).
+- **Two cron tiers.** The 00:15 UTC run (or manual dispatch) does the full refresh; the other 4-hourly runs only refresh DL+CG, HYPE feeds and computes. Daily-granularity sources don't get fetched more than daily.
+
 ---
 
 ## When to add a new protocol
@@ -110,4 +126,4 @@ In this mode all on-chain feed overrides are bypassed and the seed's `article_pr
 
 - Not an underwriting tool. Don't add value-accrual scoring rubrics, deep-dive narrative notes, qualitative scorecards, or per-protocol research markdown — those belong in the separate underwriting workspace.
 - Not a research surface. No editorial commentary embedded in the data. Markdown reports under `data/{hm,np}/reports/` are structured outputs derived from the seed + on-chain data, not opinion.
-- Not a multi-asset analytics platform. Cohort is the four named protocols. Adding a fifth is a deliberate decision documented in `data/hm/config.json`'s `protocols` block, not a casual expansion.
+- Not a multi-asset analytics platform. The **core cohort** is the four named protocols; adding a fifth is a deliberate decision documented in `data/hm/config.json`'s `protocols` block, not a casual expansion. The proxy tier may grow/shrink casually — it's explicitly the low-effort, lower-confidence ring and never gets editorial seeds or TP adapters without being promoted to core.

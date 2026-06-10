@@ -17,33 +17,12 @@ const fs = require('fs');
 const path = require('path');
 
 const { mainnet } = require('../../lib/alchemy');
+const { ensureDir, loadJsonOrDefault, mergeDaily, hexToTokens, balanceOfData, priorDateRow } = require('../../lib/evm-adapter-utils');
 const ADDR = require('./addresses');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'sky');
 const OUT_PATH = path.join(OUT_DIR, 'lockstake.json');
-
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-function loadJsonOrDefault(p, fb) {
-  if (!fs.existsSync(p)) return fb;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; }
-}
-function mergeDaily(existing, incoming) {
-  const m = new Map();
-  for (const r of existing) m.set(r.date, r);
-  for (const r of incoming) m.set(r.date, r);
-  return Array.from(m.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
-function hexToTokens(hex, decimals = 18) {
-  if (!hex || hex === '0x') return 0;
-  const wei = BigInt(hex);
-  const whole = Number(wei / 10n ** BigInt(decimals));
-  const frac = Number(wei % 10n ** BigInt(decimals)) / Number(10n ** BigInt(decimals));
-  return whole + frac;
-}
-function balanceOfData(addr) {
-  return '0x70a08231' + addr.slice(2).padStart(64, '0').toLowerCase();
-}
 
 async function main() {
   ensureDir(OUT_DIR);
@@ -54,8 +33,7 @@ async function main() {
   const totalStaked = hexToTokens(balHex);
 
   const existing = loadJsonOrDefault(OUT_PATH, []);
-  const sorted = existing.slice().sort((a, b) => a.date.localeCompare(b.date));
-  const prev = sorted.length ? sorted[sorted.length - 1] : null;
+  const prev = priorDateRow(existing, todayIso);
   const delta = prev ? totalStaked - prev.total_staked_tokens : 0;
 
   const row = {

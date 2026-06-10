@@ -22,35 +22,20 @@ const fs = require('fs');
 const path = require('path');
 
 const { mainnet } = require('../../lib/alchemy');
+const { resolveFromBlock, writeCheckpoint } = require('../../lib/scan-checkpoint');
+const { ensureDir, loadJsonOrDefault, mergeDaily, getArgInt } = require('../../lib/evm-adapter-utils');
 const ADDR = require('./addresses');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'sky');
 const BURNS_PATH = path.join(OUT_DIR, 'sbe-burns.json');
 const SPLITTER_PATH = path.join(OUT_DIR, 'splitter-flow.json');
+const CHECKPOINTS_PATH = path.join(OUT_DIR, 'checkpoints.json');
 
 const BLOCKS_PER_DAY = 7200;
 const BURN_ADDR = '0x0000000000000000000000000000000000000000';
 
-function getArgInt(name, dflt) {
-  const i = process.argv.indexOf(name);
-  if (i < 0) return dflt;
-  const v = parseInt(process.argv[i + 1], 10);
-  return Number.isFinite(v) ? v : dflt;
-}
 const LOOKBACK_DAYS = getArgInt('--days', 90);
-
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-function loadJsonOrDefault(p, fb) {
-  if (!fs.existsSync(p)) return fb;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; }
-}
-function mergeDaily(existing, incoming) {
-  const m = new Map();
-  for (const r of existing) m.set(r.date, r);
-  for (const r of incoming) m.set(r.date, r);
-  return Array.from(m.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
 
 async function aggregateByDay(opts) {
   const transfers = await mainnet.getAssetTransfersAll(opts);
@@ -72,8 +57,12 @@ async function aggregateByDay(opts) {
 async function main() {
   ensureDir(OUT_DIR);
   const currentBlock = parseInt(await mainnet.getBlockNumber(), 16);
-  const fromBlock = currentBlock - LOOKBACK_DAYS * BLOCKS_PER_DAY;
-  console.log(`[sky-sbe] block ${fromBlock.toLocaleString()} → ${currentBlock.toLocaleString()} (${LOOKBACK_DAYS}d)`);
+  const { fromBlock, resumed } = resolveFromBlock({
+    checkpointPath: CHECKPOINTS_PATH,
+    key: 'sbe',
+    windowFromBlock: currentBlock - LOOKBACK_DAYS * BLOCKS_PER_DAY
+  });
+  console.log(`[sky-sbe] block ${fromBlock.toLocaleString()} → ${currentBlock.toLocaleString()} (${resumed ? 'checkpoint resume' : LOOKBACK_DAYS + 'd'})`);
 
   // SBE burns: SKY transfers from Flapper to 0x0
   console.log('[sky-sbe] querying SKY burns from Flapper');
@@ -146,6 +135,7 @@ async function main() {
     .sort((a, b) => a.date.localeCompare(b.date));
 
   fs.writeFileSync(SPLITTER_PATH, JSON.stringify(mergeDaily(loadJsonOrDefault(SPLITTER_PATH, []), splitterRows), null, 2));
+  writeCheckpoint({ checkpointPath: CHECKPOINTS_PATH, key: 'sbe', block: currentBlock });
 
   console.log('');
   const sumBurn = burnRows.reduce((s, r) => s + r.amount_tokens, 0);

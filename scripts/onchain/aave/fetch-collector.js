@@ -27,58 +27,23 @@ const fs = require('fs');
 const path = require('path');
 
 const { mainnet } = require('../../lib/alchemy');
-const { getDailyPrices } = require('../../lib/cg-prices');
+const { getDailyPricesCached } = require('../../lib/cg-prices');
+const { resolveFromBlock, writeCheckpoint } = require('../../lib/scan-checkpoint');
+const { ensureDir, loadJsonOrDefault, mergeDaily, getArgInt, hexToTokens, balanceOfData } = require('../../lib/evm-adapter-utils');
 const { AAVE, COLLECTOR_V3 } = require('./addresses');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'aave');
 const BUYBACKS_PATH = path.join(OUT_DIR, 'buybacks.json');
 const TREASURY_PATH = path.join(OUT_DIR, 'treasury.json');
+const CHECKPOINTS_PATH = path.join(OUT_DIR, 'checkpoints.json');
 
 // Aave V3 Collector was deployed around block 16291127 (Jan 2023). Anything
 // earlier is V2 (different address). For first-time backfill, start there.
 const COLLECTOR_V3_DEPLOY_BLOCK = 16291127;
 
-const AAVE_DECIMALS = 18;
-
-function getArgInt(name, dflt) {
-  const i = process.argv.indexOf(name);
-  if (i < 0) return dflt;
-  const v = parseInt(process.argv[i + 1], 10);
-  return Number.isFinite(v) ? v : dflt;
-}
-
 const BACKFILL = process.argv.includes('--backfill');
 const LOOKBACK_DAYS = getArgInt('--days', 30);
-
-function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-function loadJsonOrDefault(p, fb) {
-  if (!fs.existsSync(p)) return fb;
-  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; }
-}
-function mergeDaily(existing, incoming) {
-  const m = new Map();
-  for (const r of existing) m.set(r.date, r);
-  for (const r of incoming) m.set(r.date, r);
-  return Array.from(m.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
-
-// "0x..." 18-decimal hex → human float
-function hexToTokens(hex) {
-  if (!hex || hex === '0x') return 0;
-  const wei = BigInt(hex);
-  // Divide as bigint then convert — avoid float-precision issues on big numbers.
-  const whole = Number(wei / 10n ** BigInt(AAVE_DECIMALS));
-  const frac = Number(wei % 10n ** BigInt(AAVE_DECIMALS)) / Number(10n ** BigInt(AAVE_DECIMALS));
-  return whole + frac;
-}
-
-// ERC-20 balanceOf(address) → bytes data
-function balanceOfData(addr) {
-  // function selector for balanceOf(address) = 0x70a08231
-  // left-pad address to 32 bytes
-  return '0x70a08231' + addr.slice(2).padStart(64, '0').toLowerCase();
-}
 
 async function getCurrentBlock() {
   const hex = await mainnet.getBlockNumber();
@@ -103,14 +68,21 @@ async function main() {
   } else {
     // ~12s blocks on mainnet => ~7200 blocks/day. Add safety margin.
     const blocksPerDay = 7200;
-    fromBlock = Math.max(COLLECTOR_V3_DEPLOY_BLOCK, currentBlock - LOOKBACK_DAYS * blocksPerDay - blocksPerDay);
-    console.log(`[aave-collector] trailing ${LOOKBACK_DAYS}d → block ${fromBlock.toLocaleString()} → ${currentBlock.toLocaleString()}`);
+    const windowFromBlock = Math.max(COLLECTOR_V3_DEPLOY_BLOCK, currentBlock - LOOKBACK_DAYS * blocksPerDay - blocksPerDay);
+    const resolved = resolveFromBlock({
+      checkpointPath: CHECKPOINTS_PATH,
+      key: 'collector_inflow',
+      windowFromBlock,
+      floorBlock: COLLECTOR_V3_DEPLOY_BLOCK
+    });
+    fromBlock = resolved.fromBlock;
+    console.log(`[aave-collector] ${resolved.resumed ? 'resuming from checkpoint' : `trailing ${LOOKBACK_DAYS}d`} → block ${fromBlock.toLocaleString()} → ${currentBlock.toLocaleString()}`);
   }
 
   console.log(`[aave-collector] querying alchemy_getAssetTransfers for AAVE → Collector`);
   const transfers = await mainnet.getAssetTransfersAll({
     fromBlock: '0x' + fromBlock.toString(16),
-    toBlock: 'latest',
+    toBlock: '0x' + currentBlock.toString(16),
     category: ['erc20'],
     contractAddresses: [AAVE],
     toAddress: COLLECTOR_V3,
@@ -146,8 +118,8 @@ async function main() {
   const cgDays = Math.min(365, Math.max(LOOKBACK_DAYS + 7, 60));
   let priceMap = new Map();
   try {
-    console.log(`[aave-collector] fetching ${cgDays}d daily AAVE price from CoinGecko`);
-    priceMap = await getDailyPrices('aave', cgDays);
+    console.log(`[aave-collector] loading ${cgDays}d daily AAVE price (local cache, CG fallback)`);
+    priceMap = await getDailyPricesCached({ slug: 'aave', coingeckoId: 'aave', days: cgDays });
     console.log(`[aave-collector] ${priceMap.size} daily prices loaded`);
   } catch (err) {
     console.warn(`[aave-collector] CG price fetch failed: ${err.message}`);
@@ -183,6 +155,7 @@ async function main() {
   const existing = loadJsonOrDefault(BUYBACKS_PATH, []);
   const merged = mergeDaily(existing, incoming);
   fs.writeFileSync(BUYBACKS_PATH, JSON.stringify(merged, null, 2));
+  writeCheckpoint({ checkpointPath: CHECKPOINTS_PATH, key: 'collector_inflow', block: currentBlock });
 
   // Snapshot today's Collector balance.
   const balanceNow = await getAaveBalance(COLLECTOR_V3);

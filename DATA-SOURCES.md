@@ -1,6 +1,8 @@
 # Data Access Inventory
 
-Living document. What we need across the dashboard to power HM + TP for HYPE / AAVE / SKY / LIT in near-real-time. Updated as access lands.
+**Note (2026-06-09):** this inventory dates from the May 2026 build-out and is kept for its source/endpoint research. Its status marks and any dollar figures are NOT maintained — most "pending" adapters have since shipped (see `ONCHAIN-INTEGRATION-PLAN.md` status table), and per CLAUDE.md, current values and verification flags live on the dashboard / in `data/*/snapshots/latest.json`, never in docs. In particular: seeded estimates quoted here (e.g. SKY's Cat B yield) were superseded by on-chain reads that may legitimately show zero.
+
+What we need across the dashboard to power HM + TP for HYPE / AAVE / SKY / LIT in near-real-time.
 
 **Status legend**
 - ✓ wired and live

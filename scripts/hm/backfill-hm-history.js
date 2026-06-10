@@ -29,6 +29,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..', '..');
 const SEED_PATH = path.join(ROOT, 'data', 'hm', 'config.json');
+const CONFIG_PATH = path.join(ROOT, 'data', 'config.json');
 const LATEST_PATH = path.join(ROOT, 'data', 'latest.json');
 const OUT_DIR = path.join(ROOT, 'data', 'hm', 'history');
 
@@ -109,14 +110,46 @@ function isoDaysAgo(n) {
   return d.toISOString().slice(0, 10);
 }
 
+// Proxy-tier protocols (no editorial seed) get a synthetic row when a DL
+// proxy buyback feed exists on disk. Mirrors compute-hm's synthesized math:
+// Adjusted MCap = float only (no unlock/emission/buyback adjustments), Real
+// Capture = trailing-window annualization of the proxy feed. The feed's own
+// price_usd column doubles as the daily price source (buildPriceMap falls
+// back to it when no CG file exists for the slug).
+function synthesizeProxyRows(seedSymbols, config) {
+  const rows = [];
+  for (const cfg of config.tokens || []) {
+    if (seedSymbols.has(cfg.symbol)) continue;
+    const slug = cfg.defillama_slug || cfg.coingecko_id || cfg.symbol.toLowerCase();
+    const feedRel = `data/onchain/proxy/${slug}/buybacks.json`;
+    if (!fs.existsSync(path.join(ROOT, feedRel))) continue;
+    rows.push({
+      slug,
+      symbol: cfg.symbol,
+      config_symbol: cfg.symbol,
+      onchain_buybacks_path: feedRel,
+      unlocks_24mo_tokens: 0,
+      emissions_24mo_tokens: 0,
+      annual_holder_yield_usd: 0,
+      article_circulating_tokens: 0,
+      _proxy: true
+    });
+  }
+  return rows;
+}
+
 function main() {
   ensureDir(OUT_DIR);
   const seed = loadJson(SEED_PATH);
+  const config = loadJsonOrDefault(CONFIG_PATH, { tokens: [] });
   const latest = loadJsonOrDefault(LATEST_PATH, { tokens: [] });
 
   const window = 60; // buyback trailing-window days (matches compute-hm default)
 
-  for (const seedRow of Object.values(seed.protocols)) {
+  const seedSymbols = new Set(Object.values(seed.protocols).map((r) => r.config_symbol));
+  const allRows = [...Object.values(seed.protocols), ...synthesizeProxyRows(seedSymbols, config)];
+
+  for (const seedRow of allRows) {
     const priceMap = buildPriceMap(seedRow);
     const buybackMap = buildBuybackMap(seedRow);
     if (priceMap.size === 0 || buybackMap.size === 0) {
@@ -138,6 +171,12 @@ function main() {
         let v = payload; for (const seg of jp) v = v?.[seg];
         if (typeof v === 'number' && v > 0) circulating = v;
       }
+    }
+
+    if (!Number.isFinite(circulating) || circulating <= 0) {
+      fs.writeFileSync(path.join(OUT_DIR, `${seedRow.slug}.json`), '[]\n');
+      console.log(`[hm-history] ${seedRow.symbol}: skipped (no circulating supply) — wrote empty series`);
+      continue;
     }
 
     const unlocksTok = seedRow.unlocks_24mo_tokens || 0;
@@ -163,7 +202,11 @@ function main() {
       const floatMcap = price * circulating;
       const unlocksUsd = price * unlocksTok;
       const emissionsUsd = price * emissionsTok;
-      const adjMcap = floatMcap + unlocksUsd + emissionsUsd - annualBuyback * 2;
+      // Proxy rows hold Adj MCap at float-only, matching compute-hm's
+      // synthesized seeds (which keep the 24mo reflexive math symmetric at 0).
+      const adjMcap = seedRow._proxy
+        ? floatMcap
+        : floatMcap + unlocksUsd + emissionsUsd - annualBuyback * 2;
       const realCapture = annualBuyback + holderYield;
       const hm = realCapture > 0 ? adjMcap / realCapture : Infinity;
 

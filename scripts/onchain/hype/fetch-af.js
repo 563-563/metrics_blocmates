@@ -23,6 +23,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { userFills, getHypePerpQuote } = require('./hl-api');
+const { ensureDir, loadJsonOrDefault, mergeDaily } = require('../../lib/evm-adapter-utils');
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const OUT_DIR = path.join(ROOT, 'data', 'onchain', 'hype-af');
@@ -31,27 +32,6 @@ const TREASURY_PATH = path.join(OUT_DIR, 'treasury.json');
 
 const AF_ADDRESS = '0xfefefefefefefefefefefefefefefefefefefefe';
 const HYPE_SPOT_PAIR = '@107';
-
-function ensureDir(p) {
-  fs.mkdirSync(p, { recursive: true });
-}
-
-function loadJsonOrDefault(p, fallback) {
-  if (!fs.existsSync(p)) return fallback;
-  try {
-    return JSON.parse(fs.readFileSync(p, 'utf8'));
-  } catch {
-    return fallback;
-  }
-}
-
-// Merge new daily rows into existing series, keyed by date (latest run wins).
-function mergeDaily(existing, incoming) {
-  const byDate = new Map();
-  for (const row of existing) byDate.set(row.date, row);
-  for (const row of incoming) byDate.set(row.date, row);
-  return Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
-}
 
 async function main() {
   ensureDir(OUT_DIR);

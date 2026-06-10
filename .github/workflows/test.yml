@@ -1,0 +1,38 @@
+name: Tests
+
+# Guards the compute layer. CLAUDE.md: any compute change must keep
+# --reproduce-article producing SKY 26.3× / AAVE 46.3× / HYPE 34.5× / LIT 15.4×.
+# Path-filtered so the 4-hourly data-update commits (data/ only) don't trigger it.
+
+on:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'data/hm/config.json'
+      - 'data/np/config.json'
+      - 'data/config.json'
+      - '.github/workflows/test.yml'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'data/hm/config.json'
+      - 'data/np/config.json'
+      - 'data/config.json'
+      - '.github/workflows/test.yml'
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: HM article regression (writes nothing, asserts the four multiples)
+        run: node scripts/hm/compute-hm.js --check
+
+      - name: Committed data passes structural validation
+        run: node scripts/lib/validate-pipeline.js --structure-only

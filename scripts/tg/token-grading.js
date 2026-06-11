@@ -18,8 +18,11 @@
 
 // ── Framework constants ──────────────────────────────────────────────────
 
+// risk_free_rate tracks the 3M T-bill (3.71% on 2026-06-11, FRED DGS3MO /
+// TradingEconomics). Update when it moves materially; the CI acceptance
+// anchors are NOT affected (they pin the spec's ladder Ke constants).
 const MACRO_DEFAULTS = {
-  risk_free_rate: 0.045,
+  risk_free_rate: 0.037,
   equity_risk_premium: 0.055
 };
 

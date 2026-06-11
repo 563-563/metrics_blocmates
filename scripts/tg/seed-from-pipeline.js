@@ -40,7 +40,10 @@ const SEEDS = {
     // De facto the AF receives ~all protocol revenue and buys back, but the
     // token has no binding legal/governance claim on it.
     claim_category_key: 'revenue_treasury_gov',
-    clean_conversion: 0.8, // L1+perp dex, thin opex vs revenue
+    // DL revenue already nets the HLP/supply-side share, and team opex is
+    // funded from foundation holdings, not this stream — the measured
+    // revenue passes through to buybacks essentially intact.
+    clean_conversion: 1.0,
     durability_score: 4,
     underwriting_roe: 3.0, // pure software band
     near_term_growth_score: 4,
@@ -63,7 +66,9 @@ const SEEDS = {
     // Binding-ish governance over a real treasury, but the buyback program
     // is small relative to protocol revenue — rights outrun flow.
     claim_category_key: 'treasury_claim',
-    clean_conversion: 0.8,
+    // Unlike HYPE, the DAO pays service providers / contributors OUT of
+    // protocol revenue — real opex leakage before earnings are clean.
+    clean_conversion: 0.65,
     durability_score: 4,
     underwriting_roe: 1.5,
     near_term_growth_score: 3,
@@ -105,7 +110,9 @@ const SEEDS = {
     symbol: 'LIT',
     project: 'Lighter',
     claim_category_key: 'revenue_treasury_gov',
-    clean_conversion: 0.8,
+    // Same architecture as HYPE: measured revenue routes to the buyback;
+    // opex sits outside the stream.
+    clean_conversion: 1.0,
     durability_score: 2, // young revenue base
     underwriting_roe: 2.0,
     near_term_growth_score: 4,
@@ -124,11 +131,66 @@ const SEEDS = {
   }
 };
 
+// On-chain capital balances this repo already fetches — used as honest ROE
+// denominators where they exist. Anything we don't track stays null.
+function loadCapitalBases(latest, np) {
+  const readJson = (rel) => {
+    try {
+      return JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8'));
+    } catch {
+      return null;
+    }
+  };
+  const priceOf = (sym) => latest.tokens.find((t) => t.symbol === sym)?.price ?? null;
+
+  const out = {};
+
+  // HYPE — Assistance Fund balance (accumulated buyback treasury, onchain).
+  const hypeNp = np?.protocols?.find((p) => p.slug === 'hyperliquid');
+  const af = hypeNp?.static_reference?.af_balance;
+  if (af?.amount_usd) {
+    out.hyperliquid = {
+      operating_treasury: Math.round(af.amount_usd),
+      operating_treasury_note: `Assistance Fund balance ${(af.amount_tokens / 1e6).toFixed(1)}M HYPE (onchain, ${af.date})`
+    };
+  }
+
+  // AAVE — Collector + Ecosystem Reserve (AAVE-token balances only; the
+  // DAO's multi-asset treasury is NOT tracked here), plus Safety Module
+  // staked AAVE as the wider asset base.
+  const aavePrice = priceOf('AAVE');
+  const collector = readJson('data/onchain/aave/treasury.json');
+  const reserve = readJson('data/onchain/aave/ecosystem-reserve.json');
+  const sm = readJson('data/onchain/aave/staking.json');
+  const lastRow = (d) => (Array.isArray(d) ? d[d.length - 1] : d);
+  if (aavePrice && (collector || reserve)) {
+    const treasuryTokens =
+      (lastRow(collector)?.balance_tokens ?? 0) + (lastRow(reserve)?.balance_tokens ?? 0);
+    const treasuryUsd = treasuryTokens * aavePrice;
+    const smUsd = (lastRow(sm)?.total_staked_tokens ?? 0) * aavePrice;
+    out.aave = {
+      operating_treasury: Math.round(treasuryUsd),
+      total_asset_base: Math.round(treasuryUsd + smUsd),
+      operating_treasury_note: `Collector + Ecosystem Reserve AAVE balances × live price (onchain; excludes the DAO's multi-asset treasury)`,
+      total_asset_note: `+ Safety Module staked AAVE (user capital backstopping the protocol)`
+    };
+  }
+
+  return out;
+}
+
 function main() {
   const latest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'latest.json'), 'utf8'));
   const hm = JSON.parse(
     fs.readFileSync(path.join(ROOT, 'data', 'hm', 'snapshots', 'latest.json'), 'utf8')
   );
+  let np = null;
+  try {
+    np = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'np', 'snapshots', 'latest.json'), 'utf8'));
+  } catch {
+    /* TP snapshot optional */
+  }
+  const capitalBases = loadCapitalBases(latest, np);
   const now = new Date().toISOString();
 
   let written = 0;
@@ -184,14 +246,14 @@ function main() {
       },
       capital_efficiency: {
         active_capital: null,
-        operating_treasury: null,
-        total_asset_base: null,
+        operating_treasury: capitalBases[slug]?.operating_treasury ?? null,
+        total_asset_base: capitalBases[slug]?.total_asset_base ?? null,
         active_capital_roe: null,
-        operating_treasury_roe: null,
+        operating_treasury_roe: null, // compute-tg derives
         total_asset_roe: null,
         underwriting_roe: cfg.underwriting_roe,
         roe_grade: tg.assignROEGrade(cfg.underwriting_roe),
-        roe_confidence: 'low'
+        roe_confidence: capitalBases[slug] ? 'medium' : 'low'
       },
       growth: {
         near_term_growth_score: cfg.near_term_growth_score,
@@ -261,7 +323,19 @@ function main() {
           confidence: 'low',
           direction: 'neutral',
           updated_at: now
-        }
+        },
+        ...(capitalBases[slug]
+          ? [
+              {
+                field: 'capital_efficiency.operating_treasury',
+                claim: `${capitalBases[slug].operating_treasury_note}${capitalBases[slug].total_asset_note ? `; total asset base ${capitalBases[slug].total_asset_note}` : ''}`,
+                source_url: `https://defillama.com/protocol/${hmP.slug}`,
+                confidence: 'medium',
+                direction: 'neutral',
+                updated_at: now
+              }
+            ]
+          : [])
       ],
       flags: ['auto_seeded_from_pipeline_data', ...cfg.flags]
     };

@@ -3,8 +3,10 @@
 // constants and the CI acceptance check live on the scripts side
 // (compute-tg.js --check).
 
+// risk_free_rate tracks the 3M T-bill (3.71% on 2026-06-11). Keep in
+// lockstep with scripts/tg/token-grading.js.
 export const MACRO_DEFAULTS = {
-  risk_free_rate: 0.045,
+  risk_free_rate: 0.037,
   equity_risk_premium: 0.055
 };
 

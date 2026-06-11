@@ -2,7 +2,7 @@
   "symbol": "SKY",
   "project": "Sky",
   "coingecko_id": "sky",
-  "updated_at": "2026-06-11T18:09:51.743Z",
+  "updated_at": "2026-06-11T20:40:39.887Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "business": {
     "revenue_run_rate_window": "1y",
@@ -48,7 +48,7 @@
     "token_confidence": "low"
   },
   "ke_build_up": {
-    "risk_free_rate": 0.045,
+    "risk_free_rate": 0.037,
     "equity_risk_premium": 0.055,
     "crypto_liquidity_premium": 0.014,
     "regulatory_premium": 0.04,
@@ -56,7 +56,7 @@
     "governance_supply_premium": 0.021,
     "economic_alignment_premium": 0.072,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.276,
+    "ke": 0.268,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -85,7 +85,7 @@
   "valuation": {
     "market_cap_seed": 1381355981,
     "fdv_seed": 1393527822,
-    "ss_pe": 3.65,
+    "ss_pe": 3.77,
     "token_attributable_earnings": 0,
     "implied_token_value": 0,
     "market_cap": 1381355981,
@@ -102,7 +102,7 @@
       "source_url": "https://defillama.com/protocol/sky",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T18:09:51.743Z"
+      "updated_at": "2026-06-11T20:40:39.887Z"
     },
     {
       "field": "token.token_alignment_factor",
@@ -110,7 +110,7 @@
       "source_url": "https://defillama.com/protocol/sky",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T18:09:51.743Z"
+      "updated_at": "2026-06-11T20:40:39.887Z"
     }
   ],
   "flags": [
@@ -174,7 +174,7 @@
         "underwriting_roe": 0.22499999999999998,
         "terminal_g": 0.015000000000000001,
         "clean_platform_earnings": 87127915,
-        "ss_pe": 3.58,
+        "ss_pe": 3.69,
         "implied_token_value": 0,
         "warnings": []
       },
@@ -185,7 +185,7 @@
         "underwriting_roe": 0.3,
         "terminal_g": 0.025,
         "clean_platform_earnings": 148573301,
-        "ss_pe": 3.65,
+        "ss_pe": 3.77,
         "implied_token_value": 0,
         "warnings": []
       },
@@ -196,11 +196,11 @@
         "underwriting_roe": 0.44999999999999996,
         "terminal_g": 0.037500000000000006,
         "clean_platform_earnings": 160954409,
-        "ss_pe": 3.84,
+        "ss_pe": 3.98,
         "implied_token_value": 0,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-11T18:09:51.790Z"
+  "computed_at": "2026-06-11T20:40:39.942Z"
 }

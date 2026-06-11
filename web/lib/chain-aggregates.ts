@@ -467,11 +467,25 @@ export type SectorMixSeries = {
   rows: Array<{ month: string } & Record<string, number | string>>; // shares 0–1
 };
 
-export function getSectorMix(slug: string, topN = 8): SectorMixSeries | null {
+export function getSectorMix(
+  slug: string,
+  topN = 8,
+  includeStablecoins = true
+): SectorMixSeries | null {
   const hist = CATEGORY_HISTORY_MAP[slug] || [];
   if (hist.length < 3) return null;
   const currentMonth = (HISTORY_MAP[slug]?.slice(-1)[0]?.date ?? "").slice(0, 7);
-  const months = hist.filter((m) => m.month !== currentMonth);
+  const raw = hist.filter((m) => m.month !== currentMonth);
+  // Honor the page-wide stablecoin toggle: with issuers excluded, shares
+  // re-derive over app categories only.
+  const months = includeStablecoins
+    ? raw
+    : raw.map((m) => ({
+        month: m.month,
+        categories: Object.fromEntries(
+          Object.entries(m.categories).filter(([cat]) => cat !== "Stablecoin Issuer")
+        )
+      }));
   if (months.length < 3) return null;
 
   const lifetime = new Map<string, number>();

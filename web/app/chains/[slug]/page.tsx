@@ -75,7 +75,7 @@ export default async function ChainPage({
     (cat) => includeStablecoins || cat.category !== "Stablecoin Issuer"
   );
   const delta = getChainMonthlyDelta(slug, includeStablecoins);
-  const sectorMix = getSectorMix(slug);
+  const sectorMix = getSectorMix(slug, 8, includeStablecoins);
 
   // Dual-lens cross-link: when this chain's native token is in the HM core
   // cohort (e.g. Hyperliquid), close the loop back to the protocol lens —
@@ -233,8 +233,8 @@ export default async function ChainPage({
               series — watch the economy re-industrialize as eras change (DEX era,
               NFT era, stablecoin era…). Top-8 lifetime categories keep their own
               band; the rest fold into Other. The current partial month is omitted.
-              Note: shares always include stablecoin-issuer attribution, regardless
-              of the page toggle.
+              The stablecoin toggle applies: excluded, shares re-derive over app
+              categories only.
             </>
           }
         >

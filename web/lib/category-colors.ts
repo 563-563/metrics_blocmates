@@ -25,6 +25,8 @@ export const CATEGORY_COLORS: Record<string, string> = {
   "Telegram Bot": "#60a5fa",
   CDP: "#facc15",
   RWA: "#2dd4bf",
+  "Basis Trading": "#8b5cf6",
+  Gaming: "#f87171",
   Other: "#78716c"
 };
 

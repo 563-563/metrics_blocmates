@@ -108,7 +108,9 @@ export function ChainGdpRace({
           const name = chainNames[slug] ?? slug;
           const color = CHAIN_COLORS[slug] || "#71717a";
           const y = pos ? pos.rank * ROW_H : visible * ROW_H + 8; // park off-canvas
-          const widthPct = pos ? Math.max((pos.gdp30 / maxVal) * 100, 1.5) : 0;
+          // Cap at 90% of the track so the leader's value label always has
+          // room to its right (the container clips overflow).
+          const widthPct = pos ? Math.max((pos.gdp30 / maxVal) * 90, 1.5) : 0;
           return (
             <div
               key={slug}

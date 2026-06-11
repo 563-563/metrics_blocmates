@@ -69,22 +69,6 @@ export default async function ChainCharts({
       </header>
 
       <Section
-        id="quadrant"
-        title="Strategic positioning — productivity × tax burden · 30d GDP ann. / TVL vs 7d REV / GDP"
-        info={
-          <>
-            X = capital productivity (trailing-30d GDP, annualized, ÷ TVL). Y = infrastructure
-            tax burden (7d REV ÷ 7d GDP), clamped so a single outlier doesn&apos;t crush the
-            cluster. Bubble area ∝ today&apos;s mcap (fallback to TVL or GDP for chains with no
-            native token), held constant across time. Drag the slider — or hit play — to watch
-            each chain&apos;s position evolve week by week across the full history.
-          </>
-        }
-      >
-        <ChainQuadrant chains={cohort} frames={quadrantFrames} />
-      </Section>
-
-      <Section
         id="stacked"
         title={`Daily GDP · ${RANGE_LABEL[range]}, stacked by chain (7d smoothed)`}
         info={
@@ -103,6 +87,54 @@ export default async function ChainCharts({
           chainOrder={chainOrder}
           chainNames={chainNames}
         />
+      </Section>
+
+      <Section
+        id="heatmap"
+        title="Category composition · 30d"
+        info={
+          <>
+            Each cell shows that chain&apos;s 30d revenue in a category. Color intensity
+            = share of the chain&apos;s GDP that category represents. Tells you{" "}
+            <em>what kind of economy</em> each chain is.
+          </>
+        }
+      >
+        <ChainCategoryHeatmap matrix={matrix} chains={cohort} />
+      </Section>
+
+      <Section
+        id="treemap"
+        title="Every app, every chain — 30d revenue"
+        info={
+          <>
+            Cell area ∝ that app&apos;s 30d revenue; cell color = the chain it&apos;s on.
+            Hover any cell for app name, chain, category, and exact revenue. Stablecoin
+            issuers (Circle / Tether) appear as virtual apps on whichever chain they&apos;re
+            attributed to — Tether on Tron and Ethereum dominate by area. Flip the{" "}
+            <strong>cross-chain apps</strong> toggle to merge same-named deployments
+            (Tether, Circle, Uniswap…) into single grey cells summed across chains —
+            hover a merged cell for its per-chain split.
+          </>
+        }
+      >
+        <ChainAppTreemap apps={allApps} topN={200} chainLookup={cohort.map((c) => ({ slug: c.slug, name: c.name }))} />
+      </Section>
+
+      <Section
+        id="quadrant"
+        title="Strategic positioning — productivity × tax burden · 30d GDP ann. / TVL vs 7d REV / GDP"
+        info={
+          <>
+            X = capital productivity (trailing-30d GDP, annualized, ÷ TVL). Y = infrastructure
+            tax burden (7d REV ÷ 7d GDP), clamped so a single outlier doesn&apos;t crush the
+            cluster. Bubble area ∝ today&apos;s mcap (fallback to TVL or GDP for chains with no
+            native token), held constant across time. Drag the slider — or hit play — to watch
+            each chain&apos;s position evolve week by week across the full history.
+          </>
+        }
+      >
+        <ChainQuadrant chains={cohort} frames={quadrantFrames} />
       </Section>
 
       <Section
@@ -179,38 +211,6 @@ export default async function ChainCharts({
         }
       >
         <ChainBuffettGrid series={buffett} chainNames={chainNames} />
-      </Section>
-
-      <Section
-        id="heatmap"
-        title="Category composition · 30d"
-        info={
-          <>
-            Each cell shows that chain&apos;s 30d revenue in a category. Color intensity
-            = share of the chain&apos;s GDP that category represents. Tells you{" "}
-            <em>what kind of economy</em> each chain is.
-          </>
-        }
-      >
-        <ChainCategoryHeatmap matrix={matrix} chains={cohort} />
-      </Section>
-
-      <Section
-        id="treemap"
-        title="Every app, every chain — 30d revenue"
-        info={
-          <>
-            Cell area ∝ that app&apos;s 30d revenue; cell color = the chain it&apos;s on.
-            Hover any cell for app name, chain, category, and exact revenue. Stablecoin
-            issuers (Circle / Tether) appear as virtual apps on whichever chain they&apos;re
-            attributed to — Tether on Tron and Ethereum dominate by area. Flip the{" "}
-            <strong>cross-chain apps</strong> toggle to merge same-named deployments
-            (Tether, Circle, Uniswap…) into single grey cells summed across chains —
-            hover a merged cell for its per-chain split.
-          </>
-        }
-      >
-        <ChainAppTreemap apps={allApps} topN={200} chainLookup={cohort.map((c) => ({ slug: c.slug, name: c.name }))} />
       </Section>
 
       <footer className="pt-6 border-t border-line text-xs text-fg-faint leading-relaxed">

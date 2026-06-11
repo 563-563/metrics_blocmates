@@ -10,7 +10,8 @@ import type { RaceFrame } from "@/lib/chain-aggregates";
 // an animation library.
 
 const ROW_H = 30;
-const PLAY_MS = 220;
+const BASE_MS = 220; // frame interval at 1× playback
+const SPEEDS = [1, 2, 4] as const;
 const TOP_N = 15;
 
 function fmt(v: number): string {
@@ -28,8 +29,10 @@ export function ChainGdpRace({
 }) {
   const [idx, setIdx] = useState(Math.max(0, frames.length - 1));
   const [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(1);
   const idxRef = useRef(idx);
   idxRef.current = idx;
+  const tickMs = BASE_MS / speed;
 
   useEffect(() => {
     if (!playing) return;
@@ -39,9 +42,9 @@ export function ChainGdpRace({
       } else {
         setIdx(idxRef.current + 1);
       }
-    }, PLAY_MS);
+    }, tickMs);
     return () => clearInterval(t);
-  }, [playing, frames.length]);
+  }, [playing, frames.length, tickMs]);
 
   const frame = frames[idx];
 
@@ -82,6 +85,20 @@ export function ChainGdpRace({
         >
           {playing ? "pause" : "play"}
         </button>
+        <span className="inline-flex border border-line rounded overflow-hidden">
+          {SPEEDS.map((s, i) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => setSpeed(s)}
+              className={`px-2 py-1 text-[11px] transition ${i > 0 ? "border-l border-line" : ""} ${
+                speed === s ? "bg-surface-elev text-fg" : "text-fg-muted hover:text-fg"
+              }`}
+            >
+              {s}×
+            </button>
+          ))}
+        </span>
         <input
           type="range"
           min={0}
@@ -119,7 +136,7 @@ export function ChainGdpRace({
                 height: ROW_H - 6,
                 transform: `translateY(${y}px)`,
                 opacity: pos ? 1 : 0,
-                transition: `transform ${PLAY_MS}ms linear, opacity ${PLAY_MS}ms linear`
+                transition: `transform ${tickMs}ms linear, opacity ${tickMs}ms linear`
               }}
             >
               <span className="w-24 shrink-0 text-right text-xs text-fg truncate">{name}</span>
@@ -130,7 +147,7 @@ export function ChainGdpRace({
                     width: `${widthPct}%`,
                     background: color,
                     opacity: 0.8,
-                    transition: `width ${PLAY_MS}ms linear`
+                    transition: `width ${tickMs}ms linear`
                   }}
                 />
                 <span
@@ -138,7 +155,7 @@ export function ChainGdpRace({
                   style={{
                     left: `${widthPct}%`,
                     paddingLeft: 6,
-                    transition: `left ${PLAY_MS}ms linear`
+                    transition: `left ${tickMs}ms linear`
                   }}
                 >
                   {pos ? fmt(pos.gdp30) : ""}

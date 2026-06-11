@@ -207,7 +207,7 @@ export type ChainGrowth = {
   slug: string;
   gdp30: number;
   // Oldest → newest. Up to 8 quarters; only windows with full 90d coverage.
-  quarters: Array<{ end: string; growthPct: number }>;
+  quarters: Array<{ end: string; growthPct: number; gdpUsd: number }>;
   qoqPct: number | null;
   yoyPct: number | null;
   inRecession: boolean;
@@ -237,7 +237,8 @@ export function getChainGrowth(includeStablecoins = true): ChainGrowth[] {
       if (cur == null || prev == null || prev <= 0) continue;
       quarters.push({
         end: hist[n - 1 - 90 * k].date,
-        growthPct: (cur / prev - 1) * 100
+        growthPct: (cur / prev - 1) * 100,
+        gdpUsd: Math.round(cur)
       });
     }
     const last = quarters[quarters.length - 1] ?? null;

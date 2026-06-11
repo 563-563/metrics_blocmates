@@ -73,11 +73,16 @@ export default async function ChainCharts({
         title={`Daily GDP · ${RANGE_LABEL[range]}, stacked by chain (7d smoothed)`}
         info={
           <>
-            Total Chain-GDP across the cohort, stacked bottom-up in size order. 7-day rolling
-            average so one-off DL refund/correction days don&apos;t blow out the y-axis.
-            Hover for the day&apos;s top contributors. Coverage start varies by chain —
-            DefiLlama&apos;s Ethereum series reaches back to 2018, newer chains begin at
-            their launch — so early years show fewer stacked layers.
+            <span className="block mb-2">
+              Total Chain-GDP across the cohort, stacked bottom-up in size order. 7-day
+              rolling average so one-off DL refund/correction days don&apos;t blow out the
+              y-axis. Hover for the day&apos;s top contributors.
+            </span>
+            <span className="block">
+              Coverage start varies by chain — DefiLlama&apos;s Ethereum series reaches back
+              to 2018, newer chains begin at their launch — so early years show fewer
+              stacked layers.
+            </span>
           </>
         }
         controls={<ChartRangeToggle />}
@@ -94,9 +99,13 @@ export default async function ChainCharts({
         title="Category composition · 30d"
         info={
           <>
-            Each cell shows that chain&apos;s 30d revenue in a category. Color intensity
-            = share of the chain&apos;s GDP that category represents. Tells you{" "}
-            <em>what kind of economy</em> each chain is.
+            <span className="block mb-2">
+              Each cell shows that chain&apos;s 30d revenue in a category. Color intensity =
+              share of the chain&apos;s GDP that category represents.
+            </span>
+            <span className="block">
+              Tells you <em>what kind of economy</em> each chain is.
+            </span>
           </>
         }
       >
@@ -108,13 +117,19 @@ export default async function ChainCharts({
         title="Every app, every chain — 30d revenue"
         info={
           <>
-            Cell area ∝ that app&apos;s 30d revenue; cell color = the chain it&apos;s on.
-            Hover any cell for app name, chain, category, and exact revenue. Stablecoin
-            issuers (Circle / Tether) appear as virtual apps on whichever chain they&apos;re
-            attributed to — Tether on Tron and Ethereum dominate by area. Flip the{" "}
-            <strong>cross-chain apps</strong> toggle to merge same-named deployments
-            (Tether, Circle, Uniswap…) into single grey cells summed across chains —
-            hover a merged cell for its per-chain split.
+            <span className="block mb-2">
+              Cell area ∝ that app&apos;s 30d revenue; cell color = the chain it&apos;s on.
+              Hover any cell for app name, chain, category, and exact revenue.
+            </span>
+            <span className="block mb-2">
+              Stablecoin issuers (Circle / Tether) appear as virtual apps on whichever chain
+              they&apos;re attributed to — Tether on Tron and Ethereum dominate by area.
+            </span>
+            <span className="block">
+              Flip the <strong>cross-chain apps</strong> toggle to merge same-named
+              deployments (Tether, Circle, Uniswap…) into single grey cells summed across
+              chains — hover a merged cell for its per-chain split.
+            </span>
           </>
         }
       >
@@ -126,11 +141,19 @@ export default async function ChainCharts({
         title="Strategic positioning — productivity × tax burden · 30d GDP ann. / TVL vs 7d REV / GDP"
         info={
           <>
-            X = capital productivity (trailing-30d GDP, annualized, ÷ TVL). Y = infrastructure
-            tax burden (7d REV ÷ 7d GDP), clamped so a single outlier doesn&apos;t crush the
-            cluster. Bubble area ∝ today&apos;s mcap (fallback to TVL or GDP for chains with no
-            native token), held constant across time. Drag the slider — or hit play — to watch
-            each chain&apos;s position evolve week by week across the full history.
+            <span className="block mb-2">
+              X = capital productivity (trailing-30d GDP, annualized, ÷ TVL). Y =
+              infrastructure tax burden (7d REV ÷ 7d GDP), clamped so a single outlier
+              doesn&apos;t crush the cluster.
+            </span>
+            <span className="block mb-2">
+              Bubble area ∝ today&apos;s mcap (fallback to TVL or GDP for chains with no
+              native token), held constant across time.
+            </span>
+            <span className="block">
+              Drag the slider — or hit play — to watch each chain&apos;s position evolve
+              week by week across the full history.
+            </span>
           </>
         }
       >
@@ -142,9 +165,14 @@ export default async function ChainCharts({
         title="GDP rank race · trailing 30d, weekly frames"
         info={
           <>
-            The cohort league table through time — each frame ranks chains by their
-            trailing-30d GDP. Hit play to watch economies overtake each other; drag the
-            slider to inspect any week.
+            <span className="block mb-2">
+              The cohort league table through time — each frame ranks chains by their
+              trailing-30d GDP.
+            </span>
+            <span className="block">
+              Hit play to watch economies overtake each other (1× / 2× / 4× speed); drag
+              the slider to inspect any week.
+            </span>
           </>
         }
       >
@@ -156,11 +184,19 @@ export default async function ChainCharts({
         title="Recession watch — quarterly GDP growth · trailing 90d windows"
         info={
           <>
-            Each bar is one quarter&apos;s GDP growth vs the quarter before (trailing-90d
-            sums anchored to the chain&apos;s latest data day, up to 8 quarters). The classic
-            definition applies literally: two consecutive negative quarters ={" "}
-            <strong>recession</strong>. QoQ = latest quarter; YoY = trailing 365d vs the
-            365d before. Bars cap at ±50%.
+            <span className="block mb-2">
+              Each bar is one quarter&apos;s GDP growth vs the quarter before (trailing-90d
+              sums anchored to the chain&apos;s latest data day, up to 8 quarters). Hover a
+              bar for the quarter&apos;s exact change and GDP.
+            </span>
+            <span className="block mb-2">
+              The classic definition applies literally: two consecutive negative quarters
+              = <strong>recession</strong>.
+            </span>
+            <span className="block">
+              QoQ = latest quarter; YoY = trailing 365d vs the 365d before. Bars cap at
+              ±50%.
+            </span>
           </>
         }
       >
@@ -172,11 +208,18 @@ export default async function ChainCharts({
         title="GDP vs GNI — value retained vs exported · 30d"
         info={
           <>
-            A country&apos;s GDP counts what is produced on its soil; GNI counts what its
-            residents keep. Chain version: stablecoin-issuer attribution (Circle / Tether
-            reserve yield) is output generated ON the chain but captured off it. This chart
-            always includes stablecoin attribution regardless of the page toggle — the split
-            is the whole point.
+            <span className="block mb-2">
+              A country&apos;s GDP counts what is produced on its soil; GNI (gross national
+              income) counts what its residents actually keep.
+            </span>
+            <span className="block mb-2">
+              Chain version: stablecoin-issuer attribution (Circle / Tether reserve yield)
+              is output generated ON the chain but captured off it.
+            </span>
+            <span className="block">
+              This chart always includes stablecoin attribution regardless of the page
+              toggle — the split is the whole point.
+            </span>
           </>
         }
       >
@@ -188,9 +231,14 @@ export default async function ChainCharts({
         title="Economic concentration — HHI by app · 30d revenue"
         info={
           <>
-            Herfindahl-Hirschman index over each app&apos;s share of chain GDP — the same
-            statistic antitrust regulators use for market concentration, with the same
-            thresholds. Bottom-right = large diversified economy; top = one-company town.
+            <span className="block mb-2">
+              Herfindahl-Hirschman index over each app&apos;s share of chain GDP — the same
+              statistic antitrust regulators use for market concentration, with the same
+              thresholds.
+            </span>
+            <span className="block">
+              Bottom-right = large diversified economy; top = one-company town.
+            </span>
           </>
         }
       >
@@ -202,11 +250,25 @@ export default async function ChainCharts({
         title="Buffett Indicator — native-token mcap ÷ annualized GDP · trailing 30d, weekly"
         info={
           <>
-            The metric Buffett applies to countries (total market cap ÷ GNP), per chain:
-            native-token market cap divided by trailing-30d GDP annualized. Lower = the
-            token is cheap relative to the economy it taxes; sorted cheapest-first.
-            mcap history comes from CoinGecko (free tier reaches ~1 year back and grows
-            daily from here). Chains without a native token are absent by construction.
+            <span className="block mb-2">
+              Warren Buffett&apos;s favorite gauge for whether a country&apos;s stock market is
+              over- or under-valued: total stock-market value ÷ GNP. GNP (gross national
+              product) is the total value of everything a nation&apos;s economy produces in a
+              year — for this purpose, the same idea as GDP. Above ~100%, he considers the
+              market expensive relative to the real economy underneath it.
+            </span>
+            <span className="block mb-2">
+              Chain version: the native token&apos;s market cap stands in for the stock
+              market, and the chain&apos;s annualized GDP (trailing 30d × 365/30) stands in
+              for GNP. A 10× reading means the token is valued at ten years of the
+              economy&apos;s current output; lower = cheaper. Cards are sorted
+              cheapest-first.
+            </span>
+            <span className="block">
+              Market-cap history comes from CoinGecko (free tier reaches ~1 year back and
+              grows daily from here). Chains without a native token are absent by
+              construction.
+            </span>
           </>
         }
       >

@@ -34,5 +34,8 @@ jobs:
       - name: HM article regression (writes nothing, asserts the four multiples)
         run: node scripts/hm/compute-hm.js --check
 
+      - name: Token-grade spec regression (writes nothing, asserts the five SS-PE/value anchors)
+        run: node scripts/tg/compute-tg.js --check
+
       - name: Committed data passes structural validation
         run: node scripts/lib/validate-pipeline.js --structure-only

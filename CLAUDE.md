@@ -13,7 +13,7 @@ When working here, the rules in this file are authoritative. There is no parent 
 
 ---
 
-## The two pipelines
+## The three pipelines
 
 ### Holder Multiple (HM)
 
@@ -33,6 +33,18 @@ Net Pressure = (Unlocks + Treasury Sells)
 ```
 
 Sinks (right side) only count when positive — unstaking and treasury sells flow into the opposite-direction column. Positive Net Pressure = market is absorbing supply faster than the protocol can sink it; negative = protocol is a net buyer.
+
+### Token Grade (TG)
+
+```
+trusted_revenue             = selected_run_rate × durability_adjustment
+clean_platform_earnings     = trusted_revenue × clean_conversion
+token_attributable_earnings = clean_platform_earnings × token_alignment_factor
+SS-PE                       = (1 − g / ROE) / (Ke − g)
+implied_token_value         = token_attributable_earnings × SS-PE
+```
+
+Separates business quality (clean conversion, ROE, g) from token claim quality (alignment, Ke). The UI's two scenario modes vary one side while pinning the other — never both, to prevent double-counting. Engine: `scripts/tg/token-grading.js` (canonical) mirrored by `web/lib/token-grading.ts` — keep them in lockstep. Grade inputs in `data/tg/token-grades/` change only through `scripts/tg/token-grade-check.js apply` with sourced evidence; `compute-tg.js --check` asserts the five spec acceptance anchors (CI), same philosophy as HM's article regression.
 
 ---
 
@@ -124,6 +136,6 @@ In this mode all on-chain feed overrides are bypassed and the seed's `article_pr
 
 ## What this dashboard is NOT
 
-- Not an underwriting tool. Don't add value-accrual scoring rubrics, deep-dive narrative notes, qualitative scorecards, or per-protocol research markdown — those belong in the separate underwriting workspace.
+- Not an underwriting tool — with one deliberate carve-out: the **Token Grade module** (`data/tg/`, `scripts/tg/`, `/token-grade`) is a quantitative claim-quality engine whose rubric is fixed by its spec and whose inputs change only through sourced evidence via `token-grade-check.js`. Beyond that module: no ad-hoc scoring rubrics, deep-dive narrative notes, qualitative scorecards, or per-protocol research markdown — those still belong in the separate underwriting workspace.
 - Not a research surface. No editorial commentary embedded in the data. Markdown reports under `data/{hm,np}/reports/` are structured outputs derived from the seed + on-chain data, not opinion.
 - Not a multi-asset analytics platform. The **core cohort** is the four named protocols; adding a fifth is a deliberate decision documented in `data/hm/config.json`'s `protocols` block, not a casual expansion. The proxy tier may grow/shrink casually — it's explicitly the low-effort, lower-confidence ring and never gets editorial seeds or TP adapters without being promoted to core.

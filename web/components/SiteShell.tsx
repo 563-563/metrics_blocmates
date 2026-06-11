@@ -14,7 +14,8 @@ const NAV: NavSection[] = [
     items: [
       { label: "True Pressure", href: "/true-pressure" },
       { label: "Holder Multiple", href: "/holder-multiple" },
-      { label: "Chain GDP", href: "/chain-gdp" }
+      { label: "Chain GDP", href: "/chain-gdp" },
+      { label: "Token Grade", href: "/token-grade" }
     ]
   },
   {

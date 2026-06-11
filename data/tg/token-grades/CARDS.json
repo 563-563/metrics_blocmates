@@ -1,0 +1,198 @@
+{
+  "symbol": "CARDS",
+  "project": "Collector Crypt",
+  "coingecko_id": "collector-crypt",
+  "updated_at": "2026-06-11T17:20:24.592Z",
+  "business": {
+    "revenue_run_rate_window": "26w",
+    "gross_revenue": null,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 66720573,
+    "revenue_13w": 93768582,
+    "durability_adjustment": 1,
+    "trusted_revenue": 66720573,
+    "clean_conversion": 0.75,
+    "clean_platform_earnings": 50040429.75,
+    "clean_conversion_grade": "B",
+    "durability_score": 3,
+    "business_confidence": "medium"
+  },
+  "capital_efficiency": {
+    "active_capital": 12605849,
+    "operating_treasury": 13100000,
+    "total_asset_base": 34500000,
+    "active_capital_roe": 3.97,
+    "operating_treasury_roe": 3.82,
+    "total_asset_roe": 1.45,
+    "underwriting_roe": 2,
+    "roe_grade": "A",
+    "roe_confidence": "medium"
+  },
+  "growth": {
+    "near_term_growth_score": 4,
+    "durability_score": 3,
+    "terminal_g": 0.035,
+    "growth_grade": "B",
+    "growth_confidence": "medium"
+  },
+  "token": {
+    "claim_category": "Current-state no utility",
+    "claim_category_key": "no_utility",
+    "token_alignment_factor": 0.03,
+    "token_alignment_grade": "F",
+    "value_capture_score": 0,
+    "token_holder_rights_score": 0,
+    "entity_alignment_score": 0.5,
+    "transparency_score": 1,
+    "token_confidence": "medium"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.045,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.055,
+    "regulatory_premium": 0.06,
+    "custody_operational_premium": 0.035,
+    "governance_supply_premium": 0.05,
+    "economic_alignment_premium": 0.06,
+    "technical_reconciliation_premium": 0.02,
+    "ke": 0.38,
+    "ke_grade": "D"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 66720573,
+      "clean_conversion": 0.65,
+      "underwriting_roe": 1.5,
+      "terminal_g": 0.025
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 66720573,
+      "clean_conversion": 0.75,
+      "underwriting_roe": 2,
+      "terminal_g": 0.035
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 93768582,
+      "clean_conversion": 0.8,
+      "underwriting_roe": 3,
+      "terminal_g": 0.05
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 46637811,
+    "fdv_seed": 362108689,
+    "ss_pe": 2.85,
+    "token_attributable_earnings": 1501213,
+    "implied_token_value": 4275193,
+    "market_cap": 43705361,
+    "fdv": 339340348,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 0.1,
+    "implied_value_vs_fdv": 0.01,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "token.claim_category",
+      "claim": "No current hard token utility / claim found",
+      "source_url": "https://docs.collectorcrypt.com/CARDS",
+      "confidence": "medium",
+      "updated_at": "2026-06-09T00:00:00Z"
+    }
+  ],
+  "flags": [
+    "no_hard_token_claim",
+    "offchain_asset_custody",
+    "unlocked_not_circulating_overhang",
+    "regulatory_gacha_or_gambling_surface",
+    "high_whale_concentration"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.85,
+        "token_attributable_earnings": 1501213,
+        "implied_token_value": 4275193
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.45,
+        "token_attributable_earnings": 6004852,
+        "implied_token_value": 20700936
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 4.37,
+        "token_attributable_earnings": 17514150,
+        "implied_token_value": 76478457
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 5.95,
+        "token_attributable_earnings": 32526279,
+        "implied_token_value": 193679209
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 8.93,
+        "token_attributable_earnings": 50040430,
+        "implied_token_value": 446952020
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 66720573,
+        "clean_conversion": 0.65,
+        "underwriting_roe": 1.5,
+        "terminal_g": 0.025,
+        "clean_platform_earnings": 43368372,
+        "ss_pe": 2.77,
+        "implied_token_value": 3603851,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 66720573,
+        "clean_conversion": 0.75,
+        "underwriting_roe": 2,
+        "terminal_g": 0.035,
+        "clean_platform_earnings": 50040430,
+        "ss_pe": 2.85,
+        "implied_token_value": 4275193,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 93768582,
+        "clean_conversion": 0.8,
+        "underwriting_roe": 3,
+        "terminal_g": 0.05,
+        "clean_platform_earnings": 75014866,
+        "ss_pe": 2.98,
+        "implied_token_value": 6705874,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T17:20:24.668Z"
+}

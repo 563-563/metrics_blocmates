@@ -158,6 +158,9 @@ jobs:
       - name: Compute TP snapshot
         run: node scripts/np/compute-np.js
 
+      - name: Compute Token Grade snapshot (refreshes mcap/FDV comparison from the live DL+CG data)
+        run: node scripts/tg/compute-tg.js
+
       - name: Backfill HM time series
         run: node scripts/hm/backfill-hm-history.js --days 120
 

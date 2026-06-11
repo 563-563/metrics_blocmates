@@ -63,8 +63,8 @@ export default async function ChainCharts({
           </div>
         </div>
         <p className="text-xs text-fg-muted mt-2 leading-relaxed max-w-2xl">
-          Visual gallery for the 24-chain cohort. Methodology and methodology controls match the
-          chains table — stablecoin issuer attribution included; ETF and off-chain other excluded.
+          Chains don&apos;t have statistics offices, so this is one. Every chart below reads a
+          chain the way an economist reads a country.
         </p>
       </header>
 

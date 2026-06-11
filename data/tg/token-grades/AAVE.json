@@ -1,0 +1,205 @@
+{
+  "symbol": "AAVE",
+  "project": "Aave",
+  "coingecko_id": "aave",
+  "updated_at": "2026-06-11T18:09:51.743Z",
+  "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "business": {
+    "revenue_run_rate_window": "1y",
+    "gross_revenue": 942032167,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 125119924,
+    "revenue_13w": 75310389,
+    "durability_adjustment": 1,
+    "trusted_revenue": 125119924,
+    "clean_conversion": 0.8,
+    "clean_platform_earnings": 100095939.2,
+    "clean_conversion_grade": "A",
+    "durability_score": 4,
+    "business_confidence": "low"
+  },
+  "capital_efficiency": {
+    "active_capital": null,
+    "operating_treasury": null,
+    "total_asset_base": null,
+    "active_capital_roe": null,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
+    "underwriting_roe": 1.5,
+    "roe_grade": "B",
+    "roe_confidence": "low"
+  },
+  "growth": {
+    "near_term_growth_score": 3,
+    "durability_score": 4,
+    "terminal_g": 0.035,
+    "growth_grade": "C",
+    "growth_confidence": "low"
+  },
+  "token": {
+    "claim_category": "Treasury-asset claim",
+    "claim_category_key": "treasury_claim",
+    "token_alignment_factor": 0.07,
+    "token_alignment_grade": "D",
+    "value_capture_score": 2,
+    "token_holder_rights_score": 1.5,
+    "entity_alignment_score": 1,
+    "transparency_score": 2,
+    "token_confidence": "low"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.045,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.007,
+    "regulatory_premium": 0.024,
+    "custody_operational_premium": 0.005,
+    "governance_supply_premium": 0.014,
+    "economic_alignment_premium": 0.064,
+    "technical_reconciliation_premium": 0.006,
+    "ke": 0.22,
+    "ke_grade": "B"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 75310389,
+      "clean_conversion": 0.7000000000000001,
+      "underwriting_roe": 1.125,
+      "terminal_g": 0.025
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 125119924,
+      "clean_conversion": 0.8,
+      "underwriting_roe": 1.5,
+      "terminal_g": 0.035
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 125119924,
+      "clean_conversion": 0.8500000000000001,
+      "underwriting_roe": 2.25,
+      "terminal_g": 0.0475
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 1014387426,
+    "fdv_seed": 1069189264,
+    "ss_pe": 5.28,
+    "token_attributable_earnings": 7006716,
+    "implied_token_value": 36990409,
+    "market_cap": 1014387426,
+    "fdv": 1069189264,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 0.04,
+    "implied_value_vs_fdv": 0.03,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "business.post_buyback_net_revenue",
+      "claim": "Annual revenue $125.1M (DL revenue_1y); 30d-annualized $75.3M",
+      "source_url": "https://defillama.com/protocol/aave",
+      "confidence": "medium",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T18:09:51.743Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 7% derived as HM real capture $7.1M (verification: onchain_aggregate) ÷ clean earnings $100.1M. Aave DAO buyback executes via the Collector contract (onchain_aggregate flag in HM). Governance controls the treasury; current buyback run-rate is a small share of protocol revenue.",
+      "source_url": "https://defillama.com/protocol/aave",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T18:09:51.743Z"
+    }
+  ],
+  "flags": [
+    "auto_seeded_from_pipeline_data",
+    "buyback_small_vs_revenue"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.83,
+        "token_attributable_earnings": 3002878,
+        "implied_token_value": 8500902
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.43,
+        "token_attributable_earnings": 12011513,
+        "implied_token_value": 41162260
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 4.34,
+        "token_attributable_earnings": 35033579,
+        "implied_token_value": 152071682
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 5.92,
+        "token_attributable_earnings": 65062360,
+        "implied_token_value": 385116598
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 8.88,
+        "token_attributable_earnings": 100095939,
+        "implied_token_value": 888730612
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 75310389,
+        "clean_conversion": 0.7000000000000001,
+        "underwriting_roe": 1.125,
+        "terminal_g": 0.025,
+        "clean_platform_earnings": 52717272,
+        "ss_pe": 5.01,
+        "implied_token_value": 18503612,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 125119924,
+        "clean_conversion": 0.8,
+        "underwriting_roe": 1.5,
+        "terminal_g": 0.035,
+        "clean_platform_earnings": 100095939,
+        "ss_pe": 5.28,
+        "implied_token_value": 36990409,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 125119924,
+        "clean_conversion": 0.8500000000000001,
+        "underwriting_roe": 2.25,
+        "terminal_g": 0.0475,
+        "clean_platform_earnings": 106351935,
+        "ss_pe": 5.67,
+        "implied_token_value": 42246208,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T18:09:51.785Z"
+}

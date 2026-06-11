@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-06-11T17:20:24.670Z",
+  "generated_at": "2026-06-11T18:09:51.790Z",
   "tokens": [
+    {
+      "symbol": "AAVE",
+      "project": "Aave",
+      "claim_category": "Treasury-asset claim",
+      "token_alignment_factor": 0.07,
+      "token_alignment_grade": "D",
+      "ke": 0.22,
+      "ke_grade": "B",
+      "clean_conversion_grade": "A",
+      "roe_grade": "B",
+      "ss_pe": 5.28,
+      "implied_token_value": 36990409,
+      "market_cap": 1014387426,
+      "fdv": 1069189264,
+      "implied_value_vs_market_cap": 0.04,
+      "implied_value_vs_fdv": 0.03,
+      "flags": 2
+    },
     {
       "symbol": "CARDS",
       "project": "Collector Crypt",
@@ -18,6 +36,60 @@
       "implied_value_vs_market_cap": 0.1,
       "implied_value_vs_fdv": 0.01,
       "flags": 5
+    },
+    {
+      "symbol": "HYPE",
+      "project": "Hyperliquid",
+      "claim_category": "Revenue + treasury governance",
+      "token_alignment_factor": 0.57,
+      "token_alignment_grade": "C",
+      "ke": 0.209,
+      "ke_grade": "B",
+      "clean_conversion_grade": "A",
+      "roe_grade": "A",
+      "ss_pe": 6.09,
+      "implied_token_value": 2442961941,
+      "market_cap": 13701685259,
+      "fdv": 58842747240,
+      "implied_value_vs_market_cap": 0.18,
+      "implied_value_vs_fdv": 0.04,
+      "flags": 3
+    },
+    {
+      "symbol": "LIT",
+      "project": "Lighter",
+      "claim_category": "Revenue + treasury governance",
+      "token_alignment_factor": 0.68,
+      "token_alignment_grade": "B",
+      "ke": 0.284,
+      "ke_grade": "C",
+      "clean_conversion_grade": "A",
+      "roe_grade": "A",
+      "ss_pe": 4.13,
+      "implied_token_value": 114020714,
+      "market_cap": 381529783,
+      "fdv": 1526119134,
+      "implied_value_vs_market_cap": 0.3,
+      "implied_value_vs_fdv": 0.07,
+      "flags": 3
+    },
+    {
+      "symbol": "SKY",
+      "project": "Sky",
+      "claim_category": "Treasury-asset claim",
+      "token_alignment_factor": 0,
+      "token_alignment_grade": "F",
+      "ke": 0.276,
+      "ke_grade": "C",
+      "clean_conversion_grade": "B",
+      "roe_grade": "D",
+      "ss_pe": 3.65,
+      "implied_token_value": 0,
+      "market_cap": 1381355981,
+      "fdv": 1393527822,
+      "implied_value_vs_market_cap": 0,
+      "implied_value_vs_fdv": 0,
+      "flags": 3
     }
   ]
 }

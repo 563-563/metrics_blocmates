@@ -1,7 +1,8 @@
 // Token-grade data layer. Same static-bundling pattern as the chains data:
-// JSON ships with the function bundle via the module graph.
+// JSON ships with the function bundle via the module graph. Per-token files
+// load through a Webpack context (template-literal require) keyed off the
+// aggregate's symbol list — adding a token needs no code change here.
 
-import cardsRaw from "../../data/tg/token-grades/CARDS.json";
 import latestRaw from "../../data/tg/token-grades/latest.json";
 
 export type TgEvidence = {
@@ -135,11 +136,17 @@ export type TgLatest = {
   }>;
 };
 
-const TOKEN_GRADES: Record<string, TokenGrade> = {
-  CARDS: cardsRaw as unknown as TokenGrade
-};
-
 export const tgLatest = latestRaw as unknown as TgLatest;
+
+const TOKEN_GRADES: Record<string, TokenGrade> = {};
+for (const t of tgLatest.tokens) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    TOKEN_GRADES[t.symbol] = require(`../../data/tg/token-grades/${t.symbol}.json`) as TokenGrade;
+  } catch {
+    /* listed in aggregate but file missing — silent */
+  }
+}
 
 export const TG_SYMBOLS = Object.keys(TOKEN_GRADES);
 

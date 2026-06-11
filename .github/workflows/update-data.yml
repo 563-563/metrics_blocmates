@@ -145,6 +145,11 @@ jobs:
         continue-on-error: true
         run: node scripts/chains/fetch-chain-gdp.js
 
+      - name: Chain native-token mcap history (CoinGecko — feeds the Buffett Indicator; skips chains already fresh)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
+        run: node scripts/chains/fetch-mcap-history.js
+
       # ------------------------------------------------------- every run
 
       - name: Compute HM snapshot

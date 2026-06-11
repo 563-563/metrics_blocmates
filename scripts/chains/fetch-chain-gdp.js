@@ -22,6 +22,10 @@
  *   - history/<slug>.json — daily GDP+TVL+REV time series
  *   - protocols/<slug>.json — top-25 protocols by 30d revenue
  *   - categories/<slug>.json — 30d category breakdown
+ *   - category-history/<slug>.json — MONTHLY revenue by category over the full
+ *     series (incl. Stablecoin Issuer attribution). Monthly, not daily, on
+ *     purpose: the structural-transformation chart needs decade-scale shape,
+ *     and daily files would bloat the web bundle ~36×.
  *
  * Run: node scripts/chains/fetch-chain-gdp.js
  */
@@ -271,6 +275,7 @@ async function main() {
   ensureDir(path.join(OUT_DIR, 'history'));
   ensureDir(path.join(OUT_DIR, 'protocols'));
   ensureDir(path.join(OUT_DIR, 'categories'));
+  ensureDir(path.join(OUT_DIR, 'category-history'));
 
   // 1. Global metadata
   console.log('Step 1/4: Fetching protocol category metadata...');
@@ -497,6 +502,50 @@ async function main() {
       path.join(OUT_DIR, 'protocols', `${slug}.json`),
       JSON.stringify(top25, null, 2)
     );
+
+    // Monthly category history over the full series — the raw material for
+    // the structural-transformation chart (sector shares of GDP through
+    // time). Chain-category protocols are excluded (they're REV, not GDP);
+    // stablecoin attribution lands in its own 'Stablecoin Issuer' sector.
+    // DL returns the full breakdown each run, so this is a plain overwrite —
+    // no merge state to corrupt.
+    const excludedSet = new Set(d.excluded);
+    const catMonthly = new Map(); // 'YYYY-MM' -> Map(category -> usd)
+    const monthBucket = (month) => {
+      let m = catMonthly.get(month);
+      if (!m) { m = new Map(); catMonthly.set(month, m); }
+      return m;
+    };
+    for (const [day, protos] of d.dailyBreakdown) {
+      const m = monthBucket(day.slice(0, 7));
+      for (const [name, rev] of Object.entries(protos || {})) {
+        if (excludedSet.has(name)) continue;
+        const cat = protoCategories[name] || 'Unknown';
+        m.set(cat, (m.get(cat) || 0) + (Number(rev) || 0));
+      }
+    }
+    for (const row of dailySeries) {
+      if (row.gdp_stable > 0) {
+        const m = monthBucket(row.date.slice(0, 7));
+        m.set('Stablecoin Issuer', (m.get('Stablecoin Issuer') || 0) + row.gdp_stable);
+      }
+    }
+    const catHistory = [...catMonthly.entries()]
+      .sort((a, b) => (a[0] < b[0] ? -1 : 1))
+      .map(([month, m]) => ({
+        month,
+        categories: Object.fromEntries(
+          [...m.entries()]
+            .filter(([, v]) => v >= 1)
+            .map(([c, v]) => [c, Math.round(v)])
+        )
+      }));
+    if (catHistory.length > 0) {
+      fs.writeFileSync(
+        path.join(OUT_DIR, 'category-history', `${slug}.json`),
+        JSON.stringify(catHistory, null, 2)
+      );
+    }
 
     // Category breakdown (Stablecoin Issuer naturally appears via allProtos)
     const catEntries = Object.entries(catSums)

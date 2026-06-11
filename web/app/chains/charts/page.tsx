@@ -4,9 +4,19 @@ import {
   chainSummaryWithoutStablecoins,
   getStackedGdpSeries,
   getQuadrantFrames,
+  getChainGrowth,
+  getGniSplit,
+  getConcentration,
+  getRaceFrames,
+  getBuffettSeries,
   getAllApps,
   getCategoryMatrix
 } from "@/lib/chain-aggregates";
+import { ChainGrowthGrid } from "@/components/ChainGrowthGrid";
+import { ChainGniBars } from "@/components/ChainGniBars";
+import { ChainConcentration } from "@/components/ChainConcentration";
+import { ChainGdpRace } from "@/components/ChainGdpRace";
+import { ChainBuffettGrid } from "@/components/ChainBuffettGrid";
 import { ChainQuadrant } from "@/components/ChainQuadrant";
 import { ChainStackedArea } from "@/components/ChainStackedArea";
 import { ChainCategoryHeatmap } from "@/components/ChainCategoryHeatmap";
@@ -31,9 +41,15 @@ export default async function ChainCharts({
     : chains.chains.map(chainSummaryWithoutStablecoins);
   const stackedSeries = getStackedGdpSeries(RANGE_DAYS[range], 7, includeStablecoins);
   const quadrantFrames = getQuadrantFrames(includeStablecoins);
+  const growth = getChainGrowth(includeStablecoins);
+  const gni = getGniSplit(30);
+  const concentration = getConcentration(includeStablecoins);
+  const raceFrames = getRaceFrames(includeStablecoins);
+  const buffett = getBuffettSeries(includeStablecoins);
   const allApps = getAllApps(includeStablecoins);
   const matrix = getCategoryMatrix(10, includeStablecoins);
   const chainOrder = cohort.map((c) => c.slug);
+  const chainNames = Object.fromEntries(cohort.map((c) => [c.slug, c.name]));
 
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
@@ -85,8 +101,84 @@ export default async function ChainCharts({
         <ChainStackedArea
           series={stackedSeries}
           chainOrder={chainOrder}
-          chainNames={Object.fromEntries(cohort.map((c) => [c.slug, c.name]))}
+          chainNames={chainNames}
         />
+      </Section>
+
+      <Section
+        id="race"
+        title="GDP rank race · trailing 30d, weekly frames"
+        info={
+          <>
+            The cohort league table through time — each frame ranks chains by their
+            trailing-30d GDP. Hit play to watch economies overtake each other; drag the
+            slider to inspect any week.
+          </>
+        }
+      >
+        <ChainGdpRace frames={raceFrames} chainNames={chainNames} />
+      </Section>
+
+      <Section
+        id="growth"
+        title="Recession watch — quarterly GDP growth · trailing 90d windows"
+        info={
+          <>
+            Each bar is one quarter&apos;s GDP growth vs the quarter before (trailing-90d
+            sums anchored to the chain&apos;s latest data day, up to 8 quarters). The classic
+            definition applies literally: two consecutive negative quarters ={" "}
+            <strong>recession</strong>. QoQ = latest quarter; YoY = trailing 365d vs the
+            365d before. Bars cap at ±50%.
+          </>
+        }
+      >
+        <ChainGrowthGrid growth={growth} chainNames={chainNames} />
+      </Section>
+
+      <Section
+        id="gni"
+        title="GDP vs GNI — value retained vs exported · 30d"
+        info={
+          <>
+            A country&apos;s GDP counts what is produced on its soil; GNI counts what its
+            residents keep. Chain version: stablecoin-issuer attribution (Circle / Tether
+            reserve yield) is output generated ON the chain but captured off it. This chart
+            always includes stablecoin attribution regardless of the page toggle — the split
+            is the whole point.
+          </>
+        }
+      >
+        <ChainGniBars rows={gni} chainNames={chainNames} windowDays={30} />
+      </Section>
+
+      <Section
+        id="hhi"
+        title="Economic concentration — HHI by app · 30d revenue"
+        info={
+          <>
+            Herfindahl-Hirschman index over each app&apos;s share of chain GDP — the same
+            statistic antitrust regulators use for market concentration, with the same
+            thresholds. Bottom-right = large diversified economy; top = one-company town.
+          </>
+        }
+      >
+        <ChainConcentration rows={concentration} chainNames={chainNames} />
+      </Section>
+
+      <Section
+        id="buffett"
+        title="Buffett Indicator — native-token mcap ÷ annualized GDP · trailing 30d, weekly"
+        info={
+          <>
+            The metric Buffett applies to countries (total market cap ÷ GNP), per chain:
+            native-token market cap divided by trailing-30d GDP annualized. Lower = the
+            token is cheap relative to the economy it taxes; sorted cheapest-first.
+            mcap history comes from CoinGecko (free tier reaches ~1 year back and grows
+            daily from here). Chains without a native token are absent by construction.
+          </>
+        }
+      >
+        <ChainBuffettGrid series={buffett} chainNames={chainNames} />
       </Section>
 
       <Section

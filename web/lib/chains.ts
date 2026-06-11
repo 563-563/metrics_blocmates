@@ -89,9 +89,14 @@ export function getChainBySlug(slug: string): ChainSummary | undefined {
 // Webpack ContextModuleFactory bundles every JSON file in the matched
 // directories. Works in SSG and serverless (force-dynamic) alike.
 
+export type ChainMcapPoint = { date: string; mcap: number };
+export type ChainCategoryMonth = { month: string; categories: Record<string, number> };
+
 export const HISTORY_MAP: Record<string, ChainHistoryPoint[]> = {};
 export const PROTOCOLS_MAP: Record<string, ChainProtocol[]> = {};
 export const CATEGORIES_MAP: Record<string, ChainCategory[]> = {};
+export const MCAP_HISTORY_MAP: Record<string, ChainMcapPoint[]> = {};
+export const CATEGORY_HISTORY_MAP: Record<string, ChainCategoryMonth[]> = {};
 
 for (const slug of CHAIN_SLUGS) {
   try {
@@ -99,6 +104,18 @@ for (const slug of CHAIN_SLUGS) {
     HISTORY_MAP[slug] = require(`../../data/chains/history/${slug}.json`) as ChainHistoryPoint[];
   } catch {
     /* file missing — silent */
+  }
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    MCAP_HISTORY_MAP[slug] = require(`../../data/chains/mcap-history/${slug}.json`) as ChainMcapPoint[];
+  } catch {
+    /* chains without a native token / fetcher not yet run — silent */
+  }
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    CATEGORY_HISTORY_MAP[slug] = require(`../../data/chains/category-history/${slug}.json`) as ChainCategoryMonth[];
+  } catch {
+    /* */
   }
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports

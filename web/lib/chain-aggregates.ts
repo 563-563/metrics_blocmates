@@ -7,8 +7,10 @@
 
 import {
   CATEGORIES_MAP,
+  CATEGORY_HISTORY_MAP,
   CHAIN_SLUGS,
   HISTORY_MAP,
+  MCAP_HISTORY_MAP,
   PROTOCOLS_MAP,
   type ChainCategory,
   type ChainHistoryPoint,
@@ -194,6 +196,311 @@ export function getQuadrantFrames(includeStablecoins = true, stepDays = 7): Quad
     if (points.length >= 3) frames.push({ date: day, points });
   }
   return frames;
+}
+
+// ── Macro: GDP growth & recession watch ─────────────────────────────────
+// Country-statistics treatment of the GDP series: quarterly (90d) growth
+// rates, YoY, and the classic recession rule — two consecutive quarters of
+// negative growth. Quarters are trailing windows anchored to each chain's
+// own latest data day, not calendar quarters.
+export type ChainGrowth = {
+  slug: string;
+  gdp30: number;
+  // Oldest → newest. Up to 8 quarters; only windows with full 90d coverage.
+  quarters: Array<{ end: string; growthPct: number }>;
+  qoqPct: number | null;
+  yoyPct: number | null;
+  inRecession: boolean;
+  tooYoung: boolean; // < 2 measurable quarters
+};
+
+export function getChainGrowth(includeStablecoins = true): ChainGrowth[] {
+  const key = includeStablecoins ? "gdp" : "gdp_app";
+  const out: ChainGrowth[] = [];
+  for (const slug of CHAIN_SLUGS) {
+    const hist = HISTORY_MAP[slug] || [];
+    if (hist.length < 30) continue;
+    const vals = hist.map((r) => Math.max(0, Number((r as any)[key]) || 0));
+    const n = vals.length;
+    const winSum = (endOffset: number, days: number): number | null => {
+      const end = n - endOffset;
+      const start = end - days;
+      if (start < 0) return null;
+      let s = 0;
+      for (let i = start; i < end; i++) s += vals[i];
+      return s;
+    };
+    const quarters: ChainGrowth["quarters"] = [];
+    for (let k = 7; k >= 0; k--) {
+      const cur = winSum(90 * k, 90);
+      const prev = winSum(90 * (k + 1), 90);
+      if (cur == null || prev == null || prev <= 0) continue;
+      quarters.push({
+        end: hist[n - 1 - 90 * k].date,
+        growthPct: (cur / prev - 1) * 100
+      });
+    }
+    const last = quarters[quarters.length - 1] ?? null;
+    const prior = quarters[quarters.length - 2] ?? null;
+    const y0 = winSum(0, 365);
+    const y1 = winSum(365, 365);
+    out.push({
+      slug,
+      gdp30: winSum(0, 30) ?? 0,
+      quarters,
+      qoqPct: last?.growthPct ?? null,
+      yoyPct: y0 != null && y1 != null && y1 > 0 ? (y0 / y1 - 1) * 100 : null,
+      inRecession: last != null && prior != null && last.growthPct < 0 && prior.growthPct < 0,
+      tooYoung: quarters.length < 2
+    });
+  }
+  return out.sort((a, b) => b.gdp30 - a.gdp30);
+}
+
+// ── Macro: GDP vs GNI (value retained vs exported) ──────────────────────
+// Stablecoin-issuer attribution is output generated ON the chain but
+// captured by an off-chain entity — the GNI gap. Always computed with
+// stablecoins included: the split IS the chart.
+export type ChainGni = {
+  slug: string;
+  retainedUsd: number; // app revenue staying in the on-chain economy
+  exportedUsd: number; // Circle/Tether reserve yield leaving it
+  exportedPct: number;
+};
+
+export function getGniSplit(windowDays = 30): ChainGni[] {
+  const out: ChainGni[] = [];
+  for (const slug of CHAIN_SLUGS) {
+    const hist = (HISTORY_MAP[slug] || []).slice(-windowDays);
+    if (hist.length === 0) continue;
+    let app = 0;
+    let stable = 0;
+    for (const r of hist) {
+      app += Math.max(0, r.gdp_app);
+      stable += Math.max(0, r.gdp_stable);
+    }
+    const total = app + stable;
+    if (total <= 0) continue;
+    out.push({
+      slug,
+      retainedUsd: Math.round(app),
+      exportedUsd: Math.round(stable),
+      exportedPct: stable / total
+    });
+  }
+  return out.sort((a, b) => b.exportedPct - a.exportedPct);
+}
+
+// ── Macro: economic concentration (Herfindahl-Hirschman index) ──────────
+// HHI over per-app shares of chain GDP, scaled 0–10,000 like the antitrust
+// convention (>2,500 = highly concentrated). Only the top-25 apps per chain
+// are stored, with the long tail treated as dust — that biases HHI DOWN, so
+// high readings are trustworthy and low readings are lower bounds.
+export type ChainHhi = {
+  slug: string;
+  hhi: number;
+  gdp30: number;
+  topApp: string;
+  topSharePct: number;
+  appsListed: number;
+};
+
+export function getConcentration(includeStablecoins = true): ChainHhi[] {
+  const out: ChainHhi[] = [];
+  for (const slug of CHAIN_SLUGS) {
+    const protos = (PROTOCOLS_MAP[slug] || []).filter(
+      (p) => includeStablecoins || p.category !== "Stablecoin Issuer"
+    );
+    if (protos.length === 0) continue;
+    const total = protos.reduce((s, p) => s + Math.max(0, p.revenue_30d), 0);
+    if (total <= 0) continue;
+    let hhi = 0;
+    for (const p of protos) {
+      const share = Math.max(0, p.revenue_30d) / total;
+      hhi += share * share;
+    }
+    const top = protos.reduce((a, b) => (b.revenue_30d > a.revenue_30d ? b : a));
+    out.push({
+      slug,
+      hhi: Math.round(hhi * 10000),
+      gdp30: Math.round(total),
+      topApp: top.name,
+      topSharePct: (Math.max(0, top.revenue_30d) / total) * 100,
+      appsListed: protos.length
+    });
+  }
+  return out.sort((a, b) => b.gdp30 - a.gdp30);
+}
+
+// ── Macro: GDP bar-chart race frames ────────────────────────────────────
+// Weekly samples of each chain's trailing-30d GDP, ranked. Same prefix-sum
+// + weekly-stepping approach as getQuadrantFrames.
+export type RaceFrame = { date: string; bars: Array<{ slug: string; gdp30: number }> };
+
+export function getRaceFrames(includeStablecoins = true, stepDays = 7): RaceFrame[] {
+  const key = includeStablecoins ? "gdp" : "gdp_app";
+  const prepped: Array<{
+    slug: string;
+    dates: string[];
+    dateIdx: Map<string, number>;
+    prefix: number[];
+  }> = [];
+  let latest = "";
+  for (const slug of CHAIN_SLUGS) {
+    const hist = HISTORY_MAP[slug] || [];
+    if (hist.length === 0) continue;
+    const dates = hist.map((r) => r.date);
+    const prefix = [0];
+    for (const r of hist) {
+      prefix.push(prefix[prefix.length - 1] + Math.max(0, Number((r as any)[key]) || 0));
+    }
+    prepped.push({ slug, dates, dateIdx: new Map(dates.map((d, i) => [d, i])), prefix });
+    if (dates[dates.length - 1] > latest) latest = dates[dates.length - 1];
+  }
+  if (!latest) return [];
+
+  const earliest = prepped.reduce((m, c) => (c.dates[0] < m ? c.dates[0] : m), latest);
+  const sampleDates: string[] = [];
+  const cursor = new Date(latest + "T00:00:00Z");
+  while (cursor.toISOString().slice(0, 10) >= earliest) {
+    sampleDates.unshift(cursor.toISOString().slice(0, 10));
+    cursor.setUTCDate(cursor.getUTCDate() - stepDays);
+  }
+
+  const frames: RaceFrame[] = [];
+  for (const day of sampleDates) {
+    const bars: RaceFrame["bars"] = [];
+    for (const c of prepped) {
+      let i: number | null = null;
+      for (let back = 0; back < 3; back++) {
+        const d = new Date(day + "T00:00:00Z");
+        d.setUTCDate(d.getUTCDate() - back);
+        const k = c.dateIdx.get(d.toISOString().slice(0, 10));
+        if (k != null) { i = k; break; }
+      }
+      if (i == null || i < 29) continue;
+      const gdp30 = c.prefix[i + 1] - c.prefix[i - 29];
+      if (gdp30 > 0) bars.push({ slug: c.slug, gdp30: Math.round(gdp30) });
+    }
+    if (bars.length >= 2) {
+      bars.sort((a, b) => b.gdp30 - a.gdp30);
+      frames.push({ date: day, bars });
+    }
+  }
+  return frames;
+}
+
+// ── Macro: Buffett Indicator (mcap ÷ annualized GDP) over time ──────────
+// The country version values an equity market against national output;
+// here: native-token mcap ÷ (trailing-30d GDP × 365/30). mcap history comes
+// from data/chains/mcap-history/ (CG free tier = 365d deep, grows daily),
+// so coverage starts ~a year back even where GDP history is longer.
+export type BuffettSeries = {
+  slug: string;
+  latest: number;
+  min: number;
+  max: number;
+  points: Array<{ date: string; multiple: number }>;
+};
+
+export function getBuffettSeries(includeStablecoins = true, stepDays = 7): BuffettSeries[] {
+  const key = includeStablecoins ? "gdp" : "gdp_app";
+  const out: BuffettSeries[] = [];
+  for (const slug of CHAIN_SLUGS) {
+    const mcaps = MCAP_HISTORY_MAP[slug] || [];
+    const hist = HISTORY_MAP[slug] || [];
+    if (mcaps.length === 0 || hist.length < 30) continue;
+    const mcapByDate = new Map(mcaps.map((r) => [r.date, r.mcap]));
+    const prefix = [0];
+    for (const r of hist) {
+      prefix.push(prefix[prefix.length - 1] + Math.max(0, Number((r as any)[key]) || 0));
+    }
+    const dateIdx = new Map(hist.map((r, i) => [r.date, i]));
+    const points: BuffettSeries["points"] = [];
+    // Weekly back from the chain's latest GDP day.
+    const latestDate = hist[hist.length - 1].date;
+    const cursor = new Date(latestDate + "T00:00:00Z");
+    const samples: string[] = [];
+    while (samples.length < 600) {
+      const d = cursor.toISOString().slice(0, 10);
+      if (d < hist[0].date) break;
+      samples.unshift(d);
+      cursor.setUTCDate(cursor.getUTCDate() - stepDays);
+    }
+    for (const day of samples) {
+      const i = dateIdx.get(day);
+      if (i == null || i < 29) continue;
+      const gdp30 = prefix[i + 1] - prefix[i - 29];
+      if (gdp30 <= 0) continue;
+      // mcap reading on the day, or up to 3 days back (CG gaps).
+      let mcap: number | null = null;
+      for (let back = 0; back < 4; back++) {
+        const d = new Date(day + "T00:00:00Z");
+        d.setUTCDate(d.getUTCDate() - back);
+        const m = mcapByDate.get(d.toISOString().slice(0, 10));
+        if (m != null && m > 0) { mcap = m; break; }
+      }
+      if (mcap == null) continue;
+      const annualized = (gdp30 * 365) / 30;
+      points.push({ date: day, multiple: Number((mcap / annualized).toFixed(2)) });
+    }
+    if (points.length < 4) continue;
+    const multiples = points.map((p) => p.multiple);
+    out.push({
+      slug,
+      latest: multiples[multiples.length - 1],
+      min: Math.min(...multiples),
+      max: Math.max(...multiples),
+      points
+    });
+  }
+  return out.sort((a, b) => a.latest - b.latest);
+}
+
+// ── Macro: structural transformation (sector mix over time) ─────────────
+// Monthly category shares of a chain's GDP — the agriculture→industry→
+// services chart, for blockspace. Top-N categories by lifetime revenue keep
+// their own band; the rest fold into "Other". The current partial month is
+// dropped (it would always dip at the right edge).
+export type SectorMixSeries = {
+  categories: string[]; // band order, largest lifetime first; "Other" last
+  rows: Array<{ month: string } & Record<string, number | string>>; // shares 0–1
+};
+
+export function getSectorMix(slug: string, topN = 8): SectorMixSeries | null {
+  const hist = CATEGORY_HISTORY_MAP[slug] || [];
+  if (hist.length < 3) return null;
+  const currentMonth = (HISTORY_MAP[slug]?.slice(-1)[0]?.date ?? "").slice(0, 7);
+  const months = hist.filter((m) => m.month !== currentMonth);
+  if (months.length < 3) return null;
+
+  const lifetime = new Map<string, number>();
+  for (const m of months) {
+    for (const [cat, v] of Object.entries(m.categories)) {
+      lifetime.set(cat, (lifetime.get(cat) || 0) + v);
+    }
+  }
+  const top = [...lifetime.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, topN)
+    .map(([cat]) => cat);
+  const topSet = new Set(top);
+  const hasOther = lifetime.size > top.length;
+
+  const rows = months.map((m) => {
+    const total = Object.values(m.categories).reduce((s, v) => s + v, 0);
+    const row: SectorMixSeries["rows"][number] = { month: m.month };
+    let other = 0;
+    for (const [cat, v] of Object.entries(m.categories)) {
+      if (topSet.has(cat)) row[cat] = total > 0 ? Number((v / total).toFixed(4)) : 0;
+      else other += v;
+    }
+    for (const cat of top) if (row[cat] == null) row[cat] = 0;
+    if (hasOther) row.Other = total > 0 ? Number((other / total).toFixed(4)) : 0;
+    return row;
+  });
+
+  return { categories: hasOther ? [...top, "Other"] : top, rows };
 }
 
 // One entry per (chain, app). Used by the treemap. Stablecoin issuers

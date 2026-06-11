@@ -17,8 +17,10 @@ import { KpiBig } from "@/components/KpiBig";
 import { StablecoinToggle } from "@/components/StablecoinToggle";
 import {
   chainSummaryWithoutStablecoins,
-  getChainMonthlyDelta
+  getChainMonthlyDelta,
+  getSectorMix
 } from "@/lib/chain-aggregates";
+import { SectorMixArea } from "@/components/SectorMixArea";
 
 export const dynamic = "force-dynamic";
 
@@ -73,6 +75,7 @@ export default async function ChainPage({
     (cat) => includeStablecoins || cat.category !== "Stablecoin Issuer"
   );
   const delta = getChainMonthlyDelta(slug, includeStablecoins);
+  const sectorMix = getSectorMix(slug);
 
   // Dual-lens cross-link: when this chain's native token is in the HM core
   // cohort (e.g. Hyperliquid), close the loop back to the protocol lens —
@@ -218,6 +221,26 @@ export default async function ChainPage({
       >
         <ChainCategoryMix categories={categories} />
       </Section>
+
+      {/* Structural transformation — sector shares through time */}
+      {sectorMix && (
+        <Section
+          title="Economy structure over time · monthly category shares"
+          info={
+            <>
+              The development-economics chart, for blockspace: each band is a
+              category&apos;s share of the chain&apos;s monthly GDP across the full
+              series — watch the economy re-industrialize as eras change (DEX era,
+              NFT era, stablecoin era…). Top-8 lifetime categories keep their own
+              band; the rest fold into Other. The current partial month is omitted.
+              Note: shares always include stablecoin-issuer attribution, regardless
+              of the page toggle.
+            </>
+          }
+        >
+          <SectorMixArea mix={sectorMix} />
+        </Section>
+      )}
 
       {/* Top protocols */}
       <Section title={`Top apps · 30d (${protocols.length})`}>

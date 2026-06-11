@@ -1,0 +1,219 @@
+{
+  "symbol": "FLUID",
+  "project": "Fluid",
+  "coingecko_id": "instadapp",
+  "hm_slug": "fluid",
+  "updated_at": "2026-06-11T20:49:35.593Z",
+  "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "data_bindings": {
+    "revenue": "dl_latest",
+    "alignment": "hm_real_capture",
+    "market": "cg_live"
+  },
+  "business": {
+    "revenue_run_rate_window": "1y",
+    "gross_revenue": 77124877,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 12681661,
+    "revenue_13w": 6535483,
+    "durability_adjustment": 1,
+    "trusted_revenue": 12681661,
+    "clean_conversion": 0.95,
+    "clean_platform_earnings": 12047577.95,
+    "clean_conversion_grade": "A",
+    "durability_score": 2,
+    "business_confidence": "low"
+  },
+  "capital_efficiency": {
+    "active_capital": null,
+    "operating_treasury": null,
+    "total_asset_base": null,
+    "active_capital_roe": null,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
+    "underwriting_roe": 1,
+    "roe_grade": "B",
+    "roe_confidence": "low"
+  },
+  "growth": {
+    "near_term_growth_score": 2,
+    "durability_score": 2,
+    "terminal_g": 0.02,
+    "growth_grade": "C",
+    "growth_confidence": "low"
+  },
+  "token": {
+    "claim_category": "Revenue + treasury governance",
+    "claim_category_key": "revenue_treasury_gov",
+    "token_alignment_factor": 0.39,
+    "token_alignment_grade": "C",
+    "value_capture_score": 2,
+    "token_holder_rights_score": 1.5,
+    "entity_alignment_score": 1,
+    "transparency_score": 2,
+    "token_confidence": "low"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.037,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.042,
+    "regulatory_premium": 0.032,
+    "custody_operational_premium": 0.01,
+    "governance_supply_premium": 0.028,
+    "economic_alignment_premium": 0.0496,
+    "technical_reconciliation_premium": 0.009,
+    "ke": 0.2626,
+    "ke_grade": "C"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 6535483,
+      "clean_conversion": 0.85,
+      "underwriting_roe": 0.75,
+      "terminal_g": 0.01
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 12681661,
+      "clean_conversion": 0.95,
+      "underwriting_roe": 1,
+      "terminal_g": 0.02
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 12681661,
+      "clean_conversion": 1,
+      "underwriting_roe": 1.5,
+      "terminal_g": 0.0325
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 85801670,
+    "fdv_seed": 110076942,
+    "ss_pe": 4.04,
+    "token_attributable_earnings": 4698555,
+    "implied_token_value": 18980150,
+    "market_cap": 85801670,
+    "fdv": 110076942,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 0.22,
+    "implied_value_vs_fdv": 0.17,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "business.post_buyback_net_revenue",
+      "claim": "Annual revenue $12.7M (DL revenue_1y); 30d-annualized $6.5M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/fluid",
+      "confidence": "medium",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.claim_category",
+      "claim": "Derived from value-accrual metadata: buyback/executing, accrual share 1. 100% of mainnet revenue → FLUID buybacks. Approved and active since Oct 2025. Fully algorithmic, no discretion.",
+      "source_url": "https://defillama.com/protocol/fluid",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 39% = HM real capture $4.7M (verification: proxy) ÷ clean earnings $12.0M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/fluid",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    }
+  ],
+  "flags": [
+    "auto_seeded_from_pipeline_data",
+    "capture_proxy_verified_only"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.72,
+        "token_attributable_earnings": 361427,
+        "implied_token_value": 983886
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.27,
+        "token_attributable_earnings": 1445709,
+        "implied_token_value": 4722651
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 4.08,
+        "token_attributable_earnings": 4216652,
+        "implied_token_value": 17217997
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 5.44,
+        "token_attributable_earnings": 7830926,
+        "implied_token_value": 42635040
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 7.84,
+        "token_attributable_earnings": 12047578,
+        "implied_token_value": 94453011
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 6535483,
+        "clean_conversion": 0.85,
+        "underwriting_roe": 0.75,
+        "terminal_g": 0.01,
+        "clean_platform_earnings": 5555161,
+        "ss_pe": 3.91,
+        "implied_token_value": 8462493,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 12681661,
+        "clean_conversion": 0.95,
+        "underwriting_roe": 1,
+        "terminal_g": 0.02,
+        "clean_platform_earnings": 12047578,
+        "ss_pe": 4.04,
+        "implied_token_value": 18980150,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 12681661,
+        "clean_conversion": 1,
+        "underwriting_roe": 1.5,
+        "terminal_g": 0.0325,
+        "clean_platform_earnings": 12681661,
+        "ss_pe": 4.25,
+        "implied_token_value": 21028630,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T20:49:35.665Z"
+}

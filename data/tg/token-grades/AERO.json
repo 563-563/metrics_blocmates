@@ -1,8 +1,8 @@
 {
-  "symbol": "LIT",
-  "project": "Lighter",
-  "coingecko_id": "lighter",
-  "hm_slug": "lighter",
+  "symbol": "AERO",
+  "project": "Aerodrome",
+  "coingecko_id": "aerodrome-finance",
+  "hm_slug": "aerodrome",
   "updated_at": "2026-06-11T20:49:35.593Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
@@ -12,14 +12,14 @@
   },
   "business": {
     "revenue_run_rate_window": "1y",
-    "gross_revenue": 65944928,
+    "gross_revenue": 135103384,
     "buybacks_or_repurchases": null,
-    "post_buyback_net_revenue": 50775587,
-    "revenue_13w": 29730455,
+    "post_buyback_net_revenue": 102055977,
+    "revenue_13w": 52334041,
     "durability_adjustment": 1,
-    "trusted_revenue": 50775587,
+    "trusted_revenue": 102055977,
     "clean_conversion": 1,
-    "clean_platform_earnings": 50775587,
+    "clean_platform_earnings": 102055977,
     "clean_conversion_grade": "A",
     "durability_score": 2,
     "business_confidence": "low"
@@ -31,8 +31,8 @@
     "active_capital_roe": null,
     "operating_treasury_roe": null,
     "total_asset_roe": null,
-    "underwriting_roe": 2,
-    "roe_grade": "A",
+    "underwriting_roe": 1.5,
+    "roe_grade": "B",
     "roe_confidence": "low"
   },
   "growth": {
@@ -45,8 +45,8 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.54,
-    "token_alignment_grade": "C",
+    "token_alignment_factor": 1,
+    "token_alignment_grade": "A",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -57,71 +57,71 @@
     "risk_free_rate": 0.037,
     "equity_risk_premium": 0.055,
     "crypto_liquidity_premium": 0.028,
-    "regulatory_premium": 0.04,
+    "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
-    "governance_supply_premium": 0.063,
-    "economic_alignment_premium": 0.0368,
-    "technical_reconciliation_premium": 0.012,
-    "ke": 0.2818,
-    "ke_grade": "C"
+    "governance_supply_premium": 0.042,
+    "economic_alignment_premium": 0,
+    "technical_reconciliation_premium": 0.009,
+    "ke": 0.213,
+    "ke_grade": "B"
   },
   "operating_cases": [
     {
       "name": "conservative",
-      "post_buyback_net_revenue": 29730455,
+      "post_buyback_net_revenue": 52334041,
       "clean_conversion": 0.9,
-      "underwriting_roe": 1.5,
+      "underwriting_roe": 1.125,
       "terminal_g": 0.01
     },
     {
       "name": "base",
-      "post_buyback_net_revenue": 50775587,
+      "post_buyback_net_revenue": 102055977,
       "clean_conversion": 1,
-      "underwriting_roe": 2,
+      "underwriting_roe": 1.5,
       "terminal_g": 0.02
     },
     {
       "name": "bull",
-      "post_buyback_net_revenue": 50775587,
+      "post_buyback_net_revenue": 102055977,
       "clean_conversion": 1,
-      "underwriting_roe": 3,
+      "underwriting_roe": 2.25,
       "terminal_g": 0.0325
     }
   ],
   "valuation": {
-    "market_cap_seed": 381529783,
-    "fdv_seed": 1526119134,
-    "ss_pe": 3.78,
-    "token_attributable_earnings": 27418817,
-    "implied_token_value": 103684602,
-    "market_cap": 381529783,
-    "fdv": 1526119134,
+    "market_cap_seed": 318395092,
+    "fdv_seed": 642383703,
+    "ss_pe": 5.11,
+    "token_attributable_earnings": 102055977,
+    "implied_token_value": 521736946,
+    "market_cap": 318395092,
+    "fdv": 642383703,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.27,
-    "implied_value_vs_fdv": 0.07,
+    "implied_value_vs_market_cap": 1.64,
+    "implied_value_vs_fdv": 0.81,
     "warnings": []
   },
   "evidence": [
     {
       "field": "business.post_buyback_net_revenue",
-      "claim": "Annual revenue $50.8M (DL revenue_1y); 30d-annualized $29.7M. Auto-refreshed each cron via data_bindings.",
-      "source_url": "https://defillama.com/protocol/lighter",
+      "claim": "Annual revenue $102.1M (DL revenue_1y); 30d-annualized $52.3M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/aerodrome",
       "confidence": "medium",
       "direction": "neutral",
       "updated_at": "2026-06-11T20:49:35.593Z"
     },
     {
       "field": "token.claim_category",
-      "claim": "Derived from value-accrual metadata: buyback/executing, accrual share 1. DL confirmed executing: Holders Revenue (LIT buybacks from treasury) $25.53M/yr annualized. Q1 2026 Gross Rev $19.65M → $5M to LLP (liquidation fees) → $14.65M earnings → $14.58M buyback (99.5% of earnings). 58.3% of 250M circulating is staked. 866K cumulative accounts. Cost leadership verified: 1.1 bps vs HYPE 4.9 bps for $100K BTC. Deep dive: WATCHLIST at $0.91 for 6-9mo pre-cliff trade. Edge +0.118 bits at conviction 0.40, upside $3.00, downside $0.50. HARD EXIT Oct-Nov 2026 before Jan 2027 cliff (13.5M LIT/mo team+VC unlocks). Classic DyDX-shape rip-before-cliff setup.",
-      "source_url": "https://defillama.com/protocol/lighter",
+      "claim": "Derived from value-accrual metadata: fee-share-lockers/executing, accrual share 1. 100% of trading fees → veAERO lockers. No protocol treasury take. Algorithmic, structural. Revenue exceeded emissions Oct 2025. $295M+ cumulative distributed.",
+      "source_url": "https://defillama.com/protocol/aerodrome",
       "confidence": "low",
       "direction": "neutral",
       "updated_at": "2026-06-11T20:49:35.593Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 54% = HM real capture $27.5M (verification: proxy) ÷ clean earnings $50.8M. Auto-refreshed each cron.",
-      "source_url": "https://defillama.com/protocol/lighter",
+      "claim": "Alignment 100% = HM real capture $102.1M (verification: proxy) ÷ clean earnings $102.1M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/aerodrome",
       "confidence": "low",
       "direction": "neutral",
       "updated_at": "2026-06-11T20:49:35.593Z"
@@ -129,8 +129,6 @@
   ],
   "flags": [
     "auto_seeded_from_pipeline_data",
-    "unlock_overhang_fdv_multiple_of_mcap",
-    "proxy_verified_only",
     "capture_proxy_verified_only"
   ],
   "scenarios": {
@@ -140,82 +138,82 @@
         "category": "Current-state no utility",
         "token_alignment_factor": 0.03,
         "ke": 0.38,
-        "ss_pe": 2.75,
-        "token_attributable_earnings": 1523268,
-        "implied_token_value": 4188986
+        "ss_pe": 2.74,
+        "token_attributable_earnings": 3061679,
+        "implied_token_value": 8391269
       },
       {
         "key": "soft_utility",
         "category": "Soft utility / access",
         "token_alignment_factor": 0.12,
         "ke": 0.32,
-        "ss_pe": 3.3,
-        "token_attributable_earnings": 6093070,
-        "implied_token_value": 20107132
+        "ss_pe": 3.29,
+        "token_attributable_earnings": 12246717,
+        "implied_token_value": 40278092
       },
       {
         "key": "treasury_claim",
         "category": "Treasury-asset claim",
         "token_alignment_factor": 0.35,
         "ke": 0.26,
-        "ss_pe": 4.13,
-        "token_attributable_earnings": 17771455,
-        "implied_token_value": 73307254
+        "ss_pe": 4.11,
+        "token_attributable_earnings": 35719592,
+        "implied_token_value": 146847211
       },
       {
         "key": "revenue_treasury_gov",
         "category": "Revenue + treasury governance",
         "token_alignment_factor": 0.65,
         "ke": 0.2,
-        "ss_pe": 5.5,
-        "token_attributable_earnings": 33004132,
-        "implied_token_value": 181522724
+        "ss_pe": 5.48,
+        "token_attributable_earnings": 66336385,
+        "implied_token_value": 363621666
       },
       {
         "key": "full_equity",
         "category": "Full equity / IP / token alignment",
         "token_alignment_factor": 1,
         "ke": 0.145,
-        "ss_pe": 7.92,
-        "token_attributable_earnings": 50775587,
-        "implied_token_value": 402142649
+        "ss_pe": 7.89,
+        "token_attributable_earnings": 102055977,
+        "implied_token_value": 805561845
       }
     ],
     "operating": [
       {
         "name": "conservative",
-        "post_buyback_net_revenue": 29730455,
+        "post_buyback_net_revenue": 52334041,
         "clean_conversion": 0.9,
-        "underwriting_roe": 1.5,
+        "underwriting_roe": 1.125,
         "terminal_g": 0.01,
-        "clean_platform_earnings": 26757410,
-        "ss_pe": 3.65,
-        "implied_token_value": 52806013,
+        "clean_platform_earnings": 47100637,
+        "ss_pe": 4.88,
+        "implied_token_value": 229960417,
         "warnings": []
       },
       {
         "name": "base",
-        "post_buyback_net_revenue": 50775587,
+        "post_buyback_net_revenue": 102055977,
         "clean_conversion": 1,
-        "underwriting_roe": 2,
+        "underwriting_roe": 1.5,
         "terminal_g": 0.02,
-        "clean_platform_earnings": 50775587,
-        "ss_pe": 3.78,
-        "implied_token_value": 103684602,
+        "clean_platform_earnings": 102055977,
+        "ss_pe": 5.11,
+        "implied_token_value": 521736946,
         "warnings": []
       },
       {
         "name": "bull",
-        "post_buyback_net_revenue": 50775587,
+        "post_buyback_net_revenue": 102055977,
         "clean_conversion": 1,
-        "underwriting_roe": 3,
+        "underwriting_roe": 2.25,
         "terminal_g": 0.0325,
-        "clean_platform_earnings": 50775587,
-        "ss_pe": 3.97,
-        "implied_token_value": 108791736,
+        "clean_platform_earnings": 102055977,
+        "ss_pe": 5.46,
+        "implied_token_value": 557240084,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-11T20:49:35.668Z"
+  "computed_at": "2026-06-11T20:49:35.659Z"
 }

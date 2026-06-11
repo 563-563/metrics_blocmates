@@ -1,8 +1,8 @@
 {
-  "symbol": "AAVE",
-  "project": "Aave",
-  "coingecko_id": "aave",
-  "hm_slug": "aave",
+  "symbol": "ETHFI",
+  "project": "ether.fi",
+  "coingecko_id": "ether-fi",
+  "hm_slug": "ether-fi",
   "updated_at": "2026-06-11T20:49:35.593Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
@@ -12,28 +12,28 @@
   },
   "business": {
     "revenue_run_rate_window": "1y",
-    "gross_revenue": 942032167,
+    "gross_revenue": null,
     "buybacks_or_repurchases": null,
-    "post_buyback_net_revenue": 125119924,
-    "revenue_13w": 75310389,
+    "post_buyback_net_revenue": 56159242,
+    "revenue_13w": 41357663,
     "durability_adjustment": 1,
-    "trusted_revenue": 125119924,
-    "clean_conversion": 0.65,
-    "clean_platform_earnings": 81327950.60000001,
-    "clean_conversion_grade": "B",
+    "trusted_revenue": 56159242,
+    "clean_conversion": 0.95,
+    "clean_platform_earnings": 53351279.9,
+    "clean_conversion_grade": "A",
     "durability_score": 2,
     "business_confidence": "low"
   },
   "capital_efficiency": {
     "active_capital": null,
-    "operating_treasury": 40299390,
-    "total_asset_base": 181978934,
+    "operating_treasury": null,
+    "total_asset_base": null,
     "active_capital_roe": null,
-    "operating_treasury_roe": 2.02,
-    "total_asset_roe": 0.45,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
     "underwriting_roe": 1.5,
     "roe_grade": "B",
-    "roe_confidence": "medium"
+    "roe_confidence": "low"
   },
   "growth": {
     "near_term_growth_score": 2,
@@ -45,7 +45,7 @@
   "token": {
     "claim_category": "Treasury-asset claim",
     "claim_category_key": "treasury_claim",
-    "token_alignment_factor": 0.09,
+    "token_alignment_factor": 0.11,
     "token_alignment_grade": "D",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
@@ -56,88 +56,80 @@
   "ke_build_up": {
     "risk_free_rate": 0.037,
     "equity_risk_premium": 0.055,
-    "crypto_liquidity_premium": 0.014,
+    "crypto_liquidity_premium": 0.028,
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
-    "governance_supply_premium": 0.014,
-    "economic_alignment_premium": 0.0736,
-    "technical_reconciliation_premium": 0.006,
-    "ke": 0.2416,
+    "governance_supply_premium": 0.028,
+    "economic_alignment_premium": 0.072,
+    "technical_reconciliation_premium": 0.009,
+    "ke": 0.271,
     "ke_grade": "C"
   },
   "operating_cases": [
     {
       "name": "conservative",
-      "post_buyback_net_revenue": 75310389,
-      "clean_conversion": 0.55,
+      "post_buyback_net_revenue": 41357663,
+      "clean_conversion": 0.85,
       "underwriting_roe": 1.125,
       "terminal_g": 0.01
     },
     {
       "name": "base",
-      "post_buyback_net_revenue": 125119924,
-      "clean_conversion": 0.65,
+      "post_buyback_net_revenue": 56159242,
+      "clean_conversion": 0.95,
       "underwriting_roe": 1.5,
       "terminal_g": 0.02
     },
     {
       "name": "bull",
-      "post_buyback_net_revenue": 125119924,
-      "clean_conversion": 0.7000000000000001,
+      "post_buyback_net_revenue": 56159242,
+      "clean_conversion": 1,
       "underwriting_roe": 2.25,
       "terminal_g": 0.0325
     }
   ],
   "valuation": {
-    "market_cap_seed": 1014387426,
-    "fdv_seed": 1069189264,
-    "ss_pe": 4.45,
-    "token_attributable_earnings": 7319516,
-    "implied_token_value": 32589901,
-    "market_cap": 1014387426,
-    "fdv": 1069189264,
+    "market_cap_seed": 261833343,
+    "fdv_seed": 296877699,
+    "ss_pe": 3.93,
+    "token_attributable_earnings": 5868641,
+    "implied_token_value": 23069292,
+    "market_cap": 261833343,
+    "fdv": 296877699,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.03,
-    "implied_value_vs_fdv": 0.03,
+    "implied_value_vs_market_cap": 0.09,
+    "implied_value_vs_fdv": 0.08,
     "warnings": []
   },
   "evidence": [
     {
       "field": "business.post_buyback_net_revenue",
-      "claim": "Annual revenue $125.1M (DL revenue_1y); 30d-annualized $75.3M. Auto-refreshed each cron via data_bindings.",
-      "source_url": "https://defillama.com/protocol/aave",
+      "claim": "Annual revenue $56.2M (DL revenue_1y); 30d-annualized $41.4M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/ether-fi",
       "confidence": "medium",
       "direction": "neutral",
       "updated_at": "2026-06-11T20:49:35.593Z"
     },
     {
       "field": "token.claim_category",
-      "claim": "Derived from value-accrual metadata: buyback/executing, accrual share 1. AFC/TokenLogic TWAP buybacks, $30M/yr budget (cut from $50M). AWW Framework commits 100% product rev. $42M executed over 10mo. ~21% of revenue at current budget.",
-      "source_url": "https://defillama.com/protocol/aave",
+      "claim": "Derived from value-accrual metadata: buyback/executing, accrual share 0.1. 10% of protocol revenue allocated to ETHFI value accrual: 5% → buyback+burn (open market), 5% → sETHFI staker distributions (DAO Proposal #8). Additional $50M treasury buyback approved Nov 2025 (triggers at price < $3 — ACTIVE at $0.45). $6.5M+ cumulative buybacks verified on-chain, >85% burned. Revenue ~$55-65M/yr at $2,340 ETH (severely ETH-price dependent). NOTE: DL splits ether.fi across 3 sub-protocols (no parent fees endpoint) — our TP buyback proxy aggregates them via scripts/onchain/proxy/fetch-etherfi-buybacks.js. accrual_pct corrected from 1.0 to 0.10 on 2026-05-29.",
+      "source_url": "https://defillama.com/protocol/ether-fi",
       "confidence": "low",
       "direction": "neutral",
       "updated_at": "2026-06-11T20:49:35.593Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 9% = HM real capture $7.1M (verification: onchain_aggregate) ÷ clean earnings $81.3M. Auto-refreshed each cron.",
-      "source_url": "https://defillama.com/protocol/aave",
+      "claim": "Alignment 11% = HM real capture $5.6M (verification: proxy) ÷ clean earnings $53.4M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/ether-fi",
       "confidence": "low",
-      "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
-    },
-    {
-      "field": "capital_efficiency.operating_treasury",
-      "claim": "Collector + Ecosystem Reserve AAVE × live price (onchain; excludes multi-asset treasury); asset base adds Safety Module staked AAVE",
-      "source_url": "https://defillama.com/protocol/aave",
-      "confidence": "medium",
       "direction": "neutral",
       "updated_at": "2026-06-11T20:49:35.593Z"
     }
   ],
   "flags": [
     "auto_seeded_from_pipeline_data",
-    "buyback_small_vs_revenue"
+    "capture_proxy_verified_only"
   ],
   "scenarios": {
     "token_discount": [
@@ -147,8 +139,8 @@
         "token_alignment_factor": 0.03,
         "ke": 0.38,
         "ss_pe": 2.74,
-        "token_attributable_earnings": 2439839,
-        "implied_token_value": 6686965
+        "token_attributable_earnings": 1600538,
+        "implied_token_value": 4386661
       },
       {
         "key": "soft_utility",
@@ -156,8 +148,8 @@
         "token_alignment_factor": 0.12,
         "ke": 0.32,
         "ss_pe": 3.29,
-        "token_attributable_earnings": 9759354,
-        "implied_token_value": 32097431
+        "token_attributable_earnings": 6402154,
+        "implied_token_value": 21055972
       },
       {
         "key": "treasury_claim",
@@ -165,8 +157,8 @@
         "token_alignment_factor": 0.35,
         "ke": 0.26,
         "ss_pe": 4.11,
-        "token_attributable_earnings": 28464783,
-        "implied_token_value": 117021884
+        "token_attributable_earnings": 18672948,
+        "implied_token_value": 76766564
       },
       {
         "key": "revenue_treasury_gov",
@@ -174,8 +166,8 @@
         "token_alignment_factor": 0.65,
         "ke": 0.2,
         "ss_pe": 5.48,
-        "token_attributable_earnings": 52863168,
-        "implied_token_value": 289768476
+        "token_attributable_earnings": 34678332,
+        "implied_token_value": 190088634
       },
       {
         "key": "full_equity",
@@ -183,45 +175,45 @@
         "token_alignment_factor": 1,
         "ke": 0.145,
         "ss_pe": 7.89,
-        "token_attributable_earnings": 81327951,
-        "implied_token_value": 641948623
+        "token_attributable_earnings": 53351280,
+        "implied_token_value": 421119436
       }
     ],
     "operating": [
       {
         "name": "conservative",
-        "post_buyback_net_revenue": 75310389,
-        "clean_conversion": 0.55,
+        "post_buyback_net_revenue": 41357663,
+        "clean_conversion": 0.85,
         "underwriting_roe": 1.125,
         "terminal_g": 0.01,
-        "clean_platform_earnings": 41420714,
-        "ss_pe": 4.28,
-        "implied_token_value": 15953056,
+        "clean_platform_earnings": 35154014,
+        "ss_pe": 3.8,
+        "implied_token_value": 14684171,
         "warnings": []
       },
       {
         "name": "base",
-        "post_buyback_net_revenue": 125119924,
-        "clean_conversion": 0.65,
+        "post_buyback_net_revenue": 56159242,
+        "clean_conversion": 0.95,
         "underwriting_roe": 1.5,
         "terminal_g": 0.02,
-        "clean_platform_earnings": 81327951,
-        "ss_pe": 4.45,
-        "implied_token_value": 32589901,
+        "clean_platform_earnings": 53351280,
+        "ss_pe": 3.93,
+        "implied_token_value": 23069292,
         "warnings": []
       },
       {
         "name": "bull",
-        "post_buyback_net_revenue": 125119924,
-        "clean_conversion": 0.7000000000000001,
+        "post_buyback_net_revenue": 56159242,
+        "clean_conversion": 1,
         "underwriting_roe": 2.25,
         "terminal_g": 0.0325,
-        "clean_platform_earnings": 87583947,
-        "ss_pe": 4.71,
-        "implied_token_value": 37153018,
+        "clean_platform_earnings": 56159242,
+        "ss_pe": 4.13,
+        "implied_token_value": 25527404,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-11T20:49:35.657Z"
+  "computed_at": "2026-06-11T20:49:35.664Z"
 }

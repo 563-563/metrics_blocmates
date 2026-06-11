@@ -1,0 +1,220 @@
+{
+  "symbol": "USUAL",
+  "project": "Usual Money",
+  "coingecko_id": "usual",
+  "hm_slug": "usual",
+  "updated_at": "2026-06-11T20:49:35.593Z",
+  "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "data_bindings": {
+    "revenue": "dl_latest",
+    "alignment": "hm_real_capture",
+    "market": "cg_live"
+  },
+  "business": {
+    "revenue_run_rate_window": "1y",
+    "gross_revenue": 25976888,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 16990476,
+    "revenue_13w": 3330357,
+    "durability_adjustment": 1,
+    "trusted_revenue": 16990476,
+    "clean_conversion": 0.85,
+    "clean_platform_earnings": 14441904.6,
+    "clean_conversion_grade": "A",
+    "durability_score": 2,
+    "business_confidence": "low"
+  },
+  "capital_efficiency": {
+    "active_capital": null,
+    "operating_treasury": null,
+    "total_asset_base": null,
+    "active_capital_roe": null,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
+    "underwriting_roe": 0.4,
+    "roe_grade": "D",
+    "roe_confidence": "low"
+  },
+  "growth": {
+    "near_term_growth_score": 1,
+    "durability_score": 2,
+    "terminal_g": 0.01,
+    "growth_grade": "C",
+    "growth_confidence": "low"
+  },
+  "token": {
+    "claim_category": "Revenue + treasury governance",
+    "claim_category_key": "revenue_treasury_gov",
+    "token_alignment_factor": 1,
+    "token_alignment_grade": "A",
+    "value_capture_score": 2,
+    "token_holder_rights_score": 1.5,
+    "entity_alignment_score": 1,
+    "transparency_score": 2,
+    "token_confidence": "low"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.037,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.056,
+    "regulatory_premium": 0.04,
+    "custody_operational_premium": 0.01,
+    "governance_supply_premium": 0.014,
+    "economic_alignment_premium": 0,
+    "technical_reconciliation_premium": 0.009,
+    "ke": 0.221,
+    "ke_grade": "C"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 3330357,
+      "clean_conversion": 0.75,
+      "underwriting_roe": 0.30000000000000004,
+      "terminal_g": 0.005
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 16990476,
+      "clean_conversion": 0.85,
+      "underwriting_roe": 0.4,
+      "terminal_g": 0.01
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 16990476,
+      "clean_conversion": 0.9,
+      "underwriting_roe": 0.6000000000000001,
+      "terminal_g": 0.0225
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 18147715,
+    "fdv_seed": 18569335,
+    "ss_pe": 4.62,
+    "token_attributable_earnings": 14441905,
+    "implied_token_value": 66733919,
+    "market_cap": 18147715,
+    "fdv": 18569335,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 3.68,
+    "implied_value_vs_fdv": 3.59,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "business.post_buyback_net_revenue",
+      "claim": "Annual revenue $17.0M (DL revenue_1y); 30d-annualized $3.3M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/usual",
+      "confidence": "medium",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.claim_category",
+      "claim": "Derived from value-accrual metadata: fee-share/executing, accrual share 1. Fee switch Jan 7 2025 — up to 100% of protocol revenue to USUALx stakers in USD0. DL holdersRevenue shows near-zero execution: $3.6K/30d (0.16% of $2.22M/30d revenue). TTM distribution rate was 8.4% at peak TVL. TVL collapsed -94% from $1.7B (Jan 2025) to $107.6M. Deep dive: PASS (data gap). Protocol revenue $26.6M/yr is real; if distribution restored to 100%, Token FV $156.9M vs Mcap $23.9M (+556%). Verify USUALx distribution on-chain. Current: near ATL ($0.01049 Oct 2025), current $0.0138.",
+      "source_url": "https://defillama.com/protocol/usual",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 100% = HM real capture $17.0M (verification: proxy) ÷ clean earnings $14.4M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/usual",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    }
+  ],
+  "flags": [
+    "auto_seeded_from_pipeline_data",
+    "capture_proxy_verified_only",
+    "capture_exceeds_clean_earnings"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.64,
+        "token_attributable_earnings": 433257,
+        "implied_token_value": 1141691
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.15,
+        "token_attributable_earnings": 1733029,
+        "implied_token_value": 5450654
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 3.9,
+        "token_attributable_earnings": 5054667,
+        "implied_token_value": 19713200
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 5.13,
+        "token_attributable_earnings": 9387238,
+        "implied_token_value": 48171353
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 7.22,
+        "token_attributable_earnings": 14441905,
+        "implied_token_value": 104302644
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 3330357,
+        "clean_conversion": 0.75,
+        "underwriting_roe": 0.30000000000000004,
+        "terminal_g": 0.005,
+        "clean_platform_earnings": 2497768,
+        "ss_pe": 4.55,
+        "implied_token_value": 11371011,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 16990476,
+        "clean_conversion": 0.85,
+        "underwriting_roe": 0.4,
+        "terminal_g": 0.01,
+        "clean_platform_earnings": 14441905,
+        "ss_pe": 4.62,
+        "implied_token_value": 66733919,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 16990476,
+        "clean_conversion": 0.9,
+        "underwriting_roe": 0.6000000000000001,
+        "terminal_g": 0.0225,
+        "clean_platform_earnings": 15291428,
+        "ss_pe": 4.85,
+        "implied_token_value": 74146095,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T20:49:35.673Z"
+}

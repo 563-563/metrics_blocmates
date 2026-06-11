@@ -104,6 +104,53 @@ function loadLiveMarket() {
   }
 }
 
+function loadHmProtocols() {
+  try {
+    const hm = JSON.parse(
+      fs.readFileSync(path.join(ROOT, 'data', 'hm', 'snapshots', 'latest.json'), 'utf8')
+    );
+    return new Map((hm.protocols || []).map((p) => [p.slug, p]));
+  } catch {
+    return new Map();
+  }
+}
+
+// data_bindings: seeds capture judgment; the pipeline keeps numbers fresh.
+// Each cron run re-pulls bound inputs from the latest DL/CG ingestion and
+// the HM snapshot before deriving valuations. Tokens without bindings
+// (e.g. CARDS, spec-sourced) keep their seeded inputs untouched.
+function applyDataBindings(token, liveBySlug, hmBySlug) {
+  const bind = token.data_bindings;
+  if (!bind) return;
+  const live = token.coingecko_id ? liveBySlug.get(token.coingecko_id) : null;
+  const b = token.business;
+
+  if (bind.revenue === 'dl_latest' && live && live.revenue_1y != null) {
+    const rev1y = Math.round(Number(live.revenue_1y) || 0);
+    const rev30dAnn = Math.round(((Number(live.revenue_30d) || 0) * 365) / 30);
+    b.post_buyback_net_revenue = rev1y;
+    b.revenue_13w = rev30dAnn;
+    b.gross_revenue = live.fees_1y ?? b.gross_revenue;
+    // Refresh the standard three operating cases' revenue legs in place.
+    for (const c of token.operating_cases || []) {
+      if (c.name === 'conservative') c.post_buyback_net_revenue = Math.min(rev1y, rev30dAnn);
+      else if (c.name === 'base') c.post_buyback_net_revenue = rev1y;
+      else if (c.name === 'bull') c.post_buyback_net_revenue = Math.max(rev1y, rev30dAnn);
+    }
+  }
+
+  if (bind.alignment === 'hm_real_capture' && token.hm_slug) {
+    const hmP = hmBySlug.get(token.hm_slug);
+    if (hmP) {
+      const cleanEarnings =
+        b.post_buyback_net_revenue * (b.durability_adjustment ?? 1) * b.clean_conversion;
+      const capture = hmP.real_capture_usd || 0;
+      token.token.token_alignment_factor =
+        cleanEarnings > 0 ? Math.min(round2(capture / cleanEarnings), 1) : 0;
+    }
+  }
+}
+
 // ── Per-token compute ────────────────────────────────────────────────────
 function computeToken(token, liveBySlug) {
   const b = token.business;
@@ -191,6 +238,7 @@ function main() {
   }
 
   const liveBySlug = loadLiveMarket();
+  const hmBySlug = loadHmProtocols();
   const files = fs
     .readdirSync(GRADES_DIR)
     .filter((f) => f.endsWith('.json') && f !== 'latest.json');
@@ -199,6 +247,7 @@ function main() {
   for (const file of files) {
     const p = path.join(GRADES_DIR, file);
     const token = JSON.parse(fs.readFileSync(p, 'utf8'));
+    applyDataBindings(token, liveBySlug, hmBySlug);
     const computed = computeToken(token, liveBySlug);
     computed.computed_at = new Date().toISOString();
     fs.writeFileSync(p, JSON.stringify(computed, null, 2));

@@ -213,6 +213,29 @@ Updated 2026-05-26 from live probes:
 
 ---
 
+## Token Grade (TG) — data needs per metric
+
+The TG chain is `trusted_revenue × clean_conversion × token_alignment × SS-PE`.
+Each input below lists where it comes from, how it refreshes, and where the
+gaps are. Seeds in `data/tg/token-grades/` carry **judgment**; everything
+marked *bound* re-pulls from the pipeline on every cron run via
+`data_bindings` in the token file (applied by `scripts/tg/compute-tg.js`).
+
+| Input | Source | Refresh | Gaps / notes |
+|---|---|---|---|
+| Revenue run-rates (1y, 30d-ann) | DL via `scripts/fetch-data.js` → `data/latest.json` (`revenue_1y`, `revenue_30d`) | **bound** — every cron run | DL revenue is $0 for fee-switch-off protocols (MORPHO, KMNO) and misses off-DL revenue (RLB casino). `fees_1y` kept as gross reference. |
+| Durability adjustment | seed judgment (default 1.0) | manual / evidence pipeline | No automated retention/concentration source yet. |
+| Clean conversion | seed judgment; derived default by mechanism (lockers 1.0 · executing buyback 0.95 · else 0.85) | manual / evidence pipeline | Real opex routing unverified for most proxies — flagged low confidence. |
+| Token alignment | **derived**: HM real capture ÷ clean earnings, capped at 1 | **bound** — recomputed each run from `data/hm/snapshots/latest.json` | Inherits HM verification flags (onchain > proxy > stated). Cap hits (capture > clean earnings) auto-flag a window-mismatch question. |
+| Claim category | derived from `va_*` metadata in `data/latest.json` (mechanism/status/accrual), overridable per token | seed-time; re-derive via re-seed or evidence apply | `va_*` fields are curated in `data/config.json` — keep them current; they are the claim-quality source of truth. |
+| Ke build-up | rf + ERP constants in `scripts/tg/token-grading.js` (3M T-bill, manual update) + component scores derived from mcap depth, FDV/mcap overhang, derived alignment, category | seed-time + manual rf updates | No automated rf feed — consider FRED DGS3MO fetch if drift matters. Scores are heuristics; evidence pipeline refines. |
+| ROE denominators | on-chain adapters where they exist: HYPE AF balance (`data/np` static ref), AAVE Collector + Ecosystem Reserve + Safety Module (`data/onchain/aave/`) | daily tier | Missing: SKY surplus buffer, LIT treasury, all proxy-tier treasuries, AAVE multi-asset (non-AAVE-token) treasury. |
+| Underwriting ROE / terminal g | derived defaults (category band / revenue momentum), overridable | seed-time | Momentum-derived g is crude across regime changes (ZRO, GNS). |
+| Market cap / FDV | CG via `data/latest.json` | **bound** — every cron run | Falls back to `*_seed` values for untracked tokens. |
+| Evidence & flags | `scripts/tg/token-grade-check.js` (prompt/apply/triggers) → `data/tg/findings.jsonl` | agent-driven + quant triggers | Open seed questions live in `data/tg/GRADING-QUESTIONS.md`. |
+
+---
+
 ## Real-time vs hourly — when do we actually need live?
 
 Honest read:

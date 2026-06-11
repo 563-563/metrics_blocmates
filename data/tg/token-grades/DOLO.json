@@ -1,0 +1,219 @@
+{
+  "symbol": "DOLO",
+  "project": "Dolomite",
+  "coingecko_id": "dolomite",
+  "hm_slug": "dolomite",
+  "updated_at": "2026-06-11T20:49:35.593Z",
+  "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "data_bindings": {
+    "revenue": "dl_latest",
+    "alignment": "hm_real_capture",
+    "market": "cg_live"
+  },
+  "business": {
+    "revenue_run_rate_window": "1y",
+    "gross_revenue": 9772843,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 2008650,
+    "revenue_13w": 2860104,
+    "durability_adjustment": 1,
+    "trusted_revenue": 2008650,
+    "clean_conversion": 0.85,
+    "clean_platform_earnings": 1707352.5,
+    "clean_conversion_grade": "A",
+    "durability_score": 3,
+    "business_confidence": "low"
+  },
+  "capital_efficiency": {
+    "active_capital": null,
+    "operating_treasury": null,
+    "total_asset_base": null,
+    "active_capital_roe": null,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
+    "underwriting_roe": 1,
+    "roe_grade": "B",
+    "roe_confidence": "low"
+  },
+  "growth": {
+    "near_term_growth_score": 4,
+    "durability_score": 3,
+    "terminal_g": 0.04,
+    "growth_grade": "C",
+    "growth_confidence": "low"
+  },
+  "token": {
+    "claim_category": "Soft utility / access",
+    "claim_category_key": "soft_utility",
+    "token_alignment_factor": 0,
+    "token_alignment_grade": "F",
+    "value_capture_score": 0,
+    "token_holder_rights_score": 0.5,
+    "entity_alignment_score": 1,
+    "transparency_score": 2,
+    "token_confidence": "low"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.037,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.056,
+    "regulatory_premium": 0.032,
+    "custody_operational_premium": 0.01,
+    "governance_supply_premium": 0.042,
+    "economic_alignment_premium": 0.08,
+    "technical_reconciliation_premium": 0.009,
+    "ke": 0.321,
+    "ke_grade": "D"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 2008650,
+      "clean_conversion": 0.75,
+      "underwriting_roe": 0.75,
+      "terminal_g": 0.03
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 2008650,
+      "clean_conversion": 0.85,
+      "underwriting_roe": 1,
+      "terminal_g": 0.04
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 2860104,
+      "clean_conversion": 0.9,
+      "underwriting_roe": 1.5,
+      "terminal_g": 0.052500000000000005
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 11308891,
+    "fdv_seed": 23164150,
+    "ss_pe": 3.42,
+    "token_attributable_earnings": 0,
+    "implied_token_value": 0,
+    "market_cap": 11308891,
+    "fdv": 23164150,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 0,
+    "implied_value_vs_fdv": 0,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "business.post_buyback_net_revenue",
+      "claim": "Annual revenue $2.0M (DL revenue_1y); 30d-annualized $2.9M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/dolomite",
+      "confidence": "medium",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.claim_category",
+      "claim": "Derived from value-accrual metadata: fee-share/executing, accrual share 0. Fee-share mechanism exists but entirely WLFI-partnership dependent. Flow to DOLO token holders unconfirmed. TVL impaired ($399M→$140M). accrual_pct=0 pending confirmation.",
+      "source_url": "https://defillama.com/protocol/dolomite",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 0% = HM real capture $0.0M (verification: proxy) ÷ clean earnings $1.7M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/dolomite",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    }
+  ],
+  "flags": [
+    "auto_seeded_from_pipeline_data",
+    "capture_proxy_verified_only"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.82,
+        "token_attributable_earnings": 51221,
+        "implied_token_value": 144623
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.43,
+        "token_attributable_earnings": 204882,
+        "implied_token_value": 702454
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 4.36,
+        "token_attributable_earnings": 597573,
+        "implied_token_value": 2607593
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 6,
+        "token_attributable_earnings": 1109779,
+        "implied_token_value": 6658675
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 9.14,
+        "token_attributable_earnings": 1707353,
+        "implied_token_value": 15610080
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 2008650,
+        "clean_conversion": 0.75,
+        "underwriting_roe": 0.75,
+        "terminal_g": 0.03,
+        "clean_platform_earnings": 1506488,
+        "ss_pe": 3.3,
+        "implied_token_value": 0,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 2008650,
+        "clean_conversion": 0.85,
+        "underwriting_roe": 1,
+        "terminal_g": 0.04,
+        "clean_platform_earnings": 1707353,
+        "ss_pe": 3.42,
+        "implied_token_value": 0,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 2860104,
+        "clean_conversion": 0.9,
+        "underwriting_roe": 1.5,
+        "terminal_g": 0.052500000000000005,
+        "clean_platform_earnings": 2574094,
+        "ss_pe": 3.59,
+        "implied_token_value": 0,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T20:49:35.662Z"
+}

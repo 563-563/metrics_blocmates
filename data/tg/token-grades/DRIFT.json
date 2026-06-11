@@ -1,0 +1,219 @@
+{
+  "symbol": "DRIFT",
+  "project": "Drift",
+  "coingecko_id": "drift-protocol",
+  "hm_slug": "drift",
+  "updated_at": "2026-06-11T20:49:35.593Z",
+  "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "data_bindings": {
+    "revenue": "dl_latest",
+    "alignment": "hm_real_capture",
+    "market": "cg_live"
+  },
+  "business": {
+    "revenue_run_rate_window": "1y",
+    "gross_revenue": 36449302,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 15863994,
+    "revenue_13w": 341068,
+    "durability_adjustment": 1,
+    "trusted_revenue": 15863994,
+    "clean_conversion": 0.85,
+    "clean_platform_earnings": 13484394.9,
+    "clean_conversion_grade": "A",
+    "durability_score": 2,
+    "business_confidence": "low"
+  },
+  "capital_efficiency": {
+    "active_capital": null,
+    "operating_treasury": null,
+    "total_asset_base": null,
+    "active_capital_roe": null,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
+    "underwriting_roe": 1.5,
+    "roe_grade": "B",
+    "roe_confidence": "low"
+  },
+  "growth": {
+    "near_term_growth_score": 1,
+    "durability_score": 2,
+    "terminal_g": 0.01,
+    "growth_grade": "C",
+    "growth_confidence": "low"
+  },
+  "token": {
+    "claim_category": "Current-state no utility",
+    "claim_category_key": "no_utility",
+    "token_alignment_factor": 0,
+    "token_alignment_grade": "F",
+    "value_capture_score": 0,
+    "token_holder_rights_score": 0.5,
+    "entity_alignment_score": 1,
+    "transparency_score": 2,
+    "token_confidence": "low"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.037,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.056,
+    "regulatory_premium": 0.048,
+    "custody_operational_premium": 0.01,
+    "governance_supply_premium": 0.042,
+    "economic_alignment_premium": 0.08,
+    "technical_reconciliation_premium": 0.024,
+    "ke": 0.352,
+    "ke_grade": "D"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 341068,
+      "clean_conversion": 0.75,
+      "underwriting_roe": 1.125,
+      "terminal_g": 0.005
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 15863994,
+      "clean_conversion": 0.85,
+      "underwriting_roe": 1.5,
+      "terminal_g": 0.01
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 15863994,
+      "clean_conversion": 0.9,
+      "underwriting_roe": 2.25,
+      "terminal_g": 0.0225
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 10400252,
+    "fdv_seed": 17007332,
+    "ss_pe": 2.9,
+    "token_attributable_earnings": 0,
+    "implied_token_value": 0,
+    "market_cap": 10400252,
+    "fdv": 17007332,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 0,
+    "implied_value_vs_fdv": 0,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "business.post_buyback_net_revenue",
+      "claim": "Annual revenue $15.9M (DL revenue_1y); 30d-annualized $0.3M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/drift",
+      "confidence": "medium",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.claim_category",
+      "claim": "Derived from value-accrual metadata: none/none, accrual share 0. $285M exploit April 2026, operations paused. DRIFT staking = fee discounts only, not yield. $1M buyback DIP-4 proposed but not confirmed executing. DIP-9 sends $1.5M/mo to Drift Labs.",
+      "source_url": "https://defillama.com/protocol/drift",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 0% = HM real capture $0.0M (verification: governance_stated) ÷ clean earnings $13.5M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/drift",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    }
+  ],
+  "flags": [
+    "auto_seeded_from_pipeline_data",
+    "exploit_2026_04_operations_paused"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.68,
+        "token_attributable_earnings": 404532,
+        "implied_token_value": 1086040
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.2,
+        "token_attributable_earnings": 1618127,
+        "implied_token_value": 5184967
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 3.97,
+        "token_attributable_earnings": 4719538,
+        "implied_token_value": 18752299
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 5.23,
+        "token_attributable_earnings": 8764857,
+        "implied_token_value": 45823286
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 7.36,
+        "token_attributable_earnings": 13484395,
+        "implied_token_value": 99218511
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 341068,
+        "clean_conversion": 0.75,
+        "underwriting_roe": 1.125,
+        "terminal_g": 0.005,
+        "clean_platform_earnings": 255801,
+        "ss_pe": 2.87,
+        "implied_token_value": 0,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 15863994,
+        "clean_conversion": 0.85,
+        "underwriting_roe": 1.5,
+        "terminal_g": 0.01,
+        "clean_platform_earnings": 13484395,
+        "ss_pe": 2.9,
+        "implied_token_value": 0,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 15863994,
+        "clean_conversion": 0.9,
+        "underwriting_roe": 2.25,
+        "terminal_g": 0.0225,
+        "clean_platform_earnings": 14277595,
+        "ss_pe": 3,
+        "implied_token_value": 0,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T20:49:35.662Z"
+}

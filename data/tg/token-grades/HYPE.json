@@ -2,8 +2,14 @@
   "symbol": "HYPE",
   "project": "Hyperliquid",
   "coingecko_id": "hyperliquid",
-  "updated_at": "2026-06-11T20:40:39.887Z",
+  "hm_slug": "hyperliquid",
+  "updated_at": "2026-06-11T20:49:35.593Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "data_bindings": {
+    "revenue": "dl_latest",
+    "alignment": "hm_real_capture",
+    "market": "cg_live"
+  },
   "business": {
     "revenue_run_rate_window": "1y",
     "gross_revenue": 1055062760,
@@ -15,7 +21,7 @@
     "clean_conversion": 1,
     "clean_platform_earnings": 879135330,
     "clean_conversion_grade": "A",
-    "durability_score": 4,
+    "durability_score": 2,
     "business_confidence": "low"
   },
   "capital_efficiency": {
@@ -30,9 +36,9 @@
     "roe_confidence": "medium"
   },
   "growth": {
-    "near_term_growth_score": 4,
-    "durability_score": 4,
-    "terminal_g": 0.0475,
+    "near_term_growth_score": 2,
+    "durability_score": 2,
+    "terminal_g": 0.02,
     "growth_grade": "C",
     "growth_confidence": "low"
   },
@@ -42,7 +48,7 @@
     "token_alignment_factor": 0.46,
     "token_alignment_grade": "C",
     "value_capture_score": 2,
-    "token_holder_rights_score": 0.5,
+    "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
     "transparency_score": 2,
     "token_confidence": "low"
@@ -52,12 +58,12 @@
     "equity_risk_premium": 0.055,
     "crypto_liquidity_premium": 0.007,
     "regulatory_premium": 0.032,
-    "custody_operational_premium": 0.005,
+    "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.035,
-    "economic_alignment_premium": 0.024,
+    "economic_alignment_premium": 0.0432,
     "technical_reconciliation_premium": 0.006,
-    "ke": 0.201,
-    "ke_grade": "B"
+    "ke": 0.2252,
+    "ke_grade": "C"
   },
   "operating_cases": [
     {
@@ -65,52 +71,60 @@
       "post_buyback_net_revenue": 693072232,
       "clean_conversion": 0.9,
       "underwriting_roe": 2.25,
-      "terminal_g": 0.0375
+      "terminal_g": 0.01
     },
     {
       "name": "base",
       "post_buyback_net_revenue": 879135330,
       "clean_conversion": 1,
       "underwriting_roe": 3,
-      "terminal_g": 0.0475
+      "terminal_g": 0.02
     },
     {
       "name": "bull",
       "post_buyback_net_revenue": 879135330,
-      "clean_conversion": 0.95,
+      "clean_conversion": 1,
       "underwriting_roe": 4.5,
-      "terminal_g": 0.06
+      "terminal_g": 0.0325
     }
   ],
   "valuation": {
     "market_cap_seed": 13701685259,
     "fdv_seed": 58842747240,
-    "ss_pe": 6.41,
+    "ss_pe": 4.84,
     "token_attributable_earnings": 404402252,
-    "implied_token_value": 2592828770,
+    "implied_token_value": 1957632733,
     "market_cap": 13701685259,
     "fdv": 58842747240,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.19,
-    "implied_value_vs_fdv": 0.04,
+    "implied_value_vs_market_cap": 0.14,
+    "implied_value_vs_fdv": 0.03,
     "warnings": []
   },
   "evidence": [
     {
       "field": "business.post_buyback_net_revenue",
-      "claim": "Annual revenue $879.1M (DL revenue_1y); 30d-annualized $693.1M",
+      "claim": "Annual revenue $879.1M (DL revenue_1y); 30d-annualized $693.1M. Auto-refreshed each cron via data_bindings.",
       "source_url": "https://defillama.com/protocol/hyperliquid",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:40:39.887Z"
+      "updated_at": "2026-06-11T20:49:35.593Z"
     },
     {
-      "field": "token.token_alignment_factor",
-      "claim": "Alignment 46% derived as HM real capture $400.5M (verification: onchain) ÷ clean earnings $879.1M. Assistance Fund receives ~97% of fees and buys back HYPE continuously; verified on-chain by this repo (onchain flag). No binding holder claim on the AF.",
+      "field": "token.claim_category",
+      "claim": "Derived from value-accrual metadata: buyback/executing, accrual share 1. 97% of all protocol fees to AF address 0xfefe...fefe which buys back HYPE. Tokens accumulate in AF (not burned — protocol-owned treasury). L1-embedded, daily, automatic. Hyperliquid L1 not on Dune — using DeFi Llama revenue as proxy.",
       "source_url": "https://defillama.com/protocol/hyperliquid",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:40:39.887Z"
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 46% = HM real capture $400.5M (verification: onchain) ÷ clean earnings $879.1M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/hyperliquid",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
     },
     {
       "field": "capital_efficiency.operating_treasury",
@@ -118,7 +132,7 @@
       "source_url": "https://defillama.com/protocol/hyperliquid",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:40:39.887Z"
+      "updated_at": "2026-06-11T20:49:35.593Z"
     }
   ],
   "flags": [
@@ -133,45 +147,45 @@
         "category": "Current-state no utility",
         "token_alignment_factor": 0.03,
         "ke": 0.38,
-        "ss_pe": 2.96,
+        "ss_pe": 2.76,
         "token_attributable_earnings": 26374060,
-        "implied_token_value": 78064573
+        "implied_token_value": 72772869
       },
       {
         "key": "soft_utility",
         "category": "Soft utility / access",
         "token_alignment_factor": 0.12,
         "ke": 0.32,
-        "ss_pe": 3.61,
+        "ss_pe": 3.31,
         "token_attributable_earnings": 105496240,
-        "implied_token_value": 381012413
+        "implied_token_value": 349309771
       },
       {
         "key": "treasury_claim",
         "category": "Treasury-asset claim",
         "token_alignment_factor": 0.35,
         "ke": 0.26,
-        "ss_pe": 4.63,
+        "ss_pe": 4.14,
         "token_attributable_earnings": 307697366,
-        "implied_token_value": 1425061132
+        "implied_token_value": 1273525207
       },
       {
         "key": "revenue_treasury_gov",
         "category": "Revenue + treasury governance",
         "token_alignment_factor": 0.65,
         "ke": 0.2,
-        "ss_pe": 6.45,
+        "ss_pe": 5.52,
         "token_attributable_earnings": 571437965,
-        "implied_token_value": 3687804569
+        "implied_token_value": 3153490989
       },
       {
         "key": "full_equity",
         "category": "Full equity / IP / token alignment",
         "token_alignment_factor": 1,
         "ke": 0.145,
-        "ss_pe": 10.09,
+        "ss_pe": 7.95,
         "token_attributable_earnings": 879135330,
-        "implied_token_value": 8874007049
+        "implied_token_value": 6986195422
       }
     ],
     "operating": [
@@ -180,10 +194,10 @@
         "post_buyback_net_revenue": 693072232,
         "clean_conversion": 0.9,
         "underwriting_roe": 2.25,
-        "terminal_g": 0.0375,
+        "terminal_g": 0.01,
         "clean_platform_earnings": 623765009,
-        "ss_pe": 6.01,
-        "implied_token_value": 1725686273,
+        "ss_pe": 4.63,
+        "implied_token_value": 1327400795,
         "warnings": []
       },
       {
@@ -191,24 +205,24 @@
         "post_buyback_net_revenue": 879135330,
         "clean_conversion": 1,
         "underwriting_roe": 3,
-        "terminal_g": 0.0475,
+        "terminal_g": 0.02,
         "clean_platform_earnings": 879135330,
-        "ss_pe": 6.41,
-        "implied_token_value": 2592828770,
+        "ss_pe": 4.84,
+        "implied_token_value": 1957632733,
         "warnings": []
       },
       {
         "name": "bull",
         "post_buyback_net_revenue": 879135330,
-        "clean_conversion": 0.95,
+        "clean_conversion": 1,
         "underwriting_roe": 4.5,
-        "terminal_g": 0.06,
-        "clean_platform_earnings": 835178564,
-        "ss_pe": 7,
-        "implied_token_value": 2688366742,
+        "terminal_g": 0.0325,
+        "clean_platform_earnings": 879135330,
+        "ss_pe": 5.15,
+        "implied_token_value": 2083453912,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-11T20:40:39.939Z"
+  "computed_at": "2026-06-11T20:49:35.666Z"
 }

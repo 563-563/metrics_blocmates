@@ -1,0 +1,219 @@
+{
+  "symbol": "ORCA",
+  "project": "Orca",
+  "coingecko_id": "orca",
+  "hm_slug": "orca",
+  "updated_at": "2026-06-11T20:49:35.593Z",
+  "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "data_bindings": {
+    "revenue": "dl_latest",
+    "alignment": "hm_real_capture",
+    "market": "cg_live"
+  },
+  "business": {
+    "revenue_run_rate_window": "1y",
+    "gross_revenue": 93639053,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 11242750,
+    "revenue_13w": 4731459,
+    "durability_adjustment": 1,
+    "trusted_revenue": 11242750,
+    "clean_conversion": 0.95,
+    "clean_platform_earnings": 10680612.5,
+    "clean_conversion_grade": "A",
+    "durability_score": 2,
+    "business_confidence": "low"
+  },
+  "capital_efficiency": {
+    "active_capital": null,
+    "operating_treasury": null,
+    "total_asset_base": null,
+    "active_capital_roe": null,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
+    "underwriting_roe": 1.5,
+    "roe_grade": "B",
+    "roe_confidence": "low"
+  },
+  "growth": {
+    "near_term_growth_score": 1,
+    "durability_score": 2,
+    "terminal_g": 0.01,
+    "growth_grade": "C",
+    "growth_confidence": "low"
+  },
+  "token": {
+    "claim_category": "Revenue + treasury governance",
+    "claim_category_key": "revenue_treasury_gov",
+    "token_alignment_factor": 0.09,
+    "token_alignment_grade": "D",
+    "value_capture_score": 2,
+    "token_holder_rights_score": 1.5,
+    "entity_alignment_score": 1,
+    "transparency_score": 2,
+    "token_confidence": "low"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.037,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.042,
+    "regulatory_premium": 0.032,
+    "custody_operational_premium": 0.01,
+    "governance_supply_premium": 0.028,
+    "economic_alignment_premium": 0.0736,
+    "technical_reconciliation_premium": 0.009,
+    "ke": 0.2866,
+    "ke_grade": "C"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 4731459,
+      "clean_conversion": 0.85,
+      "underwriting_roe": 1.125,
+      "terminal_g": 0.005
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 11242750,
+      "clean_conversion": 0.95,
+      "underwriting_roe": 1.5,
+      "terminal_g": 0.01
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 11242750,
+      "clean_conversion": 1,
+      "underwriting_roe": 2.25,
+      "terminal_g": 0.0225
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 63673794,
+    "fdv_seed": 78546078,
+    "ss_pe": 3.59,
+    "token_attributable_earnings": 961255,
+    "implied_token_value": 3452085,
+    "market_cap": 63673794,
+    "fdv": 78546078,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 0.05,
+    "implied_value_vs_fdv": 0.04,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "business.post_buyback_net_revenue",
+      "claim": "Annual revenue $11.2M (DL revenue_1y); 30d-annualized $4.7M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/orca",
+      "confidence": "medium",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.claim_category",
+      "claim": "Derived from value-accrual metadata: buyback/executing, accrual share 1. 40% of Whirlpool protocol fees → algorithmic xORCA buybacks (increased from 20% in Jan 2026). DL holdersRevenue confirms execution: $77.8K/30d → $933K/yr. 24-month program approved Aug 2025 with ~55K SOL treasury backstop + 30% ongoing fees. DL ratio ~20% (partial-period average since Jan 2026 increase). Deep dive: PASS. Protocol revenue $4.67M/yr fwd (TTM $23.8M, -80%). Token FV $40.9M vs FDV $68.9M (-41%). Upgrade: 30d revenue ≥ $1.67M for 2 consecutive months.",
+      "source_url": "https://defillama.com/protocol/orca",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 9% = HM real capture $0.9M (verification: proxy) ÷ clean earnings $10.7M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/orca",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    }
+  ],
+  "flags": [
+    "auto_seeded_from_pipeline_data",
+    "capture_proxy_verified_only"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.68,
+        "token_attributable_earnings": 320418,
+        "implied_token_value": 860222
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.2,
+        "token_attributable_earnings": 1281674,
+        "implied_token_value": 4106868
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 3.97,
+        "token_attributable_earnings": 3738214,
+        "implied_token_value": 14853172
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 5.23,
+        "token_attributable_earnings": 6942398,
+        "implied_token_value": 36295345
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 7.36,
+        "token_attributable_earnings": 10680613,
+        "implied_token_value": 78588210
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 4731459,
+        "clean_conversion": 0.85,
+        "underwriting_roe": 1.125,
+        "terminal_g": 0.005,
+        "clean_platform_earnings": 4021740,
+        "ss_pe": 3.54,
+        "implied_token_value": 1279645,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 11242750,
+        "clean_conversion": 0.95,
+        "underwriting_roe": 1.5,
+        "terminal_g": 0.01,
+        "clean_platform_earnings": 10680613,
+        "ss_pe": 3.59,
+        "implied_token_value": 3452085,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 11242750,
+        "clean_conversion": 1,
+        "underwriting_roe": 2.25,
+        "terminal_g": 0.0225,
+        "clean_platform_earnings": 11242750,
+        "ss_pe": 3.75,
+        "implied_token_value": 3792991,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T20:49:35.669Z"
+}

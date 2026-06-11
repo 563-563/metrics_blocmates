@@ -1,0 +1,218 @@
+{
+  "symbol": "SNX",
+  "project": "Synthetix",
+  "coingecko_id": "havven",
+  "hm_slug": "synthetix",
+  "updated_at": "2026-06-11T20:49:35.593Z",
+  "seeded_by": "scripts/tg/seed-from-pipeline.js",
+  "data_bindings": {
+    "revenue": "dl_latest",
+    "alignment": "hm_real_capture",
+    "market": "cg_live"
+  },
+  "business": {
+    "revenue_run_rate_window": "1y",
+    "gross_revenue": 533458,
+    "buybacks_or_repurchases": null,
+    "post_buyback_net_revenue": 464273,
+    "revenue_13w": 72051,
+    "durability_adjustment": 1,
+    "trusted_revenue": 464273,
+    "clean_conversion": 0.85,
+    "clean_platform_earnings": 394632.05,
+    "clean_conversion_grade": "A",
+    "durability_score": 2,
+    "business_confidence": "low"
+  },
+  "capital_efficiency": {
+    "active_capital": null,
+    "operating_treasury": null,
+    "total_asset_base": null,
+    "active_capital_roe": null,
+    "operating_treasury_roe": null,
+    "total_asset_roe": null,
+    "underwriting_roe": 1.5,
+    "roe_grade": "B",
+    "roe_confidence": "low"
+  },
+  "growth": {
+    "near_term_growth_score": 1,
+    "durability_score": 2,
+    "terminal_g": 0.01,
+    "growth_grade": "C",
+    "growth_confidence": "low"
+  },
+  "token": {
+    "claim_category": "Current-state no utility",
+    "claim_category_key": "no_utility",
+    "token_alignment_factor": 0,
+    "token_alignment_grade": "F",
+    "value_capture_score": 0,
+    "token_holder_rights_score": 0.5,
+    "entity_alignment_score": 1,
+    "transparency_score": 2,
+    "token_confidence": "low"
+  },
+  "ke_build_up": {
+    "risk_free_rate": 0.037,
+    "equity_risk_premium": 0.055,
+    "crypto_liquidity_premium": 0.042,
+    "regulatory_premium": 0.04,
+    "custody_operational_premium": 0.01,
+    "governance_supply_premium": 0.014,
+    "economic_alignment_premium": 0.08,
+    "technical_reconciliation_premium": 0.009,
+    "ke": 0.287,
+    "ke_grade": "C"
+  },
+  "operating_cases": [
+    {
+      "name": "conservative",
+      "post_buyback_net_revenue": 72051,
+      "clean_conversion": 0.75,
+      "underwriting_roe": 1.125,
+      "terminal_g": 0.005
+    },
+    {
+      "name": "base",
+      "post_buyback_net_revenue": 464273,
+      "clean_conversion": 0.85,
+      "underwriting_roe": 1.5,
+      "terminal_g": 0.01
+    },
+    {
+      "name": "bull",
+      "post_buyback_net_revenue": 464273,
+      "clean_conversion": 0.9,
+      "underwriting_roe": 2.25,
+      "terminal_g": 0.0225
+    }
+  ],
+  "valuation": {
+    "market_cap_seed": 84118735,
+    "fdv_seed": 84222171,
+    "ss_pe": 3.59,
+    "token_attributable_earnings": 0,
+    "implied_token_value": 0,
+    "market_cap": 84118735,
+    "fdv": 84222171,
+    "market_source": "live_cg",
+    "implied_value_vs_market_cap": 0,
+    "implied_value_vs_fdv": 0,
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "field": "business.post_buyback_net_revenue",
+      "claim": "Annual revenue $0.5M (DL revenue_1y); 30d-annualized $0.1M. Auto-refreshed each cron via data_bindings.",
+      "source_url": "https://defillama.com/protocol/synthetix",
+      "confidence": "medium",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.claim_category",
+      "claim": "Derived from value-accrual metadata: buyback/unverified, accrual share 0.5. Q1 2026 tokenomics reset (SIP-2043): SNX inflation ended, 100% of perps trading fees → SNX buybacks (50/50 split with sUSD stability until peg restored, then 100%). DL shows $0 fees/revenue all recent periods under all slugs (synthetix, synthetix-v3) — execution UNVERIFIED. Config claims $4.5M in first 6 weeks ($39M/yr annualized) — unconfirmed. Mcap ≈ FDV ($104M, no vesting overhang — rare). Deep dive: PASS (data gap). If $39M/yr confirmed: Token FV $342.6M (+229%). Must verify on-chain. CoinGecko ID is legacy 'havven'.",
+      "source_url": "https://defillama.com/protocol/synthetix",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    },
+    {
+      "field": "token.token_alignment_factor",
+      "claim": "Alignment 0% = HM real capture $0.0M (verification: governance_stated) ÷ clean earnings $0.4M. Auto-refreshed each cron.",
+      "source_url": "https://defillama.com/protocol/synthetix",
+      "confidence": "low",
+      "direction": "neutral",
+      "updated_at": "2026-06-11T20:49:35.593Z"
+    }
+  ],
+  "flags": [
+    "auto_seeded_from_pipeline_data"
+  ],
+  "scenarios": {
+    "token_discount": [
+      {
+        "key": "no_utility",
+        "category": "Current-state no utility",
+        "token_alignment_factor": 0.03,
+        "ke": 0.38,
+        "ss_pe": 2.68,
+        "token_attributable_earnings": 11839,
+        "implied_token_value": 31784
+      },
+      {
+        "key": "soft_utility",
+        "category": "Soft utility / access",
+        "token_alignment_factor": 0.12,
+        "ke": 0.32,
+        "ss_pe": 3.2,
+        "token_attributable_earnings": 47356,
+        "implied_token_value": 151742
+      },
+      {
+        "key": "treasury_claim",
+        "category": "Treasury-asset claim",
+        "token_alignment_factor": 0.35,
+        "ke": 0.26,
+        "ss_pe": 3.97,
+        "token_attributable_earnings": 138121,
+        "implied_token_value": 548802
+      },
+      {
+        "key": "revenue_treasury_gov",
+        "category": "Revenue + treasury governance",
+        "token_alignment_factor": 0.65,
+        "ke": 0.2,
+        "ss_pe": 5.23,
+        "token_attributable_earnings": 256511,
+        "implied_token_value": 1341057
+      },
+      {
+        "key": "full_equity",
+        "category": "Full equity / IP / token alignment",
+        "token_alignment_factor": 1,
+        "ke": 0.145,
+        "ss_pe": 7.36,
+        "token_attributable_earnings": 394632,
+        "implied_token_value": 2903712
+      }
+    ],
+    "operating": [
+      {
+        "name": "conservative",
+        "post_buyback_net_revenue": 72051,
+        "clean_conversion": 0.75,
+        "underwriting_roe": 1.125,
+        "terminal_g": 0.005,
+        "clean_platform_earnings": 54038,
+        "ss_pe": 3.53,
+        "implied_token_value": 0,
+        "warnings": []
+      },
+      {
+        "name": "base",
+        "post_buyback_net_revenue": 464273,
+        "clean_conversion": 0.85,
+        "underwriting_roe": 1.5,
+        "terminal_g": 0.01,
+        "clean_platform_earnings": 394632,
+        "ss_pe": 3.59,
+        "implied_token_value": 0,
+        "warnings": []
+      },
+      {
+        "name": "bull",
+        "post_buyback_net_revenue": 464273,
+        "clean_conversion": 0.9,
+        "underwriting_roe": 2.25,
+        "terminal_g": 0.0225,
+        "clean_platform_earnings": 417846,
+        "ss_pe": 3.74,
+        "implied_token_value": 0,
+        "warnings": []
+      }
+    ]
+  },
+  "computed_at": "2026-06-11T20:49:35.672Z"
+}

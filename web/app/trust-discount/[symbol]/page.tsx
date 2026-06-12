@@ -4,7 +4,9 @@ import { TG_SYMBOLS, getTokenGrade } from "@/lib/tg-data";
 import { fmtUsd } from "@/lib/format";
 import { gradeColorClass } from "@/lib/token-grading";
 import { KpiBig } from "@/components/KpiBig";
+import { InfoTip } from "@/components/InfoTip";
 import { TokenGradeExplorer } from "@/components/tg/TokenGradeExplorer";
+import { TokenDiscountStory } from "@/components/tg/TokenDiscountStory";
 
 export const revalidate = 300;
 
@@ -93,6 +95,25 @@ export default async function TrustDiscountPage({
           }
         />
       </div>
+
+      {/* The discount in three pictures — this token's actual numbers */}
+      <section className="mb-10 border border-line rounded-md p-6 bg-surface">
+        <h2 className="text-xs uppercase tracking-widest text-fg-muted mb-5">
+          How the discount happens — {grade.symbol} in three pictures
+          <InfoTip>
+            <span className="block mb-2">
+              The same walkthrough as the cohort page&apos;s how-to-read, drawn with{" "}
+              {grade.symbol}&apos;s live numbers: the funnel from revenue to token value, this
+              token&apos;s actual risk stack, and the as-equity vs as-token gap.
+            </span>
+            <span className="block">
+              Numbers re-bind to the pipeline on every data refresh; the sliders further down
+              are for what-if scenarios and never change these published figures.
+            </span>
+          </InfoTip>
+        </h2>
+        <TokenDiscountStory grade={grade} />
+      </section>
 
       <TokenGradeExplorer grade={grade} />
 

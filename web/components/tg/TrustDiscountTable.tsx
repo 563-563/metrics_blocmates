@@ -37,6 +37,7 @@ type SortKey =
   | "discount"
   | "implied"
   | "full_equity"
+  | "mcap"
   | "ke"
   | "alignment"
   | "vs_mcap"
@@ -117,6 +118,8 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
           return compareNum(v(a).implied ?? 0, v(b).implied ?? 0, sortDir);
         case "full_equity":
           return compareNum(v(a).implied_full_equity ?? 0, v(b).implied_full_equity ?? 0, sortDir);
+        case "mcap":
+          return compareNum(a.market_cap ?? 0, b.market_cap ?? 0, sortDir);
         case "ke":
           return compareNum(v(a).ke ?? 0, v(b).ke ?? 0, sortDir);
         case "alignment":
@@ -229,6 +232,9 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
               <SortHeader active={sortKey === "full_equity"} dir={sortDir} onClick={() => toggle("full_equity")}>
                 As equity
               </SortHeader>
+              <SortHeader active={sortKey === "mcap"} dir={sortDir} onClick={() => toggle("mcap")}>
+                Mcap
+              </SortHeader>
               <SortHeader active={sortKey === "ke"} dir={sortDir} onClick={() => toggle("ke")}>
                 Ke
               </SortHeader>
@@ -271,6 +277,9 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
                     {v.implied_full_equity != null && v.implied_full_equity > 0
                       ? fmtUsd(v.implied_full_equity)
                       : "—"}
+                  </td>
+                  <td className="py-3 px-2 border-t border-line-faint text-right font-mono tabular-nums text-fg">
+                    {t.market_cap != null ? fmtUsd(t.market_cap) : "—"}
                   </td>
                   <td className="py-3 px-2 border-t border-line-faint text-right font-mono tabular-nums">
                     <span className={gradeColorClass(t.ke_grade ?? "")}>

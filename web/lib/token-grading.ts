@@ -174,24 +174,94 @@ export const CLARITY_SCENARIO = {
     regulatory_premium: 0.35,
     crypto_liquidity_premium: 0.7,
     custody_operational_premium: 0.8
-  } as Record<string, number>,
-  explainers: {
-    risk_free_rate: "Unchanged — macro, not regulatory.",
-    equity_risk_premium: "Unchanged — macro, not regulatory.",
-    regulatory_premium:
-      "Compresses hardest (−65%). Statutory SEC/CFTC jurisdiction, a registration path, and an end to regulation-by-enforcement remove most of the “is a revenue-sharing token a security in limbo?” risk. A statute is durable; agency posture alone is not.",
-    crypto_liquidity_premium:
-      "Compresses second-order (−30%). Legal clarity lets broker-dealers, national exchanges, and institutional mandates touch the asset — books deepen over 1–3 years, not on signing day.",
-    custody_operational_premium:
-      "Compresses modestly (−20%). Qualified-custodian clarity lets institutions hold without bespoke legal work.",
-    governance_supply_premium:
-      "Unchanged — unlock schedules and foundation control are per-token design, not law.",
-    economic_alignment_premium:
-      "Unchanged — the law cannot turn on a fee switch; only governance can.",
-    technical_reconciliation_premium:
-      "Unchanged — smart-contract and oracle risk are orthogonal to legislation."
-  } as Record<string, string>
+  } as Record<string, number>
 };
+
+// Per-component methodology + CLARITY rationale. `score0`/`score5` are the
+// spec's scoring anchors (premium = max × score / 5); `clarity` explains
+// what the law does to THAT scoring dimension and why the multiplier is
+// what it is. Rendered by ClarityPanel; keep in lockstep with the scripts
+// engine.
+export type KeComponentInfo = {
+  key: string;
+  label: string;
+  maxPremium: number | null; // null = macro base rate, not a scored premium
+  score0: string | null;
+  score5: string | null;
+  clarity: string;
+};
+
+export const KE_COMPONENT_INFO: KeComponentInfo[] = [
+  {
+    key: "risk_free_rate",
+    label: "Risk-free rate",
+    maxPremium: null,
+    score0: null,
+    score5: null,
+    clarity: "Unchanged — tracks the 3M T-bill. Macro, not regulatory."
+  },
+  {
+    key: "equity_risk_premium",
+    label: "Equity risk premium",
+    maxPremium: null,
+    score0: null,
+    score5: null,
+    clarity: "Unchanged — the price of equity risk generally. Macro, not regulatory."
+  },
+  {
+    key: "crypto_liquidity_premium",
+    label: "Crypto / liquidity",
+    maxPremium: 0.07,
+    score0: "deep liquid token",
+    score5: "tiny illiquid token",
+    clarity:
+      "−30%. The score prices exit risk: book depth, venue quality, who is allowed to hold. The law creates no liquidity directly — it removes the listing and custody blockers that keep broker-dealers, ETFs, and institutional mandates out. Depth follows over 1–3 years, so only a minority of the score compresses on passage."
+  },
+  {
+    key: "regulatory_premium",
+    label: "Regulatory",
+    maxPremium: 0.08,
+    score0: "clean structure",
+    score5: "gambling / securities / off-chain ambiguity",
+    clarity:
+      "−65%, the deepest cut. This score blends two different risks: (a) classification ambiguity — “does revenue-sharing make this token an unregistered security, and will the SEC sue?” — and (b) genuinely regulated activity (gambling, RWA licensing). CLARITY answers (a) by statute: SEC/CFTC jurisdiction split, a registration path, disclosure rules, no more regulation-by-enforcement. For most DeFi tokens (a) is the dominant share of their score. (b) survives — a casino is still a casino — which is why the multiplier is 0.35, not 0."
+  },
+  {
+    key: "custody_operational_premium",
+    label: "Custody / ops",
+    maxPremium: 0.05,
+    score0: "fully onchain",
+    score5: "physical / off-chain assets / redemption",
+    clarity:
+      "−20%. The score prices what could go wrong holding and redeeming the asset. Qualified-custodian clarity standardizes institutional custody — but physical inventory, RWA operations, and redemption mechanics are operational facts no statute fixes. Most of this score stays."
+  },
+  {
+    key: "governance_supply_premium",
+    label: "Governance / supply",
+    maxPremium: 0.07,
+    score0: "transparent / decentralized / locked",
+    score5: "foundation / team control / cliffs",
+    clarity:
+      "Unchanged. Unlock cliffs, foundation wallets, and market-maker policy are token design choices. Disclosure rules may make them more visible, but visibility doesn't shrink an overhang — only vesting reform does."
+  },
+  {
+    key: "economic_alignment_premium",
+    label: "Economic alignment",
+    maxPremium: 0.08,
+    score0: "token is full claim",
+    score5: "no claim on economics",
+    clarity:
+      "Unchanged — and this is the point of the whole page. The score measures whether the token actually owns the business's economics. A statute can legalize routing revenue to holders; it cannot route it. Only governance can. Whatever survives the CLARITY toggle is pure token-design discount."
+  },
+  {
+    key: "technical_reconciliation_premium",
+    label: "Technical / reconciliation",
+    maxPremium: 0.03,
+    score0: "simple contracts",
+    score5: "oracle / off-chain / indexer / VRF complexity",
+    clarity: "Unchanged — smart-contract, oracle, and reconciliation risk are orthogonal to legislation."
+  }
+];
 
 export const FULL_EQUITY_BENCHMARK: Record<string, number> = {
   risk_free_rate: MACRO_DEFAULTS.risk_free_rate,

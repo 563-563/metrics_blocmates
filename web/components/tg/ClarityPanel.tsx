@@ -4,6 +4,7 @@ import { useState } from "react";
 import { fmtUsd } from "@/lib/format";
 import {
   CLARITY_SCENARIO,
+  KE_COMPONENT_INFO,
   applyClarityScenario,
   calculateSSPE,
   calculateTokenValue,
@@ -13,19 +14,9 @@ import {
 import type { TokenGrade } from "@/lib/tg-data";
 
 // Policy scenario: re-price this token under "CLARITY Act + friendly
-// SEC/CFTC". Shows each Ke premium before → after with an explanation of
-// why the law moves it (or can't).
-
-const COMPONENT_LABELS: Array<{ key: string; label: string }> = [
-  { key: "risk_free_rate", label: "Risk-free rate" },
-  { key: "equity_risk_premium", label: "Equity risk premium" },
-  { key: "crypto_liquidity_premium", label: "Crypto / liquidity" },
-  { key: "regulatory_premium", label: "Regulatory" },
-  { key: "custody_operational_premium", label: "Custody / ops" },
-  { key: "governance_supply_premium", label: "Governance / supply" },
-  { key: "economic_alignment_premium", label: "Economic alignment" },
-  { key: "technical_reconciliation_premium", label: "Technical / reconciliation" }
-];
+// SEC/CFTC". Each premium row shows the scoring rubric it comes from
+// (premium = max × score / 5, with the spec's 0/5 anchors) and exactly
+// what the law does to that scoring dimension.
 
 export function ClarityPanel({ grade }: { grade: TokenGrade }) {
   const [on, setOn] = useState(false);
@@ -52,7 +43,9 @@ export function ClarityPanel({ grade }: { grade: TokenGrade }) {
       <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
         <span className="text-[11px] text-fg-muted">
           Re-price this token under <span className="text-fg">{CLARITY_SCENARIO.label}</span> —
-          statutory premia compress; token design stays exactly as graded.
+          statutory premia compress; token design stays exactly as graded. Each premium is
+          scored 0–5 (premium = ceiling × score ÷ 5); the notes explain which scores the law
+          can actually move.
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="text-[10px] uppercase tracking-widest text-fg-muted">CLARITY Act</span>
@@ -75,20 +68,33 @@ export function ClarityPanel({ grade }: { grade: TokenGrade }) {
         </span>
       </div>
 
-      {/* Premium-by-premium before → after */}
-      <div className="space-y-2">
-        {COMPONENT_LABELS.map(({ key, label }) => {
-          const before = base[key] ?? 0;
-          const after = adjusted[key] ?? 0;
+      {/* Premium-by-premium before → after, grounded in the scoring rubric */}
+      <div className="space-y-3.5">
+        {KE_COMPONENT_INFO.map((info) => {
+          const before = base[info.key] ?? 0;
+          const after = adjusted[info.key] ?? 0;
           const changed = Math.abs(after - before) > 1e-6;
           const shown = on ? after : before;
           const max = Math.max(base.ke, 0.0001);
+          // Implied current score from the graded premium (premium = max × score/5).
+          const score =
+            info.maxPremium && info.maxPremium > 0
+              ? Math.round(((before / info.maxPremium) * 5) * 10) / 10
+              : null;
           return (
-            <div key={key} className="flex items-start gap-3">
-              <span className="w-44 shrink-0 text-[11px] text-fg-muted pt-0.5">{label}</span>
+            <div key={info.key} className="flex items-start gap-3">
+              <span className="w-48 shrink-0 pt-0.5">
+                <span className="block text-[11px] text-fg">{info.label}</span>
+                {info.maxPremium != null ? (
+                  <span className="block text-[10px] text-fg-faint">
+                    scored {score != null ? `${score}/5` : "—"} of {(info.maxPremium * 100).toFixed(0)}% ceiling
+                  </span>
+                ) : (
+                  <span className="block text-[10px] text-fg-faint">macro base</span>
+                )}
+              </span>
               <div className="flex-1">
                 <div className="h-3.5 relative">
-                  {/* ghost of today's value when scenario is on */}
                   {on && changed && (
                     <div
                       className="absolute h-full rounded-sm border border-line"
@@ -100,8 +106,14 @@ export function ClarityPanel({ grade }: { grade: TokenGrade }) {
                     style={{ width: `${Math.max((shown / max) * 100, 0.5)}%` }}
                   />
                 </div>
+                {info.score0 && (
+                  <p className="text-[10px] text-fg-faint leading-snug mt-1">
+                    <span className="text-fg-muted">Rubric:</span> score 0 = {info.score0} · score
+                    5 = {info.score5}.
+                  </p>
+                )}
                 <p className="text-[10px] text-fg-faint leading-snug mt-0.5">
-                  {CLARITY_SCENARIO.explainers[key]}
+                  <span className="text-fg-muted">Under CLARITY:</span> {info.clarity}
                 </p>
               </div>
               <span className="w-24 shrink-0 text-right font-mono tabular-nums text-[11px] pt-0.5">

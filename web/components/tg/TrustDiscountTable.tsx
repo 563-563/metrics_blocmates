@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { fmtUsd } from "@/lib/format";
 import { gradeColorClass, CLARITY_SCENARIO } from "@/lib/token-grading";
+import { compareNum, compareStr, useSort } from "@/lib/use-sort";
 
-// Cohort table with the CLARITY-scenario toggle. Both regimes arrive
-// precomputed from the server; the toggle just switches which set renders.
+// Cohort table with the CLARITY-scenario toggle, sortable columns, a text
+// filter, and claim-category chips. Both regimes arrive precomputed from
+// the server; the toggle just switches which set renders (and re-sorts).
 
 export type TdRegimeValues = {
   ke: number | null;
@@ -29,6 +31,17 @@ export type TdRow = {
   clarity: TdRegimeValues;
 };
 
+type SortKey =
+  | "project"
+  | "category"
+  | "discount"
+  | "implied"
+  | "full_equity"
+  | "ke"
+  | "alignment"
+  | "vs_mcap"
+  | "flags";
+
 function discountColor(d: number | null): string {
   if (d == null) return "text-fg-faint";
   if (d >= 0.85) return "text-negative";
@@ -36,21 +49,96 @@ function discountColor(d: number | null): string {
   return "text-positive";
 }
 
+function SortHeader({
+  active,
+  dir,
+  onClick,
+  children,
+  align = "right"
+}: {
+  active: boolean;
+  dir: "asc" | "desc";
+  onClick: () => void;
+  children: React.ReactNode;
+  align?: "left" | "right";
+}) {
+  const arrow = active ? (dir === "asc" ? "↑" : "↓") : "·";
+  return (
+    <th
+      onClick={onClick}
+      className={`${align === "right" ? "text-right" : "text-left"} font-normal py-3 px-2 cursor-pointer select-none hover:text-accent transition text-fg`}
+    >
+      <span className={`inline-flex items-baseline gap-1 ${align === "right" ? "justify-end" : ""}`}>
+        {align === "right" && (
+          <span className={`text-[9px] ${active ? "text-accent" : "text-fg-faint"}`} aria-hidden="true">{arrow}</span>
+        )}
+        {children}
+        {align !== "right" && (
+          <span className={`text-[9px] ${active ? "text-accent" : "text-fg-faint"}`} aria-hidden="true">{arrow}</span>
+        )}
+      </span>
+    </th>
+  );
+}
+
 export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
   const [clarity, setClarity] = useState(false);
+  const [query, setQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
+  const { sortKey, sortDir, toggle } = useSort<SortKey>("discount", "desc");
 
-  const sorted = [...rows].sort((a, b) => {
-    const da = (clarity ? a.clarity : a.base).trust_discount;
-    const db = (clarity ? b.clarity : b.base).trust_discount;
-    if (da == null && db == null) return 0;
-    if (da == null) return 1;
-    if (db == null) return -1;
-    return db - da;
-  });
+  const categories = useMemo(
+    () => [...new Set(rows.map((r) => r.claim_category).filter(Boolean))] as string[],
+    [rows]
+  );
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return rows.filter((r) => {
+      if (categoryFilter && r.claim_category !== categoryFilter) return false;
+      if (q && !r.project.toLowerCase().includes(q) && !r.symbol.toLowerCase().includes(q))
+        return false;
+      return true;
+    });
+  }, [rows, query, categoryFilter]);
+
+  const sorted = useMemo(() => {
+    const v = (r: TdRow) => (clarity ? r.clarity : r.base);
+    const out = [...filtered];
+    out.sort((a, b) => {
+      switch (sortKey) {
+        case "project":
+          return compareStr(a.project, b.project, sortDir);
+        case "category":
+          return compareStr(a.claim_category ?? "", b.claim_category ?? "", sortDir);
+        case "discount":
+          return compareNum(v(a).trust_discount ?? -1, v(b).trust_discount ?? -1, sortDir);
+        case "implied":
+          return compareNum(v(a).implied ?? 0, v(b).implied ?? 0, sortDir);
+        case "full_equity":
+          return compareNum(v(a).implied_full_equity ?? 0, v(b).implied_full_equity ?? 0, sortDir);
+        case "ke":
+          return compareNum(v(a).ke ?? 0, v(b).ke ?? 0, sortDir);
+        case "alignment":
+          return compareNum(a.alignment_factor ?? 0, b.alignment_factor ?? 0, sortDir);
+        case "vs_mcap": {
+          const ra = v(a).implied != null && a.market_cap ? v(a).implied! / a.market_cap : -1;
+          const rb = v(b).implied != null && b.market_cap ? v(b).implied! / b.market_cap : -1;
+          return compareNum(ra, rb, sortDir);
+        }
+        case "flags":
+          return compareNum(a.flags, b.flags, sortDir);
+        default:
+          return 0;
+      }
+    });
+    return out;
+  }, [filtered, sortKey, sortDir, clarity]);
 
   return (
     <div>
-      <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+      {/* Controls: scenario toggle · search · category chips */}
+      <div className="flex items-center justify-between flex-wrap gap-3 mb-3">
         <span className="text-[11px] text-fg-muted max-w-xl">
           {clarity ? (
             <>
@@ -83,19 +171,76 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
         </span>
       </div>
 
+      <div className="flex items-center gap-2 flex-wrap mb-4">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="filter tokens…"
+          aria-label="Filter tokens"
+          className="bg-surface border border-line rounded px-2.5 py-1 text-xs text-fg placeholder:text-fg-faint focus:outline-none focus:border-accent w-40"
+        />
+        <button
+          type="button"
+          onClick={() => setCategoryFilter(null)}
+          className={`text-[11px] rounded-full border px-2.5 py-0.5 transition ${
+            categoryFilter == null
+              ? "border-accent text-fg bg-accent/10"
+              : "border-line text-fg-muted hover:text-fg"
+          }`}
+        >
+          all claims
+        </button>
+        {categories.map((c) => (
+          <button
+            key={c}
+            type="button"
+            onClick={() => setCategoryFilter(categoryFilter === c ? null : c)}
+            className={`text-[11px] rounded-full border px-2.5 py-0.5 transition ${
+              categoryFilter === c
+                ? "border-accent text-fg bg-accent/10"
+                : "border-line text-fg-muted hover:text-fg"
+            }`}
+          >
+            {c}
+          </button>
+        ))}
+        <span className="text-[11px] text-fg-faint ml-auto">
+          {sorted.length} of {rows.length}
+        </span>
+      </div>
+
       <div className="overflow-x-auto">
         <table className="w-full text-sm border-separate border-spacing-0 min-w-[820px]">
           <thead>
-            <tr className="text-[10px] uppercase tracking-widest text-fg-muted">
-              <th className="text-left font-normal py-3 px-2">Token</th>
-              <th className="text-left font-normal py-3 px-2">Claim category</th>
-              <th className="text-right font-normal py-3 px-2">Trust discount</th>
-              <th className="text-right font-normal py-3 px-2">As this token</th>
-              <th className="text-right font-normal py-3 px-2">As equity</th>
-              <th className="text-right font-normal py-3 px-2">Ke</th>
-              <th className="text-right font-normal py-3 px-2">Align</th>
-              <th className="text-right font-normal py-3 px-2">vs mcap</th>
-              <th className="text-right font-normal py-3 px-2">Flags</th>
+            <tr className="text-[10px] uppercase tracking-widest">
+              <SortHeader active={sortKey === "project"} dir={sortDir} onClick={() => toggle("project", "asc")} align="left">
+                Token
+              </SortHeader>
+              <SortHeader active={sortKey === "category"} dir={sortDir} onClick={() => toggle("category", "asc")} align="left">
+                Claim category
+              </SortHeader>
+              <SortHeader active={sortKey === "discount"} dir={sortDir} onClick={() => toggle("discount")}>
+                Trust discount
+              </SortHeader>
+              <SortHeader active={sortKey === "implied"} dir={sortDir} onClick={() => toggle("implied")}>
+                As this token
+              </SortHeader>
+              <SortHeader active={sortKey === "full_equity"} dir={sortDir} onClick={() => toggle("full_equity")}>
+                As equity
+              </SortHeader>
+              <SortHeader active={sortKey === "ke"} dir={sortDir} onClick={() => toggle("ke")}>
+                Ke
+              </SortHeader>
+              <SortHeader active={sortKey === "alignment"} dir={sortDir} onClick={() => toggle("alignment")}>
+                Align
+              </SortHeader>
+              <SortHeader active={sortKey === "vs_mcap"} dir={sortDir} onClick={() => toggle("vs_mcap")}>
+                vs mcap
+              </SortHeader>
+              <SortHeader active={sortKey === "flags"} dir={sortDir} onClick={() => toggle("flags")}>
+                Flags
+              </SortHeader>
             </tr>
           </thead>
           <tbody>

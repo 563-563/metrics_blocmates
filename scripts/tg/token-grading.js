@@ -282,23 +282,10 @@ const CLARITY_SCENARIO = {
     regulatory_premium: 0.35,
     crypto_liquidity_premium: 0.7,
     custody_operational_premium: 0.8
-  },
-  explainers: {
-    risk_free_rate: 'Unchanged — macro, not regulatory.',
-    equity_risk_premium: 'Unchanged — macro, not regulatory.',
-    regulatory_premium:
-      'Compresses hardest (−65%). Statutory SEC/CFTC jurisdiction, a registration path, and an end to regulation-by-enforcement remove most of the "is a revenue-sharing token a security in limbo?" risk. A statute is durable; agency posture alone is not.',
-    crypto_liquidity_premium:
-      'Compresses second-order (−30%). Legal clarity lets broker-dealers, national exchanges, and institutional mandates touch the asset — books deepen over 1–3 years, not on signing day.',
-    custody_operational_premium:
-      'Compresses modestly (−20%). Qualified-custodian clarity lets institutions hold without bespoke legal work.',
-    governance_supply_premium:
-      'Unchanged — unlock schedules and foundation control are per-token design, not law.',
-    economic_alignment_premium:
-      'Unchanged — the law cannot turn on a fee switch; only governance can.',
-    technical_reconciliation_premium:
-      'Unchanged — smart-contract and oracle risk are orthogonal to legislation.'
   }
+  // Per-component methodology + rationale text lives in the web mirror
+  // (web/lib/token-grading.ts KE_COMPONENT_INFO) where it renders; the
+  // multipliers above are the canonical scenario definition.
 };
 
 // The full-equity benchmark rung (14.5%) decomposed into residual premia so

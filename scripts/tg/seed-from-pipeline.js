@@ -27,6 +27,7 @@
 const fs = require('fs');
 const path = require('path');
 const tg = require('./token-grading');
+const { matchedAnnualCapture } = require('./capture');
 
 const ROOT = path.join(__dirname, '..', '..');
 const GRADES_DIR = path.join(ROOT, 'data', 'tg', 'token-grades');
@@ -259,7 +260,12 @@ function main() {
     const rev30dAnn = ((Number(market.revenue_30d) || 0) * 365) / 30;
     const cleanConversion = ov.clean_conversion ?? deriveCleanConversion(va);
     const cleanEarnings = rev1y * cleanConversion;
-    const realCapture = hmP.real_capture_usd || 0;
+    // Capture matched to the 1y revenue window — never HM's 60d SMA divided
+    // by a year of revenue (that mismatch read HYPE at 46% when its
+    // trailing-year reality was ~88%).
+    const matched = matchedAnnualCapture(hmP, market, 365, ROOT);
+    const realCapture = matched?.capture_usd ?? 0;
+    const captureSource = matched?.source ?? 'none';
     const alignment =
       cleanEarnings > 0 ? Math.min(Math.round((realCapture / cleanEarnings) * 100) / 100, 1) : 0;
 
@@ -295,7 +301,26 @@ function main() {
       flags.push('capture_exceeds_clean_earnings');
       addQ(
         sym,
-        `Capture $${(realCapture / 1e6).toFixed(1)}M exceeds clean earnings $${(cleanEarnings / 1e6).toFixed(1)}M — alignment capped at 100%. Usually a window mismatch (60d-SMA capture vs trailing-1y revenue across a regime change) or a DL revenue-vs-holdersRevenue definition gap. Pick the right window or fix the revenue source.`
+        `Capture $${(realCapture / 1e6).toFixed(1)}M exceeds clean earnings $${(cleanEarnings / 1e6).toFixed(1)}M even on matched windows — alignment capped at 100%. Likely a DL revenue-vs-holdersRevenue definition gap or a mid-window regime change. Verify the revenue source.`
+      );
+    }
+    // Alignment present but the mechanism is not verifiably executing —
+    // either the va metadata is stale or the capture feed measures
+    // something else. Don't let a shiny grade paper over that.
+    if (alignment > 0.1 && (va.status === 'none' || va.status === 'unverified' || va.mechanism === 'none')) {
+      flags.push('capture_without_verified_mechanism');
+      addQ(
+        sym,
+        `Measured capture implies ${(alignment * 100).toFixed(0)}% alignment but the value-accrual mechanism is '${va.mechanism}/${va.status}' — reconcile: either the va metadata is stale or the holdersRevenue feed is measuring something that isn't holder capture.`
+      );
+    }
+    // Trailing-window capture from a mechanism that is currently paused:
+    // the trailing year includes pre-pause flow. Current-state is $0.
+    if (alignment > 0.1 && va.status === 'paused') {
+      flags.push('trailing_capture_mechanism_paused');
+      addQ(
+        sym,
+        `Trailing-365d capture grades alignment at ${(alignment * 100).toFixed(0)}% but the mechanism is PAUSED — the window includes pre-pause flow. Decide whether paused mechanisms should grade on trailing flow (accounting honesty) or current-state zero (HM's read).`
       );
     }
     if ((va.status === 'proposed' || va.status === 'conditional') && realCapture === 0) {
@@ -313,7 +338,7 @@ function main() {
       // compute-tg refreshes these inputs from each cron ingestion.
       data_bindings: {
         revenue: 'dl_latest',
-        alignment: 'hm_real_capture',
+        alignment: 'matched_window_capture',
         market: 'cg_live'
       },
       business: {
@@ -352,6 +377,7 @@ function main() {
         claim_category: rung.category,
         claim_category_key: claimKey,
         token_alignment_factor: alignment,
+        alignment_basis: { window_days: 365, capture_usd: Math.round(realCapture), source: captureSource },
         token_alignment_grade: tg.assignTokenAlignmentGrade(alignment),
         value_capture_score: realCapture > 0 ? 2 : 0,
         token_holder_rights_score: claimKey === 'treasury_claim' || claimKey === 'revenue_treasury_gov' ? 1.5 : 0.5,
@@ -410,7 +436,7 @@ function main() {
         },
         {
           field: 'token.token_alignment_factor',
-          claim: `Alignment ${(alignment * 100).toFixed(0)}% = HM real capture $${(realCapture / 1e6).toFixed(1)}M (verification: ${hmP.annual_buyback_verification}) ÷ clean earnings $${(cleanEarnings / 1e6).toFixed(1)}M. Auto-refreshed each cron.`,
+          claim: `Alignment ${(alignment * 100).toFixed(0)}% = trailing-365d capture $${(realCapture / 1e6).toFixed(1)}M (source: ${captureSource}; HM verification: ${hmP.annual_buyback_verification}) ÷ clean earnings $${(cleanEarnings / 1e6).toFixed(1)}M over the same window. Auto-refreshed each cron.`,
           source_url: `https://defillama.com/protocol/${hmP.slug}`,
           confidence: 'low',
           direction: 'neutral',

@@ -26,6 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const tg = require('./token-grading');
+const { matchedAnnualCapture } = require('./capture');
 
 const ROOT = path.join(__dirname, '..', '..');
 const GRADES_DIR = path.join(ROOT, 'data', 'tg', 'token-grades');
@@ -139,14 +140,26 @@ function applyDataBindings(token, liveBySlug, hmBySlug) {
     }
   }
 
-  if (bind.alignment === 'hm_real_capture' && token.hm_slug) {
+  // Both binding names resolve to matched-window capture — the legacy
+  // 'hm_real_capture' name predates the window fix but means the same
+  // intent ("derive alignment from verified capture").
+  if ((bind.alignment === 'matched_window_capture' || bind.alignment === 'hm_real_capture') && token.hm_slug) {
     const hmP = hmBySlug.get(token.hm_slug);
     if (hmP) {
       const cleanEarnings =
         b.post_buyback_net_revenue * (b.durability_adjustment ?? 1) * b.clean_conversion;
-      const capture = hmP.real_capture_usd || 0;
-      token.token.token_alignment_factor =
-        cleanEarnings > 0 ? Math.min(round2(capture / cleanEarnings), 1) : 0;
+      // Match the capture window to the revenue basis ('1y' → trailing 365d).
+      const windowDays = b.revenue_run_rate_window === '1y' ? 365 : 30;
+      const matched = matchedAnnualCapture(hmP, live, windowDays, ROOT);
+      if (matched) {
+        token.token.token_alignment_factor =
+          cleanEarnings > 0 ? Math.min(round2(matched.capture_usd / cleanEarnings), 1) : 0;
+        token.token.alignment_basis = {
+          window_days: windowDays,
+          capture_usd: Math.round(matched.capture_usd),
+          source: matched.source
+        };
+      }
     }
   }
 }

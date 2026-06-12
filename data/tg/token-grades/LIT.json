@@ -3,11 +3,11 @@
   "project": "Lighter",
   "coingecko_id": "lighter",
   "hm_slug": "lighter",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.54,
-    "token_alignment_grade": "C",
+    "token_alignment_factor": 0.98,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 49849225,
+      "source": "onchain_feed_365d"
+    },
+    "token_alignment_grade": "A",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.04,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.063,
-    "economic_alignment_premium": 0.0368,
+    "economic_alignment_premium": 0.0016,
     "technical_reconciliation_premium": 0.012,
-    "ke": 0.2818,
+    "ke": 0.2466,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 402142649,
-    "trust_discount": 0.74,
+    "trust_discount": 0.46,
     "market_cap_seed": 381529783,
     "fdv_seed": 1526119134,
-    "ss_pe": 3.78,
-    "token_attributable_earnings": 27418817,
-    "implied_token_value": 103684602,
+    "ss_pe": 4.37,
+    "token_attributable_earnings": 49760075,
+    "implied_token_value": 217398387,
     "market_cap": 381529783,
     "fdv": 1526119134,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.27,
-    "implied_value_vs_fdv": 0.07,
+    "implied_value_vs_market_cap": 0.57,
+    "implied_value_vs_fdv": 0.14,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/lighter",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/lighter",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 54% = HM real capture $27.5M (verification: proxy) ÷ clean earnings $50.8M. Auto-refreshed each cron.",
+      "claim": "Alignment 98% = trailing-365d capture $49.8M (source: onchain_feed_365d; HM verification: proxy) ÷ clean earnings $50.8M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/lighter",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -191,8 +196,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.01,
         "clean_platform_earnings": 26757410,
-        "ss_pe": 3.65,
-        "implied_token_value": 52806013,
+        "ss_pe": 4.2,
+        "implied_token_value": 110090643,
         "warnings": []
       },
       {
@@ -202,8 +207,8 @@
         "underwriting_roe": 2,
         "terminal_g": 0.02,
         "clean_platform_earnings": 50775587,
-        "ss_pe": 3.78,
-        "implied_token_value": 103684602,
+        "ss_pe": 4.37,
+        "implied_token_value": 217398387,
         "warnings": []
       },
       {
@@ -213,11 +218,11 @@
         "underwriting_roe": 3,
         "terminal_g": 0.0325,
         "clean_platform_earnings": 50775587,
-        "ss_pe": 3.97,
-        "implied_token_value": 108791736,
+        "ss_pe": 4.62,
+        "implied_token_value": 229897281,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.915Z"
+  "computed_at": "2026-06-12T13:04:59.714Z"
 }

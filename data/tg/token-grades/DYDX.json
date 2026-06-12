@@ -3,11 +3,11 @@
   "project": "dYdX",
   "coingecko_id": "dydx-chain",
   "hm_slug": "dydx",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.23,
-    "token_alignment_grade": "D",
+    "token_alignment_factor": 1,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 10624098,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "A",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.04,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.028,
-    "economic_alignment_premium": 0.0624,
+    "economic_alignment_premium": 0,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.2834,
+    "ke": 0.221,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 74263757,
-    "trust_discount": 0.89,
+    "trust_discount": 0.36,
     "market_cap_seed": 123839145,
     "fdv_seed": 140651519,
-    "ss_pe": 3.63,
-    "token_attributable_earnings": 2321365,
-    "implied_token_value": 8434125,
+    "ss_pe": 4.71,
+    "token_attributable_earnings": 10092893,
+    "implied_token_value": 47514726,
     "market_cap": 123839145,
     "fdv": 140651519,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.07,
-    "implied_value_vs_fdv": 0.06,
+    "implied_value_vs_market_cap": 0.38,
+    "implied_value_vs_fdv": 0.34,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/dydx",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,20 +123,21 @@
       "source_url": "https://defillama.com/protocol/dydx",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 23% = HM real capture $2.4M (verification: proxy) ÷ clean earnings $10.1M. Auto-refreshed each cron.",
+      "claim": "Alignment 100% = trailing-365d capture $10.6M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $10.1M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/dydx",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
     "auto_seeded_from_pipeline_data",
-    "capture_proxy_verified_only"
+    "capture_proxy_verified_only",
+    "capture_exceeds_clean_earnings"
   ],
   "scenarios": {
     "token_discount": [
@@ -189,8 +195,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.005,
         "clean_platform_earnings": 2035220,
-        "ss_pe": 3.58,
-        "implied_token_value": 1673923,
+        "ss_pe": 4.61,
+        "implied_token_value": 9380436,
         "warnings": []
       },
       {
@@ -200,8 +206,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.01,
         "clean_platform_earnings": 10092893,
-        "ss_pe": 3.63,
-        "implied_token_value": 8434125,
+        "ss_pe": 4.71,
+        "implied_token_value": 47514726,
         "warnings": []
       },
       {
@@ -211,11 +217,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0225,
         "clean_platform_earnings": 10624098,
-        "ss_pe": 3.79,
-        "implied_token_value": 9272162,
+        "ss_pe": 4.99,
+        "implied_token_value": 52986685,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.909Z"
+  "computed_at": "2026-06-12T13:04:59.708Z"
 }

@@ -3,11 +3,11 @@
   "project": "Rollbit",
   "coingecko_id": "rollbit-coin",
   "hm_slug": "rollbit-coin",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -46,6 +46,11 @@
     "claim_category": "Treasury-asset claim",
     "claim_category_key": "treasury_claim",
     "token_alignment_factor": 0,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 0,
+      "source": "hm_60d_sma_mismatched"
+    },
     "token_alignment_grade": "F",
     "value_capture_score": 0,
     "token_holder_rights_score": 1.5,
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/rollbit-coin",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/rollbit-coin",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 0% = HM real capture $0.0M (verification: proxy) ÷ clean earnings $0.0M. Auto-refreshed each cron.",
+      "claim": "Alignment 0% = trailing-365d capture $0.0M (source: hm_60d_sma_mismatched; HM verification: proxy) ÷ clean earnings $0.0M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/rollbit-coin",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -219,5 +224,5 @@
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.919Z"
+  "computed_at": "2026-06-12T13:04:59.717Z"
 }

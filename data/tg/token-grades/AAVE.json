@@ -3,11 +3,11 @@
   "project": "Aave",
   "coingecko_id": "aave",
   "hm_slug": "aave",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Treasury-asset claim",
     "claim_category_key": "treasury_claim",
-    "token_alignment_factor": 0.09,
-    "token_alignment_grade": "D",
+    "token_alignment_factor": 0.34,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 27822942,
+      "source": "onchain_feed_365d"
+    },
+    "token_alignment_grade": "C",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.014,
-    "economic_alignment_premium": 0.0736,
+    "economic_alignment_premium": 0.0528,
     "technical_reconciliation_premium": 0.006,
-    "ke": 0.2416,
+    "ke": 0.2208,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 641948623,
-    "trust_discount": 0.95,
+    "trust_discount": 0.79,
     "market_cap_seed": 1014387426,
     "fdv_seed": 1069189264,
-    "ss_pe": 4.45,
-    "token_attributable_earnings": 7319516,
-    "implied_token_value": 32589901,
+    "ss_pe": 4.91,
+    "token_attributable_earnings": 27651503,
+    "implied_token_value": 135870600,
     "market_cap": 1014387426,
     "fdv": 1069189264,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.03,
-    "implied_value_vs_fdv": 0.03,
+    "implied_value_vs_market_cap": 0.13,
+    "implied_value_vs_fdv": 0.13,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/aave",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/aave",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 9% = HM real capture $7.1M (verification: onchain_aggregate) ÷ clean earnings $81.3M. Auto-refreshed each cron.",
+      "claim": "Alignment 34% = trailing-365d capture $27.8M (source: onchain_feed_365d; HM verification: onchain_aggregate) ÷ clean earnings $81.3M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/aave",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "capital_efficiency.operating_treasury",
@@ -134,7 +139,7 @@
       "source_url": "https://defillama.com/protocol/aave",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -197,8 +202,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.01,
         "clean_platform_earnings": 41420714,
-        "ss_pe": 4.28,
-        "implied_token_value": 15953056,
+        "ss_pe": 4.7,
+        "implied_token_value": 66213758,
         "warnings": []
       },
       {
@@ -208,8 +213,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.02,
         "clean_platform_earnings": 81327951,
-        "ss_pe": 4.45,
-        "implied_token_value": 32589901,
+        "ss_pe": 4.91,
+        "implied_token_value": 135870600,
         "warnings": []
       },
       {
@@ -219,11 +224,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0325,
         "clean_platform_earnings": 87583947,
-        "ss_pe": 4.71,
-        "implied_token_value": 37153018,
+        "ss_pe": 5.23,
+        "implied_token_value": 155859838,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.902Z"
+  "computed_at": "2026-06-12T13:04:59.702Z"
 }

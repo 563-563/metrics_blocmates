@@ -3,11 +3,11 @@
   "project": "Gains Network",
   "coingecko_id": "gains-network",
   "hm_slug": "gains-network",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.32,
-    "token_alignment_grade": "C",
+    "token_alignment_factor": 0.74,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 5370280,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "B",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.04,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.014,
-    "economic_alignment_premium": 0.0544,
+    "economic_alignment_premium": 0.0208,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.2754,
+    "ke": 0.2418,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 53589432,
-    "trust_discount": 0.84,
+    "trust_discount": 0.57,
     "market_cap_seed": 11583724,
     "fdv_seed": 11583724,
-    "ss_pe": 3.74,
-    "token_attributable_earnings": 2330601,
-    "implied_token_value": 8722922,
+    "ss_pe": 4.29,
+    "token_attributable_earnings": 5389514,
+    "implied_token_value": 23095704,
     "market_cap": 11583724,
     "fdv": 11583724,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.75,
-    "implied_value_vs_fdv": 0.75,
+    "implied_value_vs_market_cap": 1.99,
+    "implied_value_vs_fdv": 1.99,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/gains-network",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/gains-network",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 32% = HM real capture $2.3M (verification: proxy) ÷ clean earnings $7.3M. Auto-refreshed each cron.",
+      "claim": "Alignment 74% = trailing-365d capture $5.4M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $7.3M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/gains-network",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -189,8 +194,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.005,
         "clean_platform_earnings": 2808859,
-        "ss_pe": 3.68,
-        "implied_token_value": 3309320,
+        "ss_pe": 4.2,
+        "implied_token_value": 8738672,
         "warnings": []
       },
       {
@@ -200,8 +205,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.01,
         "clean_platform_earnings": 7283128,
-        "ss_pe": 3.74,
-        "implied_token_value": 8722922,
+        "ss_pe": 4.29,
+        "implied_token_value": 23095704,
         "warnings": []
       },
       {
@@ -211,11 +216,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0225,
         "clean_platform_earnings": 7666450,
-        "ss_pe": 3.91,
-        "implied_token_value": 9603525,
+        "ss_pe": 4.51,
+        "implied_token_value": 25610767,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.912Z"
+  "computed_at": "2026-06-12T13:04:59.711Z"
 }

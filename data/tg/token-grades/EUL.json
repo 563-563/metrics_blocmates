@@ -3,11 +3,11 @@
   "project": "Euler",
   "coingecko_id": "euler",
   "hm_slug": "euler",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -46,6 +46,11 @@
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
     "token_alignment_factor": 0.74,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 2757282,
+      "source": "dl_holders_revenue_1y"
+    },
     "token_alignment_grade": "B",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/euler",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/euler",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 74% = HM real capture $2.8M (verification: proxy) ÷ clean earnings $3.7M. Auto-refreshed each cron.",
+      "claim": "Alignment 74% = trailing-365d capture $2.8M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $3.7M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/euler",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -217,5 +222,5 @@
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.911Z"
+  "computed_at": "2026-06-12T13:04:59.710Z"
 }

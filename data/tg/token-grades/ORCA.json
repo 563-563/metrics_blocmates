@@ -3,11 +3,11 @@
   "project": "Orca",
   "coingecko_id": "orca",
   "hm_slug": "orca",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,7 +45,12 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.09,
+    "token_alignment_factor": 0.19,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 2041145,
+      "source": "dl_holders_revenue_1y"
+    },
     "token_alignment_grade": "D",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.028,
-    "economic_alignment_premium": 0.0736,
+    "economic_alignment_premium": 0.0656,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.2866,
+    "ke": 0.2786,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 78588210,
-    "trust_discount": 0.96,
+    "trust_discount": 0.9,
     "market_cap_seed": 63673794,
     "fdv_seed": 78546078,
-    "ss_pe": 3.59,
-    "token_attributable_earnings": 961255,
-    "implied_token_value": 3452085,
+    "ss_pe": 3.7,
+    "token_attributable_earnings": 2029316,
+    "implied_token_value": 7504794,
     "market_cap": 63673794,
     "fdv": 78546078,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.05,
-    "implied_value_vs_fdv": 0.04,
+    "implied_value_vs_market_cap": 0.12,
+    "implied_value_vs_fdv": 0.1,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/orca",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/orca",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 9% = HM real capture $0.9M (verification: proxy) ÷ clean earnings $10.7M. Auto-refreshed each cron.",
+      "claim": "Alignment 19% = trailing-365d capture $2.0M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $10.7M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/orca",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -189,8 +194,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.005,
         "clean_platform_earnings": 4021740,
-        "ss_pe": 3.54,
-        "implied_token_value": 1279645,
+        "ss_pe": 3.64,
+        "implied_token_value": 2780462,
         "warnings": []
       },
       {
@@ -200,8 +205,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.01,
         "clean_platform_earnings": 10680613,
-        "ss_pe": 3.59,
-        "implied_token_value": 3452085,
+        "ss_pe": 3.7,
+        "implied_token_value": 7504794,
         "warnings": []
       },
       {
@@ -211,11 +216,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0225,
         "clean_platform_earnings": 11242750,
-        "ss_pe": 3.75,
-        "implied_token_value": 3792991,
+        "ss_pe": 3.87,
+        "implied_token_value": 8257561,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.917Z"
+  "computed_at": "2026-06-12T13:04:59.715Z"
 }

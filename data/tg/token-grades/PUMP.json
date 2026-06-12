@@ -3,11 +3,11 @@
   "project": "pump.fun",
   "coingecko_id": "pump-fun",
   "hm_slug": "pump.fun",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.57,
-    "token_alignment_grade": "C",
+    "token_alignment_factor": 0.91,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 295043111,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "A",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.048,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.042,
-    "economic_alignment_premium": 0.0352,
+    "economic_alignment_premium": 0.0064,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.2642,
+    "ke": 0.2354,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 2567523198,
-    "trust_discount": 0.71,
+    "trust_discount": 0.47,
     "market_cap_seed": 532672706,
     "fdv_seed": 1308307480,
-    "ss_pe": 4.04,
-    "token_attributable_earnings": 185408136,
-    "implied_token_value": 749123783,
+    "ss_pe": 4.58,
+    "token_attributable_earnings": 296002463,
+    "implied_token_value": 1355876341,
     "market_cap": 532672706,
     "fdv": 1308307480,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 1.41,
-    "implied_value_vs_fdv": 0.57,
+    "implied_value_vs_market_cap": 2.55,
+    "implied_value_vs_fdv": 1.04,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/pump.fun",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/pump.fun",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 57% = HM real capture $183.9M (verification: proxy) ÷ clean earnings $325.3M. Auto-refreshed each cron.",
+      "claim": "Alignment 91% = trailing-365d capture $295.0M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $325.3M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/pump.fun",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -189,8 +194,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.01,
         "clean_platform_earnings": 231952332,
-        "ss_pe": 3.9,
-        "implied_token_value": 515490180,
+        "ss_pe": 4.4,
+        "implied_token_value": 928129481,
         "warnings": []
       },
       {
@@ -200,8 +205,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.02,
         "clean_platform_earnings": 325277432,
-        "ss_pe": 4.04,
-        "implied_token_value": 749123783,
+        "ss_pe": 4.58,
+        "implied_token_value": 1355876341,
         "warnings": []
       },
       {
@@ -211,11 +216,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0325,
         "clean_platform_earnings": 342397297,
-        "ss_pe": 4.25,
-        "implied_token_value": 830157049,
+        "ss_pe": 4.86,
+        "implied_token_value": 1513459428,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.918Z"
+  "computed_at": "2026-06-12T13:04:59.716Z"
 }

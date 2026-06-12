@@ -3,11 +3,11 @@
   "project": "Raydium",
   "coingecko_id": "raydium",
   "hm_slug": "raydium",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.18,
-    "token_alignment_grade": "D",
+    "token_alignment_factor": 0.68,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 29347670,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "B",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.042,
-    "economic_alignment_premium": 0.0656,
+    "economic_alignment_premium": 0.0256,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.2926,
+    "ke": 0.2526,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 317783951,
-    "trust_discount": 0.91,
+    "trust_discount": 0.62,
     "market_cap_seed": 157757620,
     "fdv_seed": 325511731,
-    "ss_pe": 3.51,
-    "token_attributable_earnings": 7773977,
-    "implied_token_value": 27325372,
+    "ss_pe": 4.09,
+    "token_attributable_earnings": 29368356,
+    "implied_token_value": 120249657,
     "market_cap": 157757620,
     "fdv": 325511731,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.17,
-    "implied_value_vs_fdv": 0.08,
+    "implied_value_vs_market_cap": 0.76,
+    "implied_value_vs_fdv": 0.37,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/raydium",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/raydium",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 18% = HM real capture $7.8M (verification: proxy) ÷ clean earnings $43.2M. Auto-refreshed each cron.",
+      "claim": "Alignment 68% = trailing-365d capture $29.3M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $43.2M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/raydium",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -189,8 +194,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.005,
         "clean_platform_earnings": 8607462,
-        "ss_pe": 3.46,
-        "implied_token_value": 5363203,
+        "ss_pe": 4.02,
+        "implied_token_value": 23534170,
         "warnings": []
       },
       {
@@ -200,8 +205,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.01,
         "clean_platform_earnings": 43188758,
-        "ss_pe": 3.51,
-        "implied_token_value": 27325372,
+        "ss_pe": 4.09,
+        "implied_token_value": 120249657,
         "warnings": []
       },
       {
@@ -211,11 +216,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0225,
         "clean_platform_earnings": 45461851,
-        "ss_pe": 3.67,
-        "implied_token_value": 29993713,
+        "ss_pe": 4.3,
+        "implied_token_value": 133007032,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.918Z"
+  "computed_at": "2026-06-12T13:04:59.716Z"
 }

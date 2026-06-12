@@ -3,11 +3,11 @@
   "project": "Ondo Finance",
   "coingecko_id": "ondo-finance",
   "hm_slug": "ondo-finance",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,9 +45,14 @@
   "token": {
     "claim_category": "Current-state no utility",
     "claim_category_key": "no_utility",
-    "token_alignment_factor": 0,
-    "token_alignment_grade": "F",
-    "value_capture_score": 0,
+    "token_alignment_factor": 0.39,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 6925433,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "C",
+    "value_capture_score": 2,
     "token_holder_rights_score": 0.5,
     "entity_alignment_score": 1,
     "transparency_score": 2,
@@ -60,10 +65,10 @@
     "regulatory_premium": 0.04,
     "custody_operational_premium": 0.03,
     "governance_supply_premium": 0.042,
-    "economic_alignment_premium": 0.08,
+    "economic_alignment_premium": 0.0496,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.307,
-    "ke_grade": "D"
+    "ke": 0.2766,
+    "ke_grade": "C"
   },
   "operating_cases": [
     {
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 128726281,
-    "trust_discount": 1,
+    "trust_discount": 0.8,
     "market_cap_seed": 1712449686,
     "fdv_seed": 3516807156,
-    "ss_pe": 3.28,
-    "token_attributable_earnings": 0,
-    "implied_token_value": 0,
+    "ss_pe": 3.66,
+    "token_attributable_earnings": 6951219,
+    "implied_token_value": 25421751,
     "market_cap": 1712449686,
     "fdv": 3516807156,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0,
-    "implied_value_vs_fdv": 0,
+    "implied_value_vs_market_cap": 0.01,
+    "implied_value_vs_fdv": 0.01,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/ondo-finance",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,20 +123,19 @@
       "source_url": "https://defillama.com/protocol/ondo-finance",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 0% = HM real capture $0.0M (verification: governance_stated) ÷ clean earnings $17.8M. Auto-refreshed each cron.",
+      "claim": "Alignment 39% = trailing-365d capture $6.9M (source: dl_holders_revenue_1y; HM verification: governance_stated) ÷ clean earnings $17.8M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/ondo-finance",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
-    "auto_seeded_from_pipeline_data",
-    "mechanism_proposed_not_live"
+    "auto_seeded_from_pipeline_data"
   ],
   "scenarios": {
     "token_discount": [
@@ -189,7 +193,7 @@
         "underwriting_roe": 0.30000000000000004,
         "terminal_g": 0.005,
         "clean_platform_earnings": 0,
-        "ss_pe": 3.26,
+        "ss_pe": 3.62,
         "implied_token_value": 0,
         "warnings": []
       },
@@ -200,8 +204,8 @@
         "underwriting_roe": 0.4,
         "terminal_g": 0.01,
         "clean_platform_earnings": 17823639,
-        "ss_pe": 3.28,
-        "implied_token_value": 0,
+        "ss_pe": 3.66,
+        "implied_token_value": 25421751,
         "warnings": []
       },
       {
@@ -211,11 +215,11 @@
         "underwriting_roe": 0.6000000000000001,
         "terminal_g": 0.0225,
         "clean_platform_earnings": 18872088,
-        "ss_pe": 3.38,
-        "implied_token_value": 0,
+        "ss_pe": 3.79,
+        "implied_token_value": 27879221,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.916Z"
+  "computed_at": "2026-06-12T13:04:59.715Z"
 }

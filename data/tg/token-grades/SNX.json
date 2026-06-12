@@ -3,11 +3,11 @@
   "project": "Synthetix",
   "coingecko_id": "havven",
   "hm_slug": "synthetix",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,9 +45,14 @@
   "token": {
     "claim_category": "Current-state no utility",
     "claim_category_key": "no_utility",
-    "token_alignment_factor": 0,
-    "token_alignment_grade": "F",
-    "value_capture_score": 0,
+    "token_alignment_factor": 1,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 458351,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "A",
+    "value_capture_score": 2,
     "token_holder_rights_score": 0.5,
     "entity_alignment_score": 1,
     "transparency_score": 2,
@@ -60,10 +65,10 @@
     "regulatory_premium": 0.04,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.014,
-    "economic_alignment_premium": 0.08,
+    "economic_alignment_premium": 0,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.287,
-    "ke_grade": "C"
+    "ke": 0.207,
+    "ke_grade": "B"
   },
   "operating_cases": [
     {
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 2903712,
-    "trust_discount": 1,
+    "trust_discount": 0.31,
     "market_cap_seed": 84118735,
     "fdv_seed": 84222171,
-    "ss_pe": 3.59,
-    "token_attributable_earnings": 0,
-    "implied_token_value": 0,
+    "ss_pe": 5.04,
+    "token_attributable_earnings": 394632,
+    "implied_token_value": 1989854,
     "market_cap": 84118735,
     "fdv": 84222171,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0,
-    "implied_value_vs_fdv": 0,
+    "implied_value_vs_market_cap": 0.02,
+    "implied_value_vs_fdv": 0.02,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/synthetix",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,19 +123,21 @@
       "source_url": "https://defillama.com/protocol/synthetix",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 0% = HM real capture $0.0M (verification: governance_stated) ÷ clean earnings $0.4M. Auto-refreshed each cron.",
+      "claim": "Alignment 100% = trailing-365d capture $0.5M (source: dl_holders_revenue_1y; HM verification: governance_stated) ÷ clean earnings $0.4M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/synthetix",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
-    "auto_seeded_from_pipeline_data"
+    "auto_seeded_from_pipeline_data",
+    "capture_exceeds_clean_earnings",
+    "capture_without_verified_mechanism"
   ],
   "scenarios": {
     "token_discount": [
@@ -188,8 +195,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.005,
         "clean_platform_earnings": 54038,
-        "ss_pe": 3.53,
-        "implied_token_value": 0,
+        "ss_pe": 4.93,
+        "implied_token_value": 266327,
         "warnings": []
       },
       {
@@ -199,8 +206,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.01,
         "clean_platform_earnings": 394632,
-        "ss_pe": 3.59,
-        "implied_token_value": 0,
+        "ss_pe": 5.04,
+        "implied_token_value": 1989854,
         "warnings": []
       },
       {
@@ -210,11 +217,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0225,
         "clean_platform_earnings": 417846,
-        "ss_pe": 3.74,
-        "implied_token_value": 0,
+        "ss_pe": 5.37,
+        "implied_token_value": 2242099,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.919Z"
+  "computed_at": "2026-06-12T13:04:59.718Z"
 }

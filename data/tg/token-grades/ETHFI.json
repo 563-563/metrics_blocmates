@@ -3,11 +3,11 @@
   "project": "ether.fi",
   "coingecko_id": "ether-fi",
   "hm_slug": "ether-fi",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,7 +45,12 @@
   "token": {
     "claim_category": "Treasury-asset claim",
     "claim_category_key": "treasury_claim",
-    "token_alignment_factor": 0.11,
+    "token_alignment_factor": 0.27,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 14286935,
+      "source": "dl_holders_revenue_1y"
+    },
     "token_alignment_grade": "D",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.028,
-    "economic_alignment_premium": 0.072,
+    "economic_alignment_premium": 0.0592,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.271,
+    "ke": 0.2582,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 421119436,
-    "trust_discount": 0.95,
+    "trust_discount": 0.86,
     "market_cap_seed": 261833343,
     "fdv_seed": 296877699,
-    "ss_pe": 3.93,
-    "token_attributable_earnings": 5868641,
-    "implied_token_value": 23069292,
+    "ss_pe": 4.14,
+    "token_attributable_earnings": 14404846,
+    "implied_token_value": 59667426,
     "market_cap": 261833343,
     "fdv": 296877699,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.09,
-    "implied_value_vs_fdv": 0.08,
+    "implied_value_vs_market_cap": 0.23,
+    "implied_value_vs_fdv": 0.2,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/ether-fi",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/ether-fi",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 11% = HM real capture $5.6M (verification: proxy) ÷ clean earnings $53.4M. Auto-refreshed each cron.",
+      "claim": "Alignment 27% = trailing-365d capture $14.3M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $53.4M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/ether-fi",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -189,8 +194,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.01,
         "clean_platform_earnings": 35154014,
-        "ss_pe": 3.8,
-        "implied_token_value": 14684171,
+        "ss_pe": 3.99,
+        "implied_token_value": 37901749,
         "warnings": []
       },
       {
@@ -200,8 +205,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.02,
         "clean_platform_earnings": 53351280,
-        "ss_pe": 3.93,
-        "implied_token_value": 23069292,
+        "ss_pe": 4.14,
+        "implied_token_value": 59667426,
         "warnings": []
       },
       {
@@ -211,11 +216,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0325,
         "clean_platform_earnings": 56159242,
-        "ss_pe": 4.13,
-        "implied_token_value": 25527404,
+        "ss_pe": 4.37,
+        "implied_token_value": 66211672,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.910Z"
+  "computed_at": "2026-06-12T13:04:59.709Z"
 }

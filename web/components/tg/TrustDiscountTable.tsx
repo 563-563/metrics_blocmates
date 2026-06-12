@@ -282,7 +282,7 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
                 active={sortKey === "alignment"}
                 dir={sortDir}
                 onClick={() => toggle("alignment")}
-                tip="The share of clean earnings the token actually receives — verified capture ÷ earnings, re-derived from on-chain data every cron run. A = effectively equity, F = no meaningful claim."
+                tip="The share of clean earnings the token actually receives — verified capture ÷ earnings, both measured over the SAME trailing window (on-chain feeds where we have them, DefiLlama holders-revenue otherwise), re-derived every cron run. A = effectively equity, F = no meaningful claim."
               >
                 Align
               </SortHeader>

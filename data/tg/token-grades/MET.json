@@ -3,11 +3,11 @@
   "project": "Meteora",
   "coingecko_id": "meteora",
   "hm_slug": "meteora",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,9 +45,14 @@
   "token": {
     "claim_category": "Current-state no utility",
     "claim_category_key": "no_utility",
-    "token_alignment_factor": 0,
-    "token_alignment_grade": "F",
-    "value_capture_score": 0,
+    "token_alignment_factor": 0.26,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 13659737,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "D",
+    "value_capture_score": 2,
     "token_holder_rights_score": 0.5,
     "entity_alignment_score": 1,
     "transparency_score": 2,
@@ -60,10 +65,10 @@
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.042,
-    "economic_alignment_premium": 0.08,
+    "economic_alignment_premium": 0.0592,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.307,
-    "ke_grade": "D"
+    "ke": 0.2862,
+    "ke_grade": "C"
   },
   "operating_cases": [
     {
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 387251939,
-    "trust_discount": 1,
+    "trust_discount": 0.87,
     "market_cap_seed": 58916252,
     "fdv_seed": 111187757,
-    "ss_pe": 3.34,
-    "token_attributable_earnings": 0,
-    "implied_token_value": 0,
+    "ss_pe": 3.6,
+    "token_attributable_earnings": 13683768,
+    "implied_token_value": 49212683,
     "market_cap": 58916252,
     "fdv": 111187757,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0,
-    "implied_value_vs_fdv": 0,
+    "implied_value_vs_market_cap": 0.84,
+    "implied_value_vs_fdv": 0.44,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/meteora",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,20 +123,19 @@
       "source_url": "https://defillama.com/protocol/meteora",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 0% = HM real capture $0.0M (verification: governance_stated) ÷ clean earnings $52.6M. Auto-refreshed each cron.",
+      "claim": "Alignment 26% = trailing-365d capture $13.7M (source: dl_holders_revenue_1y; HM verification: governance_stated) ÷ clean earnings $52.6M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/meteora",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
-    "auto_seeded_from_pipeline_data",
-    "mechanism_proposed_not_live"
+    "auto_seeded_from_pipeline_data"
   ],
   "scenarios": {
     "token_discount": [
@@ -189,8 +193,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.005,
         "clean_platform_earnings": 16990559,
-        "ss_pe": 3.3,
-        "implied_token_value": 0,
+        "ss_pe": 3.54,
+        "implied_token_value": 15639800,
         "warnings": []
       },
       {
@@ -200,8 +204,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.01,
         "clean_platform_earnings": 52629878,
-        "ss_pe": 3.34,
-        "implied_token_value": 0,
+        "ss_pe": 3.6,
+        "implied_token_value": 49212683,
         "warnings": []
       },
       {
@@ -211,11 +215,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0225,
         "clean_platform_earnings": 55725753,
-        "ss_pe": 3.48,
-        "implied_token_value": 0,
+        "ss_pe": 3.75,
+        "implied_token_value": 54394421,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.915Z"
+  "computed_at": "2026-06-12T13:04:59.714Z"
 }

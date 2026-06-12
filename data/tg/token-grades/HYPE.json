@@ -3,11 +3,11 @@
   "project": "Hyperliquid",
   "coingecko_id": "hyperliquid",
   "hm_slug": "hyperliquid",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.46,
-    "token_alignment_grade": "C",
+    "token_alignment_factor": 0.88,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 777796798,
+      "source": "onchain_feed_365d"
+    },
+    "token_alignment_grade": "A",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,10 +65,10 @@
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.035,
-    "economic_alignment_premium": 0.0432,
+    "economic_alignment_premium": 0.0096,
     "technical_reconciliation_premium": 0.006,
-    "ke": 0.2252,
-    "ke_grade": "C"
+    "ke": 0.1916,
+    "ke_grade": "B"
   },
   "operating_cases": [
     {
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 6986195422,
-    "trust_discount": 0.72,
+    "trust_discount": 0.36,
     "market_cap_seed": 13701685259,
     "fdv_seed": 58842747240,
-    "ss_pe": 4.84,
-    "token_attributable_earnings": 404402252,
-    "implied_token_value": 1957632733,
+    "ss_pe": 5.79,
+    "token_attributable_earnings": 773639090,
+    "implied_token_value": 4478330399,
     "market_cap": 13701685259,
     "fdv": 58842747240,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.14,
-    "implied_value_vs_fdv": 0.03,
+    "implied_value_vs_market_cap": 0.33,
+    "implied_value_vs_fdv": 0.08,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/hyperliquid",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/hyperliquid",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 46% = HM real capture $400.5M (verification: onchain) ÷ clean earnings $879.1M. Auto-refreshed each cron.",
+      "claim": "Alignment 88% = trailing-365d capture $777.8M (source: onchain_feed_365d; HM verification: onchain) ÷ clean earnings $879.1M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/hyperliquid",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "capital_efficiency.operating_treasury",
@@ -134,7 +139,7 @@
       "source_url": "https://defillama.com/protocol/hyperliquid",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -198,8 +203,8 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.01,
         "clean_platform_earnings": 623765009,
-        "ss_pe": 4.63,
-        "implied_token_value": 1327400795,
+        "ss_pe": 5.48,
+        "implied_token_value": 3009215823,
         "warnings": []
       },
       {
@@ -209,8 +214,8 @@
         "underwriting_roe": 3,
         "terminal_g": 0.02,
         "clean_platform_earnings": 879135330,
-        "ss_pe": 4.84,
-        "implied_token_value": 1957632733,
+        "ss_pe": 5.79,
+        "implied_token_value": 4478330399,
         "warnings": []
       },
       {
@@ -220,11 +225,11 @@
         "underwriting_roe": 4.5,
         "terminal_g": 0.0325,
         "clean_platform_earnings": 879135330,
-        "ss_pe": 5.15,
-        "implied_token_value": 2083453912,
+        "ss_pe": 6.24,
+        "implied_token_value": 4827477668,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.912Z"
+  "computed_at": "2026-06-12T13:04:59.712Z"
 }

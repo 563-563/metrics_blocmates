@@ -3,11 +3,11 @@
   "project": "Pendle",
   "coingecko_id": "pendle",
   "hm_slug": "pendle",
-  "updated_at": "2026-06-11T20:49:35.593Z",
+  "updated_at": "2026-06-12T13:04:59.627Z",
   "seeded_by": "scripts/tg/seed-from-pipeline.js",
   "data_bindings": {
     "revenue": "dl_latest",
-    "alignment": "hm_real_capture",
+    "alignment": "matched_window_capture",
     "market": "cg_live"
   },
   "business": {
@@ -45,8 +45,13 @@
   "token": {
     "claim_category": "Revenue + treasury governance",
     "claim_category_key": "revenue_treasury_gov",
-    "token_alignment_factor": 0.46,
-    "token_alignment_grade": "C",
+    "token_alignment_factor": 0.86,
+    "alignment_basis": {
+      "window_days": 365,
+      "capture_usd": 21170655,
+      "source": "dl_holders_revenue_1y"
+    },
+    "token_alignment_grade": "A",
     "value_capture_score": 2,
     "token_holder_rights_score": 1.5,
     "entity_alignment_score": 1,
@@ -60,9 +65,9 @@
     "regulatory_premium": 0.032,
     "custody_operational_premium": 0.01,
     "governance_supply_premium": 0.042,
-    "economic_alignment_premium": 0.0432,
+    "economic_alignment_premium": 0.0112,
     "technical_reconciliation_premium": 0.009,
-    "ke": 0.2702,
+    "ke": 0.2382,
     "ke_grade": "C"
   },
   "operating_cases": [
@@ -90,17 +95,17 @@
   ],
   "valuation": {
     "implied_full_equity": 194324371,
-    "trust_discount": 0.77,
+    "trust_discount": 0.51,
     "market_cap_seed": 208169454,
     "fdv_seed": 343460721,
-    "ss_pe": 3.94,
-    "token_attributable_earnings": 11324647,
-    "implied_token_value": 44658878,
+    "ss_pe": 4.52,
+    "token_attributable_earnings": 21172165,
+    "implied_token_value": 95737259,
     "market_cap": 208169454,
     "fdv": 343460721,
     "market_source": "live_cg",
-    "implied_value_vs_market_cap": 0.21,
-    "implied_value_vs_fdv": 0.13,
+    "implied_value_vs_market_cap": 0.46,
+    "implied_value_vs_fdv": 0.28,
     "warnings": []
   },
   "evidence": [
@@ -110,7 +115,7 @@
       "source_url": "https://defillama.com/protocol/pendle",
       "confidence": "medium",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.claim_category",
@@ -118,15 +123,15 @@
       "source_url": "https://defillama.com/protocol/pendle",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     },
     {
       "field": "token.token_alignment_factor",
-      "claim": "Alignment 46% = HM real capture $11.4M (verification: proxy) ÷ clean earnings $24.6M. Auto-refreshed each cron.",
+      "claim": "Alignment 86% = trailing-365d capture $21.2M (source: dl_holders_revenue_1y; HM verification: proxy) ÷ clean earnings $24.6M over the same window. Auto-refreshed each cron.",
       "source_url": "https://defillama.com/protocol/pendle",
       "confidence": "low",
       "direction": "neutral",
-      "updated_at": "2026-06-11T20:49:35.593Z"
+      "updated_at": "2026-06-12T13:04:59.627Z"
     }
   ],
   "flags": [
@@ -189,8 +194,8 @@
         "underwriting_roe": 1.125,
         "terminal_g": 0.01,
         "clean_platform_earnings": 13026142,
-        "ss_pe": 3.81,
-        "implied_token_value": 22823839,
+        "ss_pe": 4.34,
+        "implied_token_value": 48654270,
         "warnings": []
       },
       {
@@ -200,8 +205,8 @@
         "underwriting_roe": 1.5,
         "terminal_g": 0.02,
         "clean_platform_earnings": 24618797,
-        "ss_pe": 3.94,
-        "implied_token_value": 44658878,
+        "ss_pe": 4.52,
+        "implied_token_value": 95737259,
         "warnings": []
       },
       {
@@ -211,11 +216,11 @@
         "underwriting_roe": 2.25,
         "terminal_g": 0.0325,
         "clean_platform_earnings": 24618797,
-        "ss_pe": 4.15,
-        "implied_token_value": 46954432,
+        "ss_pe": 4.79,
+        "implied_token_value": 101440667,
         "warnings": []
       }
     ]
   },
-  "computed_at": "2026-06-12T12:15:36.917Z"
+  "computed_at": "2026-06-12T13:04:59.716Z"
 }

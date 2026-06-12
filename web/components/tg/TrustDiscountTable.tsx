@@ -5,6 +5,7 @@ import Link from "next/link";
 import { fmtUsd } from "@/lib/format";
 import { gradeColorClass, CLARITY_SCENARIO } from "@/lib/token-grading";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
+import { InfoTip } from "@/components/InfoTip";
 
 // Cohort table with the CLARITY-scenario toggle, sortable columns, a text
 // filter, and claim-category chips. Both regimes arrive precomputed from
@@ -55,12 +56,14 @@ function SortHeader({
   dir,
   onClick,
   children,
+  tip,
   align = "right"
 }: {
   active: boolean;
   dir: "asc" | "desc";
   onClick: () => void;
   children: React.ReactNode;
+  tip?: React.ReactNode;
   align?: "left" | "right";
 }) {
   const arrow = active ? (dir === "asc" ? "↑" : "↓") : "·";
@@ -74,6 +77,12 @@ function SortHeader({
           <span className={`text-[9px] ${active ? "text-accent" : "text-fg-faint"}`} aria-hidden="true">{arrow}</span>
         )}
         {children}
+        {/* stopPropagation so opening the tooltip doesn't trigger a sort */}
+        {tip && (
+          <span onClick={(e) => e.stopPropagation()} className="normal-case tracking-normal">
+            <InfoTip>{tip}</InfoTip>
+          </span>
+        )}
         {align !== "right" && (
           <span className={`text-[9px] ${active ? "text-accent" : "text-fg-faint"}`} aria-hidden="true">{arrow}</span>
         )}
@@ -220,31 +229,77 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
               <SortHeader active={sortKey === "project"} dir={sortDir} onClick={() => toggle("project", "asc")} align="left">
                 Token
               </SortHeader>
-              <SortHeader active={sortKey === "category"} dir={sortDir} onClick={() => toggle("category", "asc")} align="left">
+              <SortHeader
+                active={sortKey === "category"}
+                dir={sortDir}
+                onClick={() => toggle("category", "asc")}
+                align="left"
+                tip="Where the token sits on the claim ladder — from no utility (owns nothing) up to full equity (owns everything). Derived from the protocol's live value-accrual mechanism and status."
+              >
                 Claim category
               </SortHeader>
-              <SortHeader active={sortKey === "discount"} dir={sortDir} onClick={() => toggle("discount")}>
+              <SortHeader
+                active={sortKey === "discount"}
+                dir={sortDir}
+                onClick={() => toggle("discount")}
+                tip="The headline: how much value the token forfeits vs the same business as equity. 1 − (as this token ÷ as equity). Green = near-equity claim; red = the token owns almost none of the business. Every point is fixable by governance."
+              >
                 Trust discount
               </SortHeader>
-              <SortHeader active={sortKey === "implied"} dir={sortDir} onClick={() => toggle("implied")}>
+              <SortHeader
+                active={sortKey === "implied"}
+                dir={sortDir}
+                onClick={() => toggle("implied")}
+                tip="What the token's actual claim is worth: clean earnings × the share the token receives (alignment) × a steady-state earnings multiple priced for this claim's risk."
+              >
                 As this token
               </SortHeader>
-              <SortHeader active={sortKey === "full_equity"} dir={sortDir} onClick={() => toggle("full_equity")}>
+              <SortHeader
+                active={sortKey === "full_equity"}
+                dir={sortDir}
+                onClick={() => toggle("full_equity")}
+                tip="What the same business would be worth if the token were a real share: 100% of earnings at the full-equity benchmark required return (14.5% today)."
+              >
                 As equity
               </SortHeader>
-              <SortHeader active={sortKey === "mcap"} dir={sortDir} onClick={() => toggle("mcap")}>
+              <SortHeader
+                active={sortKey === "mcap"}
+                dir={sortDir}
+                onClick={() => toggle("mcap")}
+                tip="Live circulating market cap (CoinGecko, refreshed with the data cron)."
+              >
                 Mcap
               </SortHeader>
-              <SortHeader active={sortKey === "ke"} dir={sortDir} onClick={() => toggle("ke")}>
+              <SortHeader
+                active={sortKey === "ke"}
+                dir={sortDir}
+                onClick={() => toggle("ke")}
+                tip="Required return for this claim's risk. Starts at T-bill + equity risk (~9%), then scored premia stack on top: liquidity, regulatory, custody, governance/supply, economic alignment, technical. Higher Ke = lower multiple. The letter grade colors the value."
+              >
                 Ke
               </SortHeader>
-              <SortHeader active={sortKey === "alignment"} dir={sortDir} onClick={() => toggle("alignment")}>
+              <SortHeader
+                active={sortKey === "alignment"}
+                dir={sortDir}
+                onClick={() => toggle("alignment")}
+                tip="The share of clean earnings the token actually receives — verified capture ÷ earnings, re-derived from on-chain data every cron run. A = effectively equity, F = no meaningful claim."
+              >
                 Align
               </SortHeader>
-              <SortHeader active={sortKey === "vs_mcap"} dir={sortDir} onClick={() => toggle("vs_mcap")}>
+              <SortHeader
+                active={sortKey === "vs_mcap"}
+                dir={sortDir}
+                onClick={() => toggle("vs_mcap")}
+                tip="Implied value ÷ market cap. Above 1× = the market prices the token below what its graded claim is worth; below 1× = the market pays a premium over the claim (betting on growth or future alignment)."
+              >
                 vs mcap
               </SortHeader>
-              <SortHeader active={sortKey === "flags"} dir={sortDir} onClick={() => toggle("flags")}>
+              <SortHeader
+                active={sortKey === "flags"}
+                dir={sortDir}
+                onClick={() => toggle("flags")}
+                tip="Open warnings on this grade — data gaps, unlock overhangs, exploits, dormant mechanisms. Details on the token's page."
+              >
                 Flags
               </SortHeader>
             </tr>

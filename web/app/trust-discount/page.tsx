@@ -9,6 +9,7 @@ import {
 import { PageHeader } from "@/components/PageHeader";
 import { HowToRead } from "@/components/HowToRead";
 import { TrustDiscountTable, type TdRow, type TdRegimeValues } from "@/components/tg/TrustDiscountTable";
+import { TrustDiscountExplainer } from "@/components/tg/TrustDiscountExplainer";
 import type { TokenGrade } from "@/lib/tg-data";
 
 export const revalidate = 300;
@@ -60,7 +61,7 @@ export default function TrustDiscountIndex() {
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       <PageHeader
         title="Trust Discount"
-        description="How much value a token forfeits because holders can't trust they'll receive the business's economics. Same business, two wrappers: what it would be worth as equity, and what it's worth as this token."
+        description="How much value a token forfeits because holders can't trust they'll receive the business's economics."
         meta={`As of ${tgLatest.generated_at.slice(0, 10)} · ${rows.length} tokens graded`}
       />
 
@@ -82,6 +83,7 @@ export default function TrustDiscountIndex() {
           can&apos;t turn on a fee switch. Each token&apos;s page breaks down premium-by-premium
           what the law changes.
         </p>
+        <TrustDiscountExplainer />
       </HowToRead>
 
       <TrustDiscountTable rows={rows} />

@@ -22,6 +22,7 @@ export type TdRegimeValues = {
 export type TdRow = {
   symbol: string;
   project: string;
+  image: string | null;
   claim_category: string | null;
   alignment_grade: string | null;
   alignment_factor: number | null;
@@ -242,7 +243,19 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
                 active={sortKey === "discount"}
                 dir={sortDir}
                 onClick={() => toggle("discount")}
-                tip="The headline: how much value the token forfeits vs the same business as equity. 1 − (as this token ÷ as equity). Green = near-equity claim; red = the token owns almost none of the business. Every point is fixable by governance."
+                tip={
+                  <>
+                    <span className="block mb-2">
+                      The headline: how much value the token forfeits vs the same business as
+                      equity. 1 − (as this token ÷ as equity).
+                    </span>
+                    <span className="block mb-2">
+                      Green = near-equity claim · red = the token owns almost none of the
+                      business.
+                    </span>
+                    <span className="block">Every point is fixable by governance.</span>
+                  </>
+                }
               >
                 Trust discount
               </SortHeader>
@@ -274,23 +287,57 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
                 active={sortKey === "ke"}
                 dir={sortDir}
                 onClick={() => toggle("ke")}
-                tip="Required return for this claim's risk. Starts at T-bill + equity risk (~9%), then scored premia stack on top: liquidity, regulatory, custody, governance/supply, economic alignment, technical. Higher Ke = lower multiple. The letter grade colors the value."
+                tip={
+                  <>
+                    <span className="block mb-2">
+                      The return this claim must &quot;pay&quot; for its risk (the cost of equity,
+                      Ke). Starts at T-bill + equity risk (~9%), then scored premia stack on top:
+                      liquidity, regulatory, custody, governance/supply, economic alignment,
+                      technical.
+                    </span>
+                    <span className="block">
+                      Higher required return = lower earnings multiple. The color is the letter
+                      grade.
+                    </span>
+                  </>
+                }
               >
-                Ke
+                Required return
               </SortHeader>
               <SortHeader
                 active={sortKey === "alignment"}
                 dir={sortDir}
                 onClick={() => toggle("alignment")}
-                tip="The share of clean earnings the token actually receives — verified capture ÷ earnings, both measured over the SAME trailing window (on-chain feeds where we have them, DefiLlama holders-revenue otherwise), re-derived every cron run. A = effectively equity, F = no meaningful claim."
+                tip={
+                  <>
+                    <span className="block mb-2">
+                      The share of clean earnings the token actually receives — verified capture
+                      ÷ earnings, both measured over the SAME trailing window (on-chain feeds
+                      where we have them, DefiLlama holders-revenue otherwise).
+                    </span>
+                    <span className="block">
+                      Re-derived every data refresh. A = effectively equity · F = no meaningful
+                      claim.
+                    </span>
+                  </>
+                }
               >
-                Align
+                Alignment score
               </SortHeader>
               <SortHeader
                 active={sortKey === "vs_mcap"}
                 dir={sortDir}
                 onClick={() => toggle("vs_mcap")}
-                tip="Implied value ÷ market cap. Above 1× = the market prices the token below what its graded claim is worth; below 1× = the market pays a premium over the claim (betting on growth or future alignment)."
+                tip={
+                  <>
+                    <span className="block mb-2">Implied value ÷ market cap.</span>
+                    <span className="block">
+                      Above 1× = the market prices the token below what its graded claim is
+                      worth · below 1× = the market pays a premium over the claim (betting on
+                      growth or future alignment).
+                    </span>
+                  </>
+                }
               >
                 vs mcap
               </SortHeader>
@@ -312,11 +359,19 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
               return (
                 <tr key={t.symbol} className="group">
                   <td className="py-3 px-2 border-t border-line-faint">
-                    <Link href={`/trust-discount/${t.symbol}`} className="block">
-                      <span className="block text-fg group-hover:text-accent font-medium">
-                        {t.project}
+                    <Link href={`/trust-discount/${t.symbol}`} className="flex items-center gap-2.5">
+                      {t.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={t.image} alt="" width={28} height={28} className="rounded-full bg-surface-elev shrink-0" loading="lazy" />
+                      ) : (
+                        <span className="w-7 h-7 rounded-full bg-surface-elev shrink-0" />
+                      )}
+                      <span>
+                        <span className="block text-fg group-hover:text-accent font-medium">
+                          {t.project}
+                        </span>
+                        <span className="block text-[11px] text-fg-muted">${t.symbol}</span>
                       </span>
-                      <span className="block text-[11px] text-fg-muted">${t.symbol}</span>
                     </Link>
                   </td>
                   <td className="py-3 px-2 border-t border-line-faint text-xs text-fg-muted">

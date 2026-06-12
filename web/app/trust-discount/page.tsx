@@ -1,4 +1,5 @@
 import { TG_SYMBOLS, getTokenGrade, tgLatest } from "@/lib/tg-data";
+import { hm } from "@/lib/data";
 import {
   applyClarityScenario,
   calculateSSPE,
@@ -43,9 +44,13 @@ function regimeValues(grade: TokenGrade, clarity: boolean): TdRegimeValues {
 export default function TrustDiscountIndex() {
   const rows: TdRow[] = TG_SYMBOLS.map((sym) => {
     const grade = getTokenGrade(sym)!;
+    const hmP = hm.protocols.find(
+      (p) => p.slug === (grade as { hm_slug?: string }).hm_slug || p.symbol === grade.symbol
+    );
     return {
       symbol: grade.symbol,
       project: grade.project,
+      image: hmP?.image ?? null,
       claim_category: grade.token.claim_category,
       alignment_grade: grade.token.token_alignment_grade,
       alignment_factor: grade.token.token_alignment_factor,

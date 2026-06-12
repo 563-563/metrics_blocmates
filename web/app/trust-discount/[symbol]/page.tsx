@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TG_SYMBOLS, getTokenGrade } from "@/lib/tg-data";
+import { hm } from "@/lib/data";
 import { fmtUsd } from "@/lib/format";
 import { gradeColorClass } from "@/lib/token-grading";
 import { KpiBig } from "@/components/KpiBig";
@@ -24,11 +25,18 @@ export default async function TrustDiscountPage({
   if (!grade) notFound();
 
   const v = grade.valuation;
+  const hmP = hm.protocols.find(
+    (p) => p.slug === (grade as { hm_slug?: string }).hm_slug || p.symbol === grade.symbol
+  );
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
       <header className="mb-8 border-b border-line pb-6">
         <div className="flex items-baseline justify-between flex-wrap gap-2">
-          <h1 className="text-3xl font-semibold tracking-tight">
+          <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-3">
+            {hmP?.image && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={hmP.image} alt="" width={36} height={36} className="rounded-full bg-surface-elev shrink-0" loading="lazy" />
+            )}
             {grade.project} <span className="text-fg-muted text-lg">${grade.symbol}</span>
           </h1>
           <div className="flex items-center gap-4 text-[11px] text-fg-muted">

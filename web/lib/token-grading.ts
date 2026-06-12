@@ -166,6 +166,67 @@ export function assignROEGrade(roe: number): string {
   return "F";
 }
 
+// ── CLARITY Act scenario (mirror of scripts/tg/token-grading.js) ─────────
+export const CLARITY_SCENARIO = {
+  key: "clarity_act",
+  label: "CLARITY Act + friendly SEC/CFTC",
+  multipliers: {
+    regulatory_premium: 0.35,
+    crypto_liquidity_premium: 0.7,
+    custody_operational_premium: 0.8
+  } as Record<string, number>,
+  explainers: {
+    risk_free_rate: "Unchanged — macro, not regulatory.",
+    equity_risk_premium: "Unchanged — macro, not regulatory.",
+    regulatory_premium:
+      "Compresses hardest (−65%). Statutory SEC/CFTC jurisdiction, a registration path, and an end to regulation-by-enforcement remove most of the “is a revenue-sharing token a security in limbo?” risk. A statute is durable; agency posture alone is not.",
+    crypto_liquidity_premium:
+      "Compresses second-order (−30%). Legal clarity lets broker-dealers, national exchanges, and institutional mandates touch the asset — books deepen over 1–3 years, not on signing day.",
+    custody_operational_premium:
+      "Compresses modestly (−20%). Qualified-custodian clarity lets institutions hold without bespoke legal work.",
+    governance_supply_premium:
+      "Unchanged — unlock schedules and foundation control are per-token design, not law.",
+    economic_alignment_premium:
+      "Unchanged — the law cannot turn on a fee switch; only governance can.",
+    technical_reconciliation_premium:
+      "Unchanged — smart-contract and oracle risk are orthogonal to legislation."
+  } as Record<string, string>
+};
+
+export const FULL_EQUITY_BENCHMARK: Record<string, number> = {
+  risk_free_rate: MACRO_DEFAULTS.risk_free_rate,
+  equity_risk_premium: MACRO_DEFAULTS.equity_risk_premium,
+  crypto_liquidity_premium: 0.02,
+  regulatory_premium: 0.018,
+  custody_operational_premium: 0.005,
+  governance_supply_premium: 0,
+  economic_alignment_premium: 0,
+  technical_reconciliation_premium: 0.01
+};
+
+export function applyClarityScenario(buildUp: Record<string, number>): Record<string, number> {
+  const adjusted = { ...buildUp };
+  for (const [component, mult] of Object.entries(CLARITY_SCENARIO.multipliers)) {
+    if (adjusted[component] != null) {
+      adjusted[component] = Math.round(adjusted[component] * mult * 10000) / 10000;
+    }
+  }
+  adjusted.ke = Math.round(calculateKe(adjusted) * 10000) / 10000;
+  return adjusted;
+}
+
+export function fullEquityKe(clarity = false): number {
+  return calculateKe(clarity ? applyClarityScenario(FULL_EQUITY_BENCHMARK) : FULL_EQUITY_BENCHMARK);
+}
+
+export function trustDiscount(
+  impliedCurrent: number | null,
+  impliedFullEquity: number | null
+): number | null {
+  if (impliedFullEquity == null || impliedFullEquity <= 0) return null;
+  return Math.min(Math.max(1 - (impliedCurrent ?? 0) / impliedFullEquity, 0), 1);
+}
+
 export function gradeColorClass(grade: string): string {
   switch (grade) {
     case "A":

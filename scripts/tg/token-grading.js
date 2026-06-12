@@ -270,8 +270,85 @@ function buildOperatingScenarios({ cases, tokenAlignment, ke }) {
   });
 }
 
+// ── CLARITY Act scenario ─────────────────────────────────────────────────
+// "CLARITY passes + friendly SEC/CFTC": statutory jurisdiction clarity
+// compresses the premia that price regulatory ambiguity. Multipliers are
+// applied to each token's Ke build-up components; everything not listed is
+// untouched (smart-contract risk doesn't care about Congress).
+const CLARITY_SCENARIO = {
+  key: 'clarity_act',
+  label: 'CLARITY Act + friendly SEC/CFTC',
+  multipliers: {
+    regulatory_premium: 0.35,
+    crypto_liquidity_premium: 0.7,
+    custody_operational_premium: 0.8
+  },
+  explainers: {
+    risk_free_rate: 'Unchanged — macro, not regulatory.',
+    equity_risk_premium: 'Unchanged — macro, not regulatory.',
+    regulatory_premium:
+      'Compresses hardest (−65%). Statutory SEC/CFTC jurisdiction, a registration path, and an end to regulation-by-enforcement remove most of the "is a revenue-sharing token a security in limbo?" risk. A statute is durable; agency posture alone is not.',
+    crypto_liquidity_premium:
+      'Compresses second-order (−30%). Legal clarity lets broker-dealers, national exchanges, and institutional mandates touch the asset — books deepen over 1–3 years, not on signing day.',
+    custody_operational_premium:
+      'Compresses modestly (−20%). Qualified-custodian clarity lets institutions hold without bespoke legal work.',
+    governance_supply_premium:
+      'Unchanged — unlock schedules and foundation control are per-token design, not law.',
+    economic_alignment_premium:
+      'Unchanged — the law cannot turn on a fee switch; only governance can.',
+    technical_reconciliation_premium:
+      'Unchanged — smart-contract and oracle risk are orthogonal to legislation.'
+  }
+};
+
+// The full-equity benchmark rung (14.5%) decomposed into residual premia so
+// the SAME multipliers can compress it consistently. Sums to rf + ERP +
+// 5.3pts ≈ the spec's full-alignment Ke at current macro.
+const FULL_EQUITY_BENCHMARK = {
+  risk_free_rate: MACRO_DEFAULTS.risk_free_rate,
+  equity_risk_premium: MACRO_DEFAULTS.equity_risk_premium,
+  crypto_liquidity_premium: 0.02,
+  regulatory_premium: 0.018,
+  custody_operational_premium: 0.005,
+  governance_supply_premium: 0,
+  economic_alignment_premium: 0,
+  technical_reconciliation_premium: 0.01
+};
+
+// Apply scenario multipliers to a Ke build-up; returns a new build-up with
+// recomputed total.
+function applyClarityScenario(buildUp) {
+  const adjusted = { ...buildUp };
+  for (const [component, mult] of Object.entries(CLARITY_SCENARIO.multipliers)) {
+    if (adjusted[component] != null) {
+      adjusted[component] = Math.round(adjusted[component] * mult * 10000) / 10000;
+    }
+  }
+  adjusted.ke = Math.round(calculateKe(adjusted) * 10000) / 10000;
+  return adjusted;
+}
+
+function fullEquityKe(clarity = false) {
+  const buildUp = clarity ? applyClarityScenario(FULL_EQUITY_BENCHMARK) : FULL_EQUITY_BENCHMARK;
+  return calculateKe(buildUp);
+}
+
+// Trust Discount: how much value the token forfeits vs the SAME business
+// wrapped as full equity (alignment 1.0, benchmark Ke). 0 = equity-grade
+// claim; 1 = the token owns none of it.
+function trustDiscount(impliedCurrent, impliedFullEquity) {
+  if (impliedFullEquity == null || impliedFullEquity <= 0) return null;
+  const current = impliedCurrent ?? 0;
+  return Math.min(Math.max(1 - current / impliedFullEquity, 0), 1);
+}
+
 module.exports = {
   MACRO_DEFAULTS,
+  CLARITY_SCENARIO,
+  FULL_EQUITY_BENCHMARK,
+  applyClarityScenario,
+  fullEquityKe,
+  trustDiscount,
   KE_COMPONENT_MAX,
   CLAIM_LADDER,
   DURABILITY_HAIRCUT,

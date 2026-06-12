@@ -24,6 +24,7 @@ import { ScenarioTable } from "./ScenarioTable";
 import { EvidencePanel } from "./EvidencePanel";
 import { WarningFlags } from "./WarningFlags";
 import { SliderRow } from "./SliderRow";
+import { ClarityPanel } from "./ClarityPanel";
 
 // The interactive core of the token-grade page. Two modes, per the spec's
 // conceptual separation (prevents double-counting):
@@ -323,6 +324,27 @@ export function TokenGradeExplorer({ grade }: { grade: TokenGrade }) {
             keGrade={grade.ke_build_up.ke_grade}
           />
         </div>
+      </Section>
+
+      {/* 4b — Policy scenario */}
+      <Section
+        title="CLARITY Act scenario — what statutory clarity is worth"
+        info={
+          <>
+            <span className="block mb-2">
+              Re-prices this token under &quot;CLARITY passes + friendly SEC/CFTC&quot;: the
+              regulatory premium compresses −65%, liquidity −30%, custody −20%. A statute is
+              durable; agency posture alone is not.
+            </span>
+            <span className="block">
+              The full-equity benchmark compresses by the same rules, so the trust discount
+              stays a like-for-like comparison. Alignment never moves — the law cannot route
+              revenue to holders.
+            </span>
+          </>
+        }
+      >
+        <ClarityPanel grade={grade} />
       </Section>
 
       {/* 5 — SS-PE / valuation */}

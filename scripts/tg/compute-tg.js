@@ -186,7 +186,17 @@ function computeToken(token, liveBySlug) {
   const marketCap = live?.market_cap ?? token.valuation?.market_cap_seed ?? null;
   const fdv = live?.fdv ?? token.valuation?.fdv_seed ?? null;
 
+  // Trust Discount: same business at the full-equity benchmark vs as-is.
+  const impliedFullEquity = tg.calculateTokenValue(
+    b.clean_platform_earnings,
+    1.0,
+    tg.calculateSSPE(roe, tg.fullEquityKe(false), g)
+  );
+  const discount = tg.trustDiscount(impliedValue, impliedFullEquity);
+
   token.valuation = {
+    implied_full_equity: impliedFullEquity != null ? Math.round(impliedFullEquity) : null,
+    trust_discount: discount != null ? round2(discount) : null,
     ...token.valuation,
     ss_pe: sspe != null ? round2(sspe) : null,
     token_attributable_earnings: Math.round(tokenEarnings),
@@ -263,6 +273,8 @@ function main() {
       roe_grade: computed.capital_efficiency?.roe_grade ?? null,
       ss_pe: computed.valuation?.ss_pe ?? null,
       implied_token_value: computed.valuation?.implied_token_value ?? null,
+      implied_full_equity: computed.valuation?.implied_full_equity ?? null,
+      trust_discount: computed.valuation?.trust_discount ?? null,
       market_cap: computed.valuation?.market_cap ?? null,
       fdv: computed.valuation?.fdv ?? null,
       implied_value_vs_market_cap: computed.valuation?.implied_value_vs_market_cap ?? null,

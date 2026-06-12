@@ -1,0 +1,159 @@
+"use client";
+
+import { useState } from "react";
+import { fmtUsd } from "@/lib/format";
+import {
+  CLARITY_SCENARIO,
+  applyClarityScenario,
+  calculateSSPE,
+  calculateTokenValue,
+  fullEquityKe,
+  trustDiscount
+} from "@/lib/token-grading";
+import type { TokenGrade } from "@/lib/tg-data";
+
+// Policy scenario: re-price this token under "CLARITY Act + friendly
+// SEC/CFTC". Shows each Ke premium before → after with an explanation of
+// why the law moves it (or can't).
+
+const COMPONENT_LABELS: Array<{ key: string; label: string }> = [
+  { key: "risk_free_rate", label: "Risk-free rate" },
+  { key: "equity_risk_premium", label: "Equity risk premium" },
+  { key: "crypto_liquidity_premium", label: "Crypto / liquidity" },
+  { key: "regulatory_premium", label: "Regulatory" },
+  { key: "custody_operational_premium", label: "Custody / ops" },
+  { key: "governance_supply_premium", label: "Governance / supply" },
+  { key: "economic_alignment_premium", label: "Economic alignment" },
+  { key: "technical_reconciliation_premium", label: "Technical / reconciliation" }
+];
+
+export function ClarityPanel({ grade }: { grade: TokenGrade }) {
+  const [on, setOn] = useState(false);
+
+  const base = grade.ke_build_up as unknown as Record<string, number>;
+  const adjusted = applyClarityScenario(base);
+  const cleanEarnings = grade.business.clean_platform_earnings;
+  const roe = grade.capital_efficiency.underwriting_roe;
+  const g = grade.growth.terminal_g;
+  const alignment = grade.token.token_alignment_factor;
+
+  const regime = (buildUp: Record<string, number>, clarity: boolean) => {
+    const sspe = calculateSSPE(roe, buildUp.ke, g);
+    const implied = calculateTokenValue(cleanEarnings, alignment, sspe);
+    const fullEq = calculateTokenValue(cleanEarnings, 1.0, calculateSSPE(roe, fullEquityKe(clarity), g));
+    return { ke: buildUp.ke, sspe, implied, fullEq, discount: trustDiscount(implied, fullEq) };
+  };
+  const today = regime(base, false);
+  const passed = regime(adjusted, true);
+  const active = on ? passed : today;
+
+  return (
+    <div>
+      <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+        <span className="text-[11px] text-fg-muted">
+          Re-price this token under <span className="text-fg">{CLARITY_SCENARIO.label}</span> —
+          statutory premia compress; token design stays exactly as graded.
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="text-[10px] uppercase tracking-widest text-fg-muted">CLARITY Act</span>
+          <span className="inline-flex border border-line rounded overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setOn(false)}
+              className={`px-2.5 py-1 text-[11px] transition ${!on ? "bg-surface-elev text-fg" : "text-fg-muted hover:text-fg"}`}
+            >
+              today
+            </button>
+            <button
+              type="button"
+              onClick={() => setOn(true)}
+              className={`px-2.5 py-1 text-[11px] transition border-l border-line ${on ? "bg-surface-elev text-fg" : "text-fg-muted hover:text-fg"}`}
+            >
+              passed
+            </button>
+          </span>
+        </span>
+      </div>
+
+      {/* Premium-by-premium before → after */}
+      <div className="space-y-2">
+        {COMPONENT_LABELS.map(({ key, label }) => {
+          const before = base[key] ?? 0;
+          const after = adjusted[key] ?? 0;
+          const changed = Math.abs(after - before) > 1e-6;
+          const shown = on ? after : before;
+          const max = Math.max(base.ke, 0.0001);
+          return (
+            <div key={key} className="flex items-start gap-3">
+              <span className="w-44 shrink-0 text-[11px] text-fg-muted pt-0.5">{label}</span>
+              <div className="flex-1">
+                <div className="h-3.5 relative">
+                  {/* ghost of today's value when scenario is on */}
+                  {on && changed && (
+                    <div
+                      className="absolute h-full rounded-sm border border-line"
+                      style={{ width: `${(before / max) * 100}%` }}
+                    />
+                  )}
+                  <div
+                    className={`absolute h-full rounded-sm transition-all duration-300 ${changed ? "bg-accent/80" : "bg-fg-faint/40"}`}
+                    style={{ width: `${Math.max((shown / max) * 100, 0.5)}%` }}
+                  />
+                </div>
+                <p className="text-[10px] text-fg-faint leading-snug mt-0.5">
+                  {CLARITY_SCENARIO.explainers[key]}
+                </p>
+              </div>
+              <span className="w-24 shrink-0 text-right font-mono tabular-nums text-[11px] pt-0.5">
+                <span className="text-fg">{(shown * 100).toFixed(1)}%</span>
+                {changed && (
+                  <span className={on ? "text-positive" : "text-fg-faint"}>
+                    {" "}
+                    {on ? `(was ${(before * 100).toFixed(1)}%)` : `(→ ${(after * 100).toFixed(1)}%)`}
+                  </span>
+                )}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Regime summary */}
+      <div className="mt-5 pt-4 border-t border-line grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted">Ke</p>
+          <p className="font-mono tabular-nums text-base text-fg mt-0.5">
+            {(active.ke * 100).toFixed(1)}%
+            {on && <span className="text-positive text-xs ml-1.5">−{((today.ke - passed.ke) * 100).toFixed(1)}pts</span>}
+          </p>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted">SS-PE</p>
+          <p className="font-mono tabular-nums text-base text-fg mt-0.5">
+            {active.sspe != null ? `${active.sspe.toFixed(2)}×` : "—"}
+          </p>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted">Implied value</p>
+          <p className="font-mono tabular-nums text-base text-fg mt-0.5">
+            {active.implied != null ? fmtUsd(active.implied) : "—"}
+          </p>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-fg-muted">Trust discount</p>
+          <p className="font-mono tabular-nums text-base font-semibold mt-0.5 text-fg">
+            {active.discount != null ? `${(active.discount * 100).toFixed(0)}%` : "n/a"}
+          </p>
+        </div>
+      </div>
+
+      <p className="text-[11px] text-fg-faint mt-4 leading-relaxed">
+        The benchmark compresses too (full-equity Ke {(fullEquityKe(false) * 100).toFixed(1)}% →{" "}
+        {(fullEquityKe(true) * 100).toFixed(1)}%), so the discount stays a fair fight — both
+        wrappers benefit from clarity. What the law cannot do is move the alignment factor: a
+        statute doesn&apos;t route revenue to holders. Bill status: passed Senate Banking markup
+        May 2026, pending floor time.
+      </p>
+    </div>
+  );
+}

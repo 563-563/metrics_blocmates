@@ -34,7 +34,7 @@ Net Pressure = (Unlocks + Treasury Sells)
 
 Sinks (right side) only count when positive — unstaking and treasury sells flow into the opposite-direction column. Positive Net Pressure = market is absorbing supply faster than the protocol can sink it; negative = protocol is a net buyer.
 
-### Token Grade (TG)
+### Trust Discount (TG)
 
 ```
 trusted_revenue             = selected_run_rate × durability_adjustment
@@ -44,7 +44,7 @@ SS-PE                       = (1 − g / ROE) / (Ke − g)
 implied_token_value         = token_attributable_earnings × SS-PE
 ```
 
-Separates business quality (clean conversion, ROE, g) from token claim quality (alignment, Ke). The UI's two scenario modes vary one side while pinning the other — never both, to prevent double-counting. Engine: `scripts/tg/token-grading.js` (canonical) mirrored by `web/lib/token-grading.ts` — keep them in lockstep. Grade inputs in `data/tg/token-grades/` change only through `scripts/tg/token-grade-check.js apply` with sourced evidence; `compute-tg.js --check` asserts the five spec acceptance anchors (CI), same philosophy as HM's article regression.
+Separates business quality (clean conversion, ROE, g) from token claim quality (alignment, Ke). The UI's two scenario modes vary one side while pinning the other — never both, to prevent double-counting. The headline metric is the **Trust Discount**: `1 − implied(current claim) / implied(full equity at the benchmark Ke)` — same business both sides, only the wrapper changes. A CLARITY-Act policy scenario (component multipliers in the engine) compresses the regulatory/liquidity/custody premia everywhere including the benchmark; alignment never moves under it. Engine: `scripts/tg/token-grading.js` (canonical) mirrored by `web/lib/token-grading.ts` — keep them in lockstep. Grade inputs in `data/tg/token-grades/` change only through `scripts/tg/token-grade-check.js apply` with sourced evidence; `data_bindings` re-pull revenue/alignment/market data from each cron ingestion; `compute-tg.js --check` asserts the five spec acceptance anchors (CI), same philosophy as HM's article regression. Internals keep the `tg` naming; the public route is `/trust-discount` (old `/token-grade` redirects).
 
 ---
 

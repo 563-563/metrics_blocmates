@@ -12,7 +12,7 @@ export function generateStaticParams() {
   return TG_SYMBOLS.map((symbol) => ({ symbol }));
 }
 
-export default async function TokenGradePage({
+export default async function TrustDiscountPage({
   params
 }: {
   params: Promise<{ symbol: string }>;
@@ -30,7 +30,7 @@ export default async function TokenGradePage({
             {grade.project} <span className="text-fg-muted text-lg">${grade.symbol}</span>
           </h1>
           <div className="flex items-center gap-4 text-[11px] text-fg-muted">
-            <Link href="/token-grade" className="hover:text-fg transition">
+            <Link href="/trust-discount" className="hover:text-fg transition">
               ← all graded tokens
             </Link>
             <span>updated {grade.updated_at.slice(0, 10)}</span>
@@ -51,14 +51,32 @@ export default async function TokenGradePage({
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <KpiBig
-          label="Implied token value"
-          value={v.implied_token_value != null ? fmtUsd(v.implied_token_value) : "—"}
-          sub={`at ${grade.token.claim_category}`}
+          label="Trust discount"
+          value={v.trust_discount != null ? `${(v.trust_discount * 100).toFixed(0)}%` : "n/a"}
+          sub="vs the same business as equity"
+          valueClass={
+            v.trust_discount == null
+              ? "text-fg"
+              : v.trust_discount >= 0.85
+                ? "text-negative"
+                : v.trust_discount >= 0.5
+                  ? "text-accent"
+                  : "text-positive"
+          }
         />
         <KpiBig
-          label="SS-PE"
-          value={v.ss_pe != null ? `${v.ss_pe.toFixed(2)}×` : "—"}
-          sub="(1 − g/ROE) / (Ke − g)"
+          label="As this token"
+          value={v.implied_token_value != null ? fmtUsd(v.implied_token_value) : "—"}
+          sub={`${grade.token.claim_category} · SS-PE ${v.ss_pe != null ? `${v.ss_pe.toFixed(2)}×` : "—"}`}
+        />
+        <KpiBig
+          label="As full equity"
+          value={
+            v.implied_full_equity != null && v.implied_full_equity > 0
+              ? fmtUsd(v.implied_full_equity)
+              : "—"
+          }
+          sub="alignment 100% at benchmark Ke"
         />
         <KpiBig
           label="vs market cap"
@@ -73,11 +91,6 @@ export default async function TokenGradePage({
               ? "text-positive"
               : "text-negative"
           }
-        />
-        <KpiBig
-          label="vs FDV"
-          value={v.implied_value_vs_fdv != null ? `${v.implied_value_vs_fdv.toFixed(2)}×` : "—"}
-          sub={v.fdv != null ? `FDV ${fmtUsd(v.fdv)}` : undefined}
         />
       </div>
 

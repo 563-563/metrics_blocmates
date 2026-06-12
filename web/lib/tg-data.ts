@@ -96,6 +96,8 @@ export type TokenGrade = {
     ke_grade: string;
   };
   valuation: {
+    implied_full_equity?: number | null;
+    trust_discount?: number | null;
     ss_pe: number | null;
     token_attributable_earnings: number;
     implied_token_value: number | null;

@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { fmtUsd } from "@/lib/format";
-import { gradeColorClass, CLARITY_SCENARIO } from "@/lib/token-grading";
+import { gradeColorClass } from "@/lib/token-grading";
 import { compareNum, compareStr, useSort } from "@/lib/use-sort";
 import { InfoTip } from "@/components/InfoTip";
 
@@ -92,8 +92,7 @@ function SortHeader({
   );
 }
 
-export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
-  const [clarity, setClarity] = useState(false);
+export function TrustDiscountTable({ rows, clarity }: { rows: TdRow[]; clarity: boolean }) {
   const [query, setQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const { sortKey, sortDir, toggle } = useSort<SortKey>("discount", "desc");
@@ -150,40 +149,7 @@ export function TrustDiscountTable({ rows }: { rows: TdRow[] }) {
 
   return (
     <div>
-      {/* Controls: scenario toggle · search · category chips */}
-      <div className="flex items-center justify-between flex-wrap gap-3 mb-3">
-        <span className="text-[11px] text-fg-muted max-w-xl">
-          {clarity ? (
-            <>
-              Scenario: <span className="text-fg">{CLARITY_SCENARIO.label}</span> — regulatory
-              premium −65%, liquidity −30%, custody −20% across every Ke build-up, benchmark
-              included. Alignment itself doesn&apos;t move: the law can&apos;t turn on a fee switch.
-            </>
-          ) : (
-            "Current regime — premia as graded. Flip the scenario to see what statutory clarity is worth to each token."
-          )}
-        </span>
-        <span className="inline-flex items-center gap-1.5 shrink-0">
-          <span className="text-[10px] uppercase tracking-widest text-fg-muted">CLARITY Act</span>
-          <span className="inline-flex border border-line rounded overflow-hidden">
-            <button
-              type="button"
-              onClick={() => setClarity(false)}
-              className={`px-2.5 py-1 text-[11px] transition ${!clarity ? "bg-surface-elev text-fg" : "text-fg-muted hover:text-fg"}`}
-            >
-              today
-            </button>
-            <button
-              type="button"
-              onClick={() => setClarity(true)}
-              className={`px-2.5 py-1 text-[11px] transition border-l border-line ${clarity ? "bg-surface-elev text-fg" : "text-fg-muted hover:text-fg"}`}
-            >
-              passed
-            </button>
-          </span>
-        </span>
-      </div>
-
+      {/* Controls: search · category chips (scenario toggle lives in the dashboard) */}
       <div className="flex items-center gap-2 flex-wrap mb-4">
         <input
           type="search"

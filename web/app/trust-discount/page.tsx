@@ -9,7 +9,8 @@ import {
 } from "@/lib/token-grading";
 import { PageHeader } from "@/components/PageHeader";
 import { HowToRead } from "@/components/HowToRead";
-import { TrustDiscountTable, type TdRow, type TdRegimeValues } from "@/components/tg/TrustDiscountTable";
+import { type TdRow, type TdRegimeValues } from "@/components/tg/TrustDiscountTable";
+import { TrustDiscountDashboard } from "@/components/tg/TrustDiscountDashboard";
 import { TrustDiscountExplainer } from "@/components/tg/TrustDiscountExplainer";
 import type { TokenGrade } from "@/lib/tg-data";
 
@@ -91,7 +92,7 @@ export default function TrustDiscountIndex() {
         <TrustDiscountExplainer />
       </HowToRead>
 
-      <TrustDiscountTable rows={rows} />
+      <TrustDiscountDashboard rows={rows} />
 
       <footer className="pt-6 mt-8 border-t border-line text-xs text-fg-faint leading-relaxed">
         <p>

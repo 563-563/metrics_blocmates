@@ -3,6 +3,18 @@ name: Update HM/TP data
 # Refreshes data/ on the default branch — DL+CG snapshot, Hyperliquid Info
 # API on-chain feeds, HM/TP compute, history append.
 #
+# Two tiers in one workflow (single workflow so two crons never race on push):
+#   - every run (4-hourly): DL+CG snapshot, HYPE feeds, HM/TP computes, history.
+#   - daily tier (the 00:15 UTC run, or any manual dispatch): the Alchemy
+#     adapters, DL proxy feeds, CG price history, chain-GDP. These are all
+#     daily-granularity sources — re-fetching them 6×/day only burned the
+#     Alchemy compute-unit quota, which caused the 429s that aborted the run.
+#
+# Failure model: every network fetch step carries continue-on-error so one
+# flaky/rate-limited API (e.g. an Alchemy 429) can't abort the whole refresh and
+# block the commit. Compute steps stay hard-fail: they run on local data, so a
+# failure there is a real bug, not weather.
+#
 # Does NOT run the ASXN backfill (Cloudflare-Turnstile gated, manual JWT).
 # Run that by hand when needed:
 #   ASXN_JWT="eyJ..." node scripts/external/asxn-backfill.js
@@ -10,10 +22,7 @@ name: Update HM/TP data
 
 on:
   schedule:
-    # Every 4 hours at :15. Dropped from hourly on 2026-05-30 to fit within
-    # GitHub Actions monthly minute quota. DL refreshes daily anyway and the
-    # CG daily endpoint we use is also daily — hourly was overkill. Can bump
-    # back to hourly if usage allows. Use workflow_dispatch for ad-hoc refresh.
+    # Every 4 hours at :15 (the 00:15 UTC run doubles as the daily tier).
     - cron: '15 */4 * * *'
   workflow_dispatch:
 
@@ -30,65 +39,112 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Determine tier (daily steps run on the 00:15 UTC run + manual dispatch)
+        id: tier
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$(date -u +%H)" -lt 4 ]; then
+            echo "daily=true" >> "$GITHUB_OUTPUT"
+            echo "tier: daily (full refresh)"
+          else
+            echo "daily=false" >> "$GITHUB_OUTPUT"
+            echo "tier: fast (DL+CG snapshot, HYPE feeds, computes only)"
+          fi
+
       - name: Fetch DL+CG snapshot
         run: node scripts/fetch-data.js
 
       - name: HYPE on-chain — Assistance Fund buybacks (incremental)
+        continue-on-error: true
         run: node scripts/onchain/hype/fetch-af.js
 
       - name: HYPE on-chain — circulating supply
+        continue-on-error: true
         run: node scripts/onchain/hype/fetch-supply.js
 
       - name: HYPE on-chain — validator stake snapshot
+        continue-on-error: true
         run: node scripts/onchain/hype/fetch-staking.js
 
+      # ---------------------------------------------------------- daily tier
+      # Alchemy / CG-history / DL-proxy / chain-GDP: daily-granularity sources,
+      # gated to the 00:15 UTC run (or manual dispatch) to stay under the
+      # Alchemy CU quota. All continue-on-error so a rate-limit can't block the
+      # commit of the fast-tier data.
+
       - name: AAVE on-chain — Collector buyback flow (trailing 30d)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         env:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: node scripts/onchain/aave/fetch-collector.js --days 30
 
       - name: AAVE on-chain — Safety Module + Ecosystem Reserve snapshot
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         env:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: node scripts/onchain/aave/fetch-safety-module.js
 
       - name: SKY on-chain — Category B rewards farm (trailing 30d)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         env:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: node scripts/onchain/sky/fetch-rewards-farm.js --days 30
 
       - name: SKY on-chain — SBE + Splitter activity (trailing 30d)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         env:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: node scripts/onchain/sky/fetch-sbe.js --days 30
 
       - name: SKY on-chain — LockStake Engine total locked
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         env:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: node scripts/onchain/sky/fetch-lockstake.js
 
       - name: LIT on-chain — L1 supply + Escrow flow (trailing 30d)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         env:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: node scripts/onchain/lit/fetch-l1.js --days 30
 
       - name: LIT on-chain — zkLighter L2 market snapshot
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         run: node scripts/onchain/lit/fetch-l2-market.js
 
       - name: LIT buyback proxy (DefiLlama holdersRevenue)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         run: node scripts/onchain/lit/fetch-buyback-proxy.js
 
       - name: Generic DL proxy buyback feeds (22 protocols — UNI, RAY, FLUID, EUL, CARDS, DYDX, GNS, ORCA, COW, ZRO, PUMP, JUP, MNDE, …)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         run: node scripts/onchain/proxy/fetch-dl-buybacks.js
 
       - name: ETHFI buyback proxy (aggregates 3 DL sub-protocols × 10% accrual)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         run: node scripts/onchain/proxy/fetch-etherfi-buybacks.js
 
       - name: Daily price history (CoinGecko, for HM-over-time)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         run: node scripts/external/fetch-cg-price-history.js --days 180
 
       - name: Chain-GDP tracker (daily — early-exits if today already done)
+        if: steps.tier.outputs.daily == 'true'
+        continue-on-error: true
         run: node scripts/chains/fetch-chain-gdp.js
+
+      # ------------------------------------------------------- every run
+      # Computes run on local data — hard-fail here is a real bug, not weather.
 
       - name: Compute HM snapshot
         run: node scripts/hm/compute-hm.js

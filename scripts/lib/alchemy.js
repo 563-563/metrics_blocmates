@@ -28,21 +28,36 @@ const ALCHEMY_URL_MAINNET = () => {
   return `https://eth-mainnet.g.alchemy.com/v2/${key}`;
 };
 
-async function rpc(url, method, params, { retries = 2 } = {}) {
+async function rpc(url, method, params, { retries = 5 } = {}) {
   for (let attempt = 0; attempt <= retries; attempt++) {
+    let retryAfterMs = null;
     try {
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ jsonrpc: '2.0', method, params, id: 1 })
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status} on ${method}`);
+      if (!res.ok) {
+        // Rate-limited / transient: honor the server's Retry-After if present
+        // so we back off exactly as long as Alchemy asks (429s otherwise
+        // cascade through short retries and fail the whole call).
+        if (res.status === 429 || res.status === 503) {
+          const ra = res.headers.get('retry-after');
+          const secs = ra != null ? Number(ra) : NaN;
+          if (Number.isFinite(secs)) retryAfterMs = secs * 1000;
+        }
+        throw new Error(`HTTP ${res.status} on ${method}`);
+      }
       const json = await res.json();
       if (json.error) throw new Error(`${method}: ${json.error.message}`);
       return json.result;
     } catch (err) {
       if (attempt === retries) throw err;
-      await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
+      // Exponential backoff (1s, 2s, 4s, 8s, 16s) capped at 20s, plus jitter;
+      // Retry-After overrides when the server provided one.
+      const backoff = retryAfterMs ?? Math.min(20000, 1000 * 2 ** attempt);
+      const jitter = Math.floor(Math.random() * 250);
+      await new Promise((r) => setTimeout(r, backoff + jitter));
     }
   }
 }

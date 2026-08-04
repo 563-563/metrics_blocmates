@@ -1,6 +1,6 @@
 # Holder Multiple — Cohort Snapshot
 
-**Generated:** 2026-08-04T03:45:10.792Z
+**Generated:** 2026-08-04T06:40:51.090Z
 **As-of:** 2026-08-04
 **Mode:** live
 
@@ -9,41 +9,41 @@
 | Protocol | Phase | Adj MCap | Real Capture | HM | Band |
 |---|---|---|---|---|---|
 | Morpho (MORPHO) | `proposed` | $1.27B | $0/yr | **∞×** | no real capture |
-| Aave (AAVE) | `current` | $1.39B | $0/yr | **∞×** | no real capture |
-| Maple Finance (SYRUP) | `none` | $196.93M | $0/yr | **∞×** | no real capture |
-| Hyperliquid (HYPE) | `current` | $26.63B | $94.67M/yr | **281.2×** | speculative |
-| Uniswap (UNI) | `executing` | $2.42B | $53.36M/yr | **45.4×** | expensive |
-| Sky (SKY) | `phase_1` | $1.31B | $0/yr | **∞×** | no real capture |
-| Ethena (ENA) | `none` | $876.47M | $0/yr | **∞×** | no real capture |
-| Meteora (MET) | `proposed` | $87.20M | $0/yr | **∞×** | no real capture |
-| Raydium (RAY) | `executing` | $163.86M | $4.38M/yr | **37.4×** | expensive |
-| Jito (JTO) | `paused` | $256.92M | $0/yr | **∞×** | no real capture |
-| Aerodrome (AERO) | `executing` | $396.19M | $119.46M/yr | **3.3×** | exceptional |
-| Sanctum (CLOUD) | `none` | $13.01M | $0/yr | **∞×** | no real capture |
-| Kamino (KMNO) | `none` | $94.02M | $0/yr | **∞×** | no real capture |
-| Ondo Finance (ONDO) | `proposed` | $1.82B | $0/yr | **∞×** | no real capture |
-| Fluid (FLUID) | `executing` | $100.73M | $4.75M/yr | **21.2×** | fair value |
-| Euler (EUL) | `executing` | $40.50M | $2.35M/yr | **17.2×** | strong |
-| Collector Crypt (CARDS) | `executing` | $315.46M | $66.18M/yr | **4.8×** | exceptional |
+| Aave (AAVE) | `current` | $1.40B | $0/yr | **∞×** | no real capture |
+| Maple Finance (SYRUP) | `none` | $199.28M | $0/yr | **∞×** | no real capture |
+| Hyperliquid (HYPE) | `current` | $26.61B | $93.95M/yr | **283.3×** | speculative |
+| Uniswap (UNI) | `executing` | $2.45B | $53.36M/yr | **45.9×** | expensive |
+| Sky (SKY) | `phase_1` | $1.32B | $0/yr | **∞×** | no real capture |
+| Ethena (ENA) | `none` | $881.96M | $0/yr | **∞×** | no real capture |
+| Meteora (MET) | `proposed` | $87.16M | $0/yr | **∞×** | no real capture |
+| Raydium (RAY) | `executing` | $165.18M | $4.38M/yr | **37.7×** | expensive |
+| Jito (JTO) | `paused` | $257.75M | $0/yr | **∞×** | no real capture |
+| Aerodrome (AERO) | `executing` | $396.81M | $119.46M/yr | **3.3×** | exceptional |
+| Sanctum (CLOUD) | `none` | $13.10M | $0/yr | **∞×** | no real capture |
+| Kamino (KMNO) | `none` | $93.69M | $0/yr | **∞×** | no real capture |
+| Ondo Finance (ONDO) | `proposed` | $1.80B | $0/yr | **∞×** | no real capture |
+| Fluid (FLUID) | `executing` | $99.95M | $4.75M/yr | **21.1×** | fair value |
+| Euler (EUL) | `executing` | $38.60M | $2.35M/yr | **16.4×** | strong |
+| Collector Crypt (CARDS) | `executing` | $324.63M | $66.18M/yr | **4.9×** | exceptional |
 | Drift (DRIFT) | `none` | $0 | $0/yr | **∞×** | no real capture |
-| Dolomite (DOLO) | `executing` | $10.87M | $0/yr | **∞×** | no real capture |
-| Pendle (PENDLE) | `executing` | $234.00M | $5.31M/yr | **44.1×** | expensive |
-| Lido DAO (LDO) | `conditional` | $274.94M | $0/yr | **∞×** | no real capture |
+| Dolomite (DOLO) | `executing` | $10.83M | $0/yr | **∞×** | no real capture |
+| Pendle (PENDLE) | `executing` | $232.28M | $5.31M/yr | **43.7×** | expensive |
+| Lido DAO (LDO) | `conditional` | $275.54M | $0/yr | **∞×** | no real capture |
 | GMX (GMX) | `paused` | $65.01M | $0/yr | **∞×** | no real capture |
-| dYdX (DYDX) | `executing` | $96.95M | $3.17M/yr | **30.6×** | fair value |
-| Gains Network (GNS) | `executing` | $11.89M | $1.00M/yr | **11.9×** | strong |
-| ether.fi (ETHFI) | `executing` | $388.11M | $5.20M/yr | **74.6×** | speculative |
-| Curve Finance (CRV) | `executing` | $318.12M | $7.59M/yr | **41.9×** | expensive |
-| Orca (ORCA) | `executing` | $65.78M | $658.27K/yr | **99.9×** | speculative |
-| CoW Protocol (COW) | `executing` | $64.00M | $8.30M/yr | **7.7×** | exceptional |
-| LayerZero (ZRO) | `executing` | $262.54M | $1.61M/yr | **162.7×** | speculative |
-| Synthetix (SNX) | `unverified` | $125.16M | $0/yr | **∞×** | no real capture |
-| Usual Money (USUAL) | `executing` | $14.69M | $12.09M/yr | **1.2×** | exceptional |
-| pump.fun (PUMP) | `executing` | $851.61M | $184.14M/yr | **4.6×** | exceptional |
-| Rollbit (RLB) | `executing` | $107.63M | $0/yr | **∞×** | no real capture |
-| Jupiter Exchange (JUP) | `executing` | $642.09M | $23.23M/yr | **27.6×** | fair value |
+| dYdX (DYDX) | `executing` | $96.16M | $3.17M/yr | **30.3×** | fair value |
+| Gains Network (GNS) | `executing` | $11.85M | $1.02M/yr | **11.6×** | strong |
+| ether.fi (ETHFI) | `executing` | $384.80M | $5.20M/yr | **74.0×** | speculative |
+| Curve Finance (CRV) | `executing` | $318.90M | $7.59M/yr | **42.0×** | expensive |
+| Orca (ORCA) | `executing` | $65.54M | $658.27K/yr | **99.6×** | speculative |
+| CoW Protocol (COW) | `executing` | $63.92M | $8.30M/yr | **7.7×** | exceptional |
+| LayerZero (ZRO) | `executing` | $261.45M | $1.61M/yr | **162.0×** | speculative |
+| Synthetix (SNX) | `unverified` | $125.88M | $0/yr | **∞×** | no real capture |
+| Usual Money (USUAL) | `executing` | $14.59M | $12.09M/yr | **1.2×** | exceptional |
+| pump.fun (PUMP) | `executing` | $881.68M | $184.14M/yr | **4.8×** | exceptional |
+| Rollbit (RLB) | `executing` | $108.20M | $0/yr | **∞×** | no real capture |
+| Jupiter Exchange (JUP) | `executing` | $642.84M | $23.23M/yr | **27.7×** | fair value |
 | Marinade Finance (MNDE) | `executing` | $10.12M | $0/yr | **∞×** | no real capture |
-| Lighter (LIT) | `current` | $930.36M | $27.42M/yr | **33.9×** | fair value |
+| Lighter (LIT) | `current` | $935.25M | $27.42M/yr | **34.1×** | fair value |
 
 ## Per-protocol breakdown
 
@@ -53,8 +53,8 @@ Phase: `proposed` — Fee switch exists but not yet activated. Governance vote n
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $1.94 | source: live |
-| 2 | Current float market cap | $1.27B | 655,745,040 MORPHO × $1.94 (circ source: live) |
+| 1 | Token price | $1.93 | source: live |
+| 2 | Current float market cap | $1.27B | 655,751,644 MORPHO × $1.93 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
@@ -74,12 +74,12 @@ Phase: `current` — ARFC $30M/yr buyback budget (cut from original $50M). AWW F
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $92.4 | source: live |
-| 2 | Current float market cap | $1.43B | 15,422,147 AAVE × $92.4 (circ source: live) |
+| 1 | Token price | $92.77 | source: live |
+| 2 | Current float market cap | $1.43B | 15,422,147 AAVE × $92.77 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | No team vesting; 99.9% circulating |
-| 4 | + 24mo emissions | +$26.33M | Safety Module + Service Provider compensation (285K AAVE over 24mo) |
+| 4 | + 24mo emissions | +$26.44M | Safety Module + Service Provider compensation (285K AAVE over 24mo) |
 | 5 | − 24mo buybacks | −$60.00M | ARFC $30M/yr budget; seed value — overridden by onchain feed when present (verification: onchain_aggregate) |
-| 6 | **Adjusted MCap** | **$1.39B** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$1.40B** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to AAVE (Category B) | $0 | No Category B yield — Safety Module rewards are stkAAVE emissions (Category C, dilution rebate) (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -97,12 +97,12 @@ Phase: `none` — No documented mechanism routing institutional lending revenue 
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.1582 | source: live |
-| 2 | Current float market cap | $196.93M | 1,244,677,493 SYRUP × $0.158216 (circ source: live) |
+| 1 | Token price | $0.1601 | source: live |
+| 2 | Current float market cap | $199.28M | 1,244,677,493 SYRUP × $0.160108 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$196.93M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$199.28M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to SYRUP (Category B) | $0 |  (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -112,45 +112,45 @@ Phase: `none` — No documented mechanism routing institutional lending revenue 
 
 ---
 
-### Hyperliquid (HYPE) — HM 281.2× _(speculative)_
+### Hyperliquid (HYPE) — HM 283.3× _(speculative)_
 
 Phase: `current` — Assistance Fund captures ~99% of revenue for HYPE buybacks. Team vesting cliff active.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $54.24 | source: live |
-| 2 | Current float market cap | $16.20B | 298,649,468 HYPE × $54.24 (circ source: onchain_feed) |
-| 3 | + 24mo unlocks | +$11.30B | Y1 119M + Y2 89.3M team unlocks (Tokenomist scheduled rate) |
-| 4 | + 24mo emissions | +$368.83M | Staking emissions paid from Future Emissions allocation (Category C — added to dilution side) |
+| 1 | Token price | $54.21 | source: live |
+| 2 | Current float market cap | $16.19B | 298,649,468 HYPE × $54.21 (circ source: onchain_feed) |
+| 3 | + 24mo unlocks | +$11.29B | Y1 119M + Y2 89.3M team unlocks (Tokenomist scheduled rate) |
+| 4 | + 24mo emissions | +$368.63M | Staking emissions paid from Future Emissions allocation (Category C — added to dilution side) |
 | 5 | − 24mo buybacks | −$1.24B | 30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present) (verification: onchain) |
-| 6 | **Adjusted MCap** | **$26.63B** | Lines 2 + 3 + 4 − 5 |
-| 7 | Annual buyback (Category A) | $94.67M | last 60d annualized — verification: onchain |
+| 6 | **Adjusted MCap** | **$26.61B** | Lines 2 + 3 + 4 − 5 |
+| 7 | Annual buyback (Category A) | $93.95M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to HYPE (Category B) | $0 | No Category B — staking rewards are HYPE-denominated dilution rebate (Category C) (verification: governance_stated) |
-| 9 | **Total Real Capture** | **$94.67M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **281.2×** | Line 6 ÷ Line 9 |
+| 9 | **Total Real Capture** | **$93.95M/yr** | Lines 7 + 8 |
+| 10 | **Holder Multiple (HM)** | **283.3×** | Line 6 ÷ Line 9 |
 
-**Buyback rate lens:** recent 60d annualized = **$94.67M/yr** (HM input). Lifetime annualized (502d, cumulative $918.09M) = **$667.54M/yr**. Recent rate is **-85.8%** below lifetime average.
+**Buyback rate lens:** recent 60d annualized = **$93.95M/yr** (HM input). Lifetime annualized (502d, cumulative $917.97M) = **$667.45M/yr**. Recent rate is **-85.9%** below lifetime average.
 
 [Sources: DefiLlama, Hyperliquid Info API, Tokenomist, Hyperliquid docs]
 
 ---
 
-### Uniswap (UNI) — HM 45.4× _(expensive)_
+### Uniswap (UNI) — HM 45.9× _(expensive)_
 
 Phase: `executing` — 17% of LP fees → TokenJar → Firepit burn. Active since Dec 2025. DL revenue_1y = protocol's share of fees. 100% of that goes to Firepit.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $3.88 | source: live |
-| 2 | Current float market cap | $2.42B | 624,810,424 UNI × $3.88 (circ source: live) |
+| 1 | Token price | $3.92 | source: live |
+| 2 | Current float market cap | $2.45B | 624,810,424 UNI × $3.92 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback-burn (executing): 17% of LP fees → TokenJar → Firepit burn. Active since Dec 2025. DL revenue_1y = protocol's share of fees. 100% of that goes to Firepit. (verification: proxy) |
-| 6 | **Adjusted MCap** | **$2.42B** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$2.45B** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $53.36M | verification: proxy |
 | 8 | Annual external cashflow yield to UNI (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$53.36M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **45.4×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **45.9×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -162,12 +162,12 @@ Phase: `phase_1` — Phase 1 of TMF framework. SBE bypassed during ABC fill (~15
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.0561 | source: live |
-| 2 | Current float market cap | $1.31B | 23,394,234,107 SKY × $0.056091 (circ source: live) |
+| 1 | Token price | $0.0565 | source: live |
+| 2 | Current float market cap | $1.32B | 23,394,127,851 SKY × $0.056469 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | 98.9% circulating; no remaining schedule |
 | 4 | + 24mo emissions | $0 | Staking yield paid in USDS, not new SKY |
 | 5 | − 24mo buybacks | $0 | SBE bypassed during Phase 1; verified on-chain — MCD_FLAP + MCD_SPLIT have zero activity 90d (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$1.31B** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$1.32B** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to SKY (Category B) | $0 | Article: 40% × $180.73M net revenue paid in USDS to stkSKY (Cat B). On-chain (REWARDS_LSSKY_USDS = 0x38E4254b...) confirms USDS distribution mechanism — but inflows stopped 2025-11-03, 200+ days dormant. Either restructured post-Apr-2026 framework or paused. (verification: onchain_dormant) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -183,12 +183,12 @@ Phase: `none` — 99% of gross revenue passes to sUSDe holders by design. ENA ca
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.0917 | source: live |
-| 2 | Current float market cap | $876.47M | 9,560,937,500 ENA × $0.091672 (circ source: live) |
+| 1 | Token price | $0.0922 | source: live |
+| 2 | Current float market cap | $881.96M | 9,560,937,500 ENA × $0.092246 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$876.47M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$881.96M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to ENA (Category B) | $0 |  (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -204,12 +204,12 @@ Phase: `proposed` — Fee-sharing proposed but not yet live. MET staking with pr
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.1606 | source: live |
-| 2 | Current float market cap | $87.20M | 542,973,611 MET × $0.160589 (circ source: live) |
+| 1 | Token price | $0.1605 | source: live |
+| 2 | Current float market cap | $87.16M | 543,055,785 MET × $0.1605 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$87.20M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$87.16M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to MET (Category B) | $0 | fee-share (proposed): Fee-sharing proposed but not yet live. MET staking with protocol fee-share in development. (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -219,22 +219,22 @@ Phase: `proposed` — Fee-sharing proposed but not yet live. MET staking with pr
 
 ---
 
-### Raydium (RAY) — HM 37.4× _(expensive)_
+### Raydium (RAY) — HM 37.7× _(expensive)_
 
 Phase: `executing` — 12% of all trading fees → automatic RAY buyback & burn. 71M RAY burned to date. Note: uses fees_1y as base (not revenue_1y).
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.6085 | source: live |
-| 2 | Current float market cap | $163.86M | 269,313,892 RAY × $0.608451 (circ source: live) |
+| 1 | Token price | $0.6133 | source: live |
+| 2 | Current float market cap | $165.18M | 269,313,892 RAY × $0.613324 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback-burn (executing): 12% of all trading fees → automatic RAY buyback & burn. 71M RAY burned to date. Note: uses fees_1y as base (not revenue_1y). (verification: proxy) |
-| 6 | **Adjusted MCap** | **$163.86M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$165.18M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $4.38M | verification: proxy |
 | 8 | Annual external cashflow yield to RAY (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$4.38M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **37.4×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **37.7×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -246,12 +246,12 @@ Phase: `paused` — CSD sub-DAO committed to 100% of network revenue. $3.2M exec
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.5077 | source: live |
-| 2 | Current float market cap | $256.92M | 506,049,908 JTO × $0.507689 (circ source: live) |
+| 1 | Token price | $0.5093 | source: live |
+| 2 | Current float market cap | $257.75M | 506,049,908 JTO × $0.509336 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (paused): CSD sub-DAO committed to 100% of network revenue. $3.2M executed via TWAP as of Oct 2025. 4/6 multisig. JIP-24 routes all Block Engine + BAM fees to DAO. (verification: onchain_dormant) |
-| 6 | **Adjusted MCap** | **$256.92M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$257.75M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: onchain_dormant |
 | 8 | Annual external cashflow yield to JTO (Category B) | $0 |  (verification: onchain_dormant) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -267,12 +267,12 @@ Phase: `executing` — 100% of trading fees → veAERO lockers. No protocol trea
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.409 | source: live |
-| 2 | Current float market cap | $396.19M | 968,655,505 AERO × $0.409007 (circ source: live) |
+| 1 | Token price | $0.4096 | source: live |
+| 2 | Current float market cap | $396.81M | 968,655,461 AERO × $0.409648 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: proxy) |
-| 6 | **Adjusted MCap** | **$396.19M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$396.81M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: proxy |
 | 8 | Annual external cashflow yield to AERO (Category B) | $119.46M | fee-share-lockers (executing): 100% of trading fees → veAERO lockers. No protocol treasury take. Algorithmic, structural. Revenue exceeded emissions Oct 2025. $295M+ cumulative distributed. (verification: proxy) |
 | 9 | **Total Real Capture** | **$119.46M/yr** | Lines 7 + 8 |
@@ -288,12 +288,12 @@ Phase: `none` — Zero protocol revenue flows to CLOUD. Protocol earns ~$6M/yr, 
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.0217 | source: live |
-| 2 | Current float market cap | $13.01M | 599,013,117 CLOUD × $0.02172646 (circ source: live) |
+| 1 | Token price | $0.0219 | source: live |
+| 2 | Current float market cap | $13.10M | 599,013,117 CLOUD × $0.02187698 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$13.01M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$13.10M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to CLOUD (Category B) | $0 |  (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -310,11 +310,11 @@ Phase: `none` — Protocol captures ~18% of fees (~$10M revenue) to treasury. No
 | # | Metric | Value | Notes |
 |---|---|---|---|
 | 1 | Token price | $0.018 | source: live |
-| 2 | Current float market cap | $94.02M | 5,215,753,735 KMNO × $0.01802573 (circ source: live) |
+| 2 | Current float market cap | $93.69M | 5,215,753,735 KMNO × $0.01796227 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$94.02M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$93.69M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to KMNO (Category B) | $0 |  (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -330,12 +330,12 @@ Phase: `proposed` — Governance-only token today. Fee switch scheduled H2 2026.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.3728 | source: live |
-| 2 | Current float market cap | $1.82B | 4,869,330,647 ONDO × $0.372794 (circ source: live) |
+| 1 | Token price | $0.3694 | source: live |
+| 2 | Current float market cap | $1.80B | 4,869,330,647 ONDO × $0.369427 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$1.82B** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$1.80B** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to ONDO (Category B) | $0 | fee-share (proposed): Governance-only token today. Fee switch scheduled H2 2026. Ondo Chain mainnet may add gas/staking role. Zero confirmed accrual currently. (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -345,64 +345,64 @@ Phase: `proposed` — Governance-only token today. Fee switch scheduled H2 2026.
 
 ---
 
-### Fluid (FLUID) — HM 21.2× _(fair value)_
+### Fluid (FLUID) — HM 21.1× _(fair value)_
 
 Phase: `executing` — 100% of mainnet revenue → FLUID buybacks. Approved and active since Oct 2025. Fully algorithmic, no discretion.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $1.28 | source: live |
-| 2 | Current float market cap | $100.73M | 78,696,997 FLUID × $1.28 (circ source: live) |
+| 1 | Token price | $1.27 | source: live |
+| 2 | Current float market cap | $99.95M | 78,696,997 FLUID × $1.27 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): 100% of mainnet revenue → FLUID buybacks. Approved and active since Oct 2025. Fully algorithmic, no discretion. (verification: proxy) |
-| 6 | **Adjusted MCap** | **$100.73M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$99.95M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $4.75M | verification: proxy |
 | 8 | Annual external cashflow yield to FLUID (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$4.75M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **21.2×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **21.1×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
 ---
 
-### Euler (EUL) — HM 17.2× _(strong)_
+### Euler (EUL) — HM 16.4× _(strong)_
 
 Phase: `executing` — FeeFlow automated on-chain buyback mechanism. ~$1.82M annualized. ~1.5% supply repurchased annually.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $1.49 | source: live |
-| 2 | Current float market cap | $40.50M | 27,182,818 EUL × $1.49 (circ source: live) |
+| 1 | Token price | $1.42 | source: live |
+| 2 | Current float market cap | $38.60M | 27,182,818 EUL × $1.42 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): FeeFlow automated on-chain buyback mechanism. ~$1.82M annualized. ~1.5% supply repurchased annually. (verification: proxy) |
-| 6 | **Adjusted MCap** | **$40.50M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$38.60M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $2.35M | verification: proxy |
 | 8 | Annual external cashflow yield to EUL (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$2.35M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **17.2×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **16.4×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
 ---
 
-### Collector Crypt (CARDS) — HM 4.8× _(exceptional)_
+### Collector Crypt (CARDS) — HM 4.9× _(exceptional)_
 
 Phase: `executing` — 85-90% of pack revenue → CARDS buyback & burn at market. Built into every pack purchase on Solana. Most aggressive mechanism in portfolio.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.1578 | source: live |
-| 2 | Current float market cap | $315.46M | 1,999,705,628 CARDS × $0.157752 (circ source: live) |
+| 1 | Token price | $0.1623 | source: live |
+| 2 | Current float market cap | $324.63M | 1,999,705,628 CARDS × $0.16234 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback-burn (executing): 85-90% of pack revenue → CARDS buyback & burn at market. Built into every pack purchase on Solana. Most aggressive mechanism in portfolio. (verification: proxy) |
-| 6 | **Adjusted MCap** | **$315.46M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$324.63M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $66.18M | verification: proxy |
 | 8 | Annual external cashflow yield to CARDS (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$66.18M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **4.8×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **4.9×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -414,8 +414,8 @@ Phase: `none` — $285M exploit April 2026, operations paused. DRIFT staking = f
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.0124 | source: live |
-| 2 | Current float market cap | $0 | 0 DRIFT × $0.01240869 (circ source: seed_fallback) |
+| 1 | Token price | $0.0125 | source: live |
+| 2 | Current float market cap | $0 | 0 DRIFT × $0.01247515 (circ source: seed_fallback) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: governance_stated) |
@@ -435,12 +435,12 @@ Phase: `executing` — Fee-share mechanism exists but entirely WLFI-partnership 
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.0214 | source: live |
-| 2 | Current float market cap | $10.87M | 508,794,795 DOLO × $0.02136141 (circ source: live) |
+| 1 | Token price | $0.0213 | source: live |
+| 2 | Current float market cap | $10.83M | 508,794,795 DOLO × $0.02128917 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: proxy) |
-| 6 | **Adjusted MCap** | **$10.87M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$10.83M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: proxy |
 | 8 | Annual external cashflow yield to DOLO (Category B) | $0 | fee-share (executing): Fee-share mechanism exists but entirely WLFI-partnership dependent. Flow to DOLO token holders unconfirmed. TVL impaired ($399M→$140M). accrual_pct=0 pending confirmation. (verification: proxy) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -450,22 +450,22 @@ Phase: `executing` — Fee-share mechanism exists but entirely WLFI-partnership 
 
 ---
 
-### Pendle (PENDLE) — HM 44.1× _(expensive)_
+### Pendle (PENDLE) — HM 43.7× _(expensive)_
 
 Phase: `executing` — 80% of swap fees + all YT yield → vePENDLE. Smart contract enforced, no governance discretion. sPENDLE provides liquid staking alternative.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $1.36 | source: live |
-| 2 | Current float market cap | $234.00M | 172,062,025 PENDLE × $1.36 (circ source: live) |
+| 1 | Token price | $1.35 | source: live |
+| 2 | Current float market cap | $232.28M | 172,062,110 PENDLE × $1.35 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: proxy) |
-| 6 | **Adjusted MCap** | **$234.00M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$232.28M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: proxy |
 | 8 | Annual external cashflow yield to PENDLE (Category B) | $5.31M | fee-share-lockers (executing): 80% of swap fees + all YT yield → vePENDLE. Smart contract enforced, no governance discretion. sPENDLE provides liquid staking alternative. (verification: proxy) |
 | 9 | **Total Real Capture** | **$5.31M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **44.1×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **43.7×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -477,12 +477,12 @@ Phase: `conditional` — $20M discretionary buyback approved Apr 13 2026, not ex
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.3288 | source: live |
-| 2 | Current float market cap | $274.94M | 836,305,815 LDO × $0.328755 (circ source: live) |
+| 1 | Token price | $0.3295 | source: live |
+| 2 | Current float market cap | $275.54M | 836,305,815 LDO × $0.329478 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (conditional): $20M discretionary buyback approved Apr 13 2026, not executing yet. NEST automated buybacks conditional on ETH >$3K. Zero accrual until first tranche executes. (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$274.94M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$275.54M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to LDO (Category B) | $0 |  (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -513,106 +513,106 @@ Phase: `paused` — 27% of V2 fees (30% V1) → algorithmic weekly Deposit-Buy-W
 
 ---
 
-### dYdX (DYDX) — HM 30.6× _(fair value)_
+### dYdX (DYDX) — HM 30.3× _(fair value)_
 
 Phase: `executing` — 75% of fees → TWAP buyback by Treasury SubDAO (on-chain, verifiable). 8.46M DYDX repurchased through Jan 2026. Stakers earn 15% of fees in USDC. WARNING: forward fee run rate $3.9M/yr (84% YoY collapse). Bought tokens are staked to validato…
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.1143 | source: live |
-| 2 | Current float market cap | $96.95M | 848,599,091 DYDX × $0.114251 (circ source: live) |
+| 1 | Token price | $0.1133 | source: live |
+| 2 | Current float market cap | $96.16M | 848,599,091 DYDX × $0.113313 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): 75% of fees → TWAP buyback by Treasury SubDAO (on-chain, verifiable). 8.46M DYDX repurchased through Jan 2026. Stakers earn 15% of fees in USDC. WARNING: forward fee run rate $3.9M/yr (84% YoY collapse). Bought tokens are staked to validato… (verification: proxy) |
-| 6 | **Adjusted MCap** | **$96.95M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$96.16M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $3.17M | verification: proxy |
 | 8 | Annual external cashflow yield to DYDX (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$3.17M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **30.6×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **30.3×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
 ---
 
-### Gains Network (GNS) — HM 11.9× _(strong)_
+### Gains Network (GNS) — HM 11.6× _(strong)_
 
 Phase: `executing` — MODEL CHANGED LATE 2024: SSS (real yield in DAI) discontinued. Now pure BB&B: algorithmic GNS buyback at 1hr TWAP +1% premium, then permanent burn. Stakers earn ZERO cash yield. DeFi Llama confirmed (2026-04-16): fees_1y $5.19M, revenue_1y …
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.4987 | source: live |
-| 2 | Current float market cap | $11.89M | 23,839,587 GNS × $0.498695 (circ source: live) |
+| 1 | Token price | $0.497 | source: live |
+| 2 | Current float market cap | $11.85M | 23,839,587 GNS × $0.49697 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback-burn (executing): MODEL CHANGED LATE 2024: SSS (real yield in DAI) discontinued. Now pure BB&B: algorithmic GNS buyback at 1hr TWAP +1% premium, then permanent burn. Stakers earn ZERO cash yield. DeFi Llama confirmed (2026-04-16): fees_1y $5.19M, revenue_1y … (verification: proxy) |
-| 6 | **Adjusted MCap** | **$11.89M** | Lines 2 + 3 + 4 − 5 |
-| 7 | Annual buyback (Category A) | $1.00M | verification: proxy |
+| 6 | **Adjusted MCap** | **$11.85M** | Lines 2 + 3 + 4 − 5 |
+| 7 | Annual buyback (Category A) | $1.02M | verification: proxy |
 | 8 | Annual external cashflow yield to GNS (Category B) | $0 |  (verification: proxy) |
-| 9 | **Total Real Capture** | **$1.00M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **11.9×** | Line 6 ÷ Line 9 |
+| 9 | **Total Real Capture** | **$1.02M/yr** | Lines 7 + 8 |
+| 10 | **Holder Multiple (HM)** | **11.6×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
 ---
 
-### ether.fi (ETHFI) — HM 74.6× _(speculative)_
+### ether.fi (ETHFI) — HM 74.0× _(speculative)_
 
 Phase: `executing` — 10% of protocol revenue allocated to ETHFI value accrual: 5% → buyback+burn (open market), 5% → sETHFI staker distributions (DAO Proposal #8). Additional $50M treasury buyback approved Nov 2025 (triggers at price < $3 — ACTIVE at $0.45). $6…
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.3987 | source: live |
-| 2 | Current float market cap | $388.11M | 973,468,000 ETHFI × $0.398686 (circ source: live) |
+| 1 | Token price | $0.3953 | source: live |
+| 2 | Current float market cap | $384.80M | 973,468,000 ETHFI × $0.395285 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): 10% of protocol revenue allocated to ETHFI value accrual: 5% → buyback+burn (open market), 5% → sETHFI staker distributions (DAO Proposal #8). Additional $50M treasury buyback approved Nov 2025 (triggers at price < $3 — ACTIVE at $0.45). $6… (verification: proxy) |
-| 6 | **Adjusted MCap** | **$388.11M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$384.80M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $5.20M | verification: proxy |
 | 8 | Annual external cashflow yield to ETHFI (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$5.20M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **74.6×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **74.0×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
 ---
 
-### Curve Finance (CRV) — HM 41.9× _(expensive)_
+### Curve Finance (CRV) — HM 42.0× _(expensive)_
 
 Phase: `executing` — 50% of admin fee (not 50% of total trading fees) → veCRV weekly, swapped to crvUSD. Effective rate: 12.3% of gross user fees (DL holdersRevenue $4.8M / gross fees $39M). Plus crvUSD borrow fees ~$1.35M/yr fwd. Combined veCRV income ~$6M/yr.…
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.206 | source: live |
-| 2 | Current float market cap | $318.12M | 1,544,003,267 CRV × $0.206039 (circ source: live) |
+| 1 | Token price | $0.2065 | source: live |
+| 2 | Current float market cap | $318.90M | 1,544,123,031 CRV × $0.206523 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: proxy) |
-| 6 | **Adjusted MCap** | **$318.12M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$318.90M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: proxy |
 | 8 | Annual external cashflow yield to CRV (Category B) | $7.59M | fee-share-lockers (executing): 50% of admin fee (not 50% of total trading fees) → veCRV weekly, swapped to crvUSD. Effective rate: 12.3% of gross user fees (DL holdersRevenue $4.8M / gross fees $39M). Plus crvUSD borrow fees ~$1.35M/yr fwd. Combined veCRV income ~$6M/yr.… (verification: proxy) |
 | 9 | **Total Real Capture** | **$7.59M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **41.9×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **42.0×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
 ---
 
-### Orca (ORCA) — HM 99.9× _(speculative)_
+### Orca (ORCA) — HM 99.6× _(speculative)_
 
 Phase: `executing` — 40% of Whirlpool protocol fees → algorithmic xORCA buybacks (increased from 20% in Jan 2026). DL holdersRevenue confirms execution: $77.8K/30d → $933K/yr. 24-month program approved Aug 2025 with ~55K SOL treasury backstop + 30% ongoing fees…
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $1.082 | source: live |
-| 2 | Current float market cap | $65.78M | 60,798,781 ORCA × $1.082 (circ source: live) |
+| 1 | Token price | $1.078 | source: live |
+| 2 | Current float market cap | $65.54M | 60,798,781 ORCA × $1.078 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): 40% of Whirlpool protocol fees → algorithmic xORCA buybacks (increased from 20% in Jan 2026). DL holdersRevenue confirms execution: $77.8K/30d → $933K/yr. 24-month program approved Aug 2025 with ~55K SOL treasury backstop + 30% ongoing fees… (verification: proxy) |
-| 6 | **Adjusted MCap** | **$65.78M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$65.54M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $658.27K | verification: proxy |
 | 8 | Annual external cashflow yield to ORCA (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$658.27K/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **99.9×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **99.6×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -624,12 +624,12 @@ Phase: `executing` — Net-negative emissions buyback: CIP mandates buybacks ≥
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.1113 | source: live |
-| 2 | Current float market cap | $64.00M | 574,996,887 COW × $0.111312 (circ source: live) |
+| 1 | Token price | $0.1112 | source: live |
+| 2 | Current float market cap | $63.92M | 574,996,887 COW × $0.111169 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): Net-negative emissions buyback: CIP mandates buybacks ≥ 1.2× weekly token emissions, making supply deflationary. ~80% of DAO revenue estimated to buybacks to maintain the ratio. DL holdersRevenue = $0 (DL does not categorize DAO treasury bu… (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$64.00M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$63.92M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $8.30M | verification: governance_stated |
 | 8 | Annual external cashflow yield to COW (Category B) | $0 |  (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$8.30M/yr** | Lines 7 + 8 |
@@ -639,22 +639,22 @@ Phase: `executing` — Net-negative emissions buyback: CIP mandates buybacks ≥
 
 ---
 
-### LayerZero (ZRO) — HM 162.7× _(speculative)_
+### LayerZero (ZRO) — HM 162.0× _(speculative)_
 
 Phase: `executing` — Fee switch activated Dec 2025 (97% community vote) — 100% of LZ fees → ZRO burn (DL confirmed: holdersRevenue = fees = $249K/30d). Stargate V2 50% of bridge fees → ZRO buybacks (unverified by DL holdersRevenue). Total ZRO-attributable ~$4.0…
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.7431 | source: live |
-| 2 | Current float market cap | $262.54M | 353,313,326 ZRO × $0.74307 (circ source: live) |
+| 1 | Token price | $0.74 | source: live |
+| 2 | Current float market cap | $261.45M | 353,313,326 ZRO × $0.739983 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback-burn (executing): Fee switch activated Dec 2025 (97% community vote) — 100% of LZ fees → ZRO burn (DL confirmed: holdersRevenue = fees = $249K/30d). Stargate V2 50% of bridge fees → ZRO buybacks (unverified by DL holdersRevenue). Total ZRO-attributable ~$4.0… (verification: proxy) |
-| 6 | **Adjusted MCap** | **$262.54M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$261.45M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $1.61M | verification: proxy |
 | 8 | Annual external cashflow yield to ZRO (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$1.61M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **162.7×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **162.0×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -666,12 +666,12 @@ Phase: `unverified` — Q1 2026 tokenomics reset (SIP-2043): SNX inflation ended
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.2154 | source: live |
-| 2 | Current float market cap | $125.16M | 580,980,590 SNX × $0.215427 (circ source: live) |
+| 1 | Token price | $0.2167 | source: live |
+| 2 | Current float market cap | $125.88M | 580,980,590 SNX × $0.216672 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (unverified): Q1 2026 tokenomics reset (SIP-2043): SNX inflation ended, 100% of perps trading fees → SNX buybacks (50/50 split with sUSD stability until peg restored, then 100%). DL shows $0 fees/revenue all recent periods under all slugs (synthetix, syn… (verification: governance_stated) |
-| 6 | **Adjusted MCap** | **$125.16M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$125.88M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: governance_stated |
 | 8 | Annual external cashflow yield to SNX (Category B) | $0 |  (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -688,11 +688,11 @@ Phase: `executing` — Fee switch Jan 7 2025 — up to 100% of protocol revenue 
 | # | Metric | Value | Notes |
 |---|---|---|---|
 | 1 | Token price | $0.0079 | source: live |
-| 2 | Current float market cap | $14.69M | 1,858,355,554 USUAL × $0.00790534 (circ source: live) |
+| 2 | Current float market cap | $14.59M | 1,858,355,554 USUAL × $0.00785048 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 |  (verification: proxy) |
-| 6 | **Adjusted MCap** | **$14.69M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$14.59M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: proxy |
 | 8 | Annual external cashflow yield to USUAL (Category B) | $12.09M | fee-share (executing): Fee switch Jan 7 2025 — up to 100% of protocol revenue to USUALx stakers in USD0. DL holdersRevenue shows near-zero execution: $3.6K/30d (0.16% of $2.22M/30d revenue). TTM distribution rate was 8.4% at peak TVL. TVL collapsed -94% from $1.7… (verification: proxy) |
 | 9 | **Total Real Capture** | **$12.09M/yr** | Lines 7 + 8 |
@@ -702,22 +702,22 @@ Phase: `executing` — Fee switch Jan 7 2025 — up to 100% of protocol revenue 
 
 ---
 
-### pump.fun (PUMP) — HM 4.6× _(exceptional)_
+### pump.fun (PUMP) — HM 4.8× _(exceptional)_
 
 Phase: `executing` — DL confirmed: holdersRevenue $29.1M/30d ≈ fees $22.1M/30d (near-100% of revenue to PUMP buybacks). Protocol revenue = gross fees (100% retention — no LP share). $264.8M/yr fwd (TTM $391.7M, -32%). 23.2% annual buyback yield on Mcap $1.14B. …
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
 | 1 | Token price | $0.0022 | source: live |
-| 2 | Current float market cap | $851.61M | 395,429,182,701 PUMP × $0.00215363 (circ source: live) |
+| 2 | Current float market cap | $881.68M | 395,390,778,663 PUMP × $0.00222989 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): DL confirmed: holdersRevenue $29.1M/30d ≈ fees $22.1M/30d (near-100% of revenue to PUMP buybacks). Protocol revenue = gross fees (100% retention — no LP share). $264.8M/yr fwd (TTM $391.7M, -32%). 23.2% annual buyback yield on Mcap $1.14B. … (verification: proxy) |
-| 6 | **Adjusted MCap** | **$851.61M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$881.68M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $184.14M | verification: proxy |
 | 8 | Annual external cashflow yield to PUMP (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$184.14M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **4.6×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **4.8×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -729,12 +729,12 @@ Phase: `executing` — Hourly buyback-and-burn: ~10% casino + ~20% sportsbook + 
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.0671 | source: live |
-| 2 | Current float market cap | $107.63M | 1,603,485,582 RLB × $0.067122 (circ source: live) |
+| 1 | Token price | $0.0675 | source: live |
+| 2 | Current float market cap | $108.20M | 1,603,450,930 RLB × $0.067482 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback-burn (executing): Hourly buyback-and-burn: ~10% casino + ~20% sportsbook + ~30% trading fees (blended ~20%). 3.296B RLB burned (65.9% of max supply 5B → current total 1.704B). No DL entry (centralized casino). Config revenue estimate: $18-30M/month GGR → $43… (verification: proxy) |
-| 6 | **Adjusted MCap** | **$107.63M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$108.20M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $0 | verification: proxy |
 | 8 | Annual external cashflow yield to RLB (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$0/yr** | Lines 7 + 8 |
@@ -744,22 +744,22 @@ Phase: `executing` — Hourly buyback-and-burn: ~10% casino + ~20% sportsbook + 
 
 ---
 
-### Jupiter Exchange (JUP) — HM 27.6× _(fair value)_
+### Jupiter Exchange (JUP) — HM 27.7× _(fair value)_
 
 Phase: `executing` — DL confirmed executing: 30d holdersRevenue $2.44M → $29.3M/yr (50% of protocol revenue). New mechanism active from 2025-02-17 (revenue-funded, not treasury-funded). All-time buybacks $90.9M. Original $70M treasury program exhausted 2024; Fe…
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $0.1934 | source: live |
-| 2 | Current float market cap | $642.09M | 3,320,312,968 JUP × $0.193382 (circ source: live) |
+| 1 | Token price | $0.1936 | source: live |
+| 2 | Current float market cap | $642.84M | 3,320,312,968 JUP × $0.193608 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): DL confirmed executing: 30d holdersRevenue $2.44M → $29.3M/yr (50% of protocol revenue). New mechanism active from 2025-02-17 (revenue-funded, not treasury-funded). All-time buybacks $90.9M. Original $70M treasury program exhausted 2024; Fe… (verification: proxy) |
-| 6 | **Adjusted MCap** | **$642.09M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$642.84M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $23.23M | verification: proxy |
 | 8 | Annual external cashflow yield to JUP (Category B) | $0 |  (verification: proxy) |
 | 9 | **Total Real Capture** | **$23.23M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **27.6×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **27.7×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]
 
@@ -772,7 +772,7 @@ Phase: `executing` — DL confirmed executing: holdersRevenue $171K/30d → $2.0
 | # | Metric | Value | Notes |
 |---|---|---|---|
 | 1 | Token price | $0.0185 | source: live |
-| 2 | Current float market cap | $10.12M | 546,399,977 MNDE × $0.01852777 (circ source: live) |
+| 2 | Current float market cap | $10.12M | 546,399,977 MNDE × $0.01852491 (circ source: live) |
 | 3 | + 24mo unlocks | $0 | no editorial schedule — Adj MCap reflects float only |
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): DL confirmed executing: holdersRevenue $171K/30d → $2.05M/yr (3× TTM $675K — buyback was paused Dec 2025, has since resumed at higher rate). 50% of protocol revenue to MNDE buybacks. Protocol revenue $4.11M/yr fwd (TTM $7.15M, -43%). TVL $6… (verification: proxy) |
@@ -786,22 +786,22 @@ Phase: `executing` — DL confirmed executing: holdersRevenue $171K/30d → $2.0
 
 ---
 
-### Lighter (LIT) — HM 33.9× _(fair value)_
+### Lighter (LIT) — HM 34.1× _(fair value)_
 
 Phase: `current` — TGE float. 99.5% of post-LLP revenue used to algorithmically buy back LIT. Team/investor cliff Dec 22 2026.
 
 | # | Metric | Value | Notes |
 |---|---|---|---|
-| 1 | Token price | $2.01 | source: live |
-| 2 | Current float market cap | $502.50M | 250,000,000 LIT × $2.01 (circ source: live) |
-| 3 | + 24mo unlocks | +$434.16M | 54M Y1 + 162M Y2; cliff Dec 22 2026 unlocks 13.5M/mo across 36mo linear |
-| 4 | + 24mo emissions | +$44.76M | Staking emissions over 24mo (Category C) |
+| 1 | Token price | $2.02 | source: live |
+| 2 | Current float market cap | $505.00M | 250,000,000 LIT × $2.02 (circ source: live) |
+| 3 | + 24mo unlocks | +$436.32M | 54M Y1 + 162M Y2; cliff Dec 22 2026 unlocks 13.5M/mo across 36mo linear |
+| 4 | + 24mo emissions | +$44.99M | Staking emissions over 24mo (Category C) |
 | 5 | − 24mo buybacks | −$51.06M | 99.5% × post-LLP revenue. Proxy via DL holdersRevenue ($25.6M/yr, matches stated rate within 0.3%) until Lighter API key unlocks direct trade-level verification. (verification: proxy) |
-| 6 | **Adjusted MCap** | **$930.36M** | Lines 2 + 3 + 4 − 5 |
+| 6 | **Adjusted MCap** | **$935.25M** | Lines 2 + 3 + 4 − 5 |
 | 7 | Annual buyback (Category A) | $27.42M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to LIT (Category B) | $0 | No Category B — staking yield is LIT-denominated (Category C) (verification: governance_stated) |
 | 9 | **Total Real Capture** | **$27.42M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **33.9×** | Line 6 ÷ Line 9 |
+| 10 | **Holder Multiple (HM)** | **34.1×** | Line 6 ÷ Line 9 |
 
 **Buyback rate lens:** recent 60d annualized = **$27.42M/yr** (HM input). Lifetime annualized (211d, cumulative $23.90M) = **$41.35M/yr**. Recent rate is **-33.7%** below lifetime average.
 

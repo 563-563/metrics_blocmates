@@ -1198,10 +1198,10 @@
   },
   {
     "date": "2026-07-08",
-    "lit_in_tokens": 252874.70272484003,
-    "lit_out_tokens": 386638.7728176301,
-    "net_tokens": -133764.07009279006,
-    "tx_count": 43,
+    "lit_in_tokens": 0,
+    "lit_out_tokens": 30000,
+    "net_tokens": -30000,
+    "tx_count": 1,
     "source": "alchemy_asset_transfers",
     "verification": "onchain"
   },
@@ -1468,10 +1468,19 @@
   },
   {
     "date": "2026-08-07",
+    "lit_in_tokens": 40838.42369892,
+    "lit_out_tokens": 1653971.7758478099,
+    "net_tokens": -1613133.3521488898,
+    "tx_count": 85,
+    "source": "alchemy_asset_transfers",
+    "verification": "onchain"
+  },
+  {
+    "date": "2026-08-08",
     "lit_in_tokens": 0,
-    "lit_out_tokens": 112299,
-    "net_tokens": -112299,
-    "tx_count": 3,
+    "lit_out_tokens": 50.00000358,
+    "net_tokens": -50.00000358,
+    "tx_count": 1,
     "source": "alchemy_asset_transfers",
     "verification": "onchain"
   }

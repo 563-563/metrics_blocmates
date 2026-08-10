@@ -1486,10 +1486,19 @@
   },
   {
     "date": "2026-08-09",
-    "lit_in_tokens": 24.97645645,
-    "lit_out_tokens": 0,
-    "net_tokens": 24.97645645,
-    "tx_count": 1,
+    "lit_in_tokens": 21055.81262467,
+    "lit_out_tokens": 207292.15547586003,
+    "net_tokens": -186236.34285119,
+    "tx_count": 33,
+    "source": "alchemy_asset_transfers",
+    "verification": "onchain"
+  },
+  {
+    "date": "2026-08-10",
+    "lit_in_tokens": 7,
+    "lit_out_tokens": 12500,
+    "net_tokens": -12493,
+    "tx_count": 2,
     "source": "alchemy_asset_transfers",
     "verification": "onchain"
   }

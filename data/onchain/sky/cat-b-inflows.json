@@ -1631,9 +1631,19 @@
   },
   {
     "date": "2026-08-25",
-    "amount_tokens": 2700,
-    "amount_usd": 2700,
-    "tx_count": 1,
+    "amount_tokens": 56700,
+    "amount_usd": 56700,
+    "tx_count": 21,
+    "asset": "USDS",
+    "source": "alchemy_asset_transfers",
+    "kind": "cat_b_revenue_routing",
+    "verification": "onchain"
+  },
+  {
+    "date": "2026-08-26",
+    "amount_tokens": 5400,
+    "amount_usd": 5400,
+    "tx_count": 2,
     "asset": "USDS",
     "source": "alchemy_asset_transfers",
     "kind": "cat_b_revenue_routing",

@@ -1,6 +1,6 @@
 # Net Pressure (TP) — Cohort Snapshot
 
-**Generated:** 2026-09-09T19:18:18.556Z
+**Generated:** 2026-09-09T22:34:20.153Z
 **As-of:** 2026-09-09
 
 Formula:
@@ -15,16 +15,16 @@ Unlocks are **sell-probability weighted** (team 0.10, foundation/emissions 0.30-
 
 ## Hyperliquid (HYPE)
 
-**Price:** $85.98    **Circulating:** 565.06M HYPE    **AF balance:** 47.09M HYPE    **Total staked:** 440.37M HYPE (77.9% of circ)
+**Price:** $83.41    **Circulating:** 565.06M HYPE    **AF balance:** 47.10M HYPE    **Total staked:** 440.30M HYPE (77.9% of circ)
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | 1/1d | 0 | 19.2K | 🟢 −93.0K HYPE | −$8.00M | today @ $85.98 | -0.0093% |
-| 7d | 7/7d | 9.92M | 68.3K | 🟢 −1.42M HYPE | −$122.11M | today @ $85.98 | -0.1420% |
-| 30d | 30/30d | 17.45M | 219.7K | 🟢 −1.84M HYPE | −$158.50M | today @ $85.98 | -0.1843% |
-| 90d | 90/90d | 52.34M | 392.3K | 🟢 −9.15M HYPE | −$786.34M | today @ $85.98 | -0.9146% |
+| 24h | 1/1d | 0 | 24.4K | 🟢 −29.1K HYPE | −$2.43M | today @ $83.41 | -0.0029% |
+| 7d | 7/7d | 9.92M | 69.7K | 🟢 −1.35M HYPE | −$112.81M | today @ $83.41 | -0.1353% |
+| 30d | 30/30d | 17.45M | 221.1K | 🟢 −1.78M HYPE | −$148.11M | today @ $83.41 | -0.1776% |
+| 90d | 90/90d | 52.34M | 393.6K | 🟢 −9.08M HYPE | −$757.19M | today @ $83.41 | -0.9078% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -43,49 +43,49 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 0 | 953 | −186.9K | −$16.07M |
-| 2026-08-28 | 0 | 5.8K | −64.3K | −$5.53M |
-| 2026-08-29 | 7.53M | 7.7K | +3.00M | +$258.35M |
-| 2026-08-30 | 0 | 1.8K | −1.8K | −$150.8K |
-| 2026-08-31 | 0 | 1.3K | −273.0K | −$23.47M |
-| 2026-09-01 | 0 | 12.7K | −977.8K | −$84.07M |
-| 2026-09-02 | 0 | 2.7K | −787.6K | −$67.72M |
-| 2026-09-03 | 0 | 5.7K | −304.8K | −$26.20M |
-| 2026-09-04 | 0 | 5.4K | −203.7K | −$17.52M |
-| 2026-09-05 | 0 | 6.3K | −1.30M | −$112.20M |
-| 2026-09-06 | 9.92M | 5.3K | +941.6K | +$80.96M |
-| 2026-09-07 | 0 | 6.3K | −435.3K | −$37.43M |
-| 2026-09-08 | 0 | 20.1K | −20.1K | −$1.73M |
-| 2026-09-09 | 0 | 19.2K | −93.0K | −$8.00M |
+| 2026-08-27 | 0 | 953 | −186.9K | −$15.59M |
+| 2026-08-28 | 0 | 5.8K | −64.3K | −$5.36M |
+| 2026-08-29 | 7.53M | 7.7K | +3.00M | +$250.63M |
+| 2026-08-30 | 0 | 1.8K | −1.8K | −$146.3K |
+| 2026-08-31 | 0 | 1.3K | −273.0K | −$22.77M |
+| 2026-09-01 | 0 | 12.7K | −977.8K | −$81.56M |
+| 2026-09-02 | 0 | 2.7K | −787.6K | −$65.70M |
+| 2026-09-03 | 0 | 5.7K | −304.8K | −$25.42M |
+| 2026-09-04 | 0 | 5.4K | −203.7K | −$16.99M |
+| 2026-09-05 | 0 | 6.3K | −1.30M | −$108.84M |
+| 2026-09-06 | 9.92M | 5.3K | +941.6K | +$78.54M |
+| 2026-09-07 | 0 | 2.5K | −431.5K | −$35.99M |
+| 2026-09-08 | 0 | 20.1K | −20.1K | −$1.68M |
+| 2026-09-09 | 0 | 24.4K | −29.1K | −$2.43M |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-29 | 7.53M | $647.54M |
-| 2026-10-06 | 9.92M | $852.63M |
-| 2026-10-29 | 7.53M | $647.54M |
-| 2026-11-06 | 9.92M | $852.63M |
-| 2026-11-29 | 7.53M | $647.54M |
-| 2026-12-06 | 9.92M | $852.63M |
-| 2026-12-29 | 7.53M | $647.54M |
-| 2027-01-06 | 9.92M | $852.63M |
+| 2026-09-29 | 7.53M | $628.19M |
+| 2026-10-06 | 9.92M | $827.15M |
+| 2026-10-29 | 7.53M | $628.19M |
+| 2026-11-06 | 9.92M | $827.15M |
+| 2026-11-29 | 7.53M | $628.19M |
+| 2026-12-06 | 9.92M | $827.15M |
+| 2026-12-29 | 7.53M | $628.19M |
+| 2027-01-06 | 9.92M | $827.15M |
 
 
 ---
 
 ## Aave (AAVE)
 
-**Price:** $128.08    **Circulating:** 0 AAVE    **AF balance:** 0 AAVE    **Total staked:** 0 AAVE
+**Price:** $124.81    **Circulating:** 0 AAVE    **AF balance:** 0 AAVE    **Total staked:** 0 AAVE
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 AAVE | $0 | today @ $128.08 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 AAVE | $0 | today @ $128.08 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 0 | 0 | 🟢 −11.4K AAVE | −$1.46M | today @ $128.08 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 0 | 0 | 🟢 −246.2K AAVE | −$31.53M | today @ $128.08 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 AAVE | $0 | today @ $124.81 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 AAVE | $0 | today @ $124.81 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 0 | 0 | 🟢 −11.4K AAVE | −$1.43M | today @ $124.81 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 0 | 0 | 🟢 −246.2K AAVE | −$30.73M | today @ $124.81 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -108,16 +108,16 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-08-14 | 0 | 0 | 0 | $0 |
 | 2026-08-15 | 0 | 0 | 0 | $0 |
 | 2026-08-16 | 0 | 0 | 0 | $0 |
-| 2026-08-17 | 0 | 0 | −1.1K | −$146.9K |
+| 2026-08-17 | 0 | 0 | −1.1K | −$143.2K |
 | 2026-08-18 | 0 | 0 | 0 | $0 |
-| 2026-08-19 | 0 | 0 | −131 | −$16.8K |
-| 2026-08-20 | 0 | 0 | −2.0K | −$260.9K |
-| 2026-08-21 | 0 | 0 | −499 | −$63.9K |
-| 2026-08-22 | 0 | 0 | −387 | −$49.6K |
+| 2026-08-19 | 0 | 0 | −131 | −$16.3K |
+| 2026-08-20 | 0 | 0 | −2.0K | −$254.2K |
+| 2026-08-21 | 0 | 0 | −499 | −$62.3K |
+| 2026-08-22 | 0 | 0 | −387 | −$48.3K |
 | 2026-08-23 | 0 | 0 | 0 | $0 |
-| 2026-08-24 | 0 | 0 | −593 | −$75.9K |
-| 2026-08-25 | 0 | 0 | −1.5K | −$194.0K |
-| 2026-08-26 | 0 | 0 | −3.9K | −$494.6K |
+| 2026-08-24 | 0 | 0 | −593 | −$74.0K |
+| 2026-08-25 | 0 | 0 | −1.5K | −$189.1K |
+| 2026-08-26 | 0 | 0 | −3.9K | −$482.0K |
 
 
 ---
@@ -132,8 +132,8 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 |---|---|---|---|---|---|---|---|
 | 24h | ⚠ 0/1d partial | 0 | 0 | · 0 SKY | $0 | today @ $0.06 | 0.0000% |
 | 7d | ⚠ 0/7d partial | 0 | 0 | · 0 SKY | $0 | today @ $0.06 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 0 | 0 | 🟢 −60.64M SKY | −$3.86M | today @ $0.06 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 0 | 0 | 🟢 −132.10M SKY | −$8.41M | today @ $0.06 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 0 | 0 | 🟢 −60.64M SKY | −$3.71M | today @ $0.06 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 0 | 0 | 🟢 −132.10M SKY | −$8.09M | today @ $0.06 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -152,34 +152,34 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-13 | 0 | 0 | −291.2K | −$18.5K |
-| 2026-08-14 | 0 | 0 | −539.8K | −$34.4K |
+| 2026-08-13 | 0 | 0 | −291.2K | −$17.8K |
+| 2026-08-14 | 0 | 0 | −539.8K | −$33.0K |
 | 2026-08-15 | 0 | 0 | 0 | $0 |
-| 2026-08-16 | 0 | 0 | −254.9K | −$16.2K |
-| 2026-08-17 | 0 | 0 | −1.72M | −$109.6K |
-| 2026-08-18 | 0 | 0 | −16.74M | −$1.07M |
-| 2026-08-19 | 0 | 0 | −10.18M | −$647.6K |
-| 2026-08-20 | 0 | 0 | −4.64M | −$295.4K |
-| 2026-08-21 | 0 | 0 | −4.01M | −$255.4K |
-| 2026-08-22 | 0 | 0 | −2.79M | −$177.4K |
+| 2026-08-16 | 0 | 0 | −254.9K | −$15.6K |
+| 2026-08-17 | 0 | 0 | −1.72M | −$105.5K |
+| 2026-08-18 | 0 | 0 | −16.74M | −$1.02M |
+| 2026-08-19 | 0 | 0 | −10.18M | −$623.1K |
+| 2026-08-20 | 0 | 0 | −4.64M | −$284.2K |
+| 2026-08-21 | 0 | 0 | −4.01M | −$245.8K |
+| 2026-08-22 | 0 | 0 | −2.79M | −$170.6K |
 | 2026-08-23 | 0 | 0 | 0 | $0 |
-| 2026-08-24 | 0 | 0 | −9.95M | −$633.2K |
+| 2026-08-24 | 0 | 0 | −9.95M | −$609.2K |
 | 2026-08-25 | 0 | 0 | 0 | $0 |
-| 2026-08-26 | 0 | 0 | −1.45M | −$92.3K |
+| 2026-08-26 | 0 | 0 | −1.45M | −$88.8K |
 
 
 ---
 
 ## Lighter (LIT)
 
-**Price:** $4.89    **Circulating:** 0 LIT    **AF balance:** 0 LIT    **Total staked:** 0 LIT
+**Price:** $4.57    **Circulating:** 0 LIT    **AF balance:** 0 LIT    **Total staked:** 0 LIT
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 LIT | $0 | today @ $4.89 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 LIT | $0 | today @ $4.89 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 LIT | $0 | today @ $4.57 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 LIT | $0 | today @ $4.57 | 0.0000% |
 | 30d | ⚠ 14/30d partial | 0 | 426.3K | 🟢 −426.3K LIT | −$1.14M | per-day (100%) | 0.0000% |
 | 90d | 74/90d | 0 | 2.41M | 🟢 −2.41M LIT | −$5.10M | per-day (100%) | 0.0000% |
 
@@ -220,16 +220,16 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 ## Morpho (MORPHO)
 
-**Price:** $2.34    **Circulating:** 0 MORPHO    **AF balance:** 0 MORPHO    **Total staked:** 0 MORPHO
+**Price:** $2.29    **Circulating:** 0 MORPHO    **AF balance:** 0 MORPHO    **Total staked:** 0 MORPHO
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 202.7K | 0 | 🔴 +97.4K MORPHO | +$227.8K | today @ $2.34 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 1.42M | 0 | 🔴 +681.5K MORPHO | +$1.59M | today @ $2.34 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 6.08M | 0 | 🔴 +2.92M MORPHO | +$6.83M | today @ $2.34 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 18.24M | 0 | 🔴 +8.76M MORPHO | +$20.50M | today @ $2.34 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 202.7K | 0 | 🔴 +97.4K MORPHO | +$223.0K | today @ $2.29 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 1.42M | 0 | 🔴 +681.5K MORPHO | +$1.56M | today @ $2.29 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 6.08M | 0 | 🔴 +2.92M MORPHO | +$6.69M | today @ $2.29 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 18.24M | 0 | 🔴 +8.76M MORPHO | +$20.07M | today @ $2.29 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -248,49 +248,49 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-08-28 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-08-29 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-08-30 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-08-31 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-01 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-02 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-03 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-04 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-05 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-06 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-07 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-08 | 202.7K | 0 | +97.4K | +$227.8K |
-| 2026-09-09 | 202.7K | 0 | +97.4K | +$227.8K |
+| 2026-08-27 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-08-28 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-08-29 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-08-30 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-08-31 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-01 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-02 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-03 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-04 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-05 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-06 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-07 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-08 | 202.7K | 0 | +97.4K | +$223.0K |
+| 2026-09-09 | 202.7K | 0 | +97.4K | +$223.0K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 202.7K | $474.3K |
-| 2026-09-11 | 202.7K | $474.3K |
-| 2026-09-12 | 202.7K | $474.3K |
-| 2026-09-13 | 202.7K | $474.3K |
-| 2026-09-14 | 202.7K | $474.3K |
-| 2026-09-15 | 202.7K | $474.3K |
-| 2026-09-16 | 202.7K | $474.3K |
-| 2026-09-17 | 202.7K | $474.3K |
+| 2026-09-10 | 202.7K | $464.1K |
+| 2026-09-11 | 202.7K | $464.1K |
+| 2026-09-12 | 202.7K | $464.1K |
+| 2026-09-13 | 202.7K | $464.1K |
+| 2026-09-14 | 202.7K | $464.1K |
+| 2026-09-15 | 202.7K | $464.1K |
+| 2026-09-16 | 202.7K | $464.1K |
+| 2026-09-17 | 202.7K | $464.1K |
 
 
 ---
 
 ## Pendle (PENDLE)
 
-**Price:** $2.07    **Circulating:** 0 PENDLE    **AF balance:** 0 PENDLE    **Total staked:** 0 PENDLE
+**Price:** $2.00    **Circulating:** 0 PENDLE    **AF balance:** 0 PENDLE    **Total staked:** 0 PENDLE
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.07 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.07 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.07 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.07 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.00 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.00 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.00 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 0 | 0 | · 0 PENDLE | $0 | today @ $2.00 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -310,16 +310,16 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 ## Jito (JTO)
 
-**Price:** $0.45    **Circulating:** 0 JTO    **AF balance:** 0 JTO    **Total staked:** 0 JTO
+**Price:** $0.42    **Circulating:** 0 JTO    **AF balance:** 0 JTO    **Total staked:** 0 JTO
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 626.2K | 0 | 🔴 +214.3K JTO | +$95.9K | today @ $0.45 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 4.38M | 0 | 🔴 +1.50M JTO | +$671.6K | today @ $0.45 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 18.79M | 0 | 🔴 +6.43M JTO | +$2.88M | today @ $0.45 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 56.36M | 0 | 🔴 +19.29M JTO | +$8.64M | today @ $0.45 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 626.2K | 0 | 🔴 +214.3K JTO | +$89.6K | today @ $0.42 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 4.38M | 0 | 🔴 +1.50M JTO | +$627.2K | today @ $0.42 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 18.79M | 0 | 🔴 +6.43M JTO | +$2.69M | today @ $0.42 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 56.36M | 0 | 🔴 +19.29M JTO | +$8.06M | today @ $0.42 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -338,49 +338,49 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-08-28 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-08-29 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-08-30 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-08-31 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-01 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-02 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-03 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-04 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-05 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-06 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-07 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-08 | 626.2K | 0 | +214.3K | +$95.9K |
-| 2026-09-09 | 626.2K | 0 | +214.3K | +$95.9K |
+| 2026-08-27 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-08-28 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-08-29 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-08-30 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-08-31 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-01 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-02 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-03 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-04 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-05 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-06 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-07 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-08 | 626.2K | 0 | +214.3K | +$89.6K |
+| 2026-09-09 | 626.2K | 0 | +214.3K | +$89.6K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 626.2K | $280.4K |
-| 2026-09-11 | 626.2K | $280.4K |
-| 2026-09-12 | 626.2K | $280.4K |
-| 2026-09-13 | 626.2K | $280.4K |
-| 2026-09-14 | 626.2K | $280.4K |
-| 2026-09-15 | 626.2K | $280.4K |
-| 2026-09-16 | 626.2K | $280.4K |
-| 2026-09-17 | 626.2K | $280.4K |
+| 2026-09-10 | 626.2K | $261.8K |
+| 2026-09-11 | 626.2K | $261.8K |
+| 2026-09-12 | 626.2K | $261.8K |
+| 2026-09-13 | 626.2K | $261.8K |
+| 2026-09-14 | 626.2K | $261.8K |
+| 2026-09-15 | 626.2K | $261.8K |
+| 2026-09-16 | 626.2K | $261.8K |
+| 2026-09-17 | 626.2K | $261.8K |
 
 
 ---
 
 ## Jupiter (JUP)
 
-**Price:** $0.25    **Circulating:** 0 JUP    **AF balance:** 0 JUP    **Total staked:** 0 JUP
+**Price:** $0.23    **Circulating:** 0 JUP    **AF balance:** 0 JUP    **Total staked:** 0 JUP
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 JUP | $0 | today @ $0.25 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 JUP | $0 | today @ $0.25 | 0.0000% |
-| 30d | ⚠ 15/30d partial | 53.47M | 7.74M | 🔴 +7.82M JUP | +$2.41M | per-day (94%) | 0.0000% |
-| 90d | 75/90d | 160.41M | 29.50M | 🔴 +17.16M JUP | +$4.62M | per-day (99%) | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 JUP | $0 | today @ $0.23 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 JUP | $0 | today @ $0.23 | 0.0000% |
+| 30d | ⚠ 15/30d partial | 53.47M | 7.74M | 🔴 +7.82M JUP | +$2.15M | per-day (94%) | 0.0000% |
+| 90d | 75/90d | 160.41M | 29.50M | 🔴 +17.16M JUP | +$4.36M | per-day (99%) | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -412,36 +412,36 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-08-23 | 0 | 724.2K | −724.2K | −$147.1K |
 | 2026-08-24 | 0 | 523.1K | −523.1K | −$112.9K |
 | 2026-08-25 | 0 | 374.2K | −374.2K | −$78.9K |
-| 2026-08-27 | 53.47M | 0 | +15.55M | +$3.85M |
+| 2026-08-27 | 53.47M | 0 | +15.55M | +$3.59M |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-27 | 53.47M | $13.24M |
-| 2026-10-27 | 53.47M | $13.24M |
-| 2026-11-27 | 53.47M | $13.24M |
-| 2026-12-27 | 53.47M | $13.24M |
-| 2027-01-27 | 53.47M | $13.24M |
-| 2027-02-27 | 53.47M | $13.24M |
-| 2027-03-27 | 53.47M | $13.24M |
-| 2027-04-27 | 53.47M | $13.24M |
+| 2026-09-27 | 53.47M | $12.35M |
+| 2026-10-27 | 53.47M | $12.35M |
+| 2026-11-27 | 53.47M | $12.35M |
+| 2026-12-27 | 53.47M | $12.35M |
+| 2027-01-27 | 53.47M | $12.35M |
+| 2027-02-27 | 53.47M | $12.35M |
+| 2027-03-27 | 53.47M | $12.35M |
+| 2027-04-27 | 53.47M | $12.35M |
 
 
 ---
 
 ## Fluid (FLUID)
 
-**Price:** $1.22    **Circulating:** 0 FLUID    **AF balance:** 0 FLUID    **Total staked:** 0 FLUID
+**Price:** $1.18    **Circulating:** 0 FLUID    **AF balance:** 0 FLUID    **Total staked:** 0 FLUID
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 9.1K | 0 | 🔴 +2.7K FLUID | +$3.3K | today @ $1.22 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 563.9K | 0 | 🔴 +169.2K FLUID | +$206.4K | today @ $1.22 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 774.0K | 0 | 🔴 +232.2K FLUID | +$283.3K | today @ $1.22 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 2.32M | 0 | 🔴 +696.6K FLUID | +$849.8K | today @ $1.22 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 9.1K | 0 | 🔴 +2.7K FLUID | +$3.2K | today @ $1.18 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 563.9K | 0 | 🔴 +169.2K FLUID | +$199.6K | today @ $1.18 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 774.0K | 0 | 🔴 +232.2K FLUID | +$274.0K | today @ $1.18 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 2.32M | 0 | 🔴 +696.6K FLUID | +$822.0K | today @ $1.18 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -460,49 +460,49 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-08-28 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-08-29 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-08-30 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-08-31 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-01 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-02 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-03 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-04 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-05 | 509.1K | 0 | +152.7K | +$186.3K |
-| 2026-09-06 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-07 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-08 | 9.1K | 0 | +2.7K | +$3.3K |
-| 2026-09-09 | 9.1K | 0 | +2.7K | +$3.3K |
+| 2026-08-27 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-08-28 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-08-29 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-08-30 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-08-31 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-01 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-02 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-03 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-04 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-05 | 509.1K | 0 | +152.7K | +$180.2K |
+| 2026-09-06 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-07 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-08 | 9.1K | 0 | +2.7K | +$3.2K |
+| 2026-09-09 | 9.1K | 0 | +2.7K | +$3.2K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 9.1K | $11.1K |
-| 2026-09-11 | 9.1K | $11.1K |
-| 2026-09-12 | 9.1K | $11.1K |
-| 2026-09-13 | 9.1K | $11.1K |
-| 2026-09-14 | 9.1K | $11.1K |
-| 2026-09-15 | 9.1K | $11.1K |
-| 2026-09-16 | 9.1K | $11.1K |
-| 2026-09-17 | 9.1K | $11.1K |
+| 2026-09-10 | 9.1K | $10.8K |
+| 2026-09-11 | 9.1K | $10.8K |
+| 2026-09-12 | 9.1K | $10.8K |
+| 2026-09-13 | 9.1K | $10.8K |
+| 2026-09-14 | 9.1K | $10.8K |
+| 2026-09-15 | 9.1K | $10.8K |
+| 2026-09-16 | 9.1K | $10.8K |
+| 2026-09-17 | 9.1K | $10.8K |
 
 
 ---
 
 ## Collector Crypt (CARDS)
 
-**Price:** $0.13    **Circulating:** 0 CARDS    **AF balance:** 0 CARDS    **Total staked:** 0 CARDS
+**Price:** $0.12    **Circulating:** 0 CARDS    **AF balance:** 0 CARDS    **Total staked:** 0 CARDS
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 CARDS | $0 | today @ $0.13 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 CARDS | $0 | today @ $0.13 | 0.0000% |
-| 30d | ⚠ 15/30d partial | 44.67M | 27.93M | 🟢 −15.99M CARDS | −$3.26M | per-day (94%) | 0.0000% |
-| 90d | 75/90d | 73.18M | 152.80M | 🟢 −118.08M CARDS | −$22.46M | per-day (99%) | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 CARDS | $0 | today @ $0.12 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 CARDS | $0 | today @ $0.12 | 0.0000% |
+| 30d | ⚠ 15/30d partial | 44.67M | 27.93M | 🟢 −15.99M CARDS | −$3.32M | per-day (94%) | 0.0000% |
+| 90d | 75/90d | 73.18M | 152.80M | 🟢 −118.08M CARDS | −$22.53M | per-day (99%) | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -534,20 +534,20 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-08-23 | 0 | 1.17M | −1.17M | −$233.1K |
 | 2026-08-24 | 0 | 1.21M | −1.21M | −$239.0K |
 | 2026-08-25 | 0 | 1.06M | −1.06M | −$212.9K |
-| 2026-09-01 | 44.67M | 0 | +11.94M | +$1.51M |
+| 2026-09-01 | 44.67M | 0 | +11.94M | +$1.45M |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-10-01 | 44.67M | $5.64M |
-| 2026-11-01 | 44.67M | $5.64M |
-| 2026-12-01 | 44.67M | $5.64M |
-| 2027-01-01 | 44.67M | $5.64M |
-| 2027-02-01 | 44.67M | $5.64M |
-| 2027-03-01 | 44.67M | $5.64M |
-| 2027-04-01 | 44.67M | $5.64M |
-| 2027-05-01 | 44.67M | $5.64M |
+| 2026-10-01 | 44.67M | $5.41M |
+| 2026-11-01 | 44.67M | $5.41M |
+| 2026-12-01 | 44.67M | $5.41M |
+| 2027-01-01 | 44.67M | $5.41M |
+| 2027-02-01 | 44.67M | $5.41M |
+| 2027-03-01 | 44.67M | $5.41M |
+| 2027-04-01 | 44.67M | $5.41M |
+| 2027-05-01 | 44.67M | $5.41M |
 
 
 ---
@@ -560,10 +560,10 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 359.91M | 0 | 🔴 +160.31M PUMP | +$745.9K | today @ $0.00 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 2.52B | 0 | 🔴 +1.12B PUMP | +$5.22M | today @ $0.00 | 0.0000% |
-| 30d | ⚠ 14/30d partial | 20.80B | 3.81B | 🔴 +4.00B PUMP | +$15.39M | per-day (47%) | 0.0000% |
-| 90d | 74/90d | 55.55B | 21.76B | 🟢 −1.38B PUMP | +$5.23M | per-day (82%) | 0.0000% |
+| 24h | ⚠ 0/1d partial | 359.91M | 0 | 🔴 +160.31M PUMP | +$661.6K | today @ $0.00 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 2.52B | 0 | 🔴 +1.12B PUMP | +$4.63M | today @ $0.00 | 0.0000% |
+| 30d | ⚠ 14/30d partial | 20.80B | 3.81B | 🔴 +4.00B PUMP | +$14.04M | per-day (47%) | 0.0000% |
+| 90d | 74/90d | 55.55B | 21.76B | 🟢 −1.38B PUMP | +$3.88M | per-day (82%) | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -582,49 +582,49 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-08-28 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-08-29 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-08-30 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-08-31 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-01 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-02 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-03 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-04 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-05 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-06 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-07 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-08 | 359.91M | 0 | +160.31M | +$745.9K |
-| 2026-09-09 | 359.91M | 0 | +160.31M | +$745.9K |
+| 2026-08-27 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-08-28 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-08-29 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-08-30 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-08-31 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-01 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-02 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-03 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-04 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-05 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-06 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-07 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-08 | 359.91M | 0 | +160.31M | +$661.6K |
+| 2026-09-09 | 359.91M | 0 | +160.31M | +$661.6K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 359.91M | $1.67M |
-| 2026-09-11 | 359.91M | $1.67M |
-| 2026-09-12 | 10.36B | $48.21M |
-| 2026-09-13 | 359.91M | $1.67M |
-| 2026-09-14 | 359.91M | $1.67M |
-| 2026-09-15 | 359.91M | $1.67M |
-| 2026-09-16 | 359.91M | $1.67M |
-| 2026-09-17 | 359.91M | $1.67M |
+| 2026-09-10 | 359.91M | $1.49M |
+| 2026-09-11 | 359.91M | $1.49M |
+| 2026-09-12 | 10.36B | $42.75M |
+| 2026-09-13 | 359.91M | $1.49M |
+| 2026-09-14 | 359.91M | $1.49M |
+| 2026-09-15 | 359.91M | $1.49M |
+| 2026-09-16 | 359.91M | $1.49M |
+| 2026-09-17 | 359.91M | $1.49M |
 
 
 ---
 
 ## LayerZero (ZRO)
 
-**Price:** $1.15    **Circulating:** 0 ZRO    **AF balance:** 0 ZRO    **Total staked:** 0 ZRO
+**Price:** $1.07    **Circulating:** 0 ZRO    **AF balance:** 0 ZRO    **Total staked:** 0 ZRO
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 ZRO | $0 | today @ $1.15 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 ZRO | $0 | today @ $1.15 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 23.63M | 0 | 🔴 +11.46M ZRO | +$13.18M | today @ $1.15 | 0.0000% |
-| 90d | ⚠ 2/90d partial | 70.89M | 314.2K | 🔴 +34.07M ZRO | +$39.28M | per-day (40%) | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 ZRO | $0 | today @ $1.07 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 ZRO | $0 | today @ $1.07 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 23.63M | 0 | 🔴 +11.46M ZRO | +$12.25M | today @ $1.07 | 0.0000% |
+| 90d | ⚠ 2/90d partial | 70.89M | 314.2K | 🔴 +34.07M ZRO | +$36.50M | per-day (40%) | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -645,47 +645,47 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 |---|---|---|---|---|
 | 2026-03-08 | 0 | 133.3K | −133.3K | −$255.8K |
 | 2026-03-09 | 0 | 15.7K | −15.7K | −$30.6K |
-| 2026-03-20 | 23.63M | 0 | +11.46M | +$13.18M |
+| 2026-03-20 | 23.63M | 0 | +11.46M | +$12.25M |
 | 2026-04-07 | 0 | 145.7K | −145.7K | −$264.2K |
-| 2026-04-20 | 23.63M | 0 | +11.46M | +$13.18M |
+| 2026-04-20 | 23.63M | 0 | +11.46M | +$12.25M |
 | 2026-05-04 | 0 | 151.0K | −151.0K | −$206.6K |
-| 2026-05-20 | 23.63M | 0 | +11.46M | +$13.18M |
+| 2026-05-20 | 23.63M | 0 | +11.46M | +$12.25M |
 | 2026-06-02 | 0 | 124.1K | −124.1K | −$141.2K |
 | 2026-06-03 | 0 | 120.5K | −120.5K | −$154.0K |
-| 2026-06-20 | 23.63M | 0 | +11.46M | +$13.18M |
+| 2026-06-20 | 23.63M | 0 | +11.46M | +$12.25M |
 | 2026-07-08 | 0 | 143.8K | −143.8K | −$134.5K |
-| 2026-07-20 | 23.63M | 0 | +11.46M | +$13.18M |
+| 2026-07-20 | 23.63M | 0 | +11.46M | +$12.25M |
 | 2026-08-06 | 0 | 170.4K | −170.4K | −$131.6K |
-| 2026-08-20 | 23.63M | 0 | +11.46M | +$13.18M |
+| 2026-08-20 | 23.63M | 0 | +11.46M | +$12.25M |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-20 | 23.63M | $27.17M |
-| 2026-10-20 | 23.63M | $27.17M |
-| 2026-11-20 | 23.63M | $27.17M |
-| 2026-12-20 | 23.63M | $27.17M |
-| 2027-01-20 | 23.63M | $27.17M |
-| 2027-02-20 | 23.63M | $27.17M |
-| 2027-03-20 | 23.63M | $27.17M |
-| 2027-04-20 | 23.63M | $27.17M |
+| 2026-09-20 | 23.63M | $25.26M |
+| 2026-10-20 | 23.63M | $25.26M |
+| 2026-11-20 | 23.63M | $25.26M |
+| 2026-12-20 | 23.63M | $25.26M |
+| 2027-01-20 | 23.63M | $25.26M |
+| 2027-02-20 | 23.63M | $25.26M |
+| 2027-03-20 | 23.63M | $25.26M |
+| 2027-04-20 | 23.63M | $25.26M |
 
 
 ---
 
 ## Ethena (ENA)
 
-**Price:** $0.16    **Circulating:** 0 ENA    **AF balance:** 0 ENA    **Total staked:** 0 ENA
+**Price:** $0.15    **Circulating:** 0 ENA    **AF balance:** 0 ENA    **Total staked:** 0 ENA
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 10.75M | 0 | 🔴 +4.11M ENA | +$644.1K | today @ $0.16 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 75.22M | 0 | 🔴 +28.77M ENA | +$4.51M | today @ $0.16 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 322.39M | 0 | 🔴 +123.30M ENA | +$19.32M | today @ $0.16 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 967.16M | 0 | 🔴 +369.89M ENA | +$57.97M | today @ $0.16 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 10.75M | 0 | 🔴 +4.11M ENA | +$623.6K | today @ $0.15 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 75.22M | 0 | 🔴 +28.77M ENA | +$4.37M | today @ $0.15 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 322.39M | 0 | 🔴 +123.30M ENA | +$18.71M | today @ $0.15 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 967.16M | 0 | 🔴 +369.89M ENA | +$56.12M | today @ $0.15 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -704,49 +704,49 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-08-28 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-08-29 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-08-30 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-08-31 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-01 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-02 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-03 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-04 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-05 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-06 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-07 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-08 | 10.75M | 0 | +4.11M | +$644.1K |
-| 2026-09-09 | 10.75M | 0 | +4.11M | +$644.1K |
+| 2026-08-27 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-08-28 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-08-29 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-08-30 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-08-31 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-01 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-02 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-03 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-04 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-05 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-06 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-07 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-08 | 10.75M | 0 | +4.11M | +$623.6K |
+| 2026-09-09 | 10.75M | 0 | +4.11M | +$623.6K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 10.75M | $1.68M |
-| 2026-09-11 | 10.75M | $1.68M |
-| 2026-09-12 | 10.75M | $1.68M |
-| 2026-09-13 | 10.75M | $1.68M |
-| 2026-09-14 | 10.75M | $1.68M |
-| 2026-09-15 | 10.75M | $1.68M |
-| 2026-09-16 | 10.75M | $1.68M |
-| 2026-09-17 | 10.75M | $1.68M |
+| 2026-09-10 | 10.75M | $1.63M |
+| 2026-09-11 | 10.75M | $1.63M |
+| 2026-09-12 | 10.75M | $1.63M |
+| 2026-09-13 | 10.75M | $1.63M |
+| 2026-09-14 | 10.75M | $1.63M |
+| 2026-09-15 | 10.75M | $1.63M |
+| 2026-09-16 | 10.75M | $1.63M |
+| 2026-09-17 | 10.75M | $1.63M |
 
 
 ---
 
 ## Aerodrome (AERO)
 
-**Price:** $0.56    **Circulating:** 0 AERO    **AF balance:** 0 AERO    **Total staked:** 0 AERO
+**Price:** $0.55    **Circulating:** 0 AERO    **AF balance:** 0 AERO    **Total staked:** 0 AERO
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.56 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.56 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.56 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.56 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.55 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.55 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.55 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 0 | 0 | · 0 AERO | $0 | today @ $0.55 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -774,8 +774,8 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 |---|---|---|---|---|---|---|---|
 | 24h | ⚠ 0/1d partial | 0 | 0 | · 0 DYDX | $0 | today @ $0.12 | 0.0000% |
 | 7d | ⚠ 0/7d partial | 0 | 0 | · 0 DYDX | $0 | today @ $0.12 | 0.0000% |
-| 30d | ⚠ 14/30d partial | 3.79M | 1.40M | 🔴 +137.1K DYDX | +$21.6K | per-day (70%) | 0.0000% |
-| 90d | ⚠ 69/90d partial | 15.15M | 4.53M | 🔴 +1.62M DYDX | +$205.6K | per-day (86%) | 0.0000% |
+| 30d | ⚠ 14/30d partial | 3.79M | 1.40M | 🔴 +137.1K DYDX | +$19.7K | per-day (70%) | 0.0000% |
+| 90d | ⚠ 69/90d partial | 15.15M | 4.53M | 🔴 +1.62M DYDX | +$202.1K | per-day (86%) | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -802,28 +802,28 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-08-22 | 189.4K | 80.8K | −3.8K | −$472.35 |
 | 2026-08-23 | 189.4K | 86.8K | −9.8K | −$1.2K |
 | 2026-08-24 | 189.4K | 78.1K | −1.1K | −$139.25 |
-| 2026-08-25 | 189.4K | 0 | +76.9K | +$9.2K |
-| 2026-08-26 | 189.4K | 0 | +76.9K | +$9.2K |
-| 2026-08-27 | 189.4K | 0 | +76.9K | +$9.2K |
-| 2026-08-28 | 189.4K | 0 | +76.9K | +$9.2K |
-| 2026-08-29 | 189.4K | 0 | +76.9K | +$9.2K |
-| 2026-08-30 | 189.4K | 0 | +76.9K | +$9.2K |
+| 2026-08-25 | 189.4K | 0 | +76.9K | +$8.9K |
+| 2026-08-26 | 189.4K | 0 | +76.9K | +$8.9K |
+| 2026-08-27 | 189.4K | 0 | +76.9K | +$8.9K |
+| 2026-08-28 | 189.4K | 0 | +76.9K | +$8.9K |
+| 2026-08-29 | 189.4K | 0 | +76.9K | +$8.9K |
+| 2026-08-30 | 189.4K | 0 | +76.9K | +$8.9K |
 
 
 ---
 
 ## Meteora (MET)
 
-**Price:** $0.20    **Circulating:** 0 MET    **AF balance:** 0 MET    **Total staked:** 0 MET
+**Price:** $0.19    **Circulating:** 0 MET    **AF balance:** 0 MET    **Total staked:** 0 MET
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 291.3K | 0 | 🔴 +110.1K MET | +$22.6K | today @ $0.20 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 2.04M | 0 | 🔴 +770.9K MET | +$157.9K | today @ $0.20 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 8.74M | 0 | 🔴 +3.30M MET | +$676.7K | today @ $0.20 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 26.21M | 0 | 🔴 +9.91M MET | +$2.03M | today @ $0.20 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 291.3K | 0 | 🔴 +110.1K MET | +$21.4K | today @ $0.19 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 2.04M | 0 | 🔴 +770.9K MET | +$149.9K | today @ $0.19 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 8.74M | 0 | 🔴 +3.30M MET | +$642.5K | today @ $0.19 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 26.21M | 0 | 🔴 +9.91M MET | +$1.93M | today @ $0.19 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -842,33 +842,33 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-08-28 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-08-29 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-08-30 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-08-31 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-01 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-02 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-03 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-04 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-05 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-06 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-07 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-08 | 291.3K | 0 | +110.1K | +$22.6K |
-| 2026-09-09 | 291.3K | 0 | +110.1K | +$22.6K |
+| 2026-08-27 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-08-28 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-08-29 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-08-30 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-08-31 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-01 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-02 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-03 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-04 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-05 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-06 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-07 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-08 | 291.3K | 0 | +110.1K | +$21.4K |
+| 2026-09-09 | 291.3K | 0 | +110.1K | +$21.4K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 291.3K | $59.7K |
-| 2026-09-11 | 291.3K | $59.7K |
-| 2026-09-12 | 291.3K | $59.7K |
-| 2026-09-13 | 291.3K | $59.7K |
-| 2026-09-14 | 291.3K | $59.7K |
-| 2026-09-15 | 291.3K | $59.7K |
-| 2026-09-16 | 291.3K | $59.7K |
-| 2026-09-17 | 291.3K | $59.7K |
+| 2026-09-10 | 291.3K | $56.6K |
+| 2026-09-11 | 291.3K | $56.6K |
+| 2026-09-12 | 291.3K | $56.6K |
+| 2026-09-13 | 291.3K | $56.6K |
+| 2026-09-14 | 291.3K | $56.6K |
+| 2026-09-15 | 291.3K | $56.6K |
+| 2026-09-16 | 291.3K | $56.6K |
+| 2026-09-17 | 291.3K | $56.6K |
 
 
 ---
@@ -881,10 +881,10 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 347.8K | 0 | 🔴 +118.1K CLOUD | +$4.9K | today @ $0.04 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 2.43M | 0 | 🔴 +826.5K CLOUD | +$34.0K | today @ $0.04 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 10.43M | 0 | 🔴 +3.54M CLOUD | +$145.9K | today @ $0.04 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 31.30M | 0 | 🔴 +10.63M CLOUD | +$437.6K | today @ $0.04 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 347.8K | 0 | 🔴 +118.1K CLOUD | +$4.8K | today @ $0.04 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 2.43M | 0 | 🔴 +826.5K CLOUD | +$33.8K | today @ $0.04 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 10.43M | 0 | 🔴 +3.54M CLOUD | +$144.8K | today @ $0.04 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 31.30M | 0 | 🔴 +10.63M CLOUD | +$434.3K | today @ $0.04 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -903,33 +903,33 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-08-28 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-08-29 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-08-30 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-08-31 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-01 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-02 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-03 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-04 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-05 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-06 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-07 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-08 | 347.8K | 0 | +118.1K | +$4.9K |
-| 2026-09-09 | 347.8K | 0 | +118.1K | +$4.9K |
+| 2026-08-27 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-08-28 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-08-29 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-08-30 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-08-31 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-01 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-02 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-03 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-04 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-05 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-06 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-07 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-08 | 347.8K | 0 | +118.1K | +$4.8K |
+| 2026-09-09 | 347.8K | 0 | +118.1K | +$4.8K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 347.8K | $14.3K |
-| 2026-09-11 | 347.8K | $14.3K |
-| 2026-09-12 | 347.8K | $14.3K |
-| 2026-09-13 | 347.8K | $14.3K |
-| 2026-09-14 | 347.8K | $14.3K |
-| 2026-09-15 | 347.8K | $14.3K |
-| 2026-09-16 | 347.8K | $14.3K |
-| 2026-09-17 | 347.8K | $14.3K |
+| 2026-09-10 | 347.8K | $14.2K |
+| 2026-09-11 | 347.8K | $14.2K |
+| 2026-09-12 | 347.8K | $14.2K |
+| 2026-09-13 | 347.8K | $14.2K |
+| 2026-09-14 | 347.8K | $14.2K |
+| 2026-09-15 | 347.8K | $14.2K |
+| 2026-09-16 | 347.8K | $14.2K |
+| 2026-09-17 | 347.8K | $14.2K |
 
 
 ---
@@ -942,10 +942,10 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 644.2K | 0 | 🔴 +302.8K DRIFT | +$3.6K | today @ $0.01 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 4.51M | 0 | 🔴 +2.12M DRIFT | +$25.2K | today @ $0.01 | 0.0000% |
-| 30d | ⚠ 0/30d partial | 19.33M | 0 | 🔴 +9.08M DRIFT | +$107.8K | today @ $0.01 | 0.0000% |
-| 90d | ⚠ 0/90d partial | 57.98M | 0 | 🔴 +27.25M DRIFT | +$323.4K | today @ $0.01 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 644.2K | 0 | 🔴 +302.8K DRIFT | +$3.4K | today @ $0.01 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 4.51M | 0 | 🔴 +2.12M DRIFT | +$24.0K | today @ $0.01 | 0.0000% |
+| 30d | ⚠ 0/30d partial | 19.33M | 0 | 🔴 +9.08M DRIFT | +$102.9K | today @ $0.01 | 0.0000% |
+| 90d | ⚠ 0/90d partial | 57.98M | 0 | 🔴 +27.25M DRIFT | +$308.7K | today @ $0.01 | 0.0000% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -964,47 +964,47 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 | Date | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) |
 |---|---|---|---|---|
-| 2026-08-27 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-08-28 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-08-29 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-08-30 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-08-31 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-01 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-02 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-03 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-04 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-05 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-06 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-07 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-08 | 644.2K | 0 | +302.8K | +$3.6K |
-| 2026-09-09 | 644.2K | 0 | +302.8K | +$3.6K |
+| 2026-08-27 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-08-28 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-08-29 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-08-30 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-08-31 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-01 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-02 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-03 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-04 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-05 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-06 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-07 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-08 | 644.2K | 0 | +302.8K | +$3.4K |
+| 2026-09-09 | 644.2K | 0 | +302.8K | +$3.4K |
 
 ### Next 8 projected unlocks
 
 | Date | Unlocks (tokens) | Unlocks @ today's price |
 |---|---|---|
-| 2026-09-10 | 644.2K | $7.6K |
-| 2026-09-11 | 644.2K | $7.6K |
-| 2026-09-12 | 644.2K | $7.6K |
-| 2026-09-13 | 644.2K | $7.6K |
-| 2026-09-14 | 644.2K | $7.6K |
-| 2026-09-15 | 644.2K | $7.6K |
-| 2026-09-16 | 644.2K | $7.6K |
-| 2026-09-17 | 644.2K | $7.6K |
+| 2026-09-10 | 644.2K | $7.3K |
+| 2026-09-11 | 644.2K | $7.3K |
+| 2026-09-12 | 644.2K | $7.3K |
+| 2026-09-13 | 644.2K | $7.3K |
+| 2026-09-14 | 644.2K | $7.3K |
+| 2026-09-15 | 644.2K | $7.3K |
+| 2026-09-16 | 644.2K | $7.3K |
+| 2026-09-17 | 644.2K | $7.3K |
 
 
 ---
 
 ## Uniswap (UNI)
 
-**Price:** $6.61    **Circulating:** 0 UNI    **AF balance:** 0 UNI    **Total staked:** 0 UNI
+**Price:** $6.22    **Circulating:** 0 UNI    **AF balance:** 0 UNI    **Total staked:** 0 UNI
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 UNI | $0 | today @ $6.61 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 UNI | $0 | today @ $6.61 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 UNI | $0 | today @ $6.22 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 UNI | $0 | today @ $6.22 | 0.0000% |
 | 30d | ⚠ 15/30d partial | 0 | 1.09M | 🟢 −1.09M UNI | −$4.17M | per-day (100%) | 0.0000% |
 | 90d | 75/90d | 0 | 3.74M | 🟢 −3.74M UNI | −$13.27M | per-day (100%) | 0.0000% |
 
@@ -1045,14 +1045,14 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 ## Raydium (RAY)
 
-**Price:** $1.34    **Circulating:** 0 RAY    **AF balance:** 0 RAY    **Total staked:** 0 RAY
+**Price:** $1.24    **Circulating:** 0 RAY    **AF balance:** 0 RAY    **Total staked:** 0 RAY
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 RAY | $0 | today @ $1.34 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 RAY | $0 | today @ $1.34 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 RAY | $0 | today @ $1.24 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 RAY | $0 | today @ $1.24 | 0.0000% |
 | 30d | ⚠ 16/30d partial | 0 | 823.5K | 🟢 −823.5K RAY | −$560.8K | per-day (100%) | 0.0000% |
 | 90d | 76/90d | 0 | 2.57M | 🟢 −2.57M RAY | −$1.67M | per-day (100%) | 0.0000% |
 
@@ -1093,14 +1093,14 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 ## Euler (EUL)
 
-**Price:** $1.26    **Circulating:** 0 EUL    **AF balance:** 0 EUL    **Total staked:** 0 EUL
+**Price:** $1.23    **Circulating:** 0 EUL    **AF balance:** 0 EUL    **Total staked:** 0 EUL
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 EUL | $0 | today @ $1.26 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 EUL | $0 | today @ $1.26 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 EUL | $0 | today @ $1.23 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 EUL | $0 | today @ $1.23 | 0.0000% |
 | 30d | ⚠ 1/30d partial | 0 | 1 | 🟢 −1 EUL | −$1.19 | per-day (100%) | 0.0000% |
 | 90d | ⚠ 1/90d partial | 0 | 1 | 🟢 −1 EUL | −$1.19 | per-day (100%) | 0.0000% |
 
@@ -1189,14 +1189,14 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 ## Orca (ORCA)
 
-**Price:** $1.49    **Circulating:** 0 ORCA    **AF balance:** 0 ORCA    **Total staked:** 0 ORCA
+**Price:** $1.43    **Circulating:** 0 ORCA    **AF balance:** 0 ORCA    **Total staked:** 0 ORCA
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 ORCA | $0 | today @ $1.49 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 ORCA | $0 | today @ $1.49 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 ORCA | $0 | today @ $1.43 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 ORCA | $0 | today @ $1.43 | 0.0000% |
 | 30d | ⚠ 15/30d partial | 0 | 98.1K | 🟢 −98.1K ORCA | −$115.1K | per-day (100%) | 0.0000% |
 | 90d | 75/90d | 0 | 214.3K | 🟢 −214.3K ORCA | −$251.0K | per-day (100%) | 0.0000% |
 
@@ -1285,14 +1285,14 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 ## ether.fi (ETHFI)
 
-**Price:** $0.61    **Circulating:** 0 ETHFI    **AF balance:** 0 ETHFI    **Total staked:** 0 ETHFI
+**Price:** $0.60    **Circulating:** 0 ETHFI    **AF balance:** 0 ETHFI    **Total staked:** 0 ETHFI
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 ETHFI | $0 | today @ $0.61 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 ETHFI | $0 | today @ $0.61 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 ETHFI | $0 | today @ $0.60 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 ETHFI | $0 | today @ $0.60 | 0.0000% |
 | 30d | ⚠ 15/30d partial | 0 | 162.5K | 🟢 −162.5K ETHFI | −$78.6K | per-day (100%) | 0.0000% |
 | 90d | 75/90d | 0 | 933.6K | 🟢 −933.6K ETHFI | −$373.3K | per-day (100%) | 0.0000% |
 
@@ -1333,14 +1333,14 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 
 ## CoW Protocol (COW)
 
-**Price:** $0.14    **Circulating:** 0 COW    **AF balance:** 0 COW    **Total staked:** 0 COW
+**Price:** $0.13    **Circulating:** 0 COW    **AF balance:** 0 COW    **Total staked:** 0 COW
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 COW | $0 | today @ $0.14 | 0.0000% |
-| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 COW | $0 | today @ $0.14 | 0.0000% |
+| 24h | ⚠ 0/1d partial | 0 | 0 | · 0 COW | $0 | today @ $0.13 | 0.0000% |
+| 7d | ⚠ 0/7d partial | 0 | 0 | · 0 COW | $0 | today @ $0.13 | 0.0000% |
 | 30d | ⚠ 13/30d partial | 0 | 4.18M | 🟢 −4.18M COW | −$469.9K | per-day (100%) | 0.0000% |
 | 90d | ⚠ 69/90d partial | 0 | 14.10M | 🟢 −14.10M COW | −$1.85M | per-day (100%) | 0.0000% |
 

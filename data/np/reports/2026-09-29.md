@@ -1,6 +1,6 @@
 # Net Pressure (TP) — Cohort Snapshot
 
-**Generated:** 2026-09-29T10:42:44.526Z
+**Generated:** 2026-09-29T18:06:37.478Z
 **As-of:** 2026-09-29
 
 Formula:
@@ -15,16 +15,16 @@ Unlocks are **sell-probability weighted** (team 0.10, foundation/emissions 0.30-
 
 ## Hyperliquid (HYPE)
 
-**Price:** $0.00    **Circulating:** 572.59M HYPE    **AF balance:** 47.56M HYPE    **Total staked:** 440.66M HYPE (77.0% of circ)
+**Price:** $0.00    **Circulating:** 572.59M HYPE    **AF balance:** 47.57M HYPE    **Total staked:** 440.97M HYPE (77.0% of circ)
 
 ### Net Pressure roll-ups
 
 | Window | Buyback coverage | Unlocks (source) | Buybacks (sink) | Net Pressure (tokens) | Net Pressure (USD) | USD method | % of supply |
 |---|---|---|---|---|---|---|---|
-| 24h | 1/1d | 7.53M | 9.0K | 🔴 +3.00M HYPE | $0 | today @ $0.00 | 0.3004% |
-| 7d | 7/7d | 7.53M | 67.9K | 🔴 +2.40M HYPE | $0 | today @ $0.00 | 0.2403% |
-| 30d | 30/30d | 17.45M | 214.5K | 🟢 −4.70M HYPE | $0 | today @ $0.00 | -0.4696% |
-| 90d | 90/90d | 52.34M | 437.2K | 🟢 −7.79M HYPE | $0 | today @ $0.00 | -0.7787% |
+| 24h | 1/1d | 7.53M | 19.8K | 🔴 +2.99M HYPE | $0 | today @ $0.00 | 0.2993% |
+| 7d | 7/7d | 7.53M | 76.5K | 🔴 +2.39M HYPE | $0 | today @ $0.00 | 0.2395% |
+| 30d | 30/30d | 17.45M | 223.1K | 🟢 −4.70M HYPE | $0 | today @ $0.00 | -0.4705% |
+| 90d | 90/90d | 52.34M | 445.8K | 🟢 −7.80M HYPE | $0 | today @ $0.00 | -0.7796% |
 
 Sign convention: positive = supply hitting market (net seller); negative = protocol absorbing more than it emits (net buyer). 🟢 = net buyer, 🔴 = net seller.
 
@@ -55,8 +55,8 @@ Sign convention: positive = supply hitting market (net seller); negative = proto
 | 2026-09-25 | 0 | 12.9K | −157.9K | $0 |
 | 2026-09-26 | 0 | 7.0K | −7.0K | $0 |
 | 2026-09-27 | 0 | 7.0K | −283.5K | $0 |
-| 2026-09-28 | 0 | 27.8K | −27.8K | $0 |
-| 2026-09-29 | 7.53M | 9.0K | +3.00M | $0 |
+| 2026-09-28 | 0 | 25.6K | −25.6K | $0 |
+| 2026-09-29 | 7.53M | 19.8K | +2.99M | $0 |
 
 ### Next 8 projected unlocks
 

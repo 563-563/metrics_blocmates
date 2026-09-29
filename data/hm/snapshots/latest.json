@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-29T10:42:44.473Z",
+  "generated_at": "2026-09-29T18:06:37.410Z",
   "as_of": "2026-09-29",
   "mode": "live",
-  "latest_data_as_of": "2026-09-29T10:42:43.152Z",
+  "latest_data_as_of": "2026-09-29T18:06:35.898Z",
   "protocols": [
     {
       "slug": "morpho",
@@ -205,10 +205,10 @@
       "buybacks_24mo_usd": 1240000000,
       "buybacks_24mo_notes": "30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present)",
       "adj_mcap_usd": 21364976572.2,
-      "annual_buyback_usd": 172600826.1110333,
+      "annual_buyback_usd": 171362487.90175995,
       "annual_buyback_verification": "onchain",
       "annual_buyback_source": {
-        "annual_usd": 172600826.1110333,
+        "annual_usd": 171362487.90175995,
         "window_days": 60,
         "active_days_in_window": 60,
         "window_start": "2026-07-31",
@@ -218,10 +218,10 @@
         "source": "onchain_feed",
         "feed_verification": "onchain",
         "feed_path": "data/onchain/hype-af/buybacks.json",
-        "lifetime_annual_usd": 616200592.9211216,
+        "lifetime_annual_usd": 616067438.2749631,
         "lifetime_days": 558,
-        "lifetime_cumulative_usd": 942027207.8081803,
-        "rate_vs_lifetime_pct": -71.98950664866895
+        "lifetime_cumulative_usd": 941823645.3628204,
+        "rate_vs_lifetime_pct": -72.18445948359351
       },
       "annual_buyback_seed_usd": 619000000,
       "annual_holder_yield_usd": 0,
@@ -231,8 +231,8 @@
         "source": "seed"
       },
       "annual_holder_yield_seed_usd": 0,
-      "real_capture_usd": 172600826.1110333,
-      "hm": 123.78258582873765,
+      "real_capture_usd": 171362487.90175995,
+      "hm": 124.67709143233427,
       "hm_band": "speculative",
       "sources": [
         "DefiLlama",
@@ -1855,9 +1855,9 @@
       "symbol": "JUP",
       "category": "DEX",
       "image": null,
-      "revenue_30d": 6901261.54,
-      "revenue_1y": 85902210.52000001,
-      "holders_revenue_30d": 3448288.58,
+      "revenue_30d": 6907180.54,
+      "revenue_1y": 85908129.52000001,
+      "holders_revenue_30d": 3451248.58,
       "tmf_waterfall": null,
       "phase": {
         "active": "executing",
@@ -1877,12 +1877,12 @@
       "buybacks_24mo_usd": 0,
       "buybacks_24mo_notes": "buyback (executing): DL confirmed executing: 30d holdersRevenue $2.44M → $29.3M/yr (50% of protocol revenue). New mechanism active from 2025-02-17 (revenue-funded, not treasury-funded). All-time buybacks $90.9M. Original $70M treasury program exhausted 2024; Fe…",
       "adj_mcap_usd": 0,
-      "annual_buyback_usd": 41379462.96,
+      "annual_buyback_usd": 41414982.96,
       "annual_buyback_verification": "proxy",
       "annual_buyback_source": {
         "source": "seed"
       },
-      "annual_buyback_seed_usd": 41379462.96,
+      "annual_buyback_seed_usd": 41414982.96,
       "annual_holder_yield_usd": 0,
       "annual_holder_yield_notes": "",
       "annual_holder_yield_verification": "proxy",
@@ -1890,7 +1890,7 @@
         "source": "seed"
       },
       "annual_holder_yield_seed_usd": 0,
-      "real_capture_usd": 41379462.96,
+      "real_capture_usd": 41414982.96,
       "hm": 0,
       "hm_band": "exceptional",
       "sources": [

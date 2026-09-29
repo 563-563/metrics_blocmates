@@ -1,6 +1,6 @@
 # Holder Multiple — Cohort Snapshot
 
-**Generated:** 2026-09-29T10:42:44.473Z
+**Generated:** 2026-09-29T18:06:37.410Z
 **As-of:** 2026-09-29
 **Mode:** live
 
@@ -11,7 +11,7 @@
 | Morpho (MORPHO) | `proposed` | $0 | $0/yr | **∞×** | no real capture |
 | Aave (AAVE) | `current` | $1.39B | $0/yr | **∞×** | no real capture |
 | Maple Finance (SYRUP) | `none` | $0 | $0/yr | **∞×** | no real capture |
-| Hyperliquid (HYPE) | `current` | $21.36B | $172.60M/yr | **123.8×** | speculative |
+| Hyperliquid (HYPE) | `current` | $21.36B | $171.36M/yr | **124.7×** | speculative |
 | Uniswap (UNI) | `executing` | $0 | $189.52M/yr | **0.0×** | exceptional |
 | Sky (SKY) | `phase_1` | $1.89B | $16.92M/yr | **111.8×** | speculative |
 | Ethena (ENA) | `none` | $0 | $0/yr | **∞×** | no real capture |
@@ -41,7 +41,7 @@
 | Usual Money (USUAL) | `executing` | $0 | $9.65M/yr | **0.0×** | exceptional |
 | pump.fun (PUMP) | `executing` | $0 | $280.90M/yr | **0.0×** | exceptional |
 | Rollbit (RLB) | `executing` | $0 | $0/yr | **∞×** | no real capture |
-| Jupiter Exchange (JUP) | `executing` | $0 | $41.38M/yr | **0.0×** | exceptional |
+| Jupiter Exchange (JUP) | `executing` | $0 | $41.41M/yr | **0.0×** | exceptional |
 | Marinade Finance (MNDE) | `executing` | $0 | $0/yr | **∞×** | no real capture |
 | Lighter (LIT) | `current` | $393.27M | $31.12M/yr | **12.6×** | strong |
 
@@ -112,7 +112,7 @@ Phase: `none` — No documented mechanism routing institutional lending revenue 
 
 ---
 
-### Hyperliquid (HYPE) — HM 123.8× _(speculative)_
+### Hyperliquid (HYPE) — HM 124.7× _(speculative)_
 
 Phase: `current` — Assistance Fund captures ~99% of revenue for HYPE buybacks. Team vesting cliff active.
 
@@ -124,12 +124,12 @@ Phase: `current` — Assistance Fund captures ~99% of revenue for HYPE buybacks.
 | 4 | + 24mo emissions | +$299.20M | Staking emissions paid from Future Emissions allocation (Category C — added to dilution side) |
 | 5 | − 24mo buybacks | −$1.24B | 30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present) (verification: onchain) |
 | 6 | **Adjusted MCap** | **$21.36B** | Lines 2 + 3 + 4 − 5 |
-| 7 | Annual buyback (Category A) | $172.60M | last 60d annualized — verification: onchain |
+| 7 | Annual buyback (Category A) | $171.36M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to HYPE (Category B) | $0 | No Category B — staking rewards are HYPE-denominated dilution rebate (Category C) (verification: governance_stated) |
-| 9 | **Total Real Capture** | **$172.60M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **123.8×** | Line 6 ÷ Line 9 |
+| 9 | **Total Real Capture** | **$171.36M/yr** | Lines 7 + 8 |
+| 10 | **Holder Multiple (HM)** | **124.7×** | Line 6 ÷ Line 9 |
 
-**Buyback rate lens:** recent 60d annualized = **$172.60M/yr** (HM input). Lifetime annualized (558d, cumulative $942.03M) = **$616.20M/yr**. Recent rate is **-72.0%** below lifetime average.
+**Buyback rate lens:** recent 60d annualized = **$171.36M/yr** (HM input). Lifetime annualized (558d, cumulative $941.82M) = **$616.07M/yr**. Recent rate is **-72.2%** below lifetime average.
 
 [Sources: DefiLlama, Hyperliquid Info API, Tokenomist, Hyperliquid docs]
 
@@ -756,9 +756,9 @@ Phase: `executing` — DL confirmed executing: 30d holdersRevenue $2.44M → $29
 | 4 | + 24mo emissions | $0 |  |
 | 5 | − 24mo buybacks | $0 | buyback (executing): DL confirmed executing: 30d holdersRevenue $2.44M → $29.3M/yr (50% of protocol revenue). New mechanism active from 2025-02-17 (revenue-funded, not treasury-funded). All-time buybacks $90.9M. Original $70M treasury program exhausted 2024; Fe… (verification: proxy) |
 | 6 | **Adjusted MCap** | **$0** | Lines 2 + 3 + 4 − 5 |
-| 7 | Annual buyback (Category A) | $41.38M | verification: proxy |
+| 7 | Annual buyback (Category A) | $41.41M | verification: proxy |
 | 8 | Annual external cashflow yield to JUP (Category B) | $0 |  (verification: proxy) |
-| 9 | **Total Real Capture** | **$41.38M/yr** | Lines 7 + 8 |
+| 9 | **Total Real Capture** | **$41.41M/yr** | Lines 7 + 8 |
 | 10 | **Holder Multiple (HM)** | **0.0×** | Line 6 ÷ Line 9 |
 
 [Sources: DefiLlama (revenue/holders revenue), CoinGecko (price/supply), data/config.json (mechanism/status)]

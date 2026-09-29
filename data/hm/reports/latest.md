@@ -1,6 +1,6 @@
 # Holder Multiple — Cohort Snapshot
 
-**Generated:** 2026-09-29T18:06:37.410Z
+**Generated:** 2026-09-29T23:43:12.354Z
 **As-of:** 2026-09-29
 **Mode:** live
 
@@ -11,7 +11,7 @@
 | Morpho (MORPHO) | `proposed` | $0 | $0/yr | **∞×** | no real capture |
 | Aave (AAVE) | `current` | $1.39B | $0/yr | **∞×** | no real capture |
 | Maple Finance (SYRUP) | `none` | $0 | $0/yr | **∞×** | no real capture |
-| Hyperliquid (HYPE) | `current` | $21.36B | $171.36M/yr | **124.7×** | speculative |
+| Hyperliquid (HYPE) | `current` | $21.36B | $169.42M/yr | **126.1×** | speculative |
 | Uniswap (UNI) | `executing` | $0 | $189.52M/yr | **0.0×** | exceptional |
 | Sky (SKY) | `phase_1` | $1.89B | $16.92M/yr | **111.8×** | speculative |
 | Ethena (ENA) | `none` | $0 | $0/yr | **∞×** | no real capture |
@@ -112,7 +112,7 @@ Phase: `none` — No documented mechanism routing institutional lending revenue 
 
 ---
 
-### Hyperliquid (HYPE) — HM 124.7× _(speculative)_
+### Hyperliquid (HYPE) — HM 126.1× _(speculative)_
 
 Phase: `current` — Assistance Fund captures ~99% of revenue for HYPE buybacks. Team vesting cliff active.
 
@@ -124,12 +124,12 @@ Phase: `current` — Assistance Fund captures ~99% of revenue for HYPE buybacks.
 | 4 | + 24mo emissions | +$299.20M | Staking emissions paid from Future Emissions allocation (Category C — added to dilution side) |
 | 5 | − 24mo buybacks | −$1.24B | 30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present) (verification: onchain) |
 | 6 | **Adjusted MCap** | **$21.36B** | Lines 2 + 3 + 4 − 5 |
-| 7 | Annual buyback (Category A) | $171.36M | last 60d annualized — verification: onchain |
+| 7 | Annual buyback (Category A) | $169.42M | last 60d annualized — verification: onchain |
 | 8 | Annual external cashflow yield to HYPE (Category B) | $0 | No Category B — staking rewards are HYPE-denominated dilution rebate (Category C) (verification: governance_stated) |
-| 9 | **Total Real Capture** | **$171.36M/yr** | Lines 7 + 8 |
-| 10 | **Holder Multiple (HM)** | **124.7×** | Line 6 ÷ Line 9 |
+| 9 | **Total Real Capture** | **$169.42M/yr** | Lines 7 + 8 |
+| 10 | **Holder Multiple (HM)** | **126.1×** | Line 6 ÷ Line 9 |
 
-**Buyback rate lens:** recent 60d annualized = **$171.36M/yr** (HM input). Lifetime annualized (558d, cumulative $941.82M) = **$616.07M/yr**. Recent rate is **-72.2%** below lifetime average.
+**Buyback rate lens:** recent 60d annualized = **$169.42M/yr** (HM input). Lifetime annualized (558d, cumulative $941.50M) = **$615.86M/yr**. Recent rate is **-72.5%** below lifetime average.
 
 [Sources: DefiLlama, Hyperliquid Info API, Tokenomist, Hyperliquid docs]
 

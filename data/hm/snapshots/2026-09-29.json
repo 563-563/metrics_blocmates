@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-29T18:06:37.410Z",
+  "generated_at": "2026-09-29T23:43:12.354Z",
   "as_of": "2026-09-29",
   "mode": "live",
-  "latest_data_as_of": "2026-09-29T18:06:35.898Z",
+  "latest_data_as_of": "2026-09-29T23:43:10.589Z",
   "protocols": [
     {
       "slug": "morpho",
@@ -205,10 +205,10 @@
       "buybacks_24mo_usd": 1240000000,
       "buybacks_24mo_notes": "30d revenue × 12 × 99% AF capture rate (seed value — overridden by onchain feed when present)",
       "adj_mcap_usd": 21364976572.2,
-      "annual_buyback_usd": 171362487.90175995,
+      "annual_buyback_usd": 169422946.65224743,
       "annual_buyback_verification": "onchain",
       "annual_buyback_source": {
-        "annual_usd": 171362487.90175995,
+        "annual_usd": 169422946.65224743,
         "window_days": 60,
         "active_days_in_window": 60,
         "window_start": "2026-07-31",
@@ -218,10 +218,10 @@
         "source": "onchain_feed",
         "feed_verification": "onchain",
         "feed_path": "data/onchain/hype-af/buybacks.json",
-        "lifetime_annual_usd": 616067438.2749631,
+        "lifetime_annual_usd": 615858885.4524349,
         "lifetime_days": 558,
-        "lifetime_cumulative_usd": 941823645.3628204,
-        "rate_vs_lifetime_pct": -72.18445948359351
+        "lifetime_cumulative_usd": 941504816.6642703,
+        "rate_vs_lifetime_pct": -72.48997284048562
       },
       "annual_buyback_seed_usd": 619000000,
       "annual_holder_yield_usd": 0,
@@ -231,8 +231,8 @@
         "source": "seed"
       },
       "annual_holder_yield_seed_usd": 0,
-      "real_capture_usd": 171362487.90175995,
-      "hm": 124.67709143233427,
+      "real_capture_usd": 169422946.65224743,
+      "hm": 126.10438547060053,
       "hm_band": "speculative",
       "sources": [
         "DefiLlama",

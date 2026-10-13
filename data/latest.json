@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T17:53:35.476Z",
+  "updated_at": "2026-10-13T02:02:39.514Z",
   "tokens": [
     {
       "symbol": "MORPHO",
@@ -8,24 +8,24 @@
       "coingecko_id": "morpho",
       "defillama_slug": "morpho",
       "image": "https://coin-images.coingecko.com/coins/images/29837/large/Morpho-token-icon.png?1726771230",
-      "price": 2.38,
-      "price_change_24h_pct": -3.43868,
-      "volume_24h": 23625815,
-      "market_cap": 1666601806,
-      "fdv": 2379208722,
-      "circulating_supply": 700485749.8230566,
+      "price": 2.31,
+      "price_change_24h_pct": -5.99958,
+      "volume_24h": 26990292,
+      "market_cap": 1615726294,
+      "fdv": 2306531821,
+      "circulating_supply": 700500326.4136833,
       "total_supply": 1000000000,
       "ath": 4.17,
-      "ath_change_pct": -42.95288,
-      "tvl": 11284494317,
+      "ath_change_pct": -44.69548,
+      "tvl": 11191672628,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 4694.363610026999,
-      "fees_24h": 785494,
-      "fees_7d": 5533048,
-      "fees_30d": 21212198.32,
-      "fees_1y": 204179265.58,
-      "fees_change_1d": 22.79,
+      "tvl_days_bd": 4705.268084048999,
+      "fees_24h": 764724,
+      "fees_7d": 5583536,
+      "fees_30d": 21352424.68,
+      "fees_1y": 204271654.58,
+      "fees_change_1d": -2.64,
       "revenue_24h": null,
       "revenue_7d": null,
       "revenue_30d": null,
@@ -35,16 +35,12 @@
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 6.547340437713451,
-      "fdv_to_fees": 9.346857431229221,
+      "mcap_to_fees": 6.3057877431338785,
+      "fdv_to_fees": 9.001834122537382,
       "mcap_to_revenue": null,
       "fdv_to_revenue": null,
-      "mcap_to_tvl": 0.14768954276393917,
+      "mcap_to_tvl": 0.14436861653348212,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 7353946541
-        },
         {
           "date": 1784246400,
           "value": 7297206623
@@ -395,11 +391,15 @@
         },
         {
           "date": 1791763200,
-          "value": 11351872662
+          "value": 11174659250
         },
         {
-          "date": 1791825323,
-          "value": 11267187316
+          "date": 1791849600,
+          "value": 11174437375
+        },
+        {
+          "date": 1791850667,
+          "value": 11174437375
         }
       ],
       "fees_history": [
@@ -761,93 +761,93 @@
         },
         {
           "date": 1791763200,
-          "value": 793822
+          "value": 764724
         }
       ],
       "token_breakdown": [
         {
           "symbol": "CBBTC",
-          "usd": 4088563715.68025,
-          "pct": 0.3628478438776663
+          "usd": 4060288591.7193503,
+          "pct": 0.36332917350568356
         },
         {
           "symbol": "USDE",
-          "usd": 814900885.82298,
-          "pct": 0.07232002481968729
+          "usd": 819834864.23131,
+          "pct": 0.07336176158507285
         },
         {
           "symbol": "WSTETH",
-          "usd": 695841961.8102499,
-          "pct": 0.06175390016649073
+          "usd": 682992328.5902001,
+          "pct": 0.061116601111429567
         },
         {
           "symbol": "KBTC",
-          "usd": 541592916.03892,
-          "pct": 0.04806475709072911
+          "usd": 537404185.44831,
+          "pct": 0.048088852338140815
         },
         {
           "symbol": "WBTC",
-          "usd": 501878311.90523005,
-          "pct": 0.0445402043425113
+          "usd": 498380365.06583,
+          "pct": 0.04459686104581823
         },
         {
           "symbol": "USDC",
-          "usd": 375054105.49981,
-          "pct": 0.03328493402124485
+          "usd": 374415759.86221,
+          "pct": 0.033504063936655795
         },
         {
           "symbol": "RLUSD",
-          "usd": 339451655.26694,
-          "pct": 0.030125322675525742
+          "usd": 323699741.88518,
+          "pct": 0.028965812903792427
         },
         {
           "symbol": "CIRBTC",
-          "usd": 310460292.78635,
-          "pct": 0.027552425663596034
+          "usd": 308549845.96836,
+          "pct": 0.027610145926479254
         },
         {
           "symbol": "WEETH",
-          "usd": 279343044.49738,
-          "pct": 0.02479086262233615
+          "usd": 273347755.19094,
+          "pct": 0.02446013669464382
         },
         {
           "symbol": "PRIME",
-          "usd": 269740723.17778,
-          "pct": 0.02393868522476373
+          "usd": 268917130.69106,
+          "pct": 0.02406366853695216
         },
         {
           "symbol": "WETH",
-          "usd": 267699568.48644,
-          "pct": 0.023757538829531324
-        },
-        {
-          "symbol": "CBXRP",
-          "usd": 154431878.74853,
-          "pct": 0.013705368957557806
+          "usd": 262939168.13733998,
+          "pct": 0.02352873902521238
         },
         {
           "symbol": "SYRUPUSDG",
-          "usd": 152640737.98501,
-          "pct": 0.013546410553257508
+          "usd": 155536552.93422,
+          "pct": 0.013917968132305414
+        },
+        {
+          "symbol": "CBXRP",
+          "usd": 152260422.44818997,
+          "pct": 0.013624808236180392
         },
         {
           "symbol": "PT-REUSD-10DEC2026",
-          "usd": 149936769.40964,
-          "pct": 0.013306441401322028
+          "usd": 150207099.83436,
+          "pct": 0.0134410695704745
         },
         {
-          "symbol": "PYUSD",
-          "usd": 139256872.59812,
-          "pct": 0.012358632390535645
+          "symbol": "PST",
+          "usd": 135576631.47668,
+          "pct": 0.012131882832556942
         }
       ],
       "concentration": {
-        "top1_pct": 0.3628478438776663,
-        "top3_pct": 0.4969217688638443,
-        "top5_pct": 0.5895267302970848,
-        "hhi": 0.15111738304793998,
+        "top1_pct": 0.36332917350568356,
+        "top3_pct": 0.49780753620218604,
+        "top5_pct": 0.5904932495861451,
+        "hhi": 0.15148305227297562,
         "token_count": 589,
-        "snapshot_date": 1791825323
+        "snapshot_date": 1791850667
       },
       "va_mechanism": "fee-share",
       "va_status": "proposed",
@@ -859,7 +859,7 @@
       "accrual_annual_est": null,
       "accrual_yield_mcap": null,
       "accrual_yield_fdv": null,
-      "dilution_pct": 29.951425017694344
+      "dilution_pct": 29.949967358631667
     },
     {
       "symbol": "AAVE",
@@ -868,43 +868,39 @@
       "coingecko_id": "aave",
       "defillama_slug": "aave",
       "image": "https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354",
-      "price": 161.35,
-      "price_change_24h_pct": -5.07464,
-      "volume_24h": 237471725,
-      "market_cap": 2490648511,
-      "fdv": 2581639568,
-      "circulating_supply": 15436072.745234458,
+      "price": 156.24,
+      "price_change_24h_pct": -8.52834,
+      "volume_24h": 266612387,
+      "market_cap": 2411728151,
+      "fdv": 2499834103,
+      "circulating_supply": 15436084.484993923,
       "total_supply": 16000000,
       "ath": 661.69,
-      "ath_change_pct": -75.61499,
-      "tvl": 18467397865,
+      "ath_change_pct": -76.38769,
+      "tvl": 18081580131,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 29381.617057008996,
-      "fees_24h": 1197020,
-      "fees_7d": 9472500,
-      "fees_30d": 38051333,
-      "fees_1y": 696117566,
-      "fees_change_1d": 0.77,
-      "revenue_24h": 157227,
-      "revenue_7d": 1192072,
-      "revenue_30d": 4936368,
-      "revenue_1y": 90049131,
+      "tvl_days_bd": 29399.343419901998,
+      "fees_24h": 1241993,
+      "fees_7d": 9441818,
+      "fees_30d": 38137170,
+      "fees_1y": 693108458,
+      "fees_change_1d": 3.76,
+      "revenue_24h": 160155,
+      "revenue_7d": 1190460,
+      "revenue_30d": 4947184,
+      "revenue_1y": 89655848,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
-      "holders_revenue_1y": 18506537,
-      "holders_revenue_annualized": 18506537,
-      "mcap_to_fees": 5.454580069069679,
-      "fdv_to_fees": 5.653852669673009,
-      "mcap_to_revenue": 42.045901477226444,
-      "fdv_to_revenue": 43.58196768690395,
-      "mcap_to_tvl": 0.13486732290098954,
+      "holders_revenue_1y": 18356736,
+      "holders_revenue_annualized": 18356736,
+      "mcap_to_fees": 5.269854735332136,
+      "fdv_to_fees": 5.462374596314654,
+      "mcap_to_revenue": 40.62459490422565,
+      "fdv_to_revenue": 42.10870438280309,
+      "mcap_to_tvl": 0.13338038675420893,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 14269214949
-        },
         {
           "date": 1784246400,
           "value": 14022919402
@@ -1255,11 +1251,15 @@
         },
         {
           "date": 1791763200,
-          "value": 18682215111
+          "value": 18682215112
         },
         {
-          "date": 1791824951,
-          "value": 18467397877
+          "date": 1791849600,
+          "value": 18112180625
+        },
+        {
+          "date": 1791853991,
+          "value": 18081580144
         }
       ],
       "fees_history": [
@@ -1621,93 +1621,93 @@
         },
         {
           "date": 1791763200,
-          "value": 1249498
+          "value": 1241993
         }
       ],
       "token_breakdown": [
         {
           "symbol": "WEETH",
-          "usd": 4135862716.97929,
-          "pct": 0.21985663786009282
+          "usd": 4014108607.28953,
+          "pct": 0.2177620434475063
         },
         {
           "symbol": "WBTC",
-          "usd": 3208630320.88433,
-          "pct": 0.1705662694241483
+          "usd": 3167682535.1457996,
+          "pct": 0.17184413510727228
         },
         {
           "symbol": "WSTETH",
-          "usd": 2767371483.52597,
-          "pct": 0.14710957101648972
+          "usd": 2664340319.09794,
+          "pct": 0.14453823976579322
         },
         {
           "symbol": "CBBTC",
-          "usd": 1680090814.6796901,
-          "pct": 0.08931126178310009
+          "usd": 1657743377.38056,
+          "pct": 0.08993119536287712
         },
         {
           "symbol": "WETH",
-          "usd": 1163879414.27621,
-          "pct": 0.06187019067311634
+          "usd": 1140299564.5568798,
+          "pct": 0.061860300159610845
         },
         {
           "symbol": "USDE",
-          "usd": 994052911.9713,
-          "pct": 0.0528424529624297
+          "usd": 999949453.41663,
+          "pct": 0.054246423707816835
         },
         {
           "symbol": "RSETH",
-          "usd": 917840956.2196699,
-          "pct": 0.048791132717319295
+          "usd": 890860388.42293,
+          "pct": 0.04832843293206488
         },
         {
           "symbol": "SUSDE",
-          "usd": 420845186.86411995,
-          "pct": 0.022371537494147255
+          "usd": 418951249.20111,
+          "pct": 0.022727755787485298
         },
         {
           "symbol": "OSETH",
-          "usd": 322904437.9721,
-          "pct": 0.017165145204456816
+          "usd": 313331495.64388,
+          "pct": 0.016997972263124
         },
         {
           "symbol": "USDC",
-          "usd": 274455099.00462997,
-          "pct": 0.014589646571921988
+          "usd": 269694741.69543,
+          "pct": 0.01463071476242401
         },
         {
           "symbol": "LBTC",
-          "usd": 225038784.5345,
-          "pct": 0.01196274488337297
-        },
-        {
-          "symbol": "SYRUPUSDC",
-          "usd": 202802306.77797002,
-          "pct": 0.010780685039526875
+          "usd": 222699228.38873,
+          "pct": 0.012081247368356236
         },
         {
           "symbol": "SYRUPUSDT",
-          "usd": 199303340.10199,
-          "pct": 0.010594684898321192
+          "usd": 206130158.88851,
+          "pct": 0.011182389169592155
+        },
+        {
+          "symbol": "SYRUPUSDC",
+          "usd": 202789282.73426998,
+          "pct": 0.011001149425124056
         },
         {
           "symbol": "CBETH",
-          "usd": 164899213.38711,
-          "pct": 0.008765809970487363
+          "usd": 158995590.0879,
+          "pct": 0.008625378130977381
         },
         {
           "symbol": "TBTC",
-          "usd": 146493902.79817,
-          "pct": 0.007787409578171978
+          "usd": 144982496.90651,
+          "pct": 0.007865179515359878
         }
       ],
       "concentration": {
-        "top1_pct": 0.21985663786009282,
-        "top3_pct": 0.5375324783007308,
-        "top5_pct": 0.6887139307569473,
-        "hhi": 0.11801782038479618,
+        "top1_pct": 0.2177620434475063,
+        "top3_pct": 0.5341444183205718,
+        "top5_pct": 0.6859359138430597,
+        "hhi": 0.11703627912991788,
         "token_count": 151,
-        "snapshot_date": 1791824951
+        "snapshot_date": 1791853991
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -1716,10 +1716,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-19",
       "va_notes": "AFC/TokenLogic TWAP buybacks, $30M/yr budget (cut from $50M). AWW Framework commits 100% product rev. $42M executed over 10mo. ~21% of revenue at current budget.",
-      "accrual_annual_est": 18506537,
-      "accrual_yield_mcap": 0.7430408955043436,
-      "accrual_yield_fdv": 0.7168520822733222,
-      "dilution_pct": 3.524545342284635
+      "accrual_annual_est": 18356736,
+      "accrual_yield_mcap": 0.7611444926903786,
+      "accrual_yield_fdv": 0.734318168472478,
+      "dilution_pct": 3.524471968787979
     },
     {
       "symbol": "SYRUP",
@@ -1728,43 +1728,39 @@
       "coingecko_id": "syrup",
       "defillama_slug": "maple",
       "image": "https://coin-images.coingecko.com/coins/images/51232/large/_SYRUP.png?1790835983",
-      "price": 0.241565,
-      "price_change_24h_pct": -1.72876,
-      "volume_24h": 14158860,
-      "market_cap": 281972201,
-      "fdv": 306274387,
+      "price": 0.243476,
+      "price_change_24h_pct": -0.27161,
+      "volume_24h": 13120510,
+      "market_cap": 284203071,
+      "fdv": 308697528,
       "circulating_supply": 1167271959.1810675,
       "total_supply": 1267875000.0000002,
       "ath": 0.653229,
-      "ath_change_pct": -63.01986,
-      "tvl": 2830418240.65488,
+      "ath_change_pct": -62.72728,
+      "tvl": 2832063947.66487,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1313.4952456629994,
+      "tvl_days_bd": 1316.3289553169996,
       "fees_24h": null,
-      "fees_7d": 1889669,
+      "fees_7d": 1879044,
       "fees_30d": 9380500,
-      "fees_1y": 109956159.05,
+      "fees_1y": 109949772.05,
       "fees_change_1d": null,
       "revenue_24h": null,
-      "revenue_7d": 297042,
+      "revenue_7d": 295310,
       "revenue_30d": 1423292,
-      "revenue_1y": 14163974.01,
+      "revenue_1y": 14161515.01,
       "holders_revenue_24h": null,
-      "holders_revenue_7d": 29704,
+      "holders_revenue_7d": 29531,
       "holders_revenue_30d": 142329,
-      "holders_revenue_1y": 2925888,
+      "holders_revenue_1y": 2925273,
       "holders_revenue_annualized": 1707948,
-      "mcap_to_fees": 2.504949993781426,
-      "fdv_to_fees": 2.7208427677984472,
-      "mcap_to_revenue": 16.509390495180657,
-      "fdv_to_revenue": 17.932276429104732,
-      "mcap_to_tvl": 0.09962209716920122,
+      "mcap_to_fees": 2.524768322584084,
+      "fdv_to_fees": 2.7423691700868824,
+      "mcap_to_revenue": 16.64000728592587,
+      "fdv_to_revenue": 18.07415063107219,
+      "mcap_to_tvl": 0.1003519257516536,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 2333237960
-        },
         {
           "date": 1784246400,
           "value": 2423448544
@@ -2118,8 +2114,12 @@
           "value": 2848786559
         },
         {
-          "date": 1791824339,
-          "value": 2830418240
+          "date": 1791849600,
+          "value": 2832063947
+        },
+        {
+          "date": 1791850607,
+          "value": 2832063947
         }
       ],
       "fees_history": [
@@ -2487,32 +2487,32 @@
       "token_breakdown": [
         {
           "symbol": "USDC",
-          "usd": 2257539092.73555,
-          "pct": 0.7975991181477188
+          "usd": 2260086407.11944,
+          "pct": 0.7980350899148883
         },
         {
           "symbol": "USDT",
-          "usd": 368144357.42205,
-          "pct": 0.13006712299058376
+          "usd": 364243970.67556,
+          "pct": 0.12861431712228547
         },
         {
           "symbol": "USDG",
-          "usd": 204710793.26524,
-          "pct": 0.07232528052740207
+          "usd": 207710372.59245,
+          "pct": 0.073342402018752
         },
         {
           "symbol": "WETH",
-          "usd": 23997.23204,
-          "pct": 0.000008478334295375269
+          "usd": 23197.27741,
+          "pct": 0.000008190944074242038
         }
       ],
       "concentration": {
-        "top1_pct": 0.7975991181477188,
-        "top3_pct": 0.9999915216657046,
+        "top1_pct": 0.7980350899148883,
+        "top3_pct": 0.9999918090559258,
         "top5_pct": 1,
-        "hhi": 0.6583127560283158,
+        "hhi": 0.6587807553052674,
         "token_count": 4,
-        "snapshot_date": 1791824339
+        "snapshot_date": 1791850607
       },
       "va_mechanism": "none",
       "va_status": "none",
@@ -2533,43 +2533,39 @@
       "coingecko_id": "hyperliquid",
       "defillama_slug": "hyperliquid",
       "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
-      "price": 83.66,
-      "price_change_24h_pct": -3.65413,
-      "volume_24h": 678420171,
-      "market_cap": 18610524336,
-      "fdv": 79924064730,
+      "price": 81.72,
+      "price_change_24h_pct": -5.62543,
+      "volume_24h": 887904828,
+      "market_cap": 18178790491,
+      "fdv": 78069956634,
       "circulating_supply": 222445714.07414138,
       "total_supply": 955307079.4341414,
       "ath": 97.96,
-      "ath_change_pct": -14.59703,
-      "tvl": 7128135158,
+      "ath_change_pct": -16.57824,
+      "tvl": 7100162100,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 3162.569575481004,
-      "fees_24h": 1996322,
-      "fees_7d": 17889784,
-      "fees_30d": 85867562,
-      "fees_1y": 914756281.1099998,
-      "fees_change_1d": 24.62,
+      "tvl_days_bd": 3169.641982717004,
+      "fees_24h": 2792485,
+      "fees_7d": 17648915,
+      "fees_30d": 87448106,
+      "fees_1y": 912980819.1099998,
+      "fees_change_1d": 39.88,
       "revenue_24h": 1698284,
-      "revenue_7d": 14389815,
-      "revenue_30d": 69750620,
-      "revenue_1y": 696032669,
+      "revenue_7d": 11934134,
+      "revenue_30d": 68687695,
+      "revenue_1y": 692511088,
       "holders_revenue_24h": 1698284,
-      "holders_revenue_7d": 14389815,
-      "holders_revenue_30d": 69750620,
-      "holders_revenue_1y": 696032669,
-      "holders_revenue_annualized": 837007440,
-      "mcap_to_fees": 18.061267746253236,
-      "fdv_to_fees": 77.56524783479937,
-      "mcap_to_revenue": 22.234598459483227,
-      "fdv_to_revenue": 95.48787849484349,
-      "mcap_to_tvl": 2.610854581666169,
+      "holders_revenue_7d": 11934134,
+      "holders_revenue_30d": 68687695,
+      "holders_revenue_1y": 692511088,
+      "holders_revenue_annualized": 824252340,
+      "mcap_to_fees": 17.323407868700247,
+      "fdv_to_fees": 74.39646228015505,
+      "mcap_to_revenue": 22.054884904542703,
+      "fdv_to_revenue": 94.71608735014328,
+      "mcap_to_tvl": 2.5603345719388577,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 6113503244
-        },
         {
           "date": 1784246400,
           "value": 6128711883
@@ -2923,15 +2919,15 @@
           "value": 7118133552
         },
         {
-          "date": 1791823019,
-          "value": 7128135159
+          "date": 1791849600,
+          "value": 7100380294
+        },
+        {
+          "date": 1791853319,
+          "value": 7100162101
         }
       ],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 2326565
-        },
         {
           "date": 1784073600,
           "value": 1928079
@@ -3287,12 +3283,16 @@
         {
           "date": 1791676800,
           "value": 1996322
+        },
+        {
+          "date": 1791763200,
+          "value": 2792485
         }
       ],
       "token_breakdown": [
         {
           "symbol": "USDC",
-          "usd": 7128135159.53241,
+          "usd": 7100162101.14018,
           "pct": 1
         }
       ],
@@ -3302,7 +3302,7 @@
         "top5_pct": 1,
         "hhi": 1,
         "token_count": 1,
-        "snapshot_date": 1791823019
+        "snapshot_date": 1791853319
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -3311,9 +3311,9 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-19",
       "va_notes": "97% of all protocol fees to AF address 0xfefe...fefe which buys back HYPE. Tokens accumulate in AF (not burned — protocol-owned treasury). L1-embedded, daily, automatic. Hyperliquid L1 not on Dune — using DeFi Llama revenue as proxy.",
-      "accrual_annual_est": 837007440,
-      "accrual_yield_mcap": 4.497495206950735,
-      "accrual_yield_fdv": 1.04725334331729,
+      "accrual_annual_est": 824252340,
+      "accrual_yield_mcap": 4.534142909056974,
+      "accrual_yield_fdv": 1.0557868551972942,
       "dilution_pct": 76.71474242545099
     },
     {
@@ -3323,43 +3323,39 @@
       "coingecko_id": "uniswap",
       "defillama_slug": "uniswap",
       "image": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669",
-      "price": 7.36,
-      "price_change_24h_pct": -6.01488,
-      "volume_24h": 437727824,
-      "market_cap": 4602091314,
-      "fdv": 6533310527,
-      "circulating_supply": 624936422.4808736,
-      "total_supply": 887184418.7867086,
+      "price": 7.05,
+      "price_change_24h_pct": -8.33795,
+      "volume_24h": 412093564,
+      "market_cap": 4407687889,
+      "fdv": 6257339588,
+      "circulating_supply": 624932422.4808736,
+      "total_supply": 887180418.7867086,
       "ath": 44.92,
-      "ath_change_pct": -83.60496,
-      "tvl": 3832743570,
+      "ath_change_pct": -84.29742,
+      "tvl": 3788227558,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 10903.699320150043,
-      "fees_24h": 2004009.9300000002,
-      "fees_7d": 20787718.95,
-      "fees_30d": 132010915.92999999,
-      "fees_1y": 954063964.1999997,
-      "fees_change_1d": -6.43,
-      "revenue_24h": 260600,
-      "revenue_7d": 1531167,
-      "revenue_30d": 10279703,
-      "revenue_1y": 56005246,
-      "holders_revenue_24h": 260600,
-      "holders_revenue_7d": 1531167,
-      "holders_revenue_30d": 10279703,
-      "holders_revenue_1y": 56005246,
-      "holders_revenue_annualized": 123356436,
-      "mcap_to_fees": 2.905120434914325,
-      "fdv_to_fees": 4.1242236680288045,
-      "mcap_to_revenue": 37.3072655406484,
-      "fdv_to_revenue": 52.96286710974691,
-      "mcap_to_tvl": 1.2007302940958295,
+      "tvl_days_bd": 10907.244285574045,
+      "fees_24h": 2910250.87,
+      "fees_7d": 20063012.82,
+      "fees_30d": 129435812.59,
+      "fees_1y": 952274360.0699996,
+      "fees_change_1d": 45.22,
+      "revenue_24h": 270679,
+      "revenue_7d": 1585324,
+      "revenue_30d": 10142673,
+      "revenue_1y": 56275925,
+      "holders_revenue_24h": 270679,
+      "holders_revenue_7d": 1585324,
+      "holders_revenue_30d": 10142673,
+      "holders_revenue_1y": 56275925,
+      "holders_revenue_annualized": 121712076,
+      "mcap_to_fees": 2.8377565430582457,
+      "fdv_to_fees": 4.0285988493647595,
+      "mcap_to_revenue": 36.214055612690395,
+      "fdv_to_revenue": 51.411000400650465,
+      "mcap_to_tvl": 1.1635224710014636,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 3159041938
-        },
         {
           "date": 1784246400,
           "value": 3091435718
@@ -3698,7 +3694,7 @@
         },
         {
           "date": 1791504000,
-          "value": 3545588374
+          "value": 3911271431
         },
         {
           "date": 1791590400,
@@ -3710,11 +3706,15 @@
         },
         {
           "date": 1791763200,
-          "value": 3841251422
+          "value": 3840555881
         },
         {
-          "date": 1791822155,
-          "value": 3832743607
+          "date": 1791849600,
+          "value": 3830058113
+        },
+        {
+          "date": 1791853319,
+          "value": 3788227589
         }
       ],
       "fees_history": [
@@ -4076,7 +4076,7 @@
         },
         {
           "date": 1791763200,
-          "value": 2852334.14
+          "value": 2910250.87
         }
       ],
       "token_breakdown": null,
@@ -4088,10 +4088,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-19",
       "va_notes": "17% of LP fees → TokenJar → Firepit burn. Active since Dec 2025. DL revenue_1y = protocol's share of fees. 100% of that goes to Firepit.",
-      "accrual_annual_est": 123356436,
-      "accrual_yield_mcap": 2.6804430330345244,
-      "accrual_yield_fdv": 1.8881153052531157,
-      "dilution_pct": 29.559580934083453
+      "accrual_annual_est": 121712076,
+      "accrual_yield_mcap": 2.7613587682501173,
+      "accrual_yield_fdv": 1.945109008202353,
+      "dilution_pct": 29.55971420835465
     },
     {
       "symbol": "SKY",
@@ -4100,43 +4100,39 @@
       "coingecko_id": "sky",
       "defillama_slug": "sky-lending",
       "image": "https://coin-images.coingecko.com/coins/images/39925/large/sky.jpg?1724827980",
-      "price": 0.07708,
-      "price_change_24h_pct": -4.45396,
-      "volume_24h": 14647080,
-      "market_cap": 1806265419,
-      "fdv": 1807719115,
-      "circulating_supply": 23433572391.656075,
+      "price": 0.076137,
+      "price_change_24h_pct": -5.28586,
+      "volume_24h": 13760775,
+      "market_cap": 1784124008,
+      "fdv": 1785592404,
+      "circulating_supply": 23433145633.395077,
       "total_supply": 23452431915.605965,
       "ath": 0.10087,
-      "ath_change_pct": -23.58474,
-      "tvl": 5877444386.86632,
+      "ath_change_pct": -24.52007,
+      "tvl": 5818752478.30726,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 16847.637336187985,
-      "fees_24h": 969158,
-      "fees_7d": 6654774,
-      "fees_30d": 27304183,
-      "fees_1y": 390366745,
-      "fees_change_1d": 0.75,
+      "tvl_days_bd": 16853.397396757988,
+      "fees_24h": 968278,
+      "fees_7d": 6709011,
+      "fees_30d": 27381572,
+      "fees_1y": 390207742,
+      "fees_change_1d": -0.09,
       "revenue_24h": 439647,
-      "revenue_7d": 3166319,
-      "revenue_30d": 13513474,
-      "revenue_1y": 200772060,
+      "revenue_7d": 2712117,
+      "revenue_30d": 13084274,
+      "revenue_1y": 199971271,
       "holders_revenue_24h": 196378,
-      "holders_revenue_7d": 1364655,
-      "holders_revenue_30d": 5815841,
-      "holders_revenue_1y": 59698921,
-      "holders_revenue_annualized": 69790092,
-      "mcap_to_fees": 5.512786017072915,
-      "fdv_to_fees": 5.517222748739024,
-      "mcap_to_revenue": 11.138669319969091,
-      "fdv_to_revenue": 11.147633804847912,
-      "mcap_to_tvl": 0.3073215670124014,
+      "holders_revenue_7d": 1172655,
+      "holders_revenue_30d": 5687513,
+      "holders_revenue_1y": 59301956,
+      "holders_revenue_annualized": 68250156,
+      "mcap_to_fees": 5.4298197585831325,
+      "fdv_to_fees": 5.434288688757534,
+      "mcap_to_revenue": 11.363030204554464,
+      "fdv_to_revenue": 11.37238237291576,
+      "mcap_to_tvl": 0.3066162402768199,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 5873654476
-        },
         {
           "date": 1784246400,
           "value": 5837417351
@@ -4490,15 +4486,15 @@
           "value": 6035126827
         },
         {
-          "date": 1791822899,
-          "value": 5877444386
+          "date": 1791849600,
+          "value": 5818752478
+        },
+        {
+          "date": 1791851531,
+          "value": 5818752478
         }
       ],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 927486
-        },
         {
           "date": 1784073600,
           "value": 924148
@@ -4854,92 +4850,96 @@
         {
           "date": 1791676800,
           "value": 969158
+        },
+        {
+          "date": 1791763200,
+          "value": 968278
         }
       ],
       "token_breakdown": [
         {
           "symbol": "USDC",
-          "usd": 4315436597.62488,
-          "pct": 0.7342369086925128
+          "usd": 4317341064.7151,
+          "pct": 0.7419702214195355
         },
         {
           "symbol": "WETH",
-          "usd": 1441333549.89109,
-          "pct": 0.2452313378093177
+          "usd": 1384207746.44645,
+          "pct": 0.23788737390134423
         },
         {
           "symbol": "WSTETH",
-          "usd": 92033678.0796,
-          "pct": 0.015658791818644466
+          "usd": 89050399.57689,
+          "pct": 0.015304036373582939
         },
         {
           "symbol": "WBTC",
-          "usd": 28042582.08551,
-          "pct": 0.004771220319527605
+          "usd": 27577493.70247,
+          "pct": 0.004739416877635024
         },
         {
           "symbol": "RETH",
-          "usd": 278130.25956,
-          "pct": 0.00004732163186120615
+          "usd": 268726.05221,
+          "pct": 0.000046182760516421885
         },
         {
           "symbol": "UNI",
-          "usd": 92989.21752,
-          "pct": 0.00001582136918688554
+          "usd": 86681.17629,
+          "pct": 0.000014896866057312802
         },
         {
           "symbol": "LINK",
-          "usd": 84045.66693,
-          "pct": 0.000014299695819803551
+          "usd": 80363.48273,
+          "pct": 0.000013811118969160687
         },
         {
           "symbol": "COMP",
-          "usd": 46475.75082,
-          "pct": 0.000007907476066273694
+          "usd": 45264.50641,
+          "pct": 0.000007779074050451453
         },
         {
           "symbol": "DAI",
-          "usd": 24512.06559,
-          "pct": 0.000004170531267769112
+          "usd": 24294.46391,
+          "pct": 0.000004175201471547656
         },
         {
           "symbol": "RENBTC",
-          "usd": 21498.21342,
-          "pct": 0.000003657748505122352
+          "usd": 21048.23846,
+          "pct": 0.000003617311191439992
         },
         {
           "symbol": "BAT",
-          "usd": 14789.25035,
-          "pct": 0.000002516272273549358
+          "usd": 15077.00481,
+          "pct": 0.0000025911060603124497
         },
         {
           "symbol": "AAVE",
-          "usd": 12610.30093,
-          "pct": 0.0000021455415142980985
+          "usd": 11991.63899,
+          "pct": 0.0000020608608176246954
         },
         {
           "symbol": "YFI",
-          "usd": 8079.06572,
-          "pct": 0.000001374588203344538
+          "usd": 7815.38763,
+          "pct": 0.0000013431380109630645
         },
         {
           "symbol": "GUSD",
-          "usd": 3515.01722,
-          "pct": 5.980519744014303e-7
+          "usd": 3515.43175,
+          "pct": 6.041555751178275e-7
         },
         {
           "symbol": "ZRX",
-          "usd": 2820.51019,
-          "pct": 4.798871761853995e-7
+          "usd": 2715.35328,
+          "pct": 4.666555743903943e-7
         }
       ],
       "concentration": {
-        "top1_pct": 0.7342369086925128,
-        "top3_pct": 0.995127038320475,
-        "top5_pct": 0.9999455802718639,
-        "hhi": 0.599510212235836,
+        "top1_pct": 0.7419702214195355,
+        "top3_pct": 0.9951616316944627,
+        "top5_pct": 0.9999472313326141,
+        "hhi": 0.6073668903869174,
         "token_count": 23,
-        "snapshot_date": 1791822899
+        "snapshot_date": 1791851531
       },
       "va_mechanism": "buyback",
       "va_status": "paused",
@@ -4948,10 +4948,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-19",
       "va_notes": "$20.6M executed Q1 2026, then paused in Q2. Margin-dependent. ~30% of revenue when active. Watch for resumption.",
-      "accrual_annual_est": 69790092,
-      "accrual_yield_mcap": 3.8637783387691598,
-      "accrual_yield_fdv": 3.8606712415053486,
-      "dilution_pct": 0.08041606950509594
+      "accrual_annual_est": 68250156,
+      "accrual_yield_mcap": 3.8254154808727847,
+      "accrual_yield_fdv": 3.822269620273317,
+      "dilution_pct": 0.08223574544545809
     },
     {
       "symbol": "ENA",
@@ -4960,43 +4960,39 @@
       "coingecko_id": "ethena",
       "defillama_slug": "ethena",
       "image": "https://coin-images.coingecko.com/coins/images/36530/large/ethena.png?1711701436",
-      "price": 0.219904,
-      "price_change_24h_pct": -8.41805,
-      "volume_24h": 454028848,
-      "market_cap": 2948093282,
-      "fdv": 3298565910,
+      "price": 0.206963,
+      "price_change_24h_pct": -12.62536,
+      "volume_24h": 488987789,
+      "market_cap": 2774598020,
+      "fdv": 3104445337,
       "circulating_supply": 13406250000,
       "total_supply": 15000000000,
       "ath": 1.52,
-      "ath_change_pct": -85.5107,
-      "tvl": 5168990576.34272,
+      "ath_change_pct": -86.3634,
+      "tvl": 5196070469.77537,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 5311.2871467535215,
-      "fees_24h": 24085,
-      "fees_7d": 4398976.99,
-      "fees_30d": 17860353.63,
-      "fees_1y": 245380569.59999987,
-      "fees_change_1d": 445094.09,
-      "revenue_24h": 12108,
-      "revenue_7d": 3504.0299999999997,
-      "revenue_30d": 20478.670000000006,
-      "revenue_1y": 1985847.9700000007,
+      "tvl_days_bd": 5316.510297116731,
+      "fees_24h": 41560,
+      "fees_7d": 4440415.99,
+      "fees_30d": 17901893.68,
+      "fees_1y": 245400515.59999987,
+      "fees_change_1d": 72.56,
+      "revenue_24h": 12426,
+      "revenue_7d": 15809.029999999999,
+      "revenue_30d": 32884.72,
+      "revenue_1y": 1976659.9700000007,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 13.755295402102666,
-      "fdv_to_fees": 15.390540310371223,
-      "mcap_to_revenue": 11996.601349924902,
-      "fdv_to_revenue": 13422.77074145928,
-      "mcap_to_tvl": 0.5703421661267375,
+      "mcap_to_fees": 12.915756612105334,
+      "fdv_to_fees": 14.451196209055652,
+      "mcap_to_revenue": 7031.122711905914,
+      "fdv_to_revenue": 7866.990446728247,
+      "mcap_to_tvl": 0.5339800597661926,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 4261790054.11276
-        },
         {
           "date": 1784246400,
           "value": 4253991713.59614
@@ -5350,8 +5346,12 @@
           "value": 5188718754.40383
         },
         {
-          "date": 1791822719,
-          "value": 5168990576.34272
+          "date": 1791849600,
+          "value": 5196070469.77537
+        },
+        {
+          "date": 1791851711,
+          "value": 5196070469.77537
         }
       ],
       "fees_history": [
@@ -5713,38 +5713,38 @@
         },
         {
           "date": 1791763200,
-          "value": 36192
+          "value": 41560
         }
       ],
       "token_breakdown": [
         {
           "symbol": "USDE",
-          "usd": 4693771864.21444,
-          "pct": 0.9080635365155025
+          "usd": 4702669113.49207,
+          "pct": 0.9050433668697729
         },
         {
           "symbol": "USDTB",
-          "usd": 470265037.98509,
-          "pct": 0.0909781186316363
-        },
-        {
-          "symbol": "USDT",
-          "usd": 2964487.27709,
-          "pct": 0.0005735137707294786
+          "usd": 470195054.50581,
+          "pct": 0.0904905076129108
         },
         {
           "symbol": "USDC",
-          "usd": 1989188.23755,
-          "pct": 0.00038483108213164093
+          "usd": 20241751.80964,
+          "pct": 0.0038955883918303656
+        },
+        {
+          "symbol": "USDT",
+          "usd": 2964551.1103,
+          "pct": 0.0005705371254859732
         }
       ],
       "concentration": {
-        "top1_pct": 0.9080635365155025,
-        "top3_pct": 0.9996151689178684,
+        "top1_pct": 0.9050433668697729,
+        "top3_pct": 0.9994294628745141,
         "top5_pct": 1,
-        "hhi": 0.8328568814318005,
+        "hhi": 0.8273075290045468,
         "token_count": 4,
-        "snapshot_date": 1791822719
+        "snapshot_date": 1791851711
       },
       "va_mechanism": "none",
       "va_status": "none",
@@ -5765,43 +5765,39 @@
       "coingecko_id": "meteora",
       "defillama_slug": "meteora",
       "image": "https://coin-images.coingecko.com/coins/images/69110/large/meteora.png?1757517561",
-      "price": 0.388234,
-      "price_change_24h_pct": -8.3004,
-      "volume_24h": 43348156,
-      "market_cap": 216700499,
-      "fdv": 387353572,
+      "price": 0.378625,
+      "price_change_24h_pct": -10.78853,
+      "volume_24h": 38587903,
+      "market_cap": 211337167,
+      "fdv": 377766580,
       "circulating_supply": 558169791.990127,
-      "total_supply": 997732184.961547,
+      "total_supply": 997732184.946856,
       "ath": 0.686913,
-      "ath_change_pct": -43.48131,
-      "tvl": 304441879,
+      "ath_change_pct": -44.88014,
+      "tvl": 297359560,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 543.2602280549996,
-      "fees_24h": 1023883,
-      "fees_7d": 10031287,
-      "fees_30d": 55747028,
-      "fees_1y": 453581773,
-      "fees_change_1d": 22.34,
-      "revenue_24h": 122708,
-      "revenue_7d": 1223788,
-      "revenue_30d": 6429946,
-      "revenue_1y": 50392705,
+      "tvl_days_bd": 543.5409032569997,
+      "fees_24h": 239285,
+      "fees_7d": 8611887,
+      "fees_30d": 53668212,
+      "fees_1y": 450593173,
+      "fees_change_1d": -76.63,
+      "revenue_24h": 124315,
+      "revenue_7d": 1054626,
+      "revenue_30d": 6201780,
+      "revenue_1y": 50300364,
       "holders_revenue_24h": 164,
-      "holders_revenue_7d": 84547,
-      "holders_revenue_30d": 708275,
+      "holders_revenue_7d": 82870,
+      "holders_revenue_30d": 695837,
       "holders_revenue_1y": 14561205,
-      "holders_revenue_annualized": 8499300,
-      "mcap_to_fees": 0.3239343076130743,
-      "fdv_to_fees": 0.5790347125470677,
-      "mcap_to_revenue": 2.8084800271521204,
-      "fdv_to_revenue": 5.020176582094676,
-      "mcap_to_tvl": 0.7117959582689345,
+      "holders_revenue_annualized": 8350044,
+      "mcap_to_fees": 0.3281538535946257,
+      "fdv_to_fees": 0.5865771778149295,
+      "mcap_to_revenue": 2.8397380402615595,
+      "fdv_to_revenue": 5.0760504779810525,
+      "mcap_to_tvl": 0.7107125360287727,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 285551847
-        },
         {
           "date": 1784246400,
           "value": 279886624
@@ -6152,11 +6148,15 @@
         },
         {
           "date": 1791763200,
-          "value": 308973298
+          "value": 299371259
         },
         {
-          "date": 1791825011,
-          "value": 304441879
+          "date": 1791849600,
+          "value": 297359560
+        },
+        {
+          "date": 1791851711,
+          "value": 297359560
         }
       ],
       "fees_history": [
@@ -6518,7 +6518,7 @@
         },
         {
           "date": 1791763200,
-          "value": 116874
+          "value": 239285
         }
       ],
       "token_breakdown": null,
@@ -6533,7 +6533,7 @@
       "accrual_annual_est": null,
       "accrual_yield_mcap": null,
       "accrual_yield_fdv": null,
-      "dilution_pct": 44.05615049777721
+      "dilution_pct": 44.05615049695347
     },
     {
       "symbol": "RAY",
@@ -6542,38 +6542,38 @@
       "coingecko_id": "raydium",
       "defillama_slug": "raydium",
       "image": "https://coin-images.coingecko.com/coins/images/13928/large/PSigc4ie_400x400.jpg?1696513668",
-      "price": 2.2,
-      "price_change_24h_pct": -8.86711,
-      "volume_24h": 56047483,
-      "market_cap": 592416735,
-      "fdv": 1218361059,
+      "price": 2.12,
+      "price_change_24h_pct": -13.93265,
+      "volume_24h": 61121219,
+      "market_cap": 572294392,
+      "fdv": 1176977557,
       "circulating_supply": 269863589.046313,
       "total_supply": 555000000,
       "ath": 16.83,
-      "ath_change_pct": -86.95854,
-      "tvl": 1242412391,
+      "ath_change_pct": -87.40151,
+      "tvl": 1196613472,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1772.6361911259996,
-      "fees_24h": 354328,
-      "fees_7d": 3686102,
-      "fees_30d": 37254686,
-      "fees_1y": 171386971,
-      "fees_change_1d": 33.9,
-      "revenue_24h": 67965,
-      "revenue_7d": 601057,
-      "revenue_30d": 6173256,
-      "revenue_1y": 26713342,
-      "holders_revenue_24h": 46799,
-      "holders_revenue_7d": 376682,
-      "holders_revenue_30d": 3703844,
-      "holders_revenue_1y": 18434676,
-      "holders_revenue_annualized": 44446128,
-      "mcap_to_fees": 1.3251503783980356,
-      "fdv_to_fees": 2.725297114301272,
-      "mcap_to_revenue": 7.997086343090259,
-      "fdv_to_revenue": 16.446764600398883,
-      "mcap_to_tvl": 0.47682777416858524,
+      "tvl_days_bd": 1772.5309056649999,
+      "fees_24h": 424667,
+      "fees_7d": 3416707,
+      "fees_30d": 35828173,
+      "fees_1y": 171206369,
+      "fees_change_1d": 19.85,
+      "revenue_24h": 76961,
+      "revenue_7d": 550395,
+      "revenue_30d": 5939797,
+      "revenue_1y": 26691732,
+      "holders_revenue_24h": 53752,
+      "holders_revenue_7d": 361621,
+      "holders_revenue_30d": 3555827,
+      "holders_revenue_1y": 18414082,
+      "holders_revenue_annualized": 42669924,
+      "mcap_to_fees": 1.3311088827592,
+      "fdv_to_fees": 2.737551342161191,
+      "mcap_to_revenue": 8.029095831613999,
+      "fdv_to_revenue": 16.512595141438897,
+      "mcap_to_tvl": 0.4782616988621034,
       "tvl_history": [
         {
           "date": 1784160000,
@@ -6929,18 +6929,14 @@
         },
         {
           "date": 1791763200,
-          "value": 1256100014
+          "value": 1196613472
         },
         {
-          "date": 1791810875,
-          "value": 1242412391
+          "date": 1791849359,
+          "value": 1196613472
         }
       ],
       "fees_history": [
-        {
-          "date": 1784073600,
-          "value": 104041
-        },
         {
           "date": 1784160000,
           "value": 115315
@@ -7295,7 +7291,11 @@
         },
         {
           "date": 1791763200,
-          "value": 366727
+          "value": 424667
+        },
+        {
+          "date": 1791849600,
+          "value": 435095
         }
       ],
       "token_breakdown": null,
@@ -7307,9 +7307,9 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-16",
       "va_notes": "12% of all trading fees → automatic RAY buyback & burn. 71M RAY burned to date. Note: uses fees_1y as base (not revenue_1y).",
-      "accrual_annual_est": 44446128,
-      "accrual_yield_mcap": 7.502510542684113,
-      "accrual_yield_fdv": 3.6480259830760073,
+      "accrual_annual_est": 42669924,
+      "accrual_yield_mcap": 7.455939564754638,
+      "accrual_yield_fdv": 3.6253812781920356,
       "dilution_pct": 51.37592990156523
     },
     {
@@ -7319,43 +7319,39 @@
       "coingecko_id": "jito-governance-token",
       "defillama_slug": "jito",
       "image": "https://coin-images.coingecko.com/coins/images/33228/large/jto.png?1701137022",
-      "price": 0.515576,
-      "price_change_24h_pct": -9.14392,
-      "volume_24h": 32885086,
-      "market_cap": 274063011,
-      "fdv": 515575904,
-      "circulating_supply": 531566756,
+      "price": 0.511051,
+      "price_change_24h_pct": -8.08211,
+      "volume_24h": 37743925,
+      "market_cap": 271847633,
+      "fdv": 511050797,
+      "circulating_supply": 531938576,
       "total_supply": 1000000000,
       "ath": 6.01,
-      "ath_change_pct": -91.42642,
-      "tvl": 1130430387.34527,
+      "ath_change_pct": -91.50167,
+      "tvl": 1094437245.81243,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1971.6780382291008,
-      "fees_24h": 338329,
-      "fees_7d": 2882930,
-      "fees_30d": 11355885,
-      "fees_1y": 142868954,
-      "fees_change_1d": -5.22,
-      "revenue_24h": 12001,
-      "revenue_7d": 161275,
-      "revenue_30d": 681342,
-      "revenue_1y": 8809946,
+      "tvl_days_bd": 1972.7364823333805,
+      "fees_24h": 384048,
+      "fees_7d": 2734378,
+      "fees_30d": 11630643,
+      "fees_1y": 141816638,
+      "fees_change_1d": 13.51,
+      "revenue_24h": 13435,
+      "revenue_7d": 141437,
+      "revenue_30d": 677719,
+      "revenue_1y": 8709742,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 2.0111672714191804,
-      "fdv_to_fees": 3.78347074373038,
-      "mcap_to_revenue": 33.5200006017536,
-      "fdv_to_revenue": 63.05887302803389,
-      "mcap_to_tvl": 0.24244129852490626,
+      "mcap_to_fees": 1.9477830603747932,
+      "fdv_to_fees": 3.6616691284107565,
+      "mcap_to_revenue": 33.42678811818271,
+      "fdv_to_revenue": 62.839563914641126,
+      "mcap_to_tvl": 0.24839033397314642,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 777397690.35609
-        },
         {
           "date": 1784246400,
           "value": 757277667.57588
@@ -7709,8 +7705,12 @@
           "value": 1168255404.10762
         },
         {
-          "date": 1791824711,
-          "value": 1130430387.34527
+          "date": 1791849600,
+          "value": 1094437245.81243
+        },
+        {
+          "date": 1791851471,
+          "value": 1094437245.81243
         }
       ],
       "fees_history": [
@@ -8072,53 +8072,53 @@
         },
         {
           "date": 1791763200,
-          "value": 186893
+          "value": 384048
         }
       ],
       "token_breakdown": [
         {
           "symbol": "SOL",
-          "usd": 1127401251.65258,
-          "pct": 0.9973203685255171
+          "usd": 1091539409.96596,
+          "pct": 0.9973522123468723
         },
         {
           "symbol": "JTO",
-          "usd": 2746451.91188,
-          "pct": 0.002429563058297767
+          "usd": 2622662.42296,
+          "pct": 0.002396357058568995
         },
         {
           "symbol": "KYROS",
-          "usd": 131193.29294,
-          "pct": 0.00011605605641399193
+          "usd": 126558.68231,
+          "pct": 0.00011563813513386548
         },
         {
           "symbol": "BNSOL",
-          "usd": 107927.32575,
-          "pct": 0.00009547454389746704
+          "usd": 104508.86963,
+          "pct": 0.00009549096567993075
         },
         {
           "symbol": "PIPE",
-          "usd": 31825.71733,
-          "pct": 0.000028153628612367078
+          "usd": 32723.78194,
+          "pct": 0.00002990009890273538
         },
         {
           "symbol": "BBSOL",
-          "usd": 11737.95507,
-          "pct": 0.000010383616000947849
+          "usd": 11383.06335,
+          "pct": 0.000010400836938870713
         },
         {
           "symbol": "NOMU",
-          "usd": 0.64577,
-          "pct": 5.712602974661149e-10
+          "usd": 0.61059,
+          "pct": 5.579031611473082e-10
         }
       ],
       "concentration": {
-        "top1_pct": 0.9973203685255171,
-        "top3_pct": 0.9998659876402287,
-        "top5_pct": 0.9999896158127387,
-        "hhi": 0.9946538437373706,
+        "top1_pct": 0.9973522123468723,
+        "top3_pct": 0.9998642075405753,
+        "top5_pct": 0.999989598605158,
+        "hhi": 0.9947172014932488,
         "token_count": 7,
-        "snapshot_date": 1791824711
+        "snapshot_date": 1791851471
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -8127,10 +8127,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-16",
       "va_notes": "CSD sub-DAO committed to 100% of network revenue. $3.2M executed via TWAP as of Oct 2025. 4/6 multisig. JIP-24 routes all Block Engine + BAM fees to DAO.",
-      "accrual_annual_est": 8809946,
-      "accrual_yield_mcap": 3.2145695137239807,
-      "accrual_yield_fdv": 1.7087582898366018,
-      "dilution_pct": 46.8433244
+      "accrual_annual_est": 8709742,
+      "accrual_yield_mcap": 3.2039057702591807,
+      "accrual_yield_fdv": 1.7042810716915875,
+      "dilution_pct": 46.80614239999999
     },
     {
       "symbol": "AERO",
@@ -8139,43 +8139,39 @@
       "coingecko_id": "aerodrome-finance",
       "defillama_slug": "aerodrome",
       "image": "https://coin-images.coingecko.com/coins/images/31745/large/token.png?1696530564",
-      "price": 0.889371,
-      "price_change_24h_pct": -6.40662,
-      "volume_24h": 56728629,
-      "market_cap": 893368692,
-      "fdv": 1776647812,
-      "circulating_supply": 1004495119.6776216,
+      "price": 0.874527,
+      "price_change_24h_pct": -6.44693,
+      "volume_24h": 59985135,
+      "market_cap": 874781700,
+      "fdv": 1746995584,
+      "circulating_supply": 1000290927.6560522,
       "total_supply": 1997645621.866175,
       "ath": 2.32,
-      "ath_change_pct": -61.61435,
-      "tvl": 389308091,
+      "ath_change_pct": -62.25501,
+      "tvl": 382562756,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 544.2162217749999,
-      "fees_24h": 274938,
-      "fees_7d": 2656843,
-      "fees_30d": 11406905,
-      "fees_1y": 126107585,
-      "fees_change_1d": 12.25,
-      "revenue_24h": 251890,
-      "revenue_7d": 1827837,
-      "revenue_30d": 7614905,
-      "revenue_1y": 89291376,
-      "holders_revenue_24h": 251890,
-      "holders_revenue_7d": 1827837,
-      "holders_revenue_30d": 7614905,
-      "holders_revenue_1y": 89291376,
-      "holders_revenue_annualized": 91378860,
-      "mcap_to_fees": 6.5265197702619595,
-      "fdv_to_fees": 12.97933000523221,
-      "mcap_to_revenue": 9.776535754549794,
-      "fdv_to_revenue": 19.44265678079153,
-      "mcap_to_tvl": 2.2947601466623513,
+      "tvl_days_bd": 544.5789419989999,
+      "fees_24h": 396433,
+      "fees_7d": 2717962,
+      "fees_30d": 11647643,
+      "fees_1y": 125848510,
+      "fees_change_1d": 44.19,
+      "revenue_24h": 248308,
+      "revenue_7d": 1864557,
+      "revenue_30d": 7758426,
+      "revenue_1y": 89011153,
+      "holders_revenue_24h": 248308,
+      "holders_revenue_7d": 1864557,
+      "holders_revenue_30d": 7758426,
+      "holders_revenue_1y": 89011153,
+      "holders_revenue_annualized": 93101112,
+      "mcap_to_fees": 6.258646062555317,
+      "fdv_to_fees": 12.49892062568653,
+      "mcap_to_revenue": 9.396039222388666,
+      "fdv_to_revenue": 18.76449750675373,
+      "mcap_to_tvl": 2.286635816686766,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 330872935
-        },
         {
           "date": 1784246400,
           "value": 322658298
@@ -8526,11 +8522,15 @@
         },
         {
           "date": 1791763200,
-          "value": 396160989
+          "value": 383063792
         },
         {
-          "date": 1791822107,
-          "value": 389308091
+          "date": 1791849600,
+          "value": 382562756
+        },
+        {
+          "date": 1791851711,
+          "value": 382562756
         }
       ],
       "fees_history": [
@@ -8892,93 +8892,93 @@
         },
         {
           "date": 1791763200,
-          "value": 381345
+          "value": 396433
         }
       ],
       "token_breakdown": [
         {
           "symbol": "WETH",
-          "usd": 110195958.06446,
-          "pct": 0.2830559136361664
+          "usd": 112178092.89719,
+          "pct": 0.2932279491145342
         },
         {
           "symbol": "USDC",
-          "usd": 95721708.21372001,
-          "pct": 0.24587649174391543
+          "usd": 89832291.73695,
+          "pct": 0.23481713755310418
         },
         {
           "symbol": "AERO",
-          "usd": 37496358.32177,
-          "pct": 0.09631538351514843
+          "usd": 37626381.67023999,
+          "pct": 0.0983534881438651
         },
         {
           "symbol": "CBBTC",
-          "usd": 36614448.89926001,
-          "pct": 0.09405005834608109
+          "usd": 31594533.33978,
+          "pct": 0.08258653695374538
         },
         {
           "symbol": "UTY",
-          "usd": 8048586.26148,
-          "pct": 0.020674078956599
+          "usd": 8048453.45924,
+          "pct": 0.02103825658330336
         },
         {
           "symbol": "DIEM",
-          "usd": 7469316.984660001,
-          "pct": 0.01918613332527436
+          "usd": 7241816.002970001,
+          "pct": 0.01892974643776369
         },
         {
           "symbol": "VVV",
-          "usd": 6468127.7888899995,
-          "pct": 0.01661441901279873
+          "usd": 6802089.71917,
+          "pct": 0.017780323827338303
         },
         {
           "symbol": "MSUSD",
-          "usd": 5270852.222399999,
-          "pct": 0.01353902554737919
+          "usd": 5302522.65963,
+          "pct": 0.013860530202110418
+        },
+        {
+          "symbol": "CBETH",
+          "usd": 3570994.78406,
+          "pct": 0.009334402553877276
         },
         {
           "symbol": "MSETH",
-          "usd": 3351936.0982000004,
-          "pct": 0.00860998308278284
+          "usd": 3300347.1687600003,
+          "pct": 0.008626943163924086
         },
         {
           "symbol": "EURC",
-          "usd": 3283445.0395100005,
-          "pct": 0.008434052862347116
+          "usd": 2717937.48716,
+          "pct": 0.007104553256328369
         },
         {
           "symbol": "BTCUSD",
-          "usd": 2717396.4282899997,
-          "pct": 0.006980066621602819
-        },
-        {
-          "symbol": "WSTETH",
-          "usd": 2577697.26616,
-          "pct": 0.00662122701745161
+          "usd": 2716374.7501399997,
+          "pct": 0.007100468339571939
         },
         {
           "symbol": "USDBC",
-          "usd": 2553896.6001600004,
-          "pct": 0.006560091206500737
+          "usd": 2547628.51305,
+          "pct": 0.006659374078252624
+        },
+        {
+          "symbol": "WSTETH",
+          "usd": 2535929.41825,
+          "pct": 0.0066287932269820955
         },
         {
           "symbol": "USDT",
-          "usd": 2383673.93699,
-          "pct": 0.006122847116141442
-        },
-        {
-          "symbol": "O",
-          "usd": 1893471.88979,
-          "pct": 0.004863684885750472
+          "usd": 2233599.6196500002,
+          "pct": 0.005838518187443526
         }
       ],
       "concentration": {
-        "top1_pct": 0.2830559136361664,
-        "top3_pct": 0.6252477888952302,
-        "top5_pct": 0.7399719261979102,
-        "hhi": 0.1606144623337737,
-        "token_count": 659,
-        "snapshot_date": 1791822107
+        "top1_pct": 0.2932279491145342,
+        "top3_pct": 0.6263985748115035,
+        "top5_pct": 0.7300233683485523,
+        "hhi": 0.15966665652409853,
+        "token_count": 658,
+        "snapshot_date": 1791851711
       },
       "va_mechanism": "fee-share-lockers",
       "va_status": "executing",
@@ -8987,10 +8987,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-16",
       "va_notes": "100% of trading fees → veAERO lockers. No protocol treasury take. Algorithmic, structural. Revenue exceeded emissions Oct 2025. $295M+ cumulative distributed.",
-      "accrual_annual_est": 89291376,
-      "accrual_yield_mcap": 9.994907679169039,
-      "accrual_yield_fdv": 5.025834349210906,
-      "dilution_pct": 49.71605030029125
+      "accrual_annual_est": 89011153,
+      "accrual_yield_mcap": 10.17524177746288,
+      "accrual_yield_fdv": 5.095098912396564,
+      "dilution_pct": 49.926507649460206
     },
     {
       "symbol": "CLOUD",
@@ -8999,43 +8999,39 @@
       "coingecko_id": "sanctum-2",
       "defillama_slug": "sanctum",
       "image": "https://coin-images.coingecko.com/coins/images/38485/large/CLOUD_128x128.png?1721331750",
-      "price": 0.068157,
-      "price_change_24h_pct": -0.90622,
-      "volume_24h": 168129,
-      "market_cap": 41633792,
-      "fdv": 50482053,
-      "circulating_supply": 610848396.8240184,
-      "total_supply": 740669526.3595246,
+      "price": 0.067082,
+      "price_change_24h_pct": -3.43009,
+      "volume_24h": 171198,
+      "market_cap": 40976664,
+      "fdv": 49685268,
+      "circulating_supply": 610848371.6470101,
+      "total_supply": 740669501.6470101,
       "ath": 0.625172,
-      "ath_change_pct": -89.09782,
-      "tvl": 2046958864,
+      "ath_change_pct": -89.2699,
+      "tvl": 2015252597,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1402.6255577969991,
-      "fees_24h": 316433,
-      "fees_7d": 2227976.1399999997,
-      "fees_30d": 8957609.600000001,
-      "fees_1y": 93401014.91999999,
-      "fees_change_1d": 1.34,
+      "tvl_days_bd": 1404.609104126999,
+      "fees_24h": 26128,
+      "fees_7d": 1835115.66,
+      "fees_30d": 8983676.600000001,
+      "fees_1y": 92491832.91999999,
+      "fees_change_1d": -91.74,
       "revenue_24h": 8988,
-      "revenue_7d": 68038.14,
-      "revenue_30d": 274056.6,
-      "revenue_1y": 4436270.92,
+      "revenue_7d": 56563.66,
+      "revenue_30d": 273995.6,
+      "revenue_1y": 4267106.92,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 0.3873223796967738,
-      "fdv_to_fees": 0.4696384345662931,
-      "mcap_to_revenue": 12.65973038659411,
-      "fdv_to_revenue": 15.350251553876099,
-      "mcap_to_tvl": 0.020339339852996675,
+      "mcap_to_fees": 0.38010295250387793,
+      "fdv_to_fees": 0.4608846894599923,
+      "mcap_to_revenue": 12.462689181870076,
+      "fdv_to_revenue": 15.111333904632046,
+      "mcap_to_tvl": 0.020333264455780774,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 1324199070
-        },
         {
           "date": 1784246400,
           "value": 1289661184
@@ -9389,15 +9385,15 @@
           "value": 2112486663
         },
         {
-          "date": 1791827051,
-          "value": 2046958864
+          "date": 1791849600,
+          "value": 2015252597
+        },
+        {
+          "date": 1791851651,
+          "value": 2015252597
         }
       ],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 409985
-        },
         {
           "date": 1784073600,
           "value": 482
@@ -9753,12 +9749,16 @@
         {
           "date": 1791676800,
           "value": 316433
+        },
+        {
+          "date": 1791763200,
+          "value": 26128
         }
       ],
       "token_breakdown": [
         {
           "symbol": "SOL",
-          "usd": 2046958865.0812101,
+          "usd": 2015252598.84193,
           "pct": 1
         }
       ],
@@ -9768,7 +9768,7 @@
         "top5_pct": 1,
         "hhi": 1,
         "token_count": 1,
-        "snapshot_date": 1791827051
+        "snapshot_date": 1791851651
       },
       "va_mechanism": "none",
       "va_status": "none",
@@ -9780,7 +9780,7 @@
       "accrual_annual_est": null,
       "accrual_yield_mcap": null,
       "accrual_yield_fdv": null,
-      "dilution_pct": 17.527537574495867
+      "dilution_pct": 17.52753822201666
     },
     {
       "symbol": "KMNO",
@@ -9789,24 +9789,24 @@
       "coingecko_id": "kamino",
       "defillama_slug": "kamino",
       "image": "https://coin-images.coingecko.com/coins/images/35801/large/Kamino_200x200.png?1767944671",
-      "price": 0.03602483,
-      "price_change_24h_pct": -4.17353,
-      "volume_24h": 6637934,
-      "market_cap": 206896044,
-      "fdv": 360246745,
+      "price": 0.03498659,
+      "price_change_24h_pct": -6.99182,
+      "volume_24h": 6884109,
+      "market_cap": 200933252,
+      "fdv": 349864351,
       "circulating_supply": 5743151042.5,
       "total_supply": 9999956650.500916,
       "ath": 0.247842,
-      "ath_change_pct": -85.46462,
-      "tvl": 1389768775,
+      "ath_change_pct": -85.88353,
+      "tvl": 1363956837,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1859.2919396949967,
+      "tvl_days_bd": 1860.6300845939966,
       "fees_24h": 154451,
-      "fees_7d": 1111676,
-      "fees_30d": 5042771,
-      "fees_1y": 65377877,
-      "fees_change_1d": -1.01,
+      "fees_7d": 946690,
+      "fees_30d": 4900967,
+      "fees_1y": 65012451,
+      "fees_change_1d": null,
       "revenue_24h": null,
       "revenue_7d": null,
       "revenue_30d": null,
@@ -9816,16 +9816,12 @@
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 3.4190204155612065,
-      "fdv_to_fees": 5.9531876587957955,
+      "mcap_to_fees": 3.416557929622188,
+      "fdv_to_fees": 5.948899999394677,
       "mcap_to_revenue": null,
       "fdv_to_revenue": null,
-      "mcap_to_tvl": 0.1488708393236134,
+      "mcap_to_tvl": 0.14731643007263287,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 1128746668
-        },
         {
           "date": 1784246400,
           "value": 1126265119
@@ -10179,8 +10175,12 @@
           "value": 1412287102
         },
         {
-          "date": 1791825071,
-          "value": 1389768775
+          "date": 1791849600,
+          "value": 1363956837
+        },
+        {
+          "date": 1791851531,
+          "value": 1363956837
         }
       ],
       "fees_history": [
@@ -10548,87 +10548,87 @@
       "token_breakdown": [
         {
           "symbol": "DSOL",
-          "usd": 217618439.49309,
-          "pct": 0.14786176934907433
+          "usd": 208871738.10323,
+          "pct": 0.14460502806528258
         },
         {
           "symbol": "ONYC",
-          "usd": 154169803.97845,
-          "pct": 0.10475132552899961
+          "usd": 154304020.91785,
+          "pct": 0.10682698137162003
         },
         {
           "symbol": "USDE",
-          "usd": 153849969.25621,
-          "pct": 0.10453401247391185
+          "usd": 151083339.01211,
+          "pct": 0.10459725512144297
         },
         {
           "symbol": "JITOSOL",
-          "usd": 122718809.91254,
-          "pct": 0.08338181455738752
+          "usd": 118176918.60547,
+          "pct": 0.08181564814272181
         },
         {
           "symbol": "PRIME",
-          "usd": 94306628.03105,
-          "pct": 0.06407703738018411
+          "usd": 94309825.97562,
+          "pct": 0.06529210297132848
         },
         {
           "symbol": "AUTO",
-          "usd": 78112357.55753,
-          "pct": 0.05307377179703866
+          "usd": 77711589.69293,
+          "pct": 0.05380089575828589
         },
         {
           "symbol": "USDT",
-          "usd": 73561266.49053,
-          "pct": 0.049981513718160404
+          "usd": 72915006.31915,
+          "pct": 0.05048014935342702
         },
         {
           "symbol": "CBBTC",
-          "usd": 59275240.28098,
-          "pct": 0.04027481277300274
+          "usd": 58492270.45809,
+          "pct": 0.04049507361792479
         },
         {
           "symbol": "SYRUPUSDC",
-          "usd": 55825661.19644,
-          "pct": 0.03793098167055684
-        },
-        {
-          "symbol": "JUPSOL",
-          "usd": 50320723.76407,
-          "pct": 0.03419062864347788
-        },
-        {
-          "symbol": "JLP",
-          "usd": 47891060.1599,
-          "pct": 0.032539783428925044
+          "usd": 55840831.74228,
+          "pct": 0.03865944294143953
         },
         {
           "symbol": "DFDVSOL",
-          "usd": 43580451.1256,
-          "pct": 0.0296109218845248
+          "usd": 53131295.91269,
+          "pct": 0.036783590764214356
+        },
+        {
+          "symbol": "JUPSOL",
+          "usd": 48999257.34562,
+          "pct": 0.03392291866762521
+        },
+        {
+          "symbol": "JLP",
+          "usd": 47164306.12897,
+          "pct": 0.03265255449776821
         },
         {
           "symbol": "PST",
-          "usd": 41991317.82157,
-          "pct": 0.028531178538268163
-        },
-        {
-          "symbol": "SOL",
-          "usd": 28701118.28451,
-          "pct": 0.019501096238581705
+          "usd": 41970469.03961,
+          "pct": 0.02905678340449461
         },
         {
           "symbol": "MSOL",
-          "usd": 23371028.04543,
-          "pct": 0.01587954387667524
+          "usd": 22809244.13772,
+          "pct": 0.015791180839663237
+        },
+        {
+          "symbol": "SOL",
+          "usd": 22045269.90053,
+          "pct": 0.01526227004965768
         }
       ],
       "concentration": {
-        "top1_pct": 0.14786176934907433,
-        "top3_pct": 0.3571471073519858,
-        "top5_pct": 0.5046059592895573,
-        "hhi": 0.06880871268234663,
-        "token_count": 117,
-        "snapshot_date": 1791825071
+        "top1_pct": 0.14460502806528258,
+        "top3_pct": 0.3560292645583456,
+        "top5_pct": 0.5031370156723959,
+        "hhi": 0.06864501036600308,
+        "token_count": 118,
+        "snapshot_date": 1791851531
       },
       "va_mechanism": "none",
       "va_status": "none",
@@ -10649,24 +10649,24 @@
       "coingecko_id": "ondo-finance",
       "defillama_slug": "ondo-finance",
       "image": "https://coin-images.coingecko.com/coins/images/26580/large/ONDO.png?1696525656",
-      "price": 0.493235,
-      "price_change_24h_pct": -2.42386,
-      "volume_24h": 265741629,
-      "market_cap": 2401725237,
-      "fdv": 4932351920,
+      "price": 0.472739,
+      "price_change_24h_pct": -9.48246,
+      "volume_24h": 256381327,
+      "market_cap": 2301924851,
+      "fdv": 4727394826,
       "circulating_supply": 4869330647,
       "total_supply": 10000000000,
       "ath": 2.14,
-      "ath_change_pct": -76.95331,
+      "ath_change_pct": -77.91098,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
       "tvl_days_bd": null,
-      "fees_24h": 223717,
-      "fees_7d": 1336335,
-      "fees_30d": 6067836,
-      "fees_1y": 62538918,
-      "fees_change_1d": 0.01,
+      "fees_24h": 306083,
+      "fees_7d": 1549941,
+      "fees_30d": 6158203,
+      "fees_1y": 62771238,
+      "fees_change_1d": 36.82,
       "revenue_24h": null,
       "revenue_7d": null,
       "revenue_30d": null,
@@ -10676,8 +10676,8 @@
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 32.984373630071744,
-      "fdv_to_fees": 67.7390303011925,
+      "mcap_to_fees": 31.14984532284283,
+      "fdv_to_fees": 63.971513903217115,
       "mcap_to_revenue": null,
       "fdv_to_revenue": null,
       "mcap_to_tvl": null,
@@ -11041,7 +11041,7 @@
         },
         {
           "date": 1791763200,
-          "value": 224739
+          "value": 306083
         }
       ],
       "token_breakdown": null,
@@ -11065,43 +11065,39 @@
       "coingecko_id": "instadapp",
       "defillama_slug": "fluid",
       "image": "https://coin-images.coingecko.com/coins/images/14688/large/Frame_1686566116_%281%29_%281%29.png?1784708239",
-      "price": 2.18,
-      "price_change_24h_pct": -2.13085,
-      "volume_24h": 3169421,
-      "market_cap": 182052301,
-      "fdv": 217513541,
+      "price": 2.21,
+      "price_change_24h_pct": 2.52377,
+      "volume_24h": 3516508,
+      "market_cap": 184857131,
+      "fdv": 220864712,
       "circulating_supply": 83696996.82034639,
       "total_supply": 100000000,
       "ath": 24.4,
-      "ath_change_pct": -91.08581,
-      "tvl": 905546504,
+      "ath_change_pct": -90.94847,
+      "tvl": 893409976,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 953.5395438599996,
-      "fees_24h": 125289,
-      "fees_7d": 834183,
-      "fees_30d": 3728826,
-      "fees_1y": 59771791.84000004,
-      "fees_change_1d": 13.05,
-      "revenue_24h": 23522,
-      "revenue_7d": 157587,
-      "revenue_30d": 605851,
-      "revenue_1y": 9713886.84,
+      "tvl_days_bd": 954.4208173109997,
+      "fees_24h": 191339,
+      "fees_7d": 915382,
+      "fees_30d": 3810243,
+      "fees_1y": 59553834.84000004,
+      "fees_change_1d": 52.72,
+      "revenue_24h": 23994,
+      "revenue_7d": 146359,
+      "revenue_30d": 595381,
+      "revenue_1y": 9657107.84,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
       "holders_revenue_1y": 3094915,
       "holders_revenue_annualized": 3094915,
-      "mcap_to_fees": 4.068579516269553,
-      "fdv_to_fees": 4.861081857042047,
-      "mcap_to_revenue": 25.0408517660833,
-      "fdv_to_revenue": 29.918459186609688,
-      "mcap_to_tvl": 0.2010413603231138,
+      "mcap_to_fees": 4.042986475315791,
+      "fdv_to_fees": 4.830503636294763,
+      "mcap_to_revenue": 25.87378656132236,
+      "fdv_to_revenue": 30.913637933804853,
+      "mcap_to_tvl": 0.20691187245036985,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 806534009
-        },
         {
           "date": 1784246400,
           "value": 795465226
@@ -11455,8 +11451,12 @@
           "value": 910403772
         },
         {
-          "date": 1791822779,
-          "value": 905546505
+          "date": 1791849600,
+          "value": 893409978
+        },
+        {
+          "date": 1791851591,
+          "value": 893409978
         }
       ],
       "fees_history": [
@@ -11818,93 +11818,93 @@
         },
         {
           "date": 1791763200,
-          "value": 10475
+          "value": 191339
         }
       ],
       "token_breakdown": [
         {
           "symbol": "SUSDAI",
-          "usd": 194887407.02158,
-          "pct": 0.2152152381963938
+          "usd": 194504796.30712,
+          "pct": 0.21771057065592722
         },
         {
           "symbol": "STETH",
-          "usd": 172970903.24254,
-          "pct": 0.19101272222410232
+          "usd": 165627046.98308,
+          "pct": 0.1853875050865389
         },
         {
           "symbol": "WSTETH",
-          "usd": 153732384.36045,
-          "pct": 0.16976751974010423
+          "usd": 148174191.19578,
+          "pct": 0.16585240227586545
         },
         {
           "symbol": "USDC",
-          "usd": 66117753.98218,
-          "pct": 0.07301420030032924
+          "usd": 67816412.81265,
+          "pct": 0.07590738230417357
         },
         {
           "symbol": "PST",
-          "usd": 52609954.23474,
-          "pct": 0.058097462556301556
+          "usd": 52613696.65361,
+          "pct": 0.058890876421827235
         },
         {
           "symbol": "WBTC",
-          "usd": 47940207.85316,
-          "pct": 0.052940635877822516
+          "usd": 47253351.375,
+          "pct": 0.052891004687680855
         },
         {
           "symbol": "USDT",
-          "usd": 36692212.86107,
-          "pct": 0.040519412985845486
+          "usd": 37482836.45827,
+          "pct": 0.04195479941917524
         },
         {
           "symbol": "REUSD",
-          "usd": 35294036.95615,
-          "pct": 0.03897539962440497
+          "usd": 35373384.18653,
+          "pct": 0.03959367482702478
         },
         {
           "symbol": "WETH",
-          "usd": 32072590.51961,
-          "pct": 0.035417938561258334
-        },
-        {
-          "symbol": "CBBTC",
-          "usd": 19322660.20687,
-          "pct": 0.021338120212913654
+          "usd": 31871376.92011,
+          "pct": 0.03567385374863015
         },
         {
           "symbol": "USDT0",
-          "usd": 19123429.01698,
-          "pct": 0.02111810811134375
+          "usd": 20116779.61284,
+          "pct": 0.022516851267541722
+        },
+        {
+          "symbol": "CBBTC",
+          "usd": 18708825.7205,
+          "pct": 0.020940918688097384
         },
         {
           "symbol": "WEETH",
-          "usd": 12956396.61194,
-          "pct": 0.014307820221020508
+          "usd": 12536687.98324,
+          "pct": 0.014032402011603122
         },
         {
           "symbol": "OSETH",
-          "usd": 11162786.67771,
-          "pct": 0.012327126880562733
+          "usd": 10926469.80641,
+          "pct": 0.01223007361243771
         },
         {
           "symbol": "GHO",
-          "usd": 10570645.77999,
-          "pct": 0.011673222422105214
+          "usd": 10424190.02702,
+          "pct": 0.011667868363641348
         },
         {
           "symbol": "ETH",
-          "usd": 8286886.44318,
-          "pct": 0.009151254393661086
+          "usd": 7927804.38374,
+          "pct": 0.008873646558860804
         }
       ],
       "concentration": {
-        "top1_pct": 0.2152152381963938,
-        "top3_pct": 0.5759954801606003,
-        "top5_pct": 0.7071071430172312,
-        "hhi": 0.12916536051104505,
+        "top1_pct": 0.21771057065592722,
+        "top3_pct": 0.5689504780183317,
+        "top5_pct": 0.7037487367443324,
+        "hhi": 0.12755027410314393,
         "token_count": 57,
-        "snapshot_date": 1791822779
+        "snapshot_date": 1791851591
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -11914,8 +11914,8 @@
       "va_last_verified": "2026-04-19",
       "va_notes": "100% of mainnet revenue → FLUID buybacks. Approved and active since Oct 2025. Fully algorithmic, no discretion.",
       "accrual_annual_est": 3094915,
-      "accrual_yield_mcap": 1.70001421734296,
-      "accrual_yield_fdv": 1.422860841569399,
+      "accrual_yield_mcap": 1.6742199682845884,
+      "accrual_yield_fdv": 1.4012718337730656,
       "dilution_pct": 16.30300317965362
     },
     {
@@ -11925,43 +11925,39 @@
       "coingecko_id": "euler",
       "defillama_slug": "euler",
       "image": "https://coin-images.coingecko.com/coins/images/26149/large/Coingecko_logo_%281%29.png?1706026067",
-      "price": 1.38,
-      "price_change_24h_pct": -4.41719,
-      "volume_24h": 1820078,
-      "market_cap": 33251804,
-      "fdv": 37607116,
+      "price": 1.31,
+      "price_change_24h_pct": -6.79162,
+      "volume_24h": 2222067,
+      "market_cap": 31391411,
+      "fdv": 35503049,
       "circulating_supply": 24034753.02484756,
       "total_supply": 27182818.28459,
       "ath": 15.81,
-      "ath_change_pct": -91.2516,
-      "tvl": 301890264,
+      "ath_change_pct": -91.74106,
+      "tvl": 298794323,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 552.2154216719995,
-      "fees_24h": 54314,
-      "fees_7d": 394435,
-      "fees_30d": 1703410,
-      "fees_1y": 43873269,
-      "fees_change_1d": -0.04,
+      "tvl_days_bd": 552.5111187689994,
+      "fees_24h": 54625,
+      "fees_7d": 390283,
+      "fees_30d": 1702534,
+      "fees_1y": 43511362,
+      "fees_change_1d": 0.57,
       "revenue_24h": 2579,
-      "revenue_7d": 18045,
-      "revenue_30d": 74876,
-      "revenue_1y": 2398795,
+      "revenue_7d": 18076,
+      "revenue_30d": 75079,
+      "revenue_1y": 2371413,
       "holders_revenue_24h": null,
       "holders_revenue_7d": 0.02,
       "holders_revenue_30d": 0.04,
-      "holders_revenue_1y": 1361979.88,
+      "holders_revenue_1y": 1361946.88,
       "holders_revenue_annualized": 0.48,
-      "mcap_to_fees": 1.6267273684354715,
-      "fdv_to_fees": 1.8397956647743838,
-      "mcap_to_revenue": 37.00763484516623,
-      "fdv_to_revenue": 41.854884520184484,
-      "mcap_to_tvl": 0.11014533413373014,
+      "mcap_to_fees": 1.5365043615379586,
+      "fdv_to_fees": 1.7377552616668253,
+      "mcap_to_revenue": 34.8426446365384,
+      "fdv_to_revenue": 39.406324227369396,
+      "mcap_to_tvl": 0.10506026582037839,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 314637929
-        },
         {
           "date": 1784246400,
           "value": 317892483
@@ -12312,11 +12308,15 @@
         },
         {
           "date": 1791763200,
-          "value": 303434181
+          "value": 303432887
         },
         {
-          "date": 1791825263,
-          "value": 301890271
+          "date": 1791849600,
+          "value": 298794331
+        },
+        {
+          "date": 1791850559,
+          "value": 298794331
         }
       ],
       "fees_history": [
@@ -12684,87 +12684,87 @@
       "token_breakdown": [
         {
           "symbol": "VUSD",
-          "usd": 79405694.12545,
-          "pct": 0.2630283304357833
+          "usd": 79389003.92647,
+          "pct": 0.26569782434959277
         },
         {
           "symbol": "WEETH",
-          "usd": 27777280.19121,
-          "pct": 0.09201118022088087
+          "usd": 26971560.48647,
+          "pct": 0.090267979016413
         },
         {
           "symbol": "WSTETH",
-          "usd": 25857033.28343,
-          "pct": 0.08565043564531058
+          "usd": 25105364.606,
+          "pct": 0.0840222250614912
         },
         {
           "symbol": "GAUSD",
-          "usd": 24853461.64764,
-          "pct": 0.08232614291363924
-        },
-        {
-          "symbol": "WETH",
-          "usd": 16414396.074469998,
-          "pct": 0.05437206036834768
+          "usd": 24848298.73273,
+          "pct": 0.08316188118684543
         },
         {
           "symbol": "XUSD",
-          "usd": 16098595.54602,
-          "pct": 0.053325983173710845
+          "usd": 16098798.89813,
+          "pct": 0.053879197751825925
         },
         {
-          "symbol": "FXRP",
-          "usd": 10869212.4522,
-          "pct": 0.0360038513099238
+          "symbol": "WETH",
+          "usd": 15950630.31682,
+          "pct": 0.05338330955895358
         },
         {
           "symbol": "USD0",
-          "usd": 10687703.45609,
-          "pct": 0.03540260968951226
+          "usd": 10685930.0043,
+          "pct": 0.035763496364360915
+        },
+        {
+          "symbol": "FXRP",
+          "usd": 10655026.49993,
+          "pct": 0.03566006901964335
         },
         {
           "symbol": "PT-USDAT-14JAN2027",
-          "usd": 10559422.20081,
-          "pct": 0.03497768292860268
+          "usd": 10558111.81791,
+          "pct": 0.035335716541508015
         },
         {
           "symbol": "CBETH",
-          "usd": 10510752.48103,
-          "pct": 0.034816466339823965
+          "usd": 9971135.17912,
+          "pct": 0.03337123269416074
         },
         {
           "symbol": "AHYPERBTC",
-          "usd": 9110653.30062,
-          "pct": 0.0301786912542496
+          "usd": 9076091.09007,
+          "pct": 0.03037571372559163
         },
         {
           "symbol": "BUSD0",
-          "usd": 7631017.41988,
-          "pct": 0.02527745388518811
+          "usd": 7635648.66186,
+          "pct": 0.025554864485176444
         },
         {
           "symbol": "SYZUSD",
-          "usd": 7264111.83386,
-          "pct": 0.024062093138313506
+          "usd": 7264513.10701,
+          "pct": 0.02431275405948378
         },
         {
           "symbol": "SATUSD",
-          "usd": 4962481.28176,
-          "pct": 0.016438029800457478
+          "usd": 4961958.7437,
+          "pct": 0.016606602646565664
         },
         {
           "symbol": "YZPRIME",
-          "usd": 4526964.13702,
-          "pct": 0.014995395884605764
+          "usd": 4527237.55814,
+          "pct": 0.015151684868419113
         }
       ],
       "concentration": {
-        "top1_pct": 0.2630283304357833,
-        "top3_pct": 0.44068994630197467,
-        "top5_pct": 0.5773881495839616,
-        "hhi": 0.10603540202658897,
-        "token_count": 305,
-        "snapshot_date": 1791825263
+        "top1_pct": 0.26569782434959277,
+        "top3_pct": 0.43998802842749696,
+        "top5_pct": 0.5770291073661683,
+        "hhi": 0.10693964156924442,
+        "token_count": 304,
+        "snapshot_date": 1791850559
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -12774,8 +12774,8 @@
       "va_last_verified": "2026-04-21",
       "va_notes": "FeeFlow automated on-chain buyback mechanism. ~$1.82M annualized. ~1.5% supply repurchased annually.",
       "accrual_annual_est": 0.48,
-      "accrual_yield_mcap": 0.0000014435307028755492,
-      "accrual_yield_fdv": 0.0000012763541878616802,
+      "accrual_yield_mcap": 0.0000015290806775139864,
+      "accrual_yield_fdv": 0.0000013519965566901029,
       "dilution_pct": 11.58108488525299
     },
     {
@@ -12785,37 +12785,37 @@
       "coingecko_id": "collector-crypt",
       "defillama_slug": "collector-crypt",
       "image": "https://coin-images.coingecko.com/coins/images/68728/large/cards-logo.jpeg?1756534539",
-      "price": 0.292071,
-      "price_change_24h_pct": -8.75953,
-      "volume_24h": 7743875,
-      "market_cap": 261284337,
-      "fdv": 576594399,
-      "circulating_supply": 894591873.6460359,
-      "total_supply": 1974158380.14946,
+      "price": 0.275611,
+      "price_change_24h_pct": -15.54828,
+      "volume_24h": 9004670,
+      "market_cap": 248768297,
+      "fdv": 544099461,
+      "circulating_supply": 902607063.508862,
+      "total_supply": 1974158370.012297,
       "ath": 0.381443,
-      "ath_change_pct": -23.43004,
+      "ath_change_pct": -27.74527,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
       "tvl_days_bd": null,
-      "fees_24h": 173661,
-      "fees_7d": 3775921,
-      "fees_30d": 15566366,
-      "fees_1y": 94392605,
-      "fees_change_1d": -75.44,
-      "revenue_24h": 173661,
-      "revenue_7d": 3775921,
-      "revenue_30d": 15566366,
-      "revenue_1y": 94392605,
-      "holders_revenue_24h": 10312,
-      "holders_revenue_7d": 30525,
-      "holders_revenue_30d": 30525,
-      "holders_revenue_1y": 134935,
-      "holders_revenue_annualized": 366300,
-      "mcap_to_fees": 1.3987654376108078,
-      "fdv_to_fees": 3.0867534047445626,
-      "mcap_to_revenue": 1.3987654376108078,
-      "fdv_to_revenue": 3.0867534047445626,
+      "fees_24h": 216643,
+      "fees_7d": 3493418,
+      "fees_30d": 15471473,
+      "fees_1y": 94483220,
+      "fees_change_1d": -9.32,
+      "revenue_24h": 216643,
+      "revenue_7d": 3493418,
+      "revenue_30d": 15471473,
+      "revenue_1y": 94483220,
+      "holders_revenue_24h": 16076,
+      "holders_revenue_7d": 46601,
+      "holders_revenue_30d": 46601,
+      "holders_revenue_1y": 151011,
+      "holders_revenue_annualized": 559212,
+      "mcap_to_fees": 1.3399300387666169,
+      "fdv_to_fees": 2.930659656646785,
+      "mcap_to_revenue": 1.3399300387666169,
+      "fdv_to_revenue": 2.930659656646785,
       "mcap_to_tvl": null,
       "tvl_history": [],
       "fees_history": [
@@ -13177,7 +13177,7 @@
         },
         {
           "date": 1791763200,
-          "value": 173661
+          "value": 216643
         }
       ],
       "token_breakdown": null,
@@ -13189,10 +13189,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-16",
       "va_notes": "85-90% of pack revenue → CARDS buyback & burn at market. Built into every pack purchase on Solana. Most aggressive mechanism in portfolio.",
-      "accrual_annual_est": 82593529.375,
-      "accrual_yield_mcap": 31.610593395424235,
-      "accrual_yield_fdv": 14.324372473656306,
-      "dilution_pct": 54.684898504530935
+      "accrual_annual_est": 82672817.5,
+      "accrual_yield_mcap": 33.23285904875572,
+      "accrual_yield_fdv": 15.194431060096198,
+      "dilution_pct": 54.278892857859226
     },
     {
       "symbol": "DRIFT",
@@ -13201,43 +13201,39 @@
       "coingecko_id": "drift-protocol",
       "defillama_slug": "drift",
       "image": "https://coin-images.coingecko.com/coins/images/37509/large/DRIFT.png?1715842607",
-      "price": 0.01717009,
-      "price_change_24h_pct": -4.73459,
-      "volume_24h": 2266039,
-      "market_cap": 12467787,
-      "fdv": 17170087,
+      "price": 0.01651253,
+      "price_change_24h_pct": -9.04315,
+      "volume_24h": 2145410,
+      "market_cap": 11990312,
+      "fdv": 16512530,
       "circulating_supply": 726134160.06689,
       "total_supply": 1000000000,
       "ath": 2.6,
-      "ath_change_pct": -99.3407,
-      "tvl": 301685376,
+      "ath_change_pct": -99.36595,
+      "tvl": 287357443,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 639.126311539,
+      "tvl_days_bd": 639.422753642,
       "fees_24h": 44518,
-      "fees_7d": 322959.78,
-      "fees_30d": 1286413.84,
-      "fees_1y": 22207677.269999996,
-      "fees_change_1d": 1.34,
+      "fees_7d": 262118.78,
+      "fees_30d": 1286412.25,
+      "fees_1y": 21938281.269999996,
+      "fees_change_1d": null,
       "revenue_24h": 1133,
-      "revenue_7d": 12275.78,
-      "revenue_30d": 36456.84,
-      "revenue_1y": 7165047.2700000005,
+      "revenue_7d": 10740.779999999999,
+      "revenue_30d": 36455.25,
+      "revenue_1y": 7019824.27,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 0.8076578607083393,
-      "fdv_to_fees": 1.1122708251749944,
-      "mcap_to_revenue": 28.49896617479738,
-      "fdv_to_revenue": 39.24752072130589,
-      "mcap_to_tvl": 0.04132711755971891,
+      "mcap_to_fees": 0.7767281963201662,
+      "fdv_to_fees": 1.0696758886326423,
+      "mcap_to_revenue": 27.4087454253274,
+      "fdv_to_revenue": 37.7461179574044,
+      "mcap_to_tvl": 0.04172612295968962,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 217490015
-        },
         {
           "date": 1784246400,
           "value": 211787830
@@ -13591,8 +13587,12 @@
           "value": 310770036
         },
         {
-          "date": 1791825263,
-          "value": 301685376
+          "date": 1791849600,
+          "value": 310770036
+        },
+        {
+          "date": 1791853991,
+          "value": 287357443
         }
       ],
       "fees_history": [
@@ -13960,32 +13960,32 @@
       "token_breakdown": [
         {
           "symbol": "SOL",
-          "usd": 301042871.58147,
-          "pct": 0.9978702798873895
+          "usd": 286714939.56423,
+          "pct": 0.9977640930525752
         },
         {
           "symbol": "USDC",
-          "usd": 642490.53938,
-          "pct": 0.0021296708039891792
+          "usd": 642489.76479,
+          "pct": 0.0022358556496413317
         },
         {
           "symbol": "SYRUPUSDC",
-          "usd": 7.93375,
-          "pct": 2.6298092665230475e-8
+          "usd": 7.9331,
+          "pct": 2.760708018433124e-8
         },
         {
           "symbol": "LBTC",
-          "usd": 6.94194,
-          "pct": 2.3010528614648818e-8
+          "usd": 6.8077,
+          "pct": 2.3690703479203812e-8
         }
       ],
       "concentration": {
-        "top1_pct": 0.9978702798873895,
-        "top3_pct": 0.9999999769894714,
+        "top1_pct": 0.9977640930525752,
+        "top3_pct": 0.9999999763092966,
         "top5_pct": 1,
-        "hhi": 0.9957496309802717,
+        "hhi": 0.9955381844355152,
         "token_count": 4,
-        "snapshot_date": 1791825263
+        "snapshot_date": 1791853991
       },
       "va_mechanism": "none",
       "va_status": "none",
@@ -14006,43 +14006,39 @@
       "coingecko_id": "dolomite",
       "defillama_slug": "dolomite",
       "image": "https://coin-images.coingecko.com/coins/images/54710/large/DOLO-small.png?1745398535",
-      "price": 0.02653667,
-      "price_change_24h_pct": -5.71382,
-      "volume_24h": 3522136,
-      "market_cap": 13621195,
-      "fdv": 26490501,
+      "price": 0.02558855,
+      "price_change_24h_pct": -7.66599,
+      "volume_24h": 3709189,
+      "market_cap": 13134530,
+      "fdv": 25544035,
       "circulating_supply": 513297091.723335,
       "total_supply": 998260245.0116414,
       "ath": 0.366425,
-      "ath_change_pct": -92.75795,
-      "tvl": 350719383.85153997,
+      "ath_change_pct": -93.01669,
+      "tvl": 349968467.62607,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 186.17407548599974,
-      "fees_24h": 50043,
-      "fees_7d": 329049,
-      "fees_30d": 1309099,
-      "fees_1y": 11390461,
-      "fees_change_1d": 7.14,
-      "revenue_24h": 10011,
-      "revenue_7d": 65823,
-      "revenue_30d": 261859,
-      "revenue_1y": 2276300,
+      "tvl_days_bd": 186.52329303699972,
+      "fees_24h": 50093,
+      "fees_7d": 330658,
+      "fees_30d": 1320071,
+      "fees_1y": 11418838,
+      "fees_change_1d": 10.21,
+      "revenue_24h": 10021,
+      "revenue_7d": 66146,
+      "revenue_30d": 264054,
+      "revenue_1y": 2281493,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 0.8670846004261964,
-      "fdv_to_fees": 1.6863061922742284,
-      "mcap_to_revenue": 4.334773994146977,
-      "fdv_to_revenue": 8.430268770597918,
-      "mcap_to_tvl": 0.038837873317449347,
+      "mcap_to_fees": 0.8291555277456036,
+      "fdv_to_fees": 1.6125417370227308,
+      "mcap_to_revenue": 4.145152759157849,
+      "fdv_to_revenue": 8.061493419275351,
+      "mcap_to_tvl": 0.03753060979777704,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 239570373
-        },
         {
           "date": 1784246400,
           "value": 237072346
@@ -14396,8 +14392,12 @@
           "value": 353596834
         },
         {
-          "date": 1791824951,
-          "value": 350719383
+          "date": 1791849600,
+          "value": 349968467
+        },
+        {
+          "date": 1791851531,
+          "value": 349968467
         }
       ],
       "fees_history": [
@@ -14759,93 +14759,93 @@
         },
         {
           "date": 1791763200,
-          "value": 50043
+          "value": 50093
         }
       ],
       "token_breakdown": [
         {
           "symbol": "WLFICX",
-          "usd": 113042380.1293,
-          "pct": 0.3223157468169975
+          "usd": 112703260.46954,
+          "pct": 0.32203832886442463
         },
         {
           "symbol": "USD1",
-          "usd": 85309077.70378,
-          "pct": 0.24324027023238676
+          "usd": 85062357.8921,
+          "pct": 0.24305720589372845
         },
         {
           "symbol": "WSRUSD",
-          "usd": 42963367.74412,
-          "pct": 0.12250069349548373
+          "usd": 42963890.69166,
+          "pct": 0.1227650336131617
         },
         {
           "symbol": "USDC",
-          "usd": 27736682.80785,
-          "pct": 0.07908511500919073
+          "usd": 29439521.94275,
+          "pct": 0.0841204984621814
         },
         {
           "symbol": "WETH",
-          "usd": 26791399.34107,
-          "pct": 0.07638984491490877
+          "usd": 25899973.19108,
+          "pct": 0.07400659084164689
         },
         {
           "symbol": "WEETH",
-          "usd": 20104826.56607,
-          "pct": 0.05732453776943657
+          "usd": 19524444.79317,
+          "pct": 0.05578915416468827
         },
         {
           "symbol": "SAVETH",
-          "usd": 4537462.24332,
-          "pct": 0.012937586150758545
+          "usd": 4368660.79501,
+          "pct": 0.012483012611518738
         },
         {
           "symbol": "WSTETH",
-          "usd": 4366076.19269,
-          "pct": 0.012448916124175247
+          "usd": 4239143.30032,
+          "pct": 0.012112929284959193
         },
         {
           "symbol": "WBTC",
-          "usd": 3957383.79826,
-          "pct": 0.011283618700514676
+          "usd": 3903971.733,
+          "pct": 0.011155209952147388
         },
         {
           "symbol": "METH",
-          "usd": 3884184.33,
-          "pct": 0.011074906346335275
+          "usd": 3813243.88531,
+          "pct": 0.010895964174076483
         },
         {
           "symbol": "UNI",
-          "usd": 2886013.98556,
-          "pct": 0.008228840829572783
+          "usd": 2714561.38751,
+          "pct": 0.007756588489024946
         },
         {
           "symbol": "WBTC-USDC-GMX-V2",
-          "usd": 2353058.86403,
-          "pct": 0.006709235281464183
+          "usd": 2335765.04757,
+          "pct": 0.006674215718387958
         },
         {
           "symbol": "SAVUSD",
-          "usd": 1937408.17693,
-          "pct": 0.005524097800508843
+          "usd": 1936957.51645,
+          "pct": 0.0055346629643206295
         },
         {
           "symbol": "WETH-USDC-GMX-V2",
-          "usd": 1435774.30931,
-          "pct": 0.004093797991837958
+          "usd": 1409048.75502,
+          "pct": 0.0040262163176528285
         },
         {
           "symbol": "WETH-WETH-GMX-V2",
-          "usd": 1417078.71504,
-          "pct": 0.0040404915732856405
+          "usd": 1358847.67853,
+          "pct": 0.0038827717472590187
         }
       ],
       "concentration": {
-        "top1_pct": 0.3223157468169975,
-        "top3_pct": 0.6880567105448679,
-        "top5_pct": 0.8435316704689675,
-        "hhi": 0.19422108454316964,
+        "top1_pct": 0.32203832886442463,
+        "top3_pct": 0.6878605683713148,
+        "top5_pct": 0.8459876576751431,
+        "hhi": 0.19427559931572097,
         "token_count": 103,
-        "snapshot_date": 1791824951
+        "snapshot_date": 1791851531
       },
       "va_mechanism": "fee-share",
       "va_status": "executing",
@@ -14866,43 +14866,39 @@
       "coingecko_id": "pendle",
       "defillama_slug": "pendle",
       "image": "https://coin-images.coingecko.com/coins/images/15069/large/Pendle_Logo_Normal-03.png?1696514728",
-      "price": 2.1,
-      "price_change_24h_pct": -5.31611,
-      "volume_24h": 43674196,
-      "market_cap": 364801166,
-      "fdv": 590832901,
-      "circulating_supply": 173825021.05969495,
+      "price": 2.04,
+      "price_change_24h_pct": -6.79355,
+      "volume_24h": 48739066,
+      "market_cap": 355213729,
+      "fdv": 575304894,
+      "circulating_supply": 173825072.06844258,
       "total_supply": 281527448.45853144,
       "ath": 7.5,
-      "ath_change_pct": -72.0307,
-      "tvl": 1228986288,
+      "ath_change_pct": -72.76578,
+      "tvl": 1229011016,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 3801.9156757849996,
-      "fees_24h": 9307,
-      "fees_7d": 109244,
-      "fees_30d": 421625,
-      "fees_1y": 16772514,
-      "fees_change_1d": 4.06,
-      "revenue_24h": 10189,
-      "revenue_7d": 107896,
-      "revenue_30d": 415230,
-      "revenue_1y": 16448335,
-      "holders_revenue_24h": 7551,
-      "holders_revenue_7d": 80766,
-      "holders_revenue_30d": 306174,
-      "holders_revenue_1y": 12648008,
-      "holders_revenue_annualized": 3674088,
-      "mcap_to_fees": 72.10221681984386,
-      "fdv_to_fees": 116.77693467733965,
-      "mcap_to_revenue": 73.21267048784208,
-      "fdv_to_revenue": 118.57542827669805,
-      "mcap_to_tvl": 0.296830948857584,
+      "tvl_days_bd": 3803.1447115349997,
+      "fees_24h": 13751,
+      "fees_7d": 78456,
+      "fees_30d": 420704,
+      "fees_1y": 16738820,
+      "fees_change_1d": 47.75,
+      "revenue_24h": 13368,
+      "revenue_7d": 76858,
+      "revenue_30d": 414138,
+      "revenue_1y": 16418404,
+      "holders_revenue_24h": 10113,
+      "holders_revenue_7d": 56068,
+      "holders_revenue_30d": 305374,
+      "holders_revenue_1y": 12625466,
+      "holders_revenue_annualized": 3664488,
+      "mcap_to_fees": 70.36097608611597,
+      "fdv_to_fees": 113.95678315395148,
+      "mcap_to_revenue": 71.47652251986858,
+      "fdv_to_revenue": 115.76352447734813,
+      "mcap_to_tvl": 0.2890240399602732,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 1094996968
-        },
         {
           "date": 1784246400,
           "value": 1100124450
@@ -15256,8 +15252,12 @@
           "value": 1220289426
         },
         {
-          "date": 1791824339,
-          "value": 1228986296
+          "date": 1791849600,
+          "value": 1229011023
+        },
+        {
+          "date": 1791851471,
+          "value": 1229011023
         }
       ],
       "fees_history": [
@@ -15619,93 +15619,93 @@
         },
         {
           "date": 1791763200,
-          "value": 10284
+          "value": 13751
         }
       ],
       "token_breakdown": [
         {
           "symbol": "REUSD",
-          "usd": 251023977.15445,
-          "pct": 0.20425286903866427
+          "usd": 251328865.37842,
+          "pct": 0.20449683570618166
         },
         {
           "symbol": "SUSDE",
-          "usd": 96052633.15279,
-          "pct": 0.07815598383298854
+          "usd": 96068976.21681,
+          "pct": 0.07816770913396615
         },
         {
           "symbol": "USDAI",
-          "usd": 93373005.94275,
-          "pct": 0.07597562818804557
+          "usd": 93350935.29706,
+          "pct": 0.0759561415666201
         },
         {
           "symbol": "SUSDS",
-          "usd": 90950818.22975,
-          "pct": 0.07400474558416567
+          "usd": 90948970.96449,
+          "pct": 0.074001753618582
         },
         {
           "symbol": "USDAT",
-          "usd": 81065827.2333,
-          "pct": 0.065961538738614
-        },
-        {
-          "symbol": "APYUSD",
-          "usd": 72175487.93562,
-          "pct": 0.058727658816613355
+          "usd": 81014628.76588,
+          "pct": 0.0659185533806018
         },
         {
           "symbol": "SUSDAI",
-          "usd": 70649166.14059,
-          "pct": 0.05748572324836561
+          "usd": 71324944.5448,
+          "pct": 0.058034422128031726
+        },
+        {
+          "symbol": "APYUSD",
+          "usd": 69898809.95905,
+          "pct": 0.056874030106853
         },
         {
           "symbol": "USDG",
-          "usd": 63008612.58439,
-          "pct": 0.05126876739184514
+          "usd": 62858527.08173,
+          "pct": 0.05114561698279498
         },
         {
           "symbol": "AUSD",
-          "usd": 59162559.81638,
-          "pct": 0.04813931608904471
+          "usd": 59489305.49764,
+          "pct": 0.048404208224585014
         },
         {
           "symbol": "USD3",
-          "usd": 48474460.93532,
-          "pct": 0.03944263744594345
+          "usd": 48496139.34761,
+          "pct": 0.03945948280003587
         },
         {
           "symbol": "STRCX",
-          "usd": 37957050.2839,
-          "pct": 0.03088484418347518
+          "usd": 40151876.22237,
+          "pct": 0.03267007004061365
         },
         {
           "symbol": "SIERRA",
-          "usd": 31029337.56975,
-          "pct": 0.025247911752633544
+          "usd": 31020968.62617,
+          "pct": 0.025240594290834667
         },
         {
           "symbol": "SIUSD",
-          "usd": 20874425.10301,
-          "pct": 0.01698507554997092
+          "usd": 21473508.89816,
+          "pct": 0.017472185753794858
         },
         {
           "symbol": "SUSDD",
-          "usd": 20582327.46666,
-          "pct": 0.016747401918391133
+          "usd": 20591917.35403,
+          "pct": 0.01675486790457581
         },
         {
           "symbol": "APXUSD",
-          "usd": 18151829.47375,
-          "pct": 0.014769757416570752
+          "usd": 18391108.16874,
+          "pct": 0.014964152326771956
         }
       ],
       "concentration": {
-        "top1_pct": 0.20425286903866427,
-        "top3_pct": 0.3583844810596984,
-        "top5_pct": 0.498350765382478,
-        "hhi": 0.07996041242477823,
-        "token_count": 193,
-        "snapshot_date": 1791824339
+        "top1_pct": 0.20449683570618166,
+        "top3_pct": 0.3586206864067679,
+        "top5_pct": 0.49854099340595176,
+        "hhi": 0.0800415386097366,
+        "token_count": 189,
+        "snapshot_date": 1791851471
       },
       "va_mechanism": "fee-share-lockers",
       "va_status": "executing",
@@ -15714,10 +15714,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-17",
       "va_notes": "80% of swap fees + all YT yield → vePENDLE. Smart contract enforced, no governance discretion. sPENDLE provides liquid staking alternative.",
-      "accrual_annual_est": 3674088,
-      "accrual_yield_mcap": 1.007148096670283,
-      "accrual_yield_fdv": 0.6218489176519302,
-      "dilution_pct": 38.25645704834386
+      "accrual_annual_est": 3664488,
+      "accrual_yield_mcap": 1.0316290449460639,
+      "accrual_yield_fdv": 0.6369645101611112,
+      "dilution_pct": 38.25643892977393
     },
     {
       "symbol": "LDO",
@@ -15726,38 +15726,38 @@
       "coingecko_id": "lido-dao",
       "defillama_slug": "lido",
       "image": "https://coin-images.coingecko.com/coins/images/13573/large/Lido_DAO.png?1696513326",
-      "price": 0.416611,
-      "price_change_24h_pct": -7.05742,
-      "volume_24h": 58074514,
-      "market_cap": 345607219,
-      "fdv": 416611196,
+      "price": 0.400639,
+      "price_change_24h_pct": -8.86486,
+      "volume_24h": 62950053,
+      "market_cap": 332357376,
+      "fdv": 400639213,
       "circulating_supply": 829567764.2043006,
       "total_supply": 1000000000,
       "ath": 7.3,
-      "ath_change_pct": -94.29524,
-      "tvl": 24551580680.66666,
+      "ath_change_pct": -94.51395,
+      "tvl": 23563714538.526062,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 36426.95828897199,
-      "fees_24h": 1622170,
-      "fees_7d": 11892895,
-      "fees_30d": 52161889,
-      "fees_1y": 606130208,
-      "fees_change_1d": -0.37,
+      "tvl_days_bd": 36425.97042282999,
+      "fees_24h": 1656431,
+      "fees_7d": 11764577,
+      "fees_30d": 52095866,
+      "fees_1y": 605185420,
+      "fees_change_1d": 2.11,
       "revenue_24h": 99214,
-      "revenue_7d": 729307,
-      "revenue_30d": 3222780,
-      "revenue_1y": 35210490,
+      "revenue_7d": 619614,
+      "revenue_30d": 3115709,
+      "revenue_1y": 35084465,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": 2252874,
       "holders_revenue_1y": 7061751,
       "holders_revenue_annualized": 27034488,
-      "mcap_to_fees": 0.5521387767098184,
-      "fdv_to_fees": 0.6655740490277617,
-      "mcap_to_revenue": 8.936570781540574,
-      "fdv_to_revenue": 10.772562715005884,
-      "mcap_to_tvl": 0.014076780778198577,
+      "mcap_to_fees": 0.5316438736232929,
+      "fdv_to_fees": 0.6408685303999617,
+      "mcap_to_revenue": 8.889292292701276,
+      "fdv_to_revenue": 10.71557102519309,
+      "mcap_to_tvl": 0.014104625798984465,
       "tvl_history": [
         {
           "date": 1784160000,
@@ -16116,15 +16116,11 @@
           "value": 24622197930
         },
         {
-          "date": 1791822959,
-          "value": 24551580680
+          "date": 1791851471,
+          "value": 23563714538
         }
       ],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 1115441
-        },
         {
           "date": 1784073600,
           "value": 1156912
@@ -16480,32 +16476,36 @@
         {
           "date": 1791676800,
           "value": 1622170
+        },
+        {
+          "date": 1791763200,
+          "value": 1656431
         }
       ],
       "token_breakdown": [
         {
           "symbol": "WETH",
-          "usd": 24545247003.49935,
-          "pct": 0.999742025686668
+          "usd": 23557655551.84231,
+          "pct": 0.9997428679305275
         },
         {
           "symbol": "SOL",
-          "usd": 5624569.46751,
-          "pct": 0.00022909194893260427
+          "usd": 5384860.15121,
+          "pct": 0.000228523399500783
         },
         {
           "symbol": "WMATIC",
-          "usd": 709107.6998,
-          "pct": 0.000028882364399388447
+          "usd": 674126.53254,
+          "pct": 0.00002860866997169825
         }
       ],
       "concentration": {
-        "top1_pct": 0.999742025686668,
+        "top1_pct": 0.9997428679305275,
         "top3_pct": 1,
         "top5_pct": 1,
-        "hhi": 0.9994841712413944,
+        "hhi": 0.9994858550193562,
         "token_count": 3,
-        "snapshot_date": 1791822959
+        "snapshot_date": 1791851471
       },
       "va_mechanism": "buyback",
       "va_status": "conditional",
@@ -16526,15 +16526,15 @@
       "coingecko_id": "canton-network",
       "defillama_slug": null,
       "image": "https://coin-images.coingecko.com/coins/images/70468/large/Canton-Ticker_%281%29.png?1762826299",
-      "price": 0.121424,
-      "price_change_24h_pct": -3.77204,
-      "volume_24h": 16122830,
-      "market_cap": 4836032187,
-      "fdv": 4836032187,
-      "circulating_supply": 39827759435.928955,
-      "total_supply": 39827759435.928955,
+      "price": 0.121154,
+      "price_change_24h_pct": -3.86588,
+      "volume_24h": 16969664,
+      "market_cap": 4825450875,
+      "fdv": 4825565193,
+      "circulating_supply": 39829217592.7259,
+      "total_supply": 39830161170.97891,
       "ath": 0.194152,
-      "ath_change_pct": -37.45937,
+      "ath_change_pct": -37.59849,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
@@ -16572,7 +16572,7 @@
       "accrual_annual_est": null,
       "accrual_yield_mcap": null,
       "accrual_yield_fdv": null,
-      "dilution_pct": 0
+      "dilution_pct": 0.002369004355673443
     },
     {
       "symbol": "GMX",
@@ -16581,43 +16581,39 @@
       "coingecko_id": "gmx",
       "defillama_slug": "gmx",
       "image": "https://coin-images.coingecko.com/coins/images/18323/large/arbit.png?1696517814",
-      "price": 8.27,
-      "price_change_24h_pct": -1.84176,
-      "volume_24h": 3658523,
-      "market_cap": 86582046,
-      "fdv": 86582046,
-      "circulating_supply": 10470997.42054547,
-      "total_supply": 10470997.42054547,
+      "price": 8.06,
+      "price_change_24h_pct": -4.34048,
+      "volume_24h": 4244842,
+      "market_cap": 84386251,
+      "fdv": 84386251,
+      "circulating_supply": 10471008.073793199,
+      "total_supply": 10471008.073793199,
       "ath": 91.07,
-      "ath_change_pct": -90.9202,
-      "tvl": 243338414,
+      "ath_change_pct": -91.15048,
+      "tvl": 241731286,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 784.3746979770001,
-      "fees_24h": 45512,
-      "fees_7d": 1506460,
-      "fees_30d": 5237242,
-      "fees_1y": 47765360,
-      "fees_change_1d": 66.41,
-      "revenue_24h": 17969,
-      "revenue_7d": 407269,
-      "revenue_30d": 1442591,
-      "revenue_1y": 15159227,
-      "holders_revenue_24h": 9784,
-      "holders_revenue_7d": 68976,
-      "holders_revenue_30d": 299892,
-      "holders_revenue_1y": 7197351,
-      "holders_revenue_annualized": 3598704,
-      "mcap_to_fees": 1.3776660501844291,
-      "fdv_to_fees": 1.3776660501844291,
-      "mcap_to_revenue": 5.001535778332181,
-      "fdv_to_revenue": 5.001535778332181,
-      "mcap_to_tvl": 0.3558091982961638,
+      "tvl_days_bd": 784.6127983,
+      "fees_24h": 40508,
+      "fees_7d": 995165,
+      "fees_30d": 5242300,
+      "fees_1y": 47694927,
+      "fees_change_1d": -10.99,
+      "revenue_24h": 18241,
+      "revenue_7d": 280315,
+      "revenue_30d": 1446192,
+      "revenue_1y": 15131800,
+      "holders_revenue_24h": 9983,
+      "holders_revenue_7d": 72919,
+      "holders_revenue_30d": 307134,
+      "holders_revenue_1y": 7177364,
+      "holders_revenue_annualized": 3685608,
+      "mcap_to_fees": 1.341431734798339,
+      "fdv_to_fees": 1.341431734798339,
+      "mcap_to_revenue": 4.862554614693853,
+      "fdv_to_revenue": 4.862554614693853,
+      "mcap_to_tvl": 0.3490911432953697,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 218080034
-        },
         {
           "date": 1784246400,
           "value": 214262312
@@ -16968,11 +16964,15 @@
         },
         {
           "date": 1791763200,
-          "value": 244413117
+          "value": 242389279
         },
         {
-          "date": 1791824831,
-          "value": 243338417
+          "date": 1791849600,
+          "value": 241731289
+        },
+        {
+          "date": 1791851159,
+          "value": 241731289
         }
       ],
       "fees_history": [
@@ -17334,93 +17334,93 @@
         },
         {
           "date": 1791763200,
-          "value": 36238
+          "value": 40508
         }
       ],
       "token_breakdown": [
         {
           "symbol": "USDC",
-          "usd": 109773696.23672,
-          "pct": 0.4511153526309863
+          "usd": 109528928.98429,
+          "pct": 0.4531019917400356
         },
         {
           "symbol": "WETH",
-          "usd": 53542834.817999996,
-          "pct": 0.2200344493975876
+          "usd": 52693043.87479,
+          "pct": 0.21798189165108087
         },
         {
           "symbol": "WBTC",
-          "usd": 48981781.746089995,
-          "pct": 0.20129078734154893
+          "usd": 48766032.55828,
+          "pct": 0.2017365337753405
         },
         {
           "symbol": "USDG",
-          "usd": 10623065.86249,
-          "pct": 0.043655522833495865
+          "usd": 10648976.65461,
+          "pct": 0.04405295091389969
         },
         {
           "symbol": "AVALANCHEUSDC",
-          "usd": 4155470.16075,
-          "pct": 0.01707691779706342
+          "usd": 4110953.83138,
+          "pct": 0.01700629583638837
         },
         {
           "symbol": "WSOL",
-          "usd": 3112513.7648,
-          "pct": 0.012790885182081256
+          "usd": 3100038.84825,
+          "pct": 0.012824317645021718
         },
         {
           "symbol": "WAVAX",
-          "usd": 2555350.85097,
-          "pct": 0.010501222421675345
+          "usd": 2495457.31452,
+          "pct": 0.01032326975162362
         },
         {
           "symbol": "LINK",
-          "usd": 2373208.11135,
-          "pct": 0.009752706255874918
+          "usd": 2384891.8118600002,
+          "pct": 0.00986587963617595
         },
         {
           "symbol": "SOL",
-          "usd": 2063264.98089,
-          "pct": 0.00847899397883269
+          "usd": 1980907.72049,
+          "pct": 0.008194668220812888
         },
         {
           "symbol": "BTC.B",
-          "usd": 1873796.78252,
-          "pct": 0.0077003738170798655
+          "usd": 1853542.42073,
+          "pct": 0.007667780287780143
         },
         {
           "symbol": "GMX",
-          "usd": 1263514.57714,
-          "pct": 0.005192417159678705
+          "usd": 1208862.67502,
+          "pct": 0.005000853115895188
         },
         {
           "symbol": "ARB",
-          "usd": 536939.78298,
-          "pct": 0.002206555740077223
+          "usd": 526856.7197,
+          "pct": 0.0021795139537238773
         },
         {
           "symbol": "AAVE",
-          "usd": 421101.55273,
-          "pct": 0.0017305181656961024
+          "usd": 396011.44172,
+          "pct": 0.0016382299604236214
         },
         {
           "symbol": "FRAX",
-          "usd": 380429.32368,
-          "pct": 0.0015633755114976594
+          "usd": 380271.18937,
+          "pct": 0.0015731152938564103
         },
         {
           "symbol": "UNI",
-          "usd": 361545.92144,
-          "pct": 0.0014857741101382614
+          "usd": 349336.67931,
+          "pct": 0.0014451446448993791
         }
       ],
       "concentration": {
-        "top1_pct": 0.4511153526309863,
-        "top3_pct": 0.8724405893701228,
-        "top5_pct": 0.9331730300006821,
-        "hhi": 0.295179513185751,
+        "top1_pct": 0.4531019917400356,
+        "top3_pct": 0.8728204171664571,
+        "top5_pct": 0.9338796639167452,
+        "hhi": 0.2962805546588271,
         "token_count": 39,
-        "snapshot_date": 1791824831
+        "snapshot_date": 1791851159
       },
       "va_mechanism": "buyback",
       "va_status": "paused",
@@ -17429,9 +17429,9 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-19",
       "va_notes": "27% of V2 fees (30% V1) → algorithmic weekly Deposit-Buy-Withdraw cycle. Buybacks ARE executing on-chain (2M+ GMX repurchased since end-2024, verified in GMX dApp). PAUSED status = distribution suspended until GMX >= $90 (March 2026 DAO vote). Current price $6.20 = 14.5x below gate. Accumulating in Treasury.",
-      "accrual_annual_est": 3598704,
-      "accrual_yield_mcap": 4.156409055059752,
-      "accrual_yield_fdv": 4.156409055059752,
+      "accrual_annual_est": 3685608,
+      "accrual_yield_mcap": 4.367545608821987,
+      "accrual_yield_fdv": 4.367545608821987,
       "dilution_pct": 0
     },
     {
@@ -17441,43 +17441,39 @@
       "coingecko_id": "dydx-chain",
       "defillama_slug": "dydx",
       "image": "https://coin-images.coingecko.com/coins/images/32594/large/dydx.png?1698673495",
-      "price": 0.135264,
-      "price_change_24h_pct": -3.85551,
-      "volume_24h": 3169240,
-      "market_cap": 114445672,
-      "fdv": 129628803,
+      "price": 0.13086,
+      "price_change_24h_pct": -6.12289,
+      "volume_24h": 4381146,
+      "market_cap": 110719978,
+      "fdv": 125408833,
       "circulating_supply": 846094216.4335754,
       "total_supply": 958342751,
       "ath": 4.52,
-      "ath_change_pct": -97.00655,
-      "tvl": 109062976,
+      "ath_change_pct": -97.104,
+      "tvl": 108871729,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 842.5856904309998,
-      "fees_24h": 3098,
-      "fees_7d": 50214,
-      "fees_30d": 273089,
-      "fees_1y": 5184997,
-      "fees_change_1d": 31.94,
+      "tvl_days_bd": 842.6943709129998,
+      "fees_24h": 9247,
+      "fees_7d": 52878,
+      "fees_30d": 281651,
+      "fees_1y": 5136032,
+      "fees_change_1d": 198.48,
       "revenue_24h": 3098,
-      "revenue_7d": 50214,
-      "revenue_30d": 273089,
-      "revenue_1y": 5184997,
+      "revenue_7d": 43631,
+      "revenue_30d": 272404,
+      "revenue_1y": 5126785,
       "holders_revenue_24h": 3098,
-      "holders_revenue_7d": 50214,
-      "holders_revenue_30d": 273089,
-      "holders_revenue_1y": 5184997,
-      "holders_revenue_annualized": 3277068,
-      "mcap_to_fees": 34.923191096431324,
-      "fdv_to_fees": 39.55633602964601,
-      "mcap_to_revenue": 34.923191096431324,
-      "fdv_to_revenue": 39.55633602964601,
-      "mcap_to_tvl": 1.049354017260633,
+      "holders_revenue_7d": 43631,
+      "holders_revenue_30d": 272404,
+      "holders_revenue_1y": 5126785,
+      "holders_revenue_annualized": 3268848,
+      "mcap_to_fees": 32.7592120508478,
+      "fdv_to_fees": 37.10526887294323,
+      "mcap_to_revenue": 33.871253114246976,
+      "fdv_to_revenue": 38.36484076347386,
+      "mcap_to_tvl": 1.01697639062938,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 126522972
-        },
         {
           "date": 1784246400,
           "value": 125550550
@@ -17831,15 +17827,15 @@
           "value": 108732095
         },
         {
-          "date": 1791825011,
-          "value": 109062976
+          "date": 1791849600,
+          "value": 108871729
+        },
+        {
+          "date": 1791851591,
+          "value": 108871729
         }
       ],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 18784
-        },
         {
           "date": 1784073600,
           "value": 17470
@@ -18195,37 +18191,41 @@
         {
           "date": 1791676800,
           "value": 3098
+        },
+        {
+          "date": 1791763200,
+          "value": 9247
         }
       ],
       "token_breakdown": [
         {
           "symbol": "USDC",
-          "usd": 103442290.81092,
-          "pct": 0.9484638437087026
+          "usd": 103386002.51855001,
+          "pct": 0.949612932683003
         },
         {
           "symbol": "WETH",
-          "usd": 4052026.1563,
-          "pct": 0.03715308577260149
+          "usd": 3916950.6995,
+          "pct": 0.035977665741158224
         },
         {
           "symbol": "DAI",
-          "usd": 1568391.87108,
-          "pct": 0.014380607494521809
+          "usd": 1568515.08265,
+          "pct": 0.014407000670381266
         },
         {
           "symbol": "SAI",
-          "usd": 268.62475,
-          "pct": 0.0000024630241741842117
+          "usd": 261.39073,
+          "pct": 0.0000024009054576504607
         }
       ],
       "concentration": {
-        "top1_pct": 0.9484638437087026,
-        "top3_pct": 0.9999975369758258,
+        "top1_pct": 0.949612932683003,
+        "top3_pct": 0.9999975990945424,
         "top5_pct": 1,
-        "hhi": 0.9011708164830905,
+        "hhi": 0.9032666760250768,
         "token_count": 4,
-        "snapshot_date": 1791825011
+        "snapshot_date": 1791851591
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -18234,9 +18234,9 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-20",
       "va_notes": "75% of fees → TWAP buyback by Treasury SubDAO (on-chain, verifiable). 8.46M DYDX repurchased through Jan 2026. Stakers earn 15% of fees in USDC. WARNING: forward fee run rate $3.9M/yr (84% YoY collapse). Bought tokens are staked to validators, not burned. accrual_pct=0.75 but accrual_annual_est will be severely overstated if DeFi Llama reports TTM fees — use ann_rev_override in DEEP_DIVES.",
-      "accrual_annual_est": 3277068,
-      "accrual_yield_mcap": 2.8634267620011,
-      "accrual_yield_fdv": 2.5280400066642597,
+      "accrual_annual_est": 3268848,
+      "accrual_yield_mcap": 2.952356077960926,
+      "accrual_yield_fdv": 2.6065532401533473,
       "dilution_pct": 11.712775460480795
     },
     {
@@ -18246,43 +18246,39 @@
       "coingecko_id": "gains-network",
       "defillama_slug": "gains-network",
       "image": "https://coin-images.coingecko.com/coins/images/19737/large/logo.png?1696519161",
-      "price": 0.365473,
-      "price_change_24h_pct": -6.60525,
-      "volume_24h": 477437,
-      "market_cap": 8692963,
-      "fdv": 8692963,
-      "circulating_supply": 23785526,
-      "total_supply": 23785526,
+      "price": 0.359289,
+      "price_change_24h_pct": -5.90825,
+      "volume_24h": 529372,
+      "market_cap": 8548727,
+      "fdv": 8548722,
+      "circulating_supply": 23793464,
+      "total_supply": 23793450,
       "ath": 12.48,
-      "ath_change_pct": -97.07132,
-      "tvl": 8508442.894510001,
+      "ath_change_pct": -97.12088,
+      "tvl": 8442451.13361,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 44.69304598200001,
+      "tvl_days_bd": 44.70142244200001,
       "fees_24h": 6203,
-      "fees_7d": 60129,
-      "fees_30d": 739601,
-      "fees_1y": 8134592,
-      "fees_change_1d": -8.08,
+      "fees_7d": 53347,
+      "fees_30d": 727959,
+      "fees_1y": 8097387,
+      "fees_change_1d": null,
       "revenue_24h": 4658,
-      "revenue_7d": 43983,
-      "revenue_30d": 550692,
-      "revenue_1y": 6098431,
+      "revenue_7d": 38978,
+      "revenue_30d": 541540,
+      "revenue_1y": 6069431,
       "holders_revenue_24h": 597,
-      "holders_revenue_7d": 8813,
-      "holders_revenue_30d": 42099,
-      "holders_revenue_1y": 3436603,
-      "holders_revenue_annualized": 505188,
-      "mcap_to_fees": 0.9794653919252858,
-      "fdv_to_fees": 0.9794653919252858,
-      "mcap_to_revenue": 1.3154605175548824,
-      "fdv_to_revenue": 1.3154605175548824,
-      "mcap_to_tvl": 1.0216867066956585,
+      "holders_revenue_7d": 8003,
+      "holders_revenue_30d": 41555,
+      "holders_revenue_1y": 3416129,
+      "holders_revenue_annualized": 498660,
+      "mcap_to_fees": 0.9786181868301191,
+      "fdv_to_fees": 0.9786176144535612,
+      "mcap_to_revenue": 1.3154963930026713,
+      "fdv_to_revenue": 1.3154956235919784,
+      "mcap_to_tvl": 1.012588271428295,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 11746078
-        },
         {
           "date": 1784246400,
           "value": 11896936
@@ -18636,8 +18632,12 @@
           "value": 8491838
         },
         {
-          "date": 1791822227,
-          "value": 8508442
+          "date": 1791849600,
+          "value": 8442451
+        },
+        {
+          "date": 1791851291,
+          "value": 8442451
         }
       ],
       "fees_history": [
@@ -19005,37 +19005,37 @@
       "token_breakdown": [
         {
           "symbol": "USDC",
-          "usd": 6202683.95667,
-          "pct": 0.7290034185540845
+          "usd": 6187950.23786,
+          "pct": 0.7329565951803569
         },
         {
           "symbol": "WETH",
-          "usd": 1095512.59097,
-          "pct": 0.12875594330860116
+          "usd": 1051153.77681,
+          "pct": 0.12450812686691512
         },
         {
           "symbol": "DAI",
-          "usd": 1029381.62136,
-          "pct": 0.1209835494135125
+          "usd": 1029490.38732,
+          "pct": 0.1219421197740482
         },
         {
           "symbol": "APE",
-          "usd": 117104.7819,
-          "pct": 0.013763362268736722
+          "usd": 110273.96919,
+          "pct": 0.013061842756912398
         },
         {
           "symbol": "USDM",
-          "usd": 63759.94361,
-          "pct": 0.007493726455065069
+          "usd": 63582.76242,
+          "pct": 0.007531315421767479
         }
       ],
       "concentration": {
-        "top1_pct": 0.7290034185540845,
-        "top3_pct": 0.9787429112761982,
+        "top1_pct": 0.7329565951803569,
+        "top3_pct": 0.9794068418213202,
         "top5_pct": 1,
-        "hhi": 0.5629066825066451,
+        "hhi": 0.5678248570974661,
         "token_count": 5,
-        "snapshot_date": 1791822227
+        "snapshot_date": 1791851291
       },
       "va_mechanism": "buyback-burn",
       "va_status": "executing",
@@ -19044,10 +19044,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-16",
       "va_notes": "MODEL CHANGED LATE 2024: SSS (real yield in DAI) discontinued. Now pure BB&B: algorithmic GNS buyback at 1hr TWAP +1% premium, then permanent burn. Stakers earn ZERO cash yield. DeFi Llama confirmed (2026-04-16): fees_1y $5.19M, revenue_1y $3.32M, holdersRevenue_1y $2.37M. Revenue collapsed ~83% from 2024 peak ($24.5M gross → $5.19M). Verdict PASS: Token FV $18.5M ≈ Mcap $16.81M (+10% only), Kelly negative. Upgrade trigger: quarterly fees >$3.75M (→ $15M annualized) for 2 consecutive quarters. accrual_pct=0.46 (holders rev $2.37M / gross fees $5.19M).",
-      "accrual_annual_est": 505188,
-      "accrual_yield_mcap": 5.811459222821954,
-      "accrual_yield_fdv": 5.811459222821954,
-      "dilution_pct": 0
+      "accrual_annual_est": 498660,
+      "accrual_yield_mcap": 5.833149192856434,
+      "accrual_yield_fdv": 5.833152604564752,
+      "dilution_pct": -0.00005883972269415949
     },
     {
       "symbol": "ETHFI",
@@ -19056,15 +19056,15 @@
       "coingecko_id": "ether-fi",
       "defillama_slug": "ether-fi",
       "image": "https://coin-images.coingecko.com/coins/images/35958/large/etherfi.jpeg?1710254562",
-      "price": 0.691755,
-      "price_change_24h_pct": -7.77254,
-      "volume_24h": 41534906,
-      "market_cap": 667785825,
-      "fdv": 667785825,
+      "price": 0.677042,
+      "price_change_24h_pct": -6.68256,
+      "volume_24h": 45899575,
+      "market_cap": 653582910,
+      "fdv": 653582910,
       "circulating_supply": 965350000,
       "total_supply": 965350000,
       "ath": 8.53,
-      "ath_change_pct": -91.88929,
+      "ath_change_pct": -92.06179,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
@@ -19074,10 +19074,10 @@
       "fees_30d": null,
       "fees_1y": null,
       "fees_change_1d": null,
-      "revenue_24h": 114144,
-      "revenue_7d": 880654,
-      "revenue_30d": 3779266,
-      "revenue_1y": 44674968,
+      "revenue_24h": 119390,
+      "revenue_7d": 816781,
+      "revenue_30d": 3716153,
+      "revenue_1y": 44624428,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
@@ -19085,8 +19085,8 @@
       "holders_revenue_annualized": 9312506,
       "mcap_to_fees": null,
       "fdv_to_fees": null,
-      "mcap_to_revenue": 14.724768976303864,
-      "fdv_to_revenue": 14.724768976303864,
+      "mcap_to_revenue": 14.656350936035196,
+      "fdv_to_revenue": 14.656350936035196,
       "mcap_to_tvl": null,
       "tvl_history": [],
       "fees_history": [],
@@ -19099,9 +19099,9 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-05-29",
       "va_notes": "10% of protocol revenue allocated to ETHFI value accrual: 5% → buyback+burn (open market), 5% → sETHFI staker distributions (DAO Proposal #8). Additional $50M treasury buyback approved Nov 2025 (triggers at price < $3 — ACTIVE at $0.45). $6.5M+ cumulative buybacks verified on-chain, >85% burned. Revenue ~$55-65M/yr at $2,340 ETH (severely ETH-price dependent). NOTE: DL splits ether.fi across 3 sub-protocols (no parent fees endpoint) — our TP buyback proxy aggregates them via scripts/onchain/proxy/fetch-etherfi-buybacks.js. accrual_pct corrected from 1.0 to 0.10 on 2026-05-29.",
-      "accrual_annual_est": 4467496.8,
-      "accrual_yield_mcap": 0.6690014421914391,
-      "accrual_yield_fdv": 0.6690014421914391,
+      "accrual_annual_est": 4462442.8,
+      "accrual_yield_mcap": 0.6827661390350613,
+      "accrual_yield_fdv": 0.6827661390350613,
       "dilution_pct": 0
     },
     {
@@ -19111,43 +19111,39 @@
       "coingecko_id": "curve-dao-token",
       "defillama_slug": "curve-dex",
       "image": "https://coin-images.coingecko.com/coins/images/12124/large/Curve.png?1696511967",
-      "price": 0.34887,
-      "price_change_24h_pct": -6.57382,
-      "volume_24h": 66736301,
-      "market_cap": 548992947,
-      "fdv": 846162598,
-      "circulating_supply": 1573634006,
-      "total_supply": 2425441431.2373056,
+      "price": 0.34798,
+      "price_change_24h_pct": -5.05625,
+      "volume_24h": 70914006,
+      "market_cap": 547608730,
+      "fdv": 844029123,
+      "circulating_supply": 1573677494,
+      "total_supply": 2425508512.5593963,
       "ath": 15.37,
-      "ath_change_pct": -97.7305,
-      "tvl": 1239531184.87794,
+      "ath_change_pct": -97.73629,
+      "tvl": 1226027069.52333,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 10971.884644518019,
-      "fees_24h": 47970,
-      "fees_7d": 624597,
-      "fees_30d": 3249850,
-      "fees_1y": 56828538,
-      "fees_change_1d": 287.04,
-      "revenue_24h": 10505,
-      "revenue_7d": 235510,
-      "revenue_30d": 1405054,
-      "revenue_1y": 26625169,
-      "holders_revenue_24h": 9456,
-      "holders_revenue_7d": 226901,
-      "holders_revenue_30d": 1370255,
-      "holders_revenue_1y": 26159128,
-      "holders_revenue_annualized": 16443060,
-      "mcap_to_fees": 14.07739195655184,
-      "fdv_to_fees": 21.697478293869974,
-      "mcap_to_revenue": 32.56060781293815,
-      "fdv_to_revenue": 50.18565110902025,
-      "mcap_to_tvl": 0.4429036991546613,
+      "tvl_days_bd": 10973.09716747202,
+      "fees_24h": 71004,
+      "fees_7d": 657228,
+      "fees_30d": 3307724,
+      "fees_1y": 56807969,
+      "fees_change_1d": 25.03,
+      "revenue_24h": 16629,
+      "revenue_7d": 241505,
+      "revenue_30d": 1417143,
+      "revenue_1y": 26604055,
+      "holders_revenue_24h": 14966,
+      "holders_revenue_7d": 232296,
+      "holders_revenue_30d": 1381135,
+      "holders_revenue_1y": 26139033,
+      "holders_revenue_annualized": 16573620,
+      "mcap_to_fees": 13.79621178590878,
+      "fdv_to_fees": 21.264095870755842,
+      "mcap_to_revenue": 32.20145097095588,
+      "fdv_to_revenue": 49.632083882854445,
+      "mcap_to_tvl": 0.44665305001210626,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 1294409601
-        },
         {
           "date": 1784246400,
           "value": 1287316994
@@ -19501,8 +19497,12 @@
           "value": 1243432140
         },
         {
-          "date": 1791824951,
-          "value": 1239531184
+          "date": 1791849600,
+          "value": 1226027069
+        },
+        {
+          "date": 1791851591,
+          "value": 1226027069
         }
       ],
       "fees_history": [
@@ -19864,93 +19864,93 @@
         },
         {
           "date": 1791763200,
-          "value": 47970
+          "value": 71004
         }
       ],
       "token_breakdown": [
         {
           "symbol": "CRVUSD",
-          "usd": 167888077.36866,
-          "pct": 0.1354448193130454
+          "usd": 165234636.88199,
+          "pct": 0.1347724214166267
         },
         {
           "symbol": "USDT",
-          "usd": 134241752.29508,
-          "pct": 0.108300423525297
+          "usd": 136311109.50069,
+          "pct": 0.1111811581400783
         },
         {
           "symbol": "WETH",
-          "usd": 117509004.06584,
-          "pct": 0.09480116797337679
+          "usd": 114424743.92541,
+          "pct": 0.09332970435138725
         },
         {
           "symbol": "USDC",
-          "usd": 114719662.97784,
-          "pct": 0.09255084856065869
+          "usd": 111376357.76629,
+          "pct": 0.09084331050666962
         },
         {
           "symbol": "STETH",
-          "usd": 71864652.82993,
-          "pct": 0.0579772850466963
+          "usd": 68826722.69607,
+          "pct": 0.05613801228942634
         },
         {
           "symbol": "DOLA",
-          "usd": 49604165.55512,
-          "pct": 0.040018489377505954
+          "usd": 49488756.95672,
+          "pct": 0.04036514216277533
         },
         {
           "symbol": "WBTC",
-          "usd": 42852766.38693,
-          "pct": 0.03457175334491833
+          "usd": 42877326.06875,
+          "pct": 0.03497257698022966
         },
         {
           "symbol": "CBBTC",
-          "usd": 41776659.87626,
-          "pct": 0.03370359728414437
+          "usd": 41321985.20893,
+          "pct": 0.03370397459902391
         },
         {
           "symbol": "FRAX",
-          "usd": 35534192.06456,
-          "pct": 0.028667444997007387
+          "usd": 35587024.53757,
+          "pct": 0.029026295929506674
         },
         {
           "symbol": "RLUSD",
-          "usd": 24482072.35254,
-          "pct": 0.019751074157084148
+          "usd": 24748879.38467,
+          "pct": 0.020186242212655383
         },
         {
           "symbol": "DAI",
-          "usd": 24446547.58911,
-          "pct": 0.01972241431870057
+          "usd": 23454036.19591,
+          "pct": 0.019130112848999955
         },
         {
           "symbol": "FRXUSD",
-          "usd": 22308602.25415,
-          "pct": 0.0179976127477173
-        },
-        {
-          "symbol": "SUSDE",
-          "usd": 20865837.24609,
-          "pct": 0.016833652513669438
+          "usd": 22175851.72574,
+          "pct": 0.01808757104715626
         },
         {
           "symbol": "REUSD",
-          "usd": 20698202.49772,
-          "pct": 0.016698412069205328
+          "usd": 20866206.04602,
+          "pct": 0.017019368140160755
+        },
+        {
+          "symbol": "SUSDE",
+          "usd": 20650659.55445,
+          "pct": 0.016843559222945084
         },
         {
           "symbol": "TBTC",
-          "usd": 17719281.33026,
-          "pct": 0.014295147670695134
+          "usd": 17964658.6344,
+          "pct": 0.01465274224441434
         }
       ],
       "concentration": {
-        "top1_pct": 0.1354448193130454,
-        "top3_pct": 0.3385464108117192,
-        "top5_pct": 0.4890745444190742,
-        "hhi": 0.058843283924206805,
+        "top1_pct": 0.1347724214166267,
+        "top3_pct": 0.3392832839080922,
+        "top5_pct": 0.4862646067041882,
+        "hhi": 0.058605087689854514,
         "token_count": 644,
-        "snapshot_date": 1791824951
+        "snapshot_date": 1791851591
       },
       "va_mechanism": "fee-share-lockers",
       "va_status": "executing",
@@ -19959,10 +19959,10 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-19",
       "va_notes": "50% of admin fee (not 50% of total trading fees) → veCRV weekly, swapped to crvUSD. Effective rate: 12.3% of gross user fees (DL holdersRevenue $4.8M / gross fees $39M). Plus crvUSD borrow fees ~$1.35M/yr fwd. Combined veCRV income ~$6M/yr. PASS verdict: Token FV $0.058 vs $0.23 current (-75%). Emissions ~$23-30M/yr >> $6M revenue. Egorov loan overhang largely resolved by early 2025. FDV $546.7M primary (>30% supply not circulating). accrual_pct=0.123 reflects true holdersRevenue/fees ratio — NOT 50%.",
-      "accrual_annual_est": 6989910.174,
-      "accrual_yield_mcap": 1.2732240390694856,
-      "accrual_yield_fdv": 0.8260717491557101,
-      "dilution_pct": 35.11968643179183
+      "accrual_annual_est": 6987380.187,
+      "accrual_yield_mcap": 1.2759804225546223,
+      "accrual_yield_fdv": 0.8278600816716131,
+      "dilution_pct": 35.1196878571473
     },
     {
       "symbol": "ORCA",
@@ -19972,42 +19972,38 @@
       "defillama_slug": "orca",
       "image": "https://coin-images.coingecko.com/coins/images/17547/large/Orca_Logo.png?1696517083",
       "price": 2.12,
-      "price_change_24h_pct": -11.64399,
-      "volume_24h": 19937911,
-      "market_cap": 128948184,
-      "fdv": 159066625,
-      "circulating_supply": 60798740.309356004,
-      "total_supply": 74999508.646495,
+      "price_change_24h_pct": -9.88902,
+      "volume_24h": 18568813,
+      "market_cap": 128917605,
+      "fdv": 159028905,
+      "circulating_supply": 60798739.490105,
+      "total_supply": 74999507.827244,
       "ath": 20.33,
-      "ath_change_pct": -89.56874,
-      "tvl": 308562183,
+      "ath_change_pct": -89.57121,
+      "tvl": 299633707,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 505.54034526100065,
-      "fees_24h": 158250,
-      "fees_7d": 1754229,
-      "fees_30d": 9469934,
-      "fees_1y": 68167789,
-      "fees_change_1d": 11.62,
-      "revenue_24h": 31518,
-      "revenue_7d": 228051,
-      "revenue_30d": 1231092,
-      "revenue_1y": 8353627,
-      "holders_revenue_24h": 11638,
-      "holders_revenue_7d": 84203,
-      "holders_revenue_30d": 454557,
-      "holders_revenue_1y": 2044895,
-      "holders_revenue_annualized": 5454684,
-      "mcap_to_fees": 1.134715616814225,
-      "fdv_to_fees": 1.39975126366597,
-      "mcap_to_revenue": 8.728577555536061,
-      "fdv_to_revenue": 10.767312340047155,
-      "mcap_to_tvl": 0.41790015466671754,
+      "tvl_days_bd": 505.83105049200066,
+      "fees_24h": 300137,
+      "fees_7d": 1787623,
+      "fees_30d": 9440800,
+      "fees_1y": 68008863,
+      "fees_change_1d": 89.66,
+      "revenue_24h": 39018,
+      "revenue_7d": 232392,
+      "revenue_30d": 1227305,
+      "revenue_1y": 8337512,
+      "holders_revenue_24h": 14407,
+      "holders_revenue_7d": 85806,
+      "holders_revenue_30d": 453159,
+      "holders_revenue_1y": 2048303,
+      "holders_revenue_annualized": 5437908,
+      "mcap_to_fees": 1.1379473932293873,
+      "fdv_to_fees": 1.4037378982713329,
+      "mcap_to_revenue": 8.75343435413365,
+      "fdv_to_revenue": 10.797975034730568,
+      "mcap_to_tvl": 0.43025067603625783,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 237972071
-        },
         {
           "date": 1784246400,
           "value": 234686903
@@ -20361,15 +20357,15 @@
           "value": 311667991
         },
         {
-          "date": 1791813959,
-          "value": 308562183
+          "date": 1791849600,
+          "value": 299633707
+        },
+        {
+          "date": 1791850847,
+          "value": 299633707
         }
       ],
       "fees_history": [
-        {
-          "date": 1784073600,
-          "value": 94819
-        },
         {
           "date": 1784160000,
           "value": 79588
@@ -20724,7 +20720,11 @@
         },
         {
           "date": 1791763200,
-          "value": 242448
+          "value": 300137
+        },
+        {
+          "date": 1791849600,
+          "value": 329080
         }
       ],
       "token_breakdown": null,
@@ -20736,10 +20736,10 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-19",
       "va_notes": "40% of Whirlpool protocol fees → algorithmic xORCA buybacks (increased from 20% in Jan 2026). DL holdersRevenue confirms execution: $77.8K/30d → $933K/yr. 24-month program approved Aug 2025 with ~55K SOL treasury backstop + 30% ongoing fees. DL ratio ~20% (partial-period average since Jan 2026 increase). Deep dive: PASS. Protocol revenue $4.67M/yr fwd (TTM $23.8M, -80%). Token FV $40.9M vs FDV $68.9M (-41%). Upgrade: 30d revenue ≥ $1.67M for 2 consecutive months.",
-      "accrual_annual_est": 5454684,
-      "accrual_yield_mcap": 4.230136346860069,
-      "accrual_yield_fdv": 3.429181954416899,
-      "dilution_pct": 18.934481829838823
+      "accrual_annual_est": 5437908,
+      "accrual_yield_mcap": 4.218126763990069,
+      "accrual_yield_fdv": 3.419446294999013,
+      "dilution_pct": 18.9344820366681
     },
     {
       "symbol": "COW",
@@ -20748,37 +20748,37 @@
       "coingecko_id": "cow-protocol",
       "defillama_slug": "cowswap",
       "image": "https://coin-images.coingecko.com/coins/images/24384/large/CoW-token_logo.png?1719524382",
-      "price": 0.145145,
-      "price_change_24h_pct": -3.21294,
-      "volume_24h": 2019731,
-      "market_cap": 83384253,
-      "fdv": 145145293,
+      "price": 0.13984,
+      "price_change_24h_pct": -6.20134,
+      "volume_24h": 2024182,
+      "market_cap": 80336175,
+      "fdv": 139839564,
       "circulating_supply": 574488169.0034184,
       "total_supply": 1000000000,
       "ath": 2.22,
-      "ath_change_pct": -93.45975,
+      "ath_change_pct": -93.69882,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
       "tvl_days_bd": null,
       "fees_24h": 25923,
-      "fees_7d": 430004,
-      "fees_30d": 2061533,
-      "fees_1y": 38141391,
-      "fees_change_1d": 7.56,
+      "fees_7d": 372043,
+      "fees_30d": 2041866,
+      "fees_1y": 37984819,
+      "fees_change_1d": null,
       "revenue_24h": 12011,
-      "revenue_7d": 251150,
-      "revenue_30d": 1171972,
-      "revenue_1y": 23717424,
+      "revenue_7d": 218437,
+      "revenue_30d": 1159506,
+      "revenue_1y": 23611760,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 3.3706410472206847,
-      "fdv_to_fees": 5.867207113993971,
-      "mcap_to_revenue": 5.929056112262067,
-      "fdv_to_revenue": 10.320588788241812,
+      "mcap_to_fees": 3.278707442114223,
+      "fdv_to_fees": 5.7071800989878865,
+      "mcap_to_revenue": 5.7737357547093335,
+      "fdv_to_revenue": 10.050225699565159,
       "mcap_to_tvl": null,
       "tvl_history": [],
       "fees_history": [
@@ -21152,9 +21152,9 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-17",
       "va_notes": "Net-negative emissions buyback: CIP mandates buybacks ≥ 1.2× weekly token emissions, making supply deflationary. ~80% of DAO revenue estimated to buybacks to maintain the ratio. DL holdersRevenue = $0 (DL does not categorize DAO treasury buybacks as holdersRevenue — cannot confirm execution via API). Protocol revenue $10.4M/yr fwd (TTM $37.6M, -72%). Deep dive: PASS. Token FV $77.7M vs FDV $190.1M primary (-59%). Upgrade: 30d revenue ≥ $1.67M; DL holdersRevenue > $0.",
-      "accrual_annual_est": 18973939.2,
-      "accrual_yield_mcap": 22.754823023958732,
-      "accrual_yield_fdv": 13.072376518610218,
+      "accrual_annual_est": 18889408,
+      "accrual_yield_mcap": 23.51295415794939,
+      "accrual_yield_fdv": 13.50791396918257,
       "dilution_pct": 42.551183099658154
     },
     {
@@ -21164,24 +21164,24 @@
       "coingecko_id": "layerzero",
       "defillama_slug": "layerzero",
       "image": "https://coin-images.coingecko.com/coins/images/28206/large/ftxG9_TJ_400x400.jpeg?1696527208",
-      "price": 2.22,
-      "price_change_24h_pct": 5.12505,
-      "volume_24h": 167008991,
-      "market_cap": 887871908,
-      "fdv": 2220334813,
-      "circulating_supply": 399881992.0681288,
+      "price": 2.08,
+      "price_change_24h_pct": -2.64388,
+      "volume_24h": 197941261,
+      "market_cap": 830254769,
+      "fdv": 2076141294,
+      "circulating_supply": 399902825.26812875,
       "total_supply": 1000000000,
       "ath": 7.47,
-      "ath_change_pct": -70.29473,
-      "tvl": 11498125425,
+      "ath_change_pct": -72.22385,
+      "tvl": 11411763617,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1240.890630060001,
-      "fees_24h": 6027,
-      "fees_7d": 66844,
-      "fees_30d": 290873,
-      "fees_1y": 2135764.6,
-      "fees_change_1d": 8.09,
+      "tvl_days_bd": 1252.2160318960011,
+      "fees_24h": 8289,
+      "fees_7d": 65877,
+      "fees_30d": 293213,
+      "fees_1y": 2130735.6,
+      "fees_change_1d": 37.53,
       "revenue_24h": null,
       "revenue_7d": null,
       "revenue_30d": null,
@@ -21191,16 +21191,12 @@
       "holders_revenue_30d": null,
       "holders_revenue_1y": 3391193,
       "holders_revenue_annualized": 3391193,
-      "mcap_to_fees": 254.36986474051105,
-      "fdv_to_fees": 636.1123276596086,
+      "mcap_to_fees": 235.96463122940207,
+      "fdv_to_fees": 590.054924235965,
       "mcap_to_revenue": null,
       "fdv_to_revenue": null,
-      "mcap_to_tvl": 0.07721884004409353,
+      "mcap_to_tvl": 0.07275429082347772,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 6945892778
-        },
         {
           "date": 1784246400,
           "value": 6935467143
@@ -21554,8 +21550,12 @@
           "value": 11667772368
         },
         {
-          "date": 1791822839,
-          "value": 11498125456
+          "date": 1791849600,
+          "value": 11411763646
+        },
+        {
+          "date": 1791850559,
+          "value": 11411763646
         }
       ],
       "fees_history": [
@@ -21917,93 +21917,93 @@
         },
         {
           "date": 1791763200,
-          "value": 7541
+          "value": 8289
         }
       ],
       "token_breakdown": [
         {
           "symbol": "WPAY",
-          "usd": 3786643048.19752,
-          "pct": 0.32932699007978766
+          "usd": 3747499692.10607,
+          "pct": 0.3283891787650961
         },
         {
           "symbol": "USDT",
-          "usd": 3376414931.71517,
-          "pct": 0.2936491643307931
+          "usd": 3368058214.36534,
+          "pct": 0.2951391492781915
         },
         {
           "symbol": "USDE",
-          "usd": 2282700949.75461,
-          "pct": 0.19852809558925846
+          "usd": 2287480776.40291,
+          "pct": 0.20044936499560745
         },
         {
           "symbol": "SUSDE",
-          "usd": 368180242.91923,
-          "pct": 0.032020892823566266
+          "usd": 368028036.09054,
+          "pct": 0.03224988244532265
         },
         {
           "symbol": "WEETH",
-          "usd": 305201044.5763,
-          "pct": 0.02654354796588609
+          "usd": 296309050.98117,
+          "pct": 0.025965228527527064
         },
         {
           "symbol": "APE",
-          "usd": 136204285.56095,
-          "pct": 0.011845781825437001
+          "usd": 128234660.64945,
+          "pct": 0.011237058935214386
         },
         {
           "symbol": "XAUT",
-          "usd": 126219514.82921,
-          "pct": 0.010977399342623909
+          "usd": 125994622.7766,
+          "pct": 0.011040766938441861
         },
         {
           "symbol": "USDC",
-          "usd": 97696528.62858,
-          "pct": 0.00849673531541592
+          "usd": 97326521.21302,
+          "pct": 0.008528613475414453
         },
         {
           "symbol": "WBTC",
-          "usd": 75018559.15087,
-          "pct": 0.006524416474121757
+          "usd": 73869075.74304,
+          "pct": 0.006473063939269027
         },
         {
           "symbol": "WSRUSD",
-          "usd": 56547416.54406,
-          "pct": 0.00491796830337832
+          "usd": 56550706.67374,
+          "pct": 0.0049554747562203915
         },
         {
           "symbol": "THUSD",
-          "usd": 50045463.57953,
-          "pct": 0.00435248891379913
+          "usd": 50029125.50563,
+          "pct": 0.0043839959410101395
         },
         {
           "symbol": "RSETH",
-          "usd": 46452120.78941,
-          "pct": 0.004039973382144139
+          "usd": 44900647.11325,
+          "pct": 0.003934593153563416
         },
         {
           "symbol": "ENA",
-          "usd": 41312020.14377,
-          "pct": 0.003592935239707774
-        },
-        {
-          "symbol": "FREN PET",
-          "usd": 39896906.23153,
-          "pct": 0.003469861794599218
+          "usd": 37945406.94233,
+          "pct": 0.0033251132881871445
         },
         {
           "symbol": "PYUSD",
-          "usd": 37893451.58926,
-          "pct": 0.0032956199453670265
+          "usd": 37889526.4548,
+          "pct": 0.0033202165439799
+        },
+        {
+          "symbol": "APR",
+          "usd": 34797670.49995,
+          "pct": 0.0030492806877310224
         }
       ],
       "concentration": {
-        "top1_pct": 0.32932699007978766,
-        "top3_pct": 0.8215042499998392,
-        "top5_pct": 0.8800686907892914,
-        "hhi": 0.23637155079626915,
+        "top1_pct": 0.3283891787650961,
+        "top3_pct": 0.8239776930388951,
+        "top5_pct": 0.8821928040117448,
+        "hhi": 0.23736314197638742,
         "token_count": 442,
-        "snapshot_date": 1791822839
+        "snapshot_date": 1791850559
       },
       "va_mechanism": "buyback-burn",
       "va_status": "executing",
@@ -22013,9 +22013,9 @@
       "va_last_verified": "2026-04-19",
       "va_notes": "Fee switch activated Dec 2025 (97% community vote) — 100% of LZ fees → ZRO burn (DL confirmed: holdersRevenue = fees = $249K/30d). Stargate V2 50% of bridge fees → ZRO buybacks (unverified by DL holdersRevenue). Total ZRO-attributable ~$4.05M/yr. FDV $1.937B primary (74.8% supply not yet circulating). Deep dive: PASS. Token FV $31.6M vs FDV -98.4%. Requires ~$270M/yr in fees to justify FDV (6,500× current). Sept 2025: 50M ZRO buyback from investors at $150M ($3/ZRO).",
       "accrual_annual_est": 3391193,
-      "accrual_yield_mcap": 0.3819461984824955,
-      "accrual_yield_fdv": 0.15273340669815458,
-      "dilution_pct": 60.01180079318712
+      "accrual_yield_mcap": 0.4084520952628217,
+      "accrual_yield_fdv": 0.16334114685741613,
+      "dilution_pct": 60.00971747318713
     },
     {
       "symbol": "SNX",
@@ -22024,43 +22024,39 @@
       "coingecko_id": "havven",
       "defillama_slug": "synthetix",
       "image": "https://coin-images.coingecko.com/coins/images/3406/large/SNX.png?1696504103",
-      "price": 0.240652,
-      "price_change_24h_pct": -1.38489,
-      "volume_24h": 12730826,
-      "market_cap": 139814154,
-      "fdv": 139916102,
+      "price": 0.241582,
+      "price_change_24h_pct": -0.50482,
+      "volume_24h": 17075882,
+      "market_cap": 140354336,
+      "fdv": 140456678,
       "circulating_supply": 580980590.4572881,
       "total_supply": 581404223.5556631,
       "ath": 28.53,
-      "ath_change_pct": -99.15656,
-      "tvl": 887706,
+      "ath_change_pct": -99.1533,
+      "tvl": 884485,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1508.907297422002,
-      "fees_24h": 37,
-      "fees_7d": 1166,
-      "fees_30d": 7947,
-      "fees_1y": 28681,
-      "fees_change_1d": 2.78,
+      "tvl_days_bd": 1508.908178686002,
+      "fees_24h": null,
+      "fees_7d": 980,
+      "fees_30d": 7894,
+      "fees_1y": 28649,
+      "fees_change_1d": null,
       "revenue_24h": 37,
-      "revenue_7d": 1166,
-      "revenue_30d": 7947,
-      "revenue_1y": 28681,
+      "revenue_7d": 980,
+      "revenue_30d": 7894,
+      "revenue_1y": 28649,
       "holders_revenue_24h": null,
       "holders_revenue_7d": null,
       "holders_revenue_30d": null,
-      "holders_revenue_1y": 8649,
-      "holders_revenue_annualized": 8649,
-      "mcap_to_fees": 1466.1104190260476,
-      "fdv_to_fees": 1467.179459754205,
-      "mcap_to_revenue": 1466.1104190260476,
-      "fdv_to_revenue": 1467.179459754205,
-      "mcap_to_tvl": 157.5005170630817,
+      "holders_revenue_1y": 8617,
+      "holders_revenue_annualized": 8617,
+      "mcap_to_fees": 1481.6562790304872,
+      "fdv_to_fees": 1482.7366565323875,
+      "mcap_to_revenue": 1481.6562790304872,
+      "fdv_to_revenue": 1482.7366565323875,
+      "mcap_to_tvl": 158.6848120657784,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 992853
-        },
         {
           "date": 1784246400,
           "value": 850625
@@ -22414,8 +22410,12 @@
           "value": 900234
         },
         {
-          "date": 1791822587,
-          "value": 887706
+          "date": 1791849600,
+          "value": 884485
+        },
+        {
+          "date": 1791850667,
+          "value": 884485
         }
       ],
       "fees_history": [
@@ -22783,27 +22783,27 @@
       "token_breakdown": [
         {
           "symbol": "USDT",
-          "usd": 810465.62558,
-          "pct": 0.9129880326441484
+          "usd": 810306.31116,
+          "pct": 0.916132374082695
         },
         {
           "symbol": "WETH",
-          "usd": 77240.69014,
-          "pct": 0.0870114950039099
+          "usd": 74179.32644,
+          "pct": 0.08386715184538861
         },
         {
           "symbol": "USDC",
           "usd": 0.41931,
-          "pct": 4.7235194175453617e-7
+          "pct": 4.740719163678874e-7
         }
       ],
       "concentration": {
-        "top1_pct": 0.9129880326441484,
+        "top1_pct": 0.916132374082695,
         "top3_pct": 1,
         "top5_pct": 1,
-        "hhi": 0.8411181480144712,
+        "hhi": 0.8463322260012772,
         "token_count": 3,
-        "snapshot_date": 1791822587
+        "snapshot_date": 1791850667
       },
       "va_mechanism": "buyback",
       "va_status": "unverified",
@@ -22824,43 +22824,39 @@
       "coingecko_id": "usual",
       "defillama_slug": "usual",
       "image": "https://coin-images.coingecko.com/coins/images/51091/large/USUAL.jpg?1730035787",
-      "price": 0.01177163,
-      "price_change_24h_pct": -5.70757,
-      "volume_24h": 2534615,
-      "market_cap": 22940527,
-      "fdv": 23309662,
+      "price": 0.01133034,
+      "price_change_24h_pct": -8.86897,
+      "volume_24h": 2539587,
+      "market_cap": 22080548,
+      "fdv": 22435874,
       "circulating_supply": 1948797552.8218625,
-      "total_supply": 1980155568.2287207,
+      "total_supply": 1980158144.7584991,
       "ath": 1.61,
-      "ath_change_pct": -99.26898,
-      "tvl": 86415181,
+      "ath_change_pct": -99.29638,
+      "tvl": 86296148,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 286.4243257050001,
-      "fees_24h": 10996,
-      "fees_7d": 62650,
-      "fees_30d": 299088,
-      "fees_1y": 12496173,
-      "fees_change_1d": 133.51,
-      "revenue_24h": 17138,
-      "revenue_7d": 60539,
-      "revenue_30d": 290049,
-      "revenue_1y": 9195572,
+      "tvl_days_bd": 286.51050282000006,
+      "fees_24h": 17533,
+      "fees_7d": 70405,
+      "fees_30d": 310394,
+      "fees_1y": 12296613,
+      "fees_change_1d": 59.45,
+      "revenue_24h": 17229,
+      "revenue_7d": 68290,
+      "revenue_30d": 301351,
+      "revenue_1y": 9046020,
       "holders_revenue_24h": 12464,
-      "holders_revenue_7d": 18746,
-      "holders_revenue_30d": 106217,
-      "holders_revenue_1y": 793504.8799999999,
-      "holders_revenue_annualized": 1274604,
-      "mcap_to_fees": 6.391799682144831,
-      "fdv_to_fees": 6.494649846644911,
-      "mcap_to_revenue": 6.590991809429901,
-      "fdv_to_revenue": 6.697047165593859,
-      "mcap_to_tvl": 0.26546871434545743,
+      "holders_revenue_7d": 31210,
+      "holders_revenue_30d": 117917,
+      "holders_revenue_1y": 805801.8799999999,
+      "holders_revenue_annualized": 1415004,
+      "mcap_to_fees": 5.928096763038805,
+      "fdv_to_fees": 6.023493259105094,
+      "mcap_to_revenue": 6.1059882551133615,
+      "fdv_to_revenue": 6.20424742797159,
+      "mcap_to_tvl": 0.255869450858919,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 96706865
-        },
         {
           "date": 1784246400,
           "value": 96658879
@@ -23214,8 +23210,12 @@
           "value": 86608383
         },
         {
-          "date": 1791825071,
-          "value": 86415181
+          "date": 1791849600,
+          "value": 86296148
+        },
+        {
+          "date": 1791851531,
+          "value": 86296148
         }
       ],
       "fees_history": [
@@ -23577,58 +23577,58 @@
         },
         {
           "date": 1791763200,
-          "value": 17437
+          "value": 17533
         }
       ],
       "token_breakdown": [
         {
           "symbol": "WM",
-          "usd": 42103202.0794,
-          "pct": 0.4872199616728102
+          "usd": 42053211.16212,
+          "pct": 0.4873127186030455
         },
         {
           "symbol": "USTBL",
           "usd": 30898654.94362,
-          "pct": 0.3575604878930971
+          "pct": 0.35805369258735625
         },
         {
           "symbol": "USYC",
           "usd": 10696706.24677,
-          "pct": 0.12378271842004417
+          "pct": 0.12395345937118411
         },
         {
           "symbol": "WSTETH",
-          "usd": 2384561.78928,
-          "pct": 0.02759424571528945
+          "usd": 2315615.80025,
+          "pct": 0.026833361821283267
         },
         {
           "symbol": "EUTBL",
-          "usd": 227678.62565,
-          "pct": 0.0026347062879853037
+          "usd": 227601.19676,
+          "pct": 0.0026374432507149086
         },
         {
           "symbol": "EURC",
-          "usd": 83484.82166,
-          "pct": 0.0009660897414106193
+          "usd": 93914.19602,
+          "pct": 0.0010882779439005002
         },
         {
           "symbol": "EUR0",
-          "usd": 20894.32297,
-          "pct": 0.00024178995263649056
+          "usd": 10445.81279,
+          "pct": 0.00012104610535184504
         },
         {
           "symbol": "USDTB",
           "usd": 0.02737,
-          "pct": 3.167267498048417e-10
+          "pct": 3.1716363006731607e-10
         }
       ],
       "concentration": {
-        "top1_pct": 0.4872199616728102,
-        "top3_pct": 0.9685631679859513,
-        "top5_pct": 0.9987921199892261,
-        "hhi": 0.3813243307998495,
+        "top1_pct": 0.4873127186030455,
+        "top3_pct": 0.9693198705615858,
+        "top5_pct": 0.9987906756335838,
+        "hhi": 0.38176877699239126,
         "token_count": 8,
-        "snapshot_date": 1791825071
+        "snapshot_date": 1791851531
       },
       "va_mechanism": "fee-share",
       "va_status": "executing",
@@ -23637,10 +23637,10 @@
       "va_tracking_source": "dune",
       "va_last_verified": "2026-04-16",
       "va_notes": "Fee switch Jan 7 2025 — up to 100% of protocol revenue to USUALx stakers in USD0. DL holdersRevenue shows near-zero execution: $3.6K/30d (0.16% of $2.22M/30d revenue). TTM distribution rate was 8.4% at peak TVL. TVL collapsed -94% from $1.7B (Jan 2025) to $107.6M. Deep dive: PASS (data gap). Protocol revenue $26.6M/yr is real; if distribution restored to 100%, Token FV $156.9M vs Mcap $23.9M (+556%). Verify USUALx distribution on-chain. Current: near ATL ($0.01049 Oct 2025), current $0.0138.",
-      "accrual_annual_est": 9195572,
-      "accrual_yield_mcap": 40.084397363669986,
-      "accrual_yield_fdv": 39.44961535692795,
-      "dilution_pct": 1.5836137276278972
+      "accrual_annual_est": 9046020,
+      "accrual_yield_mcap": 40.9682766931328,
+      "accrual_yield_fdv": 40.31944554511226,
+      "dilution_pct": 1.5837417844452695
     },
     {
       "symbol": "PUMP",
@@ -23649,44 +23649,40 @@
       "coingecko_id": "pump-fun",
       "defillama_slug": "pump.fun",
       "image": "https://coin-images.coingecko.com/coins/images/67164/large/pump.jpg?1751949376",
-      "price": 0.005248,
-      "price_change_24h_pct": -9.7092,
-      "volume_24h": 206211734,
-      "market_cap": 2429793678,
-      "fdv": 4347934583,
-      "circulating_supply": 462994022478.60474,
-      "total_supply": 828493275151.5709,
+      "price": 0.00493235,
+      "price_change_24h_pct": -11.69037,
+      "volume_24h": 231412304,
+      "market_cap": 2286221975,
+      "fdv": 4085850646,
+      "circulating_supply": 463516030943.588,
+      "total_supply": 828378562952.3062,
       "ath": 0.00881908,
-      "ath_change_pct": -40.49266,
+      "ath_change_pct": -44.07189,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
       "tvl_days_bd": null,
-      "fees_24h": 2011215,
-      "fees_7d": 15858910,
-      "fees_30d": 58924995,
-      "fees_1y": 422396488,
-      "fees_change_1d": 4.48,
+      "fees_24h": 2195847,
+      "fees_7d": 15469332,
+      "fees_30d": 59720823,
+      "fees_1y": 423875199,
+      "fees_change_1d": 9.18,
       "revenue_24h": 1441185,
-      "revenue_7d": 11511321,
-      "revenue_30d": 41770193,
-      "revenue_1y": 321535279,
+      "revenue_7d": 9623523,
+      "revenue_30d": 40984160,
+      "revenue_1y": 320990256,
       "holders_revenue_24h": 916281,
-      "holders_revenue_7d": 7650885,
-      "holders_revenue_30d": 29081771,
-      "holders_revenue_1y": 283794272,
-      "holders_revenue_annualized": 348981252,
-      "mcap_to_fees": 3.4362804188613,
-      "fdv_to_fees": 6.148967546228331,
-      "mcap_to_revenue": 4.847542995551876,
-      "fdv_to_revenue": 8.674316681195767,
+      "holders_revenue_7d": 6382285,
+      "holders_revenue_30d": 28473791,
+      "holders_revenue_1y": 283249249,
+      "holders_revenue_annualized": 341685492,
+      "mcap_to_fees": 3.1901519159685168,
+      "fdv_to_fees": 5.701320523217393,
+      "mcap_to_revenue": 4.6485885746265545,
+      "fdv_to_revenue": 8.307784125216507,
       "mcap_to_tvl": null,
       "tvl_history": [],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 804564
-        },
         {
           "date": 1784073600,
           "value": 787249
@@ -24042,6 +24038,10 @@
         {
           "date": 1791676800,
           "value": 2011215
+        },
+        {
+          "date": 1791763200,
+          "value": 2195847
         }
       ],
       "token_breakdown": null,
@@ -24053,10 +24053,10 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-16",
       "va_notes": "DL confirmed: holdersRevenue $29.1M/30d ≈ fees $22.1M/30d (near-100% of revenue to PUMP buybacks). Protocol revenue = gross fees (100% retention — no LP share). $264.8M/yr fwd (TTM $391.7M, -32%). 23.2% annual buyback yield on Mcap $1.14B. FDV $1.933B primary (41% supply unvested). Deep dive: WATCHLIST. Token FV $1.776B: -8.1% vs FDV, +55.8% vs Mcap. Edge 0.097 bits. ATL Apr 2, 2026 (14 days ago).",
-      "accrual_annual_est": 348981252,
-      "accrual_yield_mcap": 14.362587867429625,
-      "accrual_yield_fdv": 8.026368505277945,
-      "dilution_pct": 44.11613994164273
+      "accrual_annual_est": 341685492,
+      "accrual_yield_mcap": 14.94542068689546,
+      "accrual_yield_fdv": 8.362652519726979,
+      "dilution_pct": 44.04538556724157
     },
     {
       "symbol": "RLB",
@@ -24065,15 +24065,15 @@
       "coingecko_id": "rollbit-coin",
       "defillama_slug": null,
       "image": "https://coin-images.coingecko.com/coins/images/24552/large/unziL6wO_400x400.jpg?1696523729",
-      "price": 0.0729,
-      "price_change_24h_pct": -2.71518,
-      "volume_24h": 344276,
-      "market_cap": 113525382,
-      "fdv": 113525382,
-      "circulating_supply": 1557273580.3683767,
-      "total_supply": 1557273580.3683767,
+      "price": 0.072381,
+      "price_change_24h_pct": -2.93746,
+      "volume_24h": 374676,
+      "market_cap": 112701493,
+      "fdv": 112704487,
+      "circulating_supply": 1557063882.8310962,
+      "total_supply": 1557105244.687561,
       "ath": 0.264358,
-      "ath_change_pct": -72.42371,
+      "ath_change_pct": -72.62015,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
@@ -24111,7 +24111,7 @@
       "accrual_annual_est": null,
       "accrual_yield_mcap": null,
       "accrual_yield_fdv": null,
-      "dilution_pct": 0
+      "dilution_pct": 0.0026563301745996526
     },
     {
       "symbol": "JUP",
@@ -24120,43 +24120,39 @@
       "coingecko_id": "jupiter-exchange-solana",
       "defillama_slug": "jupiter",
       "image": "https://coin-images.coingecko.com/coins/images/34188/large/jup.png?1704266489",
-      "price": 0.336776,
-      "price_change_24h_pct": -9.60794,
-      "volume_24h": 75229991,
-      "market_cap": 1117883674,
-      "fdv": 2310783447,
+      "price": 0.328832,
+      "price_change_24h_pct": -10.42815,
+      "volume_24h": 79509258,
+      "market_cap": 1091514184,
+      "fdv": 2256274927,
       "circulating_supply": 3319369204.37,
-      "total_supply": 6861486207.270551,
+      "total_supply": 6861486200.412944,
       "ath": 2,
-      "ath_change_pct": -83.16131,
-      "tvl": 1900920957.84883,
+      "ath_change_pct": -83.55852,
+      "tvl": 1858312231.41897,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1660.188839050801,
-      "fees_24h": 420636.21,
-      "fees_7d": 3735121.44,
-      "fees_30d": 17544535.86,
-      "fees_1y": 257852944.76000002,
-      "fees_change_1d": 6.44,
+      "tvl_days_bd": 1662.0045425556082,
+      "fees_24h": 240.34,
+      "fees_7d": 3274367.78,
+      "fees_30d": 17151745.43,
+      "fees_1y": 254632318.10000002,
+      "fees_change_1d": -99.94,
       "revenue_24h": 99361.21,
-      "revenue_7d": 996472.44,
-      "revenue_30d": 5516464.67,
-      "revenue_1y": 79035378.73,
+      "revenue_7d": 877662.44,
+      "revenue_30d": 5328376.570000001,
+      "revenue_1y": 78192230.73,
       "holders_revenue_24h": 49642.1,
-      "holders_revenue_7d": 497346.56,
-      "holders_revenue_30d": 2754905.18,
-      "holders_revenue_1y": 39505914.980000004,
-      "holders_revenue_annualized": 33058862.160000004,
-      "mcap_to_fees": 5.309742792667604,
-      "fdv_to_fees": 10.975798321859967,
-      "mcap_to_revenue": 16.88707866470091,
-      "fdv_to_revenue": 34.90737252378705,
-      "mcap_to_tvl": 0.5880747799556321,
+      "holders_revenue_7d": 438037.43,
+      "holders_revenue_30d": 2660918.8,
+      "holders_revenue_1y": 39084340.980000004,
+      "holders_revenue_annualized": 31931025.599999998,
+      "mcap_to_fees": 5.303222095066586,
+      "fdv_to_fees": 10.962319336576892,
+      "mcap_to_revenue": 17.07077458553822,
+      "fdv_to_revenue": 35.287091314443884,
+      "mcap_to_tvl": 0.5873685624759309,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 1605547239.6132
-        },
         {
           "date": 1784246400,
           "value": 1571971562.4017801
@@ -24507,18 +24503,18 @@
         },
         {
           "date": 1791763200,
-          "value": 1943101364.6456401
+          "value": 1943101364.46365
         },
         {
-          "date": 1791827111,
-          "value": 1900920957.84883
+          "date": 1791849600,
+          "value": 1858312231.41897
+        },
+        {
+          "date": 1791851891,
+          "value": 1858312231.41897
         }
       ],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 540201
-        },
         {
           "date": 1784073600,
           "value": 347953.93
@@ -24874,92 +24870,96 @@
         {
           "date": 1791676800,
           "value": 420636.21
+        },
+        {
+          "date": 1791763200,
+          "value": 240.34
         }
       ],
       "token_breakdown": [
         {
           "symbol": "SOL",
-          "usd": 1021829771.8612401,
-          "pct": 0.46697263101958764
+          "usd": 1000145319.34109,
+          "pct": 0.46618290894606546
         },
         {
           "symbol": "USDE",
-          "usd": 308311030.90205,
-          "pct": 0.14089706254149204
+          "usd": 308037206.15057,
+          "pct": 0.14358081575735254
         },
         {
           "symbol": "USDC",
-          "usd": 185297448.08768,
-          "pct": 0.08468028554023146
+          "usd": 169238005.31624,
+          "pct": 0.07888440219320547
         },
         {
           "symbol": "WBTC",
-          "usd": 124744410.79734,
-          "pct": 0.05700775933443101
+          "usd": 123467057.59242,
+          "pct": 0.0575498689584089
         },
         {
           "symbol": "DFDVSOL",
-          "usd": 120875146.16657,
-          "pct": 0.0552395189342217
+          "usd": 115318138.09635,
+          "pct": 0.053751533934506594
         },
         {
           "symbol": "SUSDAI",
-          "usd": 73051856.3528,
-          "pct": 0.03338444279206656
+          "usd": 78316121.54715002,
+          "pct": 0.03650433257466735
         },
         {
           "symbol": "WETH",
-          "usd": 70215171.22533,
-          "pct": 0.032088087612538
+          "usd": 70400798.52504,
+          "pct": 0.03281488041172964
         },
         {
           "symbol": "PST",
-          "usd": 70027517.43781,
-          "pct": 0.03200233048812051
+          "usd": 70034203.57218,
+          "pct": 0.03264400494171114
         },
         {
           "symbol": "INF",
-          "usd": 60693750.25543,
-          "pct": 0.027736831538582998
+          "usd": 58835899.99511,
+          "pct": 0.027424305728141914
         },
         {
           "symbol": "USDTB",
-          "usd": 43713784.19642,
-          "pct": 0.0199770464515265
+          "usd": 43707636.59439,
+          "pct": 0.02037279260993199
         },
         {
           "symbol": "JUPUSD",
-          "usd": 22517709.43681,
-          "pct": 0.010290514437731291
+          "usd": 22177625.64525,
+          "pct": 0.010337327823151615
         },
         {
           "symbol": "CBBTC",
-          "usd": 16246338.02128,
-          "pct": 0.007424519640303559
+          "usd": 15950690.28119,
+          "pct": 0.007434858766205887
         },
         {
           "symbol": "JITOSOL",
-          "usd": 11468443.39855,
-          "pct": 0.005241038512476774
+          "usd": 10960369.79744,
+          "pct": 0.0051087946686201695
         },
         {
           "symbol": "SPYX",
-          "usd": 9302241.199,
-          "pct": 0.004251091685421859
+          "usd": 9286801.59092,
+          "pct": 0.004328719133847739
         },
         {
           "symbol": "USDGO",
-          "usd": 7971258.8929200005,
-          "pct": 0.003642837427788919
+          "usd": 7970464.41965,
+          "pct": 0.003715154405013366
         }
       ],
       "concentration": {
-        "top1_pct": 0.46697263101958764,
-        "top3_pct": 0.6925499791013112,
-        "top5_pct": 0.8047972573699639,
-        "hhi": 0.25597808879139894,
+        "top1_pct": 0.46618290894606546,
+        "top3_pct": 0.6886481268966235,
+        "top5_pct": 0.7999495297895389,
+        "hhi": 0.25526410139531336,
         "token_count": 65,
-        "snapshot_date": 1791827111
+        "snapshot_date": 1791851891
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -24968,10 +24968,10 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-16",
       "va_notes": "DL confirmed executing: 30d holdersRevenue $2.44M → $29.3M/yr (50% of protocol revenue). New mechanism active from 2025-02-17 (revenue-funded, not treasury-funded). All-time buybacks $90.9M. Original $70M treasury program exhausted 2024; Feb 2025 replaced with permanent 50% revenue allocation. Current protocol revenue $58.6M/yr (30d × 12). FDV primary ($1.191B, 48% supply unvested per CLAUDE.md). Verify 3-year lock still applies to Feb 2025+ program.",
-      "accrual_annual_est": 33058862.160000004,
-      "accrual_yield_mcap": 2.957272114164537,
-      "accrual_yield_fdv": 1.430634367877225,
-      "dilution_pct": 51.62317457036147
+      "accrual_annual_est": 31931025.599999998,
+      "accrual_yield_mcap": 2.925388058905884,
+      "accrual_yield_fdv": 1.415209876149991,
+      "dilution_pct": 51.62317452201199
     },
     {
       "symbol": "MNDE",
@@ -24980,24 +24980,24 @@
       "coingecko_id": "marinade",
       "defillama_slug": "marinade",
       "image": "https://coin-images.coingecko.com/coins/images/18867/large/c1.png?1750668234",
-      "price": 0.02750172,
-      "price_change_24h_pct": 0.59536,
-      "volume_24h": 94062,
-      "market_cap": 15026941,
-      "fdv": 19251124,
+      "price": 0.02653376,
+      "price_change_24h_pct": -1.61379,
+      "volume_24h": 2387578,
+      "market_cap": 14498047,
+      "fdv": 18573554,
       "circulating_supply": 546399977,
       "total_supply": 699997022.2755376,
       "ath": 1.64,
-      "ath_change_pct": -98.32334,
-      "tvl": 796661121,
+      "ath_change_pct": -98.38235,
+      "tvl": 766244074,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 1690.9185388659994,
-      "fees_24h": 131968,
-      "fees_7d": 954414,
-      "fees_30d": 4211091,
-      "fees_1y": 55117006,
-      "fees_change_1d": 0.74,
+      "tvl_days_bd": 1691.6543658929995,
+      "fees_24h": 125973,
+      "fees_7d": 934433,
+      "fees_30d": 4210046,
+      "fees_1y": 54858838,
+      "fees_change_1d": -4.54,
       "revenue_24h": null,
       "revenue_7d": null,
       "revenue_30d": null,
@@ -25007,16 +25007,12 @@
       "holders_revenue_30d": null,
       "holders_revenue_1y": null,
       "holders_revenue_annualized": null,
-      "mcap_to_fees": 0.29736832648198136,
-      "fdv_to_fees": 0.38096073756974935,
+      "mcap_to_fees": 0.28697325001516216,
+      "fdv_to_fees": 0.3676435285188491,
       "mcap_to_revenue": null,
       "fdv_to_revenue": null,
-      "mcap_to_tvl": 0.01886240034048304,
+      "mcap_to_tvl": 0.018920925449140896,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 504123744
-        },
         {
           "date": 1784246400,
           "value": 490260276
@@ -25370,15 +25366,15 @@
           "value": 870545384
         },
         {
-          "date": 1791824639,
-          "value": 796661121
+          "date": 1791849600,
+          "value": 766244074
+        },
+        {
+          "date": 1791851591,
+          "value": 766244074
         }
       ],
       "fees_history": [
-        {
-          "date": 1784073600,
-          "value": 80617
-        },
         {
           "date": 1784160000,
           "value": 77695
@@ -25733,13 +25729,17 @@
         },
         {
           "date": 1791763200,
-          "value": 129114
+          "value": 125973
+        },
+        {
+          "date": 1791849600,
+          "value": 63485
         }
       ],
       "token_breakdown": [
         {
           "symbol": "SOL",
-          "usd": 796661122.85459,
+          "usd": 766244075.18189,
           "pct": 1
         }
       ],
@@ -25749,7 +25749,7 @@
         "top5_pct": 1,
         "hhi": 1,
         "token_count": 1,
-        "snapshot_date": 1791824639
+        "snapshot_date": 1791851591
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -25770,15 +25770,15 @@
       "coingecko_id": "helium",
       "defillama_slug": "helium-network",
       "image": "https://coin-images.coingecko.com/coins/images/4284/large/helium_logo_use.png?1748092589",
-      "price": 0.466068,
-      "price_change_24h_pct": -5.75889,
-      "volume_24h": 3541658,
-      "market_cap": 91036024,
-      "fdv": 91036007,
-      "circulating_supply": 195327748.1037024,
-      "total_supply": 195327711.71040672,
+      "price": 0.4554,
+      "price_change_24h_pct": -6.78505,
+      "volume_24h": 3852105,
+      "market_cap": 88952219,
+      "fdv": 88951231,
+      "circulating_supply": 195327705.00371936,
+      "total_supply": 195325535.81512147,
       "ath": 54.88,
-      "ath_change_pct": -99.1507,
+      "ath_change_pct": -99.17014,
       "tvl": null,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
@@ -26175,9 +26175,9 @@
       "va_last_verified": "2026-04-21",
       "va_notes": "Burn-and-mint equilibrium with 1%-capped net re-emission (HIP-20). DeFi Llama (helium-network) confirmed tracking: fees $17.58M/yr annualized (= revenue = holders revenue for burn-mint model). Q1 2026 annualized net economic earnings $5.7M (gross DC burns $15.5M minus HNT emissions cost $9.8M). Breakeven crossed Q4 2025. 43.9% of Mobile DC burns = carrier offload (AT&T/Movistar/T-Mobile/Wefi/Google Orion external cash). 100%-subscriber-burn program suspended Jan 2, 2026. Current 7D net inflation: -5% (genuinely deflationary). Deep dive: PASS at $1.05 (edge -0.24 bits). Better entry ≤$0.70.",
       "accrual_annual_est": 2296688,
-      "accrual_yield_mcap": 2.5228342573484976,
-      "accrual_yield_fdv": 2.522834728460795,
-      "dilution_pct": -0.00001863191625428584
+      "accrual_yield_mcap": 2.5819344652886063,
+      "accrual_yield_fdv": 2.5819631433768464,
+      "dilution_pct": -0.0011105504402308952
     },
     {
       "symbol": "LIT",
@@ -26186,43 +26186,39 @@
       "coingecko_id": "lighter",
       "defillama_slug": "lighter",
       "image": "https://coin-images.coingecko.com/coins/images/71121/large/lighter.png?1765888098",
-      "price": 3.62,
-      "price_change_24h_pct": -1.95894,
-      "volume_24h": 70846637,
-      "market_cap": 906082051,
-      "fdv": 3624328206,
+      "price": 3.32,
+      "price_change_24h_pct": -12.50329,
+      "volume_24h": 85547221,
+      "market_cap": 830151125,
+      "fdv": 3320604502,
       "circulating_supply": 250000000,
       "total_supply": 1000000000,
       "ath": 7.86,
-      "ath_change_pct": -53.88779,
-      "tvl": 757260420,
+      "ath_change_pct": -57.75205,
+      "tvl": 752134698,
       "tvl_change_1d": null,
       "tvl_change_7d": null,
-      "tvl_days_bd": 339.28026470999987,
-      "fees_24h": 123011,
-      "fees_7d": 1460905,
-      "fees_30d": 5557150,
-      "fees_1y": 83398381,
-      "fees_change_1d": 10.41,
+      "tvl_days_bd": 340.02727368799987,
+      "fees_24h": 230794,
+      "fees_7d": 1529552,
+      "fees_30d": 5718224,
+      "fees_1y": 83239927,
+      "fees_change_1d": 87.62,
       "revenue_24h": 113910,
-      "revenue_7d": 1176357,
-      "revenue_30d": 4622045,
-      "revenue_1y": 64594165,
+      "revenue_7d": 1021918,
+      "revenue_30d": 4554067,
+      "revenue_1y": 64369637,
       "holders_revenue_24h": 61208,
-      "holders_revenue_7d": 652319,
-      "holders_revenue_30d": 2595966,
+      "holders_revenue_7d": 583953,
+      "holders_revenue_30d": 2550816,
       "holders_revenue_1y": 29974939,
-      "holders_revenue_annualized": 31151592,
-      "mcap_to_fees": 13.587331200945329,
-      "fdv_to_fees": 54.349324833772705,
-      "mcap_to_revenue": 16.336240253682803,
-      "fdv_to_revenue": 65.34496105079029,
-      "mcap_to_tvl": 1.196526356151032,
+      "holders_revenue_annualized": 30609792,
+      "mcap_to_fees": 12.098032608842653,
+      "fdv_to_fees": 48.39213046451719,
+      "mcap_to_revenue": 15.190654950106502,
+      "fdv_to_revenue": 60.76261983702333,
+      "mcap_to_tvl": 1.103726669182333,
       "tvl_history": [
-        {
-          "date": 1784160000,
-          "value": 515621252
-        },
         {
           "date": 1784246400,
           "value": 519130348
@@ -26576,15 +26572,15 @@
           "value": 753433745
         },
         {
-          "date": 1791824399,
-          "value": 757260420
+          "date": 1791849600,
+          "value": 752134699
+        },
+        {
+          "date": 1791850847,
+          "value": 752134699
         }
       ],
       "fees_history": [
-        {
-          "date": 1783987200,
-          "value": 121683
-        },
         {
           "date": 1784073600,
           "value": 80939
@@ -26940,92 +26936,96 @@
         {
           "date": 1791676800,
           "value": 123011
+        },
+        {
+          "date": 1791763200,
+          "value": 230794
         }
       ],
       "token_breakdown": [
         {
           "symbol": "USDC",
-          "usd": 622097370.0168899,
-          "pct": 0.8215104760143858
+          "usd": 617657932.3054899,
+          "pct": 0.8212065369201166
         },
         {
           "symbol": "USDG",
-          "usd": 103607923.64249,
-          "pct": 0.13681940926400832
+          "usd": 103957707.7134,
+          "pct": 0.13821687486278578
         },
         {
           "symbol": "WETH",
-          "usd": 22253343.26315,
-          "pct": 0.0293866450786081
+          "usd": 21367634.933650002,
+          "pct": 0.028409319411698677
         },
         {
           "symbol": "NVDA",
-          "usd": 697644.57032,
-          "pct": 0.0009212743063628039
+          "usd": 688810.97802,
+          "pct": 0.0009158080035351876
         },
         {
           "symbol": "TSLA",
-          "usd": 573391.96839,
-          "pct": 0.0007571925740211787
+          "usd": 568650.75454,
+          "pct": 0.0007560490887079538
         },
         {
           "symbol": "AMD",
-          "usd": 535433.36867,
-          "pct": 0.0007070663577281085
+          "usd": 530364.4341,
+          "pct": 0.0007051455465117276
         },
         {
           "symbol": "MU",
-          "usd": 533481.6769,
-          "pct": 0.000704489051807393
+          "usd": 516188.33924,
+          "pct": 0.0006862977326035047
         },
         {
           "symbol": "SNDK",
-          "usd": 506532.6901,
-          "pct": 0.0006689015762108119
+          "usd": 488459.93976,
+          "pct": 0.000649431464528045
         },
         {
           "symbol": "COIN",
-          "usd": 480974.42614,
-          "pct": 0.000635150619200158
+          "usd": 456182.19351,
+          "pct": 0.0006065166166305865
         },
         {
           "symbol": "ORCL",
-          "usd": 440594.16006,
-          "pct": 0.000581826472197145
+          "usd": 436966.41742,
+          "pct": 0.0005809682991691725
         },
         {
           "symbol": "SPY",
-          "usd": 398140.9675,
-          "pct": 0.0005257649228172641
+          "usd": 407142.08769,
+          "pct": 0.000541315388953776
         },
         {
           "symbol": "PONS",
-          "usd": 395971.98835,
-          "pct": 0.0005229006781188281
-        },
-        {
-          "symbol": "CRCL",
-          "usd": 366239.29527,
-          "pct": 0.0004836371801158109
+          "usd": 388747.71228,
+          "pct": 0.0005168591640124544
         },
         {
           "symbol": "GOOGL",
-          "usd": 356696.93387,
-          "pct": 0.0004710360179282864
+          "usd": 355402.41842,
+          "pct": 0.0004725249591700716
         },
         {
-          "symbol": "USO",
-          "usd": 292869.80698,
-          "pct": 0.0003867491266453174
+          "symbol": "CRCL",
+          "usd": 338343.43139,
+          "pct": 0.0004498441986235645
+        },
+        {
+          "symbol": "PLTR",
+          "usd": 287963.84778,
+          "pct": 0.00038286206948062783
         }
       ],
       "concentration": {
-        "top1_pct": 0.8215104760143858,
-        "top3_pct": 0.9877165303570021,
-        "top5_pct": 0.9893949972373861,
-        "hhi": 0.6944687906897994,
+        "top1_pct": 0.8212065369201166,
+        "top3_pct": 0.987832731194601,
+        "top5_pct": 0.9895045882868441,
+        "hhi": 0.6942972435212131,
         "token_count": 39,
-        "snapshot_date": 1791824399
+        "snapshot_date": 1791850847
       },
       "va_mechanism": "buyback",
       "va_status": "executing",
@@ -27034,9 +27034,9 @@
       "va_tracking_source": "defillama",
       "va_last_verified": "2026-04-20",
       "va_notes": "DL confirmed executing: Holders Revenue (LIT buybacks from treasury) $25.53M/yr annualized. Q1 2026 Gross Rev $19.65M → $5M to LLP (liquidation fees) → $14.65M earnings → $14.58M buyback (99.5% of earnings). 58.3% of 250M circulating is staked. 866K cumulative accounts. Cost leadership verified: 1.1 bps vs HYPE 4.9 bps for $100K BTC. Deep dive: WATCHLIST at $0.91 for 6-9mo pre-cliff trade. Edge +0.118 bits at conviction 0.40, upside $3.00, downside $0.50. HARD EXIT Oct-Nov 2026 before Jan 2027 cliff (13.5M LIT/mo team+VC unlocks). Classic DyDX-shape rip-before-cliff setup.",
-      "accrual_annual_est": 31151592,
-      "accrual_yield_mcap": 3.4380541989127202,
-      "accrual_yield_fdv": 0.8595135492538779,
+      "accrual_annual_est": 30609792,
+      "accrual_yield_mcap": 3.6872553777482384,
+      "accrual_yield_fdv": 0.9218138438818512,
       "dilution_pct": 75
     }
   ]

@@ -174199,10 +174199,10 @@
   },
   {
     "date": "2026-11-06",
-    "generated_at": "2026-11-06T01:08:34.284Z",
+    "generated_at": "2026-11-06T12:06:48.704Z",
     "protocols": {
       "HYPE": {
-        "price_usd": 77.66,
+        "price_usd": 78.5,
         "static_reference": {
           "circulating_supply": {
             "date": "2026-11-06",
@@ -174214,19 +174214,19 @@
           },
           "af_balance": {
             "date": "2026-11-06",
-            "amount_tokens": 48717379.99473923,
-            "amount_usd": 3777350775.272101,
-            "price_usd_at_snapshot": 77.536,
+            "amount_tokens": 48723788.63473923,
+            "amount_usd": 3839083733.139281,
+            "price_usd_at_snapshot": 78.7928,
             "source": "hyperliquid_info_api",
             "verification": "onchain"
           },
           "total_staked": {
             "date": "2026-11-06",
-            "total_staked_tokens": 439326882.7974406,
+            "total_staked_tokens": 439148110.54350466,
             "validator_count": 35,
             "validators_with_stake_field": 35,
             "validators_missing_stake_field": 0,
-            "delta_tokens": -6518.3164920806885,
+            "delta_tokens": -185290.5704280138,
             "delta_basis_date": "2026-11-05",
             "source": "hyperliquid_info_api",
             "verification": "onchain"
@@ -174234,41 +174234,41 @@
         },
         "rollups": {
           "24h": {
-            "net_pressure_tokens": 990502.9766666667,
-            "net_pressure_usd": 76922461.16793333,
+            "net_pressure_tokens": 984094.3366666667,
+            "net_pressure_usd": 77251405.42833333,
             "unlocks_tokens": 9916666.666666666,
-            "buybacks_tokens": 1163.69,
+            "buybacks_tokens": 7572.3299999999945,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           },
           "7d": {
-            "net_pressure_tokens": 790509.402130653,
-            "net_pressure_usd": 61390960.16946651,
+            "net_pressure_tokens": 789676.2521306531,
+            "net_pressure_usd": 61989585.79225627,
             "unlocks_tokens": 9916666.666666666,
-            "buybacks_tokens": 117183.23999999999,
+            "buybacks_tokens": 118016.38999999998,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           },
           "30d": {
-            "net_pressure_tokens": -1492594.4473627005,
-            "net_pressure_usd": -115914884.78218731,
+            "net_pressure_tokens": -1493427.5973627002,
+            "net_pressure_usd": -117234066.39297196,
             "unlocks_tokens": 17448000,
-            "buybacks_tokens": 241624.53999999995,
+            "buybacks_tokens": 242457.68999999992,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           },
           "90d": {
-            "net_pressure_tokens": -5579842.257681518,
-            "net_pressure_usd": -433330549.73154664,
+            "net_pressure_tokens": -5580675.407681517,
+            "net_pressure_usd": -438083019.5029991,
             "unlocks_tokens": 52344000,
-            "buybacks_tokens": 631863.5299999999,
+            "buybacks_tokens": 632696.6799999999,
             "buyback_coverage_pct": 1,
             "coverage_complete": true
           }
         }
       },
       "AAVE": {
-        "price_usd": 131.43,
+        "price_usd": 129.74,
         "static_reference": {
           "treasury": {
             "date": "2026-11-06",
@@ -174302,7 +174302,7 @@
           },
           "7d": {
             "net_pressure_tokens": -793.5105158933438,
-            "net_pressure_usd": -104291.08710386218,
+            "net_pressure_usd": -102950.05433200243,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174310,7 +174310,7 @@
           },
           "30d": {
             "net_pressure_tokens": -793.5105158933438,
-            "net_pressure_usd": -104291.08710386218,
+            "net_pressure_usd": -102950.05433200243,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174318,7 +174318,7 @@
           },
           "90d": {
             "net_pressure_tokens": -54613.17360185925,
-            "net_pressure_usd": -7177809.406492362,
+            "net_pressure_usd": -7085513.143105219,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174327,7 +174327,7 @@
         }
       },
       "SKY": {
-        "price_usd": 0.06461,
+        "price_usd": 0.066319,
         "static_reference": {
           "lockstake": {
             "date": "2026-11-06",
@@ -174348,7 +174348,7 @@
         "rollups": {
           "24h": {
             "net_pressure_tokens": -6563576.663684845,
-            "net_pressure_usd": -424072.6882406778,
+            "net_pressure_usd": -435289.84075891523,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174356,7 +174356,7 @@
           },
           "7d": {
             "net_pressure_tokens": -11372149.327840805,
-            "net_pressure_usd": -734754.5680717945,
+            "net_pressure_usd": -754189.5712730744,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174364,7 +174364,7 @@
           },
           "30d": {
             "net_pressure_tokens": -61120610.721414566,
-            "net_pressure_usd": -3949002.658710595,
+            "net_pressure_usd": -4053457.7824334926,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174372,7 +174372,7 @@
           },
           "90d": {
             "net_pressure_tokens": -177678936.28488922,
-            "net_pressure_usd": -11479836.073366692,
+            "net_pressure_usd": -11783489.37547757,
             "unlocks_tokens": 0,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174381,7 +174381,7 @@
         }
       },
       "LIT": {
-        "price_usd": 3.52,
+        "price_usd": 3.43,
         "static_reference": {
           "l1_supply": {
             "date": "2026-11-06",
@@ -174449,12 +174449,12 @@
         }
       },
       "MORPHO": {
-        "price_usd": 2.11,
+        "price_usd": 2.09,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 97363.78205128208,
-            "net_pressure_usd": 205437.58012820515,
+            "net_pressure_usd": 203490.30448717953,
             "unlocks_tokens": 202684.29487179487,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174462,7 +174462,7 @@
           },
           "7d": {
             "net_pressure_tokens": 681546.4743589746,
-            "net_pressure_usd": 1438063.0608974362,
+            "net_pressure_usd": 1424432.1314102567,
             "unlocks_tokens": 1418790.064102564,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174470,7 +174470,7 @@
           },
           "30d": {
             "net_pressure_tokens": 2920913.461538461,
-            "net_pressure_usd": 6163127.403846152,
+            "net_pressure_usd": 6104709.134615383,
             "unlocks_tokens": 6080528.846153849,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174478,7 +174478,7 @@
           },
           "90d": {
             "net_pressure_tokens": 8762740.384615382,
-            "net_pressure_usd": 18489382.211538456,
+            "net_pressure_usd": 18314127.40384615,
             "unlocks_tokens": 18241586.538461518,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174487,7 +174487,7 @@
         }
       },
       "PENDLE": {
-        "price_usd": 1.69,
+        "price_usd": 1.67,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -174525,12 +174525,12 @@
         }
       },
       "JTO": {
-        "price_usd": 0.334251,
+        "price_usd": 0.341679,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 214300.72325169877,
-            "net_pressure_usd": 71630.23104760356,
+            "net_pressure_usd": 73222.05681991718,
             "unlocks_tokens": 626203.6593570077,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174538,7 +174538,7 @@
           },
           "7d": {
             "net_pressure_tokens": 1500105.0627618914,
-            "net_pressure_usd": 501411.617333225,
+            "net_pressure_usd": 512554.3977394203,
             "unlocks_tokens": 4383425.615499054,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174546,7 +174546,7 @@
           },
           "30d": {
             "net_pressure_tokens": 6429021.697550959,
-            "net_pressure_usd": 2148906.9314281056,
+            "net_pressure_usd": 2196661.704597514,
             "unlocks_tokens": 18786109.78071023,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174554,7 +174554,7 @@
           },
           "90d": {
             "net_pressure_tokens": 19287065.092652895,
-            "net_pressure_usd": 6446720.794284323,
+            "net_pressure_usd": 6589985.113792549,
             "unlocks_tokens": 56358329.342130825,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174563,7 +174563,7 @@
         }
       },
       "JUP": {
-        "price_usd": 0.245216,
+        "price_usd": 0.248141,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -174601,12 +174601,12 @@
         }
       },
       "FLUID": {
-        "price_usd": 2.43,
+        "price_usd": 2.3,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 2739.72602739726,
-            "net_pressure_usd": 6657.534246575343,
+            "net_pressure_usd": 6301.369863013698,
             "unlocks_tokens": 9132.4200913242,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174614,7 +174614,7 @@
           },
           "7d": {
             "net_pressure_tokens": 169178.08219178082,
-            "net_pressure_usd": 411102.7397260274,
+            "net_pressure_usd": 389109.58904109587,
             "unlocks_tokens": 563926.9406392694,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174622,7 +174622,7 @@
           },
           "30d": {
             "net_pressure_tokens": 232191.7808219178,
-            "net_pressure_usd": 564226.0273972603,
+            "net_pressure_usd": 534041.095890411,
             "unlocks_tokens": 773972.602739726,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174630,7 +174630,7 @@
           },
           "90d": {
             "net_pressure_tokens": 696575.3424657532,
-            "net_pressure_usd": 1692678.0821917804,
+            "net_pressure_usd": 1602123.2876712321,
             "unlocks_tokens": 2321917.808219181,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174639,7 +174639,7 @@
         }
       },
       "CARDS": {
-        "price_usd": 0.255303,
+        "price_usd": 0.22191,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -174668,7 +174668,7 @@
           },
           "90d": {
             "net_pressure_tokens": -65107809.30670439,
-            "net_pressure_usd": -7855854.711202219,
+            "net_pressure_usd": -8254462.761380719,
             "unlocks_tokens": 134018748,
             "buybacks_tokens": 100918432.80670434,
             "buyback_coverage_pct": 0.8888888888888888,
@@ -174677,12 +174677,12 @@
         }
       },
       "PUMP": {
-        "price_usd": 0.003929,
+        "price_usd": 0.00399475,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 160308043.2974182,
-            "net_pressure_usd": 629850.3021155562,
+            "net_pressure_usd": 640390.5559623614,
             "unlocks_tokens": 359911034.0670781,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174690,7 +174690,7 @@
           },
           "7d": {
             "net_pressure_tokens": 379481056.11036265,
-            "net_pressure_usd": 1517717.446715185,
+            "net_pressure_usd": 1538797.9544087956,
             "unlocks_tokens": 2519377238.469547,
             "buybacks_tokens": 742675246.9715649,
             "buyback_coverage_pct": 0.7142857142857143,
@@ -174698,7 +174698,7 @@
           },
           "30d": {
             "net_pressure_tokens": 2888891057.922857,
-            "net_pressure_usd": 16100522.58027212,
+            "net_pressure_usd": 16121603.08796573,
             "unlocks_tokens": 20797331022.012333,
             "buybacks_tokens": 4920350240.999689,
             "buyback_coverage_pct": 0.9333333333333333,
@@ -174706,7 +174706,7 @@
           },
           "90d": {
             "net_pressure_tokens": 5286849417.210701,
-            "net_pressure_usd": 21488564.243467025,
+            "net_pressure_usd": 21509644.751160637,
             "unlocks_tokens": 62391993066.036995,
             "buybacks_tokens": 18140874479.556934,
             "buyback_coverage_pct": 0.9777777777777777,
@@ -174715,7 +174715,7 @@
         }
       },
       "ZRO": {
-        "price_usd": 1.6,
+        "price_usd": 1.63,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -174736,7 +174736,7 @@
           },
           "30d": {
             "net_pressure_tokens": 11463000,
-            "net_pressure_usd": 18340800,
+            "net_pressure_usd": 18684690,
             "unlocks_tokens": 23630000,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174744,7 +174744,7 @@
           },
           "90d": {
             "net_pressure_tokens": 34219695.91964329,
-            "net_pressure_usd": 54831310,
+            "net_pressure_usd": 55862980,
             "unlocks_tokens": 70890000,
             "buybacks_tokens": 169304.0803567086,
             "buyback_coverage_pct": 0.011111111111111112,
@@ -174753,12 +174753,12 @@
         }
       },
       "ENA": {
-        "price_usd": 0.164505,
+        "price_usd": 0.166287,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 4109924.841658697,
-            "net_pressure_usd": 676103.186077064,
+            "net_pressure_usd": 683427.0721448998,
             "unlocks_tokens": 10746239.900636857,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174766,7 +174766,7 @@
           },
           "7d": {
             "net_pressure_tokens": 28769473.89161088,
-            "net_pressure_usd": 4732722.302539448,
+            "net_pressure_usd": 4783989.5050142985,
             "unlocks_tokens": 75223679.304458,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174774,7 +174774,7 @@
           },
           "30d": {
             "net_pressure_tokens": 123297745.24976091,
-            "net_pressure_usd": 20283095.58231192,
+            "net_pressure_usd": 20502812.164346993,
             "unlocks_tokens": 322387197.0191056,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174782,7 +174782,7 @@
           },
           "90d": {
             "net_pressure_tokens": 369893235.74928355,
-            "net_pressure_usd": 60849286.7469359,
+            "net_pressure_usd": 61508436.49304111,
             "unlocks_tokens": 967161591.0573192,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174791,7 +174791,7 @@
         }
       },
       "AERO": {
-        "price_usd": 0.606663,
+        "price_usd": 0.608314,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -174829,7 +174829,7 @@
         }
       },
       "DYDX": {
-        "price_usd": 0.095993,
+        "price_usd": 0.098315,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -174867,12 +174867,12 @@
         }
       },
       "MET": {
-        "price_usd": 0.272476,
+        "price_usd": 0.275821,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 110132.88207304062,
-            "net_pressure_usd": 30008.567175733813,
+            "net_pressure_usd": 30376.961666268133,
             "unlocks_tokens": 291257.6658316653,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174880,7 +174880,7 @@
           },
           "7d": {
             "net_pressure_tokens": 770930.1745112842,
-            "net_pressure_usd": 210059.97023013668,
+            "net_pressure_usd": 212638.7316638769,
             "unlocks_tokens": 2038803.660821657,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174888,7 +174888,7 @@
           },
           "30d": {
             "net_pressure_tokens": 3303986.462191218,
-            "net_pressure_usd": 900257.0152720143,
+            "net_pressure_usd": 911308.8499880439,
             "unlocks_tokens": 8737729.974949962,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174896,7 +174896,7 @@
           },
           "90d": {
             "net_pressure_tokens": 9911959.386573676,
-            "net_pressure_usd": 2700771.045816049,
+            "net_pressure_usd": 2733926.549964138,
             "unlocks_tokens": 26213189.924849898,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174905,12 +174905,12 @@
         }
       },
       "CLOUD": {
-        "price_usd": 0.04317319,
+        "price_usd": 0.04384182,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 118078.14911080712,
-            "net_pressure_usd": 5097.810366409207,
+            "net_pressure_usd": 5176.760959249165,
             "unlocks_tokens": 347823.5294117647,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174918,7 +174918,7 @@
           },
           "7d": {
             "net_pressure_tokens": 826547.0437756499,
-            "net_pressure_usd": 35684.67256486445,
+            "net_pressure_usd": 36237.32671474416,
             "unlocks_tokens": 2434764.7058823532,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174926,7 +174926,7 @@
           },
           "30d": {
             "net_pressure_tokens": 8042344.473324213,
-            "net_pressure_usd": 347213.66599227616,
+            "net_pressure_usd": 352591.01877747494,
             "unlocks_tokens": 25434705.882352907,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174934,7 +174934,7 @@
           },
           "90d": {
             "net_pressure_tokens": 15127033.41997264,
-            "net_pressure_usd": 653082.2879768285,
+            "net_pressure_usd": 663196.6763324249,
             "unlocks_tokens": 46304117.647058755,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174943,12 +174943,12 @@
         }
       },
       "DRIFT": {
-        "price_usd": 0.01226896,
+        "price_usd": 0.0129108,
         "static_reference": {},
         "rollups": {
           "24h": {
             "net_pressure_tokens": 302754.0672129114,
-            "net_pressure_usd": 3714.4775404725215,
+            "net_pressure_usd": 3908.7972109724565,
             "unlocks_tokens": 644238.2882648951,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174956,7 +174956,7 @@
           },
           "7d": {
             "net_pressure_tokens": 2119278.4704903797,
-            "net_pressure_usd": 26001.34278330765,
+            "net_pressure_usd": 27361.580476807194,
             "unlocks_tokens": 4509668.017854265,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174964,7 +174964,7 @@
           },
           "30d": {
             "net_pressure_tokens": 9082622.016387342,
-            "net_pressure_usd": 111434.32621417564,
+            "net_pressure_usd": 117263.91632917369,
             "unlocks_tokens": 19327148.647946853,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -174972,7 +174972,7 @@
           },
           "90d": {
             "net_pressure_tokens": 27247866.049162086,
-            "net_pressure_usd": 334302.9786425277,
+            "net_pressure_usd": 351791.74898752186,
             "unlocks_tokens": 57981445.94384052,
             "buybacks_tokens": 0,
             "buyback_coverage_pct": 0,
@@ -175019,7 +175019,7 @@
         }
       },
       "RAY": {
-        "price_usd": 1.71,
+        "price_usd": 1.78,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -175057,7 +175057,7 @@
         }
       },
       "EUL": {
-        "price_usd": 0.992903,
+        "price_usd": 1.037,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -175095,7 +175095,7 @@
         }
       },
       "GNS": {
-        "price_usd": 0.35478,
+        "price_usd": 0.369454,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -175133,7 +175133,7 @@
         }
       },
       "ORCA": {
-        "price_usd": 1.34,
+        "price_usd": 1.41,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -175171,7 +175171,7 @@
         }
       },
       "MNDE": {
-        "price_usd": 0.02233346,
+        "price_usd": 0.02235336,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -175209,7 +175209,7 @@
         }
       },
       "ETHFI": {
-        "price_usd": 0.550645,
+        "price_usd": 0.580597,
         "static_reference": {},
         "rollups": {
           "24h": {
@@ -175247,7 +175247,7 @@
         }
       },
       "COW": {
-        "price_usd": 0.111429,
+        "price_usd": 0.112214,
         "static_reference": {},
         "rollups": {
           "24h": {
